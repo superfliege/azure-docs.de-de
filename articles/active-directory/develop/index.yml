@@ -6,7 +6,7 @@ metadata:
   description: 'Es wird beschrieben, wie Sie die Microsoft Identity Platform verwenden können, um Apps zum sicheren Anmelden von Benutzern für alle Microsoft-Identitäten zu erstellen und Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs zu erhalten.'
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na
