@@ -1,19 +1,19 @@
 ---
-title: Überwachung und Optimierung in Azure Database for PostgreSQL
-description: Dieser Artikel beschreibt die Überwachungs- und Optimierungsfunktionen in Azure Database for PostgreSQL.
+title: Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel werden die Überwachungs- und Optimierungsfunktionen in Azure Database for PostgreSQL (Einzelserver) beschrieben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 5e03a3e33d618c393241a649be50fe78632caafe
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098490"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068990"
 ---
-# <a name="monitor-and-tune"></a>Überwachen und Optimieren
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
 
 ## <a name="metrics"></a>Metriken

@@ -1,19 +1,19 @@
 ---
-title: Lesereplikate in Azure Database for PostgreSQL
-description: In diesem Artikel wird das Feature für Lesereplikate in Azure Database for PostgreSQL beschrieben.
+title: Lesereplikate in Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel wird das Feature für Lesereplikate in Azure Database for PostgreSQL (Einzelserver) beschrieben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789973"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067433"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql"></a>Lesereplikate in Azure Database for PostgreSQL
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
 Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for PostgreSQL-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver auf bis zu fünf schreibgeschützte Replikate innerhalb derselben Azure-Region replizieren. Replikate werden mithilfe der nativen Replikationstechnologie der PostgreSQL-Engine asynchron aktualisiert.
 

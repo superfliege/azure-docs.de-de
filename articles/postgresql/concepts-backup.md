@@ -1,19 +1,19 @@
 ---
-title: Sicherung und Wiederherstellung in Azure Database for PostgreSQL
-description: Enthält Informationen zu automatischen Sicherungen und zur Wiederherstellung Ihres Azure Database for PostgreSQL-Servers.
+title: Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
+description: Hier finden Sie Informationen zu automatischen Sicherungen und zur Wiederherstellung Ihres Azure Database for PostgreSQL-Einzelservers.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 5/6/2019
+ms.openlocfilehash: 08a061a76f1532441817e61d423533bcc0850227
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236752"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068852"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
 
 Für Azure Database for PostgreSQL werden Sicherungen automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Sicherungen können verwendet werden, um für Ihren Server den Stand zu einem bestimmten Zeitpunkt wiederherzustellen. Sicherungen und Wiederherstellungen sind wesentliche Bestandteile jeder Strategie für Geschäftskontinuität, da Ihre Daten so vor versehentlichen Beschädigungen und Löschungen geschützt werden.
 

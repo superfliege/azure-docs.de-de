@@ -1,10 +1,10 @@
 ---
-title: Empfohlene Vorgehensweisen für die Datensicherheit und die Verschlüsselung | Microsoft Docs
+title: Bewährte Methoden für Datensicherheit und Datenverschlüsselung – Microsoft Azure
 description: Dieser Artikel bietet eine Reihe von empfohlenen Vorgehensweisen für die Datensicherheit und Verschlüsselung unter Verwendung der integrierten Azure-Funktionen.
 services: security
 documentationcenter: na
-author: barclayn
-manager: mbalwin
+author: TerryLanfear
+manager: barbkess
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,33 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
-ms.author: barclayn
-ms.openlocfilehash: 686d4a8ac5239af12206b57072cc00aa10114d79
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 05/06/2019
+ms.author: terrylan
+ms.openlocfilehash: 9955450b468ef38ba456d7ee73d9681de677494d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976510"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190706"
 ---
-# <a name="azure-data-security-and-encryption-best-practices"></a>Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure
+# <a name="azure-data-security-and-encryption-best-practices"></a>Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure
+In diesem Artikel werden bewährte Methoden für die Datensicherheit und -verschlüsselung beschrieben.
 
+Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich für aktuelle Funktionen und Features der Azure-Plattform. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
+
+## <a name="protect-data"></a>Schützen von Daten
 Zum Schutz von Daten in der Cloud müssen Sie die möglichen Zustände berücksichtigen, in denen Ihre Daten auftreten können. Außerdem sollten Sie die Steuerungsmöglichkeiten beachten, die für diesen Zustand verfügbar sind. Bewährte Methoden für Datensicherheit und Verschlüsselung in Azure beziehen sich auf die folgenden Zustände von Daten:
 
 - Ruhende Daten: Dies umfasst alle Informationsspeicherobjekte, Container und Typen, die statisch auf physischen Medien existieren – ob auf Magnetspeichern oder optischen Datenträgern.
 - Daten während der Übertragung: Wenn Daten zwischen Komponenten, Speicherorten oder Programmen übertragen werden, weisen sie den Zustand „während der Übertragung“ auf. Beispiele sind die Übertragung über das Netzwerk, über einen Service Bus (von dem lokalen Computer in die Cloud und umgekehrt, inklusive Hybridverbindungen wie ExpressRoute) oder während eines Eingabe-/Ausgabevorgangs.
-
-In diesem Artikel besprechen wir eine Reihe von empfohlenen Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit der Datensicherheit und der Verschlüsselung in Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
-
-Für jede empfohlene Vorgehensweise erklären wir:
-
-* Wobei es bei der bewährten Methode geht
-* Warum Sie die bewährte Methode nutzen sollten
-* Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
-* Mögliche Alternativen zur bewährten Methode
-* Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
-
-Dieser Artikel zu den empfohlenen Vorgehensweisen für die Datensicherheit und die Verschlüsselung in Azure basiert auf einer Konsensmeinung und den Fähigkeiten und Funktionssätzen der Azure-Plattform, wie sie zum Erstellungszeitpunkt dieses Artikels existieren. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
 ## <a name="choose-a-key-management-solution"></a>Auswählen einer Schlüsselverwaltungslösung
 
@@ -95,7 +87,7 @@ Die [Verschlüsselung ruhender Daten](https://cloudblogs.microsoft.com/microsoft
 
 In Azure Storage und Azure SQL-Datenbank werden ruhende Daten standardmäßig verschlüsselt, und viele Dienste bieten eine Verschlüsselung als Option an. Mithilfe von Azure Key Vault können Sie die Kontrolle über Schlüssel für den Zugriff und das Verschlüsseln Ihrer Daten behalten. Weitere Informationen finden Sie unter [Unterstützung für Verschlüsselungsmodelle von Azure-Ressourcenanbietern](azure-security-encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**Bewährte Methoden:** Verwenden Sie die Verschlüsselung, um das Risiko unberechtigter Datenzugriffe zu reduzieren.
+**Bewährte Methoden:** Verwenden Sie die Verschlüsselung, um das Risiko unberechtigter Datenzugriffe zu reduzieren.   
 **Detail**: Verschlüsseln Sie Ihre Laufwerke, bevor diese mit sensiblen Daten beschrieben werden.
 
 Organisationen, die keine Datenverschlüsselung erzwingen, sind anfälliger für Datenintegritätsprobleme. So können beispielsweise nicht autorisierte Benutzer Daten aus kompromittierten Konten entwenden oder sich unberechtigt Zugang zu unverschlüsselten Daten verschaffen. Unternehmen müssen außerdem nachweisen, dass sie gewissenhaft sind und die richtigen Sicherheitsprotokolle zur Verbesserung ihrer Datensicherheit verwenden, um den Branchenbestimmungen zu entsprechen.
@@ -118,7 +110,7 @@ Nachfolgend sind bewährte Methoden für die Sicherheit bei Verwendung von Azure
 **Detail**: Verwenden Sie [ExpressRoute](../expressroute/expressroute-introduction.md). Falls Sie sich für die Verwendung von ExpressRoute entscheiden, können Sie die Daten auch auf Anwendungsebene verschlüsseln, indem Sie [SSL/TLS](https://support.microsoft.com/kb/257591) oder andere Protokolle für zusätzlichen Schutz verwenden.
 
 **Bewährte Methode**: Führen Sie die Interaktion mit Azure Storage über das Azure-Portal aus.   
-**Detail**: Alle Transaktionen erfolgen über HTTPS. Sie können auch [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd179355.aspx) über HTTPS verwenden, um mit [Azure Storage](https://azure.microsoft.com/services/storage/) und [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) zu interagieren.
+**Detail**: Alle Transaktionen erfolgen über HTTPS. Für die Interaktion mit [Azure Storage](https://azure.microsoft.com/services/storage/) können Sie auch die [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd179355.aspx) über HTTPS verwenden.
 
 Organisationen, die die Daten während der Übertragung nicht schützen, sind anfälliger für [Man-in-the-Middle-Angriffe](https://technet.microsoft.com/library/gg195821.aspx), [Abhöraktionen](https://technet.microsoft.com/library/gg195641.aspx) und Session Hijacking. Bei diesen Angriffen kann es sich um den ersten Schritt zur Zugriffsgewinnung auf vertrauliche Daten handeln.
 

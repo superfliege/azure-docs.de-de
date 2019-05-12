@@ -1,9 +1,9 @@
 ---
-title: Bewährte Methoden für die Azure-Datenbanksicherheit | Microsoft-Dokumentation
+title: Bewährte Methoden für die Datenbanksicherheit – Microsoft Azure
 description: Dieser Artikel enthält bewährte Methoden zur Azure-Datenbanksicherheit.
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''
@@ -12,28 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
-ms.author: tomsh
-ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 05/06/2019
+ms.author: terrylan
+ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117968"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409803"
 ---
 # <a name="azure-database-security-best-practices"></a>Bewährte Methoden für die Azure-Datenbanksicherheit
+In diesem Artikel werden bewährte Methoden für die Datenbanksicherheit beschrieben.
+
+Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich für aktuelle Funktionen und Features der Azure-Plattform. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
+
+## <a name="secure-databases"></a>Schützen von Datenbanken
 Sicherheit ist einer der wichtigsten Aspekte beim Verwalten von Datenbanken und hat auch bei [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) höchste Priorität. Ihre Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (HIPAA, ISO 27001/27002, PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie auf der [Microsoft Trust Center-Website](https://azure.microsoft.com/support/trust-center/services/). Sie können Ihre Datenbanken auch gemäß den jeweils geltenden rechtlichen Anforderungen in spezifischen Azure-Datencentern anordnen.
-
-In diesem Artikel werden die bewährten Methoden für die Azure-Datenbanksicherheit beschrieben. Diese bewährten Methoden sind aus unseren Erfahrungen mit der Azure-Datenbanksicherheit und den Erfahrungen von Kunden wie Ihnen abgeleitet.
-
-Für jede bewährte Methode wird Folgendes beschrieben:
-
--   Wobei es bei der bewährten Methode geht
--   Warum Sie die bewährte Methode nutzen sollten
--   Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
--   Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
-
-Dieser Artikel zu den bewährten Methoden für die Azure-Datenbanksicherheit basiert auf einer Konsensmeinung und den Fähigkeiten und Funktionssätzen der Azure-Plattform, wie sie zum Zeitpunkt der Erstellung dieses Artikels existierten. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Verwenden von Firewallregeln zum Einschränken des Datenbankzugriffs
 Microsoft Azure SQL-Datenbank ist ein Dienst für relationale Datenbanken für Azure und andere internetbasierte Anwendungen. Zur Gewährleistung der Zugriffssicherheit steuert SQL-Datenbank den Zugriff durch die Verwendung von:
@@ -137,7 +131,7 @@ Die Überwachung einer Instanz der SQL Server-Datenbank-Engine oder einer einzel
 
 Es gibt mehrere Ebenen der Überwachung für SQL Server. Dies richtet sich nach den behördlichen Anforderungen bzw. den Standardvorgaben für Ihre Installation. SQL Server-Überwachungen stellen Tools und Prozesse zu Verfügung, die Sie benötigen, um Überwachungen für verschiedene Server- und Datenbankobjekte zu aktivieren, zu speichern und anzuzeigen.
 
-Die [SQL-Datenbank-Überwachung](../sql-database/sql-database-auditing.md) in Azure verfolgt Datenbankereignisse und schreibt sie in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto.
+Die [Überwachung von Azure SQL-Datenbank](../sql-database/sql-database-auditing.md) verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto.
 
 Die Überwachung kann Sie dabei unterstützen, gesetzliche Bestimmungen einzuhalten, Datenbankaktivitäten nachzuvollziehen und Abweichungen und Anomalien zu bestimmen, die auf geschäftliche Probleme oder Sicherheitsverstöße hinweisen können. Die Überwachung unterstützt die Einhaltung von Standards, garantiert diese aber nicht.
 
