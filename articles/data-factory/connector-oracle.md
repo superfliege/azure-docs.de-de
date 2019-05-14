@@ -281,25 +281,26 @@ Beim Kopieren von Daten aus bzw. nach Oracle werden die folgenden Zuordnungen vo
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(nur für Oracle 10g und höher unterstützt) |
-| CHAR |Zeichenfolge |
-| CLOB |Zeichenfolge |
+| BLOB |Byte[]<br/>(only supported on Oracle 10g and higher) |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
-| FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
-| INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
-| LONG |Zeichenfolge |
+| FLOAT |Dezimal, String (wenn Genauigkeit > 28) |
+| INTEGER |Dezimal, String (wenn Genauigkeit > 28) |
+| LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |Zeichenfolge |
-| NCLOB |Zeichenfolge |
-| NUMBER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
-| NVARCHAR2 |Zeichenfolge |
+| NCHAR |String |
+| NCLOB |String |
+| NUMBER |Dezimal, String (wenn Genauigkeit > 28) |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
-| ROWID |Zeichenfolge |
+| ROWID |String |
 | TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Zeichenfolge |
-| TIMESTAMP WITH TIME ZONE |Zeichenfolge |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
+| TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |Zeichenfolge |
-| XML |Zeichenfolge |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Die Datentypen INTERVAL YEAR TO MONTH und INTERVAL DAY TO SECOND werden nicht unterstützt.
