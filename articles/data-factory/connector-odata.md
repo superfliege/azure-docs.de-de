@@ -49,7 +49,7 @@ Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstü
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **OData** festgelegt werden. |Ja |
-| URL | Die Stamm-URL des OData-Diensts. |Ja |
+| url | Die Stamm-URL des OData-Diensts. |Ja |
 | authenticationType | Der Typ der Authentifizierung für die Verbindung mit der OData-Quelle. Zulässige Werte: **Anonymous**, **Basic**, **Windows**, **AadServicePrincipal**, and **ManagedServiceIdentity**. OAuth auf Benutzerbasis wird nicht unterstützt. | Ja |
 | userName | Geben Sie **userName** an, wenn Sie die Standard- oder die Windows-Authentifizierung verwenden. | Nein  |
 | password | Geben Sie das **Kennwort** für das Benutzerkonto an, das Sie für **userName** angegeben haben. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein  |
@@ -58,7 +58,7 @@ Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstü
 | servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | servicePrincipalEmbeddedCert | Geben Sie das in Azure Active Directory registrierte, base64-codierte Zertifikat Ihrer Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | servicePrincipalEmbeddedCertPassword | Geben Sie das Kennwort Ihres Zertifikats an, falls Ihr Zertifikat mit einem Kennwort geschützt ist. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).  | Nein |
-| Mandant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Nein  |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Nein  |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern.| Nein  |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime auswählen (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
