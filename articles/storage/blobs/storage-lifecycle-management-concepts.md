@@ -2,18 +2,19 @@
 title: Verwalten des Azure Storage-Lebenszyklus
 description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen, um alternde Daten von heißen zu kalten und zu Archivebenen zu übertragen.
 services: storage
-author: yzheng-msft
+author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/20/2019
-ms.author: yzheng
+ms.date: 4/29/2019
+ms.author: mhopkins
+ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 560f7eb8a8809cdd6ef410a610be9806f9709754
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681725"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409979"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -42,7 +43,7 @@ Die Funktion zur Lebenszyklusverwaltung ist in allen öffentlichen Azure-Regione
 
 ## <a name="add-or-remove-a-policy"></a>Hinzufügen oder Entfernen einer Richtlinie 
 
-Sie können eine Richtlinie über das Azure-Portal, [Azure PowerShell](https://github.com/Azure/azure-powershell/releases), die Azure-Befehlszeilenschnittstelle, [REST-APIs](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies) oder ein Clienttool hinzufügen, bearbeiten oder entfernen. In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
+Sie können eine Richtlinie über das Azure-Portal, [Azure PowerShell](https://github.com/Azure/azure-powershell/releases), die Azure-Befehlszeilenschnittstelle, [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies) oder ein Clienttool hinzufügen, bearbeiten oder entfernen. In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
 
 > [!NOTE]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Folgende Umgehungsparameter sind erforderlich: `Logging,  Metrics,  AzureServices`. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
@@ -80,7 +81,47 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 
 ```
+## <a name="arm-template-with-lifecycle-management-policy"></a>ARM-Vorlage mit der Richtlinie für die Lebenszyklusverwaltung
 
+Sie können die Lebenszyklusverwaltung als Teil der Bereitstellung Ihrer Azure-Lösung mithilfe von ARM-Vorlagen definieren und bereitstellen. Im Folgenden finden Sie eine Beispielvorlage für das Bereitstellen eines GPv2-Speicherkontos mit RA-GRS mit einer Richtlinie für die Lebenszyklusverwaltung. 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "storageAccountName": "[uniqueString(resourceGroup().id)]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-04-01",
+      "sku": {
+        "name": "Standard_RAGRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "networkAcls": {}
+      }
+    },
+    {
+      "name": "[concat(variables('storageAccountName'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/managementPolicies",
+      "apiVersion": "2019-04-01",
+      "dependsOn": [
+        "[variables('storageAccountName')]"
+      ],
+      "properties": {
+        "policy": {...}
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="policy"></a>Richtlinie
 
@@ -116,7 +157,7 @@ Jede Regel in der Richtlinie umfasst mehrere Parameter:
 | Parametername | Parametertyp | Notizen | Erforderlich |
 |----------------|----------------|-------|----------|
 | name           | Zeichenfolge |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
-| Aktiviert | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist TRUE, wenn dieser Wert nicht festgelegt ist. | False | 
+| enabled | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist TRUE, wenn dieser Wert nicht festgelegt ist. | False | 
 | type           | Ein Enumerationswert | Aktuell ist `Lifecycle` der gültige Typ. | True |
 | Definition     | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. | True |
 
@@ -305,8 +346,8 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
   ]
 }
 ```
-## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>FAQ: Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt? 
-
+## <a name="faq"></a>Häufig gestellte Fragen 
+**Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt?**  
 Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen (z. B. Ebenenverschiebung und Löschung) das erste Mal ausgeführt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte

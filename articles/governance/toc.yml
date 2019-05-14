@@ -22,25 +22,12 @@
       href: policy/overview.md
     - name: Blaupausen
       href: blueprints/overview.md
-- name: Implementierungen
-  expanded: true
+- name: Framework für die Cloudeinführung (Cloud Adoption Framework)
   items:
-    - name: Enterprise Cloud-Einführung
-      items:
-        - name: Was ist die Cloudressourcenkontrolle?
-          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-        - name: Kontrolle des Ressourcenzugriffs in Azure
-          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-        - name: Governance-Entwurf für ein einzelnes Team
-          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-        - name: Governance-Entwurf für mehrere Teams
-          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-    - name: Azure Enterprise Scaffold
-      items:
-        - name: Präskriptive Abonnementgovernance
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-        - name: Implementieren von Azure Enterprise Scaffold
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+    - name: Übersicht
+      href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+    - name: Übersicht über Governance
+      href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

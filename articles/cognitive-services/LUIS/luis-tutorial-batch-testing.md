@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: 391a5386a5ecc144b15c35a85d501dfb5ce2d172
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: af04ca19961abcfc7ee218824a4a1a804f7ad79c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523136"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146155"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 
@@ -28,7 +28,7 @@ Anforderungen für Batchtests:
 
 * Maximal 1000 Äußerungen pro Test 
 * Keine Duplikate 
-* Zulässige Entitätstypen: nur per Machine Learning trainierte Entitäten von einfachen, hierarchischen (nur übergeordneten) und zusammengesetzten Entitäten. Batchtests eignen sich nur für mit Machine Learning trainierten Absichten und Entitäten.
+* Zulässige Entitätstypen: nur per maschinellem Lernen trainierte Entitäten von einfachen und zusammengesetzten Entitäten. Batchtests eignen sich nur für mit Machine Learning trainierten Absichten und Entitäten.
 
 Wenn Sie eine andere App als die in diesem Tutorial verwenden, verwenden Sie *nicht* die Beispieläußerungen, die einer Absicht bereits hinzugefügt wurden. 
 
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte aus:
 
 ## <a name="review-batch-results"></a>Überprüfen der Batchergebnisse
 
-Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Standardmäßig ist der Filter auf die erste Absicht in der Liste festgelegt. Der Filter enthält alle Absichten und nur einfache, hierarchische (nur übergeordnete) und zusammengesetzte Entitäten. Wenn Sie einen [Diagrammabschnitt](luis-concept-batch-test.md#batch-test-results) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt. 
+Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Standardmäßig ist der Filter auf die erste Absicht in der Liste festgelegt. Der Filter enthält alle Absichten und nur einfache und zusammengesetzte Entitäten. Wenn Sie einen [Diagrammabschnitt](luis-concept-batch-test.md#batch-test-results) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt. 
 
 Wenn Sie auf das Diagramm zeigen, können Sie mit dem Mausrad die Ansicht im Diagramm vergrößern oder verkleinern. Dies ist hilfreich, wenn es viele Punkte im Diagramm gibt, die nah beieinander gruppiert sind. 
 
@@ -169,7 +169,7 @@ Um sicherzustellen, dass die Äußerungen im Batchtest richtig vorhergesagt werd
 
 ## <a name="create-batch-file-with-entities"></a>Erstellen einer Batchdatei mit Entitäten 
 
-Um Entitäten in einem Batchtest zu überprüfen, müssen die Entitäten in der JSON-Batchdatei mit Bezeichnungen versehen werden. Nur die per Machine Learning trainierten Entitäten werden verwendet, d.h. einfache, hierarchische (nur übergeordnete) und zusammengesetzte Entitäten. Fügen Sie keine Entitäten hinzu, die nicht per Machine Learning trainiert wurden, da sie immer entweder über reguläre Ausdrücke oder über explizite Textübereinstimmungen gefunden werden.
+Um Entitäten in einem Batchtest zu überprüfen, müssen die Entitäten in der JSON-Batchdatei mit Bezeichnungen versehen werden. Nur die per maschinellem Lernen trainierten Entitäten werden verwendet, d. h. einfache und zusammengesetzte Entitäten. Fügen Sie keine Entitäten hinzu, die nicht per Machine Learning trainiert wurden, da sie immer entweder über reguläre Ausdrücke oder über explizite Textübereinstimmungen gefunden werden.
 
 Die Entitätsvielfalt für die Gesamtwortzahl ([token](luis-glossary.md#token)) kann sich auf die Qualität der Vorhersagen auswirken. Stellen Sie sicher, dass die für die Absicht bereitgestellten Trainingsdaten mit bezeichneten Äußerungen Entitäten mit unterschiedlichen Längen enthalten. 
 

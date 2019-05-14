@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 42f6fefa930a36fbfcca7b3f792cc749723f7b99
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001489"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074162"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 
@@ -88,7 +88,7 @@ Informationen zur Verwendung von Azure AD-Gruppen zum Steuern des Zugriffs auf K
 
 ## <a name="use-pod-identities"></a>Verwenden von Podidentitäten
 
-**Best Practice-Anleitung**: Verwenden Sie keine festen Anmeldeinformationen in Pods oder Containerimages, da sie offengelegt oder missbraucht werden können. Verwenden Sie stattdessen die Podidentitäten, um automatisch mit einer zentralen Azure AD-Identitätslösung Zugriff anzufordern.
+**Best Practice-Anleitung**: Verwenden Sie keine festen Anmeldeinformationen in Pods oder Containerimages, da sie offengelegt oder missbraucht werden können. Verwenden Sie stattdessen die Podidentitäten, um automatisch mit einer zentralen Azure AD-Identitätslösung Zugriff anzufordern. Podidentitäten sind nur für die Verwendung mit Linux-Pods und -Containerimages vorgesehen.
 
 Wenn Pods Zugriff auf andere Azure-Dienste wie Cosmos DB, Key Vault oder Blob Storage benötigen, benötigt der Pod Anmeldeinformationen für den Zugriff. Diese Anmeldeinformationen für den Zugriff könnten mit dem Containerimage definiert oder als Kubernetes-Geheimnis eingefügt werden, müssen aber manuell erstellt und zugewiesen werden. Häufig werden die Anmeldeinformationen Pods übergreifend wiederverwendet und nicht regelmäßig rotiert.
 
@@ -108,7 +108,8 @@ Im folgenden Beispiel erstellt ein Entwickler einen Pod, der eine verwaltete Ide
 1. Ein Entwickler stellt einen Pod mit einer verwalteten Identität bereit, die ein Zugriffstoken über den NMI-Server anfordert.
 1. Das Token wird an den Pod zurückgegeben und für den Zugriff auf eine Azure SQL Server-Instanz verwendet.
 
-Verwaltete Pod-Identitäten sind ein Open-Source-Projekt für AKS, das vom technischen Support von Azure nicht unterstützt wird. Es wird zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Das Projekt wird nicht für die Produktion empfohlen.
+> [!NOTE]
+> Verwaltete Podidentitäten sind ein Open-Source-Projekt, das vom technischen Support von Azure nicht unterstützt wird.
 
 Wie Sie Podidentitäten verwenden, erfahren Sie unter [Azure Active Directory identities for Kubernetes applications (Azure Active Directory-Identitäten für Kubernetes-Anwendungen)][aad-pod-identity].
 

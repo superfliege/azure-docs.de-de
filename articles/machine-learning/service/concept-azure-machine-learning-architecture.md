@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025238"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65502102"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
@@ -32,9 +32,7 @@ Für den Workflow für maschinelles Lernen werden in der Regel diese Schritte au
 1. **Übermitteln der Skripts** an das konfigurierte Computeziel zur Ausführung in dieser Umgebung. Während des Trainings können die Skripts **Datenspeicher** lesen oder beschreiben. Die Datensätze zur Ausführung werden zudem als **Ausführungen** im **Arbeitsbereich** gespeichert und unter **Experimente** gruppiert.
 1. **Abfragen des Experiments** auf protokollierte Metriken aus den aktuellen und bereits erfolgten Ausführungen. Wenn die Metriken kein gewünschtes Ergebnis anzeigen, können Sie zu Schritt 1 zurückkehren und Ihre Skripts erneut durchlaufen.
 1. Nachdem eine zufriedenstellende Ausführung gefunden wurde, können Sie das dauerhafte Modell in der **Modellregistrierung** registrieren.
-1. Entwickeln eines Bewertungsskripts
-1. **Erstellen eines Images** und Registrieren in der **Imageregistrierung**
-1. **Bereitstellen des Images** als **Webdienst** in Azure
+1. Entwickeln Sie ein Bewertungsskript, welches das Modell verwendet, und **stellen Sie das Modell** als **Webdienst** in Azure oder auf einem **IoT Edge-Gerät** bereit.
 
 
 > [!NOTE]
@@ -46,7 +44,7 @@ Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learn
 
 Im Arbeitsbereich wird eine Liste mit Computezielen geführt, die zum Trainieren Ihres Modells verwendet werden können. Außerdem wird der Verlauf der Trainingsläufe gespeichert, z.B. Protokolle, Metriken, Ausgabe und eine Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.
 
-Modelle werden beim Arbeitsbereich registriert. Sie verwenden ein registriertes Modell und Bewertungsskripts, um ein Image zu erstellen. Das Image kann dann in Azure Container Instances, Azure Kubernetes Service oder einem FPGA (Field-Programmable Gate Array) als REST-basierter HTTP-Endpunkt bereitgestellt werden. Außerdem kann es als Modul auf einem Azure IoT Edge-Gerät bereitgestellt werden.
+Modelle werden beim Arbeitsbereich registriert. Sie verwenden ein registriertes Modell und Bewertungsskripts, um ein Modell in Azure Container Instances, Azure Kubernetes Service oder einem FPGA (Field-Programmable Gate Array) als REST-basierter HTTP-Endpunkt bereitzustellen. Außerdem kann es als Modul auf einem Azure IoT Edge-Gerät bereitgestellt werden. Intern wird ein Docker-Image erstellt, um das bereitgestellte Image zu hosten. Bei Bedarf können Sie ein eigenes Image angeben.
 
 Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Den Zugriff auf einen freigegebenen Arbeitsbereich steuern Sie, indem Sie Benutzer zu den folgenden Rollen zuweisen:
 
@@ -94,7 +92,7 @@ Die Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, w
 
 Bei der Registrierung des Modells können Sie zusätzliche Metadatentags bereitstellen und diese Tags dann beim Suchen nach Modellen verwenden.
 
-Sie können keine Modelle löschen, die von einem Image verwendet werden.
+Sie können keine Modelle löschen, die von einer aktiven Bereitstellung verwendet werden.
 
 Ein Beispiel für das Registrieren eines Modells finden Sie unter [Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
@@ -208,11 +206,11 @@ Die Imageregistrierung führt die Nachverfolgung von Images durch, die mit Ihren
 
 ## <a name="deployment"></a>Bereitstellung
 
-Eine Bereitstellung ist eine Instanziierung Ihres Images in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten.
+Eine Bereitstellung ist eine Instanziierung Ihres Modells in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten.
 
 ### <a name="web-service"></a>Webdienst
 
-Für einen bereitgestellten Webdienst können Azure Container Instances, Azure Kubernetes Service oder FPGAs verwendet werden. Sie erstellen den Dienst aus einem Image, in dem Ihr Modell, das Skript und zugeordnete Dateien enthalten sind. Das Image verfügt über einen HTTP-Endpunkt mit Lastenausgleich, der die an den Webdienst gesendeten Bewertungsanforderungen empfängt.
+Für einen bereitgestellten Webdienst können Azure Container Instances, Azure Kubernetes Service oder FPGAs verwendet werden. Sie erstellen den Dienst aus Ihrem Modell, dem Skript und zugeordneten Dateien. Diese sind in einem Image gekapselt, das die Laufzeitumgebung für den Webdienst bereitstellt. Das Image verfügt über einen HTTP-Endpunkt mit Lastenausgleich, der die an den Webdienst gesendeten Bewertungsanforderungen empfängt.
 
 Azure dient Ihnen als Hilfe beim Überwachen der Bereitstellung Ihres Webdiensts, indem die Application Insight- bzw. Modelltelemetriedaten erfasst werden, wenn Sie dieses Feature aktiviert haben. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihren Application Insights- und Speicherkontoinstanzen gespeichert.
 

@@ -2,18 +2,18 @@
 title: Vorläufiges Löschen für Azure Storage-Blobs | Microsoft-Dokumentation
 description: Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2018
-ms.author: mihauss
+ms.date: 04/23/2019
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506124"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148624"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
@@ -278,6 +278,9 @@ blockBlob.StartCopy(copySource);
 Wenn die Möglichkeit besteht, dass Ihre Daten versehentlich geändert oder von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht werden, wird empfohlen, vorläufiges Löschen zu aktivieren. Vorläufiges Löschen ist ein Teil einer Strategie für den Datenschutz und kann verhindern, dass es zu unbeabsichtigten Datenverlusten kommt.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+**Gelten für das Verwenden des vorläufigen Löschens besondere Überlegungen?**  
+Das Aktivieren des vorläufigen Löschens für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz beim Auflisten der Blobs führen. Sie können dies umgehen, indem Sie häufig überschriebene Daten in einem separaten Speicherkonto speichern, in dem das vorläufige Löschen deaktiviert ist. 
+
 **Für welche Speichertypen kann ich vorläufiges Löschen verwenden?**  
 Zurzeit ist vorläufiges Löschen nur für Blobspeicher (Objektspeicher) verfügbar.
 

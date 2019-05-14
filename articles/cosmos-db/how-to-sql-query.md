@@ -4,14 +4,14 @@ description: Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen f�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579214"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148951"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>SQL-Abfragebeispiele für Azure Cosmos DB
 
@@ -139,14 +139,14 @@ Die Abfrage hat folgende Ergebnisse:
     }]
 ```
 
-Die folgende Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren `id` dem Text `WakefieldFamily` entspricht, und zwar geordnet nach Schulklassen.
+Die folgende Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren `id` den Wert `WakefieldFamily` aufweist, und zwar geordnet nach dem Wohnort.
 
 ```sql
     SELECT c.givenName
     FROM Families f
     JOIN c IN f.children
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.grade ASC
+    ORDER BY f.address.city ASC
 ```
 
 Die Ergebnisse sind wie folgt:
@@ -314,6 +314,70 @@ Die Ergebnisse sind wie folgt:
     ]
 ```
 
+## <a id="DistinctKeyword"></a>Schlüsselwort DISTINCT
+
+Das Schlüsselwort DISTINCT entfernt Duplikate aus der Projektion der Abfrage.
+
+```sql
+SELECT DISTINCT VALUE f.lastName
+FROM Families f
+```
+
+In diesem Beispiel projiziert die Abfrage Werte für alle Nachnamen.
+
+Die Ergebnisse sind wie folgt:
+
+```json
+[
+    "Andersen"
+]
+```
+
+Sie können auch eindeutige Objekte projizieren. In diesem Fall kommt das Feld „lastName“ in keinem der beiden Dokumente vor, sodass die Abfrage ein leeres Objekt zurückgibt.
+
+```sql
+SELECT DISTINCT f.lastName
+FROM Families f
+```
+
+Die Ergebnisse sind wie folgt:
+
+```json
+[
+    {
+        "lastName": "Andersen"
+    },
+    {}
+]
+```
+
+DISTINCT kann auch in der Projektion in einer Unterabfrage verwendet werden:
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
+```
+
+Diese Abfrage projiziert ein Array mit dem Wert von givenName für jedes untergeordnete Element, aus dem die Duplikate entfernt wurden. Dieses Array hat den Alias ChildNames und wird in der äußeren Abfrage projiziert.
+
+Die Ergebnisse sind wie folgt:
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="aliasing"></a>Aliase
 
 Sie können explizit Aliase für Werte in Abfragen verwenden. Wenn eine Abfrage zwei Eigenschaften mit demselben Namen hat, verwenden Sie Aliase, um mindestens eine der Eigenschaften umzubenennen, sodass sie im projizierten Ergebnis eindeutig sind.
@@ -380,7 +444,7 @@ Die Ergebnisse sind wie folgt:
         }
       ],
       [
-        {
+       {
             "familyName": "Merriam",
             "givenName": "Jesse",
             "gender": "female",
@@ -570,27 +634,27 @@ Im folgenden Beispiel werden alle Elemente zurückgegeben, in denen der Bundesst
 
 Mit dem Sonderoperator * wird das gesamte Element unverändert projiziert. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. Eine Abfrage wie `SELECT * FROM Families f` ist gültig, aber `SELECT VALUE * FROM Families f` und `SELECT *, f.id FROM Families f` sind nicht gültig. Bei der [ersten Abfrage in diesem Artikel](#query-the-json-items) wurde der *-Operator verwendet. 
 
-## <a name="-and--operators"></a>? und ?? -Operatoren
+## <a name="-and--operators"></a>? und ?? – Operatoren
 
 Sie können ternäre (?) und koaleszierte (??) Operatoren wie in den Programmiersprachen C# und JavaScript zum Erstellen von bedingten Ausdrücken verwenden. 
 
-Mit dem ? -Operator können Sie neue JSON-Eigenschaften schnell erstellen. Beispielsweise werden mit der folgenden Abfrage die Klassenstufen in `elementary` oder `other` klassifiziert:
+Mit dem Operator ? können Sie JSON-Eigenschaften Ad hoc erstellen. Beispielsweise werden mit der folgenden Abfrage die Klassenstufen in `elementary` oder `other` klassifiziert:
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-Sie können auch Aufrufe des ? -Operators wie in der folgenden Abfrage verschachteln: 
+Sie können auch Aufrufe des Operators ? wie in der folgenden Abfrage verschachteln: 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-Wie bei anderen Abfrageoperatoren schließt der ? -Operator Elemente aus, wenn die referenzierten Eigenschaften fehlen oder unterschiedliche Typen miteinander verglichen werden.
+Wie bei anderen Abfrageoperatoren schließt der Operator ? Elemente aus, wenn die referenzierten Eigenschaften fehlen oder unterschiedliche Typen miteinander verglichen werden.
 
-Der ?? -Operator kann bei Abfragen für teilweise strukturierte oder gemischte Datentypen zur effizienten Prüfung des Vorkommens einer Eigenschaft in einem Element verwendet werden. Die folgende Abfrage gibt z.B. `lastName` zurück, falls vorhanden, oder `surname` zurück, falls `lastName` nicht vorhanden ist.
+Der Operator ?? kann bei Abfragen für teilweise strukturiert oder gemischte Datentypen zur effizienten Prüfung des Vorkommens einer Eigenschaft in einem Element verwendet werden. Die folgende Abfrage gibt z.B. `lastName` zurück, falls vorhanden, oder `surname` zurück, falls `lastName` nicht vorhanden ist.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -599,7 +663,7 @@ Der ?? -Operator kann bei Abfragen für teilweise strukturierte oder gemischte D
 
 ## <a id="TopKeyword"></a>TOP-Operator
 
-Das Schlüsselwort TOP gibt die ersten `N` Abfrageergebnisse in einer nicht definierten Reihenfolge zurück. Es empfiehlt sich, TOP mit der ORDER BY-Klausel zu verwenden, um die Ergebnisse auf die ersten `N` geordneten Werte zu beschränken. Die Kombination dieser beiden Klauseln ist die einzige Möglichkeit, um zuverlässig anzugeben, welche Zeilen von TOP betroffen sind. 
+Das Schlüsselwort TOP gibt die ersten `N` Abfrageergebnisse in einer nicht definierten Reihenfolge zurück. Es empfiehlt sich, TOP mit der ORDER BY-Klausel zu verwenden, um die Ergebnisse auf die ersten `N` geordneten Werte zu beschränken. Die Kombination dieser beiden Klauseln ist die einzige Möglichkeit, um zuverlässig anzugeben, welche Zeilen von TOP betroffen sind.
 
 Sie können TOP mit einem konstanten Wert wie im folgenden Beispiel oder mit einem Variablenwert mithilfe von parametrisierten Abfragen verwenden. Weitere Informationen finden Sie im Abschnitt [Parametrisierte Abfragen](#parameterized-queries).
 
@@ -679,6 +743,65 @@ Die Ergebnisse sind wie folgt:
       }
     ]
 ```
+
+Darüber hinaus können Sie nach mehreren Eigenschaften sortieren. Eine Abfrage, die nach mehreren Eigenschaften sortiert, erfordert einen [zusammengesetzten Index](index-policy.md#composite-indexes). Betrachten Sie die folgende Abfrage:
+
+```sql
+    SELECT f.id, f.creationDate
+    FROM Families f
+    ORDER BY f.address.city ASC, f.creationDate DESC
+```
+
+Diese Abfrage ruft die `id` der Familien in aufsteigender Reihenfolge nach dem Namen der Stadt ab. Wenn mehrere Elemente den gleichen Ort aufweisen, sortiert die Abfrage in absteigender Reihenfolge nach dem `creationDate`.
+
+## <a id="OffsetLimitClause"></a>OFFSET LIMIT-Klausel
+
+OFFSET LIMIT ist eine optionale Klausel zum Überspringen einer bestimmten Anzahl von Werten aus der Abfrage. In der OFFSET LIMIT-Klausel müssen sowohl für OFFSET als auch für LIMIT Werte angegeben werden.
+
+Wenn OFFSET LIMIT in Verbindung mit einer ORDER BY-Klausel verwendet wird, wird das Resultset erstellt, indem zunächst Werte übersprungen und dann die sortierten Werte angenommen werden. Wenn keine ORDER BY-Klausel verwendet wird, gilt eine deterministische Reihenfolge der Werte.
+
+Dies ist z. B. eine Abfrage, die den ersten Wert überspringt und den zweiten Wert (in der Reihenfolge der Wohnortnamen) zurückgibt:
+
+```sql
+    SELECT f.id, f.address.city
+    FROM Families f
+    ORDER BY f.address.city
+    OFFSET 1 LIMIT 1
+```
+
+Die Ergebnisse sind wie folgt:
+
+```json
+    [
+      {
+        "id": "AndersenFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+Dies ist eine Abfrage, die den ersten Wert überspringt und den zweiten Wert (ohne Sortierung) zurückgibt:
+
+```sql
+   SELECT f.id, f.address.city
+    FROM Families f
+    OFFSET 1 LIMIT 1
+```
+
+Die Ergebnisse sind wie folgt:
+
+```json
+    [
+      {
+        "id": "WakefieldFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+
+
+
 ## <a name="scalar-expressions"></a>Skalare Ausdrücke
 
 Die SELECT-Klausel unterstützt skalare Ausdrücke wie Konstanten, arithmetische Ausdrücke und logische Ausdrücke. Die folgende Abfrage verwendet einen skalaren Ausdruck:
@@ -1018,7 +1141,7 @@ Im folgenden Beispiel wird eine UDF unter einem Elementcontainer in der Cosmos D
        {
            Id = "REGEX_MATCH",
            Body = @"function (input, pattern) {
-                       return input.match(pattern) !== null;
+                      return input.match(pattern) !== null;
                    };",
        };
 

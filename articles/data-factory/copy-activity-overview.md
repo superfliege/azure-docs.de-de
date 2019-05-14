@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267156"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150870"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
 ## <a name="overview"></a>Übersicht
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-data-movement-activities.md)
+> * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [Aktuelle Version](copy-activity-overview.md)
 
 In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
@@ -54,7 +54,7 @@ Die Kopieraktivität durchläuft die folgenden Phasen, um Daten aus einer Quelle
 
 Sie können die Kopieraktivität verwenden, um **Dateien unverändert** zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten effizient ohne Serialisierung/Deserialisierung kopiert.
 
-Die Kopieraktivität unterstützt auch das Lesen von und Schreiben in Dateien in bestimmten Formaten: **Text, JSON, Avro, ORC und Parquet** sowie das Komprimieren und Dekomprimieren von Dateien mit den folgenden Codecs: **GZip, Deflate, BZip2 und ZipDeflate**. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
+Die Kopieraktivität unterstützt auch das Lesen von und Schreiben in Dateien in bestimmten Formaten: **Text, JSON, Avro, ORC und Parquet** sowie Komprimieren und Dekomprimieren von Dateien mit den folgenden Codecs: **GZip, Deflate, BZip2 und ZipDeflate**. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
 
 Sie können z.B. folgende Kopieraktivitäten ausführen:
 
@@ -74,7 +74,7 @@ Um die Kopieraktivität in Azure Data Factory zu verwenden, ist Folgendes erford
 
 1. **Erstellen Sie verknüpfte Dienste für Quell- und Senkendatenspeicher.** Im Abschnitt „Eigenschaften des verknüpften Diensts“ im Connectorartikel finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften. Sie finden die Liste der unterstützten Connectors im Abschnitt [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats).
 2. **Erstellen Sie Datasets für die Quelle und die Senke.** Im Abschnitt mit Dataseteigenschaften in den Artikeln zu Quell- und Senkenconnectors finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften.
-3. **Erstellen Sie eine Pipeline mit einer Kopieraktivität.** Der nächste Abschnitt enthält ein Beispiel.  
+3. **Erstellen Sie eine Pipeline mit einer Kopieraktivität.** Der nächste Abschnitt enthält ein Beispiel.
 
 ### <a name="syntax"></a>Syntax
 
@@ -134,12 +134,12 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 | inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | Ja |
 | outputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Senkendaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Ausgabe. | Ja |
 | typeProperties | Eine Gruppe von Eigenschaften zum Konfigurieren der Kopieraktivität. | Ja |
-| Quelle | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | Ja |
+| source | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | Ja |
 | sink | Geben Sie den Senkentyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Schreiben von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | Ja |
 | translator | Geben Sie explizite Spaltenzuordnungen von der Quelle zur Senke an. Gilt, wenn das Standardverhalten für den Kopiervorgang Ihre Anforderungen nicht erfüllen kann.<br/><br/>Informationen finden Sie unter [Schema- und Datentypzuordnung](copy-activity-schema-and-type-mapping.md). | Nein  |
 | dataIntegrationUnits | Geben Sie die Leistungsfähigkeit von [Azure Integration Runtime](concepts-integration-runtime.md) an, um das Kopieren der Daten zu unterstützen. Ehemals Einheiten für Clouddatenverschiebungen. <br/><br/>Informationen finden Sie unter [Datenintegrationseinheiten](copy-activity-performance.md#data-integration-units). | Nein  |
 | parallelCopies | Geben Sie die Parallelität an, die die Kopieraktivität beim Lesen von Daten aus der Quelle und beim Schreiben von Daten in die Senke verwenden soll.<br/><br/>Informationen finden Sie unter [Parallele Kopie](copy-activity-performance.md#parallel-copy). | Nein  |
-| enableStaging<br/>stagingSettings | Wählen Sie aus, dass die vorläufigen Daten in einem Blobspeicher bereitgestellt werden, statt Daten direkt aus der Quelle in die Senke zu kopieren.<br/><br/>Nützliche Szenarien und Konfigurationsdetails finden Sie unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy). | Nein  |
+| enableStaging<br/>stagingSettings | Wählen Sie aus, dass die vorläufigen Daten in einem Blob-Speicher bereitgestellt werden, anstatt Daten direkt aus der Quelle in die Senke zu kopieren.<br/><br/>Nützliche Szenarien und Konfigurationsdetails finden Sie unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy). | Nein  |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wählen Sie aus, wie nicht kompatible Zeilen beim Kopieren von Daten aus der Quelle in die Senke behandelt werden sollen.<br/><br/>Informationen finden Sie unter [Fehlertoleranz](copy-activity-fault-tolerance.md). | Nein  |
 
 ## <a name="monitoring"></a>Überwachung
@@ -148,7 +148,7 @@ Die Ausführung der Kopieraktivität kann auf der Azure Data Factory-Benutzerobe
 
 ### <a name="monitor-visually"></a>Visuelle Überwachung
 
-Navigieren Sie zur visuellen Überwachung der Ausführung der Kopieraktivität zu Ihrer Data Factory und anschließend zu **Erstellen und überwachen** -> **Registerkarte „Überwachen“**. Dort wird eine Liste mit Pipelineausführungen und einem Link zum Anzeigen der Aktivitätsausführungen in der Spalte **Aktionen** angezeigt. 
+Navigieren Sie zur visuellen Überwachung der Ausführung der Kopieraktivität zu Ihrer Data Factory und anschließend zu **Erstellen und überwachen** -> **Registerkarte „Überwachen“**. Dort wird eine Liste mit Pipelineausführungen und einem Link zum Anzeigen der Aktivitätsausführungen in der Spalte **Aktionen** angezeigt.
 
 ![Überwachen der Pipelineausführungen](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
@@ -156,12 +156,12 @@ Klicken Sie auf diese Option, um die Liste mit den Aktivitäten in dieser Pipeli
 
 ![Überwachung der Aktivitätsausführungen](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistungsmerkmale für die Ausführung der Kopieraktivität anzuzeigen. Zu den angezeigten Informationen zählen neben Umfang/Zeilen/Dateien der Daten, die aus der Quelle in die Senke kopiert wurden, unter anderem der Durchsatz, die durchlaufenen Schritte und die jeweilige Dauer sowie die verwendeten Konfigurationen für Ihr Kopierszenario. 
+Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistungsmerkmale für die Ausführung der Kopieraktivität anzuzeigen. Zu den angezeigten Informationen zählen neben Umfang/Zeilen/Dateien der Daten, die aus der Quelle in die Senke kopiert wurden, unter anderem der Durchsatz, die durchlaufenen Schritte und die jeweilige Dauer sowie die verwendeten Konfigurationen für Ihr Kopierszenario.
 
 >[!TIP]
 >In einigen Szenarien finden Sie oben auf der Seite zur Kopierüberwachung auch **Tipps zur Leistungsoptimierung**, in denen der identifizierte Engpass aufgeführt ist, und Sie erfahren, welche Änderungen vorgenommen werden müssen, um den Kopiedurchsatz zu erhöhen, siehe Beispiel mit Details [hier](#performance-and-tuning).
 
-**Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Storage**
+**Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Store**
 ![Überwachen von Details der Aktivitätsausführung](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
 
 **Beispiel: Gestaffeltes Kopieren aus Azure SQL-Datenbank in Azure SQL Data Warehouse**
@@ -176,15 +176,17 @@ Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden auch im Au
 | dataRead | Größe der Daten, die aus der Quelle gelesen werden | Int64-Wert in **Bytes** |
 | dataWritten | Größe der Daten, die in die Senke geschrieben werden | Int64-Wert in **Bytes** |
 | filesRead | Die Anzahl von Dateien, die beim Kopieren von Daten aus dem Dateispeicher kopiert werden. | Int64-Wert (ohne Einheit) |
-| fileScanned | Anzahl Dateien, die vom Quelldateispeicher gescannt werden. | Int64-Wert (ohne Einheit) |
 | filesWritten | Die Anzahl von Dateien, die beim Kopieren von Daten in den Dateispeicher kopiert werden. | Int64-Wert (ohne Einheit) |
-| rowsCopied | Anzahl der Zeilen, die kopiert werden (gilt nicht für eine Binärkopie). | Int64-Wert (ohne Einheit) |
+| rowsRead | Anzahl der Zeilen, die aus der Quelle gelesen werden (für eine Binärkopie nicht verfügbar) | Int64-Wert (ohne Einheit) |
+| rowsCopied | Anzahl der Zeilen, die in die Senke kopiert werden (für eine Binärkopie nicht verfügbar) | Int64-Wert (ohne Einheit) |
 | rowsSkipped | Anzahl der übersprungenen, nicht kompatiblen Zeilen. Sie können das Feature aktivieren, indem Sie „enableSkipIncompatibleRow“ auf „true“ festlegen. | Int64-Wert (ohne Einheit) |
-| throughput | Verhältnis, in dem Daten übertragen werden | Gleitkommazahl in **KB/s** |
-| copyDuration | Die Dauer des Kopiervorgangs | Int32-Wert in Sekunden |
-| sqlDwPolyBase | Wenn PolyBase beim Kopieren von Daten in SQL Data Warehouse verwendet wird. | Boolescher Wert |
-| redshiftUnload | Wenn UNLOAD beim Kopieren von Daten aus Redshift verwendet wird. | Boolescher Wert |
-| hdfsDistcp | Wenn DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolescher Wert |
+| throughput | Verhältnis, mit dem Daten übertragen werden | Gleitkommazahl in **KB/s** |
+| copyDuration | Dauer des Kopiervorgangs | Int32-Wert in Sekunden |
+| sourcePeakConnections | Maximale Anzahl gleichzeitiger Verbindungen zum Quelldatenspeicher während des Kopiervorgangs | Int32-Wert |
+| sinkPeakConnections| Maximale Anzahl gleichzeitiger Verbindungen zum Senkendatenspeicher während des Kopiervorgangs| Int32-Wert |
+| sqlDwPolyBase | Wenn PolyBase beim Kopieren von Daten in SQL Data Warehouse verwendet wird. | Boolean |
+| redshiftUnload | Wenn UNLOAD beim Kopieren von Daten aus Redshift verwendet wird. | Boolean |
+| hdfsDistcp | Wenn DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolean |
 | effectiveIntegrationRuntime | Zeigt an, welche Integration Runtimes verwendet werden, um die Aktivitätsausführung zu unterstützen. Dabei wird folgendes Format verwendet: `<IR name> (<region if it's Azure IR>)`. | Text (Zeichenfolge) |
 | usedDataIntegrationUnits | Die effektiven Datenintegrationseinheiten während des Kopiervorgangs. | Int32-Wert |
 | usedParallelCopies | Die effektiven parallelen Kopien während des Kopiervorgangs. | Int32-Wert|
@@ -241,12 +243,12 @@ In einigen Fällen werden bei der Ausführung einer Kopieraktivität in ADF dire
 
 **Beispiel: Kopieren in Azure SQL-Datenbank mit Tipps für die Leistungsoptimierung**
 
-In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke der Azure SQL-DB eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Daher wird vorgeschlagen, die Azure SQL DB-Ebene mit mehr DTU zu erhöhen. 
+In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke der Azure SQL-DB eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Daher wird vorgeschlagen, die Azure SQL DB-Ebene mit mehr DTU zu erhöhen.
 
 ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Inkrementelles Kopieren 
-Data Factory unterstützt Szenarien für das inkrementelle Kopieren von Deltadaten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Informationen finden Sie unter [Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher](tutorial-incremental-copy-overview.md). 
+## <a name="incremental-copy"></a>Inkrementelles Kopieren
+Data Factory unterstützt Szenarien für das inkrementelle Kopieren von Deltadaten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Informationen finden Sie unter [Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher](tutorial-incremental-copy-overview.md).
 
 ## <a name="read-and-write-partitioned-data"></a>Lesen und Schreiben partitionierter Daten
 In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen SliceStart/SliceEnd/WindowStart/WindowEnd. In der aktuellen Version können Sie dieses Verhalten mithilfe eines Pipelineparameters und der Anfangszeit/geplanten Zeit eines Triggers als Wert des Parameters erreichen. Weitere Informationen finden Sie unter [Lesen oder Schreiben partitionierter Daten](how-to-read-write-partitioned-data.md).
@@ -254,6 +256,6 @@ In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von parti
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutorials und Beispielen:
 
-- [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](quickstart-create-data-factory-dot-net.md)
-- [Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory](tutorial-copy-data-dot-net.md)
-- [Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage](tutorial-hybrid-copy-powershell.md)
+- [Kopieren von Daten von einem Speicherort an einen anderen Speicherort in der gleichen Azure Blob Storage-Instanz](quickstart-create-data-factory-dot-net.md)
+- [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](tutorial-copy-data-dot-net.md)
+- [Kopieren von Daten aus einer lokalen SQL Server-Instanz in Azure](tutorial-hybrid-copy-powershell.md)

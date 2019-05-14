@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6ada4a25f24a6dcbb1ebd54daad15b37127f7a21
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225041"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154192"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -96,7 +96,7 @@ Wenn Sie mit den oben beschriebenen Schritten keine selbstsignierten Zertifikate
 
 Leere Anmeldedialogfelder werden meist dadurch verursacht, dass ADFS von Storage-Explorer die Durchführung einer Umleitung anfordert, die von Electron nicht unterstützt wird. Als Problemumgehung können Sie versuchen, den Gerätecodefluss für die Anmeldung zu verwenden. Führen Sie dazu die folgenden Schritte aus:
 
-1. „Go to Preview“ (Gehe zu Vorschau) > „Use Device Code Sign-In“ (Gerätecodeanmeldung verwenden).
+1. Menü: „Vorschau“ > „Use Device Code Sign-In“ (Gerätecodeanmeldung verwenden).
 2. Öffnen Sie das Dialogfeld „Verbinden“ (über das Steckersymbol in der vertikalen Leiste auf der linken Seite oder über die Option „Konto hinzufügen“ im Kontobereich).
 3. Wählen Sie aus, an welcher Umgebung Sie sich anmelden möchten.
 4. Klicken Sie auf die Schaltfläche „Anmelden“.
@@ -235,7 +235,7 @@ Wenn Sie versehentlich eine ungültige SAS-URL angefügt haben und diese nicht t
 
 Im Allgemeinen werden die folgenden Pakete benötigt, um Storage-Explorer unter Linux auszuführen:
 
-* [.NET Core 2.0-Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.0-Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) – Hinweis: Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie Storage-Explorer ggf. mit Patches versehen (siehe unten). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, können Sie .NET Core bis Version 2.2 verwenden. Die Funktion höherer Versionen als 2.2 wurde bisher nicht überprüft.
 * `libgnome-keyring-common` und `libgnome-keyring-dev`
 * `libgconf-2-4`
 

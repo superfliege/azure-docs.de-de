@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: fb6a32887703af6d37f8f73d2f9e18ec97f74289
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875714"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203530"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Interaktives Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -67,12 +67,16 @@ Sie können alternative Formen einer Frage für eine bestimmte Antwort hinzufüg
 
 Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgegebenen Antworten falsch ist oder die Antwort nicht in der Wissensdatenbank enthalten ist (keine passende Übereinstimmung in der Wissensdatenbank gefunden wurde). Geben Sie die neue Antwort auf die aktuelle Frage in das Textfeld ein, und drücken Sie die EINGABETASTE, um die Antwort hinzuzufügen. 
 
-Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt.
+Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt. 
 
 ![Hinzufügen neuer Frage-Antwort-Paare](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
 > Alle Änderungen an der Wissensdatenbank werden nur gespeichert, wenn Sie auf die Schaltfläche **Speichern und trainieren** klicken.
+
+## <a name="test-the-published-knowledge-base"></a>Testen der veröffentlichten Wissensdatenbank
+
+Sie können die veröffentlichte Version der Wissensdatenbank im Testbereich testen. Nachdem Sie die Wissensdatenbank veröffentlicht haben, aktivieren Sie das Feld „veröffentlicht“, und senden Sie eine Ergebnisabfrage an die veröffentlichte Wissensdatenbank.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

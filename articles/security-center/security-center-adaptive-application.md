@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 05/02/2019
 ms.author: monhaber
-ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 581db3ebe3ce1cad5c8db3702af179e141f334b4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517979"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143464"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -154,6 +154,22 @@ Die Liste enthält Folgendes:
 
 Azure Security Center ermöglicht Ihnen das Definieren einer Richtlinie für das Anwendungswhitelisting auch für nicht empfohlene Gruppen virtueller Computer. Befolgen Sie dieselben Prinzipien wie zuvor beschrieben, um eine Richtlinie für das Anwendungswhitelisting auch für diese Gruppen zu konfigurieren.
 
+## <a name="move-a-vm-from-one-group-to-another"></a>Verschieben eines virtuellen Computers aus einer Gruppe in eine andere Gruppe
+
+ Wenn Sie einen virtuellen Computer aus einer Gruppe in eine andere Gruppen verschieben, ändert sich die angewandte Anwendungssteuerungsrichtlinie in die Einstellungen der Gruppe, in die die Verschiebung erfolgt. Sie können auch einen virtuellen Computer aus einer konfigurierten Gruppe in eine nicht konfigurierte Gruppe verschieben, was dazu führt, dass alle Anwendungssteuerungsrichtlinien, die zuvor auf den virtuellen Computer angewandt wurden, entfernt werden.
+
+ 1. Klicken Sie auf der Seite **Adaptive Anwendungssteuerung** auf der Registerkarte **KONFIGURIERT** auf die Gruppe, zu der der virtuelle Computer, der verschoben werden soll, aktuell gehört.
+1. Klicken Sie auf **Konfigurierte VMs und Computer**.
+1. Klicken Sie auf die drei Punkte in der Zeile des zu verschiebenden virtuellen Computers, und klicken Sie auf **Verschieben**. Es öffnet sich das Fenster **Computer in andere Gruppe verschieben**.
+
+    ![Schutz](./media/security-center-adaptive-application/adaptive-application-move-group.png)
+
+ 1. Wählen Sie die Gruppe aus, in die der virtuelle Computer verschoben werden soll, und klicken Sie auf **Computer verschieben** und danach auf **Speichern**.
+
+    ![Schutz](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
+
+ > [!NOTE]
+> Vergessen Sie nicht, auf **Speichern** zu klicken, nachdem Sie auf **Computer verschieben** geklickt haben. Wenn Sie nicht auf **Speichern** klicken, wird der Computer nicht verschoben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen Azure- und Nicht-Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:

@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788237"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137858"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -67,8 +67,18 @@ Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu untertei
 
 Wenn **resultTruncated** auf **true** festgelegt ist, wird in der Antwort die Eigenschaft **$skipToken** festgelegt. Dieser Wert wird mit den gleichen Werten für die Abfrage und das Abonnement verwendet, um die nächste Datensatzgruppe abzurufen, die mit der Abfrage übereinstimmt.
 
+Die folgenden Beispiele zeigen, wie Sie mit Azure CLI und Azure PowerShell die ersten 3000 Datensätze **überspringen** und die **ersten** 1000 Datensätze nach den übersprungenen Datensätzen zurückgeben:
+
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
 > [!IMPORTANT]
-> Die Abfrage muss das Feld **id** **projizieren**, damit die Paginierung funktioniert. Wenn das Feld in der Abfrage nicht vorhanden ist, enthält die Antwort der REST-API nicht die Eigenschaft **$skipToken**.
+> Die Abfrage muss das Feld **id** **projizieren**, damit die Paginierung funktioniert. Wenn das Feld in der Abfrage nicht vorhanden ist, enthält die Antwort nicht die Eigenschaft **$skipToken**.
 
 Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/resources/resources#next_page_query) (Abfrage der nächsten Seite) in der REST-API-Dokumentation.
 

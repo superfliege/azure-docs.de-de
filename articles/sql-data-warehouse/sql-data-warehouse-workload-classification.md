@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 208308533753370575b844633c45f7e4aeda0864
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617749"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154206"
 ---
-# <a name="sql-data-warehouse-workload-classification-preview"></a>SQL Data Warehouse-Workloadklassifizierung (Vorschauversion)
+# <a name="sql-data-warehouse-workload-classification"></a>SQL Data Warehouse-Workloadklassifizierung
 
 In diesem Artikel wird der SQL Data Warehouse-Workloadklassifizierungsprozess beschrieben, in dem eingehenden Anforderungen eine Ressourcenklasse und eine Priorität zugewiesen wird.
-
-> [!Note]
-> Die Klassifizierung von Workloads ist unter SQL Data Warehouse Gen2 als Vorschauversion verfügbar. Die Vorschauversion der Klassifizierung und Bedeutung der Workloadverwaltung ist für Builds mit dem Veröffentlichungsdatum 9. April 2019 oder später verfügbar.  Benutzer sollten es vermeiden, Builds für Tests der Workloadverwaltung zu verwenden, deren Veröffentlichungsdatum vor diesem Datum liegt.  Um festzustellen, ob Ihr Build für die Workloadverwaltung geeignet ist, führen Sie „select @@version“ aus, wenn Sie mit Ihrer SQL Data Warehouse-Instanz verbunden sind.
 
 ## <a name="classification"></a>Classification
 
@@ -63,10 +60,10 @@ Systemklassifizierungen, die in Ihrem Auftrag erstellt werden, stellen eine einf
 
 Stellen Sie sich folgendes Szenario vor:
 
-Ein vorhandenes Datawarehouse verfügt über den Datenbankbenutzer DBAUser, der der Ressourcenklassenrolle „largerc“ zugewiesen ist. Die Ressourcenklassenzuweisung wurde mit „sp_addrolemember“ durchgeführt.
-Das Data Warehouse wird nun mit der Workloadverwaltung aktualisiert.
-Zum Testen der neuen Klassifizierungssyntax wird über die Datenbankrolle „DBARole“ (von der DBAUser ein Mitglied ist) eine Klassifizierung für beide erstellt. Dabei wird eine Zuordnung zu „mediumrc“ mit hoher Priorität vorgenommen.
-Wenn DBAUser sich anmeldet und eine Abfrage ausführt, wird diese „largerc“ zugewiesen, da ein Benutzer Vorrang vor einer Rollenmitgliedschaft hat.
+- Ein vorhandenes Data Warehouse verfügt über den Datenbankbenutzer DBAUser, der der Ressourcenklassenrolle „largerc“ zugewiesen ist. Die Ressourcenklassenzuweisung wurde mit „sp_addrolemember“ durchgeführt.
+- Das Data Warehouse wird nun mit der Workloadverwaltung aktualisiert.
+- Zum Testen der neuen Klassifizierungssyntax wird über die Datenbankrolle „DBARole“ (von der DBAUser ein Mitglied ist) eine Klassifizierung für beide erstellt. Dabei wird eine Zuordnung zu „mediumrc“ mit hoher Priorität vorgenommen.
+- Wenn DBAUser sich anmeldet und eine Abfrage ausführt, wird diese „largerc“ zugewiesen, da ein Benutzer Vorrang vor einer Rollenmitgliedschaft hat.
 
 Beim Erstellen von Workloadklassifizierungen wird empfohlen, Ressourcenklassen-Rollenzuordnungen zu entfernen, da Sie auf diese Weise Probleme mit Fehlklassifizierungen leichter beheben können.  Der folgende Code gibt Ressourcenklassen-Rollenmitgliedschaften zurück.  Führen Sie [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) für alle Mitgliedsnamen aus, die von der entsprechenden Ressourcenklasse zurückgegeben werden.
 
@@ -84,4 +81,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Workloadklassifizierungen und Prioritäten in SQL Data Warehouse finden Sie unter [Create a workload classifier (Erstellen einer Workloadklassifizierung)](quickstart-create-a-workload-classifier-tsql.md) und [SQL Data Warehouse-Priorität](sql-data-warehouse-workload-importance.md). Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
+Die ersten Schritte für das Erstellen einer Klassifizierung werden unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) beschrieben.  Weitere Informationen zu Workloadklassifizierungen und Prioritäten in SQL Data Warehouse finden Sie unter [Create a workload classifier (Erstellen einer Workloadklassifizierung)](quickstart-create-a-workload-classifier-tsql.md) und [SQL Data Warehouse-Priorität](sql-data-warehouse-workload-importance.md). Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.

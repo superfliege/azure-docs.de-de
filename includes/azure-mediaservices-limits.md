@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804101"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150321"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
 
-| Ressource | Standardlimit | 
+| Resource | Standardlimit | 
 | --- | --- | 
 | Azure Media Services-Konten in einem Einzelabonnement | 25 (feststehend) |
 | Reservierte Einheiten für Medien pro Media Services-Konto |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -50,12 +50,12 @@ Seit 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 >[!NOTE]
 > Falls Sie immer die gleichen Tage und Zugriffsberechtigungen verwenden, empfiehlt es sich, die gleiche Richtlinien-ID zu nutzen. Weitere Informationen und ein Beispiel finden Sie unter [Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup> Wenn Sie Inhalte in ein Medienobjekt in Media Services hochladen, um es mit einem der Medienprozessoren im Dienst zu verarbeiten, achten Sie auf die maximal unterstützten Dateigrößen. Medienobjekte enthalten auch Encoder wie Media Encoder Standard und Media Encoder Premium Workflow oder Analyseengines (etwa zur Gesichtserkennung).
+<sup>7</sup> In Azure Blob Storage werden derzeit als maximale Größe für ein einzelnes Blob bis zu 5 TB unterstützt. In Media Services gelten abhängig von den vom Dienst verwendeten VM-Größen weitere Grenzwerte. Die Größenbeschränkung gilt sowohl für die von Ihnen hochgeladenen Dateien als auch für Dateien, die in Folge der Verarbeitung durch Media Services (Codierung oder Analyse) generiert werden. Wenn Ihre Quelldatei größer als 260 GB ist, wird Ihr Auftrag wahrscheinlich nicht erfolgreich sein. 
 
-In Azure Blob Storage wird für ein einzelnes Blob derzeit maximal eine Größe von 5 TB unterstützt. In Media Services gelten abhängig von den vom Dienst verwendeten VM-Größen weitere Grenzwerte. Die folgende Tabelle enthält die Grenzwerte für die reservierten Einheiten für Medien (S1, S2 und S3). Übersteigt die Größe Ihrer Quelldatei die in der Tabelle definierten Grenzwerte, ist Ihr Codierungsauftrag nicht erfolgreich. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erhalten. Sollten Sie über 4K-Inhalte verfügen, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ übersteigen, setzen Sie sich amshelp@microsoft.com mit uns in Verbindung, um Informationen zu möglichen Lösungen für Ihr Szenario zu erhalten.
+Die folgende Tabelle enthält die Grenzwerte für die reservierten Einheiten für Medien (S1, S2 und S3). Übersteigt die Größe Ihrer Quelldatei die in der Tabelle definierten Grenzwerte, ist Ihr Codierungsauftrag nicht erfolgreich. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erhalten. Sollten Sie über 4K-Inhalte verfügen, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ übersteigen, setzen Sie sich amshelp@microsoft.com mit uns in Verbindung, um Informationen zu möglichen Lösungen für Ihr Szenario zu erhalten.
 
-| Reservierte Einheiten für Medien (Typ) | Maximale Eingabegröße (GB)| 
-| --- | --- | 
-|S1 | 325|
-|S2 | 640|
-|S3 | 260|
+|Reservierte Einheiten für Medien (Typ)   |Maximale Eingabegröße (GB)|
+|---|---|
+|S1 |   26|
+|S2 | 60|
+|S3 |260|

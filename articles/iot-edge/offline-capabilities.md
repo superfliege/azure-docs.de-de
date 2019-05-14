@@ -9,19 +9,17 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 74d2601c2319ccad9cc980b83894a3242705aa46
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307988"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148121"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte (Vorschau)
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte
 
 Azure IoT Edge unterstützt erweiterte Offlinevorgänge auf Ihren IoT Edge-Geräten und ermöglicht Offlinevorgänge auch auf untergeordneten Nicht-Edge-Geräten. Solange ein IoT Edge-Gerät die Möglichkeit besitzt, eine Verbindung mit IoT Hub herzustellen, kann es zusammen mit allen untergeordneten Geräten auch mit unregelmäßiger oder ohne Internetverbindung funktionieren. 
 
->[!NOTE]
->Die Offlineunterstützung für IoT Edge ist als [öffentliche Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -61,24 +59,49 @@ Damit ein IoT Edge-Gerät seine erweiterten Offlinefunktionen auf untergeordnete
 
 ### <a name="assign-child-devices"></a>Zuweisen von untergeordneten Geräten
 
-Untergeordnete Geräte können beliebige Nicht-Edge-Geräte sein, die beim selben IoT Hub registriert sind. Sie können die Beziehung über- und untergeordneter Geräte beim Erstellen eines neuen Geräts verwalten, oder auf der Gerätedetailseite des übergeordneten IoT Edge-Geräts oder des untergeordneten IoT-Geräts. 
+Untergeordnete Geräte können beliebige Nicht-Edge-Geräte sein, die beim selben IoT Hub registriert sind. Übergeordnete Geräte können über mehrere untergeordnete Geräte verfügen, ein untergeordnetes Gerät hingegen kann nur ein übergeordnetes Gerät besitzen. Es gibt drei Optionen für das Festlegen von untergeordneten Geräten auf einem Edge-Gerät:
+
+#### <a name="option-1-iot-hub-portal"></a>Option 1: IoT Hub-Portal
+
+ Sie können die Beziehung über- und untergeordneter Geräte beim Erstellen eines neuen Geräts verwalten, oder auf der Gerätedetailseite des übergeordneten IoT Edge-Geräts oder des untergeordneten IoT-Geräts. 
 
    ![Verwalten untergeordneter Geräte auf der Detailseite des IoT Edge-Geräts](./media/offline-capabilities/manage-child-devices.png)
 
-Übergeordnete Geräte können über mehrere untergeordnete Geräte verfügen, ein untergeordnetes Gerät hingegen kann nur ein übergeordnetes Gerät besitzen.
+
+#### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Verwenden des `az`Befehlszeilentools
+
+Mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) mit [IoT-Erweiterung](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 oder höher) können Sie Beziehungen zwischen über- und untergeordneten Geräten über die [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest)-Unterbefehle verwalten. Im folgenden Beispiel führen wir eine Abfrage durch, um alle Nicht-IoT Edge-Geräte auf dem Hub als untergeordnete Geräte eines IoT Edge-Geräts zuzuweisen. 
+
+```shell
+# Set IoT Edge parent device
+egde_device="edge-device1"
+
+# Get All IoT Devices
+device_list=$(az iot hub query \
+        --hub-name replace-with-hub-name \
+        --subscription replace-with-sub-name \
+        --resource-group replace-with-rg-name \
+        -q "SELECT * FROM devices WHERE capabilities.iotEdge = false" \
+        --query 'join(`, `, [].deviceId)' -o tsv)
+
+# Add all IoT devices to IoT Edge (as child)
+az iot hub device-identity add-children \
+  --device-id $egde_device \
+  --child-list $device_list \
+  --hub-name replace-with-hub-name \
+  --resource-group replace-with-rg-name \
+  --subscription replace-with-sub-name 
+```
+
+Sie können die [Abfrage](../iot-hub/iot-hub-devguide-query-language.md) so ändern, dass eine andere Teilmenge von Geräten ausgewählt wird. Der Befehl kann mehrere Sekunden in Anspruch nehmen, wenn Sie eine große Gruppe von Geräten angeben.
+
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Option 3: Verwenden des IoT Hub Service SDK 
+
+Beziehungen zwischen über- und untergeordneten Geräten können Sie außerdem programmgesteuert mit einem C#-, Java- oder Node.js-IoT Hub Service SDK verwalten. Dies ist ein [Beispiel für die Zuordnung eines untergeordneten Geräts](https://aka.ms/set-child-iot-device-c-sharp) mit dem C#-SDK.
 
 ### <a name="specifying-dns-servers"></a>Angeben von DNS-Servern 
 
-Zur Verbesserung der Stabilität empfiehlt es sich, die in Ihrer Umgebung verwendeten DNS-Serveradressen anzugeben. Aktualisieren Sie beispielsweise unter Linux die Datei **/etc/docker/daemon.json** (muss möglicherweise erst erstellt werden) mit Folgendem:
-
-```json
-{
-    "dns": ["1.1.1.1"]
-}
-```
-
-Ersetzen Sie bei Verwendung eines lokalen DNS-Servers die Adresse 1.1.1.1 durch die IP-Adresse des lokalen DNS-Servers. Starten Sie den Docker-Dienst neu, damit die Änderungen wirksam werden.
-
+Zur Verbesserung der Stabilität empfiehlt es sich dringend, die in Ihrer Umgebung verwendeten DNS-Serveradressen anzugeben. Beachten Sie die [beiden im Artikel zur Problembehandlung aufgeführten diesbezüglichen Möglichkeiten](troubleshoot.md#resolution-7).
 
 ## <a name="optional-offline-settings"></a>Optionale Offlineeinstellungen
 
@@ -86,7 +109,7 @@ Wenn Sie alle Nachrichten erfassen möchten, die Ihre Geräte während langer Of
 
 ### <a name="time-to-live"></a>Gültigkeitsdauer
 
-Die Gültigkeitsdauer entspricht der Zeit (in Sekunden), die eine Nachricht auf die Übermittlung warten kann, ehe sie abläuft. Der Standardwert ist 7.200 Sekunden (zwei Stunden). 
+Die Gültigkeitsdauer entspricht der Zeit (in Sekunden), die eine Nachricht auf die Übermittlung warten kann, ehe sie abläuft. Der Standardwert ist 7.200 Sekunden (zwei Stunden). Der Höchstwert ist nur durch den Höchstwert einer ganzzahligen Variablen begrenzt und beträgt ca. 2 Milliarden. 
 
 Diese Einstellung ist eine gewünschte Eigenschaft des IoT Edge-Hub, die im Modulzwilling gespeichert wird. Sie können sie im Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** oder direkt im Bereitstellungsmanifest konfigurieren. 
 

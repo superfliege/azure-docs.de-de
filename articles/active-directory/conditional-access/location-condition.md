@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771cf093f62ef7823e57ced8223e4cc6c0dc57e
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: d7b12f5c7736307f0b62b6f6c2b526eb0108569c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563426"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190183"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? 
 
@@ -50,16 +50,13 @@ Ein benannter Standort besteht aus den folgenden Komponenten:
 - **IP-Bereiche**: Mindestens ein IPv4-Adressbereich im CIDR-Format. Die Angabe eines IPv6-Adressbereichs wird nicht unterstützt.
 
    > [!NOTE]
-   > IPv6-Adressbereiche können derzeit nicht für einen benannten Standort berücksichtigt werden. Das bedeutet, dass IPv6-Adressbereichen nicht aus einer Richtlinie für bedingten Zugriff ausgeschlossen werden können.
+   > Benannte Standorte können derzeit keine IPv6-Adressbereiche enthalten. Das bedeutet, dass IPv6-Bereiche nicht aus einer Richtlinie für bedingten Zugriff ausgeschlossen werden können.
 
 - **Als vertrauenswürdigen Standort markieren**: Ein Flag, das Sie für einen benannten Standort festlegen können, um ihn als vertrauenswürdigen Standort auszuweisen. Normalerweise handelt es sich bei vertrauenswürdigen Standorten um Netzwerkbereiche, die der Kontrolle Ihrer IT-Abteilung unterliegen. Über den bedingten Zugriff hinaus werden vertrauenswürdige benannte Standorte auch in Sicherheitsberichten von Azure Identity Protection und Azure AD verwendet, um [falsch positive](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1) Meldungen zu reduzieren.
 - **Länder/Regionen:** Mithilfe dieser Option können Sie Länder oder Regionen auswählen, um einen benannten Ort zu definieren.
 - **Unbekannte Bereiche einschließen**: Einige IP-Adressen sind keinem bestimmten Land zugeordnet. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
 
-Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Standorte basierend auf den folgenden Einschränkungen konfigurieren:
-
-- Einen benannten Standort mit bis zu 1200 IP-Bereichen.
-- Maximal 90 benannte Standorte, denen jeweils ein IP-Bereich zugewiesen ist.
+Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Organisationen können bis zu 90 benannte Standorte jeweils mit bis zu 12.000 IP-Adressbereichen konfigurieren.
 
 Die Richtlinie für bedingten Zugriff gilt für IPv4- und IPv6-Datenverkehr. Derzeit können für benannte Standorte keine IPv6-Adressbereiche konfiguriert werden. Diese Einschränkung führt zu den folgenden Situationen:
 

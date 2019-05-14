@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023650"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470629"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -68,7 +68,7 @@ Beginnen Sie, Ihre Modelle mithilfe des neuen CLIs und SDKs zu trainieren und ih
 
 Die vorhandenen Datenvorbereitungsdateien können nicht in die neueste Version portiert werden, da wir nicht mehr über die Machine Learning Workbench verfügen. Sie können jedoch weiterhin ein Dataset von beliebiger Größe für die Modellierung vorbereiten.   
 
-Für Datasets jeglicher Größe können Sie das [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) verwenden, um Ihre Daten vor der Modellierung schnell vorzubereiten, indem Sie Python-Code schreiben. 
+Für Datasets jeglicher Größe können Sie das [Datenvorbereitungspaket für Azure Machine Learning](https://aka.ms/data-prep-sdk) verwenden, um Ihre Daten vor der Modellierung durch Schreiben von Python-Code schnell vorzubereiten. 
 
 Weitere Informationen zur Verwendung des Azure Machine Learning Data Prep SDK finden Sie in [diesem Tutorial](tutorial-data-prep.md).
 

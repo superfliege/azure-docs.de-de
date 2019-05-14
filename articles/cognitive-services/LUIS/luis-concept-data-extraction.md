@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526288"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150694"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -172,34 +172,6 @@ Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in
 |--|--|--|
 |Entität vom Typ „Simple“|`Customer`|`bob jones`|
 
-## <a name="hierarchical-entity-data"></a>Daten hierarchischer Entitäten
-
-**Hierarchische Einheiten werden möglicherweise veraltet sein. Verwenden Sie [Entitätsrollen](luis-concept-roles.md) zum Ermitteln von Entitätsuntertypen, anstatt hierarchische Entitäten zu verwenden.**
-
-[Hierarchische](luis-concept-entity-types.md) Entitäten sind maschinell erlernt und können ein Wort oder einen Ausdruck enthalten. Untergeordnete Entitäten werden anhand des Kontexts identifiziert. Wenn Sie eine Klassifizierung mit über- und untergeordneten Entitäten und genauer Textübereinstimmung suchen, verwenden Sie eine [Listenentität](#list-entity-data).
-
-`book 2 tickets to paris`
-
-In der Äußerung oben ist `paris` als die untergeordnete Entität `Location::ToLocation` der hierarchischen Entität `Location` gekennzeichnet.
-
-Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität und der untergeordneten Entität, den in der Äußerung ermittelten Text, den Speicherort des erkannten Texts und die Bewertung:
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Location::ToLocation",
-    "startIndex": 18,
-    "endIndex": 22,
-    "score": 0.6866132
-  }
-]
-```
-
-|Datenobjekt|Übergeordnet|Untergeordnet|Wert|
-|--|--|--|--|
-|Entität vom Typ „Hierarchical“|Standort|ToLocation|"paris"|
-
 ## <a name="composite-entity-data"></a>Daten zusammengesetzter Entitäten
 [Zusammengesetzte](luis-concept-entity-types.md) Entitäten sind maschinell erlernt und können ein Wort oder einen Ausdruck enthalten. Betrachten Sie beispielsweise eine zusammengesetzte Entität der vordefinierten Entitäten `number` und `Location::ToLocation` bei der folgenden Äußerung:
 
@@ -212,53 +184,54 @@ Beachten Sie, dass zwischen der Anzahl `2` und der ToLocation `paris` Wörter st
 Zusammengesetzte Entitäten werden in einem Array vom Typ `compositeEntities` zurückgegeben. Dabei werden auch alle Entitäten in dieser zusammengesetzten Entität im `entities`-Array zurückgegeben:
 
 ```JSON
-  "entities": [
+
+"entities": [
     {
-      "entity": "paris",
-      "type": "Location::ToLocation",
-      "startIndex": 18,
-      "endIndex": 22,
-      "score": 0.956998169
+    "entity": "2 tickets to cairo",
+    "type": "ticketInfo",
+    "startIndex": 0,
+    "endIndex": 17,
+    "score": 0.67200166
     },
     {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 5,
-      "endIndex": 5,
-      "resolution": {
+    "entity": "2",
+    "type": "builtin.number",
+    "startIndex": 0,
+    "endIndex": 0,
+    "resolution": {
+        "subtype": "integer",
         "value": "2"
-      }
+    }
     },
     {
-      "entity": "2 tickets to paris",
-      "type": "Order",
-      "startIndex": 5,
-      "endIndex": 22,
-      "score": 0.7714499
+    "entity": "cairo",
+    "type": "builtin.geographyV2",
+    "startIndex": 13,
+    "endIndex": 17
     }
-  ],
-  "compositeEntities": [
+],
+"compositeEntities": [
     {
-      "parentType": "Order",
-      "value": "2 tickets to paris",
-      "children": [
+    "parentType": "ticketInfo",
+    "value": "2 tickets to cairo",
+    "children": [
         {
-          "type": "builtin.number",
-          "value": "2"
+        "type": "builtin.geographyV2",
+        "value": "cairo"
         },
         {
-          "type": "Location::ToLocation",
-          "value": "paris"
+        "type": "builtin.number",
+        "value": "2"
         }
-      ]
+    ]
     }
-  ]
+]
 ```    
 
 |Datenobjekt|Name der Entität|Wert|
 |--|--|--|
 |Vordefinierte Entität – number|"builtin.number"|"2"|
-|Hierarchische Entität – Location|"Location::ToLocation"|"paris"|
+|Vordefinierte Entität – GeographyV2|"Location::ToLocation"|"paris"|
 
 ## <a name="list-entity-data"></a>Daten von Listenentitäten
 
@@ -268,8 +241,8 @@ Angenommen, die App enthält die Liste `Cities`, die Variationen von Städtename
 
 |Listenelement|Elementsynonyme|
 |---|---|
-|Seattle|sea-tac, sea, 98101, 206, +1 |
-|Paris|cdg, roissy, ory, 75001, 1, +33|
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
@@ -441,7 +414,7 @@ Wenn Sie die einfache Entität verwenden, geben Sie unbedingt Beispiele an, bei 
 
 ### <a name="names-of-places"></a>Namen von Orten
 
-Namen von Orten sind feststehend und bekannt. Sie umfassen z.B. Städte, Landkreise, Bundesländer, Provinzen und Länder. Verwenden Sie die vordefinierte Entität **[geographieV2](luis-reference-prebuilt-geographyv2.md)**, um Standortinformationen zu extrahieren.
+Namen von Orten sind feststehend und bekannt. Sie umfassen z. B. Städte, Landkreise, Bundesländer, Provinzen und Länder/Regionen. Verwenden Sie die vordefinierte Entität **[geographieV2](luis-reference-prebuilt-geographyv2.md)**, um Standortinformationen zu extrahieren.
 
 ### <a name="new-and-emerging-names"></a>Neue und sich entwickelnde Namen
 

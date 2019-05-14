@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e8f0b9c8bf1bfb846f13306f58bcb1721ed6b422
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010889"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510529"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Cosmos DB-Triggers in Azure Functions
 
@@ -27,17 +27,19 @@ Die Azure Cosmos DB-Trigger und -Bindungen hängen über einen großen Teil der 
 
 Dieser Artikel bezieht bei jeder Erwähnung der Laufzeit auf Azure Functions V2, es sei denn, es wird ausdrücklich etwas anderes angegeben.
 
-## <a name="consuming-the-cosmos-db-sdk-separately-from-the-trigger-and-bindings"></a>Separates Nutzen des Cosmos DB-SDK vom Trigger und den Bindungen
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Nutzen des Azure Cosmos DB SDK (unabhängig)
 
 Die wichtigste Funktion des Erweiterungspakets besteht in der Unterstützung für den Azure Cosmos DB-Trigger und die Bindungen. Außerdem enthält es das [Azure Cosmos DB .NET-SDK](sql-api-sdk-dotnet-core.md). Dieses ist hilfreich bei der programmgesteuerten Interaktion mit Azure Cosmos DB ohne Verwendung des Triggers und der Bindungen.
 
-Wenn Sie das Azure Cosmos DB-SDK verwenden möchten, dürfen Sie das Projekt keinem anderen NuGet-Paketverweis hinzufügen. Sorgen Sie stattdessen für eine **Auflösung des SDK-Verweises über das Erweiterungspaket von Azure Functions**.
+Wenn Sie das Azure Cosmos DB-SDK verwenden möchten, dürfen Sie das Projekt keinem anderen NuGet-Paketverweis hinzufügen. Sorgen Sie stattdessen für eine **Auflösung des SDK-Verweises über das Erweiterungspaket von Azure Functions**. Nutzen des Azure Cosmos DB SDK (separat vom Trigger und den Bindungen)
 
 Wenn Sie manuell eine eigene Instanz des [Azure Cosmos DB-SDK-Clients](./sql-api-sdk-dotnet-core.md) erstellen, müssen Sie zudem dem Muster folgen, dass nur eine Instanz des Clients vorhanden ist; [nutzen Sie hierfür den Ansatz mit Singleton-Mustern](../azure-functions/manage-connections.md#documentclient-code-example-c). Durch diesen Prozess werden potenzielle Socket-Probleme in Ihren Vorgängen vermieden.
 
-## <a name="common-known-scenarios-and-workarounds"></a>Gängige Szenarien und Problemumgehungen
+## <a name="common-scenarios-and-workarounds"></a>Gängige Szenarien und Problemumgehungen
 
-### <a name="azure-function-fails-with-error-message-either-the-source-collection-collection-name-in-database-database-name-or-the-lease-collection-collection2-name-in-database-database2-name-does-not-exist-both-collections-must-exist-before-the-listener-starts-to-automatically-create-the-lease-collection-set-createleasecollectionifnotexists-to-true"></a>Die Azure-Funktion schlägt mit folgender Fehlermeldung fehl: „Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'“ (Die Quellsammlung 'Name der Sammlung' (in Datenbank 'Datenbankname') oder die Lease-Sammlung 'Name der Sammlung2' (in Datenbank 'Datenbankname2') ist nicht vorhanden. Beide Sammlungen müssen vorhanden sein, damit der Listener gestartet werden kann. Legen Sie zum automatischen Erstellen der Lease-Sammlung 'CreateLeaseCollectionIfNotExists' auf 'true' fest).
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Fehlermeldung für die Azure-Funktion mit dem Hinweis, dass eine Sammlung nicht vorhanden ist
+
+Die Azure-Funktion schlägt mit folgender Fehlermeldung fehl: „Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'“ (Die Quellsammlung 'Name der Sammlung' (in Datenbank 'Datenbankname') oder die Lease-Sammlung 'Name der Sammlung2' (in Datenbank 'Datenbankname2') ist nicht vorhanden. Beide Sammlungen müssen vorhanden sein, damit der Listener gestartet werden kann. Legen Sie zum automatischen Erstellen der Lease-Sammlung 'CreateLeaseCollectionIfNotExists' auf 'true' fest).
 
 Das heißt, dass einer oder beide der für die ordnungsgemäße Funktion des Triggers erforderlichen Azure Cosmos-Container nicht vorhanden oder für die Azure-Funktion nicht erreichbar ist. **In der Fehlermeldung wird Ihnen mitgeteilt, nach welcher Azure Cosmos-Datenbank und welchen Containern der Trigger sucht**, entsprechend Ihrer jeweiligen Konfiguration.
 
@@ -78,7 +80,8 @@ Wenn einige Änderungen am Ziel nicht vorhanden sind, kann dies bedeuten, dass w
 
 In diesem Szenario empfiehlt es sich, im Code und in den Schleifen, die die Änderungen möglicherweise verarbeiten, `try/catch blocks` hinzuzufügen, um einen Fehler für eine bestimmte Teilmenge von Elementen zu erkennen und diese entsprechend zu behandeln (Senden an einen anderen Speicher zur weiterführenden Analyse oder für einen Neuversuch). 
 
-> **Der Azure Cosmos DB-Trigger führt in der Standardeinstellung keinen Neuversuch für einen Batch von Änderungen durch, wenn während der Codeausführung eine nicht behandelte Ausnahme aufgetreten ist.** Das heißt, dass die Änderungen nicht am Ziel eintreffen, weil sie nicht verarbeitet werden.
+> [!NOTE]
+> Der Azure Cosmos DB-Trigger unternimmt in der Standardeinstellung keinen erneuten Versuch für einen Batch von Änderungen, wenn während der Codeausführung ein Ausnahmefehler aufgetreten ist. Das heißt, dass die Änderungen nicht am Ziel eintreffen, weil sie nicht verarbeitet werden.
 
 Wenn Sie feststellen, dass einige Änderungen vom Trigger überhaupt nicht empfangen wurden, liegt dies am häufigsten daran, dass **eine andere Azure-Funktion ausgeführt wird**. Dies kann eine andere in Azure bereitgestellte Azure-Funktion sein oder eine Azure-Funktion, die lokal auf dem Computer des Entwicklers ausgeführt wird und **genau dieselbe Konfiguration aufweist** (die gleichen überwachten und Lease-Container) – und diese Azure-Funktion „stiehlt“ eine Teilmenge der Änderungen, die von Ihrer Azure-Funktion verarbeitet werden sollten.
 

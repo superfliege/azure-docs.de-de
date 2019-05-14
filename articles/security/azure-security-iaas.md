@@ -12,31 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f4b2506781df5572ddaff8dda34bf3edab8987be
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409750"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145199"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
+Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
+
+Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich für aktuelle Funktionen und Features der Azure-Plattform. Da sich Meinungen und Technologien im Laufe der Zeit verändern können, wird dieser Artikel regelmäßig aktualisiert, um diesen Veränderungen Rechnung zu tragen.
 
 In den meisten IaaS-Szenarien (Infrastructure-as-a-Service, Infrastruktur als Dienst) stellen [virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/) (Virtual Machines, VMs) die Hauptworkload für Organisationen dar, die Cloud Computing verwenden. Dies gilt in [Hybridszenarien](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx), in denen Organisationen Workloads nach und nach in die Cloud migrieren möchten. Orientieren Sie sich in solchen Szenarien an den [allgemeinen Sicherheitsaspekten für IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx), und wenden Sie bewährte Sicherheitsmethoden für alle Ihre virtuellen Computer an.
 
+## <a name="shared-responsibility"></a>Gemeinsame Verantwortung
 Ihre Zuständigkeit für die Sicherheit basiert auf dem Typ des Clouddiensts. Das folgende Diagramm enthält eine Zusammenfassung der Zuständigkeitsverteilung zwischen Microsoft und Ihnen:
 
 ![Zuständigkeitsbereiche](./media/azure-security-iaas/sec-cloudstack-new.png)
 
 Die Sicherheitsanforderungen hängen von einer Reihe von Faktoren ab, darunter verschiedene Typen von Workloads. Keine dieser bewährten Methoden wäre alleine dafür geeignet, Ihre Systeme abzusichern. Genau wie bei anderen Sicherheitsaspekten müssen Sie die geeigneten Optionen auswählen und prüfen, wie sich die einzelnen Lösungen gegenseitig ergänzen können.
 
-Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
-
-Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich für aktuelle Funktionen und Features der Azure-Plattform. Da sich Meinungen und Technologien im Laufe der Zeit verändern können, wird dieser Artikel regelmäßig aktualisiert, um diesen Veränderungen Rechnung zu tragen.
-
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>Schützen von VMs mittels Authentifizierungs- und Zugriffssteuerung
 Der erste Schritt zum Schutz Ihrer virtuellen Computer ist, sicherzustellen, dass nur autorisierte Benutzer neue VMs einrichten und auf VMs zugreifen können.
+
+> [!NOTE]
+> Um die Sicherheit von Linux-VMs in Azure zu verbessern, können Sie die Azure AD-Authentifizierung integrieren. Bei Verwendung der [Azure AD-Authentifizierung für virtuelle Linux-Computer](../virtual-machines/linux/login-using-aad.md) werden Richtlinien, mit denen der Zugriff auf die virtuellen Computer zugelassen oder verweigert wird, zentral gesteuert und erzwungen.
+>
+>
 
 **Bewährte Methode**: Steuern des VM-Zugriffs.   
 **Detail**: Verwenden Sie [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
@@ -102,6 +107,9 @@ Wenn Sie Windows Update verwenden, lassen Sie die Einstellung für automatische 
 **Bewährte Methode**: Stellen Sie in regelmäßigen Abständen Ihre virtuellen Computer erneut bereit, um eine neue Version des Betriebssystems zu erzwingen.   
 **Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
 
+**Bewährte Methode**: Wenden Sie Sicherheitsupdates zügig auf virtuelle Computer an.   
+**Detail**: Aktivieren Sie Azure Security Center (Free-Tarif oder Standard-Tarif), um [fehlende Sicherheitsupdates zu erkennen und anzuwenden](../security-center/security-center-apply-system-updates.md).
+
 **Bewährte Methode**: Installieren Sie die neuesten Sicherheitsupdates.   
 **Detail**: Zu den Workloads, die von Kunden als erste in Azure verschoben werden, zählen unter anderem Labs und Systeme mit externer Verbindung. Wenn Ihre in Azure gehosteten virtuellen Computer Anwendungen oder Dienste hosten, die über das Internet zugänglich sein sollen, müssen Sie beim Patchen aufmerksam sein. Beschränken Sie sich beim Patchen nicht nur auf das Betriebssystem. Ungepatchte Sicherheitsrisiken in Partneranwendungen können ebenfalls zu Problemen führen, die mit einer guten Patchverwaltung vermeidbar sind.
 
@@ -165,6 +173,18 @@ Mit Azure Disk Encryption können Sie die folgenden geschäftlichen Anforderunge
 
 - Virtuelle IaaS-Computer werden im Ruhezustand mit Verschlüsselungstechnologie nach Branchenstandard geschützt, um die Anforderungen an Unternehmenssicherheit und Compliance zu erfüllen.
 - Virtuelle IaaS-Computer werden mit vom Kunden gesteuerten Schlüsseln und Richtlinien gestartet, und Sie können ihre Nutzung in Ihrem Schlüsseltresor überwachen.
+
+## <a name="restrict-direct-internet-connectivity"></a>Einschränken der direkten Internetverbindung
+Überwachen Sie die direkte Internetverbindung von VMs und schränken Sie diese ein. Angreifer scannen ständig öffentliche Cloud-IP-Adressbereiche nach offenen Verwaltungsports und probieren „einfache“ Angriffe mittels häufig verwendeter Kennwörter und bekannter ungepatchter Sicherheitslücken. Die folgende Tabelle enthält bewährte Methoden zum Schutz vor diesen Angriffen:
+
+**Bewährte Methode**: Verhindern Sie eine unbeabsichtigte Offenlegung von Netzwerkrouting und -sicherheit.   
+**Detail**: Verwenden Sie RBAC, um sicherzustellen, dass nur die zentrale Netzwerkgruppe berechtigten Zugang zu Netzwerkressourcen hat.
+
+**Bewährte Methode**: Identifizieren und korrigieren Sie exponierte VMs, die einen Zugriff über „alle“ Quell-IP-Adressen zulassen.   
+**Detail**: Verwenden Sie Azure Security Center. Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Azure Security Center empfiehlt, diese Eingangsregeln so zu ändern, dass der [Zugriff eingeschränkt](../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
+
+**Bewährte Methode**: Beschränken Sie Verwaltungsports (RDP, SSH).   
+**Detail**: Mit einem [JIT-VM-Zugriff](../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf einen einfachen Zugriff auf Verbindungen zu virtuellen Computern bereitzustellen. Wenn JIT aktiviert ist, sperrt Azure Security Center eingehenden Datenverkehr für Ihre Azure-VMs, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die JIT-Lösung gesteuert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).

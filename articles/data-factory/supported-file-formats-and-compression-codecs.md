@@ -3,18 +3,18 @@ title: In Azure Data Factory unterstützte Dateiformate | Microsoft-Dokumentatio
 description: In diesem Thema werden die Dateiformate und Komprimierungscodecs beschrieben, die von dateibasierten Connectors in Azure Data Factory unterstützt werden.
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 6af5c8cdad00802052f08be844f77d36420da3c9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150031"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142366"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -29,9 +29,12 @@ Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** mö
 * [Avro-Format](#avro-format)
 
 > [!TIP]
-> Informationen dazu, wie die Kopieraktivität die Quelldaten der Senke zuordnet, finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). Darin enthalten ist auch das Bestimmen der Metadaten basierend auf Ihren Dateiformateinstellungen sowie Tipps, wann der Abschnitt [Dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) anzugeben ist.
+> Informationen dazu, wie die Kopieraktivität die Quelldaten der Senke zuordnet, finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). Darin enthalten ist auch das Bestimmen der Metadaten basierend auf Ihren Dateiformateinstellungen sowie Tipps, wann der Abschnitt [Dataset`structure`](concepts-datasets-linked-services.md#dataset-structure-or-schema) anzugeben ist.
 
 ## <a name="text-format"></a>Textformat
+
+>[!NOTE]
+>Mit Data Factory wurde ein neues Dataset für ein Textformat mit Trennzeichen eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Delimited text format (Textformat mit Trennzeichen)](format-delimited-text.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
 
 Wenn Sie aus einer Textdatei lesen oder in eine Textdatei schreiben möchten, legen Sie die `type`-Eigenschaft im Abschnitt `format` des Datasets auf **TextFormat** fest. Sie können auch die folgenden **optionalen** Eigenschaften im Abschnitt `format` angeben. Informationen zum Konfigurieren finden Sie im Abschnitt [TextFormat-Beispiel](#textformat-example).
 
@@ -97,7 +100,7 @@ Wenn Sie JSON-Dateien analysieren oder die Daten im JSON-Format schreiben möcht
 | nestingSeparator |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. Der Standardwert ist „.“ (Punkt). |Nein  |
 
 >[!NOTE]
->Für den Fall, dass anwendungsübergreifende Daten in Arrays in mehreren Zeilen vorliegen (Fall 1 -> Beispiel 2 in [JsonFormat-Beispielen](#jsonformat-example)), können Sie nur einzelne Arrays über die Eigenschaft `jsonNodeReference` erweitern. 
+>Für den Fall, dass anwendungsübergreifende Daten in Arrays in mehreren Zeilen vorliegen (Fall 1 -> Beispiel 2 in [JsonFormat-Beispielen](#jsonformat-example)), können Sie nur einzelne Arrays über die Eigenschaft `jsonNodeReference` erweitern.
 
 ### <a name="json-file-patterns"></a>JSON-Dateimuster
 
@@ -196,7 +199,7 @@ Die Kopieraktivität kann die Muster der folgenden JSON-Dateien analysieren:
 
 **Beispiel 1: Extrahieren von Daten aus Objekt und Array**
 
-In diesem Beispiel wird ein einzelnes JSON-Stammobjekt einem einzelnen Datensatz in einem tabellarischen Ergebnis zugeordnet. Wenn Sie eine JSON-Datei mit dem folgenden Inhalt haben:  
+In diesem Beispiel wird ein einzelnes JSON-Stammobjekt einem einzelnen Datensatz in einem tabellarischen Ergebnis zugeordnet. Wenn Sie eine JSON-Datei mit dem folgenden Inhalt haben:
 
 ```json
 {
@@ -408,6 +411,9 @@ Das Ausgabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefiniti
 
 ## <a name="parquet-format"></a>Parquet-Format
 
+>[!NOTE]
+>Mit Data Factory wurde ein neues Dataset für das Parquet-Format eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Parquet format (Parquet-Format)](format-parquet.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
+
 Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
 
 ```json
@@ -426,13 +432,13 @@ Beachten Sie folgende Punkte:
 > [!IMPORTANT]
 > Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** auf Ihrem IR-Computer installieren. Weitere Details finden Sie im folgenden Absatz.
 
-Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von Parquet-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft. 
+Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von Parquet-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft.
 
 - **Für JRE:** Die 64-Bit-Integration Runtime erfordert die 64-Bit-JRE. Diese steht [hier](https://go.microsoft.com/fwlink/?LinkId=808605) zur Verfügung.
 - **Für OpenJDK:** Die Unterstützung ist seit Version 3.13 der Integration Runtime verfügbar. Packen Sie die Datei „jvm.dll“ zusammen mit allen anderen erforderlichen OpenJDK-Assemblys in einem selbstgehosteten IR-Computer, und legen Sie die Umgebungsvariable JAVA_HOME des Systems entsprechend fest.
 
 >[!TIP]
->Wenn Sie Daten mit der selbstgehosteten Integration Runtime in das/aus dem Parquet-Format kopieren und ein Fehler mit dem Text „Fehler beim Aufrufen von Java, Meldung: **java.lang.OutOfMemoryError:Java-Heapspeicher**“ auftritt, können Sie auf dem Computer, auf dem sich die selbstgehosteten IR befindet, eine Umgebungsvariable `_JAVA_OPTIONS` hinzufügen, um die min./max. Heapgröße für JVM anzupassen, sodass eine solche Kopie möglich ist, und dann die Pipeline erneut ausführen. 
+>Wenn Sie Daten mit der selbstgehosteten Integration Runtime in das/aus dem Parquet-Format kopieren und ein Fehler mit dem Text „Fehler beim Aufrufen von Java, Meldung: **java.lang.OutOfMemoryError:Java-Heapspeicher**“ auftritt, können Sie auf dem Computer, auf dem sich die selbstgehosteten IR befindet, eine Umgebungsvariable `_JAVA_OPTIONS` hinzufügen, um die min./max. Heapgröße für JVM anzupassen, sodass eine solche Kopie möglich ist, und dann die Pipeline erneut ausführen.
 
 ![JVM-Heapgröße für selbstgehostete IR festlegen](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -483,7 +489,7 @@ Beachten Sie folgende Punkte:
 > [!IMPORTANT]
 > Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime, z.B. zwischen lokalen Datenspeichern und der Cloud, ORC-Dateien nicht **unverändert** kopieren, müssen Sie die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** auf Ihrem IR-Computer installieren. Weitere Details finden Sie im folgenden Absatz.
 
-Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von ORC-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft. 
+Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von ORC-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft.
 
 - **Für JRE:** Die 64-Bit-Integration Runtime erfordert die 64-Bit-JRE. Diese steht [hier](https://go.microsoft.com/fwlink/?LinkId=808605) zur Verfügung.
 - **Für OpenJDK:** Die Unterstützung ist seit Version 3.13 der Integration Runtime verfügbar. Packen Sie die Datei „jvm.dll“ zusammen mit allen anderen erforderlichen OpenJDK-Assemblys in einem selbstgehosteten IR-Computer, und legen Sie die Umgebungsvariable JAVA_HOME des Systems entsprechend fest.
@@ -538,7 +544,7 @@ Azure Data Factory unterstützt das Komprimieren und Dekomprimieren während des
 * Lesen Sie die ZIP-Datei vom FTP-Server, dekomprimieren Sie sie, um die Dateien zu extrahieren, und stellen Sie die Dateien in Azure Data Lake Store bereit. Sie definieren ein FTP-Eingabedataset mit der `compression` `type`-Eigenschaft als ZipDeflate.
 * Lesen Sie GZIP-komprimierte Daten aus einem Azure-Blob, dekomprimieren Sie sie, komprimieren Sie sie mit BZIP2, und schreiben Sie die resultierenden Daten in einen Azure-Blob. Sie definieren für das Azure-Blob-Eingabedataset die Einstellung GZIP als `compression` `type` und für das Ausgabedataset BZIP2 als `compression` `type`.
 
-Um die Komprimierung für ein Dataset anzugeben, verwenden Sie im JSON-Dataset die Eigenschaft für die **Komprimierung** wie im folgenden Beispiel:   
+Um die Komprimierung für ein Dataset anzugeben, verwenden Sie im JSON-Dataset die Eigenschaft für die **Komprimierung** wie im folgenden Beispiel:
 
 ```json
 {
@@ -579,11 +585,12 @@ Der Abschnitt für die **Komprimierung** enthält zwei Eigenschaften:
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Nicht unterstützte Dateitypen und Komprimierungsformate
 
-Sie können mit den Erweiterungsfeatures von Azure Data Factory Dateien transformieren, die nicht unterstützt werden. Zwei Optionen sind Azure Functions und benutzerdefinierte Aufgaben mithilfe von Azure Batch.
+Sie können mit den Erweiterungsfeatures von Azure Data Factory Dateien transformieren, die nicht unterstützt werden.
+Zwei Optionen sind Azure Functions und benutzerdefinierte Aufgaben mithilfe von Azure Batch.
 
 Sehen Sie sich ein Beispiel an, in dem mithilfe einer Azure-Funktion [der Inhalt einer tar-Datei extrahiert wird](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Weitere Informationen finden Sie unter [Aktivität „Azure Function“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
-Sie können diese Funktionalität auch mit einer benutzerdefinierten Dotnet-Aktivität erstellen. Weitere Informationen sind [hier](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity) verfügbar.
+Sie können diese Funktionalität auch mit einer benutzerdefinierten Dotnet-Aktivität erstellen. Weitere Informationen sind [hier](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity) verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

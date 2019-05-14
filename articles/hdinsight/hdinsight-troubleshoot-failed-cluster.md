@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster – Azure HDInsight
+title: Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster – Azure HDInsight
 description: Es wird beschrieben, wie Sie die Diagnose und Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster durchführen.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708920"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203622"
 ---
-# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
-Wenn ein HDInsight-Cluster entweder langsam ist oder ein Fehlercode angezeigt wird, haben Sie mehrere Möglichkeiten, die Problembehandlung durchzuführen. Falls die Ausführung Ihrer Aufträge länger als erwartet dauert oder es generell zu langsamen Reaktionszeiten kommt, liegen unter Umständen im Bereich vor Ihrem Cluster Fehler vor, z.B. für die Dienste, unter denen der Cluster ausgeführt wird. Die häufigste Ursache dieser Verlangsamungen ist aber eine unzureichende Skalierung. Wählen Sie beim Erstellen eines neuen HDInsight-Clusters die geeigneten [VM-Größen](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) aus.
+Wenn eine Anwendung, die Daten auf einem HDInsight-Cluster verarbeitet, entweder langsam ist oder ein Fehlercode angezeigt wird, haben Sie mehrere Möglichkeiten, die Problembehandlung durchzuführen. Falls die Ausführung Ihrer Aufträge länger als erwartet dauert oder es generell zu langsamen Reaktionszeiten kommt, liegen unter Umständen im Bereich vor Ihrem Cluster Fehler vor, z.B. für die Dienste, unter denen der Cluster ausgeführt wird. Die häufigste Ursache dieser Verlangsamungen ist aber eine unzureichende Skalierung. Wählen Sie beim Erstellen eines neuen HDInsight-Clusters die geeigneten [VM-Größen](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) aus.
 
 Sammeln Sie zum Diagnostizieren eines langsamen oder fehlerhaften Clusters Informationen zu allen Aspekten der Umgebung, z.B. zugeordnete Azure-Dienste, Clusterkonfiguration und Auftragsausführung. Ein hilfreicher Diagnosevorgang ist der Versuch, den Fehlerzustand in einem anderen Cluster zu reproduzieren.
 

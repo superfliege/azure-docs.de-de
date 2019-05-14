@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020335"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465596"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020335"
 
 **Neue Features**
 
-* Die Funktionalität für die Stichworterkennung (Keyword Spotting Functionality, KWS) ist für Windows und Linux verfügbar. Die KWS-Funktionalität kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
+* Die Funktionalität für das Aktivierungswort (Keyword Spotting/KWS) ist jetzt für Windows und Linux verfügbar. Die KWS-Funktionalität kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
 * Begriffshinweisfunktionalität ist über das SDK verfügbar. Weitere Informationen finden Sie [hier](how-to-phrase-lists.md).
 * Unterhaltungstranskriptionsfunktionalität ist über das SDK verfügbar. Klicken Sie [hier](conversation-transcription-service.md).
 * Unterstützung für virtuelle Voice-First-Assistenten über den Direct Line Speech-Kanal wurde hinzugefügt.
@@ -58,7 +58,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 **Neue Features** 
 
 * Das SDK unterstützt jetzt den Text-Sprach-Dienst als Betaversion. Dies wird unter Windows- und Linux-Desktops für C++ und C# unterstützt. Weitere Informationen finden Sie in der [Übersicht über die Sprachsynthese](text-to-speech.md#get-started-with-text-to-speech).
-* Das SDK unterstützt jetzt MP3- und Opus/Ogg-Audiodateien als Streameingabedateien an. Dieses Feature steht nur unter Linux mit C++ und C# zur Verfügung und befindet sich derzeit in der Betaversion (weitere Details finden Sie [hier](how-to-use-compressed-audio-input-streams.md)).
+* Das SDK unterstützt jetzt MP3- und Opus/OGG-Audiodateien als Streameingabedateien. Dieses Feature steht nur unter Linux mit C++ und C# zur Verfügung und befindet sich derzeit in der Betaversion (weitere Details finden Sie [hier](how-to-use-codec-compressed-audio-input-streams.md)).
 * Das Speech SDK für Java, .NET Core, C++ und Objective-C unterstützt nun auch macOS. Die Objective-C-Unterstützung für macOS befindet sich derzeit in der Betaphase.
 * iOS: Das Speech SDK für iOS (Objective-C) wird jetzt auch als ein CocoaPod veröffentlicht.
 * JavaScript: Unterstützung von nicht standardisierten Mikrofonen als Eingabegeräte.

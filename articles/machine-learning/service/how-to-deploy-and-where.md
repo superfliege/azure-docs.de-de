@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1da232c2a81c9989cc78eccf1be97b5d75a48666
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024487"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507006"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -42,7 +42,7 @@ Weitere Informationen zu den am Bereitstellungsworkflow beteiligten Konzepten fi
 
 ## <a name="prerequisites-for-deployment"></a>Voraussetzungen für die Bereitstellung
 
-- Ein Modell. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](http://aka.ms/azml-deploy-cloud) bereitgestellt werden.
+- Ein Modell. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](https://aka.ms/azml-deploy-cloud) bereitgestellt werden.
 
 - Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md) oder das [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk).
 
@@ -63,6 +63,9 @@ print(model.name, model.id, model.version, sep='\t')
 ```
 
 ### <a name="register-an-externally-created-model"></a>Registrieren eines extern erstellten Modells
+
+[!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
+
 Sie können ein extern erstelltes Modell registrieren, indem Sie einen **lokalen Pfad** für das Modell bereitstellen. Sie können einen Ordner oder eine einzelne Datei angeben.
 
 **ONNX-Beispiel mit dem Python SDK:**
@@ -123,7 +126,7 @@ dependencies:
   - python=3.6.2
   - pip:
     - azureml-defaults
-    - scikit-learn
+    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
 
@@ -193,7 +196,7 @@ inference_config = InferenceConfig(source_directory="C:/abc",
 
 In diesem Beispiel enthält die Konfiguration die folgenden Elemente:
 
-* Ein Verzeichnis, das Ressourcen enthält, die zum Ausführen von Rückschlüssen erforderlich sind.
+* Ein Verzeichnis, das Ressourcen enthält, die zum Ziehen von Rückschlüssen erforderlich sind
 * Die Angabe, dass für dieses Modell Python erforderlich ist.
 * Das [Eingangsskript](#script), das zum Verarbeiten von an den bereitgestellten Dienst gesendeten Webanforderungen verwendet wird.
 * Die Conda-Datei, die die Python-Pakete beschreibt, die zum Ausführen von Rückschlüssen erforderlich sind.
@@ -436,7 +439,7 @@ Die folgenden Image-URIs beziehen sich auf von Microsoft bereitgestellte Images 
 * `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7`
 * `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03`
 
-Um diese Images zu verwenden, legen Sie das `base_image` auf den URI aus der Liste oben fest. Legen Sie `base_image_registry.address` auf `mcr.microsoft.com` fest.
+Um diese Images zu verwenden, legen Sie das `base_image` auf den URI aus der Liste oben fest. Setzen Sie `base_image_registry.address` auf `mcr.microsoft.com`.
 
 > [!IMPORTANT]
 > Microsoft-Images, die CUDA oder TensorRT verwenden, dürfen nur für Microsoft Azure-Dienste verwendet werden.
@@ -458,7 +461,7 @@ Azure Machine Learning Compute-Ziele werden von Azure Machine Learning Service e
 Eine exemplarische Vorgehensweise zu Batchrückschlüssen mit Azure Machine Learning Compute finden Sie im Artikel [Ausführen von Batchvorhersagen](how-to-run-batch-predictions.md).
 
 ## <a id="iotedge"></a> Rückschluss auf IoT Edge
-Unterstützung für die Bereitstellung auf Edge-Geräten befindet sich in der Vorschauphase. Weitere Informationen finden Sie im Artikel [Bereitstellen von Azure Machine Learning als IoT Edge-Modul](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning).
+Unterstützung für die Bereitstellung auf Edge-Geräten befindet sich in der Vorschauphase. Weitere Informationen finden Sie im Artikel [Bereitstellen von Azure Machine Learning als IoT Edge-Modul](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)

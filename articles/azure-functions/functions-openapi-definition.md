@@ -5,19 +5,18 @@ services: functions
 keywords: OpenAPI, Swagger, Cloud-Apps, Clouddienste,
 author: ggailey777
 manager: jeconnoc
-ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3ad304bc8f038d4009352dae72d70079828c26ba
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141569"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510487"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Erstellen einer OpenAPI-Definition für eine Funktion mithilfe von Azure API Management
 
@@ -31,6 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen einer Funktion in Azure
 > * Generieren einer OpenAPI-Definition mit Azure API Management
 > * Testen der Definition durch Aufrufen der Funktion
+> * Herunterladen der OpenAPI-Definition
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
@@ -133,13 +133,9 @@ Sie haben jetzt eine Funktion, die die Kosteneffizienz von Notfallreparaturen er
 
 Jetzt können Sie die OpenAPI-Definition generieren.
 
-1. Wählen Sie die Funktions-App und dann **Plattformfeatures**, **Alle Einstellungen** aus.
+1. Wählen Sie die Funktions-App aus. Wählen Sie dann unter **Plattformfeatures** die Option **API Management** und anschließend unter **API Management** die Option **Neu erstellen** aus.
 
-    ![Testen der Funktion im Azure-Portal](media/functions-openapi-definition/select-all-settings-openapi.png)
-
-1. Scrollen Sie nach unten, und wählen Sie dann **API Management** > **Neu erstellen** aus, um eine neue API Management-Instanz zu erstellen.
-
-    ![Funktion verknüpfen](media/functions-openapi-definition/link-apim-openapi.png)
+    ![Auswählen von „API Management“ unter „Plattformfeatures“](media/functions-openapi-definition/select-all-settings-openapi.png)
 
 1. Verwenden Sie die API Management-Einstellungen, die in der Tabelle unter der Abbildung angegeben sind.
 
@@ -150,11 +146,10 @@ Jetzt können Sie die OpenAPI-Definition generieren.
     | **Name** | Global eindeutiger Name | Es wird ein Name auf der Grundlage des Namens Ihrer Funktions-App generiert. |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Ressource erstellt wird. |  
     | **[Ressourcengruppe](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Dieselbe Ressource wie Ihre Funktions-App, die für Sie festgelegt werden sollte. |
-    | **Location** | USA (Westen) | Wählen Sie den Standort USA, Westen aus. |
+    | **Location** | USA (Westen) | Wählen Sie den Standort „USA, Westen“ aus. |
     | **Name der Organisation** | Contoso | Der Name der Organisation, der im Entwicklerportal und für E-Mail-Benachrichtigungen verwendet wird. |
     | **Administrator-E-Mail** | Ihre E-Mail-Adresse | Die E-Mail-Adresse, die Benachrichtigungen des Systems von API Management erhält. |
-    | **Preisstufe** | Verbrauch (Vorschau) | Vollständige Preisinformationen finden Sie auf der [API Management-Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/api-management/) |
-    | **Application Insights** | Ihre Instanz | Verwenden Sie die gleichen Application Insights, die von Ihrer Funktions-App verwendet wird. |
+    | **Preisstufe** | Verbrauch (Vorschau) | Der Tarif „Consumption“ befindet sich in der Vorschauphase und ist nicht in allen Regionen verfügbar. Vollständige Preisinformationen finden Sie auf der [API Management-Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/api-management/) |
 
 1. Wählen Sie **Erstellen** aus, um die API Management-Instanz zu erstellen, was ein paar Minuten dauern kann.
 
@@ -170,35 +165,40 @@ Jetzt können Sie die OpenAPI-Definition generieren.
 
 Jetzt wird die API für die Funktion erstellt.
 
-## <a name="test-the-openapi-definition"></a>Testen der OpenAPI-Definition
+## <a name="test-the-api"></a>Testen der API
 
-Bevor Sie die API-Definition verwenden, sollten Sie überprüfen, ob sie funktioniert.
+Vor der Verwendung der OpenAPI-Definition sollten Sie sich vergewissern, dass die API funktioniert.
 
-1. Wählen Sie auf der Registerkarte **Test** Ihrer Funktion den **POST**-Vorgang aus.
+1. Wählen Sie auf der Registerkarte **Test** Ihrer Funktion den Vorgang **POST** aus.
 
 1. Geben Sie Werte für **Stunden** und **Kapazität** ein.
 
-```json
-{
-"hours": "6",
-"capacity": "2500"
-}
-```
+    ```json
+    {
+    "hours": "6",
+    "capacity": "2500"
+    }
+    ```
 
 1. Klicken Sie auf **Senden**, und sehen Sie sich die HTTP-Antwort an.
 
     ![Testen der Funktions-API](media/functions-openapi-definition/test-function-api-openapi.png)
 
+## <a name="download-the-openapi-definition"></a>Herunterladen der OpenAPI-Definition
+
+Wenn Ihre API wie erwartet funktioniert, können Sie die OpenAPI-Definition herunterladen.
+
+1. Wählen Sie oben auf der Seite **OpenAPI-Definition herunterladen** aus.
+   
+   ![Herunterladen der OpenAPI-Definition](media/functions-openapi-definition/download-definition.png)
+
+2. Öffnen Sie die heruntergeladene JSON-Datei, und überprüfen Sie die Definition.
+
+[!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen einer Funktion in Azure
-> * Generieren einer OpenAPI-Definition mit Azure API Management
-> * Testen der Definition durch Aufrufen der Funktion
-
-Fahren Sie mit dem nächsten Thema fort, um mehr über API Management zu erfahren.
+Sie haben mithilfe der API Management-Integration eine OpenAPI-Definition Ihrer Funktionen generiert. Als Nächstes können Sie die Definition in API Management über das Portal bearbeiten. Außerdem können Sie sich [ausführlicher über API Management](../api-management/api-management-key-concepts.md) informieren.
 
 > [!div class="nextstepaction"]
-> [API Management](../api-management/api-management-key-concepts.md)
+> [Bearbeiten von APIs](../api-management/edit-api.md)

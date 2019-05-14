@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 985ad59a1ffa5bd68f97824f7f50af604174b543
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030058"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440936"
 ---
-# <a name="quickstart-prepare-and-visualize-data-without-writing-code"></a>Schnellstart: Aufbereiten und Visualisieren von Daten, ohne Code zu schreiben
+# <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Schnellstart: Vorbereiten und Visualisieren von Daten in Azure Machine Learning ohne Schreiben von Code
 
-Bereiten Sie Ihre Daten mit einer Drag & Drop-Benutzeroberfläche auf, und visualisieren Sie sie. Die Daten, die Sie verwenden, enthalten Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.  
+Bereiten Sie Ihre Daten auf der Visuellen Drag-&-Drop-Oberfläche in (Vorschauversion) für Azure Machine Learning vor, und visualisieren Sie sie. Die Daten, die Sie verwenden, enthalten Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.  
 
 In diesem Schnellstart untersuchen Sie Daten und bereiten sie auf:
 

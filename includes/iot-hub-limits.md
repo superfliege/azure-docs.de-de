@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804124"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150345"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Ressource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
+| Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
 | Nachrichten/Tag |400.000 |6.000.000 |300.000.000 |8.000 |
 | Maximale Anzahl der Einheiten |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen 
 
 Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 
-| Ressource | Begrenzung |
+| Resource | Begrenzung |
 | --- | --- |
 | Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |50 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement |1 |
@@ -40,9 +40,9 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Übermittlungsanzahl von Nachrichten von der <br/> Cloud an das Gerät |100 |
 | Maximale Übermittlungsanzahl von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |100 |
 | Maximale Gültigkeitsdauer von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |2 Tage |
-| Maximale Größe des Gerätezwillings <br/> (Tags, gemeldete Eigenschaften und gewünschte Eigenschaften) | 8 KB |
+| [Maximale Größe des Gerätezwillings](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (Tags, gemeldete Eigenschaften und gewünschte Eigenschaften) | 8 KB |
 | Maximale Größe des Gerätezwilling-Zeichenfolgenwerts | 4 KB |
-| Maximale Tiefe des Objekts im Gerätezwilling | 5 |
+| [Maximale Tiefe des Objekts im Gerätezwilling](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
 | Maximale Größe der Nutzlast der direkten Methode | 128 KB |
 | Maximale Aufbewahrungsdauer des Auftragsverlaufs | 30 Tage |
 | Maximale Anzahl gleichzeitiger Aufträge | 10 (S3), 5 (S2), 1 (S1) |
@@ -51,10 +51,8 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Anzahl der gleichzeitig verbundenen Gerätestreams | 50 (nur für S1, S2, S3 und F1) |
 | Maximale Gerätestream-Datenübertragung | 300 MB pro Tag (nur für S1, S2, S3 und F1) |
 
-
 > [!NOTE]
 > Wenden Sie sich an den Microsoft-Support, wenn Sie mehr als 50 kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
-
 
 > [!NOTE]
 > Zurzeit können höchstens 1.000.000 Geräte mit einem einzelnen IoT Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/support/options/).

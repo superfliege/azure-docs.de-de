@@ -4,14 +4,14 @@ description: In diesem Artikel werden das Konfigurieren und Ändern der Standard
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c7f2ccd2c074f2488c86b45a09859b308655df8d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005093"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068604"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -69,7 +69,39 @@ Jede Indizierungsrichtlinie muss den Stammpfad `/*` entweder als eingeschlossene
 - Schließen Sie den Stammpfad ein, um einzelne Pfade auszuschließen, die nicht indiziert werden müssen. Dies ist die empfohlene Vorgehensweise, da dabei Azure Cosmos DB proaktiv jede neue Eigenschaft indiziert, die dem Modell hinzugefügt wird.
 - Schließen Sie den Stammpfad aus, um einzelne Pfade einzuschließen, die indiziert werden müssen.
 
+- Für Pfade mit regulären Zeichen, die alphanumerische Zeichen und Unterstriche (_) enthalten, müssen Sie die Pfadzeichenkette nicht mit doppelten Anführungszeichen als Escapezeichen umgeben (z.B. "/Pfad/?"). Für Pfade mit anderen Sonderzeichen müssen Sie die Pfadzeichenkette mit doppelten Anführungszeichen als Escapezeichen umgeben (z.B. "/\"Pfad-abc\"/?"). Wenn Sie Sonderzeichen in Ihrem Pfad erwarten, können Sie aus Sicherheitsgründen jeden Pfad mit Escapezeichen umgeben. Funktionell macht es keinen Unterschied, ob Sie jedem Pfad mit Escapezeichen umgeben oder nur diejenigen mit Sonderzeichen.
+
 In [diesem Abschnitt](how-to-manage-indexing-policy.md#indexing-policy-examples) finden Sie Beispiele für Indizierungsrichtlinien.
+
+## <a name="composite-indexes"></a>Zusammengesetzte Indizes
+
+`ORDER BY`-Abfragen von zwei oder mehr Eigenschaften erfordern einen zusammengesetzten Index. Derzeit werden zusammengesetzte Indizes nur von Abfragen mit mehreren `ORDER BY`-Klauseln verwendet. Standardmäßig sind keine zusammengesetzten Indizes definiert, weshalb Sie [zusammengesetzte Indizes ](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) je nach Bedarf hinzufügen müssen.
+
+Beim Definieren eines zusammengesetzten Indexes geben Sie Folgendes an:
+
+- Zwei oder mehr Eigenschaftspfade. Die Reihenfolge, in der Eigenschaftspfade definiert sind, ist entscheidend.
+- Die Reihenfolge (aufsteigend oder absteigend).
+
+Die folgenden Aspekte werden bei der Verwendung zusammengesetzter Indizes berücksichtigt:
+
+- Wenn die zusammengesetzten Indexpfade nicht mit der Reihenfolge der Eigenschaften in der ORDER BY-Klausel übereinstimmen, kann der zusammengesetzte Index die Abfrage nicht unterstützen.
+
+- Die Reihenfolge der zusammengesetzten Indexpfade (aufsteigend oder absteigend) muss auch mit der Reihenfolge in der ORDER BY-Klausel übereinstimmen.
+
+- Der zusammengesetzte Index unterstützt auch eine ORDER BY-Klausel mit umgekehrter Reihenfolge in allen Pfaden.
+
+Betrachten Sie das folgende Beispiel, bei dem ein zusammengesetzter Index für die Eigenschaften a, b und c definiert ist:
+
+| **Zusammengesetzter Index**     | **Beispiel einer `ORDER BY`-Abfrage**      | **Vom Index unterstützt?** |
+| ----------------------- | -------------------------------- | -------------- |
+| ```(a asc, b asc)```         | ```ORDER BY  a asc, bcasc```        | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  b asc, a asc```        | ```No```             |
+| ```(a asc, b asc)```          | ```ORDER BY  a desc, b desc```      | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  a asc, b desc```       | ```No```             |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc, c asc``` | ```Yes```            |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc```        | ```No```            |
+
+Sie müssen Ihre Indizierungsrichtlinie anpassen, damit Sie alle notwendigen `ORDER BY`-Abfragen durchführen können.
 
 ## <a name="modifying-the-indexing-policy"></a>Ändern der Indizierungsrichtlinie
 

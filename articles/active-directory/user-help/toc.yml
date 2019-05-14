@@ -28,9 +28,10 @@
       href: user-help-auth-app-overview.md
     - name: Herunterladen und Installieren der App
       href: user-help-auth-app-download-install.md
-    - name: Übersicht über das Hinzufügen von Konten
-      href: user-help-auth-app-add-account-overview.md
+    - name: Hinzufügen von Konten
       items:
+        - name: Übersicht
+          href: user-help-auth-app-add-account-overview.md
         - name: 'Hinzufügen eines Geschäfts-, Schul- oder Unikontos'
           href: user-help-auth-app-add-work-school-account.md
         - name: Hinzufügen eines persönlichen Microsoft-Kontos
@@ -63,9 +64,10 @@
       href: user-help-security-info-overview.md
     - name: Hinzufügen von Sicherheitsinformationen während der Anmeldung
       href: security-info-setup-signin.md
-    - name: 'Übersicht: Hinzufügen oder Aktualisieren von Verfahren für Sicherheitsinformationen'
-      href: security-info-add-update-methods-overview.md
+    - name: Hinzufügen oder Aktualisieren von Verfahren für Sicherheitsinformationen
       items:
+        - name: Übersicht
+          href: security-info-add-update-methods-overview.md
         - name: Einrichten einer Authentifikator-App
           href: security-info-setup-auth-app.md
         - name: Einrichten von SMS

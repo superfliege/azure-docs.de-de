@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195216"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154481"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
@@ -29,9 +29,6 @@ Das Präfix für öffentliche IP-Adressen ist ein reservierter Bereich von IP-Ad
 Öffentliche IP-Adressen werden aus einem Pool mit Adressen in jeder Azure-Region zugewiesen. Sie können die Liste der Bereiche [herunterladen](https://www.microsoft.com/download/details.aspx?id=56519), die Azure in jeder Region verwendet. 40.121.0.0/16 ist beispielsweise einer von mehr als 100 Bereichen, die Azure in der Region „USA, Osten“ verwendet. Der Bereich umfasst nutzbare Adressen von 40.121.0.1 bis 40.121.255.254.
 
 Sie erstellen ein Präfix für öffentliche IP-Adressen in einer Azure-Region und einem Azure-Abonnement, indem Sie einen Namen angeben und festlegen, wie viele Adressen das Präfix umfassen soll. Wenn Sie z.B. das Präfix „/28“ für öffentliche IP-Adressen erstellen, ordnet Azure 16 Adressen aus einem der Adressbereiche zu. Sie wissen erst dann, welchen Bereich Azure zuweist, wenn Sie den Bereich erstellen, aber die Adressen sind zusammenhängend. Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informationen finden Sie unter [Preise für öffentliche IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses).
-
-> [!IMPORTANT]
-> Präfixe öffentlicher IP-Adressen befinden sich in einigen Regionen in der öffentlichen Vorschau. [Hier erfahren Sie mehr über die Nutzungsbedingungen der Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Das Präfix ist aktuell in folgenden Regionen verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“. Eine aktualisierte Liste der Regionen finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Warum sollte ich ein Präfix für öffentliche IP-Adressen erstellen?
 
@@ -49,7 +46,7 @@ Wenn Sie Ressourcen mit öffentlichen IP-Adressen erstellen, weist Azure eine ve
 ## <a name="scenarios"></a>Szenarien
 Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse aus einem Präfix zuweisen:
 
-|Ressource|Szenario|Schritte|
+|Resource|Szenario|Schritte|
 |---|---|---|
 |Virtual Machines| Die Zuweisung öffentlicher IPs zu Ihren virtuellen Computern in Azure aus einem Präfix reduziert den Verwaltungsaufwand für das Führen von Whitelists für IPs in einer Firewall. Sie können ganz einfach ein ganzes Präfix mit einer einzigen Firewallregel in die Whitelist aufnehmen. Wenn Sie Ihre virtuellen Computer in Azure skalieren, können Sie IP-Adressen aus dem gleichen Präfix zuweisen und so viel Zeit, Geld und Verwaltungsaufwand sparen.| So weisen Sie Ihrem virtuellen Computer IP-Adressen aus einem Präfix zu 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. [Weisen Sie die IP-Adresse der Netzwerkschnittstelle Ihres virtuellen Computers zu](virtual-network-network-interface-addresses.md#add-ip-addresses).
 | Load Balancer | Die Zuweisung öffentlicher IP-Adressen aus einem Präfix zu Ihrer Front-End-IP-Konfiguration oder der Ausgangsregel eines Lastenausgleichsmoduls vereinfacht die Verwaltung Ihres öffentlichen IP-Adressraums für Azure. Sie können das Szenario vereinfachen, indem Sie für ausgehende Verbindungen IP-Adressen aus einem Bereich zusammenhängender IP-Adressen verwenden, die durch ein öffentliches IP-Präfix definiert werden. | So weisen Sie Ihrem Lastenausgleichsmodul IP-Adressen aus einem Präfix zu 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. Wenn Sie das Lastenausgleichsmodul erstellen, wählen Sie die in Schritt 2 erstellte IP-Adresse als Front-End-IP-Adresse Ihres Lastenausgleichsmoduls aus, oder aktualisieren Sie die Adresse. |
@@ -58,6 +55,7 @@ Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse a
 ## <a name="constraints"></a>Einschränkungen
 
 - Sie können die IP-Adressen für das Präfix nicht angeben. Azure ordnet die IP-Adressen für das Präfix basierend auf der von Ihnen angegebenen Größe zu.
+- Die Standardgröße eines Präfixes ist /28 oder 16 öffentliche IP-Adressen.
 - Nachdem Sie das Präfix erstellt haben, können Sie den Bereich nicht mehr ändern.
 - Der Bereich gilt nur für IPv4-Adressen. Er umfasst keine IPv6-Adressen.
 - Nur statische öffentliche IP-Adressen, die mit der Standard-SKU erstellt wurden, können aus dem Bereich des Präfix zugewiesen werden. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694832"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190727"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -165,6 +165,9 @@ Kennwörter werden in folgenden Situationen *nicht* zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Administratoren**
    * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung über das [Office-Verwaltungsportal](https://portal.office.com)
    * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Azure AD-Graph-API
+
+> [!WARNING]
+> Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie „Active Directory-Benutzer und -Computer“ oder dem Active Directory-Verwaltungscenter wird nicht unterstützt. Beim Ändern eines Kennworts in der lokalen Umgebung darf diese Option nicht aktiviert werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

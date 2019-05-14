@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/03/2019
+ms.date: 5/06/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59007159"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191540"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -31,7 +31,7 @@ SCIM ist ein standardisiertes Protokoll und Schema, das darauf abzielt, mehr Kon
 
 Viele der Anwendungen, für die Azure AD die [vorab integrierte automatische Benutzerbereitstellung](../saas-apps/tutorial-list.md) unterstützt, implementieren SCIM als Möglichkeit zum Empfangen von Benachrichtigungen über Benutzeränderungen.  Zusätzlich zu diesen Anwendungen können Kunden Anwendungen verbinden, die ein bestimmtes Profil der [SCIM 2.0-Protokollspezifikation](https://tools.ietf.org/html/rfc7644) mit der generischen Integrationsoption für Nicht-Kataloganwendungen im Azure-Portal unterstützen. 
 
-Das Hauptaugenmerk dieses Artikels liegt auf dem Profil von SCIM 2.0, das von Azure AD als Teil des generischen SCIM-Connectors für Nicht-Kataloganwendungen implementiert wird. Das erfolgreiche Testen einer Anwendung, die SCIM mit dem generischen Azure AD-Connector unterstützt, ist jedoch ein Schritt zum Auflisten einer App im Azure AD-Katalog mit Unterstützung der Benutzerbereitstellung. Weitere Informationen zum Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog finden Sie unter [Microsoft Anwendungsnetzwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
+Das Hauptaugenmerk dieses Artikels liegt auf dem Profil von SCIM 2.0, das von Azure AD als Teil des generischen SCIM-Connectors für Nicht-Kataloganwendungen implementiert wird. Das erfolgreiche Testen einer Anwendung, die SCIM mit dem generischen Azure AD-Connector unterstützt, ist jedoch ein Schritt zum Auflisten einer App im Azure AD-Katalog mit Unterstützung der Benutzerbereitstellung. Weitere Informationen zum Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog finden Sie unter [Gewusst wie: Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog](../develop/howto-app-gallery-listing.md).
  
 
 >[!IMPORTANT]
@@ -61,9 +61,9 @@ Azure AD kann für das automatische Bereitstellen von zugewiesenen Benutzern und
 ### <a name="getting-started"></a>Erste Schritte
 Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, können über das Feature „Nicht-Kataloganwendung“ im Azure AD-Anwendungskatalog mit Azure Active Directory verbunden werden. Nachdem die Verbindung hergestellt wurde, führt Azure AD alle 40 Minuten einen Synchronisierungsprozess aus, bei dem der SCIM-Endpunkt der Anwendung auf zugewiesene Benutzer und Gruppen abgefragt wird. Entsprechend den Details der Zuweisung werden Benutzer und Gruppen dann erstellt oder geändert.
 
-**Gehen Sie wie folgt vor, um eine Anwendung zu verbinden, die SCIM unterstützt:**
+**So verbinden Sie eine Anwendung, die SCIM unterstützt:**
 
-1. Melden Sie sich am [Azure Active Directory-Portal](https://aad.portal.azure.com) an. 
+1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an. 
 
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 
@@ -72,13 +72,13 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Hinzufügen**, um ein App-Objekt zu erstellen. Die neue App wird der Liste mit den Unternehmensanwendungen hinzugefügt und mit dem App-Verwaltungsbildschirm geöffnet.
     
    ![][1]
-   *Abbildung 2: Azure AD-Anwendungskatalog*
+   *Abbildung 2: Azure AD-Anwendungskatalog*
     
 1. Wählen Sie auf dem App-Verwaltungsbildschirm im linken Bereich die Option **Bereitstellung**.
 1. Wählen Sie im Menü **Bereitstellungsmodus** die Option **Automatisch** aus.
     
    ![][2]
-   *Abbildung 3: Konfigurieren der Bereitstellung im Azure-Portal*
+   *Abbildung 3: Konfigurieren der Bereitstellung im Azure-Portal*
     
 1. Geben Sie im Feld **Mandanten-URL** die URL des SCIM-Endpunkts der Anwendung ein. Beispiel: https://api.contoso.com/scim/v2/
 1. Wenn der SCIM-Endpunkt ein OAuth-Bearertoken benötigt, das von einem anderen Aussteller als Azure AD stammt, kopieren Sie das erforderliche OAuth-Bearertoken in das optionale Feld **Geheimes Token**. Wird dieses Feld leer gelassen, fügt Azure AD in jede Anforderung ein von Azure AD ausgestelltes OAuth-Bearertoken ein. Apps, die Azure AD als Identitätsanbieter verwenden, können dieses von Azure AD ausgestellte Token überprüfen.
@@ -128,7 +128,7 @@ Befolgen Sie bei der Implementierung eines SCIM-Endpunkts die folgenden allgemei
      - `and`
 * Unterscheiden Sie bei Strukturelementen in SCIM nicht zwischen Groß- und Kleinschreibung, insbesondere bei `op`-PATCH-Vorgangswerten gemäß der Definition unter https://tools.ietf.org/html/rfc7644#section-3.5.2. Azure AD gibt die Werte von „op“ mit `Add`, `Replace` und `Remove` aus.
 * Microsoft Azure AD sendet Anforderungen zum Abrufen eines zufälligen Benutzers und einer zufälligen Gruppe, um sicherzustellen, dass der Endpunkt und die Anmeldeinformationen gültig sind. Dies erfolgt auch im Rahmen des **Testverbindungsflows** im [Azure-Portal](https://portal.azure.com). 
-* Das Attribut, nach dem die Ressourcen abgefragt werden können, sollte als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
+* Das Attribut, nach dem die Ressourcen abgefragt werden können, sollte als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
 
 ### <a name="user-provisioning-and-de-provisioning"></a>Durchführen und Aufheben der Benutzerbereitstellung
 In der folgenden Abbildung sind die Nachrichten dargestellt, die Azure Active Directory an einen SCIM-Dienst sendet, um den Lebenszyklus eines Benutzers im Identitätsspeicher Ihrer Anwendung zu verwalten.  
@@ -154,47 +154,47 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 - [Vorgänge für Benutzer](#user-operations)
   - [Benutzer erstellen](#create-user)
     - [Anforderung](#request)
-    - [response](#response)
+    - [Antwort](#response)
   - [Benutzer abrufen](#get-user)
     - [Anforderung](#request-1)
-    - [response](#response-1)
+    - [Antwort](#response-1)
   - [Benutzer nach Abfrage abrufen](#get-user-by-query)
     - [Anforderung](#request-2)
-    - [response](#response-2)
+    - [Antwort](#response-2)
   - [Benutzer nach Abfrage abrufen – keine Ergebnisse](#get-user-by-query---zero-results)
     - [Anforderung](#request-3)
-    - [response](#response-3)
+    - [Antwort](#response-3)
   - [Benutzer aktualisieren [mehrwertige Eigenschaften]](#update-user-multi-valued-properties)
     - [Anforderung](#request-4)
-    - [response](#response-4)
+    - [Antwort](#response-4)
   - [Benutzer aktualisieren [einwertige Eigenschaften]](#update-user-single-valued-properties)
     - [Anforderung](#request-5)
-    - [response](#response-5)
+    - [Antwort](#response-5)
   - [Benutzer löschen](#delete-user)
     - [Anforderung](#request-6)
-    - [response](#response-6)
+    - [Antwort](#response-6)
 - [Vorgänge für Gruppen](#group-operations)
-  - [Erstellen einer Gruppe](#create-group)
+  - [Gruppe erstellen](#create-group)
     - [Anforderung](#request-7)
-    - [response](#response-7)
+    - [Antwort](#response-7)
   - [Gruppe abrufen](#get-group)
     - [Anforderung](#request-8)
-    - [response](#response-8)
+    - [Antwort](#response-8)
   - [Gruppe nach „displayName“ abrufen](#get-group-by-displayname)
     - [Anforderung](#request-9)
-    - [response](#response-9)
+    - [Antwort](#response-9)
   - [Gruppe aktualisieren [Nichtmitglieder-Attribute]](#update-group-non-member-attributes)
     - [Anforderung](#request-10)
-    - [response](#response-10)
+    - [Antwort](#response-10)
   - [Gruppe aktualisieren [Mitglieder hinzufügen]](#update-group-add-members)
     - [Anforderung](#request-11)
-    - [response](#response-11)
+    - [Antwort](#response-11)
   - [Gruppe aktualisieren [Mitglieder entfernen]](#update-group-remove-members)
     - [Anforderung](#request-12)
-    - [response](#response-12)
+    - [Antwort](#response-12)
   - [Gruppe löschen](#delete-group)
     - [Anforderung](#request-13)
-    - [response](#response-13)
+    - [Antwort](#response-13)
 
 ### <a name="user-operations"></a>Vorgänge für Benutzer
 
@@ -460,7 +460,6 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
-    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
     "displayName": "displayName",
     "members": [],
     "meta": {
@@ -664,7 +663,7 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 1. Wählen Sie im Menü **Bereitstellungsmodus** die Option **Automatisch** aus.
     
    ![][2]
-   *Abbildung 6: Konfigurieren der Bereitstellung im Azure-Portal*
+   *Abbildung 6: Konfigurieren der Bereitstellung im Azure-Portal*
     
 1. Geben Sie im Feld **Mandanten-URL** die über das Internet zugängliche URL und den Port Ihres SCIM-Endpunkts ein. Dieser Eintrag kann beispielsweise http://testmachine.contoso.com:9000 oder „http://\<IP-Adresse>:9000/“ sein, wobei \<IP-Adresse> für die über das Internet zugängliche IP-Adresse steht. 
 

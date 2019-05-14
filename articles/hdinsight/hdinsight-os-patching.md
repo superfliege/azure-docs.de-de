@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: a887d6c69b9fa80f3144434e72a097e80d123a1b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722297"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203637"
 ---
 # <a name="os-patching-for-hdinsight"></a>Patchen des Betriebssystems für HDInsight 
 
@@ -23,29 +23,25 @@ ms.locfileid: "64722297"
 Die virtuellen Computer in einem HDInsight-Cluster müssen gelegentlich neu gestartet werden, damit wichtige Sicherheitspatches installiert werden können. 
 
 Mithilfe der in diesem Artikel beschriebenen Skriptaktion können Sie den Zeitplan für Patches des Betriebssystems in folgender Weise ändern:
-1. Aktivieren oder Deaktivieren des automatischen Neustarts
-2. Festlegen der Häufigkeit von Neustarts (in Tagen zwischen Neustarts)
-3. Festlegen des Wochentags, an dem Neustarts vorgenommen werden
+1. Installieren vollständiger Betriebssystemupdates oder ausschließliches Installieren von Sicherheitsupdates
+2. Neustarten des virtuellen Computers
 
 > [!NOTE]  
-> Diese Skriptaktion funktioniert nur mit Linux-basierten HDInsight-Clustern, die nach dem 1. August 2016 erstellt wurden. Patches werden nur wirksam, wenn die virtuellen Computer neu gestartet werden. 
+> Diese Skriptaktion funktioniert nur mit Linux-basierten HDInsight-Clustern, die nach dem 1. August 2016 erstellt wurden. Patches werden nur wirksam, wenn die virtuellen Computer neu gestartet werden. Dieses Skript wendet nicht automatisch Updates für alle zukünftigen Updatezyklen an. Führen Sie das Skript immer dann aus, wenn neue Updates angewendet werden müssen, damit die Updates installiert werden und der virtuelle Computer neu gestartet wird.
 
 ## <a name="how-to-use-the-script"></a>Verwendung des Skripts 
 
 Zur Verwendung des Skripts benötigen Sie die folgenden Informationen:
-1. Skriptspeicherort: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh  HDInsight verwendet diesen URI zum Suchen und Ausführen des Skripts auf allen virtuellen Computern im Cluster.
+1. Skriptspeicherort: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh  HDInsight verwendet diesen URI zum Suchen und Ausführen des Skripts auf allen virtuellen Computern im Cluster.
   
-2. Clusterknotentypen, auf die das Skript angewendet wird: Hauptknoten, Arbeitsknoten, Zookeeper. Dieses Skript muss auf alle Knotentypen im Cluster angewendet werden. Wenn es auf einen Knotentyp nicht angewendet wird, verwenden die virtuellen Computer für den betreffenden Knotentyp weiterhin den vorherigen Patchzeitplan.
+2. Clusterknotentypen, auf die das Skript angewendet wird: Hauptknoten, Arbeitsknoten, Zookeeper. Dieses Skript muss auf alle Knotentypen im Cluster angewendet werden. Wenn es auf einen Knotentyp nicht angewendet wird, werden die virtuellen Computer für den betreffenden Knotentyp nicht aktualisiert.
 
 
-3.  Parameter: Dieses Skript akzeptiert drei numerische Parameter:
+3.  Parameter: Dieses Skript akzeptiert einen numerischen Parameter:
 
     | Parameter | Definition |
     | --- | --- |
-    | Aktivieren/Deaktivieren des automatischen Neustarts |0 oder 1. Der Wert 0 deaktiviert den automatischen Neustart, 1 aktiviert ihn. |
-    | Frequency |7 bis 90 (einschließlich). Die Anzahl der Tage, die vor dem Neustart zum Patchen von virtuellen Computern, für die ein Neustart erforderlich ist, gewartet wird. |
-    | Wochentag |1 bis 7 (einschließlich). Der Wert 1 gibt an, dass der Neustart an einem Montag stattfinden soll, 7 gibt den Sonntag an. Die Parameter 1 60 2 bewirken beispielsweise einen automatischen Neustart alle 60 Tage (höchstens) am Dienstag. |
-    | Persistenz |Wenn Sie eine Skriptaktion auf einen vorhandenen Cluster anwenden, können Sie das Skript als permanent kennzeichnen. Permanente Skripts werden angewendet, wenn dem Cluster durch Skalierungsvorgänge neue Arbeitsknoten hinzugefügt werden. |
+    | Installieren vollständiger Betriebssystemupdates/Ausschließliches Installieren von Sicherheitsupdates |0 oder 1. Beim Wert 0 werden nur Sicherheitsupdates installiert, während beim Wert 1 vollständige Betriebssystemupdates installiert werden. Wenn kein Parameter angegeben wird, ist der Standardwert 0. |
 
 > [!NOTE]  
 > Sie müssen dieses Skript als permanent kennzeichnen, wenn Sie es auf einen vorhandenen Cluster anwenden. Andernfalls verwenden durch Skalierungsvorgänge erstellte neue Knoten den Standardpatchzeitplan.  Wenn Sie das Skript im Rahmen der Clustererstellung anwenden, ist es automatisch permanent.

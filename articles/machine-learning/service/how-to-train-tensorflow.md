@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8865c851f394d73b5446ac159b5a7799c0c9ed2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192349"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442352"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trainieren von TensorFlow- und Keras-Modellen mit Azure Machine Learning Service
 
@@ -24,11 +24,11 @@ Mit der [`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/
 
 Der `TensorFlow`-Estimator stellt zudem eine Abstraktionsebene über der Ausführung bereit. Dadurch können Sie ganz einfach parametrisierte Ausführungen auf verschiedenen Computezielen konfigurieren, ohne Ihre Trainingsskripts zu ändern.
 
-## <a name="getting-started"></a>Erste Schritte
+## <a name="get-started"></a>Erste Schritte
 
-Das Übermitteln von Aufträgen mit dem `TensorFlow`-Estimator funktioniert in etwa so wie mit dem Basis-[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py). Lesen Sie daher zunächst den [Artikel zum Verwenden des Basis-Estimators](how-to-train-ml-models.md), und machen Sie sich mit den übergreifenden Konzepten vertraut.
+Da die Estimator-Klasse `TensorFlow` dem Basis-[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) ähnlich ist, empfehlen wir Ihnen, zuerst den [Artikel mit Anleitungen zum Basis-Estimator](how-to-train-ml-models.md) zu lesen, um die übergeordneten Konzepte zu verstehen.
 
-Informationen zu den ersten Schritte mit Azure Machine Learning Service finden Sie im [Schnellstart](quickstart-run-cloud-notebook.md). Sie profitieren von einer Arbeitsumgebung mit all unseren [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml).
+Informationen zu den ersten Schritte mit Azure Machine Learning Service finden Sie im [Schnellstart](quickstart-run-cloud-notebook.md). Wenn Sie fertig sind, verfügen Sie über einen [Azure Machine Learning-Arbeitsbereich](concept-azure-machine-learning-architecture.md#workspace) und alle unsere [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml), einschließlich derjenigen für das Training von DNNs mit TensorFlow und Keras.
 
 ## <a name="single-node-training"></a>Training auf einem einzelnen Knoten
 
@@ -170,7 +170,7 @@ keras_est = TensorFlow(source_directory='./my-keras-proj',
                        use_gpu=True)
 ```
 
-## <a name="export-to-onnx"></a>Nach ONNX exportieren
+## <a name="export-to-onnx"></a>Exportieren nach ONNX
 
 Um optimierte Rückschlüsse mit der [ONNX-Runtime](concept-onnx.md) zu erzielen, können Sie Ihr trainiertes TensorFlow-Modul ins ONNX-Format konvertieren. Ein entsprechendes Beispiel finden Sie [hier](https://github.com/onnx/tensorflow-onnx/blob/master/examples/call_coverter_via_python.py).
 

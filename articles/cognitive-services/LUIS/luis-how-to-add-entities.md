@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522349"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148723"
 ---
 # <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
@@ -66,29 +66,6 @@ Eine Entität des Typs „Regulärer Ausdruck“ dient zum Abrufen von Daten aus
 
     Dieser reguläre Ausdruck stimmt mit dem Literal `hrf-` überein und enthält dann sechs Ziffern, um eine Formularnummer für ein Formular aus dem Personalwesen darzustellen.
 
-## <a name="add-hierarchical-entities"></a>Hinzufügen hierarchischer Entitäten
-
-Eine hierarchische Entität ist eine Kategorie von im Kontext erlernten und konzeptionell verwandten Entitäten. Die Entität im folgenden Beispiel enthält Abflug- und Zielorte. 
-
-In der Äußerung `Move John Smith from Seattle to Cairo` ist Seattle der Abflug- und Kairo der Zielort. Die Orte unterscheiden sich durch den Kontext und werden aufgrund der Wortstellung und Wortwahl in der Äußerung erlernt.
-
-Um hierarchische Entitäten hinzuzufügen, führen Sie die folgenden Schritte aus: 
-
-1. Wählen Sie in Ihrer App im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
-
-1. Geben Sie im Popupdialogfeld `Location` in das Feld **Entitätsname** ein, und wählen Sie dann **Hierarchisch** in der Liste **Entitätstyp** aus.
-
-    ![Hinzufügen einer Entität vom Typ „Hierarchisch“](./media/add-entities/hier-location-entity-creation.png)
-
-1. Wählen Sie **Untergeordnetes Element hinzufügen**, und geben Sie im ersten Feld **Untergeordnete Entität** dann `Origin` ein. 
-
-1. Wählen Sie **Untergeordnetes Element hinzufügen**, und geben Sie im zweiten Feld **Untergeordnete Entität** dann `Destination` ein. Wählen Sie **Fertig**aus.
-
-    >[!CAUTION]
-    >Die Namen untergeordneter Entitäten müssen für alle Entitäten einer einzelnen App eindeutig sein. Zwei unterschiedliche hierarchische Entitäten dürfen keine untergeordneten Elemente mit dem gleichen Namen enthalten. 
-
-    Navigieren Sie nach dem Erstellen dieser Entität zu allen Absichten mit Beispieläußerungen, die die Entität enthalten. Wählen Sie den Text in der Beispieläußerung aus, und kennzeichnen Sie ihn als Entität. 
-
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Hinzufügen von zusammengesetzten Entitäten zum Gruppieren in einer Beziehung von über- und untergeordneten Elementen
@@ -137,9 +114,7 @@ In der Äußerung `Where is Request relocation from employee new to the company 
 
 Eine Rolle ist ein benannter Untertyp, der auf Kontext basiert. Er ist in allen Entitäten verfügbar, einschließlich vorkonfigurierter und nicht durch maschinelles Lernen erworbener Entitäten. 
 
-Wenn dasselbe Beispiel wie bei der hierarchischen Entität mit Ausgangs- und Zielorten verwendet wird, besteht der Unterschied darin, dass eine Rolle als Ausgangsort (origin) und nicht als hierarchisches untergeordnetes Element bezeichnet wird. 
-
-Die Syntax für eine Rolle ist **{Entitätsname:Rollenname}**, wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Die Syntax für eine Rolle ist **`{Entityname:Rolename}`**, wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
 
 1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
 

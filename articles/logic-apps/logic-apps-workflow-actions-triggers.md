@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 06/22/2018
-ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.date: 05/06/2019
+ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617918"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136603"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
 
@@ -804,6 +804,8 @@ Hier sind einige häufig verwendete Aktionstypen angegeben:
 
   * [**Antwort**](#response-action) zum Beantworten von Anforderungen
 
+  * [**Ausführen von JavaScript-Code** ](#run-javascript-code) für die Ausführung von JavaScript-Codeausschnitten
+
   * [**Funktion**](#function-action) zum Aufrufen von Azure Functions
 
   * Datenvorgangsaktionen, z.B. [**Join**](#join-action), [**Compose**](#compose-action), [**Table**](#table-action), [**Select**](#select-action) und andere, mit denen Daten aus unterschiedlichen Eingaben erstellt oder transformiert werden
@@ -821,6 +823,7 @@ Hier sind einige häufig verwendete Aktionstypen angegeben:
 | Aktionstyp | BESCHREIBUNG | 
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Erstellt aus Eingaben, die verschiedene Typen aufweisen können, eine einzelne Ausgabe. | 
+| [**Ausführen von JavaScript-Code**](#run-javascript-code) | Führen Sie JavaScript-Codeausschnitte aus, die bestimmten Kriterien entsprechen. Informationen zu Codeanforderungen und weitere Informationen finden Sie unter [Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Function**](#function-action) | Ruft eine Azure-Funktion auf. | 
 | [**HTTP**](#http-action) | Ruft einen HTTP-Endpunkt auf. | 
 | [**Join**](#join-action) | Erstellt eine Zeichenfolge aus allen Elementen in einem Array und trennt diese Elemente mit einem angegebenen Trennzeichen. | 
@@ -1047,6 +1050,81 @@ Bei dieser Aktionsdefinition werden eine Zeichenfolgenvariable, die `abcdefg` en
 Hier ist die Ausgabe angegeben, die mit dieser Aktion erstellt wird:
 
 `"abcdefg1234"`
+
+<a name="run-javascript-code"></a>
+
+### <a name="execute-javascript-code-action"></a>Aktion „JavaScript-Code ausführen“
+
+Diese Aktion führt einen JavaScript-Codeausschnitt aus und gibt die Ergebnisse über ein `Result`-Token zurück, auf das nachfolgende Aktionen verweisen können.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "<JavaScript-code-snippet>",
+      "explicitDependencies": {
+         "actions": [ <previous-actions> ],
+         "includeTrigger": true
+      }
+   },
+   "runAfter": {}
+}
+```
+
+*Erforderlich*
+
+| Wert | Type | BESCHREIBUNG |
+|-------|------|-------------|
+| <*JavaScript-Codeausschnitt*> | Variabel | Der JavaScript-Code, der ausgeführt werden soll. Informationen zu Codeanforderungen und weitere Informationen finden Sie unter [Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md). <p>Im `code`-Attribut kann Ihr Codeausschnitt das schreibgeschützte `workflowContext`-Objekt als Eingabe verwenden. Dieses Objekt weist untergeordnete Eigenschaften auf, die dem Code Zugriff auf die Ergebnisse des Triggers und früherer Aktionen im Workflow gewähren. Weitere Informationen zum `workflowContext`-Objekt finden Sie unter [Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+||||
+
+*In einigen Fällen erforderlich*
+
+Das `explicitDependencies`-Attribut gibt an, dass die Ergebnisse des Triggers, Ergebnisse vorheriger Aktionen oder beides als Abhängigkeiten explizit für Ihren Codeausschnitt enthalten sein sollen. Weitere Informationen für das Hinzufügen dieser Abhängigkeiten finden Sie unter [Hinzufügen von Parametern für Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters). 
+
+Für das `includeTrigger`-Attribut können Sie `true`- oder `false`-Werte angeben.
+
+| Wert | Type | BESCHREIBUNG |
+|-------|------|-------------|
+| <*previous-actions*> | Zeichenfolgenarray | Ein Array mit den von Ihren angegebenen Aktionsnamen. Verwenden Sie die Aktionsnamen, die in Ihrer Workflowdefinition angezeigt werden, wobei Aktionsnamen Unterstriche (_) und keine Leerzeichen („ “) verwenden. |
+||||
+
+*Beispiel 1*
+
+Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text „Hello World from <Name der Logik-App>“ als Ergebnis zurückgibt. In diesem Beispiel verweist der Code auf den Namen des Workflows, indem mithilfe des schreibgeschützten `workflowContext`-Objekts auf die Eigenschaft `workflowContext.workflow.name` zugegriffen wird. Weitere Informationen zur Verwendung des `workflowContext`-Objekts finden Sie unter [Reference trigger and action results in your code (Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code)](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var text = \"Hello world from \" + workflowContext.workflow.name;\r\n\r\nreturn text;"
+   },
+   "runAfter": {}
+}
+```
+
+*Beispiel 2*
+
+Diese Aktion führt Code in einer Logik-App aus, die ausgelöst wird, wenn eine neue E-Mail in einem Office 365 Outlook-Konto eingeht. Die Logik-App verwendet auch eine Aktion für das Senden einer Genehmigungs-E-Mail, die den Inhalt der empfangenen E-Mail zusammen mit einer Genehmigungsanforderung weiterleitet. 
+
+Der Code extrahiert E-Mail-Adressen aus der `Body`-Eigenschaft des Triggers und gibt diese E-Mail-Adressen zusammen mit dem `SelectedOption`-Eigenschaftswert aus der Genehmigungsaktion zurück. Die Aktion schließt explizit die Aktion zum Senden der Genehmigungs-E-Mail als Abhängigkeit im Attribut `explicitDependencies`  >  `actions` mit ein.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var re = /(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))/g;\r\n\r\nvar email = workflowContext.trigger.outputs.body.Body;\r\n\r\nvar reply = workflowContext.actions.Send_approval_email_.outputs.body.SelectedOption;\r\n\r\nreturn email.match(re) + \" - \" + reply;\r\n;",
+      "explicitDependencies": {
+         "actions": [
+            "Send_approval_email_"
+         ]
+      }
+   },
+   "runAfter": {}
+}
+```
+
+
 
 <a name="function-action"></a>
 
@@ -2301,6 +2379,7 @@ Sie können das Standardlaufzeitverhalten für Trigger und Aktionen mit diesen `
 | `runtimeConfiguration.concurrency.runs` | Ganze Zahl  | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die gleichzeitig bzw. parallel ausgeführt werden können. Mit diesem Wert kann die Anzahl von Anforderungen reduziert werden, die auf Back-End-Systemen eingehen. <p>Das Festlegen der `runs`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency) oder [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Ganze Zahl  | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die auf die Ausführung warten können, wenn für Ihren Workflow bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. Sie können das Parallelitätslimit in der `concurrency.runs`-Eigenschaft ändern. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | Alle Trigger | 
 | `runtimeConfiguration.concurrency.repetitions` | Ganze Zahl  | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Iterationen der „for each“-Schleife, die gleichzeitig bzw. parallel ausgeführt werden können. <p>Das Festlegen der `repetitions`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der „for each“-Parallelität](#change-for-each-concurrency) oder [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | Aktion: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Ganze Zahl  | Für bestimmte Aktionen, die die Paginierung unterstützen und diese aktiviert haben, gibt dieser Wert die *minimale* Anzahl der abzurufenden Ergebnisse an. <p>Informationen für das Aktivieren der Paginierung finden Sie unter [Get bulk data, items, or results by using pagination (Abrufen von Massendaten, Elementen oder Ergebnissen mithilfe der Paginierung)](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). | Aktion: Verschiedene |
 ||||| 
 
 <a name="operation-options"></a>

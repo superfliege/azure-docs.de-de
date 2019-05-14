@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845187"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410439"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine in Azure 
 
@@ -35,7 +35,8 @@ Es folgen die Schritte zum Erstellen einer Instanz der Deep Learning Virtual Mac
 )zur Auflistung der virtuellen Computer.
 2. Klicken Sie unten auf der Seite auf die Schaltfläche **Create**, um einen Assistenten aufzurufen.![configure-dlvm](./media/dlvm-provision-wizard.PNG)
 3. Der Assistent zum Erstellen der DLVM erfordert **Eingaben** für jeden der **vier Schritte**, die in der Abbildung rechts aufgelistet sind. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
-   
+
+   <a name="basics"></a>   
    1. **Grundlagen**
       
       1. **Name**: Der Name des Data Science-Servers, den Sie erstellen.
@@ -46,13 +47,14 @@ Es folgen die Schritte zum Erstellen einer Instanz der Deep Learning Virtual Mac
       5. **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder eine **leere** in Ihrem Abonnement vorhandene Azure-Ressourcengruppe verwenden.
       6. **Standort**: Wählen Sie das Datencenter aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen. 
       
-> [!NOTE]
-> Die DLVM unterstützt alle GPU-VM-Instanzen der Serie NC und ND. Bei der Bereitstellung der DLVM müssen Sie einen der in Azure verfügbaren Standorte mit GPUs auswählen. Überprüfen Sie auf der Seite [Azure Produkte nach Region](https://azure.microsoft.com/regions/services/) die verfügbaren Standorte, und suchen Sie unter **Compute** nach **NC-Serie**, **NCv2-Serie**, **NCv3-Serie** oder **ND-Serie**. 
+      > [!NOTE]
+      > Die DLVM unterstützt alle GPU-VM-Instanzen der Serie NC und ND. Bei der Bereitstellung der DLVM müssen Sie einen der in Azure verfügbaren Standorte mit GPUs auswählen. Überprüfen Sie auf der Seite [Azure Produkte nach Region](https://azure.microsoft.com/regions/services/) die verfügbaren Standorte, und suchen Sie unter **Compute** nach **NC-Serie**, **NCv2-Serie**, **NCv3-Serie** oder **ND-Serie**. 
 
-1. **Einstellungen**: Wählen Sie eine GPU-VM-Größe der NC-Serie (NC, NCv2, NCv3) oder der ND-Serie aus, der die funktionalen Anforderungen erfüllt und dem Kostenrahmen entspricht. Erstellen Sie ein Speicherkonto für Ihre VM.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   1. **Einstellungen**: Wählen Sie eine GPU-VM-Größe der NC-Serie (NC, NCv2, NCv3) oder der ND-Serie aus, der die funktionalen Anforderungen erfüllt und dem Kostenrahmen entspricht. Erstellen Sie ein Speicherkonto für Ihre VM.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-1. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
-1. **Kaufen**: Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
+   1. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
+
+   1. **Kaufen**: Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
 
 > [!NOTE]
 > Die Bereitstellung sollte ungefähr 10 bis 20 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
@@ -66,7 +68,7 @@ Nach der VM-Erstellung können Sie sich mithilfe von Remotedesktop mit den Anmel
 
 ### <a name="linux-edition"></a>Linux-Edition
 
-Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Auf einem Windows-Client können Sie ein SSH-Clienttool wie [PuTTY](https://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
+Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt [**Grundlagen**](#basics) für die Textshellschnittstelle erstellt haben. Weitere Informationen zu SSH-Verbindungen mit virtuellen Azure-Computern finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](/azure/virtual-machines/linux/use-remote-desktop). Auf einem Windows-Client können Sie ein SSH-Clienttool wie [Putty](https://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren. 
 
 > [!NOTE]
 > Der X2Go-Client hat bei unseren Tests eine bessere Leistung als X11 und höher erzielt. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.

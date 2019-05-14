@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e8aaa60359fcfb85c79c4210f7c5cc14633c7b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 67956b3369394f68d067fc4753a859c066428aea
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894405"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191498"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
@@ -143,7 +143,7 @@ Nachdem der Bereitstellungsdienst gestartet wurde, umfasst die erste jemals ausg
 6. Wenn die Attributzuordnungen „Referenzattribute“ enthalten, führt der Dienst auf dem Zielsystem zusätzliche Aktualisierungen aus, um die referenzierten Objekte zu erstellen und zu verknüpfen. Ein Benutzer kann auf dem Zielsystem beispielsweise über das Attribut „Manager“ verfügen, das mit einem anderen Benutzer verknüpft ist, der im Zielsystem erstellt wurde.
 7. Legen Sie am Ende der ersten Synchronisierung einen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Synchronisierungen dient.
 
-Einige Anwendungen, z.B. ServiceNow, Google Apps und Box, unterstützen nicht nur die Bereitstellung von Benutzern, sondern auch die Bereitstellung von Gruppen und ihrer Mitglieder. Wenn die Gruppenbereitstellung in den [Zuordnungen](customize-application-attributes.md) aktiviert ist, synchronisiert der Bereitstellungsdienst die Benutzer und Gruppen und später dann die Gruppenmitgliedschaften. 
+Einige Anwendungen, z. B. ServiceNow, G Suite und Box, unterstützen nicht nur die Bereitstellung von Benutzern, sondern auch die Bereitstellung von Gruppen und ihrer Mitglieder. Wenn die Gruppenbereitstellung in den [Zuordnungen](customize-application-attributes.md) aktiviert ist, synchronisiert der Bereitstellungsdienst die Benutzer und Gruppen und später dann die Gruppenmitgliedschaften. 
 
 ### <a name="incremental-syncs"></a>Inkrementelle Synchronisierungen
 
@@ -196,7 +196,7 @@ Bei **ersten Synchronisierungen** hängt die Auftragsdauer von vielen Faktoren a
 
 Bei **inkrementellen Synchronisierungen** hängt die Auftragsdauer davon ab, wie viele Änderungen im jeweiligen Synchronisierungszyklus erkannt werden. Wenn weniger als 5.000 Änderungen an Benutzern oder Gruppenmitgliedschaften vorhanden sind, kann der Auftrag innerhalb eines einzelnen inkrementellen Synchronisierungszyklus ausgeführt werden. 
 
-Die folgende Tabelle fasst die Synchronisierungsdauer für gängige Bereitstellungsszenarien zusammen. In diesen Szenarien ist das Quellsystem Azure AD und das Zielsystem eine SaaS-Anwendung. Die jeweilige Synchronisierungsdauer ergibt sich aus einer statistischen Analyse der Synchronisierungsaufträge für die SaaS-Anwendungen ServiceNow, Workplace, Salesforce und Google Apps.
+Die folgende Tabelle fasst die Synchronisierungsdauer für gängige Bereitstellungsszenarien zusammen. In diesen Szenarien ist das Quellsystem Azure AD und das Zielsystem eine SaaS-Anwendung. Die jeweilige Synchronisierungsdauer ergibt sich aus einer statistischen Analyse der Synchronisierungsaufträge für die SaaS-Anwendungen ServiceNow, Workplace, Salesforce und G Suite.
 
 
 | Bereichskonfiguration | Benutzer, Gruppen und Mitglieder im Bereich | Dauer der ersten Synchronisierung | Dauer der inkrementellen Synchronisierung |
@@ -274,6 +274,10 @@ Die Verwendung dynamischer Gruppen kann jedoch die Gesamtleistung der End-to-End
 Dies ist eine Einschränkung „gruppenbasierter Zuweisungen zu Anwendungen“, die sich auch auf das einmalige Anmelden auswirkt und unter [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ) beschrieben ist.
 
 Als Problemumgehung sollten Sie die Gruppen, die die Benutzer enthalten, die bereitgestellt werden müssen, explizit zuweisen (oder auf andere Weise [den Bereich festlegen](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)).
+
+### <a name="is-provisioning-between-azure-ad-and-a-target-application-using-an-encrypted-channel"></a>Wird für die Bereitstellung zwischen Azure AD und einer Zielanwendung ein verschlüsselter Kanal verwendet?
+
+Ja. Wir verwenden die HTTPS-SSL-Verschlüsselung für das Serverziel. 
 
 ## <a name="related-articles"></a>Verwandte Artikel
 

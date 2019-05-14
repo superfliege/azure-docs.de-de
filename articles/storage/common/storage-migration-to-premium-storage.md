@@ -2,18 +2,19 @@
 title: Migrieren von VMs zu Azure Storage Premium | Microsoft-Dokumentation
 description: Migrieren Sie Ihre vorhandenen virtuellen Computer zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden.
 services: storage
-author: yuemlu
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
-ms.author: yuemlu
+ms.author: rogarana
+ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372317"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153761"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -74,7 +75,7 @@ Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unt
 #### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
 
-#### <a name="location"></a>Standort
+#### <a name="location"></a>Location
 Wählen Sie einen Speicherort, an dem Azure Premium-Speicher verfügbar ist. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services). Virtuelle Computer in der gleichen Umgebung wie das Speicherkonto, in dem die Datenträger des virtuellen Computers gespeichert sind, liefern eine wesentlich höhere Leistung als solche in unterschiedlichen Regionen.
 
 #### <a name="other-azure-vm-configuration-settings"></a>Sonstige Azure-VM-Konfigurationseinstellungen
@@ -255,7 +256,7 @@ Nachdem Sie Ihre VHD in das lokale Verzeichnis verschoben haben, können Sie die
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Ein Beispiel für <Uri> ist ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Ein Beispiel für <FileInfo> ist ***C:\Pfad\zu\upload.vhd***.
+Ein Beispiel für \<Uri> ist ***„https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd“***. Ein Beispiel für \<FileInfo> ist ***„C:\Pfad\zu\upload.vhd“***.
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: Verwenden von AzCopy zum Hochladen der VHD-Datei
 Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. Je nach Größe der virtuellen Festplatten kann dies einige Zeit in Anspruch nehmen. Denken Sie daran, die Eingangs-/Ausgangsgrenzen des Speicherkontos bei Verwendung dieser Option zu überprüfen. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md) .

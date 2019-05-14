@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545245"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510639"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -50,6 +50,20 @@ Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuest
 * Unterstützung von Streams.
 * Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird.
 
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Die System.Net.Http-Version des SDK entspricht der Definition aus dem NuGet-Paket.
+* Höhere Dezimalgenauigkeit für LINQ-Abfragen
+* Neu hinzugefügte Klassen: CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType, PartitionKeyDefinitionVersion
+* „TimeToLivePropertyPath“ zu „DocumentCollection“ hinzugefügt
+* „CompositeIndexes“ und „SpatialIndexes“ zu „IndexPolicy“ hinzugefügt
+* „Version“ zu „PartitionKeyDefinition“ hinzugefügt
+* „None“ zu „PartitionKey“ hinzugefügt
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * „IdleTcpConnectionTimeout“, „OpenTcpConnectionTimeout“, „MaxRequestsPerTcpConnection“ und „MaxTcpConnectionsPerEndpoint“ zu „ConnectionPolicy“ hinzugefügt
+ 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
 * Verbesserungen bei der Diagnose
@@ -237,6 +251,8 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](https
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |5. Mai 2019 |--- |
+| [2.3.0](#2.3.0) |4. April 2019 |--- |
 | [2.2.3](#2.2.3) |11. März 2019 |--- |
 | [2.2.2](#2.2.2) |6. Februar 2019 |--- |
 | [2.2.1](#2.2.1) |24. Dezember 2018 |--- |

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 37d00abbbf726dc1b92bdcc5f39b16301de9b93d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2eea1a1d30558765a2f8320b0b23efdbe3368807
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697840"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140961"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -204,7 +204,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Gibt ein benanntes Objekt zurück, das alle Eingabe- und Ausgabedaten enthält. Mit den folgenden Bindungsdefinitionen in der Datei „function.json“ können Sie beispielsweise auf den Inhalt einer Warteschlange von `context.bindings.myInput` zugreifen und Ausgaben mit `context.bindings.myOutput` einer Warteschlange zuweisen.
+Gibt ein benanntes Objekt zurück, das zum Lesen oder Zuweisen von Bindungsdaten verwendet wird. Auf Eingabe- und Triggerbindungsdaten kann durch Lesen der Eigenschaften in `context.bindings` zugegriffen werden. Auf Ausgabebindungsdaten kann durch Hinzufügen von Daten zu `context.bindings` zugegriffen werden.
+
+Mit den folgenden Bindungsdefinitionen in der Datei „function.json“ können Sie beispielsweise auf den Inhalt einer Warteschlange von `context.bindings.myInput` zugreifen und Ausgaben mit `context.bindings.myOutput` einer Warteschlange zuweisen.
 
 ```json
 {
@@ -273,7 +275,7 @@ Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablau
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
+| **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
 | **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
 | **info(_Meldung_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
 | **verbose(_Meldung_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
@@ -290,7 +292,7 @@ Lesen Sie [Überwachen von Azure Functions](functions-monitoring.md), um weitere
 
 ## <a name="writing-trace-output-to-the-console"></a>Schreiben der Ablaufverfolgungsausgabe in die Konsole 
 
-In Functions verwenden Sie die `context.log`-Methoden, um die Ablaufverfolgungsausgabe in die Konsole zu schreiben. In Functions v2.x werden Ablaufverfolgungsausgaben über `console.log` auf der Ebene der Funktionen-App erfasst. Dies bedeutet, dass Ausgaben von `console.log` nicht an einen bestimmten Funktionsaufruf gebunden sind und daher nicht in den Protokollen einer bestimmten Funktion angezeigt werden. Sie werden jedoch an Application Insights weitergegeben. In Functions v1.x können Sie `console.log` nicht verwenden, um in die Konsole zu schreiben.
+In Functions verwenden Sie die `context.log`-Methoden, um die Ablaufverfolgungsausgabe in die Konsole zu schreiben. In Functions v2.x werden Ablaufverfolgungsausgaben über `console.log` auf der Ebene der Funktionen-App erfasst. Dies bedeutet, dass Ausgaben von `console.log` nicht an einen bestimmten Funktionsaufruf gebunden sind und nicht in den Protokollen einer bestimmten Funktion angezeigt werden. Sie werden jedoch an Application Insights weitergegeben. In Functions v1.x können Sie `console.log` nicht verwenden, um in die Konsole zu schreiben.
 
 Beim Aufruf von `context.log()` wird Ihre Meldung auf der Standard-Ablaufverfolgungsebene, also der _info_-Ablaufverfolgungsebene, in die Konsole geschrieben. Das folgende Beispiel schreibt auf der „info“-Ablaufverfolgungsebene in die Konsole:
 

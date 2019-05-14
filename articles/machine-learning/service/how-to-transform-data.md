@@ -12,19 +12,19 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023788"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471834"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
-In diesem Artikel lernen Sie verschiedene Methoden zum Transformieren von Daten mit dem Azure Machine Learning Data Prep SDK kennen. Das SDK enthält Funktionen zum einfachen Hinzufügen von Spalten, Herausfiltern von nicht benötigten Zeilen oder Spalten und Imputieren von fehlenden Werten. Eine Referenzdokumentation für das SDK finden Sie in der [Übersicht](https://aka.ms/data-prep-sdk).
+In diesem Artikel lernen Sie verschiedene Methoden zum Transformieren von Daten mit dem `azureml-dataprep`-Paket kennen. Das Paket enthält Funktionen zum einfachen Hinzufügen von Spalten, Herausfiltern von nicht benötigten Zeilen oder Spalten und Imputieren von fehlenden Werten. Beachten Sie die vollständige Referenzdokumentation für das [Paket „azureml-dataprep“](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Wenn Sie eine neue Lösung erstellen, probieren Sie die [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (Vorschau) aus, um Ihre Daten zu transformieren, Momentaufnahmen von Daten zu erstellen und mit einer Versionsangabe versehene Datasetdefinitionen zu speichern. Datasets ist die nächste Version des Datenaufbereitungs-SDK und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen.
+> Wenn Sie eine neue Lösung erstellen, probieren Sie die [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (Vorschau) aus, um Ihre Daten zu transformieren, Momentaufnahmen von Daten zu erstellen und mit einer Versionsangabe versehene Datasetdefinitionen zu speichern. Datasets ist die nächste Version des Datenaufbereitungs-SDK und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen. Wenn Sie das `azureml-dataprep`-Paket verwenden, um einen Datenfluss mit Ihren Transformationen zu erstellen, anstatt das `azureml-datasets`-Paket zum Erstellen eines Datensatzes zu verwenden, können Sie später keine Snapshots oder Datensätze mit Versionsangabe verwenden.
 
 In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 
@@ -500,5 +500,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Entwurfsmuster und Beispiele zur Verwendung finden Sie in der [Übersicht](https://aka.ms/data-prep-sdk) zum SDK.
 * Ein Beispiel zum Lösen eines spezifischen Szenarios finden Sie im [Tutorial](tutorial-data-prep.md) zum Azure Machine Learning-Data Prep SDK.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755973"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074036"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -56,6 +56,8 @@ Um auf veränderte Pod-Anforderungen zu reagieren, enthält Kubernetes eine auto
 ![Automatische Kubernetes-Clusterskalierung](media/concepts-scale/cluster-autoscaler.png)
 
 Die automatische Clusterskalierung wird normalerweise zusammen mit der horizontalen automatischen Podskalierung verwendet. In der Kombination setzt die horizontale automatische Podskalierung die Anzahl von Pods nach Bedarf der Anwendung herauf oder herab, und die automatische Clusterskalierung passt die Anzahl von Knoten nach Bedarf zur entsprechenden Ausführung dieser zusätzlichen Pods an.
+
+Clusterskalierung sollte nur in der Vorschauversion für AKS-Cluster mit einem einzelnen Knotenpool getestet werden.
 
 Informationen zu den ersten Schritten mit der automatischen Clusterskalierung in AKS finden Sie unter [Automatische Clusterskalierung in AKS][aks-cluster-autoscaler].
 

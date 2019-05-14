@@ -3,8 +3,8 @@ title: Informationen zu den von Microsoft Identity Platform unterstützten Autor
 description: Anleitung für die OAuth 2.0- und OpenID Connect-Protokolle, die vom Microsoft Identity Platform-Endpunkt unterstützt werden.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8d509e9f3cabcd588d539d42b8cce022e17a1222
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917339"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139212"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity Platform-Protokolle
 
@@ -45,7 +45,7 @@ In fast allen OAuth 2.0- und OpenID Connect-Vorgängen sind vier Beteiligte am A
 
 ## <a name="app-registration"></a>App-Registrierung
 
-Jede App, die sowohl persönliche als auch Geschäfts-, Schul- oder Unikonten akzeptieren soll, muss über die neue Funktion **App-Registrierungen (Vorschau)** des [Azure-Portals](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) registriert werden, bevor diese Benutzer mit OAuth 2.0 oder OpenID Connect angemeldet werden können. Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
+Jede App, die sowohl persönliche als auch Geschäfts-, Schul- oder Unikonten akzeptieren soll, muss über die Funktion **App-Registrierungen** des [Azure-Portals](https://aka.ms/appregistrations) registriert werden, bevor diese Benutzer mit OAuth 2.0 oder OpenID Connect angemeldet werden können. Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
 
 * Eine **Anwendungs-ID**, die Ihre App eindeutig identifiziert
 * Einen **Umleitungs-URI** oder **Paketbezeichner**, der zum Umleiten von Antworten zurück an die App verwendet werden kann

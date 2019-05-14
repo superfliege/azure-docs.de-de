@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540923"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192288"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -94,3 +94,27 @@ Clustervorgänge sind eingeschränkt, wenn aktive Upgradevorgänge stattfinden o
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Kann ich meinen Cluster in ein anderes Abonnement verschieben oder mein Abonnement mit meinem Cluster in einen anderen Mandanten?
 
 Wenn Sie Ihren AKS-Cluster in ein anderes Abonnement verschoben haben oder das Abonnement, das den Cluster besitzt, in einen anderen Mandanten, verliert der Cluster seine Funktionalität aufgrund des Verlusts von Rollenzuweisungen und Dienstprinzipalrechten. Aufgrund dieser Einschränkung **unterstützt AKS das Verschieben von Clustern über Abonnements oder Mandanten nicht**.
+
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>Ich erhalte Fehler, wenn ich versuche, Funktionen zu verwenden, die VM-Skalierungsgruppen erfordern
+
+*Diese Unterstützung bei der Problembehandlung wurde von „aka.ms/aks-vmss-enablement“ weitergeleitet.*
+
+Möglicherweise erhalten Sie Fehlermeldungen, die angeben, dass sich Ihr AKS-Cluster nicht in einer VM-Skalierungsgruppe befindet. Beispiel:
+
+**Der AgentPool „Agent-Pool“ hat die Autoskalierung aktiviert, befindet sich aber nicht in einer VM-Skalierungsgruppe.**
+
+Zur Verwendung von Funktionen wie der automatischen Clusterskalierung oder mehrerer Knotenpools müssen AKS-Cluster erstellt werden, die VM-Skalierungsgruppen verwenden. Es werden Fehler zurückgegeben, wenn Sie versuchen Funktionen zu verwenden, die von VM-Skalierungsgruppen abhängig sind, und Sie einen normalen AKS-Cluster ohne VM-Skalierungsgruppen als Ziel verwenden. Die Unterstützung von VM-Skalierungsgruppen befindet sich in AKS derzeit in der Vorschauphase.
+
+Führen Sie die Schritte unter *Voraussetzungen* im entsprechenden Dokument aus, um sich ordnungsgemäß für die Funktionsvorschau für VM-Skalierungsgruppen zu registrieren und einen AKS-Cluster zu erstellen:
+
+* [Verwenden der automatischen Clusterskalierung](cluster-autoscaler.md)
+* [Erstellen und Verwenden mehrerer Knotenpools](use-multiple-node-pools.md)
+ 
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>Welche Benennungseinschränkungen gelten für AKS-Ressourcen und -Parameter?
+
+*Diese Unterstützung bei der Problembehandlung wurde von „aka.ms/aks-naming-rules“ weitergeleitet.*
+
+Benennungseinschränkungen werden sowohl von der Azure-Plattform als auch AKS implementiert. Verletzt ein Ressourcenname oder Parameter eine dieser Einschränkungen, wird ein Fehler zurückgegeben, der Sie auffordert, eine andere Eingabe zu machen. Es gelten die folgenden allgemeinen Benennungsrichtlinien:
+
+* Der Name der *MC_*-Ressourcengruppe in AKS ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen.
+* Das *dnsPrefix* muss mit alphanumerischen Werten beginnen und enden. Gültige Zeichen sind alphanumerische Werte und Bindestriche (-). Das *dnsPrefix* darf keine Sonderzeichen wie z.B. einen Punkt (.) enthalten.

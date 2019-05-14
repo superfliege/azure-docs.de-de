@@ -8,18 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/06/2019
+ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995998"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150560"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
-
-> [!NOTE]
-> Diese Funktion befindet sich derzeit in der [*öffentlichen Vorschau*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Für Szenarios, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, erstellen Sie eine [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Eine Integrationsdienstumgebung ist eine private und isolierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die vom öffentlichen oder „globalen“ Logic Apps-Dienst getrennt bleiben. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Ihre ISE wird in Ihr virtuelles Azure-Netzwerk *eingefügt*. Daraufhin wird der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt. Wählen Sie diese Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Standort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen.
 
@@ -101,13 +98,11 @@ Sie können [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md
 Befolgen Sie zum Erstellen Ihrer Integrationsdienstumgebung diese Schritte:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Azure-Hauptmenü **Ressource erstellen** aus.
+Geben Sie in das Suchfeld „Integrationsdienstumgebung“ als Ihren Filter ein.
 
    ![Neue Ressource erstellen](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. Geben Sie in das Suchfeld „Integrationsdienstumgebung“ als Ihren Filter ein.
-Wählen Sie in der Ergebnisliste **Integrationsdienstumgebung (Preview)** und dann **Erstellen** aus.
-
-   ![Auswählen von „Integrationsdienstumgebung“](./media/connect-virtual-network-vnet-isolated-environment/select-integration-service-environment.png)
+1. Wählen Sie im Erstellungsbereich der Integrationsdienstumgebung **Erstellen** aus.
 
    ![Auswählen von „Erstellen“](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
@@ -121,8 +116,8 @@ Wählen Sie in der Ergebnisliste **Integrationsdienstumgebung (Preview)** und da
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Umgebung erstellen möchten. |
    | **Name der Integrationsdienstumgebung** | Ja | <*Umgebungsname*> | Der Name für Ihre Umgebung |
    | **Location** | Ja | <*Azure-Datencenterregion*> | Die Azure-Datencenterregion, in der Sie Ihre Umgebung bereitstellen. |
-   | **Zusätzliche Kapazität** | Ja | 0, 1, 2, 3 | Die Anzahl der für diese ISE-Ressource zu verwendenden Verarbeitungseinheiten. Weitere Informationen zum Hinzufügen von Kapazität nach dem Erstellen finden Sie im Abschnitt zum [Hinzufügen von Kapazität](#add-capacity) in diesem Artikel. |
-   | **Virtuelles Netzwerk** | Ja | <*Azure-virtual-network-name*> | Das virtuelle Azure-Netzwerk, in das Sie Ihre Umgebung einfügen möchten, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Wenn Sie über kein Netzwerk verfügen, können Sie hier eins erstellen. <p>**Wichtig**: Sie können diese Einfügung *nur* einmalig durchführen, wenn Sie Ihre ISE erstellen. Bevor Sie diese Beziehung jedoch erstellen können, stellen Sie sicher, dass Sie bereits rollenbasierte Zugriffssteuerung in Ihrem virtuellen Netzwerk für Azure Logic Apps eingerichtet haben. |
+   | **Zusätzliche Kapazität** | Ja | 0 bis 10 | Die Anzahl der für diese ISE-Ressource zu verwendenden zusätzlichen Verarbeitungseinheiten. Weitere Informationen zum Hinzufügen von Kapazität nach dem Erstellen finden Sie im Abschnitt [Hinzufügen von ISE-Kapazität](#add-capacity). |
+   | **Virtuelles Netzwerk** | Ja | <*Azure-virtual-network-name*> | Das virtuelle Azure-Netzwerk, in das Sie Ihre Umgebung einfügen möchten, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Wenn Sie nicht über ein Netzwerk verfügen, [erstellen Sie zunächst ein virtuelles Azure-Netzwerk](../virtual-network/quick-create-portal.md). <p>**Wichtig**: Sie können diese Einfügung *nur* einmalig durchführen, wenn Sie Ihre ISE erstellen. |
    | **Subnetze** | Ja | <*subnet-resource-list*> | Eine ISE erfordert vier *leere* Subnetze zum Erstellen von Ressourcen in Ihrer Umgebung. Um jedes Subnetz zu erstellen, [führen Sie die Schritte unter dieser Tabelle aus](#create-subnet).  |
    |||||
 
@@ -172,6 +167,9 @@ Wählen Sie in der Ergebnisliste **Integrationsdienstumgebung (Preview)** und da
 
    1. Wiederholen Sie diese Schritte für drei weitere Subnetze.
 
+      > [!NOTE]
+      > Wenn die Subnetze, die Sie zu erstellen versuchen, nicht gültig sind, wird im Azure-Portal eine Meldung angezeigt, der Fortschritt aber nicht behindert.
+
 1. Nachdem Azure Ihre ISE-Informationen erfolgreich überprüft hat, wählen Sie **Erstellen** aus, z. B.:
 
    ![Wählen Sie nach der erfolgreicher Überprüfung „Erstellen“ aus.](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
@@ -185,34 +183,17 @@ Wählen Sie in der Ergebnisliste **Integrationsdienstumgebung (Preview)** und da
 
    ![Bereitstellung erfolgreich](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
+   Beachten Sie andernfalls die Anweisungen auf dem Azure-Portal zur Problembehandlung bei der Bereitstellung.
+
    > [!NOTE]
-   > Schlägt die Bereitstellung fehl, oder wenn Sie Ihre ISE löschen, *könnte* Azure bis zu eine Stunde benötigen, bis Ihre Subnetze freigegeben werden. Daher müssen Sie möglicherweise warten, bevor Sie diese Subnetzen in einer anderen ISE wiederverwenden können.
+   > Wenn die Bereitstellung fehlschlägt oder Sie Ihre ISE löschen, kann es bis zu einer Stunde dauern, bis Azure Ihre Subnetze freigibt. Daher müssen Sie möglicherweise warten, bevor Sie diese Subnetze in einer anderen ISE wiederverwenden können. 
+   >
+   > Wenn Sie Ihr virtuelles Netzwerk löschen, dauert es in der Regel bis zu zwei Stunden, bis Azure Ihre Subnetze freigibt, dieser Vorgang kann aber auch länger dauern. 
+   > Stellen Sie beim Löschen virtueller Netzwerke sicher, dass keine Ressourcen mehr verbunden sind. Beachten Sie hierzu die Anleitung [Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. Um Ihre Umgebung anzuzeigen, wählen Sie **Zu Ressource wechseln** aus, wenn Azure nach Abschluss der Bereitstellung nicht automatisch zu Ihrer Umgebung wechselt.  
 
-<a name="add-capacity"></a>
-
-### <a name="add-capacity"></a>Hinzufügen einer Kapazität
-
-Ihre ISE-Basiseinheit hat eine feste Kapazität. Wenn Sie mehr Durchsatz benötigen, können Sie weitere Skalierungseinheiten hinzufügen. Sie können basierend auf Leistungsmetriken oder einer bestimmten Anzahl an Verarbeitungseinheiten die Kapazität automatisch skalieren. Wenn Sie die automatische Skalierung basierend auf Metriken durchführen möchten, können Sie sich für verschiedene Kriterien entscheiden und Schwellenwerte für diese Kriterien festlegen.
-
-1. Suchen Sie im Azure-Portal nach Ihrer ISE.
-
-1. Klicken Sie im Hauptmenü Ihrer ISE auf **Übersicht**, um Leistungsmetriken für Ihre ISE anzuzeigen.
-
-1. Wählen Sie unter **Einstellungen** **Horizontal hochskalieren**, um die automatische Skalierung einzurichten. Wählen Sie auf der Registerkarte **Konfigurieren** **Autoskalierung aktivieren** aus.
-
-1. Wählen Sie im Bereich **Standard** entweder **Basierend auf einer Metrik skalieren** oder **Auf eine bestimmte Anzahl von Instanzen skalieren** aus.
-
-1. Geben Sie eine Anzahl der Verarbeitungseinheiten zwischen 0 und einschließlich 3 ein, wenn Sie sich für die instanzbasierte Option entscheiden. Befolgen Sie für die metrikbasierte Option die folgenden Schritte:
-
-   1. Wählen Sie im Bereich **Standard** **Regel hinzufügen** aus.
-
-   1. Richten Sie im Bereich **Horizontal hochskalieren** Ihre Kriterien und die entsprechenden Maßnahmen beim Auslösen der Regel ein.
-
-   1. Klicken Sie auf **Hinzufügen**, wenn Sie fertig sind.
-
-1. Speichern Sie unbedingt die Änderungen, wenn Sie fertig sind.
+Weitere Informationen zum Erstellen von Subnetzen finden Sie unter [Hinzufügen von Subnetzen virtueller Netzwerke](../virtual-network/virtual-network-manage-subnet.md).
 
 <a name="create-logic-apps-environment"></a>
 
@@ -248,10 +229,37 @@ Führen Sie zum Erstellen eines Integrationskontos, das eine Integrationsdienstu
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
-## <a name="get-support"></a>Support
+<a name="add-capacity"></a>
 
-* Sollten Sie Fragen haben, besuchen Sie das <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps-Forum</a>.
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die <a href="https://aka.ms/logicapps-wish" target="_blank">Website für Logic Apps-Benutzerfeedback</a>.
+## <a name="add-ise-capacity"></a>Hinzufügen von ISE-Kapazität
+
+Ihre ISE-Basiseinheit hat eine feste Kapazität. Wenn Sie mehr Durchsatz benötigen, können Sie weitere Skalierungseinheiten hinzufügen. Sie können basierend auf Leistungsmetriken oder einer bestimmten Anzahl an zusätzlichen Verarbeitungseinheiten die Kapazität automatisch skalieren. Wenn Sie die automatische Skalierung basierend auf Metriken durchführen möchten, können Sie sich für verschiedene Kriterien entscheiden und Schwellenwerte für diese Kriterien festlegen.
+
+1. Suchen Sie im Azure-Portal nach Ihrer ISE.
+
+1. Wählen Sie im Hauptmenü Ihrer ISE **Übersicht** aus, um Nutzungs- und Leistungsmetriken für Ihre ISE anzuzeigen.
+
+   ![Anzeigen der ISE-Nutzung](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
+
+1. Wählen Sie unter **Einstellungen** **Horizontal hochskalieren**, um die automatische Skalierung einzurichten. Wählen Sie auf der Registerkarte **Konfigurieren** **Autoskalierung aktivieren** aus.
+
+   ![Für die automatische Skalierung aktivieren](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+
+1. Geben Sie unter **Name der Einstellung für die Autoskalierung** einen Namen für Ihre Einstellung ein.
+
+1. Wählen Sie im Bereich **Standard** entweder **Basierend auf einer Metrik skalieren** oder **Auf eine bestimmte Anzahl von Instanzen skalieren** aus.
+
+   * Geben Sie eine Anzahl der Verarbeitungseinheiten zwischen 0 und 10 ein, wenn Sie sich für die instanzbasierte Option entscheiden.
+
+   * Wenn Sie die metrikbasierte Option verwenden, befolgen Sie die nachstehenden Schritte:
+
+     1. Wählen Sie im Abschnitt **Regeln** die Option **Regel hinzufügen** aus.
+
+     1. Richten Sie im Bereich **Horizontal hochskalieren** Ihre Kriterien und die entsprechenden Maßnahmen beim Auslösen der Regel ein.
+
+     1. Klicken Sie auf **Hinzufügen**, wenn Sie fertig sind.
+
+1. Speichern Sie Ihre Änderungen, wenn Sie mit den Einstellungen für die automatische Skalierung fertig sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

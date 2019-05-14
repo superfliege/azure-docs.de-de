@@ -28,7 +28,7 @@ Die zweite Möglichkeit ist die lokale Erstellung des Images, indem das Image he
 
 ### <a name="local-image-creation"></a>Lokales Erstellen des Images
 
-Nachdem Sie das Image an einen lokalen Speicherort heruntergeladen haben, können Sie **Hyper-V-Manager** öffnen, um eine VM mit der gerade kopierten VHD zu erstellen. Unten ist eine einfache Version angegeben. Eine ausführlichere Anleitung finden Sie unter [Create a virtual machine in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) (Erstellen eines virtuellen Computers in Hyper-V).
+Nachdem Sie das Image an einen lokalen Speicherort heruntergeladen haben, öffnen Sie **Hyper-V-Manager**, um eine VM mit der gerade kopierten VHD zu erstellen. Unten ist eine einfache Version angegeben. Eine ausführlichere Anleitung finden Sie unter [Create a virtual machine in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) (Erstellen eines virtuellen Computers in Hyper-V).
 
 Erstellen Sie wie folgt eine VM mit der kopierten VHD:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Datenträger mit fester Größe
 
-Wenn Sie eine VM aus einer vorhandenen VHD erstellen, wird standardmäßig ein dynamischer Datenträger erstellt. Sie können dies in einen Datenträger mit fester Größe ändern, indem Sie wie in der folgenden Abbildung die Option **Datenträger bearbeiten...** wählen. Eine ausführlichere Anleitung finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Wenn Sie eine VM aus einer vorhandenen VHD erstellen, wird standardmäßig ein dynamischer Datenträger erstellt. Sie können stattdessen einen Datenträger mit fester Größe erstellen, indem Sie wie in der folgenden Abbildung gezeigt die Option **Datenträger bearbeiten...** wählen. Eine ausführlichere Anleitung finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 ![Screenshot: Option „Datenträger bearbeiten“](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie über erhöhte Rechte für 
 
 ### <a name="install-office-in-shared-computer-activation-mode"></a>Installieren von Office im Modus „Aktivierung gemeinsam genutzter Computer“
 
-Verwenden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117), um Office zu installieren. Windows 10 Enterprise (mehrere Sitzungen) unterstützt nur Office 365 ProPlus (nicht Office 2019 Perpetual).
+Verwenden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117), um Office zu installieren. Windows 10 Enterprise (mehrere Sitzungen) unterstützt nur Office 365 ProPlus (nicht Office 2019 (unbefristet).
 
 Für das Office-Bereitstellungstool wird eine XML-Konfigurationsdatei benötigt. Informationen zum Anpassen des folgenden Beispiels finden Sie unter [Konfigurationsoptionen für das Office-Bereitstellungstool](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
 
@@ -81,7 +81,7 @@ Mit dieser von uns bereitgestellten XML-Beispieldatei für die Konfiguration wir
 - Entfernen aller vorhandenen Installationen von Office und Migrieren der zugehörigen Einstellungen
 - Aktivieren der Lizenzierung gemeinsam genutzter Computer für den Betrieb in einer Terminalserverumgebung
 
-Hier ist angegeben, was mit dieser XML-Beispieldatei für die Konfiguration nicht durchgeführt wird:
+Folgendes wird dagegen von dieser XML-Beispielkonfigurationsdatei nicht erledigt:
 
 - Installieren von Skype for Business
 - Installieren von OneDrive im Modus „Pro Benutzer“ Weitere Informationen finden Sie unter [Installieren von OneDrive im Modus „Pro Computer“](#install-onedrive-in-per-machine-mode).
@@ -89,7 +89,7 @@ Hier ist angegeben, was mit dieser XML-Beispieldatei für die Konfiguration nich
 >[!NOTE]
 >Die Lizenzierung gemeinsam genutzter Computer kann über Gruppenrichtlinienobjekte (GPOs) oder Registrierungseinstellungen eingerichtet werden. Das Gruppenrichtlinienobjekt befindet sich unter **Computerkonfiguration\\Richtlinien\\Administrative Vorlagen\\Microsoft Office 2016 (Computer)\\Lizenzierungseinstellungen**.
 
-Das Office-Bereitstellungstool enthält die Datei „setup.exe“. Führen Sie den folgenden Befehl an einer Befehlszeile aus, um Office zu installieren:
+Das Office-Bereitstellungstool enthält die Datei „setup.exe“. Führen Sie den folgenden Befehl auf einer Befehlszeile aus, um Office zu installieren:
 
 ```batch
 Setup.exe /configure configuration.xml
@@ -227,7 +227,7 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
 ### <a name="teams-and-skype"></a>Teams und Skype
 
-Windows Virtual Desktop verfügt nicht über eine offizielle Unterstützung von Skype for Business und Teams.
+Windows Virtual Desktop unterstützt Skype for Business und Teams offiziell nicht.
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Einrichten des Benutzerprofilcontainers (FSLogix)
 

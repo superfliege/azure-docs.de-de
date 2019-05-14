@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/29/2019
 ms.author: magoedte
-ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480052"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138128"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Verbinden von Windows-Computern mit Azure Monitor
 
@@ -31,16 +31,18 @@ Der Agent kann mit einer der folgenden Methoden installiert werden. Bei den meis
 * Manuelle Installation: Das Setup wird mithilfe des Setup-Assistenten über die Befehlszeile auf dem Computer installiert oder mithilfe eines vorhandenen Tools zur Softwareverteilung bereitgestellt.
 * Azure Automation Desired State Configuration (DSC): Dabei wird DSC in Azure Automation mit einem Skript für Windows-Computer verwendet, die bereits in Ihrer Umgebung bereitgestellt sind.  
 * PowerShell-Skript:
-* Resource Manager-Vorlage für virtuelle Computer, auf denen Windows lokal in Azure Stack ausgeführt wird.  
+* Resource Manager-Vorlage für virtuelle Computer, auf denen Windows lokal in Azure Stack ausgeführt wird. 
 
 >[!NOTE]
 >Azure Security Center (ASC) hängt von Microsoft Monitoring Agent (auch als Log Analytics Windows-Agent bezeichnet) ab und installiert und konfiguriert das Tool, um im Rahmen der Bereitstellung mit einem Log Analytics-Arbeitsbereich zu kommunizieren. ASC enthält eine automatische Bereitstellungsoption, die eine automatische Installation des Log Analytics Windows-Agents auf allen VMs in Ihrem Abonnement ermöglicht und ihn so konfiguriert, dass er an einen bestimmten Arbeitsbereich berichtet. Weitere Informationen zu dieser Option finden Sie unter [Aktivieren der automatischen Bereitstellung des Log Analytics-Agents](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
 >
 
+Wenn Sie den Agenten so konfigurieren müssen, dass er an mehrere Arbeitsbereiche berichtet, ist dies bei der ersten Einrichtung nicht möglich. Sie können dies nur später tun, indem Sie die Einstellungen aus der Systemsteuerung oder aus PowerShell aktualisieren, wie dies unter [Hinzufügen oder Entfernen von Arbeitsbereichen](agent-manage.md#adding-or-removing-a-workspace) beschrieben ist.  
+
 Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu [unterstützten Windows-Betriebssystemen](log-analytics-agent.md#supported-windows-operating-systems) und zur [Netzwerkfirewallkonfiguration](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Abrufen von Arbeitsbereichs-ID und -Schlüssel
-Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Arbeitsbereich-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor in der kommerziellen Azure-Cloud und der US Government-Cloud kommunizieren kann.  
+Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Arbeitsbereich-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor in der kommerziellen Azure-Cloud und der US Government-Cloud kommunizieren kann. 
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, für den der Agent für die Übermittlung von Berichten konfiguriert werden soll.

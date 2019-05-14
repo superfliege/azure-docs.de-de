@@ -1,21 +1,21 @@
 ---
-title: Verwenden des Warteschlangenspeichers (C++) | Microsoft Docs
-description: Erfahren Sie, wie Sie den Warteschlangenspeicher-Dienst in Azure verwenden. Die Beispiele sind in C++ geschrieben.
+title: 'Verwenden von Queue Storage mit C++: Azure Storage'
+description: Erfahren Sie, wie Sie den Queue Storage-Dienst in Azure verwenden. Die Beispiele sind in C++ geschrieben.
 services: storage
-author: cbrooksmsft
+author: mhopkins-msft
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: cbrooksmsft
+ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 08c865e5383e4095a22aa6c10c8b181f916d1d30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 440033233bbd60421cc3245a04544cd04caec6f4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999425"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153123"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Verwenden des Warteschlangenspeichers mit C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

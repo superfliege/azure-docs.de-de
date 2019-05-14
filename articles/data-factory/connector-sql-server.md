@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d28f6ed1957f8f6ae7ff7eb49f8ce4cbdec62266
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283408"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147420"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopieren von Daten in und aus SQL Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-sqlserver-connector.md)
+> * [Version 1](v1/data-factory-sqlserver-connector.md)
 > * [Aktuelle Version](connector-sql-server.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer SQL Server-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -64,7 +64,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 >[!TIP]
 >Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
 
-**Beispiel 1: Verwenden der SQL-Authentifizierung**
+**Beispiel 1: SQL-Authentifizierung**
 
 ```json
 {
@@ -85,7 +85,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 }
 ```
 
-**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort im Azure Key Vault**
+**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort in Azure Key Vault**
 
 ```json
 {
@@ -144,7 +144,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Dataset „SQL Server“ unterstützt werden.
 
-Legen Sie zum Kopieren von Daten in bzw. aus einer SQL Server-Datenbank die „type“-Eigenschaft des Datasets auf **SqlServerTable** fest. Folgende Eigenschaften werden unterstützt:
+Zum Kopieren von Daten aus der bzw. in die SQL Server-Datenbank werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -163,6 +163,7 @@ Legen Sie zum Kopieren von Daten in bzw. aus einer SQL Server-Datenbank die „t
             "referenceName": "<SQL Server linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -258,7 +259,7 @@ Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopierakti
 ]
 ```
 
-**Definition der gespeicherten Prozedur:**
+**Die Definition der gespeicherten Prozedur:**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -284,7 +285,7 @@ Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivi
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **SqlSink** | Ja |
-| writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standardwert: 10.000) |
+| writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). Standardmäßig bestimmt Data Factory die geeignete Batchgröße dynamisch anhand der Zeilengröße. |Nein  |
 | writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein  |
 | preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Copy-Aktivität an, ehe Daten in SQL Server geschrieben werden. Sie wird pro Ausführung der Copy-Aktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein  |
 | sqlWriterStoredProcedureName |Der Name der gespeicherten Prozedur, die definiert, wie Quelldaten in der Zieltabelle angewendet werden (etwa durch Ausführen von Upserts oder Transformationen mit eigener Geschäftslogik). <br/><br/>Beachten Sie, dass diese gespeicherte Prozedur **pro Batch aufgerufen wird**. Verwenden Sie bei einem Vorgang, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), die `preCopyScript`-Eigenschaft. |Nein  |
@@ -326,7 +327,7 @@ Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivi
 ]
 ```
 
-**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für den UPSERT-Vorgang**
+**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für den upsert-Vorgang**
 
 Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur für die SQL-Senke](#invoking-stored-procedure-for-sql-sink).
 
@@ -392,7 +393,7 @@ create table dbo.TargetTbl
 
 Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 
-**JSON-Definition des Quelldatasets**
+**Definition der Quell-Dataset-JSON**
 
 ```json
 {
@@ -410,7 +411,7 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 }
 ```
 
-**JSON-Definition des Zieldatasets**
+**Definition der Ziel-Dataset-JSON**
 
 ```json
 {

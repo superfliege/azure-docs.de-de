@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194077"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190170"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -176,13 +176,13 @@ SNAT-Portzuordnungen gelten speziell für das jeweilige IP-Transportprotokoll (T
 
 ### <a name="tcp-snat-port-release"></a>TCP-SNAT-Portfreigabe
 
-- Wenn Server und Client FIN/ACK senden, wird der SNAT-Port nach 240 Sekunden freigegeben.
+- Wenn entweder der Server oder der Client FINACK sendet, wird der SNAT-Port nach 240 Sekunden freigegeben.
 - Tritt ein RST auf, wird der SNAT-Port nach 15 Sekunden freigegeben.
-- Leerlauftimeout wurde erreicht.
+- Ist das Leerlauftimeout erreicht, wird der Port freigegeben.
 
 ### <a name="udp-snat-port-release"></a>UDP-SNAT-Portfreigabe
 
-- Leerlauftimeout wurde erreicht.
+- Ist das Leerlauftimeout erreicht, wird der Port freigegeben.
 
 ## <a name="problemsolving"></a> Problembehebung 
 

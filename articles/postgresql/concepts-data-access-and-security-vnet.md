@@ -1,19 +1,19 @@
 ---
-title: Übersicht über VNET-Dienstendpunkte für Azure Database for PostgreSQL-Server
-description: Erfahren Sie, wie VNET-Dienstendpunkte für Azure Database for PostgreSQL-Server funktionieren.
+title: Übersicht über VNET-Dienstendpunkte für Azure Database for PostgreSQL – Einzelserver
+description: Erfahren Sie, wie VNET-Dienstendpunkte für Azure Database for PostgreSQL (Einzelserver) funktionieren.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/20/2018
-ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 5/6/2019
+ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009190"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073480"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL – Einzelserver
 
 *VNET-Regeln* sind eine Firewallsicherheitsfunktion, die steuert, ob Ihr Azure Database for PostgreSQL-Server Nachrichten zulässt, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden. In diesem Artikel erfahren Sie, warum die VNET-Regelfunktion manchmal die sicherste Option darstellt, um Nachrichten an Ihren Azure Database for PostgreSQL-Server zuzulassen.
 
@@ -33,9 +33,9 @@ Sie benötigen ein [virtuelles Netzwerk][vm-virtual-network-overview] (VNET) und
 
 **Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
 
-**Dienstendpunkt im virtuellen Netzwerk:** Ein [Virtual Network-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for PostgreSQL- und Azure Database for MySQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for PostgreSQL- und Azure Database for MySQL-Server im Subnetz konfiguriert. 
+**Virtual Network-Dienstendpunkt:** Ein [Virtual Network-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for PostgreSQL- und Azure Database for MySQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for PostgreSQL- und Azure Database for MySQL-Server im Subnetz konfiguriert. 
 
-**Regel für virtuelles Netzwerk:** Eine VNET-Regel für Ihren Azure Database for PostgreSQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for PostgreSQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for PostgreSQL-Server zu sein.
+**VNET-Regel:** Eine VNET-Regel für Ihren Azure Database for PostgreSQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for PostgreSQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for PostgreSQL-Server zu sein.
 
 Eine VNET-Regel weist Ihren Azure Database for PostgreSQL-Server an, Nachrichten von jedem Knoten im Subnetz anzunehmen.
 
@@ -137,7 +137,7 @@ Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingSe
 
 ## <a name="related-articles"></a>Verwandte Artikel
 - [Virtuelles Azure-Netzwerk][vm-virtual-network-overview]
-- [Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)][vm-virtual-network-service-endpoints-overview-649d]
+- [Azure-VNET-Dienstendpunkte][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:

@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bda1af8095e7026c79b7d8ffe45b39f6cbb3508
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027710"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442420"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX und Azure Machine Learning: Erstellen und Beschleunigen von ML-Modellen
 
@@ -30,7 +30,7 @@ Die [ONNX-Runtime](https://github.com/Microsoft/onnxruntime) ist eine leistungss
 
 Die ONNX-Runtime kommt in weit verbreiteten Microsoft-Diensten wie Bing, Office und Cognitive Services zum Einsatz. Leistungssteigerungen hängen von einer Reihe von Faktoren ab, aber diese Microsoft-Dienste konnten bei der __CPU einen Leistungszuwachs um durchschnittlich das Doppelte__ verzeichnen. Die ONNX-Runtime wird auch als Teil von Windows ML auf Hunderten von Millionen von Geräten genutzt. Sie können die Runtime mit Azure Machine Learning Services verwenden. Durch den Einsatz der ONNX-Runtime können Sie von den umfangreichen Optimierungen, Tests und laufenden Verbesserungen für Produktionsumgebungen profitieren.
 
-[![ONNX-Flussdiagramm mit Training, Konvertern und Bereitstellung](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![ONNX-Flussdiagramm mit Training, Konvertern und Bereitstellung](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Abrufen von ONNX-Modellen
 

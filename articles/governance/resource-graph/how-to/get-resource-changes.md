@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie feststellen können, wann eine Ressource geä
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/20/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 81cb5e62c8abc93aa5defb690628c7178fd2a869
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720343"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142537"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -29,7 +29,7 @@ Die Erkennung und die Details von Änderungen sind in folgenden Beispielszenarie
 - Wenn eine Datenbank für die Konfigurationsverwaltung (Configuration Management Database, CMDB) auf dem neuesten Stand gehalten werden soll. Anstatt alle Ressourcen und die zugehörigen vollständigen Eigenschaftensätze in einem festgelegten Intervall zu aktualisieren, können Sie nur die Änderungen abrufen.
 - Ermitteln, welche anderen Eigenschaften sich unter Umständen geändert haben, wenn der Konformitätszustand einer Ressource geändert wurde. Die Auswertung dieser zusätzlichen Eigenschaften kann Einblicke in andere Eigenschaften bieten, die möglicherweise über eine Azure Policy-Definition verwaltet werden müssen.
 
-In diesem Artikel wird erläutert, wie diese Informationen über das Resource Graph-SDK erfasst werden. Informationen zum Anzeigen dieser Informationen im Azure-Portal finden Sie unter [Änderungsverlauf](../../policy/how-to/determine-non-compliance.md#change-history-preview) für Azure Policy.
+In diesem Artikel wird erläutert, wie diese Informationen über das Resource Graph-SDK erfasst werden. Beachten Sie für das Anzeigen dieser Informationen im Azure-Portal die Beschreibung unter [Änderungsverlauf](../../policy/how-to/determine-non-compliance.md#change-history-preview) von Azure Policy bzw. [Änderungsverlauf](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history) des Azure-Aktivitätsprotokolls.
 
 > [!NOTE]
 > Die Änderungsdetails in Resource Graph beziehen sich auf Resource Manager-Eigenschaften. Informationen zur Nachverfolgung von Änderungen in einem virtuellen Computer finden Sie unter [Änderungsnachverfolgung](../../../automation/automation-change-tracking.md) für Azure Automation oder unter [Guest Configuration für virtuelle Computer](../../policy/concepts/guest-configuration.md) für Azure Policy.
@@ -69,7 +69,7 @@ Die Antwort ähnelt der im folgenden Beispiel:
 ```json
 {
     "changes": [{
-            "changeId": "2db0ad2d-f6f0-4f46-b529-5c4e8c494648",
+            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
             "beforeSnapshot": {
                 "timestamp": "2019-03-29T01:32:05.993Z"
             },
@@ -107,7 +107,7 @@ Beispiel für Anforderungstext:
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
-    "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}"
 }
 ```
 
@@ -121,7 +121,7 @@ Die Antwort ähnelt der im folgenden Beispiel:
 
 ```json
 {
-    "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556",
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
     "beforeSnapshot": {
         "timestamp": "2019-03-29T01:32:05.993Z",
         "content": {

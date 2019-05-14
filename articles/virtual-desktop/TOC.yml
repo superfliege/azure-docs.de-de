@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: Vorbereiten und Anpassen eines VHD-Masterimages
       href: set-up-customize-master-image.md
+    - name: Installieren von Office für ein VHD-Masterimage
+      href: install-office-on-wvd-master-image.md
     - name: Konfigurieren einer GPU für Windows Virtual Desktop
       href: configure-vm-gpu.md
     - name: Automatisches Skalieren von Sitzungshosts

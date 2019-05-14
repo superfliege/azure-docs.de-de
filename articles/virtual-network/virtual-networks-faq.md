@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Enthält Antworten auf häufig gestellte Fragen zu virtuellen Microsoft Azure-Netzwerken.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
-ms.author: jdial
-ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: kumud
+ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188610"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148521"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -169,7 +170,7 @@ Ja. Weitere Informationen finden Sie im Artikel [Verschieben eines virtuellen Co
 Nein. Eine MAC-Adresse kann nicht statisch konfiguriert werden.
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Bleibt die MAC-Adresse eines virtuellen Computers nach ihrer Erstellung unverändert?
-Ja. Die MAC-Adresse bleibt für eine VM so lange erhalten, bis sie gelöscht wird. Dabei spielt es keine Rolle, ob die VM über das Resource Manager- oder das klassische Bereitstellungsmodell bereitgestellt wurde. Bisher wurde die MAC-Adresse freigegeben, wenn die VM beendet (Aufhebung der Zuordnung) wurde, aber jetzt wird die MAC-Adresse auch dann beibehalten, wenn sich die VM im nicht zugeordneten Zustand befindet.
+Ja. Die MAC-Adresse bleibt für eine VM so lange erhalten, bis sie gelöscht wird. Dabei spielt es keine Rolle, ob die VM über das Resource Manager- oder das klassische Bereitstellungsmodell bereitgestellt wurde. Bisher wurde die MAC-Adresse freigegeben, wenn die VM beendet (Aufhebung der Zuordnung) wurde, aber jetzt wird die MAC-Adresse auch dann beibehalten, wenn sich die VM im nicht zugeordneten Zustand befindet. Die MAC-Adresse bleibt der Netzwerkschnittstelle zugewiesen, bis die Netzwerkschnittstelle gelöscht oder die private IP-Adresse, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist, geändert wird. 
 
 ### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Kann ich von einem virtuellen Computer in einem VNet eine Verbindung mit dem Internet herstellen?
 Ja. Für alle in einem VNet bereitgestellten VMs und Cloud Services-Rolleninstanzen kann eine Verbindung mit dem Internet hergestellt werden.
@@ -243,7 +244,7 @@ Die folgenden Ressourcen verwenden Basic-Load Balancer, d. h. Sie können nicht 
 - SQL Always-on
 - SQL MI
 - API Managemenet
-- ADDS
+- Active Directory Domain Service (ADDS)
 - Logic Apps
 - HD Insight
 -   Azure Batch

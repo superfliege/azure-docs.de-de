@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 683f916596b4c77ec1dbc2acf1f91876c0752c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027728"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409823"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Untersuchen und Aufbereiten von Daten mit der Dataset-Klasse (Vorschau)
 
@@ -35,7 +35,7 @@ Zum Untersuchen und Vorbereiten der Daten benötigen Sie Folgendes:
 
 * Das Azure Machine Learning SDK für Python (Version 1.0.21 oder höher). Wie Sie die neueste Version des SDK installieren oder auf diese aktualisieren, erfahren Sie unter [Installieren des Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Das Datenaufbereitungs-SDK von Azure Machine Learning. Wie Sie die neueste Version installieren oder ein Update ausführen, erfahren Sie unter [Installieren des Datenaufbereitungs-SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
+* Das Datenaufbereitungs-SDK von Azure Machine Learning. Unter [Installieren des Datenaufbereitungs-SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install) erfahren Sie, wie die aktuelle Version installiert oder ein Update darauf ausgeführt wird.
 
 * Laden Sie die Beispieldateien herunter, um die Beispiele nachzuvollziehen: [crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) und [city.json](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 
@@ -44,7 +44,7 @@ Zum Untersuchen und Vorbereiten der Daten benötigen Sie Folgendes:
 Nehmen Sie eine Stichprobe Ihrer Daten, um ein erstes Verständnis Ihrer Datenarchitektur und des Inhalts zu erhalten. Zu diesem Zeitpunkt unterstützt die [`sample()`](https://docs.microsoft.com//python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#sample-sample-strategy--arguments-)-Methode aus der Dataset-Klasse Top N-Abfragen, einfache Zufallsstichproben und geschichtete Stichprobenstrategien.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import random
 
 # create an in-memory Dataset from a local file
@@ -109,7 +109,6 @@ sample_dataset.to_pandas_dataframe()
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|THEFT|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX S KILBOURN AVE|810|THEFT|...
 
-
 ## <a name="explore-with-summary-statistics"></a>Untersuchen mit Zusammenfassungsstatistik
 
  Erkennung Sie Anomalien, fehlende Werte oder die Fehleranzahl mit der [`get_profile()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-profile-arguments-none--generate-if-not-exist-true--workspace-none--compute-target-none-)-Methode. Diese Funktion ruft das Profil und die zusammenfassende Statistik Ihrer Daten ab, was wiederum hilft, die erforderlichen anzuwendenden Datenaufbereitungsvorgänge zu bestimmen.
@@ -124,9 +123,9 @@ ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10,0|0.0|10,0|0.0|0.0|0.0|1.04986e+
 Fallnummer|FieldType.STRING|HZ239907|HZ278872|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Datum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Block|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
-IUCR|FieldType.INTEGER|810|1154|10,0|0.0|10,0|0.0|0.0|0.0|810|850|810|890|1.136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0,785501|-1.3543
+IUCR|FieldType.INTEGER|810|1154|10,0|0.0|10,0|0.0|0.0|0.0|810|850|810|890|1.136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 Primärer Typ|FieldType.STRING|DECEPTIVE PRACTICE|THEFT|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
-BESCHREIBUNG|FieldType.STRING|BOGUS CHECK|Mehr als 500 USD|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
+BESCHREIBUNG|FieldType.STRING|BOGUS CHECK|OVER $500|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Standortbeschreibung|FieldType.STRING||SCHOOL, PUBLIC, BUILDING|10,0|0.0|10,0|0.0|0.0|1.0||||||||||||||
 Verhaftung|FieldType.BOOLEAN|False|False|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Inland|FieldType.BOOLEAN|False|False|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
@@ -152,7 +151,7 @@ Aus dem im vorhergehenden Abschnitt generierten Dataset-Profil können wir erseh
 Rufen Sie zunächst die neueste Definition des Datasets mit [`get_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) ab, und verringern Sie die Daten mit [`keep_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow), sodass wir nur die Spalten anzeigen, die wir behandeln möchten.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import azureml.dataprep as dprep
 
 # get the latest definition of Dataset
@@ -222,7 +221,6 @@ Wie in der folgenden Ausgabetabelle dargestellt, wurde der fehlende Breitengrad 
 1|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
 
-
 Aktualisieren Sie die Definition des Datasets mit [`update_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-), um die ausgeführten Transformationsschritte beizubehalten.
 
 ```Python
@@ -240,12 +238,13 @@ dataset.head(3)
 
 Häufig sind die Daten, mit denen wir bei der Bereinigung und Aufbereitung von Daten arbeiten, nur eine Teilmenge der gesamten Daten, die wir für die Produktion benötigen. Infolgedessen können sich einige der Annahmen, die wir im Rahmen unserer Bereinigung treffen, als falsch erweisen. In einem Dataset, das ständig aktualisiert wird, kann beispielsweise eine Spalte, die ursprünglich nur Zahlen innerhalb eines bestimmten Bereichs enthielt, in späteren Ausführungen einen größeren Wertebereich enthalten. Diese Fehler führen häufig zu fehlerhaften Pipelines oder ungültigen Daten.
 
-Datasets unterstützt das Erstellen von Assertionen für Daten, die ausgewertet werden, während die Pipeline ausgeführt wird. Mit diesen Assertionen können wir überprüfen, ob unsere Annahmen zu den Daten weiterhin zutreffend sind. Wenn dies nicht der Fall ist, können wir Fehler entsprechend behandeln.
+Datasets unterstützen das Erstellen von Assertionen für Daten, die ausgewertet werden, während die Pipeline ausgeführt wird. Mit diesen Assertionen können wir überprüfen, ob unsere Annahmen zu den Daten weiterhin zutreffend sind. Wenn dies nicht der Fall ist, können wir Fehler entsprechend behandeln.
 
 Wenn Sie beispielsweise die Werte `Latitude` und `Longitude` in Ihrem Dataset auf bestimmte numerische Bereiche beschränken möchten, stellt die Methode [`assert_value()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#assert-value-columns--multicolumnselection--expression--azureml-dataprep-api-expressions-expression--policy--azureml-dataprep-api-engineapi-typedefinitions-assertpolicy----assertpolicy-errorvalue--1---error-code--str----assertionfailed------azureml-dataprep-api-dataflow-dataflow) sicher, dass dies immer der Fall ist.
 
 ```Python
 from azureml.dataprep import value
+from azureml.core.dataset import Dataset
 
 # get the latest definition of the Dataset
 ds_def = dataset.get_definition()
@@ -282,7 +281,7 @@ print(error.originalValue)
 Eines der erweiterten Tools für Datasets ist die Möglichkeit, Spalten anhand von Beispielen für gewünschte Ergebnisse abzuleiten. Auf diese Weise können Sie dem SDK ein Beispiel hinzufügen, damit es zur Erzielung der gewünschten Transformationen Code generieren kann.
 
 ```Python
-from azureml.dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local file
 dataset = Dataset.auto_read_files('./data/crime.csv')
@@ -302,8 +301,8 @@ Der folgende Code enthält zwei Beispiele für die gewünschte Ausgabe: ("2016-0
 ```Python
 ds_def = dataset.get_definition()
 ds_def = ds_def.derive_column_by_example(
-        source_columns = "Date", 
-        new_column_name = "Date_Time_Range", 
+        source_columns = "Date",
+        new_column_name = "Date_Time_Range",
         example_data = [("2016-04-04 23:56:00", "2016-04-04 10PM-12AM"), ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM")]
     )
 ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
@@ -329,7 +328,7 @@ Wenn Sie Daten aus verschiedenen Quellen erfassen, kann es zu Abweichungen in de
 Die Spalte `inspections.business.city` enthält beispielsweise mehrere Formen des Städtenamens „San Francisco“.
 
 ```Python
-from azureml.Dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local json file
 dataset = Dataset.auto_read_files('./data/city.json')

@@ -177,7 +177,7 @@ Beim Kopieren von Daten aus MongoDB werden die folgenden Zuordnungen von MongoDB
 | MongoDB-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | Binary |Byte[] |
-| Boolean |Boolean |
+| Boolescher Wert |Boolescher Wert |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |

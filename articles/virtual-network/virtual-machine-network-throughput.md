@@ -3,8 +3,7 @@ title: Netzwerkdurchsatz virtueller Azure-Computer | Microsoft-Dokumentation
 description: Informationen zum Netzwerkdurchsatz virtueller Azure-Computer.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: steveesp
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: kumud
-ms.openlocfilehash: 182b3b7dad828e67d006391e00986406729c959d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 4/26/2019
+ms.author: kumud,steveesp, mareat
+ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689253"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153726"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -43,6 +42,30 @@ Die Durchsatzbegrenzung gilt für den virtuellen Computer. Der Durchsatz wird du
 - **Beschleunigter Netzwerkbetrieb**: Obwohl das Feature beim Erreichen des veröffentlichten Grenzwerts hilfreich sein kann, ändert sich dadurch der Grenzwert nicht.
 - **Datenverkehrsziel**: Alle Ziele werden auf den Grenzwert für ausgehenden Datenverkehr angerechnet.
 - **Protokoll:** Der gesamte ausgehende Datenverkehr über alle Protokolle wird auf den Grenzwert angerechnet.
+
+## <a name="network-flow-limits"></a>Grenzwerte für Netzwerkflows
+
+Zusätzlich zur Bandbreite kann auch die Anzahl der Netzwerkverbindungen auf einem virtuellen Computer zu einem bestimmten Zeitpunkt Auswirkungen auf die Netzwerkleistung haben. Der Azure-Netzwerkstapel verwaltet den Zustand für jede Richtung einer TCP/UDP-Verbindung in Datenstrukturen mit der Bezeichnung „Flows“. Für eine typische TCP/UDP-Verbindung werden zwei Flows erstellt – einer für die eingehende und einer für die ausgehende Richtung. 
+
+Datenübertragungen zwischen Endpunkten erfordern die Erstellung von mehreren Flows (zusätzlich zu denen für die Datenübertragung). Einige Beispiele sind Flows, die für DNS-Auflösung erstellt werden, und Flows, die für die Integritätstests beim Lastenausgleich erstellt werden. Beachten Sie auch, das für virtuelle Netzwerkgeräte (NVAs) wie Gateways, Proxys und Firewalls Flows für Verbindungen erstellt werden, die auf dem Gerät beendet wurden und von diesem stammen. 
+
+![Anzahl von Flows für die TCP-Konversation über ein Weiterleitungsgerät](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+
+## <a name="flow-limits-and-recommendations"></a>Grenzwerte und Empfehlungen für Flows
+
+Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Bei Überschreibung dieses Grenzwerts nimmt die Leistung bei weiteren Flows ab. Dies gilt bis zur absoluten Obergrenze von 1 Mio. Flows – 500.000 ein- und 500.000 ausgehend –, ab der weitere Flows verworfen werden.
+
+||VMs mit weniger als 8 CPU-Kernen|VMs mit mehr als 8 CPU-Kernen|
+|---|---|---|
+|<b>Gute Leistung</b>|100.000 Flows |250.000 Flows|
+|<b>Abgeminderte Leistung</b>|Über 100.000 Flows|Über 250.000 Flows|
+|<b>Grenzwert für Flows</b>|1 Mio. Flows|1 Mio. Flows|
+
+In [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
+
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+
+Die Raten für die Verbindungsherstellung und -beendigung können sich ebenfalls auf die Netzwerkleistung auswirken, da für die Verbindungsherstellung und -beendigung CPU-Ressourcen mit der Paketverarbeitung geteilt werden. Es wird empfohlen, Benchmarktests für Ihre Workloads mit den zu erwartenden Datenverkehrsmustern durchzuführen und die Workloads entsprechend den Leistungsanforderungen zu erweitern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Schnellere Datenbankwiederherstellung – Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Die Azure SQL-Datenbank verfügt über ein neues Feature, das eine schnelle und einheitliche Datenbankwiederherstellung, den sofortigen Transaktionsrollback und eine aggressive Protokollkürzung für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse ermöglicht.
+description: Die Azure SQL-Datenbank verfügt über ein neues Feature, das eine schnelle und einheitliche Datenbankwiederherstellung, den sofortigen Transaktionsrollback und eine aggressive Protokollkürzung für Einzel- und Pooldatenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse ermöglicht.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: ''
@@ -11,16 +11,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677815"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073465"
 ---
-# <a name="accelerated-database-recovery-preview"></a>Schnellere Datenbankwiederherstellung (Vorschauversion)
+# <a name="accelerated-database-recovery"></a>Schnellere Datenbankwiederherstellung
 
-Die **schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit aufgrund eines neuen Entwurfs des Wiederherstellungsprozesses der SQL-Datenbank-Engine erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR steht derzeit für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse zur Verfügung. Die wichtigsten Vorteile von ADR sind:
+Die **schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit aufgrund eines neuen Entwurfs des Wiederherstellungsprozesses der SQL-Datenbank-Engine erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR steht derzeit für Einzel- und Pooldatenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse zur Verfügung. Die wichtigsten Vorteile von ADR sind:
 
 - **Schnelle und einheitliche Datenbankwiederherstellung**
 
@@ -128,6 +128,3 @@ Kunden, für die Folgendes gilt, sollten die Nutzung der schnelleren Datenbankwi
 - Kunden mit Fällen, in denen aktive Transaktionen bewirken, dass das Transaktionsprotokoll erheblich an Größe zunimmt  
 - Kunden mit langen Zeiträumen, in denen die Datenbank aufgrund einer langwierigen SQL Server-Wiederherstellung (z.B. bei einem unerwarteten SQL Server-Neustart oder einem manuellen Transaktionsrollback) nicht verfügbar ist
 
-## <a name="to-enable-adr-during-this-preview-period"></a>So aktivieren Sie die schnellere Datenbankwiederherstellung während dieses Vorschauzeitraums
-
-Senden Sie während des Vorschauzeitraums für dieses Feature eine E-Mail an [adr@microsoft.com](mailto:adr@microsoft.com), um weitere Informationen zu erhalten und die schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR) auszuprobieren. Beziehen Sie in die E-Mail den Namen Ihres SQL-Datenbankservers ein (für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken in SQL-Datenbank sowie Datenbanken in Azure Data Warehouse). Da dies eine Previewfunktion ist, sollte es sich bei Ihrem Testserver um einen Server handeln, der nicht für die Produktion bestimmt ist.

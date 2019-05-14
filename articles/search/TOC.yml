@@ -13,7 +13,7 @@
       items:
         - name: Laden und Abfragen von Indizes
           href: search-get-started-portal.md
-        - name: Erweitern mit KI (Kognitive Suche)
+        - name: Erweitern um KI (Cognitive Search)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       items:
@@ -33,7 +33,7 @@
       href: search-indexer-tutorial.md
     - name: Indizieren von Azure-JSON-Blobs
       href: search-semi-structured-data.md
-    - name: Erweitern mit KI (Kognitive Suche)
+    - name: Erweitern um KI (Cognitive Search)
       items:
         - name: REST
           href: cognitive-search-tutorial-blob.md

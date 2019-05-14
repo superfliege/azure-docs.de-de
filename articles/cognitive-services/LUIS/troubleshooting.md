@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894456"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072766"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -240,7 +240,7 @@ Das erste Problem besteht in der Feststellung, ob das Problem mit LUIS zusammenh
 #### <a name="resolve-issue-in-luis"></a>Beheben des Problems in LUIS
 Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstarife](luis-how-to-azure-subscription.md#change-pricing-tier) ändern müssen. 
+* `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstebenen](luis-how-to-azure-subscription.md#change-pricing-tier) ändern müssen. 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Beheben des Problems in Azure Bot Service
 
@@ -282,27 +282,19 @@ Verwenden Sie das LUIS-Beispiel für Regionsssuche ([find-region](https://github
 
 Ja, Sie können die LUIS-[Container](luis-container-howto.md) für diese Szenarien verwenden, wenn Sie über die erforderliche Konnektivität zum Messen des Verbrauchs verfügen. 
 
-### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Bei der Build 2018-Konferenz wurde ein Language Understanding-Feature oder eine Language Understanding-Demo erwähnt, aber ich erinnere mich nicht mehr an den Namen. Um welche Features oder Demos handelte es sich?
+## <a name="migrating-to-the-next-version"></a>Migrieren zur nächsten Version
 
-Die folgenden Features wurden bei der Build 2018-Konferenz veröffentlicht:
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Wie migriere ich zur API-Version 3 (Vorschau)? 
 
-|NAME|Inhalt|
-|--|--|
-|Verbesserungen|Entitäten für [reguläre Ausdrücke](luis-concept-data-extraction.md##regular-expression-entity-data) und [Schlüsselbegriffe](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)
-|Muster|[Musterkonzept](luis-concept-patterns.md), [Tutorial](luis-tutorial-pattern.md), [Vorgehensweise](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md)-Entitätskonzept einschließlich [expliziter Listen](luis-concept-patterns.md#explicit-lists) für Ausnahmen<br>[Rollenkonzept](luis-concept-roles.md)|
-|Integrationen|Integration der [Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis) in die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)<br>Integration der Sprachoptimierung in Verbindung mit dem [Speech SDK](https://aka.ms/SpeechSDK) in [Speech](https://docs.microsoft.com/azure/cognitive-services/speech)|
-|Dispatch-Tool|Das [Dispatch-Befehlszeilentool](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) ist Teil der [Bot Builder-Tools](https://github.com/Microsoft/botbuilder-tools) und dient dazu, mehrere LUIS- und QnA Maker-Apps in einer einzelnen LUIS-App zu vereinen. Dadurch kann die Absichtserkennung eines Bots verbessert werden.
+Siehe die Anleitung zur [Migration von API-Version 2 zu API-Version 3 für LUIS-Apps](luis-migration-api-v3.md).
 
-Zusätzliche [API-Erstellungsrouten](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) wurden hinzugefügt.
+## <a name="build-2019-conference-announcements"></a>Ankündigungen zur Build 2019-Konferenz
 
-Videos:
-* [Azure Friday bei der Build 2018: Cognitive Services – Sprache (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Build 2018 AI Show - What’s New with Language Understanding Service (Build 2018 AI Show: Neuerungen bei Language Understanding Service (LUIS))](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Build 2018 Session – Bot Intelligence, Speech Capabilities, and NLU Best Practices (Build 2018 Session – Bot-Intelligence, Sprachfunktionen und bewährte Methoden für NLU)](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - LUIS Updates (Build 2018: Neue LUIS-Features)](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+Die folgenden Features wurden bei der Build 2019-Konferenz veröffentlicht:
 
-Projekte:
-* Demo zum [Contoso Cafe-Bot](https://github.com/botbuilderbuild2018/build2018demo) – Quellcode auf GitHub
+* [Migrationsanleitung für die Vorschauversion der V3-API](luis-migration-api-v3.md)
+* [Verbessertes Analytics-Dashboard](luis-how-to-use-dashboard.md)
+* [Verbesserte vordefinierte Domänen](luis-reference-prebuilt-domains.md) funktionieren mit V2- und V3-APIs
 
 ## <a name="next-steps"></a>Nächste Schritte
 

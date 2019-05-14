@@ -15,63 +15,106 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5184b9980dd9f83764950445c10e8bdfea6d71a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105589"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203946"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
-Die *Event Hubs Dedicated*-Kapazität bietet Bereitstellungen mit einem Mandanten für Kunden mit äußerst anspruchsvollen Anforderungen. In vollem Umfang kann Azure Event Hubs über zwei Millionen Eingangsereignisse pro Sekunde bzw. bis zu 2 GB an Telemetriedaten pro Sekunde mit vollständig dauerhafter Speicherung und einer Wartezeit von unter einer Sekunde empfangen. Dies ermöglicht auch integrierte Lösungen, indem auf demselben System eine Echtzeit- und Batchverarbeitung erfolgt. Da [Event Hubs Capture](event-hubs-capture-overview.md) im Angebot enthalten ist,können Sie die Komplexität Ihrer Lösung mit einem einzelnen Datenstrom verringern, der echtzeit- und batchbasierte Pipelines unterstützt.
+*Event Hubs-Cluster* bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Einzelmandantangebot verfügt über ein garantiertes 99,99 %-SLA und ist nur in unserem Dedicated-Tarif verfügbar. Ein Event Hubs-Cluster kann Millionen eingehender Ereignisse pro Sekunde mit garantierter Kapazität und Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb des dedizierten Clusters erstellt werden, bieten alle Funktionen des Standardangebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Enthalten ist ferner die beliebte [Event Hubs Capture](event-hubs-capture-overview.md)-Funktion ohne zusätzliche Kosten, die es Ihnen ermöglicht, Datenströme zu Batches zusammenzufassen und in Azure Storage oder Azure Data Lake zu protokollieren. 
 
-Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von Event Hubs. Für das Event Hubs Dedicated-Angebot gilt im Gegensatz zu den nutzungsbasierten Preisen für die meisten Standard-Funktionen ein fester Monatspreis. Der Dedicated-Tarif umfasst die Funktionen des Standard-Tarifs, jedoch mit Kapazität auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
+Cluster werden in Form von **Kapazitätseinheiten (Capacity Units, CUs)** bereitgestellt und abgerechnet, einem vorab zugewiesenen Maß an CPU- und Arbeitsspeicherressourcen. Sie können für jeden Cluster 1, 2, 4, 8, 12, 16 oder 20 CUs erwerben. Wie viele eingehende Daten Sie pro CU erfassen und streamen können, hängt von einer Vielzahl verschiedener Faktoren ab, wie z. B. der Anzahl von Producern und Consumern, Form der Nutzlast, Ausgangsrate (Weitere Informationen finden Sie weiter unten in den Benchmarkergebnissen). 
+
+> [!NOTE]
+> Alle Event Hubs-Cluster sind standardmäßig Kafka-aktiviert und unterstützen Kafka-Endpunkte, die von Ihren vorhandenen Kafka-basierten Anwendungen verwendet werden können. Wenn Kafka auf Ihrem Cluster aktiviert ist, hat dies keine Auswirkungen auf Ihre nicht Kafka-basierten Anwendungsfälle. Es gibt weder eine Option noch die Notwendigkeit, Kafka in einem Cluster zu deaktivieren.
+
+## <a name="why-dedicated"></a>Warum dediziert?
+
+Dedizierte Event Hubs bieten drei bestechende Vorteile für Kunden, die Kapazitäten auf Unternehmensniveau benötigen:
+
+#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Ein Einzelmandant garantiert Kapazität für bessere Leistung
+
+Ein dedizierter Cluster garantiert Kapazität in vollem Umfang und kann im Rahmen von bis zu Gigabytes eingehender Streamingdaten mit vollständig dauerhaftem Speicher und Wartezeiten von unter einer Sekunde erfassen, um jegliche Spitze im Datenverkehr zu verarbeiten. 
+
+#### <a name="inclusive-and-exclusive-access-to-features"></a>Inklusiver und exklusiver Zugriff auf Funktionen 
+Das dedizierte Angebot umfasst Funktionen wie Capture ohne zusätzliche Kosten sowie exklusiven Zugriff auf bevorstehende Funktionen wie BYOK (Bring Your Own Key). Der Dienst verwaltet auch den Lastenausgleich, BS-Updates, Sicherheitspatches und Partitionierung für den Kunden, damit Sie weniger Zeit auf die Wartung der Infrastruktur verwenden müssen und mehr Zeit zum Erstellen von clientseitigen Features haben.  
+
+#### <a name="cost-savings"></a>Kostenersparnis
+Bei hohen Eingangsvolumen (> 100 TUs) kostet ein Cluster bedeutend weniger pro Stunde als der Kauf einer vergleichbaren Menge von Durchsatzeinheiten (TUs) im Standard-Tarifangebot.
+
+
+## <a name="event-hubs-dedicated-quotas-and-limits"></a>Kontingente und Limits von Event Hubs Dedicated
+
+Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Minimum von vier Stunden Nutzung in Rechnung gestellt. Der Dedicated-Tarif umfasst die Funktionen des Standard-Tarifs, jedoch mit Kapazitäten und Limits auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
 
 | Feature | Standard | Dediziert |
 | --- |:---:|:---:|
+| Bandbreite | 20 TUs (bis zu 40 TUs) | 20 CUs |
+| Namespaces |  1 | 50 pro CU |
+| Event Hubs |  10 | Keine Begrenzung |
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
-| Durchsatzeinheit (1 MB/s eingehend, 2 MB/s ausgehend) | Bezahlung pro Stunde | Enthalten |
-| Nachrichtengröße | 1 MB | 1 MB |
-| Herausgeberrichtlinien | Ja | Ja |   
-| Verbrauchergruppen | 20 | 20 |
-| Nachrichtenwiederholung | Ja | Ja |
-| Maximale Durchsatzeinheiten | 20 (flexibel bis 100)   | 1 Kapazitätseinheit (Capacity Unit, CU) ≈ 50 |
+| Nachrichtengröße | 1 Million Bytes | 1 Million Bytes |
+| Partitionen | 40 pro Namespace | 2000 pro CU, 1024 pro Event Hub |
+| Verbrauchergruppen | 20 pro Event Hub | Kein Limit pro CU, 1000 pro Event Hub |
 | Brokerverbindungen | 1.000 enthalten | 100.000 enthalten |
-| Zusätzliche Brokerverbindungen | Ja | Ja |
-| Nachrichtenaufbewahrung | 1 Tag enthalten | Bis zu 7 Tage enthalten |
+| Nachrichtenaufbewahrung | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
 | Erfassen | Bezahlung pro Stunde | Enthalten |
-
-## <a name="benefits-of-event-hubs-dedicated-capacity"></a>Vorteile der Event Hubs Dedicated-Kapazität
-
-Die Verwendung der Event Hubs Dedicated-Kapazität bietet die folgenden Vorteile:
-
-* Hosting eines einzelnen Mandanten ohne Störungen durch andere Mandanten
-* Jedes Mal wiederholbare Leistung
-* Garantierte Kapazität, die Ihre Burstanforderungen erfüllt
-* Enthält die [Capture](event-hubs-capture-overview.md)-Funktion von Event Hubs für die Bereitstellung der Integration mit Microbatch und langfristiger Aufbewahrung
-* Keinerlei Wartung: Der Dienst verwaltet den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und Partitionierung.
-* Fester Stundensatz
-* Nachrichtenbeibehaltung von bis zu sieben Tagen ohne zusätzliche Gebühren
-
-Mit Event Hubs Dedicated entfallen auch einige der Durchsatzeinschränkungen des Standard-Angebots. Durchsatzeinheiten im Standard-Tarif berechtigen Sie zu 1.000 Ereignissen pro Sekunde oder 1 MB pro Sekunde an eingehendem Datenverkehr pro TU und die zweifache Menge an ausgehendem Datenverkehr. Das Dedicated-Staffelungsangebot weist keine Einschränkungen der Anzahl von ein- und ausgehenden Ereignissen auf. Diese Grenzwerte werden nur durch die Verarbeitungskapazität der erworbenen Event Hubs geregelt.
-
-Diese reservierte, dedizierte Umgebung bietet andere für diese Ebene spezifische Funktionen:
-
-* Steuern der Anzahl von Namespaces im Cluster
-* Angeben von Durchsatzlimits für die einzelnen Namespaces
-* Konfigurieren der Anzahl von Event Hubs unter jedem Namespace
-* Festlegen des Limits für die Anzahl von Partitionen
-
-Dieser Dienst ist auf große Telemetriebenutzer ausgerichtet und steht Kunden mit einem Enterprise Agreement zur Verfügung.
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
-Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. Wenden Sie sich für das Onboarding für diese SKU an den [Abrechnungssupport](https://ms.portal.azure.com/#create/Microsoft.Support) oder Ihren Ansprechpartner bei Microsoft.
+Die Self-Service-Erfahrung für das Onboarding bei Dedicated befindet sich in der Vorschauphase, in der Sie 1 CU-Cluster in den folgenden Regionen erstellen können:
+  - Kanada, Mitte
+  - Europa, Westen
+  - USA, Mitte
+  - USA, Osten
+  - USA (Ost 2)
+  - USA, Norden-Mitte
+  - USA, Westen
+
+Wir fügen aktiv neue Regionen hinzu, aber in der Zwischenzeit übermitteln Sie bitte, wenn Ihre bevorzugte Region nicht in der Liste enthalten ist, eine Supportanfrage an das [Event Hubs-Team](https://ms.portal.azure.com/#create/Microsoft.Support) unter *Technical (Technisch) > Event Hubs > Quota (Kontingent) > Request for Dedicated SKU (Anforderung einer Dedicated-SKU)*. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
+
+## <a name="faqs"></a>Häufig gestellte Fragen
+
+#### <a name="what-can-i-achieve-with-a-cluster"></a>Was kann ich mit einem Cluster erreichen?
+
+Welche Datenmengen Sie für einen Event Hubs-Cluster erfassen und streamen können, hängt von verschiedenen Faktoren ab, z.B. von den Producern, den Consumern, der Rate für die Erfassung und Verarbeitung und vielem mehr. 
+
+In der folgenden Tabelle sind die Ergebnisse aufgeführt, die bei unseren Vergleichstests erreicht wurden:
+
+| Form der Nutzlast | Empfänger | Eingangsbandbreite| Eingangsnachrichten | Ausgangsbandbreite | Ausgangsnachrichten | TUs gesamt | TUs pro CU |
+| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
+| Batches von 100 x 1 KB | 2 | 400 MB/s | 400.000 Nachrichten/s | 800 MB/s | 800.000 Nachrichten/s | 400 TUs | 100 TUs | 
+| Batches von 10 x 10 KB | 2 | 666 MB/s | 666.000 Nachrichten/s | 1,33 GB/s | 133.000 Nachrichten/s | 666 TUs | 166 TUs |
+| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34.000 Nachrichten/s | 1,05 GB/s | 34.000 Nachrichten/s | 1.000 TUs | 250 TUs |
+
+Bei den Tests wurden folgende Kriterien verwendet:
+
+- Es wurde ein Event Hubs-Cluster des Dedicated-Tarif mit vier Kapazitätseinheiten (Capacity Units, CUs) verwendet. 
+- Der für die Erfassung verwendete Event Hub umfasste 200 Partitionen. 
+- Die erfassten und von allen Partitionen eingehenden Daten wurden von zwei Empfängeranwendungen empfangen.
+
+#### <a name="how-do-i-create-a-cluster-larger-than-1-cu"></a>Wie erstelle ich einen Cluster, der größer als 1 CU ist?
+
+In der Vorschauversion der Self-Service-Erfahrung können Sie nach dem Erstellen Ihres Clusters anfordern, diesen zentral hochzuskalieren. Nach dem Erstellen eines Clusters mit 1 CU wenden Sie sich an den Event Hubs-Support, indem Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) unter *Technical (Technisch) > Quota (Kontingent) > Request to Scale Up or Scale Down Dedicated Cluster (Anforderung zum zentralen Hoch- oder Herunterskalieren eines Dedicated-Clusters)* ausfüllen. In unserem GA-Release werden Sie Ihren Cluster direkt über das Portal zentral hochskalieren können. 
+
+#### <a name="can-i-scale-down-my-cluster"></a>Kann ich meinen Cluster zentral herunterskalieren?
+
+Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rechnung gestellt. In der Vorschauversion der Self-Service-Erfahrung können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) an das Event Hubs-Team übermitteln unter *Technical (Technisch) > Quota (Kontingent) > Request to Scale Up or Scale Down Dedicated Cluster (Anforderung zum zentralen Hoch- oder Herunterskalieren eines Dedicated-Clusters)*. Es kann bis zu 7 Tage dauern, bis die Anfrage zum zentralen Herunterskalieren abgeschlossen wird. 
+
+#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Wie wird die Geo-Notfallwiederherstellung mit meinem Cluster funktionieren?
+
+Sie können einen Namespace unter einem Cluster des Dedicated-Tarifs geografisch mit einem anderen Namespace unter einem Cluster des Dedicated-Tarifs koppeln. Wir empfehlen nicht, einen Namespace eines Dedicated-Tarifs mit einem Namespace in unserem Standardangebot zu koppeln, da das Durchsatzlimit inkompatibel ist und somit zu Fehlern führen wird. 
+
+
+#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Kann ich meine Standard-Namespaces migrieren, damit sie zu einem Cluster des Dedicated-Tarifs gehören?
+Zurzeit unterstützen wird keinen automatisierten Migrationsprozess für die Migration Ihrer Event Hubs-Daten von einem Standard-Namespace zu einem im Dedicated-Tarif. Für eine Migration zu einem Cluster des Dedicated-Tarifs empfehlen wir, alle noch in Ihren Event-Hubs des Standard-Tarifs verbliebenen Nachrichten auszugleichen und die Verbindungsendpunkte durch die Ihres Dedicated-Namespace zu ersetzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenden Sie sich an Ihren Microsoft-Vertriebsmitarbeiter oder den Microsoft-Support, um weitere Details zur Dedicated Event Hubs-Kapazität zu erhalten. Weitere Informationen zu Event Hubs-Tarifen finden Sie auch unter den folgenden Links:
 
 - [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) Wenden Sie sich an Ihren Microsoft-Vertriebsmitarbeiter oder den Microsoft-Support, um weitere Details zur Dedicated Event Hubs-Kapazität zu erhalten.
-- Unter [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md) finden Sie Preisinformationen und Antworten auf einige häufig gestellte Fragen zu Event Hubs. 
+- Unter [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md) finden Sie Preisinformationen und Antworten auf einige häufig gestellte Fragen zu Event Hubs.

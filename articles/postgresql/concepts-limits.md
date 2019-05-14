@@ -1,19 +1,19 @@
 ---
-title: Einschränkungen in Azure-Datenbank für PostgreSQL
-description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for PostgreSQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen.
+title: Einschränkungen in Azure Database for PostgreSQL – Einzelserver
+description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for PostgreSQL – Einzelserver, z. B. die Anzahl der Verbindungs- und Speicher-Engine-Optionen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 1/22/2019
-ms.openlocfilehash: 843107b8d251c2073ba9e02beacb16ab7615eca6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 5/6/2019
+ms.openlocfilehash: 01133662ca3a7364efd362f6db99d33243b2ad4b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470731"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073542"
 ---
-# <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
+# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Einschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
 
 ## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen

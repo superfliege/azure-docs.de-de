@@ -59,6 +59,8 @@
     - name: Arten und Größen von virtuellen Computern
       href: sizes.md
       items:
+        - name: Virtuelle Computer der 2. Generation
+          href: generation-2.md
         - name: Allgemeiner Zweck
           href: sizes-general.md
           displayName: Dsv3 Dv3 DSv2 Dv2 Av2

@@ -75,6 +75,7 @@ sections:
           - html: '(Vorschau) Neue Transact-SQL-Sprachfunktionen, z.B. <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Aggregatfunktion APPROX_COUNT_DISTINCT</a> und <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Massenimport aus Azure Blob Storage</a>.'
           - html: '(Vorschau) Neue Vorgänge zum <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">Erstellen</a> und Neuerstellen des clustered columnstore-Index in SQL Server 2019 Online.'
           - html: '(Vorschau) Neue <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Machine Learning Services (mit R) in Azure SQL-Datenbank</a>'
+          - html: '(Vorschauversion) Die neue <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">serverlose Computeebene</a> bietet automatische Computeskalierung und stellt eine Übersicht der genutzten Computekapazität pro Sekunde bereit.'
   - title: Fünf-Minuten-Schnellstarts
     items:
       - type: paragraph

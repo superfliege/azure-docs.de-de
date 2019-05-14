@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3e813b8a1709675d0d870d64df83428ab82e25b3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b9e0dfb88c979618ce4cc5ed56e372cb0f65608
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024298"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472722"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -89,7 +89,7 @@ Für ausgehende Daten fallen Gebühren an, wenn sich die Dienste in verschiedene
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. Um KI erweiterte Indizierung unter Verwendung von Cognitive Services
 
-Für die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) sollten Sie die Anfügung einer abrechenbaren Cognitive Services-Ressource zum S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung einplanen. Mit dem Anfügen von Cognitive Services sind keine „festen Kosten“ verbunden. Sie bezahlen nur für die benötigte Verarbeitung.
+Für die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) sollten Sie die Anfügung einer abrechenbaren Cognitive Services-Ressource in derselben Region wie Azure Search zum S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung einplanen. Mit dem Anfügen von Cognitive Services sind keine „festen Kosten“ verbunden. Sie bezahlen nur für die benötigte Verarbeitung.
 
 Für die Bildextraktion während der Dokumententschlüsselung fällt eine Azure Search-Gebühr an, die basierend auf der Anzahl der aus den Dokumenten extrahierten Bildern abgerechnet wird. Das Extrahieren von Text ist derzeit kostenlos. 
 

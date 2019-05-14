@@ -160,7 +160,7 @@ Nicht lineare Werbeeinblendungen werden ebenfalls in einem `<Creative>`-Element 
     </Creative>
 ```
 
-Das <**NonLinearAds**>-Element kann ein oder mehrere <**NonLinear**>-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das <**NonLinear**>-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Die Ressource kann vom Typ <**StaticResource**>, <**IFrameResource**> oder <**HTMLResource**> sein. <**StaticResource**&gt; beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
+Das <**NonLinearAds**>-Element kann ein oder mehrere <**NonLinear**>-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das <**NonLinear**>-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Die Ressource kann vom Typ <**StaticResource**>, <**IFrameResource**> oder <**HTMLResource**> sein. <**StaticResource**> beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
 
 Image/gif, image/jpeg, image/png: Die Ressource wird in einem HTML-<**img**>-Tag angezeigt.
 

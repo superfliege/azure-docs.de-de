@@ -1,19 +1,19 @@
 ---
-title: Serverprotokolle in Azure Database for PostgreSQL
-description: Dieser Artikel beschreibt, wie Azure Database for PostgreSQL Protokolle für Abfragen und Fehler generiert und wie die Protokollaufbewahrung konfiguriert wird.
+title: Serverprotokolle in Azure Database for PostgreSQL (Einzelserver)
+description: Dieser Artikel beschreibt, wie Azure Database for PostgreSQL (Einzelserver) Protokolle für Abfragen und Fehler generiert und wie die Protokollaufbewahrung konfiguriert wird.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.date: 5/6/2019
+ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195097"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067392"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure Database for PostgreSQL 
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Serverprotokolle in Azure Database for PostgreSQL (Einzelserver)
 Azure Database for PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
 
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung 
@@ -45,12 +45,12 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | ResourceGroup | Name der Ressourcengruppe, zu der der Server gehört |
 | ResourceProvider | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
-| ResourceId | Ressourcen-URI |
-| Ressource | Name des Servers |
+| resourceId | Ressourcen-URI |
+| Resource | Name des Servers |
 | Category (Kategorie) | `PostgreSQLLogs` |
-| NameVorgang | `LogEvent` |
+| OperationName | `LogEvent` |
 | errorLevel | Beispiel für die Protokollierungsstufe: LOG, ERROR, NOTICE |
-| Message | Primäre Protokollmeldung | 
+| `Message` | Primäre Protokollmeldung | 
 | Domäne | Serverversion, Beispiel: postgres-10 |
 | Detail | Sekundäre Protokollmeldung (falls zutreffend) |
 | ColumnName | Name der Spalte (falls zutreffend) |

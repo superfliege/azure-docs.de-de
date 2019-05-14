@@ -2,18 +2,19 @@
 title: Hosten von statischen Websites in Azure Storage
 description: Das Hosten von statischen Websites in Azure Storage bietet eine kostengünstige, skalierbare Lösung zum Hosten von modernen Webanwendungen.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
+ms.date: 04/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: cd1fa71cb2a10c7e61f76bdd224ba6d0f039346f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472768"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148478"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
@@ -52,16 +53,21 @@ Der ausgewählte Standarddateiname wird im Stamm und in sämtlichen Unterverzeic
 
 ## <a name="cdn-and-ssl-support"></a>CDN- und SSL-Unterstützung
 
-Informationen dazu, wie Sie Ihre statischen Websitedateien über HTTPS verfügbar machen, finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Im Rahmen dieses Prozesses müssen Sie *das CDN auf den Webendpunkt verweisen*, nicht auf den Blobendpunkt. Möglicherweise müssen Sie einige Minuten warten, bevor Ihre Inhalte angezeigt werden, da die CDN-Konfiguration nicht sofort ausgeführt wird.
+Informationen dazu, wie Sie Ihre statischen Websitedateien über Ihre benutzerdefinierte Domäne und HTTPS verfügbar machen, finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Im Rahmen dieses Prozesses müssen Sie *das CDN auf den Webendpunkt verweisen*, nicht auf den Blobendpunkt. Möglicherweise müssen Sie einige Minuten warten, bevor Ihre Inhalte angezeigt werden, da die CDN-Konfiguration nicht sofort ausgeführt wird.
 
 Wenn Sie Ihre statische Website aktualisieren, stellen Sie sicher, dass Sie zwischengespeicherte Inhalte auf den CDN-Edge-Servern löschen, indem Sie den CDN-Endpunkt bereinigen. Weitere Informationen finden Sie unter [Löschen eines Azure CDN-Endpunkts](../../cdn/cdn-purge-endpoint.md).
+
+> [!NOTE]
+> HTTPS wird über den Webendpunkt des Kontos nativ unterstützt. Die Verwendung von benutzerdefinierten Domänen über HTTPS erfordert derzeit die Verwendung von Azure CDN. 
+>
+> Öffentlicher Webendpunkt für das Konto über HTTPS: `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
 
 ## <a name="custom-domain-names"></a>Benutzerdefinierte Domänennamen
 
 Sie können [einen benutzerdefinierten Domänennamen für Ihr Azure Storage-Konto konfigurieren](storage-custom-domain-name.md), um Ihre statische Website über eine benutzerdefinierte Domäne verfügbar zu machen. Einen detaillierten Einblick in das Hosten Ihrer Domäne in Azure finden Sie unter [Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Preise
-Für das Hosten von statischen Websites werden keine zusätzlichen Kosten berechnet. Weitere Informationen zu Preisen für Azure Blob Storage finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Das Aktivieren des Hostings statischer Websites ist kostenlos. Den Kunden werden die Kosten für den genutzten Blobspeicher und die ausgeführten Vorgänge in Rechnung gestellt. Weitere Informationen zu Preisen für Azure Blob Storage finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Schnellstart
 
@@ -159,7 +165,10 @@ Nein. Das Hosten von statischen Websites ist nur für Standardspeicherkonten vom
 Ja. Für den neuen Webendpunkt werden die VNET- und Firewallregeln beachtet, die für das Speicherkonto konfiguriert werden.
 
 **Muss für den Webendpunkt die Groß-/Kleinschreibung beachtet werden?**  
-Ja, für den Webendpunkt muss ebenso wie für den Blobendpunkt zwischen Groß-/Kleinschreibung unterschieden werden. 
+Ja, für den Webendpunkt muss ebenso wie für den Blobendpunkt zwischen Groß-/Kleinschreibung unterschieden werden.
+
+**Kann auf den Webendpunkt über HTTP und HTTPS zugegriffen werden?**
+Ja, auf den Webendpunkt kann über HTTP und HTTPS zugegriffen werden. Wenn das Speicherkonto jedoch für die sichere Übertragung über HTTPS konfiguriert ist, müssen Benutzer den HTTPS-Endpunkt verwenden. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)

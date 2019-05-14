@@ -1,19 +1,19 @@
 ---
-title: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs | Microsoft-Dokumentation
+title: Tutorial zum Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Daten über REST-APIs in Ihren Azure Data Box-Blobspeicher kopieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 2a4c4c7431752ade60161af84b4cc15f010af656
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995743"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508275"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -46,7 +46,7 @@ Sie können über *HTTP* oder *HTTPS* eine Verbindung mit Data Box-Blobspeicher 
 - *HTTPS* ist die sichere und empfohlene Methode zum Herstellen einer Verbindung mit Data Box-Blobspeicher.
 - *HTTP* wird zum Herstellen von Verbindungen über vertrauenswürdige Netzwerke verwendet.
 
-Die Schritte zum Herstellen der Verbindung mit Data Box-Blobspeicher über *HTTP* und *HTTPS* sind unterschiedlich.
+Die Schritte zum Herstellen der Verbindung mit Data Box-Blobspeicher über *HTTP* und *HTTPS* sind unterschiedlich.
 
 ## <a name="connect-via-http"></a>Herstellen einer Verbindung über HTTP
 

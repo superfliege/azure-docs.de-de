@@ -4,27 +4,53 @@ description: In diesem Artikel werden grundlegende Diagnoseverfahren für Azure 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847535"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142857"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
-Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge auftreten, verwenden Sie diesen Artikel als Leitfaden für die Behandlung und Behebung von Problemen. 
+Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge auftreten, verwenden Sie diesen Artikel als Leitfaden für die Behandlung und Behebung von Problemen.
 
-## <a name="standard-diagnostic-steps"></a>Standarddiagnoseschritte 
+## <a name="run-the-iotedge-check-command"></a>Ausführen des iotedge-Befehls „check“
 
-Wenn ein Problem auftritt, können Sie durch Überprüfen der Containerprotokolle und der an das und vom Gerät übermittelten Nachrichten mehr über den Status Ihres IoT Edge-Geräts erfahren. Verwenden Sie die Befehle und Tools in diesem Abschnitt zum Sammeln von Informationen. 
+Ihr erster Schritt im Rahmen der Problembehandlung bei IoT Edge sollte die Verwendung des Befehls `check` sein, mit dem eine Reihe von Konfigurations- und Konnektivitätstests zur Behandlung allgemeiner Probleme durchgeführt werden. Der Befehl `check` ist ab [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) verfügbar.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Überprüfen Sie den Status von IoT Edge Security Manager und den zugehörigen Protokollen:
+Sie können den Befehl `check` wie folgt ausführen oder das Flag `--help` einbinden, um alle Optionen anzuzeigen:
+
+* Unter Linux:
+
+  ```bash
+  sudo iotedge check
+  ```
+
+* Unter Windows:
+
+  ```powershell
+  iotedge check
+  ```
+
+Die Arten der Überprüfung, die vom Tool ausgeführt werden, können wie folgt klassifiziert werden:
+
+* Konfigurationsüberprüfungen: Untersucht Details, mit denen verhindert werden kann, dass Edge-Geräte eine Verbindung mit der Cloud herstellen, und mit denen ferner Probleme mit *config.yaml* und mit dem Containermodul verhindert werden können.
+* Verbindungsüberprüfungen: Überprüft, ob IoT Edge Runtime Zugriff auf Ports am Hostgerät hat, und ob alle IoT Edge-Komponenten eine Verbindung mit dem IoT Hub herstellen können.
+* Prüflisten für die Produktionsbereitschaft: Sucht nach empfohlenen Best Practices für die Produktion, wie etwa nach Zertifikaten der Zertifizierungsstelle (Certificate Authority, CA) für Gerätestatus und nach der Konfiguration der Modulprotokolldatei.
+
+Eine umfassende Liste der Diagnoseprüfungen finden Sie unter [Built-in troubleshooting functionality (Integrierte Problembehandlungsfunktion)](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+
+## <a name="standard-diagnostic-steps"></a>Standarddiagnoseschritte
+
+Wenn ein Problem auftritt, können Sie durch Überprüfen der Containerprotokolle und der an das und vom Gerät übermittelten Nachrichten mehr über den Status Ihres IoT Edge-Geräts erfahren. Verwenden Sie die Befehle und Tools in diesem Abschnitt zum Sammeln von Informationen.
+
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Überprüfen des Status von IoT Edge Security Manager und den zugehörigen Protokollen
 
 Unter Linux:
 - Zeigen Sie den Status von IoT Edge Security Manager wie folgt an:
@@ -72,14 +98,7 @@ Unter Windows:
 - Zeigen Sie die Protokolle von IoT Edge Security Manager wie folgt an:
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
- 
-   Get-WinEvent -ea SilentlyContinue `
-   -FilterHashtable @{ProviderName= "iotedged";
-     LogName = "application"; StartTime = [datetime]::Today} |
-   select TimeCreated, Message |
-   sort-object @{Expression="TimeCreated";Descending=$false} |
-   format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Überprüfen der YAML-Konfigurationsdatei, wenn der IoT Edge Security Manager nicht ausgeführt wird
@@ -332,7 +351,7 @@ Azure IoT Edge ermöglicht die Kommunikation eines lokalen Servers mit der Azure
 
 IoT Edge bietet zwar erweiterte Konfigurationsmöglichkeiten zum Schutz der Azure IoT Edge-Runtime und der bereitgestellten Module, hängt aber dennoch von der zugrunde liegenden Computer- und Netzwerkkonfiguration ab. Für eine sichere Kommunikation zwischen Edge und Cloud müssen daher unbedingt geeignete Netzwerk- und Firewallregeln vorhanden sein. Beim Konfigurieren von Firewallregeln für die zugrunde liegenden Server, auf denen die Azure IoT Edge-Runtime gehostet wird, können Sie sich an folgender Tabelle orientieren:
 
-|Protokoll|Port|Eingehend|Ausgehend|Anleitungen|
+|Protocol|Port|Eingehend|Ausgehend|Anleitungen|
 |--|--|--|--|--|
 |MQTT|8883|BLOCKIERT (Standard)|BLOCKIERT (Standard)|<ul> <li>Konfigurieren Sie eingehende Verbindungen als „Offen“, wenn Sie MQTT als Kommunikationsprotokoll verwenden.<li>1883 für MQTT wird von IoT Edge nicht unterstützt. <li>Eingehende Verbindungen sollten blockiert werden.</ul>|
 |AMQP|5671|BLOCKIERT (Standard)|OFFEN (Standard)|<ul> <li>Standardkommunikationsprotokoll für IoT Edge. <li> Muss als „Offen“ konfiguriert werden, wenn Azure IoT Edge nicht für andere unterstützte Protokolle konfiguriert oder AMQP das gewünschte Kommunikationsprotokoll ist.<li>5672 für AMQP wird von IoT Edge nicht unterstützt.<li>Blockieren Sie diesen Port, wenn Azure IoT Edge ein anderes von IoT Hub unterstütztes Protokoll verwendet.<li>Eingehende Verbindungen sollten blockiert werden.</ul></ul>|
@@ -361,7 +380,7 @@ In diesem Beispiel wird der DNS-Server auf einen öffentlich zugänglichen DNS-D
 
 Fügen Sie `daemon.json` im richtigen Pfad für Ihre Plattform ein: 
 
-| Plattform | Standort |
+| Plattform | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows-Host mit Windows-Containern | `C:\ProgramData\iotedge-moby-data\config` |

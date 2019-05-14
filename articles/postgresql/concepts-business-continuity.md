@@ -1,19 +1,19 @@
 ---
-title: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
+title: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 description: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 5/6/2019
+ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698228"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068927"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
 Diese Übersicht beschreibt die Funktionen, die Azure Database for PostgreSQL für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
 

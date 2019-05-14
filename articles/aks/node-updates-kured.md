@@ -1,33 +1,35 @@
 ---
-title: Aktualisieren und Neustarten von Knoten mit kured in Azure Kubernetes Service (AKS)
-description: Informationen zum Aktualisieren von Knoten und zum automatischen Neustarten mit kured in Azure Kubernetes Service (AKS)
+title: Aktualisieren und Neustarten von Linux-Knoten mit kured in Azure Kubernetes Service (AKS)
+description: Erfahren Sie, wie Linux-Knoten mit kured in Azure Kubernetes Service (AKS) aktualisiert und automatisch neu gestartet werden
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b426399f73375618a2084eff82abba5d4934b914
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243328"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074210"
 ---
-# <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Knoten in Azure Kubernetes Service (AKS)
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)
 
-Um Ihre Cluster zu schützen, werden Sicherheitsupdates automatisch auf Knoten in AKS angewendet. Diese Updates enthalten Sicherheitsfixes für das Betriebssystem oder Kernelupdates. Einige dieser Updates erfordern den Neustart eines Knotens, um den Vorgang abzuschließen. AKS startet Knoten nicht automatisch neu, um das Update abzuschließen.
+Sicherheitsupdates werden automatisch auf Linux-Knoten in AKS angewendet, um Ihre Cluster zu schützen. Diese Updates enthalten Sicherheitsfixes für das Betriebssystem oder Kernelupdates. Einige dieser Updates erfordern den Neustart eines Knotens, um den Vorgang abzuschließen. AKS startet diese Linux-Knoten nicht automatisch neu, um das Update abzuschließen.
 
-In diesem Artikel erfahren Sie, wie Sie mit dem Open Source [KUbernetes REboot Daemon (kured)][kured] nach Knoten suchen können, die einen Neustart erfordern, und dann automatisch die Neuplanung der ausgeführten Pods und den Knotenneustart verarbeiten.
+Der Prozess, Windows Server-Knoten (derzeit in der Vorschau in AKS) aktuell zu halten, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
+
+In diesem Artikel erfahren Sie, wie Sie mit dem Open-Source-Daemon [kured (KUbernetes REboot Daemon)][kured] nach Linux-Knoten suchen können, die einen Neustart erfordern, und dann automatisch die Neuplanung der ausgeführten Pods und den Knotenneustart verarbeiten.
 
 > [!NOTE]
-> `Kured` ist ein Open Source-Projekt von Weaveworks. Die Unterstützung dieses Projekts in AKS wird bestmöglich umgesetzt. Zusätzliche Unterstützung erhalten Sie im Slack-Kanal der #weave-Community.
+> `Kured` ist ein Open Source-Projekt von Weaveworks. Die Unterstützung dieses Projekts in AKS wird bestmöglich umgesetzt. Zusätzliche Unterstützung erhalten Sie im Slack-Channel namens #weave-community.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.59 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Grundlegendes zum AKS-Knotenupdate
 
@@ -35,9 +37,9 @@ In einem AKS-Cluster werden die Kubernetes-Knoten als virtuelle Azure-Computer (
 
 ![Aktualisieren und Neustarten von AKS-Knoten mit kured](media/node-updates-kured/node-reboot-process.png)
 
-Einige Sicherheitsupdates, z.B. Kernelupdates, erfordern einen Knotenneustart, damit der Vorgang abgeschlossen wird. Ein Knoten, für den ein Neustart erforderlich ist, erstellt eine Datei namens */var/run/reboot-required*. Dieser Neustart erfolgt nicht automatisch.
+Einige Sicherheitsupdates, z.B. Kernelupdates, erfordern einen Knotenneustart, damit der Vorgang abgeschlossen wird. Ein Linux-Knoten, für den ein Neustart erforderlich ist, erstellt eine Datei namens */var/run/reboot-required*. Dieser Neustart erfolgt nicht automatisch.
 
-Sie können eigene Workflows und Prozesse für Neustarts von Knoten nutzen oder `kured` verwenden, um den Prozess zu orchestrieren. Mit `kured` wird ein [DaemonSet][DaemonSet] bereitgestellt, das einen Pod auf jedem Knoten im Cluster ausgeführt. Diese Pods im DaemonSet suchen nach dem Vorhandensein der Datei */var/run/reboot-required* und initiieren dann einen Prozess, um die Knoten neu zu starten.
+Sie können eigene Workflows und Prozesse für Neustarts von Knoten nutzen oder `kured` verwenden, um den Prozess zu orchestrieren. Mit `kured` wird ein [DaemonSet][DaemonSet] bereitgestellt, das einen Pod auf jedem Linux-Knoten im Cluster ausführt. Diese Pods im DaemonSet suchen nach dem Vorhandensein der Datei */var/run/reboot-required* und initiieren dann einen Prozess, um die Knoten neu zu starten.
 
 ### <a name="node-upgrades"></a>Knotenupgrades
 
@@ -62,7 +64,7 @@ Sie können auch zusätzliche Parameter für `kured` konfigurieren, z.B. die Int
 
 ## <a name="update-cluster-nodes"></a>Aktualisieren von Clusterknoten
 
-In der Standardeinstellung suchen AKS-Knoten jeden Abend nach Updates. Wenn Sie nicht warten möchten, können Sie ein Update manuell ausführen, um zu überprüfen, ob `kured` ordnungsgemäß ausgeführt wird. Führen Sie zunächst die Schritte für eine [SSH-Verbindung mit einem Ihrer AKS-Knoten][aks-ssh] aus. Wenn eine SSH-Verbindung mit dem Knoten besteht, suchen Sie nach Updates, und wenden Sie sie wie folgt an:
+In der Standardeinstellung suchen Linux-Knoten in AKS jeden Abend nach Updates. Wenn Sie nicht warten möchten, können Sie ein Update manuell ausführen, um zu überprüfen, ob `kured` ordnungsgemäß ausgeführt wird. Führen Sie zunächst die Schritte für eine [SSH-Verbindung mit einem Ihrer AKS-Knoten][aks-ssh] aus. Wenn eine SSH-Verbindung mit dem Linux-Knoten besteht, suchen Sie nach Updates, und wenden Sie diese wie folgt an:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -91,7 +93,9 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde beschrieben, wie Sie mit `kured` Knoten bei einem Sicherheitsupdate automatisch neu starten können. Um ein Upgrade auf die neueste Version von Kubernetes durchzuführen, können Sie [Ihren AKS-Cluster aktualisieren][aks-upgrade].
+In diesem Artikel wurde beschrieben, wie Sie mit `kured` Linux-Knoten bei einem Sicherheitsupdate automatisch neu starten können. Um ein Upgrade auf die neueste Version von Kubernetes durchzuführen, können Sie [Ihren AKS-Cluster aktualisieren][aks-upgrade].
+
+Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
@@ -105,3 +109,4 @@ In diesem Artikel wurde beschrieben, wie Sie mit `kured` Knoten bei einem Sicher
 [DaemonSet]: concepts-clusters-workloads.md#statefulsets-and-daemonsets
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

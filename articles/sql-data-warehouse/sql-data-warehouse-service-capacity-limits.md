@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999636"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154279"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Kapazitätsgrenzen von SQL Data Warehouse
 Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Warehouse zulässig sind.
@@ -54,7 +54,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Wareho
 ## <a name="loads"></a>Lädt
 | Category (Kategorie) | BESCHREIBUNG | Maximum |
 |:--- |:--- |:--- |
-| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>PolyBase lädt nur Zeilen, die kleiner als 1 MB sind, und kann nicht in Spalten des Typs VARCHR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) laden.<br/><br/> |
+| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>PolyBase lädt Zeilen, die kleiner als 1 MB sind.<br/><br/> |
 
 ## <a name="queries"></a>Abfragen
 | Category (Kategorie) | BESCHREIBUNG | Maximum |

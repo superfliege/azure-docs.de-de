@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b979609374afbd11bde0e15ce540e8930315482f
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024585"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472478"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search 
 
@@ -60,7 +60,7 @@ Ihnen werden nur Qualifikationen in Rechnung gestellt, mit denen die Cognitive S
 
    ![Erstellen einer Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Erstellen einer Cognitive Services-Ressource")
 
-1. Wählen Sie in „Speicherort“ die gleiche Region wie Azure Search aus, um Kosten für Regionen übergreifende ausgehende Bandbreite zu vermeiden.
+1. Wählen Sie als Ort die gleiche Region wie für Azure Search aus. Dies ist aus Leistungsgründen erforderlich, sorgt aber auch dafür, dass die Gebühren für ausgehende Bandbreite in den Regionen entfallen.
 
 1. Wählen Sie in „Tarif“ **S0** aus, um die gesamte Sammlung der Cognitive Services-Features einschließlich der Seh- und Sprachfeatures zu erhalten, die die von Azure Search verwendeten vordefinierten Fertigkeiten unterstützen. 
 

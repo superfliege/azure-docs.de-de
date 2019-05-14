@@ -8,29 +8,34 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 04/19/2019
 tags: connectors
-ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ee8b164aa46c4fe2f66f27d9a41d0282c676907
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887084"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136783"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
-In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP ECC-Connector (ERP Central Component) verwenden. Der Connector funktioniert lokal sowohl in ECC- als auch in S/4 HANA-Systemen. Der SAP ECC-Connector unterstützt die Nachrichten- oder Datenintegration in SAP Netweaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
+In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP-Connector verwenden. Der Connector arbeitet mit den klassischen SAP-Releases wie R/3- und ECC-Systemen lokal zusammen. Der Connector ermöglicht auch die Integration mit den neueren HANA-basierten SAP-Systemen wie S/4 HANA, egal wo sie gehostet werden – vor Ort oder in der Cloud.
+Der SAP-Connector unterstützt die Nachrichten- oder Datenintegration in SAP Netweaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
 
-Der SAP ECC-Connector verwendet die <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP-NCo-Bibliothek (.NET-Connector)</a> und stellt diese Vorgänge oder Aktionen bereit:
+Der SAP-Connector verwendet die <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP-NCo-Bibliothek (.NET-Connector)</a> und stellt diese Vorgänge oder Aktionen bereit:
 
 - **An SAP senden:** Hiermit senden Sie IDoc-Funktionen oder rufen BAPI-Funktionen über tRFC in SAP-Systemen auf.
 - **Von SAP empfangen:** Hiermit empfangen Sie IDoc- oder BAPI-Funktionsaufrufe von SAP-Systemen über tRFC.
 - **Schemas generieren:** Hiermit generieren Sie Schemas für die SAP-Artefakte für IDoc, BAPI oder RFC.
 
+Für alle oben genannten Vorgänge unterstützt der SAP-Connector die Basisauthentifizierung über Benutzername und Kennwort. Der Anschluss unterstützt auch <a href="https://help.sap.com/doc/saphelp_nw70/7.0.31/en-US/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true">. Secure Network Communications (SNC)</a>, die für SAP Netweaver-SSO oder für zusätzliche Sicherheitsfunktionen eines externen Sicherheitsprodukts verwendet werden können. 
+
 Der SAP-Connector kann über das [lokale Datengateway](https://www.microsoft.com/download/details.aspx?id=53127) in lokale SAP-Systeme integriert werden. In Sendeszenarien, in denen beispielsweise eine Nachricht von Logic Apps an ein SAP-System gesendet werden, agiert das Datengateway als RFC-Client und leitet die von Logic Apps erhaltenen Anforderungen an SAP weiter.
 Ebenso fungiert das Datengateway in Empfangsszenarien als RFC-Server, der Anforderungen von SAP empfängt und an die Logik-App weiterleitet. 
 
 In diesem Artikel wird das Erstellen von in SAP integrierbaren Beispiel-Logik-Apps gezeigt. Gleichzeitig werden die zuvor beschriebenen Integrationsszenarien veranschaulicht.
+
+<a name="pre-reqs"></a>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,6 +48,12 @@ Um diesem Artikel weiter folgen zu können, benötigen Sie Folgendes:
 * Ihr <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP-Anwendungsserver</a> oder der <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP-Nachrichtenserver</a>
 
 * Laden Sie das neueste [lokalen Datengateway](https://www.microsoft.com/download/details.aspx?id=53127) auf einem lokalen Computer herunter, und installieren Sie es. Bevor Sie fortfahren, sollten Sie prüfen, ob Ihr Gateway im Azure-Portal eingerichtet ist. Das Gateway hilft Ihnen, sicher auf lokale Daten und Ressourcen vor Ort zuzugreifen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem lokalen SAP-System in Logik-Apps mit dem SAP-Connector](../logic-apps/logic-apps-gateway-install.md).
+
+* Wenn Sie SNC mit SSO verwenden, stellen Sie sicher, dass das Gateway als Benutzer ausgeführt wird, der dem SAP-Benutzer zugeordnet ist. Um das Standardkonto zu ändern, wählen Sie **Konto ändern**, und geben Sie die Anmeldeinformationen des Benutzers ein.
+
+   ![Ändern des Gatewaykontos](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Wenn Sie SNC mit einem externen Sicherheitsprodukt aktivieren, kopieren Sie die SNC-Bibliothek oder -Dateien auf den gleichen Computer, auf dem das Gateway installiert ist. Einige Beispiele für SNC-Produkte sind <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, Kerberos, NTLM und so weiter.
 
 * Laden Sie die neueste SAP-Clientbibliothek herunter, zurzeit <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">SAP-Connector (NCo) 3.0.21.0 für Microsoft .NET Framework 4.0 und Windows 64bit (x64)</a>, und installieren Sie es auf demselben Computer wie das lokale Datengateway. Installieren Sie diese Version oder eine höhere aus folgenden Gründen:
 
@@ -114,7 +125,7 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
       Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich: 
 
       ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
-
+      
    2. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
    
       Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
@@ -375,23 +386,45 @@ Optional können Sie die generierten Schemas in Repositorys wie ein Blob-, Speic
 
 2. Wechseln Sie nach einer erfolgreichen Ausführung zum Integrationskonto, und überprüfen Sie, ob die generierten Schemas vorhanden sind.
 
+## <a name="enable-secure-network-communications-snc"></a>Aktivieren der Secure Network Communications (SNC)
+
+Bevor Sie beginnen, stellen Sie sicher, dass Sie die zuvor aufgeführten [Voraussetzungen](#pre-reqs) erfüllt haben:
+
+* Das lokale Datengateway ist auf einem Computer installiert, der sich im selben Netzwerk wie Ihr SAP-System befindet.
+
+* Für SSO wird das Gateway als Benutzer ausgeführt, der dem SAP-Benutzer zugeordnet ist.
+
+* Die SNC-Bibliothek, die die zusätzlichen Sicherheitsfunktionen bereitstellt, wurde auf demselben Computer wie das Datengateway installiert. Einige Beispiele dafür sind <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, Kerberos, NTLM und so weiter.
+
+Um SNC für Ihre Anforderungen an oder aus dem SAP-System zu aktivieren, aktivieren Sie das Kontrollkästchen **SNC verwenden** in der SAP-Verbindung, und geben Sie diese Eigenschaften an:
+
+   ![Konfigurieren von SAP-SNC in der Verbindung](media/logic-apps-using-sap-connector/configure-sapsnc.png) 
+
+   | Eigenschaft   | BESCHREIBUNG |
+   |------------| ------------|
+   | **SNC-Bibliothek** | Name oder Pfad der SNC-Bibliothek relativ zum NCo-Installationspfad oder absoluten Pfad. Beispiel: „sapsnc.dll“ oder „.\security\sapsnc.dll“ oder „c:\security\sapsnc.dll“  | 
+   | **SNC SSO** | Bei einer Verbindung über SNC wird die SNC-Identität typischerweise zur Authentifizierung des Aufrufers verwendet. Eine weitere Möglichkeit besteht darin, die Benutzer-/Kennwortinformationen so zu überschreiben, dass sie für die Authentifizierung des Aufrufers verwendet werden können, die Verbindung aber dennoch verschlüsselt ist.|
+   | **SNC Mein Name** | In den meisten Fällen kann dies ausgelassen werden. Die installierte SNC-Lösung kennt in der Regel den eigenen SNC-Namen. Nur bei Lösungen, die „mehrere Identitäten“ unterstützen, müssen Sie möglicherweise die Identität angeben, die für dieses spezielle Ziel/diesen Server verwendet werden soll. |
+   | **Name des SNC-Partners** | Der SNC-Name des Back-Ends |
+   | **SNC-Qualität des Schutzes** | Quality of Service, die für die SNC-Kommunikation dieses bestimmten Ziels/Servers verwendet werden soll. Der Standardwert wird durch das Back-End-System definiert. Der Maximalwert wird durch das für SNC verwendete Sicherheitsprodukt definiert. |
+   |||
+
+   > [!NOTE]
+   > Die Umgebungsvariablen SNC_LIB und SNC_LIB_64 sollten auf dem Computer, auf dem Sie das Datengateway und die SNC-Bibliothek betreiben, nicht festgelegt werden. Wenn sie festgelegt werden, haben sie Vorrang vor dem Wert der SNC-Bibliothek, der über den Connector übergeben wird.
+   >
+
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 
 Zurzeit sind für den SAP-Connector folgende Probleme und Einschränkungen bekannt:
+
+* Mit tRFC funktioniert nur ein einzelner Aufruf bzw. eine einzelne Nachricht über „An SAP senden“. Das BAPI-Commitmuster (Business Application Programming Interface), z.B. das Durchführen mehrerer tRFC-Aufrufe in derselben Sitzung, wird nicht unterstützt.
 
 * Der SAP-Trigger unterstützt nicht den Empfang von Batch-IDOCs von SAP. Diese Aktion kann zu einem RFC-Verbindungsfehler zwischen Ihrem SAP-System und dem Datengateway führen.
 
 * Der SAP-Trigger unterstützt keine Datengatewaycluster. In einigen Failoverfällen unterscheidet sich der Datengatewayknoten, der mit dem SAP-System kommuniziert, von dem aktiven Knoten. Dies kann zu unerwartetem Verhalten führen. In Sendeszenarien werden Datengatewaycluster unterstützt.
 
-* In Empfangsszenarien dürfen nur NULL-Antworten zurückgegeben werden. Eine Logik-App mit einem Trigger und einer Antwortaktion führt zu unerwartetem Verhalten. 
-
-* Mit tRFC funktioniert nur ein einzelner Aufruf bzw. eine einzelne Nachricht über „An SAP senden“. Das BAPI-Commitmuster (Business Application Programming Interface), z.B. das Durchführen mehrerer tRFC-Aufrufe in derselben Sitzung, wird nicht unterstützt.
-
-* RFCs mit Anlagen werden für die Aktionen „An SAP senden“ und „Schemas generieren“ nicht unterstützt.
-
 * Der SAP-Connector unterstützt derzeit keine SAP-Router-Zeichenfolgen. Das lokale Datengateway muss in demselben LAN wie das SAP-System vorhanden sein, mit dem eine Verbindung hergestellt werden soll.
 
-* Die Konvertierung für nicht vorhandene (NULL) oder leere Werte sowie Mindest- und Höchstwerte für DATS- und TIMS-SAP-Felder kann in späteren Updates für das lokale Datengateway jederzeit geändert werden.
 
 ## <a name="get-support"></a>Support
 

@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998456"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073351"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -77,26 +77,16 @@ Wenn Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugr
 Azure Files bietet zwei Leistungsstufen: Standard und Premium.
 
 * **Standard-Dateifreigaben** werden durch rotierende Festplattenlaufwerke (HDDs) gestützt, die eine zuverlässige Leistung für E/A-Workloads bieten, die weniger anfällig für Leistungsschwankungen sind, z.B. Dateifreigaben für allgemeine Zwecke und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
-* **Premium-Dateifreigaben (Vorschauversion)** werden durch Solid-State-Laufwerke (SSDs) gestützt, die konsistent hohe Leistung und niedrige Latenz im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge für Workloads mit besonders umfassenden E/A bieten. Dadurch sind sie für eine Vielzahl von Workloads wie Datenbanken, Websitehosting, Entwicklungsumgebungen usw. geeignet. Premium-Dateifreigaben sind nur in einem Abrechnungsmodell nach Bereitstellung verfügbar. Premium-Dateifreigaben verwenden ein von Standarddateifreigaben separates Bereitstellungsmodell. Wenn Sie erfahren möchten, wie Sie eine Premium-Dateifreigabe erstellen, lesen Sie unseren Artikel zu diesem Thema: [Erstellen einer Azure- Premium-Dateifreigabe](storage-how-to-create-premium-fileshare.md).
+* **Premium-Dateifreigaben (Vorschauversion)** werden durch Solid-State-Laufwerke (SSDs) gestützt, die konsistent hohe Leistung und niedrige Latenz im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge für Workloads mit besonders umfassenden E/A bieten. Dadurch sind sie für eine Vielzahl von Workloads wie Datenbanken, Websitehosting, Entwicklungsumgebungen usw. geeignet. Premium-Dateifreigaben sind nur in einem Abrechnungsmodell nach Bereitstellung verfügbar. Premium-Dateifreigaben verwenden ein von Standarddateifreigaben separates Bereitstellungsmodell.
+
+Azure Backup ist für Premium-Dateifreigaben verfügbar, und Azure Kubernetes Service unterstützt Premium-Dateifreigaben ab Version 1.13.
+
+Wenn Sie erfahren möchten, wie Sie eine Premium-Dateifreigabe erstellen, lesen Sie unseren Artikel zu diesem Thema: [Erstellen einer Azure- Premium-Dateifreigabe](storage-how-to-create-premium-fileshare.md).
+
+Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premium-Dateifreigabe nicht möglich. Wenn Sie zu einem der beiden Tarifen wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Sie können dazu eines der von Azure Files unterstützten Kopiertools wie AzCopy verwenden.
 
 > [!IMPORTANT]
-> Premium-Dateifreigaben befinden sich noch in der Vorschau, sind nur mit LRS und nur in einem Teil der Regionen verfügbar, wobei Azure Backup-Unterstützung in ausgewählten Regionen verfügbar ist:
-
-|Verfügbare Region  |Azure Backup-Unterstützung  |
-|---------|---------|
-|USA (Ost 2)      | Ja|
-|USA (Ost)       | Ja|
-|USA (Westen)       | Nein  |
-|USA, Westen 2      | Nein  |
-|USA (Mitte)    | Nein  |
-|Nordeuropa  | Nein  |
-|Europa, Westen   | Ja|
-|Südostasien       | Ja|
-|Asien, Osten     | Nein  |
-|Japan, Osten    | Nein  |
-|Japan, Westen    | Nein  |
-|Korea, Mitte | Nein  |
-|Australien (Osten)| Nein  |
+> Premium-Dateifreigaben sind noch in der Vorschauphase und nur mit LRS und in den meisten Regionen verfügbar, die Speicherkonten anbieten. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure.
 
 ### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
 
@@ -117,9 +107,9 @@ Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die minimale Grö
 
 Die Größe der Dateifreigabe kann jederzeit heraufgesetzt, jedoch erst 24 Stunden nach der letzten Heraufsetzung herabgesetzt werden. Wenn nach 24-stündigem Warten keine Heraufsetzung aufgetreten ist, können Sie die Größe der Dateifreigabe beliebig oft herabsetzen, bis Sie sie erneut heraufsetzen. Änderungen von IOPS/Durchsatz werden innerhalb weniger Minuten nach der Größenänderung wirksam.
 
-Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestellten Freigabengrößen:
+Es ist möglich, die Größe Ihrer bereitgestellten Freigabe unter Ihre verbrauchten GiB zu reduzieren. Wenn Sie dies tun, gehen Ihnen keine Daten verloren, sondern es wird Ihnen weiterhin die verwendete Größe in Rechnung gestellt. Sie erhalten die Leistung (IOPS-Grundwert, Durchsatz und Burst-IOPS) der bereitgestellten Freigabe, nicht die der verwendeten Größe.
 
-(durch ein * gekennzeichnete Größen sind in der begrenzten Public Preview)
+Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestellten Freigabengrößen:
 
 |Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Ausgehend (MiB/s) | Eingehend (MiB/s) |
 |---------|---------|---------|---------|---------|
@@ -127,12 +117,10 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 |500         | 500     | Bis zu 1.500   | 90   | 60   |
 |1024       | 1024   | Bis zu 3.072   | 122   | 81   |
 |5.120       | 5.120   | Bis zu 15.360  | 368   | 245   |
-|10.240 *     | 10.240  | Bis zu 30.720  | 675 | 450   |
-|33.792 *     | 33.792  | Bis zu 100.000 | 2.088 | 1.392   |
-|51.200 *     | 51.200  | Bis zu 100.000 | 3.132 | 2.088   |
-|102.400 *    | 100.000 | Bis zu 100.000 | 6.204 | 4.136   |
-
-Aktuell sind Freigabegrößen bis zu 5TiB in der Public Preview, während Größen bis zu 100TiB in begrenzter Public Preview sind. Um Zugriff auf die begrenzte Public Preview anzufordern, füllen Sie [diesen Fragebogen](https://aka.ms/azurefilesatscalesurvey) aus.
+|10.240      | 10.240  | Bis zu 30.720  | 675 | 450   |
+|33.792      | 33.792  | Bis zu 100.000 | 2.088 | 1.392   |
+|51.200      | 51.200  | Bis zu 100.000 | 3.132 | 2.088   |
+|102.400     | 100.000 | Bis zu 100.000 | 6.204 | 4.136   |
 
 ### <a name="bursting"></a>Bursting
 
@@ -141,7 +129,7 @@ Premium-Dateifreigaben können ihren IOPS-Wert bis zu Faktor drei erhöhen. Burs
 Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise hat eine 100GiB-Freigabe 100 IOPS-Grundwerte. Wenn der eigentliche Datenverkehr auf der Freigabe 40IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 60 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
 
 > [!TIP]
-> Größe des Burstbuckets = IOPS-Grundwert * 2 * 3.600.
+> Größe des Burstbuckets = IOPS-Grundwert x 2 x 3600.
 
 Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen durch. Freigaben können solange Burstübertragungen durchführen, wie Guthaben übrig sind, aber Freigaben, die kleiner sind als 50TiB, bleiben nur bis zu einer Stunde auf dem Burstgrenzwert. Freigaben, die größer sind als 50TiB, können dieses einstündige Limit technisch überschreiten, bis zu zwei Stunden, aber dies basiert auf der Anzahl der gesammelten Burstguthaben. Jede EA über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
 
@@ -192,7 +180,7 @@ Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheide
 
 ## <a name="data-growth-pattern"></a>Muster des Datenwachstums
 
-Die maximale Größe für eine Azure-Dateifreigabe ist derzeit 5TiB (100TiB für Premiumdateifreigabe in begrenzter Public Preview). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
+Die maximale Größe einer Azure-Dateifreigabe ist derzeit 5 TiB (100 TiB für Premium-Dateifreigaben in Public Preview). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
 
 Mithilfe der Azure-Dateisynchronisierung können mehrere Azure-Dateifreigaben mit einem einzelnen Windows-Dateiserver synchronisiert werden. Dadurch können Sie sicherstellen, dass ältere große Dateifreigaben, über die Sie möglicherweise lokal verfügen, in die Azure-Dateisynchronisierung übertragen werden können. Weitere Informationen finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-files-planning.md).
 

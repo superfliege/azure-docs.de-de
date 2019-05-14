@@ -1,19 +1,19 @@
 ---
-title: Tarife für Azure Database for PostgreSQL
-description: In diesem Artikel werden die Tarife für Azure Database for PostgreSQL beschrieben.
+title: Tarife für Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel werden die Tarife für „Azure Database for PostgreSQL – Einzelserver“ beschrieben.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: e2580a57f943ad8da16cfbaeda2ee35d0f4bb691
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712367"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073196"
 ---
-# <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
+# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Tarife in Azure Database for PostgreSQL – Einzelserver
 
 Sie können eine Azure Database for PostgreSQL-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der PostgreSQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 

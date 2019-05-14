@@ -1,6 +1,6 @@
 ---
-title: Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM – Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) abschließen.
+title: Abschließen einer Zugriffsüberprüfung von Azure-Ressourcenrollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung von Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) abschließen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837be3ccdbd133f6bf372779dadff4d3c574a2e8
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8a310770f26a1c40682791582a05a9bb4c47a42d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578236"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141028"
 ---
-# <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM
+# <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>Abschließen einer Zugriffsüberprüfung von Azure-Ressourcenrollen in PIM
 Nachdem eine [Zugriffsüberprüfung gestartet wurde](pim-resource-roles-start-access-review.md), können Administratoren für privilegierte Rollen den privilegierten Zugriff überprüfen. Azure Active Directory (Azure AD) Privileged Identity Management (PIM) sendet automatisch eine E-Mail, in der die Benutzer aufgefordert werden, ihren Zugriff zu überprüfen. Wenn ein Benutzer diese E-Mail nicht erhalten hat, können Sie ihm die Anweisungen unter [Ausführen einer Zugriffsüberprüfung](pim-resource-roles-perform-access-review.md) zusenden.
 
 Wenn der Zeitraum für die Zugriffsüberprüfung abgelaufen ist oder alle Benutzer die Selbstüberprüfung abgeschlossen haben, führen Sie die Schritte in diesem Artikel aus, um die Überprüfung zu verwalten und die Ergebnisse anzuzeigen.

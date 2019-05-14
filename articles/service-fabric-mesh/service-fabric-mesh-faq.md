@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979750"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143289"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 
@@ -28,7 +28,7 @@ Im [GitHub-Repository service-fabric-mesh-preview](https://aka.ms/sfmeshissues) 
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Wie hoch sind die Kosten für die Teilnahme an der Vorschauversion?
 
-Es fallen derzeit keine Kosten für die Bereitstellung von Anwendungen oder Containern in der Vorschauversion von Mesh an. Sie werden jedoch gebeten, die von Ihnen bereitgestellten Ressourcen zu löschen und nicht weiter auszuführen, es sei denn, Sie testen sie aktiv.
+Es fallen derzeit keine Kosten für die Bereitstellung von Anwendungen oder Containern in der Vorschauversion von Mesh an. Halten Sie im Mai Ausschau nach aktuellen Informationen zu Abrechnungsaktivierung. Sie werden jedoch gebeten, die von Ihnen bereitgestellten Ressourcen zu löschen und nicht weiter auszuführen, es sei denn, Sie testen sie aktiv.
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Gibt es eine Kontingentgrenze für die Anzahl der Kerne und den Arbeitsspeicher?
 
@@ -77,7 +77,9 @@ Beispiel:
 
 Um die Ressourcengruppe zu löschen, verwenden Sie den Befehl `az group delete <nameOfResourceGroup>`.
 
-## <a name="supported-container-os-images"></a>Unterstützte Images von Containerbetriebssystemen
+## <a name="deployments"></a>Bereitstellungen
+
+### <a name="what-container-images-are-supported"></a>Welche Containerimages werden unterstützt?
 
 Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows Fall Creators Update (Version 1709) installiert ist, können Sie nur Docker-Images für die Windows-Version 1709 verwenden.
 
@@ -86,10 +88,19 @@ Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows 10-Update
 Die folgenden Images von Containerbetriebssystemen können beim Bereitstellen von Diensten verwendet werden:
 
 - Windows: windowsservercore und nanoserver
-    - Windows Server, Version 1709
-    - Windows Server, Version 1803
+    - Windows Server 1709
+    - Windows Server 1803
+    - Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - Keine bekannten Einschränkungen
+
+> [!NOTE]
+> Visual Studio-Tools für Mesh unterstützen derzeit die Bereitstellung in Windows Server 2019- und -1809-Containern noch nicht.
+
+### <a name="what-types-of-applications-can-i-deploy"></a>Welche Anwendungstypen können werden bereitgestellt? 
+
+Sie können alle Anwendungen bereitstellen, die in Containern ausgeführt werden, die den Einschränkungen für Anwendungsressourcen entsprechen. (Weitere Informationen zu Kontingenten finden Sie weiter oben.) Wenn wir feststellen, dass Sie Mesh zum Ausführen von unzulässigen Workloads verwenden oder das System missbrauchen (z. B. Mining), behalten wir uns das Recht vor, Ihre Bereitstellungen zu beenden und Ihr Abonnement für die Ausführung unter dem Dienst zu sperren. Wenden Sie sich an uns, wenn Sie Fragen zum Ausführen einer bestimmten Workload haben. 
 
 ## <a name="developer-experience-issues"></a>Probleme der Entwicklerumgebung
 
@@ -132,6 +143,10 @@ Es kann vorkommen, dass die CPU-Verfügbarkeit und Einschränkungen für alle An
 Mehrere Anwendungen können nicht in einem Cluster mit einem Knoten bereitgestellt werden. So minimieren Sie die Auswirkungen des Problems:
 - Verwenden Sie einen Cluster mit fünf Knoten, wenn Sie mehrere Apps in einem lokalen Cluster bereitstellen.
 - Entfernen Sie Apps, die Sie zurzeit nicht testen.
+
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS-Tools bietet eingeschränkte Unterstützung für Windows-Container
+
+Die Visual Studio-Tools unterstützen derzeit lediglich die Bereitstellung von Windows-Containern mit der Basisbetriebssystemversion Windows Server 1709 und 1803. 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>Featurelücken und andere bekannte Probleme
 

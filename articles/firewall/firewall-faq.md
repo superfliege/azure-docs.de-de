@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 4/17/2019
+ms.date: 5/3/2019
 ms.author: victorh
-ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c4a6776e3bb56026a48963ec83fe582380c68d0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718808"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145957"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -123,11 +123,9 @@ Ja. Die Konfiguration der UDRs zur Umleitung des Datenverkehrs zwischen Subnetze
 
 Die Tunnelerzwingung wird standardmäßig nicht unterstützt, sie kann jedoch mit der Unterstützung vom Support aktiviert werden.
 
-Azure Firewall muss über eine direkte Internetverbindung verfügen. Standardmäßig verfügt AzureFirewallSubnet über die Route „0.0.0.0/0“, bei der der Wert „NextHopType“ auf **Internet** festgelegt ist.
+Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihre AzureFirewallSubnet eine Standardroute zu Ihrem lokalen Netzwerk per BGP lernt, müssen Sie dies mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben, wobei der Wert **NextHopType** auf **Internet** festgelegt wird, um die direkte Internetkonnektivität beizubehalten. Standardmäßig unterstützt Azure Firewall keine Tunnelerzwingung auf einem lokalen Netzwerk.
 
-Wenn Sie die Tunnelerzwingung für Verbindungen mit dem lokalen Netzwerk über ExpressRoute oder VPN Gateway aktiviert haben, müssen Sie explizit eine benutzerdefinierte Route für 0.0.0.0/0 konfigurieren, für die der Wert NextHopType auf „Internet“ festgelegt ist, und diese dem AzureFirewallSubnet zuweisen. Dadurch wird eine mögliche BGP-Anzeige für das Standardgateway in Ihrem lokalen Netzwerk außer Kraft gesetzt.
-
-Wenn Ihr Unternehmen erzwungenes Tunneling für Azure Firewall erfordert, um den standardmäßigen Gatewaydatenverkehr über Ihr lokales Netzwerk zurückzuleiten, wenden Sie sich an den Support. Wir können Ihr Abonnement in die Whitelist aufnehmen, um sicherzustellen, dass die erforderliche Internetkonnektivität der Firewall erhalten bleibt.
+Wenn Ihre Konfiguration jedoch die Tunnelerzwingung auf einem lokalen Netzwerk erfordert, wird Microsoft dies im Einzelfall unterstützen. Wenden Sie sich in diesem Fall an den Support, damit Ihr Fall überprüft werden kann. Bei einer Annahme wird Ihr Abonnement in die Whitelist aufgenommen, damit die erforderliche Internetkonnektivität der Firewall auch sicher erhalten bleibt.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Gibt es Einschränkungen bei Ressourcengruppen?
 

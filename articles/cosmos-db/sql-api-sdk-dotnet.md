@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838917"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510720"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -47,6 +47,20 @@ ms.locfileid: "57838917"
 * Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden. 
 * Unterstützung von Streams. 
 * Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Die System.Net.Http-Version des SDK entspricht der Definition aus dem NuGet-Paket.
+* Höhere Dezimalgenauigkeit für LINQ-Abfragen
+* Neu hinzugefügte Klassen: CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType, PartitionKeyDefinitionVersion
+* „TimeToLivePropertyPath“ zu „DocumentCollection“ hinzugefügt
+* „CompositeIndexes“ und „SpatialIndexes“ zu „IndexPolicy“ hinzugefügt
+* „Version“ zu „PartitionKeyDefinition“ hinzugefügt
+* „None“ zu „PartitionKey“ hinzugefügt
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * „IdleTcpConnectionTimeout“, „OpenTcpConnectionTimeout“, „MaxRequestsPerTcpConnection“ und „MaxTcpConnectionsPerEndpoint“ zu „ConnectionPolicy“ hinzugefügt
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -361,6 +375,8 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |5. Mai 2019 |--- |
+| [2.3.0](#2.3.0) |4. April 2019 |--- |
 | [2.2.3](#2.2.3) |11. Februar 2019 |--- |
 | [2.2.2](#2.2.2) |6. Februar 2019 |--- |
 | [2.2.1](#2.2.1) |24. Dezember 2018 |--- |

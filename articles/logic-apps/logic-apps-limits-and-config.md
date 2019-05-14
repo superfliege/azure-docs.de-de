@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/16/2018
-ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.date: 05/10/2019
+ms.openlocfilehash: 634f3948f9a5e28454e9b2b29f950c3fb00f6c19
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565902"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147745"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -48,20 +48,20 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
-| NAME | Begrenzung | Notizen |
-|------|-------|-------|
-| Ausführungsdauer | 90 Tage | Informationen dazu, wie dieser Grenzwert geändert wird, finden Sie unter [Ändern von Ausführungsdauer](#change-duration). |
-| Kürzestes Wiederholungsintervall | 1 Sekunde | |
-| Längstes Wiederholungsintervall | 500 Tage | |
-| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung | Informationen zum Ändern dieses Grenzwerts auf einen Wert zwischen 7 Tagen und 90 Tagen finden Sie unter [Ändern der Aufbewahrungsdauer im Speicher](#change-retention). |
-||||
+| NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
+|------|--------------------|---------------------------------------|-------|
+| Ausführungsdauer | 90 Tage | 365 Tage | Informationen dazu, wie der Standardgrenzwert geändert wird, finden Sie unter [Ändern der Ausführungsdauer](#change-duration). |
+| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung | 365 Tage | Informationen dazu, wie der Standardgrenzwert geändert wird, finden Sie unter [Ändern der Aufbewahrungsdauer im Speicher](#change-retention). |
+| Kürzestes Wiederholungsintervall | 1 Sekunde | 1 Sekunde ||
+| Längstes Wiederholungsintervall | 500 Tage | 500 Tage ||
+|||||
 
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
 ### <a name="change-run-duration-and-storage-retention"></a>Ändern von Ausführungsdauer und Aufbewahrungsdauer im Speicher
 
-Gehen Sie folgendermaßen vor, um den Standardgrenzwert auf einen Wert zwischen 7 Tagen und 90 Tagen zu ändern. Wenn Sie den maximalen Grenzwert überschreiten müssen, [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten.
+Gehen Sie folgendermaßen vor, um den Standardgrenzwert für die Ausführungsdauer und die Aufbewahrungsdauer im Speicher zu ändern. Wenn Sie den maximalen Grenzwert überschreiten müssen, [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten.
 
 1. Wählen Sie im Azure-Portal im Menü Ihrer Logik-App den Befehl **Workfloweinstellungen** aus.
 
@@ -91,7 +91,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
-### <a name="global-logic-apps-service"></a>Globaler Logic Apps-Dienst
+### <a name="multi-tenant-logic-apps-service"></a>Logic Apps-Dienst mit mehreren Mandanten
 
 | NAME | Begrenzung | Notizen |
 | ---- | ----- | ----- |
@@ -107,9 +107,9 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 | NAME | Begrenzung | Notizen |
 |------|-------|-------|
-| Ausführungsgrenzwert für eine Basiseinheit | 10.000 Aktionsausführungen pro 5 Minuten. <br>Dies entspricht etwa 80 Millionen Aktionsausführungen pro Monat. | |
-| Ausführungsgrenzwert für eine Skalierungseinheit | 5.000 Aktionsausführungen pro 5 Minuten. <br>Dies entspricht etwa 40 Millionen Aktionsausführungen pro Monat. | |
-| Maximale Skalierungseinheiten, die Sie hinzufügen können | 3 | |
+| Ausführungsgrenzwert für eine Basiseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Bietet ca. 4.000 Aktionsausführungen pro Minute, was rund 160 Mio. Aktionsausführungen pro Monat entspricht. | |
+| Ausführungsgrenzwert für eine Skalierungseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Jede Skalierungseinheit kann ca. 2.000 zusätzliche Aktionsausführungen pro Minute bereitstellen, was etwa 80 Mio. zusätzlichen Aktionsausführungen pro Monat entspricht. | |
+| Maximale Skalierungseinheiten, die Sie hinzufügen können | 10 | |
 ||||
 
 Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [bitten Sie das Logic Apps-Team](mailto://logicappsemail@microsoft.com) um Unterstützung im Hinblick auf Ihre Anforderungen.
@@ -124,20 +124,20 @@ Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen einzelnen
 
 Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webhookanforderungen, sodass das Timeout für diese Vorgänge länger sein kann, als diese Grenzwerte angeben. Weitere Informationen hierzu finden Sie in den technischen Details für den bestimmten Connector sowie unter [Workflowtrigger und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| NAME | Begrenzung | Notizen |
-| ---- | ----- | ----- |
-| Ausgehende Anforderung | 120 Sekunden | Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [Until-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
-| Synchrone Antwort | 120 Sekunden | Damit die ursprüngliche Anforderung die Antwort erhält, müssen alle Schritte in der Antwort innerhalb des Grenzwerts abgeschlossen werden, es sei denn, Sie rufen eine andere Logik-App als geschachtelten Workflow auf. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). |
-|||| 
+| NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
+|------|--------------------|---------------------------------------|-------|
+| Ausgehende Anforderung | 120 Sekunden | 240 Sekunden | Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [Until-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
+| Synchrone Antwort | 120 Sekunden | 240 Sekunden | Damit die ursprüngliche Anforderung die Antwort erhält, müssen alle Schritte in der Antwort innerhalb des Grenzwerts abgeschlossen werden, es sei denn, Sie rufen eine andere Logik-App als geschachtelten Workflow auf. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). |
+|||||
 
 #### <a name="message-size"></a>Nachrichtengröße
 
-| NAME | Begrenzung | Notizen |
-| ---- | ----- | ----- |
-| Nachrichtengröße | 100 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. |
-| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. Weitere Informationen hierzu finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). |
-| Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | Keiner der Ausdrücke `@concat()`, `@base64()` und `@string()` darf länger sein, als dieser Grenzwert angibt. |
-||||
+| NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
+|------|--------------------|---------------------------------------|-------|
+| Nachrichtengröße | 100 MB | 200 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. |
+| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p>Für die Integrationsdienstumgebung unterstützt die Logic Apps-Engine diesen Grenzwert, Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen unter [Azure Blob Storage-Connector](/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
+| Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | 131.072 Zeichen | Keiner der Ausdrücke `@concat()`, `@base64()` und `@string()` darf länger sein, als dieser Grenzwert angibt. |
+|||||
 
 #### <a name="retry-policy"></a>Wiederholungsrichtlinie
 
@@ -154,10 +154,10 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie über Web-APIs erstellen können.
 
-| NAME | Begrenzung |
-| ---- | ----- |
-| Anzahl von benutzerdefinierten Connectors | 1.000 pro Azure-Abonnement |
-| Anzahl der Anforderungen pro Minute für jede von einem benutzerdefinierten Connector erstellte Verbindung | 500 Anforderungen pro Verbindung |
+| NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
+|------|--------------------|---------------------------------------|-------|
+| Anzahl von benutzerdefinierten Connectors | 1.000 pro Azure-Abonnement | 1.000 pro Azure-Abonnement ||
+| Anzahl von Anforderungen pro Minute für einen benutzerdefinierten Connector | 500 Anforderungen pro Minute und Verbindung | 2.000 Anforderungen pro Minute und *benutzerdefiniertem Connector* ||
 |||
 
 <a name="managed-identity"></a>
@@ -179,45 +179,18 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jedes Integrationskonto. Weitere Informationen hierzu finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-*Free-Tarif*
+> [!NOTE] 
+> Verwenden Sie den Free-Tarif nur für Versuchsszenarios und nicht für Produktionsszenarios. Dieser Tarif beschränkt Durchsatz und Nutzung und ist nicht mit einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) verbunden.
 
-Verwenden Sie den Free-Tarif nur für Versuchsszenarien, nicht für Produktionsszenarien. Dieser Tarif beschränkt Durchsatz und Nutzung und ist nicht mit einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) verbunden.
-
-| Artefakt | Begrenzung | Notizen |
-|----------|-------|-------|
-| Assemblys | 10 | |
-| Batchkonfigurationen | 5 |
-| Zertifikate | 25 | |
-| EDI-Handelsverträge | 10 | |
-| EDI-Handelspartner | 25 | |
-| Karten | 25 | |
-| Schemas | 25 |
-||||
-
-*Basic-Tarif*
-
-| Artefakt | Begrenzung | Notizen |
-|----------|-------|-------|
-| Assemblys | 25 | |
-| Batchkonfigurationen | 1 | |
-| Zertifikate | 2 | |
-| EDI-Handelsverträge | 1 | |
-| EDI-Handelspartner | 2 | |
-| Karten | 500 | |
-| Schemas | 500 |
-||||
-
-*Standard-Tarif*
-
-| Artefakt | Begrenzung | Notizen |
-|----------|-------|-------|
-| Assemblys | 50 | |
-| Batchkonfigurationen | 50 |
-| Zertifikate | 500 | |
-| EDI-Handelsverträge | 500 | |
-| EDI-Handelspartner | 500 | |
-| Karten | 1.000 | |
-| Schemas | 1.000 |
+| Artefakt | Kostenlos | Basic | Standard |
+|----------|------|-------|----------|
+| EDI-Handelsverträge | 10 | 1 | 500 |
+| EDI-Handelspartner | 25 | 2 | 500 |
+| Karten | 25 | 500 | 1.000 |
+| Schemas | 25 | 500 | 1.000 |
+| Assemblys | 10 | 25 | 50 |
+| Zertifikate | 25 | 2 | 500 |
+| Batchkonfigurationen | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -243,13 +216,13 @@ Verwenden Sie den Free-Tarif nur für Versuchsszenarien, nicht für Produktionss
 
 ### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>Nachrichtengröße für B2B-Protokoll (AS2, X12, EDIFACT)
 
-Hier sind die Grenzwerte, die für B2B-Protokolle gelten:
+Folgende Grenzwerte für die Nachrichtengröße gelten für B2B-Protokolle:
 
-| NAME | Begrenzung | Notizen |
-| ---- | ----- | ----- |
-| AS2 | 50 MB | Gilt für das Decodieren und das Codieren |
-| X12 | 50 MB | Gilt für das Decodieren und das Codieren |
-| EDIFACT | 50 MB | Gilt für das Decodieren und das Codieren |
+| NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
+|------|--------------------|---------------------------------------|-------|
+| AS2 | v2 – 100 MB<br>v1 – 50 MB | v2 – 200 MB <br>v1 – 50 MB | Gilt für das Decodieren und das Codieren |
+| X12 | 50 MB | 50 MB | Gilt für das Decodieren und das Codieren |
+| EDIFACT | 50 MB | 50 MB | Gilt für das Decodieren und das Codieren |
 ||||
 
 <a name="disable-delete"></a>
@@ -304,7 +277,7 @@ Logic Apps unterstützt keine direkte Verbindung mit Azure-Speicherkonten über 
 | Indien (Süden) | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
 | Asien, Südosten | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
 | USA, Westen-Mitte | 13.78.137.247, 52.161.8.128, 52.161.19.82, 52.161.26.172 |
-| Europa, Westen | 13.95.155.53, 52.174.49.6, 52.174.49.6, 52.174.54.218 |
+| Europa, Westen | 13.95.155.53, 51.144.176.185, 52.174.49.6, 52.174.54.218 |
 | Indien, Westen | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | USA (Westen) | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | USA, Westen 2 | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |

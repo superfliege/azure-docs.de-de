@@ -1,23 +1,24 @@
 ---
-title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10 (Vorschauversion) | Microsoft-Dokumentation
-description: Verwenden Sie das Befehlszeilenprogramm AzCopy v10 (Vorschauversion) zum Verschieben oder Kopieren von Daten in oder aus Blob-, Data Lake- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
+title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10 | Microsoft-Dokumentation
+description: Verwenden Sie das Befehlszeilenprogramm AzCopy zum Verschieben oder Kopieren von Daten in oder aus Blob-, Data Lake- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: seguler
+ms.date: 04/23/2019
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d05cbd30565ced73352736508fc4bcc376985554
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278427"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149035"
 ---
-# <a name="transfer-data-with-azcopy-v10-preview"></a>Übertragen von Daten mit AzCopy v10 (Vorschauversion)
+# <a name="transfer-data-with-azcopy-v10"></a>Übertragen von Daten mit AzCopy v10
 
-AzCopy v10 (Vorschauversion) ist das Befehlszeilenprogramm zum Kopieren von Daten für Microsoft Azure-Blob- und -Dateispeicher. AzCopy v10 verfügt über eine neu entworfene Befehlszeilenschnittstelle und eine neue Architektur für zuverlässige Datenübertragungen. Mit AzCopy können Sie Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.
+AzCopy ist das Befehlszeilenprogramm zum Kopieren von Daten für Microsoft Azure Blob Storage und File Storage. AzCopy verfügt über eine neu entworfene Befehlszeilenschnittstelle und eine neue Architektur für zuverlässige Datenübertragungen. Mit AzCopy können Sie Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.
 
 ## <a name="whats-new-in-azcopy-v10"></a>Neuerungen in AzCopy v10
 
@@ -33,28 +34,24 @@ AzCopy v10 (Vorschauversion) ist das Befehlszeilenprogramm zum Kopieren von Dat
 
 ## <a name="download-and-install-azcopy"></a>Herunterladen und Installieren von AzCopy
 
-### <a name="latest-preview-version-v10"></a>Neueste Vorschauversion (v10)
+### <a name="latest-production-version-v10"></a>Neueste Produktionsversion (v10)
 
-Laden Sie die neueste Vorschauversion von AzCopy herunter:
+Laden Sie die neueste Version von AzCopy herunter:
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
 - [macOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
-### <a name="latest-production-version-v81"></a>Neueste Produktionsversion (v8.1)
-
-Laden Sie die [neueste Produktversion von AzCopy für Windows](https://aka.ms/downloadazcopy) herunter.
-
-### <a name="azcopy-supporting-table-storage-service-v73"></a>AzCopy unterstützt den Table Storage-Dienst (v7.3)
+### <a name="latest-azcopy-supporting-table-storage-service-v73"></a>Die neueste AzCopy-Version unterstützt den Table Storage-Dienst (v7.3)
 
 Laden Sie [AzCopy v7.3 mit Unterstützung für das Kopieren von Daten in den bzw. aus dem Microsoft Azure Table Storage-Dienst](https://aka.ms/downloadazcopynet) herunter.
 
 ## <a name="post-installation-steps"></a>Schritte nach der Installation
 
-Eine Installation von AzCopy v10 ist nicht erforderlich. Öffnen Sie Ihre bevorzugte Befehlszeilenanwendung, und navigieren Sie zu dem Ordner, in dem `azcopy.exe` enthalten ist. Bei Bedarf können Sie den Speicherort für den AzCopy-Ordner der Einfachheit halber dem Systempfad hinzufügen.
+Eine Installation von AzCopy ist nicht erforderlich. Öffnen Sie Ihre bevorzugte Befehlszeilenanwendung, und navigieren Sie zu dem Ordner, in dem `azcopy.exe` enthalten ist. Bei Bedarf können Sie den Speicherort für den AzCopy-Ordner der Einfachheit halber dem Systempfad hinzufügen.
 
 ## <a name="authentication-options"></a>Authentifizierungsoptionen
 
-AzCopy v10 unterstützt die folgenden Optionen bei der Authentifizierung mit Azure Storage:
+AzCopy unterstützt die folgenden Optionen bei der Authentifizierung mit Azure Storage:
 - **Azure Active Directory** (wird für **Blob- und Data Lake Storage Gen2-Dienste** unterstützt). Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er per Azure Active Directory-Authentifizierung in den Blobspeicher schreiben kann. Verwenden Sie `azcopy login --identity`, um die Authentifizierung über verwaltete Identitäten für Azure-Ressourcen zu verwalten.
 - **Shared Access Signature-Token [werden für Blob- und Dateidienste unterstützt]**. Fügen Sie das SAS-Token (Shared Access Signature) dem Blobpfad in der Befehlszeile hinzu, um es zu verwenden. Sie können das SAS-Token mit dem Azure-Portal, [Storage-Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) oder anderen Tools Ihrer Wahl generieren. Weitere Informationen finden Sie unter [Beispiele](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
@@ -198,7 +195,7 @@ Sie können auch einen Blobcontainer mit einem lokalen Dateisystem synchronisier
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-Mit diesem Befehl wird die Quelle basierend auf den Zeitstempeln der letzten Änderung inkrementell mit dem Ziel synchronisiert. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy v10 im Ziel auf die gleiche Weise. Vor dem Löschen werden Sie von AzCopy zum Bestätigen aufgefordert.
+Mit diesem Befehl wird die Quelle basierend auf den Zeitstempeln der letzten Änderung inkrementell mit dem Ziel synchronisiert. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy am Ziel auf die gleiche Weise. Vor dem Löschen werden Sie von AzCopy zum Bestätigen aufgefordert.
 
 ## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Kopieren von Daten aus Amazon Web Services (AWS) S3
 
@@ -283,7 +280,7 @@ cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
 ## <a name="troubleshooting"></a>Problembehandlung
 
-AzCopy v10 erstellt Protokolldateien und Plandateien für jeden Auftrag. Sie können die Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu beheben. Die Protokolle enthalten den Status des Fehlers (UPLOADFAILED, COPYFAILED und DOWNLOADFAILED), den vollständigen Pfad und den Grund des Fehlers. Die Auftragsprotokolle und Plandateien sind im Ordner „%USERPROFILE\\.azcopy“ (unter Windows) bzw. im Ordner „$HOME\\.azcopy“ (unter Mac und Linux) gespeichert.
+AzCopy erstellt Protokolldateien und Plandateien für jeden Auftrag. Sie können die Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu beheben. Die Protokolle enthalten den Status des Fehlers (UPLOADFAILED, COPYFAILED und DOWNLOADFAILED), den vollständigen Pfad und den Grund des Fehlers. Die Auftragsprotokolle und Plandateien sind im Ordner „%USERPROFILE\\.azcopy“ (unter Windows) bzw. im Ordner „$HOME\\.azcopy“ (unter Mac und Linux) gespeichert.
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.

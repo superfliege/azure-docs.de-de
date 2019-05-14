@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793145"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145151"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
@@ -78,6 +78,36 @@ Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der
   * Überarbeiten Sie die Gruppe der Ressourcen, zu deren Ablehnung diese Richtlinie konfiguriert wurde.
 
 Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie hier: [Übersicht zu Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+
+### <a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
+
+#### <a name="issue"></a>Problem
+
+Beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben, erhalten Sie die folgende Fehlermeldung:
+
+```error
+The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt auf, wenn Sie noch über aktive Lösungen in Ihrem Log Analytics-Arbeitsbereich verfügen, die davon abhängig sind, dass Ihr Automation-Konto und Ihr Log Analytics-Arbeitsbereich verknüpft sind.
+
+### <a name="resolution"></a>Lösung
+
+Zum Beheben dieses Problems müssen Sie die folgenden Lösungen aus Ihrem Arbeitsbereich entfernen, sofern Sie sie verwenden:
+
+* Updateverwaltung
+* Change Tracking
+* Starten/Beenden von VMs außerhalb der Kernzeit
+
+Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung zu Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Lösungen auch aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen.  
+
+* Updateverwaltung
+  * Entfernen von Updatebereitstellungen (Zeitplänen) aus Ihrem Automation-Konto
+* Starten/Beenden von VMs außerhalb der Kernzeit
+  * Entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**.
+  * Zusätzliche Schritte zum Entfernen der Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten finden Sie im Artikel [Starten/Beenden von VMs außerhalb der Geschäftszeiten – Entfernen der Lösung](../automation-solution-vm-management.md##remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
 

@@ -2,24 +2,29 @@
 title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy unter Linux | Microsoft-Dokumentation
 description: Verwenden Sie das Hilfsprogramm AzCopy unter Linux zum Verschieben oder Kopieren von Daten zu oder von Blob- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
-ms.author: seguler
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9e97171d493e452f18bf805defad7ef6f480af0b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882224"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149017"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Übertragen von Daten mit AzCopy unter Linux
 
 AzCopy ist ein Befehlszeilenprogramm, das entwickelt wurde, um Daten in/aus Microsoft Azure Blob und File Storage zu kopieren. Hierbei werden einfache Befehle verwendet, die für optimale Leistung konzipiert sind. Sie können Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.  
 
-Es gibt zwei Versionen von AzCopy, die Sie herunterladen können. AzCopy unter Linux ist auf Linux-Plattformen ausgerichtet, die Befehlszeilenoptionen im POSIX-Format bieten. [AzCopy unter Windows](../storage-use-azcopy.md) bietet Befehlszeilenoptionen im Windows-Format. Dieser Artikel behandelt AzCopy unter Linux. 
+> [!IMPORTANT]
+> Dieser Artikel beschreibt eine ältere Version von AzCopy.
+>Informationen zur Installation der neuesten Version von AzCopy finden Sie unter [AzCopy v10](storage-use-azcopy-v10.md).
+
+Wenn Sie die ältere Version von AzCopy (AzCopy v8.1) installieren möchten, stehen mehrere Versionen für den Download zur Verfügung. AzCopy unter Linux ist auf Linux-Plattformen ausgerichtet, die Befehlszeilenoptionen im POSIX-Format bieten. [AzCopy unter Windows](../storage-use-azcopy.md) bietet Befehlszeilenoptionen im Windows-Format. Dieser Artikel behandelt AzCopy unter Linux. 
 
 > [!NOTE]  
 > Ab Version 7.2. von AzCopy werden die .NET Core-Abhängigkeiten im Paket mit AzCopy bereitgestellt. Wenn Sie Version 7.2 oder höher verwenden, ist die Installation von .NET Core nicht mehr erforderlich.

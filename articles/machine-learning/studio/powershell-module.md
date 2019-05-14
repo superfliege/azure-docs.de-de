@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: e3c2587fceed265c9768b6ea6f2ecf3b9a8b7b1a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: bee42f8a9582908963c0eef95a2fd04742cd425e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011347"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205659"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>PowerShell-Modul für Azure Machine Learning Studio
 
@@ -57,7 +57,7 @@ PowerShell (klassisch) kann zusammen mit Az oder AzureRM installiert werden, um 
 | Verwalten von Vertragsplänen für Arbeitsbereiche | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | Verwalten von Arbeitsbereichsbenutzern |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
 | Verwalten von Webdiensten | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>(„Neue“ Webdienste)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>(„Klassische“ Webdienste) |
-| Verwalten von Webdienst-Endpunkten/-schlüsseln |  [Get-AzMlWebServiceKeys](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekeys)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| Verwalten von Webdienst-Endpunkten/-schlüsseln |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | Verwalten von Benutzerdatasets/trainierten Modellen| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | Verwalten von Benutzerexperimenten |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
 | Verwalten von benutzerdefinierten Modulen | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |

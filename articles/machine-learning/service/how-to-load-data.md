@@ -12,15 +12,15 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7c330846cd907f35bb23ae5e453383d7c35222e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024002"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471880"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Laden und Lesen von Daten mit dem Azure Machine Learning Data Prep SDK
-In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem Azure Machine Learning Data Prep SDK kennen. Eine Referenzdokumentation für das SDK finden Sie in der [Übersicht](https://aka.ms/data-prep-sdk). Das SDK unterstützt mehrere Datenerfassungsfeatures, z. B.:
+In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem Azure Machine Learning Data Prep SDK kennen.  Das SDK unterstützt mehrere Datenerfassungsfeatures, z. B.:
 
 * Laden von Daten aus einer Vielzahl von Dateitypen mit Analyseparameter-Rückschluss (Codierung, Trennzeichen, Header)
 * Typkonvertierung unter Verwendung der Ermittlung beim Laden der Datei
@@ -28,6 +28,7 @@ In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem A
 
 > [!Important]
 > Probieren Sie beim Erstellen einer neuen Projektmappe die [Azure Machine Learning-Datasets](how-to-explore-prepare-data.md) (Vorschauversion) für die Datenuntersuchung und -vorbereitung aus. Datasets ist die nächste Version des SDK für die Datenvorbereitung und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen.
+> Wenn Sie das `azureml-dataprep`-Paket verwenden, um einen Datenfluss mit Ihren Transformationen zu erstellen, anstatt das `azureml-datasets`-Paket zum Erstellen eines Datensatzes zu verwenden, können Sie später keine Snapshots oder Datensätze mit Versionsangabe verwenden.
 
 Die folgende Tabelle zeigt eine Auswahl von Funktionen, die zum Laden von Daten aus gängigen Dateitypen verwendet werden.
 
@@ -315,5 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Entwurfsmuster und Beispiele zur Verwendung finden Sie in der [Übersicht](https://aka.ms/data-prep-sdk) zum SDK.
 * Ein Beispiel zum Lösen eines spezifischen Szenarios finden Sie im [Tutorial](tutorial-data-prep.md) zum Azure Machine Learning-Data Prep SDK.

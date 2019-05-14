@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736248"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149628"
 ---
 Wenn beim Ausführen von Vorgängen an Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl erneut im Debugmodus aus. Der Debugmodus wird aktiviert, indem Sie in der CLI den Parameter **-debug** übergeben und bei der PowerShell den Parameter **-Debug**. Nachdem Sie den Fehler lokalisiert haben, befolgen Sie dieses Dokument, um die Fehler zu behandeln.
 
@@ -24,7 +24,7 @@ Mögliche Ursachen:
 
 *Der Katalogname ist ungültig.*
 
-Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname kann keine (Binde)Striche enthalten. Ändern Sie den Katalognamen, und versuchen Sie es noch mal. 
+Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname kann keine Bindestriche enthalten. Ändern Sie den Katalognamen, und versuchen Sie es noch mal. 
 
 *Der Katalogname ist innerhalb Ihres Abonnements nicht eindeutig.*
 
@@ -37,7 +37,7 @@ Mögliche Ursachen:
 
 *Die Imagedefinition ist ungültig.*
 
-Zulässige Zeichen für Imagedefinitionen sind Groß- und Kleinbuchstaben, Zahlen, Punkte und (Binde)Striche. Ändern Sie den Namen der Imagedefinition, und versuchen Sie es noch mal.
+Zulässige Zeichen für Imagedefinitionen sind Groß- und Kleinbuchstaben, Zahlen, Punkte und Bindestriche. Ändern Sie den Namen der Imagedefinition, und versuchen Sie es noch mal.
 
 *Die obligatorischen Eigenschaften zum Erstellen einer Imagedefinition wurden nicht aufgefüllt.*
 
@@ -62,20 +62,7 @@ Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen 
 
 Stellen Sie sicher, dass der Bereitstellungsstatus des verwalteten Quellimages **Erfolgreich** ist.
 
-*Die Quellregion wird noch nicht unterstützt.*
-
-Verwenden Sie die folgende Tabelle, um festzustellen, ob die beabsichtigte Quellregion unterstützt wird:
-<br>
-
-| Katalog erstellen in oder „Quellregion“   | Version replizieren in oder „Zielregion“ |
-|----------------------------------------|-------------------------------------------|
-| USA, Westen-Mitte                        | Alle öffentlichen Azure-Cloudregionen            |
-| USA Süd Mitte                       |                                           |
-| USA (Ost) 2                              |                                           |
-| Asien, Südosten                         |                                           |
-| Europa, Westen                            |                                           |
-
-<br>
+*Die Liste der Zielregionen enthält nicht die Quellregion.*
 
 Die Liste der Zielregionen muss die Quellregion der Imageversion enthalten. Stellen Sie sicher, dass Sie die Quellregion in die Liste der Zielregionen aufgenommen haben, in die Azure Ihre Imageversion replizieren soll.
 
@@ -101,7 +88,7 @@ Wenden Sie sich an den Abonnementbesitzer und bitten Sie ihn,mittels [rollenbasi
 
 ## <a name="unable-to-share-resources"></a>Teilen von Ressourcen nicht möglich
 
-Das Teilen der Katalog mit geteilten Images-, Imagedefinitions- und Imageversionsressourcen zwischen Abonnements wird mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) aktiviert. 
+Das Teilen von Ressourcen aus Katalogen mit freigegebenen Images, Imagedefinitionen und Imageversionen zwischen Abonnements wird mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Role-Based Access Control, RBAC) aktiviert. 
 
 ## <a name="replication-is-slow"></a>Replikation ist langsam
 

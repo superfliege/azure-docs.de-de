@@ -11,30 +11,30 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: f17df53c1ea77bf99ab86329fe914d058eb00f64
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360192"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072704"
 ---
-# <a name="azure-sql-database-purchasing-models"></a>Kaufmodelle für Azure SQL-Datenbank
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-model"></a>Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“
 
 Mit Azure SQL-Datenbank können Sie problemlos eine vollständig verwaltete PaaS-Datenbank-Engine erwerben, die an Ihre Anforderungen an Leistung und Kosten angepasst ist. Je nach Bereitstellungsmodell von Azure SQL-Datenbank können Sie das Kaufmodell auswählen, das Ihren Anforderungen entspricht:
 
-- Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) (empfohlen), mit dem Sie die genaue Menge an Speicherkapazität und Computeressourcen auswählen können, die Sie für Ihre Workload benötigen.
-- Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md), mit dem Sie Compute- und Speicherressourcen in Paketen auswählen können, die für gängige Workloads zusammengestellt wurden.
+- [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md) (empfohlen). Dieses Kaufmodell ermöglicht die Wahl zwischen der bereitgestellten Computeebene und der serverlosen Computeebene (Vorschauversion). Mit der bereitgestellten Computeebene wählen Sie die genaue Computemenge aus, die immer für Ihre Workload bereitgestellt wird. Mit der serverlosen Computeebene konfigurieren Sie die automatische Computeskalierung mit einem konfigurierbaren Computebereich. Mit dieser Computeebene haben Sie auch die Möglichkeit, die Datenbank abhängig von der Workloadaktivität automatisch anzuhalten und fortzusetzen. Der V-Kern-Einzelpreis pro Zeiteinheit ist auf der bereitgestellten Computeebene niedriger als auf der serverlosen Computeebene.
+- [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md). Dieses Kaufmodell bietet gebündelte Compute- und Speicherpakete, die für gängige Workloads zusammengestellt wurden.
 
 In Azure SQL-Datenbank-Bereitstellungsmodellen sind verschiedene Kaufmodelle verfügbar:
 
 - Die Bereitstellungsoptionen [Einzeldatenbank](sql-database-single-databases-manage.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) in [Azure SQL-Datenbank](sql-database-technical-overview.md) bieten sowohl das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) als auch das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) an.
 - Die Bereitstellungsoption [Verwaltete Instanz](sql-database-managed-instance.md) in Azure SQL-Datenbank bietet nur das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md).
 
-> [!IMPORTANT]
-> Die [Dienstebene „Hyperscale“ (Vorschau)](sql-database-service-tier-hyperscale.md) befindet sich in der öffentlichen Vorschau und gilt nur für Einzeldatenbanken, die das vCore-basierte Kaufmodell verwenden.
 
-In der folgenden Tabelle und im Diagramm werden diese beiden Kaufmodelle verglichen und gegenübergestellt.
+- Die Dienstebene [Hyperscale](sql-database-service-tier-hyperscale.md) ist derzeit für Einzeldatenbanken verfügbar, bei denen das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) zum Einsatz kommt.
+
+In der folgenden Tabelle und im Diagramm werden die Kaufmodelle „V-Kern“ und „DTU“ verglichen und gegenübergestellt.
 
 |**Kaufmodell**|**Beschreibung**|**Am besten geeignet für**|
 |---|---|---|
@@ -46,7 +46,13 @@ In der folgenden Tabelle und im Diagramm werden diese beiden Kaufmodelle verglic
 
 ## <a name="compute-costs"></a>Computekosten
 
-Die Computekosten spiegeln die gesamte Computekapazität wider, die für die Anwendung bereitgestellt wird. Für die Dienstebene „Unternehmenskritisch“ werden mindestens drei Replikate automatisch zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der Preis im vCore-basierten Kaufmodell für die Dienstebene „Unternehmenskritisch“ ungefähr 2,7x höher als für die Dienstebene „Universell“. Aus demselben Grund spiegelt der höhere Speicherpreis pro GB für die Dienstebene „Unternehmenskritisch“ den höheren E/A-Wert und die geringere Wartezeit des SSD-Speichers wider. Bei den Kosten für den Sicherungsspeicher gibt es keinen Unterschied zwischen diesen beiden Dienstebenen, weil wir in beiden Fällen eine Klasse mit Standardspeicher verwenden.
+### <a name="provisioned-compute-costs"></a>Bereitgestellte Computekosten
+
+In der bereitgestellten Computeebene spiegeln die Computekosten die gesamte Computekapazität wider, die für die Anwendung bereitgestellt wird.  Für die Dienstebene „Unternehmenskritisch“ werden mindestens drei Replikate automatisch zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der Preis im vCore-basierten Kaufmodell für die Dienstebene „Unternehmenskritisch“ ungefähr 2,7 Mal höher als für die Dienstebene „Universell“. Aus demselben Grund spiegelt der höhere Speicherpreis pro GB für die Dienstebene „Unternehmenskritisch“ den höheren E/A-Wert und die geringere Wartezeit des SSD-Speichers wider. Bei den Kosten für den Sicherungsspeicher gibt es keinen Unterschied zwischen diesen beiden Dienstebenen, weil wir in beiden Fällen eine Klasse mit Standardspeicher verwenden.
+
+### <a name="serverless-compute-costs"></a>Serverlose Computekosten
+
+Eine Beschreibung, wie Computekapazität definiert und Kosten für die serverlose Computeebene berechnet werden, finden Sie unter [SQL-Datenbank – serverlos (Vorschauversion)](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Speicherkosten
 
@@ -58,7 +64,7 @@ Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Prei
 
 ## <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
-Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen und physische Hardwaremerkmale (z.B. Anzahl der Kerne, Arbeitsspeicher, Speichergröße) angeboten. Beim vCore-basierten Kaufmodell erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen auswählen. Beim vCore-basierten Kaufmodell können Sie für [Einzeldatenbanken](sql-database-single-database-scale.md), [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanzen](sql-database-managed-instance.md) zwischen den Dienstebenen [Universell](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) und [Unternehmenskritisch](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) wählen. Für Einzeldatenbanken können Sie auch die [Dienstebene „Hyperscale“ (Vorschau)](sql-database-service-tier-hyperscale.md) auswählen.
+Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen und physische Hardwaremerkmale (z.B. Anzahl der Kerne, Arbeitsspeicher, Speichergröße) angeboten. Beim vCore-basierten Kaufmodell erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen auswählen. Beim vCore-basierten Kaufmodell können Sie für [Einzeldatenbanken](sql-database-single-database-scale.md), [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanzen](sql-database-managed-instance.md) zwischen den Dienstebenen [Universell](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) und [Unternehmenskritisch](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) wählen. Für Einzeldatenbanken können Sie auch die [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md) auswählen.
 
 Mit dem vCore-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln auswählen, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Beim vCore-basierten Kaufmodell zahlen Kunden für Folgendes:
 
@@ -78,7 +84,7 @@ Wenn Ihre Einzeldatenbank oder Ihr Pool für elastische Datenbanken mehr als 300
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
-Mit einer Datenbanktransaktionseinheit (Database Transaction Unit, DTU) wird eine Mischung aus den Werten von CPU, Arbeitsspeicher, Lesevorgängen und Schreibvorgängen dargestellt. Das DTU-basierte Kaufmodell verfügt über einen Satz mit vorkonfigurierten Paketen mit Computeressourcen und integriertem Speicher, um die Anwendungsleistung auf verschiedenen Ebenen zu erhöhen. Wenn Kunden die Einfachheit eines vorkonfigurierten Pakets und festgelegter Monatszahlungen bevorzugen, ist das DTU-basierte Modell unter Umständen besser für ihre Anforderungen geeignet. Beim DTU-basierten Kaufmodell können Kunden zwischen den Dienstebenen **Basic**, **Standard** und **Premium** für [Einzeldatenbanken](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) wählen. Dieses Kaufmodell ist in [verwalteten Instanzen](sql-database-managed-instance.md) nicht verfügbar.
+Mit einer Datenbanktransaktionseinheit (Database Transaction Unit, DTU) wird eine Mischung aus den Werten von CPU, Arbeitsspeicher, Lesevorgängen und Schreibvorgängen dargestellt. Das DTU-basierte Kaufmodell verfügt über vorkonfigurierte Pakete mit Computeressourcen und integriertem Speicher, um die Anwendungsleistung auf verschiedenen Ebenen zu erhöhen. Wenn Kunden die Einfachheit eines vorkonfigurierten Pakets und festgelegter Monatszahlungen bevorzugen, ist das DTU-basierte Modell unter Umständen besser für ihre Anforderungen geeignet. Beim DTU-basierten Kaufmodell können Kunden zwischen den Dienstebenen **Basic**, **Standard** und **Premium** für [Einzeldatenbanken](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) wählen. Dieses Kaufmodell ist in [verwalteten Instanzen](sql-database-managed-instance.md) nicht verfügbar.
 
 ### <a name="database-transaction-units-dtus"></a>Datenbanktransaktionseinheiten (DTUs)
 
@@ -86,7 +92,7 @@ Für eine einzelne Datenbank in einer bestimmten Computegröße innerhalb einer 
 
 ![Begrenzungsrahmen](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTUs sind besonders nützlich, um den relativen Umfang von Ressourcen zu verstehen, der zwischen Azure SQL-Datenbanken in unterschiedlichen Computegrößen und Dienstebenen vorliegt. Beispielsweise entspricht eine Verdoppelung der DTUs durch Erhöhen der Computegröße einer Datenbank der Verdoppelung der Ressourcen, die dieser Datenbank zur Verfügung stehen. Beispiel: Eine Premium P11-Datenbank mit 1.750 DTUs bietet eine 350 Mal höhere DTU-Computeleistung als eine Basic-Datenbank mit fünf DTUs.  
+DTUs sind besonders nützlich, um den relativen Umfang von Ressourcen zu verstehen, der zwischen Azure SQL-Datenbanken in unterschiedlichen Computegrößen und Diensttarifen vorliegt. Beispielsweise entspricht eine Verdoppelung der DTUs durch Erhöhen der Computegröße einer Datenbank der Verdoppelung der Ressourcen, die dieser Datenbank zur Verfügung stehen. Beispiel: Eine Premium P11-Datenbank mit 1.750 DTUs bietet eine 350 Mal höhere DTU-Computeleistung als eine Basic-Datenbank mit fünf DTUs.  
 
 Um einen tieferen Einblick in den Ressourcenverbrauch (DTU) Ihrer Workload zu erhalten, verwenden Sie die [Statistik zur Abfrageleistung](sql-database-query-performance.md) für die folgenden Aufgaben:
 
@@ -108,9 +114,9 @@ Wenn Sie die vorhandene Workload eines lokalen oder virtuellen SQL Server-Comput
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads, die von einem elastischen Ressourcenpool profitieren
 
-Pools eignen sich gut für eine große Anzahl von Datenbanken mit spezifischen Nutzungsmustern. Im Hinblick auf eine bestimmte Datenbank ist dieses Muster durch eine geringe durchschnittliche Auslastung mit relativ wenigen Nutzungslastspitzen gekennzeichnet. SQL-Datenbank ermittelt automatisch den Verlauf der Ressourcennutzung von Datenbanken auf einem vorhandenen SQL-Datenbank-Server und empfiehlt eine geeignete Poolkonfiguration im Azure-Portal. Weitere Informationen finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool.md).
+Pools eignen sich gut für eine große Anzahl von Datenbanken mit spezifischen Nutzungsmustern. Im Hinblick auf eine bestimmte Datenbank ist dieses Muster durch eine geringe durchschnittliche Auslastung mit relativ wenigen Nutzungslastspitzen gekennzeichnet. Die SQL-Datenbank ermittelt automatisch den Verlauf der Ressourcennutzung von Datenbanken auf einem vorhandenen SQL-Datenbank-Server und empfiehlt eine geeignete Poolkonfiguration im Azure-Portal. Weitere Informationen finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool.md).
 
-## <a name="purchase-model-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zum Kaufmodell
+## <a name="purchase-models-frequently-asked-questions-faq"></a>Kaufmodelle: Häufig gestellte Fragen (FAQ)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Muss ich meine Anwendung offline schalten, um von einer auf DTUs basierenden Datenbank auf eine V-Kern-basierte Dienstebene umzustellen?
 

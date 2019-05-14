@@ -10,15 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: 771168a13d7192581aae2ff4128e979b6924484a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 05475dbfb7dc1ee3f5de1a9b858eaf212b674eac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020676"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466393"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für Java
 
+Schnellstarts sind auch für [Sprachübersetzung](quickstart-translate-speech-java-jre.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-java-jre.md) verfügbar.
+
+Wählen Sie bei Bedarf eine andere Programmiersprache und/oder Umgebung:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 In diesem Artikel erstellen Sie eine Java-Konsolenanwendung mit dem [Speech SDK](speech-sdk.md). Sie transkribieren über das Mikrofon Ihres Computers Sprache in Echtzeit in Text. Die Anwendung wird mit dem Maven-Paket für das Speech SDK und der Eclipse Java-IDE (Version 4.8) unter 64-Bit-Versionen von Windows, unter 64-Bit-Versionen von Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) oder unter macOS (ab Version 10.13) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.

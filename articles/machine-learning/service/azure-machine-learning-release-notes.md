@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154288"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464803"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -42,6 +42,15 @@ Im Azure-Portal haben Sie jetzt folgende Möglichkeiten:
 + Neue Möglichkeit zum Herunterladen der Datei „config.json“ von der Übersichtsseite des Azure Machine Learning Service-Arbeitsbereichs
 + Unterstützung der Erstellung von Machine Learning Service-Arbeitsbereichen über den Azure Databricks-Arbeitsbereich 
 
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Azure Machine Learning SDK für Python, Version 1.0.33
++ **Neue Features**
+  + Die Methode _Workspace.create_ akzeptiert nun Standardclusterkonfigurationen für CPU- und GPU-Cluster.
+  + Wenn die Erstellung des Arbeitsbereichs fehlschlägt, werden abhängige Ressourcen bereinigt.
+  + Die standardmäßige Azure Container Registry SKU wurde auf „Basic“ umgestellt.
+  + Die Azure Container Registry-Instanz wird verzögert erstellt, wenn sie für die Ausführung oder Bilderstellung benötigt wird.
+  + Unterstützung von Umgebungen für Trainingsausführungen
 
 ### <a name="notebook-virtual-machine"></a>Virtueller Notebook-Computer 
 

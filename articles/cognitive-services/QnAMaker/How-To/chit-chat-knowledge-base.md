@@ -8,29 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 05/07/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858041"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153679"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Hinzufügen von Geplauder zu einer Wissensdatenbank
 
 Das Hinzufügen von Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter. Das Geplauderfeature von QnA Maker ermöglicht Ihnen, auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank (KB) hinzufügen. Dies kann ein Ausgangspunkt für die Persönlichkeit Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.  
 
-Dieses Dataset enthält etwa 100 Szenarien von Geplauder mit dem Sprachstil von drei Personas: dem Sachlichen, dem Freund und dem Komiker. Wählen Sie die Persona aus, die dem Sprachstil Ihres Bots am nächsten kommt. Bei einer Benutzerabfrage versucht QnA Maker, sie mit der nächsten bekannten Geplauder-QnA abzugleichen. 
+Dieses Dataset enthält rund 100 Geplauderszenarios mit den Stimmen mehrerer Personen wie „Professionell“, „Freundlich“ oder „Witzig“. Wählen Sie die Persona aus, die dem Sprachstil Ihres Bots am nächsten kommt. Bei einer Benutzerabfrage versucht QnA Maker, sie mit der nächsten bekannten Geplauder-QnA abzugleichen.  
 
-Einige Beispiele für die verschiedenen Persönlichkeiten: <!-- added quotes so acrolinx doesn't score these sentences -->
-|Benutzerabfrage|Der Sachliche|Der Freund|Der Komiker|
+Einige Beispiele für die verschiedenen Persönlichkeiten finden Sie unten. Sie können alle Persönlichkeiten-Datasets einschließlich Details der Persönlichkeiten [hier](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) anzeigen.
+
+<!-- added quotes so acrolinx doesn't score these sentences -->
+|Benutzerabfrage|Professionell|Freundlich|Witzig|
 |--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|
+|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
 |`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`You can't handle my dulcet tones.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Aw, that's sweet.`|`Sure. Take me to city hall. See what happens.`|
+|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
+|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
+
 
 
 > [!NOTE]
@@ -51,10 +54,12 @@ Beim Bearbeiten Ihrer Wissensdatenbank wird eine neue Quelle für Geplauder basi
 
 ![Bearbeiten von Geplauder-QnAs](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
+Wählen Sie zum Anzeigen der Metadaten auf der Symbolleiste **Ansichtsoptionen** aus, und wählen Sie dann **Metadaten anzeigen** aus.
+
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Hinzufügen zusätzlicher Geplauderfragen und -antworten
 Sie können neue Geplauder-QnAs hinzufügen, die nicht im vordefinierten Dataset enthalten sind. Stellen Sie sicher, dass Sie kein QnA-Paar duplizieren, das bereits im Geplauderdataset enthalten ist. Wenn Sie neue Geplauder-QnAs hinzufügen, werden diese Ihrer **redaktionellen** Quelle hinzugefügt. Um sicherzustellen, dass der Ranker versteht, dass es sich um Geplauder handelt, fügen Sie das Metadaten-Schlüssel-Wertpaar „Editorial: chit-chat“ hinzu, wie in der folgenden Abbildung gezeigt:
    
-![Hinzufügen von Geplauder-QnAs](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)
+![![Add chit-chat QnAs](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Löschen von Geplauder aus einer vorhandenen Wissensdatenbank
 Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellungen**. Ihre spezifische Geplauderquelle wird als Datei mit dem ausgewählten Persönlichkeitsnamen aufgelistet. Sie können diese als Quelldatei löschen.

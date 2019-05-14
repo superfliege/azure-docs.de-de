@@ -3,8 +3,8 @@ title: Hilfethemen zum App-Registrierungsportal | Microsoft Docs
 description: Eine Beschreibung der verschiedenen Funktionen im App-Registrierungsportal von Microsoft.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77b5185056329113ee1fd17fa3ed3f364380ca2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b77f2a403bd4f410665d00bc69b3b1bcf0c3aaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095873"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139171"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
 Dieses Dokument enthält Kontextinformationen und Beschreibungen zu verschiedenen Features im [App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
 
 > [!NOTE]
-> Die Registrierung und Verwaltung von konvergenten und Azure AD-Anwendungen im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) wird ab Mai 2019 nicht mehr unterstützt. Wir empfehlen Ihnen, das neue Feature [App-Registrierungen (Vorschau)](https://aka.ms/appregistrations) im Azure-Portal zu verwenden, um Ihre vorhandenen Anwendungen zu verwalten und neue Anwendungen zu registrieren.
+> Die Registrierung und Verwaltung von konvergenten und Azure AD-Anwendungen im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) wird ab Mai 2019 nicht mehr unterstützt. Es wird empfohlen, die neue Oberfläche [App-Registrierungen](https://aka.ms/appregistrations) im Azure-Portal zu verwenden, um Ihre vorhandenen Anwendungen zu verwalten und neue Anwendungen zu registrieren.
 
 ## <a name="my-applications-or-converged-applications"></a>Eigene Anwendungen oder konvergente Anwendungen
 Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Azure AD v2.0-Endpunkt registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Azure AD v2.0-Endpunkt finden Sie in der [v2.0-Übersicht](active-directory-appmodel-v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.

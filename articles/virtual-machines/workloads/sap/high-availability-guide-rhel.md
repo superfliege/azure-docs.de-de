@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: c6746dc4bd5732a13c25793ed572a85acfca82d4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4e224a1abf72bfa068bebaf971e34c492b15d7c0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925783"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142988"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 
@@ -87,6 +87,9 @@ Zum Erreichen von Hochverfügbarkeit erfordert SAP NetWeaver freigegebenen Speic
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein Lastenausgleich erforderlich. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
 
+> [!IMPORTANT]
+> Multi-SID-Clustering von SAP ASCS/ERS mit Red Hat Linux als Gastbetriebssystem auf Azure-VMs wird **NICHT unterstützt**. Als Multi-SID-Clustering wird die Installation mehrerer SAP ASCS/ERS-Instanzen mit verschiedenen SIDs in einem Pacemaker-Cluster beschrieben.
+
 ### <a name="ascs"></a>(A)SCS
 
 * Frontendkonfiguration
@@ -113,6 +116,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 * Testport
   * Port 621<strong>&lt;nr&gt;</strong>
 * Lastenausgleichsregeln
+  * 32<strong>&lt;Nr.&gt;</strong> TCP
   * 33<strong>&lt;Nr.&gt;</strong> TCP
   * 5<strong>&lt;Nr.&gt;</strong>13 TCP
   * 5<strong>&lt;Nr.&gt;</strong>14 TCP
@@ -124,11 +128,11 @@ SAP NetWeaver erfordert einen freigegebenen Speicher für den Transport und das 
 
 ## <a name="setting-up-ascs"></a>Einrichten von (A)SCS
 
-Sie können entweder eine Azure-Vorlage aus GitHub verwenden, um alle erforderlichen Azure-Ressourcen bereitzustellen, einschließlich der virtuellen Computer, der Verfügbarkeitsgruppe und des Lastenausgleichs, oder Sie können die Ressourcen manuell bereitstellen.
+Sie können entweder eine Azure-Vorlage aus GitHub verwenden, um alle erforderlichen Azure-Ressourcen, einschließlich der virtuellen Computer, der Verfügbarkeitsgruppe und des Lastenausgleichs, bereitzustellen, oder Sie können die Ressourcen manuell bereitstellen.
 
 ### <a name="deploy-linux-via-azure-template"></a>Bereitstellen von Linux über die Azure-Vorlage
 
-Der Azure Marketplace enthält ein Image für Red Hat Enterprise Linux, das Sie zum Bereitstellen neuer virtueller Computer verwenden können. Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
+Der Azure Marketplace enthält ein Image für Red Hat Enterprise Linux, das Sie zum Bereitstellen neuer virtueller Computer verwenden können. Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 1. Öffnen Sie die [ASCS/SCS-Vorlage][template-multisid-xscs] im Azure-Portal.  
 1. Legen Sie die folgenden Parameter fest:
@@ -145,7 +149,7 @@ Der Azure Marketplace enthält ein Image für Red Hat Enterprise Linux, das Sie 
    1. Systemverfügbarkeit  
       Wählen Sie „HA“ (hohe Verfügbarkeit).
    1. Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel  
-      Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
+      Ein neuer Benutzer wird erstellt, der für die Anmeldung beim Computer verwendet werden kann.
    1. Subnetz-ID  
    Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
 
@@ -194,7 +198,7 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
          * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621**02** und **nw1-aers-hp**).
    1. Lastenausgleichsregeln
       1. 32**00** TCP für ASCS
-         1. Öffnen Sie den Load Balancer, wählen Sie das Laden von Lastenausgleichsregeln, und klicken Sie auf „Hinzufügen“.
+         1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-3200**).
          1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-ascs-frontend**).
          1. Behalten Sie **TCP** als Protokoll bei, und geben Sie Port **3200** ein.
@@ -457,7 +461,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[A]** Konfigurieren Sie Keep-Alive.
 
-   Die Kommunikation zwischen dem SAP NetWeaver-Anwendungsserver und ASCS/SCS wird durch einen Softwarelastenausgleich weitergeleitet. Der Lastenausgleich trennt nach einem konfigurierbaren Timeout inaktive Verbindungen. Um dies zu verhindern, müssen Sie einen Parameter im SAP NetWeaver ASCS/SCS-Profil festlegen und die Linux-Systemeinstellungen ändern. Weitere Informationen finden Sie im [SAP-Hinweis 1410736][1410736].
+   Die Kommunikation zwischen dem SAP NetWeaver-Anwendungsserver und ASCS/SCS wird durch einen Softwarelastenausgleich weitergeleitet. Der Lastenausgleich trennt nach einem konfigurierbaren Timeout inaktive Verbindungen. Um dies zu verhindern, müssen Sie einen Parameter im SAP NetWeaver-ASCS/SCS-Profil festlegen und die Linux-Systemeinstellungen ändern. Weitere Informationen finden Sie im [SAP-Hinweis 1410736][1410736].
 
    Der ASCS/SCS-Profilparameter „enque/encni/set_so_keepalive“ wurde bereits im letzten Schritt hinzugefügt.
 
@@ -527,7 +531,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo pcs property set maintenance-mode=false
    </code></pre>
 
-   Wenn Sie ein Upgrade von einer älteren Version durchführen und zu Enqueue-Server 2 wechseln, lesen Sie den SAP-Hinweis [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+   Wenn Sie ein Upgrade von einer älteren Version durchführen und zu Enqueue Server 2 wechseln, lesen Sie den SAP-Hinweis [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
 
    Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gestartet sind. Es ist nicht wichtig, auf welchem Knoten die Ressourcen ausgeführt werden.
 

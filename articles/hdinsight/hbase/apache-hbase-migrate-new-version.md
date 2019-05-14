@@ -6,26 +6,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: ac7984c50e6adec888c112cc260cf2e6af02fc97
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695695"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143316"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrieren eines Apache HBase-Clusters zu einer neuen Version
 
-Auftragsbasierte Cluster wie [Apache Spark](https://spark.apache.org/) und [Apache Hadoop](https://hadoop.apache.org/) lassen sich sehr einfach upgraden (wie unter [Aktualisieren eines HDInsight-Clusters auf eine neuere Version](../hdinsight-upgrade-cluster.md) beschrieben):
-
-1. Sichern Sie flüchtige (lokal gespeicherte) Daten.
-2. Löschen Sie den vorhandenen Cluster.
-3. Erstellen Sie einen neuen Cluster im gleichen VNet-Subnetz.
-4. Importieren Sie die flüchtigen Daten.
-5. Starten Sie Aufträge, und setzen Sie die Verarbeitung im neuen Cluster fort.
-
-Für das Upgrade eines [Apache HBase](https://hbase.apache.org/)-Clusters sind einige zusätzliche Schritte erforderlich. Diese werden im vorliegenden Artikel beschrieben.
+In diesem Artikel werden die Schritte beschrieben, die für ein Update des Apache HBase-Clusters in Azure HDInsight auf eine neuere Version erforderlich sind.
 
 > [!NOTE]  
 > Die Downtime beim Upgrade beträgt in der Regel nur wenige Minuten. Sie ist auf das Leeren sämtlicher In-Memory-Daten und auf die Konfiguration und den Neustart der Dienste im neuen Cluster zurückzuführen. Die Ergebnisse variieren je nach Kontenanzahl, Datenmenge und anderen Variablen.
@@ -37,7 +29,7 @@ Vergewissern Sie sich vor dem Apache HBase-Upgrade, dass die HBase-Versionen im 
 > [!NOTE]  
 > Wir empfehlen dringend, die Kompatibilitätsmatrix im [HBase-Buch](https://hbase.apache.org/book.html#upgrading) zu prüfen.
 
-Hier sehen Sie ein Beispiel für eine Versionskompatibilitätsmatrix, wobei „J“ für Kompatibilität und „N“ für potenzielle Inkompatibilität steht:
+Die folgende Tabelle zeigt das Beispiel einer Versionskompatibilitätsmatrix. Hierbei steht „Y“ für Kompatibilität und „N“ für eine potenzielle Inkompatibilität.
 
 | Kompatibilitätstyp | Hauptversion| Nebenversion | Patch |
 | --- | --- | --- | --- |
@@ -58,7 +50,7 @@ Hier sehen Sie ein Beispiel für eine Versionskompatibilitätsmatrix, wobei „J
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgraden mit der gleichen Apache HBase-Hauptversion
 
-Im folgenden Szenario wird ein Upgrade von HDInsight 3.4 auf 3.6 (jeweils enthalten in Apache HBase 1.1.2) mit der gleichen HBase-Hauptversion durchgeführt. Andere Versionsupgrades laufen ähnlich ab – vorausgesetzt, es liegen keine Kompatibilitätsprobleme zwischen Quell- und Zielversion vor.
+Führen Sie die folgenden Schritte aus, um für den Apache HBase-Cluster in Azure HDInsight ein Upgrade durchzuführen:
 
 1. Vergewissern Sie sich anhand der HBase-Kompatibilitätsmatrix und der Versionshinweise, dass Ihre Anwendung mit der neuen Version kompatibel ist. Testen Sie Ihre Anwendung in einem Cluster mit der Zielversion von HDInsight und HBase.
 
@@ -66,7 +58,7 @@ Im folgenden Szenario wird ein Upgrade von HDInsight 3.4 auf 3.6 (jeweils enthal
 
     ![Verwenden des gleichen Speicherkontos, aber mit einem anderen Container](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-3. Leeren Sie Ihren HBase-Quellcluster. Dies ist der Cluster, den Sie upgraden möchten. HBase schreibt eingehende Daten in einen In-Memory-Speicher. Dieser wird als _Memstore_ bezeichnet. Wenn der Memstore eine bestimmte Größe erreicht, wird er zur langfristigen Speicherung im Speicherkonto des Clusters auf den Datenträger geschrieben. Wenn Sie den alten Cluster löschen, werden die Memstores recycelt, wodurch ggf. Daten verloren gehen. Führen Sie das folgende Skript aus, um den Memstore für jede Tabelle manuell auf den Datenträger zu schreiben. Die neueste Version dieses Skripts finden Sie auf [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) für Azure.
+3. Leeren Sie Ihren HBase-Quellcluster (den Cluster, den Sie aktualisieren möchten). HBase schreibt eingehende Daten in einen In-Memory-Speicher. Dieser wird als _Memstore_ bezeichnet. Wenn der Memstore eine bestimmte Größe erreicht, wird er von HBase zur langfristigen Speicherung im Speicherkonto des Clusters auf den Datenträger geschrieben. Wenn Sie den alten Cluster löschen, werden die Memstores recycelt, wodurch ggf. Daten verloren gehen. Führen Sie das folgende Skript aus, um den Memstore für jede Tabelle manuell auf den Datenträger zu schreiben. Die neueste Version dieses Skripts finden Sie auf [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) für Azure.
 
     ```bash
     #!/bin/bash
@@ -186,27 +178,32 @@ Im folgenden Szenario wird ein Upgrade von HDInsight 3.4 auf 3.6 (jeweils enthal
     
 4. Beenden Sie die Erfassung im alten HBase-Cluster.
 5. Führen Sie das vorherige Skript erneut aus, um sicherzustellen, dass alle aktuellen Daten im Memstore geleert wurden.
-6. Melden Sie sich im alten Cluster (https://OLDCLUSTERNAME.azurehdidnsight.net) bei [Apache Ambari](https://ambari.apache.org/) an, und beenden Sie die HBase-Dienste. Wenn Sie aufgefordert werden, zu bestätigen, dass Sie die Dienste beenden möchten, aktivieren Sie das Kontrollkästchen zum Aktivieren des Wartungsmodus für HBase. Weitere Informationen zur Verbindungsherstellung mit Ambari sowie zur Verwendung finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
+6. Melden Sie sich im alten Cluster (https://OLDCLUSTERNAME.azurehdidnsight.net) bei [Apache Ambari](https://ambari.apache.org/) an, und beenden Sie die HBase-Dienste. Wenn Sie zur Bestätigung aufgefordert werden, dass Sie die Dienste beenden möchten, aktivieren Sie das Kontrollkästchen, um den Wartungsmodus für HBase zu aktivieren. Weitere Informationen zur Verbindungsherstellung mit Ambari sowie zur Verwendung finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
 
-    ![Klicken Sie in Ambari auf die Registerkarte „Services“ (Dienste), im linken Bereich auf „HBase“ und anschließend unter „Service Actions“ (Dienstaktionen) auf „Stop“ (Beenden).](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![Klicken Sie in Ambari unter „Dienstaktionen“ auf „Dienste > HBase > Beenden“.](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 
     ![Aktivieren Sie das Kontrollkästchen zum Aktivieren des Wartungsmodus für HBase, und bestätigen Sie den Vorgang.](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
 7. Melden Sie sich im neuen HDInsight-Cluster bei Ambari an. Ändern Sie die HDFS-Einstellung `fs.defaultFS` so, dass sie auf den Containernamen verweist, der im ursprünglichen Cluster verwendet wurde. Diese Einstellung befindet sich unter **HDFS > Configs > Advanced > Advanced core-site** (HDFS > Konfigurationen > Erweitert > core-site (erweitert)).
 
-    ![Klicken Sie in Ambari auf die Registerkarte „Services“ (Dienste), im linken Menü auf „HDFS“, anschließend auf die Registerkarte „Configs“ (Konfigurationen) und darunter auf die Registerkarte „Advanced“ (Erweitert).](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+    ![Klicken Sie in Ambari auf „Dienste > HDFS > Konfigurationen > Erweitert“.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
     ![Ändern Sie den Containernamen in Ambari.](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 8. **Wenn Sie HBase-Cluster nicht mit der Funktion „Erweiterte Schreibvorgänge“ verwenden, überspringen Sie diesen Schritt. Dies wird nur für HBase-Cluster mit der Funktion „Erweiterte Schreibvorgänge“ benötigt.**
    
-   Ändern Sie den Pfad „hbase.rootdir“ so, dass er auf den Container des ursprünglichen Clusters zeigt.
+   Ändern Sie den Pfad `hbase.rootdir` so, dass er auf den Container des ursprünglichen Clusters verweist.
 
-    ![Ändern Sie den Containernamen für „hbase rootdir“ in Ambari.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
-    
-9. Speichern Sie die Änderungen.
-10. Starten Sie alle erforderlichen Dienste neu, wie durch Ambari angegeben.
-11. Richten Sie für Ihre Anwendung einen Verweis auf den neuen Cluster ein.
+    ![Ändern Sie in Ambari den Containernamen für „hbase rootdir“.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+1. Führen Sie bei einem Upgrade von HDInsight 3.6 auf 4.0 die folgenden Schritte aus. Fahren Sie andernfalls mit Schritt 10 fort.
+    1. Wählen Sie **Dienste** > **Alle erforderlichen Dienste neu starten** aus, um alle erforderlichen Dienste in Ambari neu zu starten.
+    1. Beenden Sie den HBase-Dienst.
+    1. Stellen Sie eine SSH-Verbindung mit dem ZooKeeper-Knoten her, und führen Sie den [ZkCli](https://github.com/go-zkcli/zkcli)-Befehl `rmr /hbase-unsecure` aus, um den Znode des HBase-Stammverzeichnisses aus ZooKeeper zu entfernen.
+    1. Starten Sie HBase neu.
+1. Wenn Sie ein Upgrade auf eine andere HDInsight-Version als 4.0 durchführen, gehen Sie wie folgt vor:
+    1. Speichern Sie die Änderungen.
+    1. Starten Sie alle erforderlichen Dienste neu, wie durch Ambari angegeben.
+1. Richten Sie für Ihre Anwendung einen Verweis auf den neuen Cluster ein.
 
     > [!NOTE]  
     > Bei einem Upgrade ändert sich der statische DNS-Name für Ihre Anwendung. Sie können in den DNS-Einstellungen Ihres Domänennamens einen CNAME-Eintrag konfigurieren, der auf den Namen des Clusters verweist, anstatt einen hartcodierten DNS-Namen zu verwenden. Eine weitere Möglichkeit ist die Verwendung einer Konfigurationsdatei für Ihre Anwendung, die Sie ohne erneute Bereitstellung aktualisieren können.

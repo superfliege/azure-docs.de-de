@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023719"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472007"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Schreiben und Konfigurieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
@@ -25,6 +25,7 @@ In diesem Artikel lernen Sie verschiedene Methoden zum Schreiben von Daten mithi
 
 > [!Important]
 > Wenn Sie eine neue Lösung erstellen, probieren Sie die [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (Vorschau) aus, um Ihre Daten zu transformieren, Momentaufnahmen von Daten zu erstellen und mit einer Versionsangabe versehene Datasetdefinitionen zu speichern. Datasets ist die nächste Version des Datenaufbereitungs-SDK und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen.
+> Wenn Sie das `azureml-dataprep`-Paket verwenden, um einen Datenfluss mit Ihren Transformationen zu erstellen, anstatt das `azureml-datasets`-Paket zum Erstellen eines Datensatzes zu verwenden, können Sie später keine Snapshots oder Datensätze mit Versionsangabe verwenden.
 
 Da es keine Einschränkungen für die Anzahl von Schreibschritten in einer Pipeline gibt, können Sie problemlos zusätzliche Schreibschritte hinzufügen, um Zwischenergebnisse bei der Problembehandlung oder für andere Pipelines abzurufen.
 

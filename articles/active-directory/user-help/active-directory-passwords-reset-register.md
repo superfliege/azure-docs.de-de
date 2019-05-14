@@ -46,7 +46,7 @@ Für **Authentifizierungstelefon** oder **E-Mail für Authentifizierung** eingeg
 
 Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestätigung Ihrer Authentifizierungsmethoden aufgefordert, um sicherzustellen, dass die registrierten Methoden immer noch angemessen sind.
 
-## <a name="common-problems-and-their-solutions"></a>häufige Probleme und Lösungen
+## <a name="common-problems-and-their-solutions"></a>Häufige Probleme und Lösungen
 
  Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 

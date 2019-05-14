@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025114"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470265"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
-In diesem Tutorial erfahren Sie, wie Sie Daten mit dem [Azure Machine Learning Data Prep-SDK für die Regressionsmodellierung für Python](https://aka.ms/data-prep-sdk) vorbereiten. Sie führen verschiedene Transformationen durch, um zwei Datasets für New Yorker Taxis zu filtern und miteinander zu kombinieren.
+In diesem Tutorial erfahren Sie, wie Sie Daten mit dem [Datenvorbereitungspaket für Azure Machine Learning](https://aka.ms/data-prep-sdk) für die Regressionsmodellierung vorbereiten. Sie führen verschiedene Transformationen durch, um zwei Datasets für New Yorker Taxis zu filtern und miteinander zu kombinieren.
 
 Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**. Nach Abschluss der Tutorialreihe können Sie die Kosten für eine Taxifahrt prognostizieren, indem Sie ein Modell mit Datenfeatures trainieren. Zu den Features zählen der Abholzeitpunkt (Tag und Uhrzeit), die Anzahl der Fahrgäste und der Abholort.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d9583f232a7afd6ab64421d57bbf14a45299e374
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995658"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138238"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -63,6 +63,7 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 * Analysieren in Power BI mit dem [**Power BI-Inhaltspaket**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
 * [Speichern unter einem **Speicherkonto** zur Archivierung oder manuellen Untersuchung](../../azure-monitor/platform/archive-activity-log.md) Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des **Protokollprofils** angeben.
 * Fragen Sie es per PowerShell-Cmdlet, CLI oder REST-API ab.
+* Anzeigen des [Änderungsverlaufs](#view-change-history) für bestimmte Ereignisse
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Abfragen des Aktivitätsprotokolls im Azure-Portal
 
@@ -183,6 +184,20 @@ Die vollständige Dokumentation für die Erstellung eines Überwachungsprofils m
 ```azurecli
 az monitor log-profiles delete --name <profile name>
 ```
+
+## <a name="view-change-history"></a>Anzeigen des Änderungsverlaufs
+
+Bei der Überprüfung des Aktivitätsprotokolls kann es hilfreich sein zu wissen, welche Änderungen um die Zeit eines bestimmten Ereignisses stattfanden. Diese Informationen können Sie mit dem Änderungsverlauf anzeigen.
+
+Navigieren Sie mithilfe des Menüs auf der linken Seite des Portals zum Aktivitätsprotokoll. Wählen Sie aus dem Aktivitätsprotokoll ein Ereignis aus, das Sie eingehender überprüfen möchten. Wählen Sie die Registerkarte **Änderungsverlauf (Vorschau)** aus, um alle Änderungen anzuzeigen, die mit dem Ereignis verknüpft sind.
+
+![Ändern der Verlaufsliste für ein Ereignis](./media/activity-logs-overview/change-history-event.png)
+
+Wenn Änderungen zu dem Ereignis vorhanden sind, sehen Sie eine Liste der Änderungen, aus denen Sie eine Auswahl treffen können. Daraufhin öffnet sich die Seite **Änderungsverlauf (Vorschau)**. Auf dieser Seite sehen Sie die Änderungen an der Ressource. Wie Sie im folgenden Beispiel erkennen können, ist nicht nur zu sehen, dass sich die Größe des virtuellen Computer geändert hat, sondern es wird auch die Größe des virtuellen Computers vor und nach der Änderung angezeigt.
+
+![Seite „Änderungsverlauf“ mit den Unterschieden](./media/activity-logs-overview/change-history-event-details.png)
+
+Weitere Informationen zum Änderungsverlauf finden Sie unter [Abrufen von Ressourcenänderungen](../../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143024"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507811"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Installieren und Ausführen eines Containers für die Formularerkennung
 Die Formularerkennung wendet die Machine Learning-Technologie an, um Schlüssel-Wert-Paare und Tabellen aus Formularen zu identifizieren und zu extrahieren. Diesen werden Werte und Tabelleneinträge zugeordnet, und dann werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Sie können Ihr benutzerdefiniertes Formularerkennungsmodell mithilfe einer einfachen REST-API aufrufen, um die Komplexität zu reduzieren und es einfach in Ihren Prozess zur Workflowautomatisierung oder eine andere Anwendung zu integrieren. Es werden nur fünf Dokumente (oder ein leeres Formular) benötigt, sodass Sie schnell, präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse ohne komplizierte manuelle Eingriffe oder umfangreiche datenwissenschaftliche Kenntnisse erzielen können. Es sind keine Datenbeschriftungen oder Datenanmerkungen erforderlich.
@@ -94,7 +94,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
 
-1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen aber nicht verwendeten Abrechnungseinstellungen. Es sind noch weitere [Beispiele](form-recognizer-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen, aber nicht verwendeten Abrechnungseinstellungen. Es sind noch weitere [Beispiele](form-recognizer-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
 1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
@@ -231,23 +231,23 @@ Der Container bietet websocketbasierte Abfrageendpunkt-APIs, auf die über die [
 
 Das Formularerkennungs-SDK verwendet standardmäßig die Onlinedienste. Um den Container zu verwenden, müssen Sie die Initialisierungsmethode ändern. Weitere Informationen finden Sie in den folgenden Beispielen.
 
-#### <a name="for-c"></a>Für C#
+#### <a name="for-c"></a>C#
 
-Wechseln Sie von der Verwendung dieses Azure-Cloudinitialisierungsaufrufs
+Ändern Sie den folgenden Azure-Cloudinitialisierungsaufruf
 
 ```C#
 var config = FormRecognizerConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-zu diesem Aufruf unter Verwendung des Containerendpunkts:
+in den folgenden Aufruf mit dem Containerendpunkt:
 
 ```C#
 var config = FormRecognizerConfig.FromEndpoint("ws://localhost:5000/formrecognizer/v1.0-preview/custom", "YourSubscriptionKey");
 ```
 
-#### <a name="for-python"></a>Für Python
+#### <a name="for-python"></a>Python
 
-Wechseln Sie von der Verwendung dieses Azure-Cloudinitialisierungsaufrufs
+Ändern Sie den folgenden Azure-Cloudinitialisierungsaufruf
 
 ```python
 formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=formrecognizer_key, region=service_region)
@@ -261,7 +261,7 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 ### <a name="form-recognizer"></a>Formularerkennung
 
-Der Container stellt REST-Endpunkt-APIs bereit, die Sie [hier](https://docs.microsoft.com/azure/cognitive-services/formrecognizer-service/rest-apis#formrecognier-api) finden. Beispiele finden Sie [hier](https://azure.microsoft.com/resources/samples/cognitive-formrecognizer).
+Die vom Container bereitgestellten REST-Endpunkt-APIs finden Sie [hier](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel).
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -273,7 +273,7 @@ Der Container stellt REST-Endpunkt-APIs bereit, die Sie [hier](https://docs.micr
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container ausführen, werden mithilfe von **stdout** und **stderr** Informationen ausgegeben Ausgabenbereitstellung, die hilfreich sind, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+Wenn Sie den Container ausführen, werden mithilfe von **stdout** und **stderr** Informationen ausgegeben, die hilfreich sind, um Probleme beim Starten oder Ausführen des Containers zu beheben.
 
 ## <a name="billing"></a>Abrechnung
 

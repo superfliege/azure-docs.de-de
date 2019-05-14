@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 4b3fa69156146037ff59a41eab8c8373f6e01dc4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027754"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510505"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Erstellen und Registrieren von Azure Machine Learning-Datasets (Vorschau)
 
@@ -44,7 +44,7 @@ Um Dateien von Ihrem lokalen Computer zu laden, geben Sie den Pfad von Datei ode
 * Ableiten und Konvertieren von Spaltendatentypen.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
@@ -60,7 +60,9 @@ Um Datasets aus einem Azure-Datenspeicher zu erstellen, gehen Sie folgendermaße
 * Importieren Sie die [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-, [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition)- und `Dataset`-Pakete aus dem SDK.
 
 ```Python
-from azureml.core import Workspace, Datastore, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.datastore import Datastore
+from azureml.core.dataset import Dataset
 
 datastore_name = 'your datastore name'
 
@@ -74,7 +76,7 @@ workspace = Workspace.from_config()
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Verwenden Sie die `from_delimited_files()`-Methode, um in durch Trennzeichen getrennten Dateien zu lesen und Datasets im Arbeitsspeicher zu erstellen.
+Verwenden Sie die `from_delimited_files()`-Methode, um in durch Trennzeichen getrennten Dateien zu lesen und ein nicht registriertes Dataset zu erstellen.
 
 ```Python
 # create an in-memory Dataset on your local machine
@@ -98,23 +100,24 @@ dataset.head(5)
 Verwenden Sie die [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)-Methode, um in Ihrem Arbeitsbereich Datasets für die Freigabe und Wiederverwendung in Ihrer Organisation und verschiedene Experimente übergreifend zu registrieren.
 
 ```Python
-dataset = dataset.register(workspace = 'workspace_name',
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
                            description = 'Training data',
                            exist_ok = False
                            )
 ```
 
 >[!NOTE]
-> Die Standardparametereinstellung für `register()` ist „exist_ok = False“. Wenn Sie versuchen, ein Dataset mit dem gleichen Namen zu registrieren, ohne diese Einstellung zu ändern, tritt ein Fehler auf.
+> Die Standardparametereinstellung für `register()` ist `exist_ok = False`. Wenn Sie versuchen, ein Dataset mit dem gleichen Namen zu registrieren, ohne diese Einstellung zu ändern, tritt ein Fehler auf.
 
-Die `register()`-Methode aktualisiert die Definition eines bereits registrierten Datasets mit der Parametereinstellung `exist_ok = True`.
+Die `register()`-Methode gibt das bereits registrierte Dataset mit der Parametereinstellung `exist_ok = True` zurück.
 
 ```Python
-dataset = dataset.register(workspace = workspace_name,
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
                            description = 'Training data',
-                           exist_ok = True)
+                           exist_ok = True
+                           )
 ```
 
 Verwenden Sie `list()`, um alle registrierten Datasets in Ihrem Arbeitsbereich anzuzeigen.
@@ -137,7 +140,7 @@ Registrierte Datasets sind lokal, remote und auf Computeclustern wie der Azure M
 ```Python
 workspace = Workspace.from_config()
 
-dataset = workspace.Datasets['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

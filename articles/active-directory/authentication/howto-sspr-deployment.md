@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370677"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190375"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -32,6 +32,10 @@ Um einen reibungslosen Rollout der Funktion für die Self-Service-Kennwortzurüc
    * Haben Sie dem Helpdeskpersonal die URLs für Registrierung und Zurücksetzung zur Verfügung gestellt?
       * Registrierung: https://aka.ms/ssprsetup
       * Zurücksetzung: https://aka.ms/sspr
+
+   > [!WARNING]
+   > Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie „Active Directory-Benutzer und -Computer“ oder dem Active Directory-Verwaltungscenter wird nicht unterstützt. Beim Ändern eines Kennworts in der lokalen Umgebung darf diese Option nicht aktiviert werden. 
+
 1. Schulen Sie Ihre Benutzer.
    * Die folgenden Abschnitte dieses Dokuments behandeln Beispielkommunikation, Kennwortportale, Erzwingung der Registrierung und das Eintragen von Authentifizierungsdaten.
    * Die Azure Active Directory-Produktgruppe hat einen [Plan für die schrittweise Bereitstellung](https://aka.ms/SSPRDeploymentPlan) entwickelt, den Organisationen zusammen mit der Dokumentation auf dieser Website dazu verwenden können, einen Geschäftsvorgang zu erstellen und die Bereitstellung der Self-Service-Kennwortzurücksetzung zu planen.

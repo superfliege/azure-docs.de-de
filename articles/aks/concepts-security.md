@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 8fd5b726c01b056d38e7e187cec8270ee4e127a9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009003"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074014"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -34,9 +34,11 @@ Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse
 
 ## <a name="node-security"></a>Knotensicherheit
 
-AKS-Knoten sind virtuelle Azure-Computer, die von Ihnen verwaltet und gepflegt werden. Auf den Knoten wird eine optimierte Ubuntu-Linux-Distribution mit der Moby-Containerruntime ausgeführt. Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
+AKS-Knoten sind virtuelle Azure-Computer, die von Ihnen verwaltet und gepflegt werden. Linux-Knoten führen eine optimierte Ubuntu-Distribution mit der Moby-Containerruntime aus. Windows Server-Knoten (derzeit in der Vorschauversion in AKS) führen eine optimierte Version von Windows Server 2019 aus. Auch sie verwenden die Moby-Containerruntime. Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
 
-Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch vorgenommen. Sie können die Knoten manuell neu starten. Eine andere gängige Methode ist die Verwendung von [Kured][kured], einem Open-Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet][aks-daemonsets] ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
+Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Linux-Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate für Linux einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch ausgeführt. Sie können die Linux-Knoten manuell neu starten. Eine andere gängige Methode ist die Verwendung von [kured][kured], einem Open-Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet][aks-daemonsets] ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
+
+Für Windows Server-Knoten (derzeit in der Vorschauversion in AKS) werden die neuesten Updates von Windows Update nicht automatisch ausgeführt und angewendet. Sie sollten in regelmäßigen Abständen ein Upgrade für die Windows Server-Knotenpools in Ihrem AKS-Cluster durchführen, passend zum Windows Update-Freigabezyklus und Ihrem eigenen Validierungsprozess. Während dieses Upgrades werden Knoten erstellt, die das neueste Windows Server-Image und die neuesten Windows Server-Patches ausführen und die älteren Knoten entfernen. Weitere Informationen zu diesem Prozess finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
 
 Knoten werden in einem Subnetz des privaten virtuellen Netzwerks ohne öffentliche IP-Adresse bereitgestellt. Zur Problembehandlung und Verwaltung ist SSH standardmäßig aktiviert. Dieser SSH-Zugriff ist nur über die interne IP-Adresse verfügbar.
 
@@ -52,10 +54,10 @@ Aus Sicherheits- und Compliancegründen (oder zur Verwendung der neuesten Featur
 
 Während des Upgrades werden AKS-Knoten einzeln vom Cluster abgesperrt, damit auf ihnen keine neuen Pods geplant werden. Die Knoten werden dann wie folgt ausgeglichenund aktualisiert:
 
-- Vorhandene Pods werden ordnungsgemäß beendet und auf den verbleibenden Knoten geplant.
-- Der Knoten wird neu gestartet, und der Upgradevorgang wird abgeschlossen. Anschließend wird der Knoten wieder mit dem AKS-Cluster verknüpft.
-- Pods werden wieder für die Ausführung auf dem Knoten geplant.
-- Der nächste Knoten im Cluster wird mit der gleichen Methode abgesperrt und ausgeglichen usw., bis alle Knoten erfolgreich aktualisiert wurden.
+- Ein neuer Knoten wird im Knotenpool bereitgestellt. Dieser Knoten führt das neueste Betriebssystemimage und die neuesten Patches aus.
+- Einer der bereits vorhandenen Knoten wird für das Upgrade identifiziert. Pods auf diesem Knoten werden ordnungsgemäß beendet und auf den anderen Knoten im Knotenpool geplant.
+- Der vorhandene Knoten wird aus dem AKS-Cluster gelöscht.
+- Der nächste Knoten im Cluster wird mit der gleichen Methode abgesperrt und ausgeglichen, bis alle Knoten als Teil des Upgradeprozesses erfolgreich ersetzt wurden.
 
 Weitere Informationen finden Sie unter [Aktualisieren eines AKS-Clusters][aks-upgrade-cluster].
 
@@ -102,3 +104,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

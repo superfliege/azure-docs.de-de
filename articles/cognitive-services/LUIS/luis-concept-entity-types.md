@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528032"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141045"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
@@ -97,7 +97,6 @@ Nachdem die Entität extrahiert wurde, können die Entitätsdaten als einzelne I
 |Durch maschinelles Lernen erworben|Kennzeichnung möglich|Tutorial|Beispiel<br>response|Entitätstyp|Zweck|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Zusammengesetzt**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
-|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchisch**](#hierarchical-entity)|Gruppierung von einfachen Entitäten.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Liste**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per genauer Textübereinstimmung extrahiert werden.|
 |Gemischt||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entität, bei der das Entitätsende schwierig zu ermitteln ist.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Vordefiniert**](#prebuilt-entity)|Bereits trainiert, um verschiedene Arten von Daten zu extrahieren.|
@@ -112,7 +111,7 @@ Für gemischte Entitäten wird eine Kombination aus Methoden für die Entitätse
 
 ## <a name="composite-entity"></a>Entität vom Typ „Composite“
 
-Eine zusammengesetzte Entität besteht aus anderen Entitäten, z.B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck, Liste oder Hierarchisch. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
+Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
 
 Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt:
 
@@ -126,18 +125,6 @@ Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt:
 
 [Tutorial](luis-tutorial-composite-entity.md)<br>
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)<br>
-
-## <a name="hierarchical-entity"></a>Entität vom Typ „Hierarchical“
-
-**Hierarchische Einheiten werden möglicherweise veraltet sein. Verwenden Sie [Entitätsrollen](luis-concept-roles.md) zum Ermitteln von Entitätsuntertypen, anstatt hierarchische Entitäten zu verwenden.**
-
-Eine hierarchische Entität ist eine Kategorie von kontextbezogen erlernten einfachen Entitäten, die als untergeordnete Elemente bezeichnet werden.
-
-![Entität vom Typ „Hierarchical“](./media/luis-concept-entities/hierarchical-entity.png)
-
-### <a name="roles-versus-hierarchical-entities"></a>Rollen und hierarchische Entitäten
-
-Mit den [Rollen](luis-concept-roles.md) wird das gleiche Problem wie mit hierarchischen Entitäten gelöst, aber der Vorgang gilt für alle Entitätstypen.  
 
 ## <a name="list-entity"></a>Entität vom Typ „List“
 
@@ -171,10 +158,10 @@ In der folgenden Tabelle enthält jede Zeile zwei Versionen der Äußerung. In d
 
 |Äußerung|
 |--|
-|Wurde das Buch The Man Who Mistook His Wife for a Hat and Other Clinical Tales in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br>Wurde das Buch **The Man Who Mistook His Wife for a Hat and Other Clinical Tales** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|Wurde Half Asleep in Frog Pajamas in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br>Wurde **Half Asleep in Frog Pajamas** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|Wurde The Particular Sadness of Lemon Cake: A Novel in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br>Wurde **The Particular Sadness of Lemon Cake: A Novel** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|Wurde There's A Wocket In My Pocket! in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br>Wurde **There's A Wocket In My Pocket!** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
+|`Wurde das Buch „The Man Who Mistook His Wife for a Hat and Other Clinical Tales“ in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br>Wurde das Buch **The Man Who Mistook His Wife for a Hat and Other Clinical Tales** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
 
 ## <a name="prebuilt-entity"></a>Vordefinierte Entität
 

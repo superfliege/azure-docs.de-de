@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 05/09/2019
 ms.author: juliako
-ms.openlocfilehash: 8374e4c49012a2c49de41001be0fdb30f9151332
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: a27f7597ddc934b925d63507a816ac5816b682d6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617834"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65151042"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Zugriff auf Azure Media Services API mit Azure CLI
  
@@ -54,7 +54,11 @@ Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des M
 - [CLI-Beispiel: Erstellen eines Azure Event Grid-Abonnements](./scripts/cli-create-event-grid.md)
 - [CLI-Beispiel: Veröffentlichen eines Medienobjekts](./scripts/cli-publish-asset.md)
 - [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-howto.md)
+- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, muss sich im Status „Wird ausgeführt“ befinden. Der folgende CLI-Befehl startet den standardmäßigen Streamingendpunkt:
+
+`az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
+

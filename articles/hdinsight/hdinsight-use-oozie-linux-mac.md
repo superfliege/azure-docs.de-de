@@ -2,18 +2,17 @@
 title: Verwenden von Hadoop Oozie-Workflows in Linux-basiertem Azure HDInsight
 description: Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724169"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142826"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -38,13 +37,8 @@ Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu pl
 
 * **Eine Azure SQL-Datenbank**.  Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](../sql-database/sql-database-get-started.md).  Der Artikel verwendet eine Datenbank namens `oozietest`.
 
-* **Mögliche Änderungen an der Speicherkonfiguration**.  Wenn Sie eine Speicherkonto des Typs `BlobStorage` verwenden, finden Sie unter [Speicherkonfiguration](#storage-configuration) weitere Informationen.
+* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Siehe auch die Informationen zur [sicheren Übertragung](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="storage-configuration"></a>Speicherkonfiguration
-Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto einen der Typen `Storage (general purpose v1)` oder `StorageV2 (general purpose v2)` hat.  Der Prozess in diesem Artikel wird mindestens zu einer Ausgabe in `/mapreducestaging` führen.  In einer Hadoop-Standardkonfiguration ist `/mapreducestaging` in der Konfigurationsvariable `fs.azure.page.blob.dir` in der `core-site.xml`-Datei des `HDFS`-Diensts enthalten.  Diese Konfiguration bewirkt, dass es sich bei der Ausgabe im Verzeichnis um Seitenblobs handelt. Dies wird für Speicherkonten des Typs `BlobStorage` jedoch nicht unterstützt.  Damit Sie `BlobStorage` im Rahmen dieses Artikels verwenden können, entfernen Sie `/mapreducestaging` aus der Konfigurationsvariable `fs.azure.page.blob.dir`.  Zugriff auf die Konfiguration besteht über die [Ambari-Benutzeroberfläche](hdinsight-hadoop-manage-ambari.md).  Andernfalls erhalten Sie diese Fehlermeldung: `Page blob is not supported for this account type.`.
-
-> [!NOTE]  
-> Für das in diesem Artikel verwendete Speicherkonto wurde die [sichere Übertragung](../storage/common/storage-require-secure-transfer.md) aktiviert. Deshalb wird während des gesamten Artikels `wasbs` anstelle von `wasb` verwendet.
 
 ## <a name="example-workflow"></a>Beispielworkflow
 
@@ -451,7 +445,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
 5. Bearbeiten Sie den Code unten so, dass `<JOBID>` durch die ID ersetzt wird, die zuvor zurückgegeben wurde.  Verwenden Sie den folgenden Befehl zum Starten des Auftrags:
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
     Wenn Sie nach diesem Befehl den Status überprüfen, lautet dieser „Wird ausgeführt“, und Informationen für die Aktionen innerhalb des Auftrags werden zurückgegeben.  Die Ausführung des Auftrags nimmt einige Minuten in Anspruch.

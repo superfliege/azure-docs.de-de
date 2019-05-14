@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521741"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148167"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Hinzufügen von Absichten, um die Absicht von Benutzeräußerungen zu bestimmen
 
@@ -42,16 +42,25 @@ Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Füge
 
     LUIS konvertiert alle Äußerungen in Kleinbuchstaben und fügt vor und nach Token, z.B. Bindestrichen, Leerzeichen ein.
 
-## <a name="intent-prediction-discrepancy-errors"></a>Fehler durch Abweichung bei der Absichtsvorhersage 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-Eine Äußerung in einer Absicht kann eine Abweichung bei der Absichtsvorhersage zwischen der ausgewählten Absicht und dem Vorhersageergebnis aufweisen. LUIS gibt diese Abweichung mit einem roten Kasten an, mit dem in der Zeile mit der Beispieläußerung die **bezeichnete Absicht** gekennzeichnet wird. 
+## <a name="intent-prediction-errors"></a>Fehler bei Absichtsvorhersagen 
 
-![Screenshot der Detailseite „Absichten“ mit Abweichungsfehlern für die Äußerungsvorhersage](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+Eine Beispieläußerung in eine Absicht, bei der möglicherweise ein Fehler bei der Absichtsvorhersage zwischen der Absicht, zu der die Beispieläußerung gehört, und der während des Trainings ermittelten Vorhersageabsicht aufgetreten ist. 
 
-Wählen Sie im oberen Navigationsbereich die Option **Trainieren**. Die Abweichung der Vorhersage ist nun nicht mehr vorhanden.
+Um Äußerungsvorhersagefehler zu finden und zu beheben, verwenden Sie die **Auswertungsoptionen** „Falsch“ und „Unklar“ der Option **Filter** zusammen mit der Option **Ansicht** von **Detailansicht**. 
 
-> [!Note]
-> Wenn ein Wort oder Ausdruck in der Beispieläußerung rot unterstrichen ist, ist ein [Entitätsvorhersagefehler](luis-how-to-add-example-utterances.md#entity-status-predictions) aufgetreten. Sie müssen ihn korrigieren. 
+![Verwenden Sie für das Ermitteln und Beheben von Äußerungsvorhersagefehlern die Option „Filter“.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+Wenn die Filter und die Ansicht angewandt wurden und Beispieläußerungen mit Fehlern vorhanden sind, enthält die Liste der Beispieläußerungen die Äußerungen und die Probleme.
+
+![![Wenn die Filter und die Ansicht angewandt wurden und Beispieläußerungen mit Fehlern vorhanden sind, enthält die Liste der Beispieläußerungen die Äußerungen und die Probleme.](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+Jede Zeile zeigt das aktuelle Vorhersageergebnis des Trainings für die Beispieläußerung, das nächstschlechtere Ergebnis und den Unterschied zwischen diesen beiden Bewertungen. 
+
+### <a name="fixing-intents"></a>Beheben von Absichten
+
+Wenn Sie erfahren möchten, wie Sie Absichtsvorhersagefehler beheben, verwenden Sie das [Zusammenfassungs-Dashboard](luis-how-to-use-dashboard.md). Das Zusammenfassungs-Dashboard enthält eine Analyse des letzten Trainings der aktiven Version und die besten Vorschläge für das Verbessern Ihres Modells.  
 
 ## <a name="add-a-custom-entity"></a>Hinzufügen einer benutzerdefinierten Entität
 

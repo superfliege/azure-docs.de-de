@@ -1,9 +1,9 @@
 ---
-title: Serielle Konsole für Azure-VMs unter Windows | Microsoft-Dokumentation
-description: Bidirektionale serielle Konsole für virtuelle Azure-Windows-Computer.
+title: Die serielle Azure-Konsole für Windows | Microsoft-Dokumentation
+description: Bidirektionale serielle Konsole für Azure Virtual Machines und Virtual Machine Scale Sets
 services: virtual-machines-windows
 documentationcenter: ''
-author: harijay
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -12,59 +12,75 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 5/1/2019
 ms.author: harijay
-ms.openlocfilehash: e50243c15b5b783976374bc8b8861a0245ce1b05
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c6611c75e61f7e381efd2e437b8281cc70601215
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996372"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141056"
 ---
-# <a name="virtual-machine-serial-console-for-windows"></a>Serielle Konsole für virtuelle Computer für Windows
+# <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
-Die serielle Konsole für virtuelle Computer (VMs) im Azure-Portal ermöglicht den Zugriff auf eine textbasierte Konsole für virtuelle Windows-Computer. Diese serielle Verbindung erfolgt über den seriellen COM1-Port des virtuellen Computers und ermöglicht Zugriff auf diesen, unabhängig vom Zustand des Netzwerks oder Betriebssystems des virtuellen Computers. Der Zugriff auf die serielle Konsole für einen virtuellen Computer kann nur über das Azure-Portal erfolgen. Er ist nur für Benutzer zulässig, die über eine Zugriffsrolle als Mitwirkender für virtuelle Computer oder höher für den virtuellen Computer verfügen.
+Die serielle Konsole im Azure-Portal ermöglicht den Zugriff auf eine textbasierte Konsole für virtuelle Windows-Computer (VMs) und VM-Skalierungsgruppeninstanzen. Diese serielle Verbindung erfolgt über den seriellen COM1-Port der VM oder der VM-Skalierungsgruppe und ermöglicht Zugriff auf diesen, unabhängig vom Zustand des Netzwerks oder Betriebssystems. Auf die serielle Konsole kann nur über das Azure-Portal und von Benutzern zugegriffen werden, die mindestens über die Zugriffsrolle „Mitwirkender“ für die VM oder VM-Skalierungsgruppeninstanzen verfügen.
 
-Die Dokumentation zur seriellen Konsole für Linux-VMs finden Sie unter [Serielle Konsole für virtuelle Computer für Linux](serial-console-linux.md).
+Die serielle Konsole funktioniert auf die gleiche Weise für VMs und VM-Skalierungsgruppeninstanzen. Deshalb beziehen sich alle Äußerungen bezüglich VMs in dieser Dokumentation, sofern nicht anders angegeben, implizit auch auf VM-Skalierungsgruppeninstanzen.
+
+Die Dokumentation zur seriellen Konsole für Linux-VMs und VM-Skalierungsgruppen finden Sie unter [Serielle Azure-Konsole für Linux](serial-console-linux.md).
 
 > [!NOTE]
-> Die serielle Konsole für virtuelle Computer ist in globalen Azure-Regionen allgemein verfügbar. Sie ist noch nicht in den Clouds „Azure Government“ und „Azure China“ verfügbar.
+> Die serielle Konsole ist in den globalen Azure-Regionen allgemein verfügbar. Sie ist noch nicht in den Clouds „Azure Government“ und „Azure China“ verfügbar.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die VM, auf der Sie auf eine serielle Konsole zugreifen, muss das Ressourcenverwaltungs-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt.
+* Ihre VM oder VM-Skalierungsgruppeninstanz muss das Bereitstellungsmodell für die Ressourcenverwaltung verwenden. Klassische Bereitstellungen werden nicht unterstützt.
+
+- Ihr Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für die VM und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen.
+
+- Ihre VM oder VM-Skalierungsgruppeninstanz muss über einen kennwortbasierten Benutzer verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus.
 
 * Auf der VM, auf der Sie auf eine serielle Konsole zugreifen, muss [Startdiagnose](boot-diagnostics.md) aktiviert sein.
 
     ![Einstellungen der Startdiagnose](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-* Ein Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für die VM und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen.
-
-* Die VM, auf der Sie auf eine serielle Konsole zugreifen, muss über ein kennwortbasiertes Konto verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus.
-
-
 ## <a name="get-started-with-the-serial-console"></a>Erste Schritte mit der seriellen Konsole
-Auf die serielle Konsole für virtuelle Computer kann nur über das Azure-Portal zugegriffen werden:
+Auf die serielle Konsole für VMs und VM-Skalierungsgruppen kann nur über das Azure-Portal zugegriffen werden:
 
+### <a name="serial-console-for-virtual-machines"></a>Serielle Konsole für virtuelle Computer
+Für den Zugriff auf die serielle Konsole für VMs müssen Sie lediglich auf **Serielle Konsole** im Abschnitt **Support + Problembehandlung** des Azure-Portals klicken.
   1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-  1. Wählen Sie im linken Menü **Virtual Machines** (Virtuelle Computer) aus.
-  1. Wählen Sie in der Liste eine VM aus. Die Übersichtsseite für den virtuellen Computer wird geöffnet.
+
+  1. Navigieren Sie zu **Alle Ressourcen**, und wählen Sie eine VM aus. Die Übersichtsseite für die VM wird geöffnet.
+
   1. Scrollen Sie nach unten zum Abschnitt **Support + Problembehandlung**, und wählen Sie **Serielle Konsole** aus. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
+
+### <a name="serial-console-for-virtual-machine-scale-sets"></a>Serielle Konsole für Virtual Machine Scale Sets
+Die serielle Konsole steht pro Instanz für VM-Skalierungsgruppen zur Verfügung. Sie müssen zur individuellen Instanz einer VM-Skalierungsgruppe navigieren, um die Schaltfläche **Serielle Konsole** zu finden. Wenn die Startdiagnose nicht für Ihre VM-Skalierungsgruppe aktiviert ist, stellen Sie sicher, dass Sie Ihr VM-Skalierungsgruppenmodell aktualisieren, um die Startdiagnose zu aktivieren, und führen Sie das Upgrades für alle Instanzen auf das neue Modell durch, um auf die serielle Konsole zugreifen zu können.
+  1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+
+  1. Navigieren Sie zu **Alle Ressourcen**, und wählen Sie eine VM-Skalierungsgruppe aus. Die Übersichtsseite für die VM-Skalierungsgruppe wird geöffnet.
+
+  1. Navigieren Sie zu **Instanzen**.
+
+  1. Wählen Sie eine VM-Skalierungsgruppeninstanz aus.
+
+  1. Klicken Sie im Abschnitt **Support + Problembehandlung** auf **Serielle Konsole**. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
 ## <a name="enable-serial-console-functionality"></a>Aktivieren der Funktionalität der seriellen Konsole
 
 > [!NOTE]
-> Wenn in der seriellen Konsole nichts angezeigt wird, überprüfen Sie, ob die Startdiagnose auf Ihrer VM aktiviert ist.
+> Wenn in der seriellen Konsole nichts angezeigt wird, vergewissern Sie sich, dass die Startdiagnose auf Ihrer VM oder Ihrer VM-Skalierungsgruppeninstanz aktiviert ist.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images
 Für neuere Windows Server-Images in Azure ist [Spezielle Verwaltungskonsole](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (Special Administrative Console, SAC) standardmäßig aktiviert. Die SAC wird unter Serverversionen von Windows unterstützt, ist aber unter Clientversionen (wie Windows 10, Windows 8 oder Windows 7) nicht verfügbar.
 
-Für ältere Windows Server-Images (erstellt vor Februar 2018) können Sie die serielle Konsole automatisch über das Befehlsausführungsfeature im Azure-Portal aktivieren. Klicken Sie im Azure-Portal auf **Befehl ausführen**, und wählen Sie dann den Befehl mit dem Namen **EnableEM** aus der Liste aus.
+Für ältere Windows Server-Images (erstellt vor Februar 2018) können Sie die serielle Konsole automatisch über das Befehlsausführungsfeature im Azure-Portal aktivieren. Wählen Sie im Azure-Portal **Befehl ausführen** aus, und wählen Sie dann den Befehl **EnableEMS** in der Liste aus.
 
 ![Ausführen-Befehlsliste](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
-Gehen Sie alternativ zum manuellen Aktivieren der seriellen Konsole für virtuelle Windows-Computer, die vor Februar 2018 erstellt wurden, wie folgt vor:
+Gehen Sie alternativ zum manuellen Aktivieren der seriellen Konsole für Windows-VMs/VM-Skalierungsgruppen, die vor Februar 2018 erstellt wurden, wie folgt vor:
 
 1. Stellen Sie über den Remotedesktop eine Verbindung mit Ihrem virtuellen Windows-Computer her.
 1. Führen Sie an einer Administratoreingabeaufforderung die folgenden Befehle aus:
@@ -90,7 +106,7 @@ Wenn [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nicht a
 
 Wenn Sie Windows-Startlade-Eingabeaufforderungen in der seriellen Konsole aktivieren müssen, können Sie den Startkonfigurationsdaten die folgenden zusätzlichen Optionen hinzufügen. Weitere Informationen finden Sie unter [BCDEdit/set](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
 
-1. Stellen Sie über den Remotedesktop eine Verbindung mit Ihrem virtuellen Windows-Computer her.
+1. Stellen Sie über den Remotedesktop eine Verbindung mit Ihrer Windows-VM bzw. Ihrer VM-Skalierungsgruppeninstanz her.
 
 1. Führen Sie an einer Administratoreingabeaufforderung die folgenden Befehle aus:
    - `bcdedit /set {bootmgr} displaybootmenu yes`
@@ -137,15 +153,18 @@ Funktionstasten sind für die Verwendung in der seriellen Konsole auf virtuellen
 ### <a name="use-wsl-in-serial-console"></a>Verwenden von WSL in der seriellen Konsole
 Das Windows-Subsystem für Linux (WSL) wurde für Windows Server 2019 oder höher aktiviert. Daher ist es auch möglich, WSL für die Verwendung in der seriellen Konsole zu aktivieren, wenn Sie Windows Server 2019 oder höher ausführen. Dies kann für Benutzer vorteilhaft sein, die auch mit Linux-Befehlen vertraut sind. Anweisungen zur Aktivierung von WSL für Windows Server finden Sie in der [Installationsanleitung](https://docs.microsoft.com/windows/wsl/install-on-server).
 
-### <a name="restart-your-windows-vm-within-serial-console"></a>Neustarten Ihrer Windows-VM in der seriellen Konsole
-Sie können Ihre VM in der seriellen Konsole neu starten, indem Sie zum Netzschalter navigieren und auf „VM neu starten“ klicken. Hierdurch wird ein Neustart der VM initiiert, und es wird eine Benachrichtigung hinsichtlich des Neustarts im Azure-Portal angezeigt.
+### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Neustarten Ihrer Windows-VM/VM-Skalierungsgruppeninstanz in der seriellen Konsole
+Sie können einen Neustart Ihrer VM in der seriellen Konsole auslösen, indem Sie zum Netzschalter navigieren und auf „VM neu starten“ klicken. Hierdurch wird ein Neustart der VM initiiert, und es wird eine Benachrichtigung hinsichtlich des Neustarts im Azure-Portal angezeigt.
 
-Dies ist hilfreich in Situationen, in denen Sie auf das Startmenü Ihres virtuellen Computers zugreifen möchten, ohne die Benutzeroberfläche der seriellen Konsole zu verlassen.
+Dies ist hilfreich in Situationen, in denen Sie auf das Startmenü zugreifen möchten, ohne die Benutzeroberfläche der seriellen Konsole zu verlassen.
 
 ![Neustart der seriellen Konsole für Windows](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
 ## <a name="disable-serial-console"></a>Deaktivieren der seriellen Konsole
 Standardmäßig haben alle Abonnements Zugriff auf die serielle Konsole, die für alle virtuellen Computer aktiviert ist. Sie können die serielle Konsole auf Abonnement- oder VM-Ebene deaktivieren.
+
+### <a name="vmvirtual-machine-scale-set-level-disable"></a>Deaktivieren der seriellen Konsole für eine VM/VM-Skalierungsgruppe
+Die serielle Konsole kann für bestimmte VMs oder VM-Skalierungsgruppen deaktiviert werden, indem die Startdiagnose deaktiviert wird. Deaktivieren Sie die Startdiagnose im Azure-Portal, um die serielle Konsole für eine VM oder VM-Skalierungsgruppe zu deaktivieren. Stellen Sie sicher, dass Sie Ihre VM-Skalierungsgruppeninstanzen auf die neueste Version aktualisieren, wenn Sie die serielle Konsole für eine VM-Skalierungsgruppe verwenden.
 
 > [!NOTE]
 > Um die serielle Konsole für ein Abonnement zu aktivieren oder zu deaktivieren, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Diese Berechtigungen umfassen beispielsweise die Rollen „Administrator“ oder „Besitzer“. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
@@ -181,9 +200,6 @@ Alternativ können Sie den folgenden Satz von Bash-Befehlen in Cloud Shell verwe
 
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
-
-### <a name="vm-level-disable"></a>Deaktivieren auf VM-Ebene
-Die serielle Konsole kann für bestimmte virtuelle Computer deaktiviert werden, indem die Startdiagnoseeinstellung des jeweiligen virtuellen Computers deaktiviert wird. Deaktivieren Sie die Startdiagnose im Azure-Portal, um die serielle Konsole für die VM zu deaktivieren.
 
 ## <a name="serial-console-security"></a>Sicherheit der seriellen Konsole
 
@@ -226,7 +242,7 @@ Interaktion mit Bootloader | Greifen Sie über die serielle Konsole auf das BCD 
 
 
 ## <a name="errors"></a>Errors
-Da die meisten Fehler vorübergehend sind, können sie oftmals durch Wiederherstellen der Verbindung behoben werden. Die folgende Tabelle zeigt eine Liste von Fehlern und deren Behebung.
+Da die meisten Fehler vorübergehend sind, können sie oftmals durch Wiederherstellen der Verbindung behoben werden. In der folgenden Tabelle wird eine Liste von Fehlern und Gegenmaßnahmen für VMs und VM-Skalierungsgruppeninstanzen aufgeführt.
 
 Error                            |   Lösung
 :---------------------------------|:--------------------------------------------|
@@ -239,7 +255,7 @@ Das Websocket ist geschlossen oder konnte nicht geöffnet werden. | Möglicherwe
 Es werden nur Integritätsinformationen angezeigt, wenn eine Verbindung mit einem virtuellen Windows-Computer hergestellt wird.| Dieser Fehler tritt auf, wenn die spezielle Verwaltungskonsole (Special Administrative Console, SAC) für Ihr Windows-Image nicht aktiviert wurde. Unter [Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images](#enable-the-serial-console-in-custom-or-older-images) finden Sie Anweisungen für das manuelle Aktivieren der SAC auf Ihrer Windows-VM. Weitere Informationen finden Sie in der Dokumentation zu [Windows-Integritätssignalen](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 
 ## <a name="known-issues"></a>Bekannte Probleme
-Uns sind einige Probleme mit der seriellen Konsole bekannt. Hier finden Sie eine Liste dieser Probleme und Schritte zur Lösung.
+Uns sind einige Probleme mit der seriellen Konsole bekannt. Hier finden Sie eine Liste dieser Probleme und Schritte zur Lösung. Diese Probleme und Gegenmaßnahmen gelten sowohl für VMs als auch für VM-Skalierungsgruppeninstanzen.
 
 Problem                             |   Lösung
 :---------------------------------|:--------------------------------------------|

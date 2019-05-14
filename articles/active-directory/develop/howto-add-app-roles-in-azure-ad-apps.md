@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie App-Rollen in einer bei Azure Active Dir
 services: active-directory
 documentationcenter: ''
 author: kkrishna
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164038"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138355"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -51,7 +51,9 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.
 
      > [!NOTE]
-     > Für jede Rollendefinition in diesem Manifest muss eine andere gültige **GUID** für die Eigenschaft „Id“ angegeben sein. Die `"value"`-Eigenschaft der einzelnen Rollen muss exakt mit den Zeichenfolgen übereinstimmen, die im Code in der Anwendung verwendet werden.
+     > Für jede Anwendungsrollendefinition in diesem Manifest muss eine andere gültige GUID für die `id`-Eigenschaft angegeben sein. 
+     > 
+     > Die `value`-Eigenschaft der einzelnen Anwendungsrollendefinition muss exakt mit den Zeichenfolgen übereinstimmen, die im Code in der Anwendung verwendet werden. Die `value`-Eigenschaft darf keine Leerzeichen enthalten. Ist dies der Fall, erhalten Sie einen Fehler, wenn Sie das Manifest speichern.
      
 1. Speichern Sie das Manifest.
 

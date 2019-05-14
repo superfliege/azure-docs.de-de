@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67016582149824c8deb83b54102190a57bd19383
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027724"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442364"
 ---
 # <a name="decision-forest-regression-module"></a>Modul „Entscheidungswaldregression“
 
@@ -39,7 +39,7 @@ Entscheidungsbäume haben diese Vorteile:
 
 Dieses Regressionsmodell besteht aus einem Ensemble von Entscheidungsbäumen. Jeder Baum in einem Regressionsentscheidungswald gibt eine Gauß-Verteilung als Vorhersage aus. Es erfolgt eine Aggregation über das Baumensemble, um eine Gauß-Verteilung zu finden, die der kombinierten Verteilung für alle Bäume im Modell am nächsten kommt.
 
-Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und seine Implementierung finden Sie in diesem Artikel: [Decision Forests: A Unified Framework for Classification, Regression, Density Estimation, Manifold Learning and Semi-Supervised Learning ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#) (Entscheidungsbäume: Ein vereinheitlichtes Framework für die Klassifizierung, Regression, Dichteschätzung, Manifold Learning und teilüberwachtes Lernen)
+Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und seine Implementierung finden Sie in diesem Artikel: [Decision Forests: A Unified Framework for Classification, Regression, Density Estimation, Manifold Learning and Semi-Supervised Learning](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#) (Entscheidungswälder: Ein einheitliches Framework für Klassifikation, Regression, Dichteabschätzung, vielfältiges Lernen und teilüberwachtes Lernen)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Vorgehensweise: Konfigurieren des Entscheidungswald-Regressionsmodells
 
@@ -53,7 +53,7 @@ Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und sein
 
     - **Replikation**: Bei der Replikation wird jede Struktur mit genau denselben Eingabedaten trainiert. Die Bestimmung, welches Aufteilungsprädikat für jeden Baumknoten verwendet wird, bleibt zufällig, und die entstehenden Bäume unterscheiden sich.
 
-         Weitere Informationen zum Trainingsprozess mit der Option **Replikation** finden Sie in [Decision Forests for Computer Vision and Medical Image Analysis. Criminisi und J. Shotton. Springer 2013.](http://research.microsoft.com/projects/decisionforests/) (Entscheidungsbäume für maschinelles Sehen und medizinische Bildanalyse).
+         Weitere Informationen zum Trainingsprozess mit der Option **Replikation** finden Sie in [Decision Forests for Computer Vision and Medical Image Analysis. Criminisi und J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/) (Entscheidungsbäume für maschinelles Sehen und medizinische Bildanalyse).
 
 3. Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.
 
@@ -70,11 +70,11 @@ Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und sein
 
 5. Geben Sie in **Maximum depth of the decision trees** (Maximale Tiefe der Entscheidungsbäume) einen Wert ein, um die maximale Tiefe der Entscheidungsbäume zu begrenzen. Eine größere Tiefe des Baums kann die Genauigkeit erhöhen, wobei das Risiko einer Überanpassung und einer längeren Trainingsdauer besteht.
 
-6. Geben Sie in **Number of random splits per node** (Anzahl der zufälligen Aufteilungen pro Knoten) die Anzahl der Aufteilungen ein, die beim Erstellen der einzelnen Knoten des Baums verwendet werden sollen. Eine *Aufteilung* bedeutet, dass Merkmale auf jeder Ebene des Baums (Knotens) zufällig aufgeteilt werden.
+6. Geben Sie in **Number of random splits per node** (Anzahl der zufälligen Aufteilungen pro Knoten) die Anzahl der Aufteilungen ein, die beim Erstellen der einzelnen Knoten des Baums verwendet werden sollen. Eine *Aufteilung* bedeutet, dass Features auf jeder Ebene des Baums (Knotens) zufällig aufgeteilt werden.
 
 7. Geben Sie unter **Minimum number of samples per leaf node** (Minimale Anzahl von Stichproben pro Blattknoten) die Mindestanzahl von Fällen an, die zum Erstellen eines Endknotens (Blatt) in einer Struktur erforderlich sind.
 
-     Wenn Sie diesen Wert erhöhen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln. Bei Verwendung des Standardwerts „1“ reicht für die Erstellung einer neuen Regel beispielsweise bereits ein einzelner Fall aus. Wenn Sie den Wert auf „5“ erhöhen, müssen die Trainingsdaten mindestens fünf Fälle enthalten, die die gleichen Bedingungen erfüllen.
+     Wenn Sie diesen Wert heraufsetzen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln. Bei Verwendung des Standardwerts „1“ reicht für die Erstellung einer neuen Regel beispielsweise bereits ein einzelner Fall aus. Wenn Sie den Wert auf „5“ erhöhen, müssen die Trainingsdaten mindestens fünf Fälle enthalten, die die gleichen Bedingungen erfüllen.
 
 
 9. Stellen Sie eine Verbindung mit einem bezeichneten Dataset her, wählen Sie eine einzelne Bezeichnungsspalte aus, die nicht mehr als zwei Ergebnisse enthält, und stellen Sie eine Verbindung mit [Train Model](./train-model.md) (Modell trainieren) her.
@@ -97,4 +97,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 

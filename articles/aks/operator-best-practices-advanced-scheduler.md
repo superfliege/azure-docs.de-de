@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175980"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074198"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -31,12 +31,14 @@ Dieser Artikel zu Best Practices konzentriert sich auf erweiterten Kubernetes-Pl
 
 Wenn Sie Ihren AKS-Cluster erstellen, können Sie Knoten mit GPU-Unterstützung oder einer großen Anzahl leistungsstarker CPUs bereitstellen. Diese Knoten werden häufig für große Datenverarbeitungsworkloads wie Machine Learning (ML) oder Künstliche Intelligenz (KI) verwendet. Da diese Art von Hardware in der Regel eine teure Knotenressource ist, die bereitgestellt werden muss, begrenzen Sie die Workloads, die auf diesen Knoten geplant werden können. Möglicherweise möchten Sie stattdessen einige Knoten im Cluster für die Ausführung von Eingangsdiensten und die Verhinderung anderer Workloads verwenden.
 
+Diese Unterstützung für verschiedene Knoten erhalten Sie durch die Verwendung von mehrerer Knotenpools. Ein AKS-Cluster bietet einen oder mehrere Knotenpools. Die Unterstützung für mehrere Knotenpools in AKS ist derzeit in der Vorschauversion verfügbar.
+
 Der Kubernetes-Planer kann Taints und Toleranzen verwenden, um einzuschränken, welche Workloads auf Knoten ausgeführt werden können.
 
 * Ein **Taint** wird auf einen Knoten angewendet, der anzeigt, dass nur bestimmte Pods darauf geplant werden können.
 * Für den Pod wird anschließend eine **Toleranz** angewendet, damit dieser den Taint des Knotens *tolerieren* kann.
 
-Wenn Sie einen Pod in einem AKS-Cluster bereitstellen, plant Kubernetes nur Pods auf Knoten, bei denen dem Taint eine Toleranz zugewiesen ist. Als Beispiel nehmen wir an, dass Ihr AKS-Cluster einen Knotenpool für Knoten mit GPU-Unterstützung enthält. Sie definieren einen Namen, z.B. *gpu* und dann einen Wert für die Planung. Wenn Sie diesen Wert auf *NoSchedule* festlegen, kann der Kubernetes-Scheduler keine Pods auf dem Knoten planen, wenn der Pod nicht die entsprechende Toleranz definiert.
+Wenn Sie einen Pod in einem AKS-Cluster bereitstellen, plant Kubernetes nur Pods auf Knoten, bei denen dem Taint eine Toleranz zugewiesen ist. Stellen Sie sich als Beispiel vor, dass Sie einen Knotenpool in Ihrem AKS-Cluster für Knoten mit GPU-Unterstützung besitzen. Sie definieren einen Namen, z.B. *gpu* und dann einen Wert für die Planung. Wenn Sie diesen Wert auf *NoSchedule* festlegen, kann der Kubernetes-Scheduler keine Pods auf dem Knoten planen, wenn der Pod nicht die entsprechende Toleranz definiert.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -53,13 +55,13 @@ spec:
   containers:
   - name: tf-mnist
     image: microsoft/samples-tf-mnist-demo:gpu
-  resources:
-    requests:
-      cpu: 0.5
-      memory: 2Gi
-    limits:
-      cpu: 4.0
-      memory: 16Gi
+    resources:
+      requests:
+        cpu: 0.5
+        memory: 2Gi
+      limits:
+        cpu: 4.0
+        memory: 16Gi
   tolerations:
   - key: "sku"
     operator: "Equal"
@@ -72,6 +74,25 @@ Wenn dieser Pod bereitgestellt wird, z.B. mit `kubectl apply -f gpu-toleration.y
 Wenn Sie Taints anwenden, arbeiten Sie mit Ihren Anwendungsentwicklern und -besitzern zusammen, damit sie die erforderlichen Toleranzen in ihren Bereitstellungen definieren können.
 
 Weitere Informationen zu Taints und Toleranzen finden Sie unter [Anwenden von Taints und Toleranzen][k8s-taints-tolerations].
+
+Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Create and manage multiple node pools for a cluster in AKS (Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS)][use-multiple-node-pools].
+
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Verhalten von Taints und Toleranzen in AKS
+
+Wenn Sie ein Upgrade für einen Knotenpool in AKS durchführen, folgen Taints und Toleranzen einem festen Muster, da sie für neue Knoten angewendet werden:
+
+- **Standardcluster ohne VM-Skalierungsunterstützung**
+  - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten (*node3*) erstellt.
+  - Die Taints aus *node1* gelten für *node3*. *node1* wird gelöscht.
+  - Ein weiterer neuer Knoten wird erstellt (mit dem Namen *node1*, da der vorherige *node1* gelöscht wurde), und die Taints aus *node2* gelten nun für den neuen *node1*. *node2* wird gelöscht.
+  - Zusammengefasst wird *node1* zu *node3*, und *node2* wird zu *node1*.
+
+- **Cluster, die VM-Skalierungsgruppen verwenden** (derzeit in der Vorschau in AKS)
+  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
+  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
+  - Die ursprünglichen *node1* und *node2* werden gelöscht.
+
+Wenn Sie einen Knotenpool in AKS skalieren, werden Taints und Toleranzen absichtlich nicht übertragen.
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Steuern der Podplanung mit Knotenselektoren und Affinität
 
@@ -178,3 +199,4 @@ Dieser Artikel konzentriert sich auf erweiterte Funktionen des Kubernetes-Schedu
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

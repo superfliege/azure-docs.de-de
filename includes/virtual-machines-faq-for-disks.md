@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671804"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199063"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -140,6 +140,20 @@ Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen
 **Kann ich die GPT-Partitionierung auf Azure-Datenträgern verwenden?**
 
 Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
+
+## <a name="uploading-to-a-managed-disk"></a>Hochladen in einen verwalteten Datenträger
+
+**Kann ich Daten in einen vorhandenen verwalteten Datenträger hochladen?**
+
+Nein, Hochladen kann nur während der Erstellung eines neuen leeren Datenträgers verwendet werden, der den Status **ReadyToUpload** hat.
+
+**Kann ich einen Datenträger einem virtuellen Computer zuordnen, während der Datenträger einen Uploadstatus hat?**
+
+ Nein.
+
+**Kann ich eine Momentaufnahme eines verwalteten Datenträgers erstellen, der einen Uploadstatus hat?**
+
+ Nein.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 

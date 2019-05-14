@@ -6,20 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: 2a904cfb049af413887798c8aab449561bc2b73f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030048"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471757"
 ---
 # <a name="how-to-get-started-with-knowledge-store"></a>Erste Schritte mit Wissensspeichern
 
 Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine Previewfunktion von Azure Search, die in einer Indizierungspipeline erstellte KI-Anreicherungen für das Knowledge Mining in anderen Apps speichert. Sie können auch gespeicherte Anreicherungen verwenden, um eine Azure Search-Indizierungspipeline zu verstehen und zu optimieren.
 
-Ein Wissensspeicher wird durch eine Qualifikationsgruppe definiert. In Azure Search-Szenarien mit einer regulären Volltextsuche soll die Qualifikationsgruppe KI-Anreicherungen bereitstellen, um die Durchsuchbarkeit des Inhalts zu verbessern. Bei Szenarien mit Wissensspeichern dient die Qualifikationsgruppe dem Erstellen und Auffüllen mehrerer Datenstrukturen für das Knowledge Mining.
+Ein Wissensspeicher wird durch eine Qualifikationsgruppe definiert. In Azure Search-Szenarien mit einer regulären Volltextsuche soll die Qualifikationsgruppe KI-Anreicherungen bereitstellen, um die Durchsuchbarkeit des Inhalts zu verbessern. Für Knowledge Mining-Szenarien besteht die Rolle einer Qualifikationsgruppe darin, mehrere Datenstrukturen zur Analyse oder Modellierung in anderen Apps und Prozessen zu erstellen, aufzufüllen und zu speichern.
 
 Sie beginnen in dieser Übung mit Beispieldaten, -diensten und -tools, um den grundlegenden Workflow zum Erstellen und Verwenden Ihres ersten Wissensspeichers und dabei insbesondere die Bedeutung von Qualifikationsgruppendefinitionen kennenzulernen.
 
@@ -29,13 +29,13 @@ In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet.
 
 + [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden. 
 
-+ [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten. Ihr Wissensspeicher wird in Azure Storage gespeichert.
++ [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten. Ihr Wissensspeicher wird in Azure Storage gespeichert. 
 
-+ [Erstellen Sie eine Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) im S0-Tarif mit nutzungsbasierter Bezahlung, um umfassenden Zugriff auf das gesamte Spektrum der Qualifikationen für KI-Anreicherungen zu erhalten.
++ [Erstellen Sie eine Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) im S0-Tarif mit nutzungsbasierter Bezahlung, um umfassenden Zugriff auf das gesamte Spektrum der Qualifikationen für KI-Anreicherungen zu erhalten. Diese Ressource und Ihr Azure Search-Dienst müssen sich in der gleichen Region befinden.
 
 + [Postman-Desktop-App](https://www.getpostman.com/) zum Senden von Anforderungen an Azure Search.
 
-+ [Postman-Sammlung](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/caselaw) mit vorbereiteten Anforderungen zum Erstellen von Datenquelle, Index, Qualifikationsgruppe und Indexer. Mehrere Objektdefinitionen sind zu lang, um in diesem Artikel behandelt zu werden. Sie benötigen diese Sammlung, damit Sie die Index- und Qualifikationsgruppendefinitionen vollständig sehen können.
++ [Postman-Sammlung](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Caselaw) mit vorbereiteten Anforderungen zum Erstellen von Datenquelle, Index, Qualifikationsgruppe und Indexer. Mehrere Objektdefinitionen sind zu lang, um in diesem Artikel behandelt zu werden. Sie benötigen diese Sammlung, damit Sie die Index- und Qualifikationsgruppendefinitionen vollständig sehen können.
 
 + [Caselaw-Beispieldaten](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) aus dem [Caselaw Access-Projekt](https://case.law/bulk/download/) mit Downloadseite für den Massendownload. In dieser Übung werden die ersten 10 Dokumente aus dem ersten Download (Arkansas) verwendet. Wir haben ein Beispiel mit 10 Dokumenten für diese Übung auf GitHub hochgeladen.
 
@@ -55,7 +55,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), navigieren Sie zu Ihrem Azure-Speicherkonto, klicken Sie auf **BLOBs** und dann auf **+ Container**.
 
-1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
+1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Verwenden Sie den Containernamen „caselaw-test“. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
 
 1. Nachdem der Container erstellt wurde, öffnen Sie ihn, und wählen Sie auf der Befehlsleiste die Option **Hochladen** aus.
 
@@ -66,19 +66,19 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 ## <a name="set-up-postman"></a>Einrichten von Postman
 
-Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, lesen Sie [Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler](search-fiddler.md).
+Starten Sie Postman, und importieren Sie die Sammlung „Caselaw Postman“. Richten Sie alternativ eine Reihe von HTTP-Anforderungen ein. Wenn Sie mit diesem Tool nicht vertraut sind, lesen Sie [Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler](search-fiddler.md).
 
-+ Für alle Aufrufe in dieser exemplarischen Vorgehensweise wird die Anforderungsmethode **POST** verwendet.
++ Für alle Aufrufe in dieser exemplarischen Vorgehensweise wird die Anforderungsmethode **PUT** oder **POST** verwendet.
 + Anforderungsheader (2) enthalten Folgendes: „Content-type“ ist auf „application/json“ und „api-key“ ist auf Ihren Administratorschlüssel (ein Platzhalter für Ihren Primärschlüssel für die Suche) festgelegt. 
 + Im Anforderungstext ordnen Sie den eigentlichen Inhalt Ihres Aufrufs an. 
 
   ![Teilweise strukturierte Suche](media/search-semi-structured-data/postmanoverview.png)
 
-Wir nutzen Postman zum Senden von vier API-Aufrufen an Ihren Suchdienst, um eine Datenquelle, einen Index, eine Qualifikationsgruppe und einen Indexer zu erstellen. Die Datenquelle enthält einen Zeiger auf Ihr Speicherkonto und Ihre JSON-Daten. Ihr Suchdienst stellt die Verbindung beim Importieren der Daten her.
+Wir nutzen Postman zum Senden von vier API-Aufrufen an Ihren Suchdienst, um eine Datenquelle, einen Index, eine Qualifikationsgruppe und einen Indexer zu erstellen – in dieser Reihenfolge. Die Datenquelle enthält einen Zeiger auf Ihr Azure-Speicherkonto und Ihre JSON-Daten. Ihr Suchdienst stellt die Verbindung beim Importieren der Daten her.
 
 Der Schwerpunkt dieser exemplarischen Vorgehensweise liegt auf dem [Erstellen einer Qualifikationsgruppe](#create-skillset): Sie gibt die Schritte für die Anreicherung an und wie Daten in einem Wissensspeicher aufbewahrt werden.
 
-Im URL-Endpunkt muss eine API-Version angegeben werden, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die Vorschauversion der API für das Erstellen einer Qualifikationsgruppe mit Unterstützung von Wissensspeichern ist `2019-05-06-Preview`.
+Im URL-Endpunkt muss eine API-Version angegeben werden, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die Vorschauversion der API für das Erstellen einer Qualifikationsgruppe mit Unterstützung von Wissensspeichern ist `2019-05-06-Preview` (Berücksichtigung von Groß-/Kleinbuchstaben).
 
 Führen Sie die folgenden API-Aufrufe über Ihren REST-Client aus.
 
@@ -101,10 +101,10 @@ Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/da
         "type": "azureblob",
         "subtype": null,
         "credentials": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your storage key>;EndpointSuffix=core.windows.net"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
         },
         "container": {
-            "name": "<your blob container name>",
+            "name": "<YOUR-BLOB-CONTAINER-NAME>",
             "query": null
         },
         "dataChangeDetectionPolicy": null,
@@ -318,24 +318,23 @@ Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/sk
    }
    ```
 
-3. Legen Sie zunächst Schlüssel und Verbindungszeichenfolge für `cognitiveServices` und `knowledgeStore` fest. In diesem Beispiel stehen diese Zeichenfolgen hinter der Definition der Qualifikationsgruppe am Ende des Anforderungstexts.
+3. Legen Sie zunächst Schlüssel und Verbindungszeichenfolge für `cognitiveServices` und `knowledgeStore` fest. In diesem Beispiel stehen diese Zeichenfolgen hinter der Definition der Qualifikationsgruppe am Ende des Anforderungstexts. Verwenden Sie eine Cognitive Services-Ressource, die auf der Dienstebene S0 bereitgestellt wird und sich in der gleichen Region wie Azure Search befindet.
 
     ```json
     "cognitiveServices": {
         "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-        "description": "<your cognitive services resource name>",
-        "key": "<your cognitive services key>"
+        "description": "YOUR-SAME-REGION-S0-COGNITIVE-SERVICES-RESOURCE",
+        "key": "YOUR-COGNITIVE-SERVICES-KEY"
     },
     "knowledgeStore": {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your storage account key>;EndpointSuffix=core.windows.net",
+        "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
 3. Überprüfen Sie die Sammlung der Qualifikationsgruppe – insbesondere die Shaper-Qualifikationen in den Zeilen 85 und 170. Die Qualifikation „Shaper“ ist wichtig, da sie die Datenstrukturen für das Knowledge Mining umfasst. Während der Ausführung der Qualifikationsgruppe befinden sich diese Strukturen ausschließlich im Arbeitsspeicher. Sie werden aber im nächsten Schritt sehen, dass diese Ausgabe für die weitere Untersuchung in einem Wissensspeicher gespeichert werden kann.
 
-   Der folgende Codeausschnitt stammt aus Zeile 207. 
+   Der folgende Codeausschnitt stammt aus Zeile 217. 
 
     ```json
-    {
     "name": "Opinions",
     "source": null,
     "sourceContext": "/document/casebody/data/opinions/*",
@@ -361,44 +360,46 @@ Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/sk
                     "name": "EntityType",
                     "source": "/document/casebody/data/opinions/*/text/pages/*/entities/*/category"
                 }
-             ]
-          }
-     ]
-   }
+            ]
+        }
+    ]
    . . .
    ```
 
-3. Sehen Sie sich das `projections`-Element in `knowledgeStore` an, das ab Zeile 253 beginnt. Projektionen geben die Zusammensetzung des Wissensspeichers an. Projektionen werden in Tabelle-Objekt-Paaren angegeben – derzeit jedoch nur einzeln. Wie Sie in der ersten Projektion sehen können, ist `tables` angegeben, `objects` aber nicht. Im zweiten Fall ist es umgekehrt.
+3. Sehen Sie sich das `projections`-Element in `knowledgeStore` an, das ab Zeile 262 beginnt. Projektionen geben die Zusammensetzung des Wissensspeichers an. Projektionen werden in Tabelle-Objekt-Paaren angegeben – derzeit jedoch nur einzeln. Wie Sie in der ersten Projektion sehen können, ist `tables` angegeben, `objects` aber nicht. Im zweiten Fall ist es umgekehrt.
 
    In Azure Storage werden die von Ihnen erstellten Tabellen im Tabellenspeicher gespeichert, und jedes Objekt erhält einen Container in Blob Storage.
 
-   Objekte enthalten in der Regel den vollständigen Ausdruck einer Anreicherung. Tabellen enthalten in der Regel teilweise Anreicherungen in Kombinationen, die Sie für bestimmte Zwecke festlegen. Dieses Beispiel zeigt eine Tabelle „Cases“, nicht gezeigt werden jedoch andere Tabellen wie „Entities“, „Judges“ und „Opinions“.
+   Blobobjekte enthalten in der Regel den vollständigen Ausdruck einer Anreicherung. Tabellen enthalten in der Regel teilweise Anreicherungen in Kombinationen, die Sie für bestimmte Zwecke festlegen. Dieses Beispiel zeigt die Tabellen „Cases“ und „Opinions“, nicht gezeigt werden jedoch andere Tabellen wie „Entities“, „Attorneys“ „Judges“ und „Parties“.
 
     ```json
     "projections": [
-    {
-        "tables": [
-            {
-              "tableName": "Opinions",
-              "generatedKeyName": "OpinionId",
-              "source": "/document/Case/OpinionsSnippets/*"
-            },
-          . . . 
-        ],
-        "objects": []
-    },
-    {
-        "tables": [],
-        "objects": [
-            {
-                "storageContainer": "enrichedcases",
-                "key": "/document/CaseFull/Id",
-                "source": "/document/CaseFull"
-            }
-          ]
+        {
+            "tables": [
+                {
+                    "tableName": "Cases",
+                    "generatedKeyName": "CaseId",
+                    "source": "/document/Case"
+                },
+                {
+                    "tableName": "Opinions",
+                    "generatedKeyName": "OpinionId",
+                    "source": "/document/Case/OpinionsSnippets/*"
+                }
+            ],
+            "objects": []
+        },
+        {
+            "tables": [],
+            "objects": [
+                {
+                    "storageContainer": "enrichedcases",
+                    
+                    "source": "/document/CaseFull"
+                }
+            ]
         }
-      ]
-    }
+    ]
     ```
 
 5. Senden Sie die Anforderung. Die Antwort sollte **201** lauten und dem folgenden Beispiel ähneln, in dem der erste Teil der Antwort gezeigt wird:

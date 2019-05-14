@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f3e7cc2ed71dda0eb34328432b26a4016b62be1c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025156"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466417"
 ---
-# <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Beispiel: Hinzufügen von Vorschlägen oder AutoVervollständigen zur Azure Search-Anwendung
+# <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Hinzufügen von Vorschlägen oder AutoVervollständigen zur Azure Search-Anwendung
 
 In diesem Artikel erfahren Sie, wie Sie mit [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) ein leistungsfähiges Suchfeld erstellen können, das Vorschläge während der Eingabe unterstützt.
 

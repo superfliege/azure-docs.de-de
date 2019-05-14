@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b80177d17e0dc5a4e54396907ecee61890ec523f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011346"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073993"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -165,26 +165,7 @@ az aks create \
     --client-secret <password>
 ```
 
-## <a name="associate-network-resources-with-the-node-subnet"></a>Zuordnen von Netzwerkressourcen mit dem Knotensubnetz
-
-Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und Routingtabelle erstellt. Diese Netzwerkressourcen werden von der AKS-Steuerungsebene verwaltet und aktualisiert, wenn Sie Dienste erstellen und verfügbar machen. Verknüpfen Sie die Netzwerksicherheitsgruppe und Routingtabelle wie folgt mit Ihrem Subnetz des virtuellen Netzwerks:
-
-```azurecli-interactive
-# Get the MC_ resource group for the AKS cluster resources
-MC_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-
-# Get the route table for the cluster
-ROUTE_TABLE=$(az network route-table list -g ${MC_RESOURCE_GROUP} --query "[].id | [0]" -o tsv)
-
-# Get the network security group
-NODE_NSG=$(az network nsg list -g ${MC_RESOURCE_GROUP} --query "[].id | [0]" -o tsv)
-
-# Update the subnet to associate the route table and network security group
-az network vnet subnet update \
-    --route-table $ROUTE_TABLE \
-    --network-security-group $NODE_NSG \
-    --ids $SUBNET_ID
-```
+Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und Routingtabelle erstellt. Diese Netzwerkressourcen werden von der AKS-Steuerungsebene verwaltet. Die Netzwerksicherheitsgruppe wird automatisch den virtuellen NICs auf Ihren Knoten zugeordnet. Die Routingtabelle wird automatisch dem Subnetz des virtuellen Netzwerks zugeordnet. Regeln für Netzwerksicherheitsgruppen und Routingtabellen werden beim Erstellen und Verfügbarmachen von Diensten automatisch aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

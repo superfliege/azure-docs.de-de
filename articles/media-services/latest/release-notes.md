@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266986"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153065"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -33,6 +33,20 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 > Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI oder eines der unterstützten SDKs.
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="may-2019"></a>Mai 2019
+
+### <a name="performance-improvements"></a>Leistungsverbesserungen
+
+* Die maximal unterstützte Dateigröße für die Verarbeitung wurde aktualisiert. Siehe [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+* [Verbesserungen der Codierungsgeschwindigkeit](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+
+## <a name="april-2019"></a>April 2019
+
+### <a name="new-presets"></a>Neue Voreinstellungen
+
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) wurde zu den Voreinstellungen des integrierten Analysetools hinzugefügt.
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) wurde zu den Voreinstellungen des integrierten Encoders hinzugefügt. Weitere Informationen finden Sie unter [Inhaltsbezogene Codierung](cae-experimental.md). 
 
 ## <a name="march-2019"></a>März 2019
 
@@ -85,31 +99,31 @@ Das CLI 2.0-Modul ist ab sofort für [Azure Media Services v3 (allgemein verfüg
 
 #### <a name="asset-commands"></a>Assetbefehle
 
-- ```--storage-account``` und ```--container``` wurden als Argumente hinzugefügt.
+- Die Argumente ```--storage-account``` und ```--container``` wurden hinzugefügt.
 - Standardwerte für Ablaufzeit (aktueller Zeitpunkt + 23 Std.) und Berechtigungen (Lesen) im Befehl ```az ams asset get-sas-url``` wurden hinzugefügt.
 
 #### <a name="job-commands"></a>Auftragsbefehle
 
-- ```--correlation-data``` und ```--label``` wurden als Argumente hinzugefügt.
+- Die Argumente ```--correlation-data``` und ```--label``` wurden hinzugefügt.
 - ```--output-asset-names``` wurde in ```--output-assets``` umbenannt. Ab sofort wird eine durch Leerzeichen getrennte Ressourcenliste im Format „assetName=Bezeichnung“ akzeptiert. Assets ohne Bezeichnung können wie folgt gesendet werden: „assetName=“.
 
 #### <a name="streaming-locator-commands"></a>streaming locator-Befehle
 
-- ```az ams streaming locator``` wurde als Basisbefehl durch ```az ams streaming-locator``` ersetzt.
-- ```--streaming-locator-id``` und ```--alternative-media-id support``` wurden als Argumente hinzugefügt.
-- ```--content-keys argument``` -Argument wurde aktualisiert.
+- Der Basisbefehl ```az ams streaming locator``` wurde durch ```az ams streaming-locator``` ersetzt.
+- Die Argumente ```--streaming-locator-id``` und ```--alternative-media-id support``` wurden hinzugefügt.
+- Das Argument ```--content-keys argument``` wurde aktualisiert.
 - ```--content-policy-name``` wurde in ```--content-key-policy-name``` umbenannt.
 
 #### <a name="streaming-policy-commands"></a>streaming policy-Richtlinien
 
-- ```az ams streaming policy``` wurde als Basisbefehl durch ```az ams streaming-policy``` ersetzt.
+- Der Basisbefehl ```az ams streaming policy``` wurde durch ```az ams streaming-policy``` ersetzt.
 - Unterstützung für Verschlüsselungsparameter für ```az ams streaming-policy create``` wurde hinzugefügt.
 
 #### <a name="transform-commands"></a>transform-Befehle
 
-- ```--preset-names``` wurde als Argument durch ```--preset``` ersetzt. Ab sofort kann nur noch eine einzelne Ausgabe/Voreinstellung festgelegt werden. (Wenn Sie weitere hinzufügen möchten, müssen Sie ```az ams transform output add``` ausführen.) Darüber hinaus können Sie eine benutzerdefinierte Voreinstellung für den Standard-Encoder (StandardEncoderPreset) festlegen, indem Sie den Pfad an Ihr benutzerdefiniertes JSON-Objekt übergeben.
-- ```az ams transform output remove``` kann ausgeführt werden, indem der zu entfernende Ausgabeindex übergeben wird.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` wurden als Argumente in den Befehlen ```az ams transform create``` und ```az ams transform output add``` hinzugefügt.
+- Das Argument ```--preset-names``` wurde durch ```--preset``` ersetzt. Ab sofort kann nur noch eine einzelne Ausgabe/Voreinstellung festgelegt werden. (Wenn Sie weitere hinzufügen möchten, müssen Sie ```az ams transform output add``` ausführen.) Darüber hinaus können Sie eine benutzerdefinierte Voreinstellung für den Standard-Encoder (StandardEncoderPreset) festlegen, indem Sie den Pfad an Ihr benutzerdefiniertes JSON-Objekt übergeben.
+- Für ```az ams transform output remove``` kann der zu entfernende Ausgabeindex übergeben werden.
+- Die Argumente ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` wurden in ```az ams transform create``` und den Befehlen ```az ams transform output add``` hinzugefügt.
 
 ## <a name="october-2018---ga"></a>Oktober 2018 – Allgemeine Verfügbarkeit (GA)
 
@@ -200,6 +214,10 @@ Das .NET SDK enthält die folgenden Funktionen:
 ### <a name="known-issues"></a>Bekannte Probleme
 
 * Wenn Sie einen Auftrag übermitteln, können Sie angeben, dass Ihr Quellvideo mithilfe von HTTPS, URLs, SAS-URLs oder Pfaden zu Dateien in Azure Blob Storage erfasst wird. AMS v3 unterstützt derzeit keine segmentierte Transfercodierung über HTTPS-URLs.
+
+## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

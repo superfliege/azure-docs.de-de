@@ -314,8 +314,9 @@
                 - name: Statusmonitor
                   href: app/monitor-performance-live-website-now.md
                 - name: Statusmonitor v2
-                  href: app/status-monitor-v2-overview.md
                   items:
+                    - name: Übersicht
+                      href: app/status-monitor-v2-overview.md
                     - name: Erste Schritte
                       href: app/status-monitor-v2-get-started.md
                     - name: Ausführliche Anleitungen
@@ -557,7 +558,7 @@
                   href: app/usage-workbooks.md
             - name: Web-App-Analyselösung
               href: insights/azure-web-apps-analytics.md
-            - name: In Kubernetes gehostete Apps
+            - name: Überwachen von Kubernetes-Anwendungen
               href: app/kubernetes.md
         - name: Überwachen von Containern
           items:
@@ -631,8 +632,18 @@
                   href: insights/vminsights-known-issues.md
                 - name: Häufig gestellte Fragen
                   href: insights/vminsights-faq.md
-                - name: Integrieren
-                  href: insights/vminsights-onboard.md
+                - name: Aktivieren der Überwachung
+                  items:
+                    - name: 'Aktivieren der Überwachung: Übersicht'
+                      href: insights/vminsights-enable-overview.md
+                    - name: Aktivieren für einen einzelnen virtuellen Azure-Computer
+                      href: insights/vminsights-enable-single-vm.md
+                    - name: Aktivieren mithilfe von Azure Policy
+                      href: insights/vminsights-enable-at-scale-policy.md
+                    - name: Aktivieren mithilfe von Azure PowerShell
+                      href: insights/vminsights-enable-at-scale-powershell.md
+                    - name: Aktivieren für Hybridumgebungen
+                      href: insights/vminsights-enable-hybrid-cloud.md
                 - name: Überwachen der Integrität
                   href: insights/vminsights-health.md
                 - name: Zuordnen von Abhängigkeiten

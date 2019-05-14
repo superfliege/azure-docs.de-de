@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: c8bc11b8f81fe034ceaa93c7bd8a49771d9407f9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025674"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237006"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Empfehlungen zum Mikrofonarray für das Speech-Geräte-SDK
 
@@ -29,9 +29,11 @@ Die folgenden Arraygeometrien werden für Microsoft Audio Stack empfohlen. Die L
 
 |          | Kreisförmiges Array    |       |  Lineares Array              |                |
 |----------|-------------------|-------------------|----------------|----------------|
-|          |![Kreisförmiges Array mit 7 Mikrofonen](media/speech-devices-sdk/7-mic-c.png)|![Kreisförmiges Array mit 4 Mikrofonen](media/speech-devices-sdk/4-mic-c.png)|![Lineares Array mit 4 Mikrofonen](media/speech-devices-sdk/4-mic-l.png)|![Lineares Array mit 2 Mikrofonen](media/speech-devices-sdk/2-mic-l.png)|
+|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# Anzahl Mikrofone  | 7                 | 4                 | 4              | 2              |
 | Geometrie | 6 außen, 1 Mitte, Radius = 42,5 mm, gleichmäßige Abstände| 3 außen, 1 Mitte, Radius = 42,5 mm, gleichmäßige Abstände | Länge = 120 mm, Abstand = 40 mm | Abstand = 40 mm |
+
+Mikrofonkanäle sollten entsprechend der für die einzelnen Arrays oben dargestellten Nummerierung angeordnet werden, die ab 0 erhöht wird.  Der Microsoft Audio Stack benötigt einen zusätzlichen Referenzstream der Audiowiedergabe, um die Echounterdrückung durchzuführen.
 
 ## <a name="component-selection"></a>Komponentenauswahl
 
@@ -110,4 +112,4 @@ Alle Audio-MCUs sollten High-Speed USB Audio 2.0 unterstützen, um die notwendig
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> Informationen zum [Speech-Geräte-SDK](speech-devices-sdk.md)
+> [Informationen zum Speech-Geräte-SDK](speech-devices-sdk.md)

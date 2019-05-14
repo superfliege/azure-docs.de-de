@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516551"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191526"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Referenz für Risikoereignisse in Azure Active Directory Identity Protection
 
@@ -83,7 +83,15 @@ Bei dieser Art von Risikoereignis werden Anmeldungen von IP-Adressen identifizie
 **Erkennungstyp**: Echtzeit  
 **Alter Name**: Anmeldungen von unbekannten Standorten
 
+
 Dieser Risikoereignistyp berücksichtigt die bisherige Anmeldehistorie (IP-Adresse, Breitengrad/Längengrad und ASN), um nach anomalen Anmeldungen zu suchen. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Das Risikoereignis wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der vertrauten Standorte noch nicht enthalten ist. Neu erstellte Benutzer befinden sich für einen bestimmten Zeitraum im „Lernmodus“, in dem ungewohnte Anmeldeeigenschaften-Risikoereignisse deaktiviert werden, während unsere Algorithmen das Verhalten des Benutzers lernen. Die Dauer des Lernmodus ist dynamisch und hängt davon ab, wie lange es dauert, bis der Algorithmus genügend Informationen über die Anmeldemuster des Benutzers gesammelt hat. Die Mindestdauer beträgt fünf Tage. Ein Benutzer kann nach einer langen Zeit der Inaktivität erneut in den Lernmodus wechseln. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. 
 
 Diese Erkennung wird auch für die Standardauthentifizierung (bzw. ältere Protokolle) ausgeführt. Da diese Protokolle nicht über moderne Eigenschaften (z. B. Client-ID) verfügen, reichen die Telemetriedaten nicht aus, um falsch positive Ergebnisse zu reduzieren. Wir empfehlen unseren Kunden, auf eine moderne Authentifizierung umzusteigen.
 
+
+## <a name="azure-ad-threat-intelligence"></a>Azure AD Threat Intelligence
+
+**Erkennungstyp**: Offline <br>
+**Alter Name**: Diese Erkennung wird in älteren Azure AD Identity Protection-Berichten (Benutzer mit Risikokennzeichnung, Risikoereignisse) als „Benutzer mit kompromittierten Anmeldeinformationen“ angezeigt.
+
+Dieser Risikoereignistyp zeigt Benutzeraktivitäten an, die für den angegebenen Benutzer unüblich oder mit bekannten Angriffsmustern konsistent sind, so wie in den internen und externen Threat Intelligence-Quellen von Microsoft angegeben.

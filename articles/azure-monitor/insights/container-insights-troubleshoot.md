@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5f9fc128af4e89788e648fcfc238da300ff91724
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577039"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068751"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problembehandlung für Azure Monitor für Container
 
@@ -111,9 +111,9 @@ In der unten stehenden Tabelle sind bekannte Fehler aufgeführt, die bei der Ver
 
 | Fehlermeldungen  | Aktion |  
 | ---- | --- |  
-| Fehlermeldung `No data for selected filters`  | Die Einrichtung der Überwachung des Datenflusses für neu erstellte Cluster kann einige Zeit in Anspruch nehmen. Es dauert mindestens 10 bis 15 Minuten, bis Daten für Ihren Cluster angezeigt werden. |   
-| Fehlermeldung `Error retrieving data` | Während der Einrichtung eines Azure Kubernetes-Dienstclusters für die Überwachung von Integrität und Leistung wird zwischen dem Cluster und dem Azure Log Analytics-Arbeitsbereich eine Verbindung hergestellt. Zum Speichern sämtlicher Überwachungsdaten für Ihren Cluster wird ein Log Analytics-Arbeitsbereich verwendet. Dieser Fehler kann auftreten, wenn ein Log Analytics-Arbeitsbereich gelöscht wurde oder verloren gegangen ist. Überprüfen Sie anhand der Informationen unter [Verwalten des Zugriffs](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#view-workspace-details), ob Ihr Arbeitsbereich verfügbar ist. Wenn der Arbeitsbereich fehlt, müssen Sie Ihren Cluster mit Azure Monitor für Container erneut integrieren. Zum erneuten Integrieren müssen Sie die Überwachung für den Cluster [deaktivieren](container-insights-optout.md) und dann mit Azure Monitor für Container [erneut aktivieren](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster). |  
-| `Error retrieving data` nach dem Hinzufügen von Azure Monitor für Container mithilfe von „az aks cli“ | Beim Integrieren mithilfe von `az aks cli` funktioniert der Prozess für Azure Monitor für Container in seltenen Fällen nicht ordnungsgemäß. Überprüfen Sie, ob die Lösung integriert ist. Wechseln Sie zu diesem Zweck zu Ihrem Log Analytics-Arbeitsbereich, und wählen Sie im linken Bereich **Lösungen** aus, um zu überprüfen, ob die Lösung verfügbar ist. Um dieses Problem zu lösen, müssen Sie die Lösung erneut bereitstellen. Befolgen Sie dazu die Anweisungen zum [Bereitstellen von Azure Monitor für Container](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json). |  
+| Fehlermeldung `No data for selected filters`  | Die Einrichtung der Überwachung des Datenflusses für neu erstellte Cluster kann einige Zeit in Anspruch nehmen. Es dauert mindestens 10 bis 15 Minuten, bis Daten für Ihren Cluster angezeigt werden. |   
+| Fehlermeldung `Error retrieving data` | Während der Einrichtung eines Azure Kubernetes-Dienstclusters für die Überwachung von Integrität und Leistung wird zwischen dem Cluster und dem Azure Log Analytics-Arbeitsbereich eine Verbindung hergestellt. Zum Speichern sämtlicher Überwachungsdaten für Ihren Cluster wird ein Log Analytics-Arbeitsbereich verwendet. Dieser Fehler kann auftreten, wenn ein Log Analytics-Arbeitsbereich gelöscht wurde oder verloren gegangen ist. Überprüfen Sie anhand der Informationen unter [Verwalten des Zugriffs](../platform/manage-access.md#view-workspace-details), ob Ihr Arbeitsbereich verfügbar ist. Wenn der Arbeitsbereich fehlt, müssen Sie die Überwachung Ihres Clusters mit Azure Monitor für Container erneut aktivieren. Zum erneuten Aktivieren müssen Sie die Überwachung für den Cluster [deaktivieren](container-insights-optout.md) und dann mit Azure Monitor für Container [erneut aktivieren](container-insights-enable-new-cluster.md). |  
+| `Error retrieving data` nach dem Hinzufügen von Azure Monitor für Container mithilfe von „az aks cli“ | Beim Aktivieren der Überwachung mithilfe von `az aks cli` wird das Onboarding für Azure Monitor für Container möglicherweise nicht ordnungsgemäß durchgeführt. Überprüfen Sie, ob die Lösung integriert ist. Wechseln Sie zu diesem Zweck zu Ihrem Log Analytics-Arbeitsbereich, und wählen Sie im linken Bereich **Lösungen** aus, um zu überprüfen, ob die Lösung verfügbar ist. Um dieses Problem zu lösen, müssen Sie die Lösung erneut bereitstellen. Befolgen Sie dazu die Anweisungen zum [Bereitstellen von Azure Monitor für Container](container-insights-onboard.md). |  
 
 Um Sie bei der Diagnose zu unterstützen, haben wir [hier](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script) ein Skript zur Problembehandlung bereitgestellt.  
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 50f3ecf69561313a5bda67827cfb02d2f61d461f
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610167"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070814"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Manuelles Beenden oder Starten von Containern in Azure Container Instances
 
@@ -24,7 +24,7 @@ Sie können eine ausgeführte Containergruppe manuell beenden, indem Sie z. B. d
 
 *Wenn eine Containergruppe in den Zustand „Beendet“ wechselt, wird sie beendet und verwendet alle Container in der Gruppe wieder. Der Containerzustand bleibt nicht erhalten.*
 
-Obwohl die Container in einer beendeten Containergruppe wiederverwendet werden, bleiben die [Ressourcen](container-instances-container-groups.md#resource-allocation) weiter zu ihrer Verwendung zugeordnet. Deshalb läuft die Abrechnung für eine beendete Containergruppe weiter.
+Wenn die Container wiederverwendet werden, wird die Zuordnung der [Ressourcen](container-instances-container-groups.md#resource-allocation) aufgehoben und die Abrechnung für die Containergruppe beendet.
 
 Die Aktion „Beenden“ hat keine Auswirkungen, wenn die Containergruppe bereits beendet wurde (also im Zustand „Erfolgreich“ oder „Fehler“ ist). Angenommen, eine Containergruppe mit einmalig auszuführenden Containertasks, die erfolgreich ausgeführt wurden, wird im Zustand „Erfolgreich“ beendet. Versuche, die Gruppe in diesem Zustand zu beenden, ändern den Zustand nicht. 
 

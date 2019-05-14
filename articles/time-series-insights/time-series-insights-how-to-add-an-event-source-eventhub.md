@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41d3e72d978a210c2d68365ade5d8cb42c24aad5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702635"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147605"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -27,9 +27,9 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie eine Time Series Insights-Umgebung. Weitere Informationen finden Sie unter [Erstellen einer Azure Time Series Insights-Umgebung](./time-series-insights-update-create-environment.md).
-- Erstellen einer Event Hub-Instanz Weitere Informationen zu Event Hubs finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
-- An den Event Hub müssen aktive Nachrichtenereignisse gesendet werden. Weitere Informationen finden Sie unter [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Erstellen Sie eine Time Series Insights-Umgebung, wie dies im Artikel [Erstellen einer Azure Time Series Insights-Umgebung](./time-series-insights-update-create-environment.md) beschrieben wird.
+- Erstellen einer Event Hub-Instanz Weitere Informationen hierzu finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
+- An den Event Hub müssen aktive Nachrichtenereignisse gesendet werden. Im Artikel [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md) wird beschrieben, wie Sie hierzu vorgehen.
 - Erstellen Sie eine dedizierte Consumergruppe in dem Event Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, werden allen Lesern wahrscheinlich Fehler angezeigt. Es gilt ein Grenzwert von 20 Consumergruppen pro Event Hub. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Hinzufügen einer Consumergruppe zum Event Hub
@@ -42,7 +42,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
 1. Wählen Sie unter **Entitäten** **Consumergruppen** aus, und wählen Sie dann **Consumergruppe** aus.
 
-   ![Event Hub – Consumergruppe hinzufügen](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+   [![Event hub - Add a consumer group](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox) (Event Hub – Consumergruppe hinzufügen)
 
 1. Geben Sie auf der Seite **Consumergruppen** einen neuen eindeutigen Wert für **Name** an.  Verwenden Sie diesen Namen, wenn Sie eine neue Ereignisquelle in der Time Series Insights-Umgebung erstellen.
 
@@ -56,7 +56,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
 1. Wählen Sie unter **Umgebungstopologie** den Eintrag **Ereignisquellen** und dann **Hinzufügen** aus.
 
-   ![Wählen Sie unter „Ereignisquellen“die Schaltfläche „Hinzufügen“ aus.](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
+   [![Wählen Sie unter „Ereignisquellen“ die Schaltfläche „Hinzufügen“ aus](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox).
 
 1. Geben Sie einen **Namen der Ereignisquelle** ein, der eindeutig Namen für diese Time Series Insights-Umgebung ist, z. B. **event-stream**.
 
@@ -66,11 +66,11 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
    - Wenn Sie in einem Ihrer Abonnements bereits über einen Event Hub verfügen, wählen Sie **Verwenden Sie einen Event Hub aus verfügbaren Abonnements** aus. Diese Option stellt den einfachsten Ansatz dar.
    - Wenn sich der Event Hub außerhalb Ihrer Abonnements befindet oder Sie erweiterte Optionen auswählen möchten, wählen Sie **Event Hub-Einstellungen manuell angeben** aus.
 
-   ![Geben Sie im Bereich „Neue Ereignisquelle“ Werte für die ersten drei Parameter ein.](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
+   [![Geben Sie im Bereich „Neue Ereignisquelle“ Werte für die ersten drei Parameter ein](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox).
 
 1. In der folgenden Tabelle werden die Eigenschaften beschrieben, die für die Option **Event Hub aus verfügbaren Abonnements verwenden** erforderlich sind:
 
-   ![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
+   [![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
    | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
@@ -101,9 +101,9 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
 1. Klicken Sie auf **Erstellen**.
 
-   ![Wählen Sie „Erstellen“ aus.](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   [![Wählen Sie „Erstellen“ aus](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox).
 
-   Nach der Erstellung der Ereignisquelle beginnt Time Series Insights automatisch damit, Daten in Ihre Umgebung zu streamen.
+   After the event source is created, Time Series Insights automatically starts streaming data to your environment.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

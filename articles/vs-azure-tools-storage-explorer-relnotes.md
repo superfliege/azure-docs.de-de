@@ -14,18 +14,113 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c6416e36d7d2723577ca0d2009fb7bbad24f3b6a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924812"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154698"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
 Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Explorer 1.4.3 sowie die Anmerkungen für frühere Versionen.
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
+
+## <a name="version-180"></a>Version 1.8.0
+1.5.2019
+
+### <a name="download-azure-storage-explorer-180"></a>Herunterladen von Azure Storage-Explorer 1.8.0
+- [Azure Storage-Explorer 1.8.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 1.8.0 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 1.8.0 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+
+* Die integrierte Version von AzCopy wurde auf Version 10.1.0 aktualisiert.
+* Strg/Cmd+R können nun verwendet werden, um den derzeit fokussierten Editor zu aktualisieren. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Die Version der Azure Stack Storage-API wurde in 2017-04-17 geändert.
+* Im Dialogfeld zum Verwalten des Zugriffs für ADLS Gen2 wird die Maske jetzt auf ähnliche Weise wie bei anderen Tools für POSIX-Berechtigung synchron gehalten. Zudem werden Sie über die Benutzeroberfläche gewarnt, wenn eine Änderung vorgenommen wird, die dazu führt, dass die Berechtigungen eines Benutzers oder einer Gruppe die Grenzen der Maske überschreitet. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* Bei AzCopy-Uploads ist nun das Flag zum Berechnen und Festlegen des MD5-Hashs aktiviert. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>Previewfunktionen
+
+* In der Vorschauversion ist nun die Gerätecodeflussanmeldung verfügbar. Wenn Sie diese aktivieren möchten, navigieren Sie zu „Preview“ → „Use Device Code Flow Sign-in“ (Gerätecodeflussanmeldung verwenden). Benutzern, die Probleme mit leeren Anmeldefenstern hatten, empfehlen wir die Verwendung dieses Features, da dieses sich als zuverlässigere Anmeldeform herausstellen dürfte.
+* In der Vorschauversion ist der Storage-Explorer momentan als Integration in AzCopy verfügbar. Wenn Sie ihn aktivieren möchten, navigieren Sie zu „Preview“ → „Use AzCopy for Improved Blob Upload and Download“ (AzCopy für verbessertes Hoch- und Herunterladen von Blobs verwenden). Blob-Übertragungen mithilfe von AzCopy sollten schneller und leistungsstärker erfolgen.
+
+### <a name="fixes"></a>Fehlerbehebungen
+
+* Mit dem Dialogfeld für Zugriffsrichtlinien wird für Speicherzugriffsrichtlinien ohne Ablaufdatum kein Ablaufdatum mehr festgelegt. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* Am Dialogfeld „SAS generieren“ wurden einige Änderungen vorgenommen, um sicherzustellen, dass die gespeicherten Zugriffsrichtlinien beim Generieren einer SAS ordnungsgemäß verwendet werden. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* Beim Hochladen einer ausgerichteten Nicht-512-Byte-Datei auf ein Seitenblob wird im Storage-Explorer jetzt eine aussagekräftigere Fehlermeldung angezeigt. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Beim Kopieren eines Blobcontainers mit einem Anzeigenamen ist bisher ein Fehler aufgetreten. Daher wird nun der tatsächliche Name des Blobcontainers verwendet. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Beim Durchführen bestimmter Aktionen für einen ADLS Gen2-Ordner, dessen Name Unicode-Zeichen enthält, ist bisher ein Fehler aufgetreten. Nun sollten alle Aktionen funktionieren. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Beim Herunterladen eines Nicht-AzCopy-Blobs wird MD5 bei größeren Dateien nicht überprüft. Ursache hierfür ist ein Fehler im Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Bei der Verwendung der RBAC erfordert der Storage-Explorer mehrere Berechtigungen auf Verwaltungsebene, damit er auf Ihre Speicherressourcen zugreifen kann. Weitere Informationen finden Sie im [Azure Storage-Explorer – Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+* Der Versuch, auf ADLS Gen2-Blobs zuzugreifen, wenn man sich hinter einem Proxy befindet, schlägt möglicherweise fehl.
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+   * ADLS Gen2
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 1.7.0](#version-170)
+* [Version 1.6.2](#version-162)
+* [Version 1.6.1](#version-161)
+* [Version 1.6.0](#version-160)
+* [Version 1.5.0](#version-150)
+* [Version 1.4.4](#version-144)
+* [Version 1.4.3](#version-143)
+* [Version 1.4.2](#version-142)
+* [Version 1.4.1](#version-141)
+* [Version 1.3.0](#version-130)
+* [Version 1.2.0](#version-120)
+* [Version 1.1.0](#version-110)
+* [Version 1.0.0](#version-100)
+* [Version 0.9.6](#version-096)
+* [Version 0.9.5](#version-095)
+* [Version 0.9.4 und 0.9.3](#version-094-and-093)
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 und 0.9.0](#version-091-and-090)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
+* [Version 0.8.9 und 0.8.8](#version-089-and-088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-170"></a>Version 1.7.0
 05.03.2019
@@ -96,43 +191,6 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 1.6.2](#version-162)
-* [Version 1.6.1](#version-161)
-* [Version 1.6.0](#version-160)
-* [Version 1.5.0](#version-150)
-* [Version 1.4.4](#version-144)
-* [Version 1.4.3](#version-143)
-* [Version 1.4.2](#version-142)
-* [Version 1.4.1](#version-141)
-* [Version 1.3.0](#version-130)
-* [Version 1.2.0](#version-120)
-* [Version 1.1.0](#version-110)
-* [Version 1.0.0](#version-100)
-* [Version 0.9.6](#version-096)
-* [Version 0.9.5](#version-095)
-* [Version 0.9.4 und 0.9.3](#version-094-and-093)
-* [Version 0.9.2](#version-092)
-* [Version 0.9.1 und 0.9.0](#version-091-and-090)
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
-* [Version 0.8.9 und 0.8.8](#version-089-and-088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-162"></a>Version 1.6.2
 9.1.2019

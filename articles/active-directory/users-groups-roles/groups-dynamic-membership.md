@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450667"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192430"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -60,7 +60,7 @@ Bei einem einzelnen Ausdruck sind Klammern optional. Die Gesamtlänge des Texts 
 
 Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitgliedschaftsregel zu erstellen.
 
-* Boolescher Wert
+* Boolean
 * Zeichenfolge
 * Zeichenfolgensammlung
 
@@ -346,8 +346,8 @@ Die folgenden Geräteattribute können verwendet werden.
  Geräteattribut  | Werte | Beispiel
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
- displayName | Jeder string-Wert. |(device.displayName -eq "Rob Iphone”)
- deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
+ displayName | Jeder string-Wert. |(device.displayName -eq "Rob iPhone")
+ deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
  deviceOSVersion | Jeder string-Wert. | (device.deviceOSVersion -eq "9.1")
  deviceCategory | ein gültiger Gerätekategoriename | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | Jeder string-Wert. | (device.deviceManufacturer -eq "Samsung")

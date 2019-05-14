@@ -21,6 +21,10 @@
       href: azure-netapp-files-metrics.md
     - name: Leistungsbenchmarks für Azure NetApp Files
       href: azure-netapp-files-performance-benchmarks.md
+    - name: Kostenmodell für Azure NetApp Files
+      href: azure-netapp-files-cost-model.md
+    - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
+      href: azure-netapp-files-network-topologies.md
 - name: Anleitungen
   items:
     - name: Registrieren für Azure NetApp Files

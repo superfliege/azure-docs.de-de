@@ -10,46 +10,44 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b370c6ef5be311ed9c8df2737fa1b01144d61011
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1c2d2a02ecfb617551dd9174b87f363d57b151a8
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027720"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467195"
 ---
-# <a name="assign-data-to-clusters"></a>Assign Data to Clusters
+# <a name="module-assign-data-to-clusters"></a>Modul: Assign Data to Clusters
 
-In diesem Artikel wird beschrieben, wie Sie das Modul [Assign Data to Clusters](assign-data-to-clusters.md) (Zuweisung von Daten zu Clustern) auf der grafischen Benutzeroberfläche verwenden können, um Vorhersagen mit einem Clusteringmodell zu erstellen, das mit dem k-Means-Algorithmus für das Clustering trainiert wurde.
+Dieser Artikel beschreibt die Verwendung des Moduls *Assign Data to Clusters* auf der grafischen Benutzeroberfläche von Azure Machine Learning. Das Modul generiert Vorhersagen durch ein Clusteringmodell, das mit dem *k-Means-Algorithmus* trainiert wurde.
 
-Das Modul gibt ein Dataset zurück, das die wahrscheinlichen Zuweisungen für jeden neuen Datenpunkt enthält. 
+Das Modul „Assign Data to Clusters“ gibt ein Dataset zurück, das die wahrscheinlichen Zuweisungen für jeden neuen Datenpunkt enthält. 
 
 
 ## <a name="how-to-use-assign-data-to-clusters"></a>Verwenden von „Assign Data to Clusters“
   
-1.  Navigieren Sie auf der grafischen Benutzeroberfläche zu einem zuvor trainierten Clusteringmodell. Sie können ein Clusteringmodell mit einer dieser beiden Methoden erstellen und trainieren:  
+1. Navigieren Sie auf der grafischen Benutzeroberfläche von Azure Machine Learning zu einem zuvor trainierten Clusteringmodell. Sie können ein Clusteringmodell mit einer der folgenden Methoden erstellen und trainieren:  
   
-    - Konfigurieren Sie den k-Means-Algorithmus mithilfe des Moduls [K-Means Clustering](k-means-clustering.md), und trainieren Sie anschließend das Modell mit einem Dataset und dem Modul [Train Clustering Model](train-clustering-model.md) (Trainieren des Clusteringmodells).  
+    - Konfigurieren Sie den k-Means-Algorithmus mithilfe des Moduls [k-Means-Algorithmus](k-means-clustering.md), und trainieren Sie das Modell mithilfe eines Datasets und des Moduls „Train Clustering Model“ (dieser Artikel).  
   
-  
-    Sie können auch ein bestehendes trainiertes Clusteringmodell aus der Gruppe **Saved Models** (Gespeicherte Modelle) Ihrem Arbeitsbereich hinzufügen.
+    - Sie können auch ein bestehendes trainiertes Clusteringmodell aus der Gruppe **Saved Models** (Gespeicherte Modelle) Ihrem Arbeitsbereich hinzufügen.
 
-2. Fügen Sie das trainierte Modell an den linken Eingabeport von [Assign Data to Clusters](assign-data-to-clusters.md) an.  
+2. Fügen Sie das trainierte Modell an den linken Eingabeport von **Assign Data to Clusters** an.  
 
-3. Fügen Sie ein neues Dataset als Eingabe an. In diesem Dataset sind Bezeichnungen optional. Im Allgemeinen ist Clustering eine unüberwachte Lernmethode, weshalb nicht erwartet wird, dass Sie Kategorien im Voraus kennen.
+3. Fügen Sie ein neues Dataset als Eingabe an. 
 
-    Die Eingabespalten müssen jedoch mit den Spalten übereinstimmen, die beim Training des Clusteringmodells verwendet wurden, da sonst ein Fehler auftritt.
+   In diesem Dataset sind Bezeichnungen optional. Im Allgemeinen ist Clustering eine unbeaufsichtigte Lernmethode. Es wird nicht erwartet, dass Sie die Kategorien im Voraus kennen. Die Eingabespalten müssen jedoch mit den Spalten übereinstimmen, die beim Training des Clusteringmodells verwendet wurden, da sonst ein Fehler auftritt.
 
     > [!TIP]
-    > Um die Anzahl der Spalten zu reduzieren, die von Clustervorhersagen ausgegeben werden, verwenden Sie [Select Columns in Dataset](select-columns-in-dataset.md) (Spalten im Dataset auswählen), und wählen Sie eine Teilmenge der Spalten aus. 
+    > Um die Anzahl der Spalten zu reduzieren, die von den Clustervorhersagen auf die Benutzeroberfläche geschrieben werden, verwenden Sie [Select Columns in Dataset](select-columns-in-dataset.md) (Spalten im Dataset auswählen), und wählen Sie eine Teilmenge der Spalten aus. 
     
-4. Lassen Sie die Option **Check for Append or Uncheck for Result Only** (Für Anfügen aktivieren oder für reine Ergebnisse deaktivieren) aktiviert, wenn die Ergebnisse das gesamte Eingabedataset sowie eine Spalte mit den Ergebnissen (Clusterzuweisungen) enthalten sollen.
+4. Lassen Sie das Kontrollkästchen **Check for Append or Uncheck for Result Only** (Für Anfügen aktivieren oder für reine Ergebnisse deaktivieren) aktiviert, wenn die Ergebnisse das gesamte Eingabedataset einschließlich einer Spalte mit den Ergebnissen (Clusterzuweisungen) enthalten sollen.
   
-    Wenn Sie diese Option deaktivieren, erhalten Sie bloß die Ergebnisse. Dies kann nützlich sein, wenn Sie Vorhersagen als Teil eines Webdiensts erstellen.
+    Wenn Sie dieses Kontrollkästchen deaktivieren, werden nur die Ergebnisse zurückgegeben. Diese Option kann nützlich sein, wenn Sie Vorhersagen als Teil eines Webdiensts erstellen.
   
 5.  Führen Sie das Experiment aus.  
   
 ### <a name="results"></a>Ergebnisse
 
- 
-+  Um die Werte im Dataset anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Result datasets** (Ergebnisdatasets) aus, und klicken Sie auf **Visualize** (Visualisieren).
++  Um die Werte im Dataset anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Result datasets** (Ergebnisdatasets) aus, und wählen Sie dann **Visualize** (Visualisieren) aus.
 

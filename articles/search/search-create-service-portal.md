@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9de8fa297c2b3f89f74b17e0dac3eab007367b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264028"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471590"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 
@@ -67,11 +67,13 @@ Wenn Sie keine Ressourcen in einer einzigen Gruppe kombinieren oder vorhandene R
 > [!TIP]
 > Wenn eine Ressourcengruppe gelöscht wird, werden auch die darin befindlichen Dienste gelöscht. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen.
 
-## <a name="select-a-hosting-location"></a>Auswählen eines Hostingstandorts
+## <a name="select-a-location"></a>Standort auswählen
 
 Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet werden. [Die Preise können sich je nach geografischer Lage unterscheiden.](https://azure.microsoft.com/pricing/details/search/)
 
-Wenn Sie Inhalte indizieren möchten, die sich in einem Azure-Dienst (Azure Storage, Azure Cosmos DB, Azure SQL-Datenbank) befinden, erstellen Sie Ihren Azure Search-Dienst in der Region, in der sich auch Ihre Daten befinden, um Bandbreitenkosten zu sparen. Bei Diensten in der gleichen Region fallen keine Gebühren für ausgehende Daten an.
+Wenn von einem anderen Azure-Dienst (Azure Storage, Azure Cosmos DB, Azure SQL-Datenbank) bereitgestellte Daten indizieren, erstellen Sie Ihren Azure Search-Dienst in der gleichen Region, um Bandbreitenkosten zu sparen. Bei Diensten in der gleichen Region fallen keine Gebühren für ausgehende Daten an.
+
+Wenn Sie KI-Erweiterungen der kognitiven Suche verwenden, erstellen Sie Ihren Dienst in der gleichen Region wie Ihre Cognitive Services-Ressource. Die Zusammenstellung von Diensten ist eine Voraussetzung für KI-Erweiterungen.
 
 ## <a name="select-a-pricing-tier-sku"></a>Auswählen eines Tarifs (SKU)
 

@@ -2,18 +2,19 @@
 title: Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure-Speicherkonto | Microsoft-Dokumentation
 description: Verwenden Sie das Azure-Portal, um dem Blob Storage- oder Webendpunkt in einem Azure-Speicherkonto Ihren eigenen kanonischen Namen (CNAME) zuzuordnen.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: e40b6fe115d6b6dea38ead9f0b2550d96bd04c7a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112635"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148932"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure-Speicherkonto
 

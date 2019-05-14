@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635066"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141077"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -44,7 +44,7 @@ Es folgt eine kurze Übersicht über die Schritte:
 
 Um eine API mit Azure AD zu schützen, besteht der erste Schritt darin, eine Anwendung in Azure AD zu registrieren, die die API darstellt. 
 
-1. Navigieren Sie zu Ihrem Azure AD-Mandanten und dann zu **App-Registrierungen**.
+1. Navigieren Sie zu Ihrem Azure AD-Mandanten und dann zu **App-Registrierungen (Legacy)**.
 
 2. Wählen Sie **Registrierung einer neuen Anwendung** aus. 
 
@@ -62,7 +62,7 @@ Wenn die Anwendung erstellt wird, notieren Sie sich die **Anwendungs-ID**, um si
 
 Jede Clientanwendung, aus der die API aufgerufen wird, muss auch in Azure AD als eine Anwendung registriert werden. In diesem Beispiel wird die Entwicklerkonsole im API Management-Entwicklerportal als Beispielclientanwendung verwendet. So registrieren Sie eine weitere Anwendung in Azure AD, die die Entwicklerkonsole darstellt:
 
-1. Wählen Sie **Registrierung einer neuen Anwendung** aus. 
+1. Wählen Sie unter **App-Registrierungen (Legacy)** die Option **Registrierung einer neuen Anwendung** aus. 
 
 2. Geben Sie den Namen der Anwendung an. (In diesem Beispiel lautet der Name `client-app`.)
 
@@ -86,7 +86,7 @@ Notieren Sie sich den Schlüsselwert.
 
 Nachdem nun zwei Anwendungen registriert sind, die die API und die Entwicklerkonsole darstellen, müssen Sie Berechtigungen gewähren, damit die Client-App die Back-End-App aufrufen kann.  
 
-1. Navigieren Sie zu **Anwendungsregistrierungen**. 
+1. Navigieren Sie zu **Anwendungsregistrierungen (Legacy)**. 
 
 2. Klicken Sie auf `client-app`, und wechseln Sie zu **Einstellungen**.
 
@@ -152,7 +152,7 @@ Im nächsten Schritt aktivieren Sie die OAuth 2.0-Benutzerautorisierung für Ihr
 
 4. Wählen Sie unter **Sicherheit** die Option **OAuth 2.0** aus, und wählen Sie den OAuth 2.0-Server aus, den Sie zuvor konfiguriert haben. 
 
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Erfolgreiches Aufrufen der API aus dem Entwicklerportal
 

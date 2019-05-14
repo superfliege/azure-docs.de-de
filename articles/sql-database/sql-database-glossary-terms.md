@@ -11,19 +11,21 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 04/26/2019
+ms.openlocfilehash: fb628358c91d80a3117b065cadb284fd1665daa3
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990069"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073680"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Glossar mit Begriffen aus Azure SQL-Datenbank
 
 |Kontext|Begriff|Weitere Informationen|
 |:---|:---|:---|
 |Azure-Dienstname|Azure SQL-Datenbank oder SQL-Datenbank|[Der Azure SQL-Datenbank-Dienst](sql-database-technical-overview.md)|
+|Computeebene|Serverlos (Vorschau)|[Serverlose Computeebene](sql-database-serverless.md)
+||Bereitgestellt|[Serverlose Computeebene](sql-database-serverless.md)
 |Bereitstellungsoptionen |Einzeldatenbank|[Einzeldatenbanken](sql-database-single-database.md)|
 ||Pool für elastische Datenbanken|[Pool für elastische Datenbanken](sql-database-elastic-pool.md)|
 ||Verwaltete Instanz|[Verwaltete Instanz](sql-database-managed-instance.md)|
@@ -39,8 +41,9 @@ Datenbankobjekte|Azure SQL-Datenbank|Beliebige Datenbank in Azure SQL-Datenbank|
 ||Universelle Datenbank|Eine in der Dienstebene „Universell“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
 ||Hyperscaledatenbank|Eine in der Dienstebene „Hyperscale“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
 ||Unternehmenskritische Datenbank|Eine in der Dienstebene „Unternehmenskritisch“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Bereitgestellte Datenbank|Eine auf der bereitgestellten Computeebene konfigurierte Datenbank|
 |[Kaufmodelle und -ressourcen](sql-database-purchase-models.md)|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
-||vCore-basiertes Kaufmodell|[Auf virtuellen Kernen basierendes Kaufmodell](sql-database-service-tiers-vcore.md)|
+||vCore-basiertes Kaufmodell|[vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md)|
 ||Virtueller Kern|Ein Kern, der vom Hypervisor für das Gastbetriebssystem bereitgestellt wird.|
 ||Dienstebene|Eine Dienstebene in einem Kaufmodell|
 ||Computegröße|Die Anzahl der Computeressourcen für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz innerhalb einer Dienstebene|

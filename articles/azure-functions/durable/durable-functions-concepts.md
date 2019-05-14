@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: aa9563266f6b43e3bc2f21fbc0b340c86c5895ae
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608730"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071345"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Muster und technische Konzepte von Durable Functions (Azure Functions)
 
@@ -219,9 +219,6 @@ module.exports = async function (context, req) {
 };
 ```
 
-> [!WARNING]
-> Wenn Sie lokal in JavaScript entwickeln, müssen Sie zum Verwenden von Methoden auf dem `DurableOrchestrationClient` die Umgebungsvariable `WEBSITE_HOSTNAME` auf `localhost:<port>` festlegen (Beispiel: `localhost:7071`). Weitere Informationen zu dieser Anforderung finden Sie im [GitHub-Problem 28](https://github.com/Azure/azure-functions-durable-js/issues/28).
-
 In .NET ist der `starter`-Parameter von [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) ein Wert aus der `orchestrationClient`-Ausgabebindung, die Teil der Durable Functions-Erweiterung ist. In JavaScript wird dieses Objekt durch Aufrufen von `df.getClient(context)` zurückgegeben. Diese Objekte stellen Methoden bereit, mit denen neue oder vorhandene Orchestratorfunktionsinstanzen gestartet, beendet und abgefragt sowie Ereignisse an sie gesendet werden können.
 
 In den vorherigen Beispielen nimmt eine über HTTP ausgelöste Funktion einen `functionName`-Wert von der eingehenden URL entgegen und übergibt den Wert an [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). Die Bindungs-API [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) gibt dann eine Antwort zurück, die einen `Location`-Header und zusätzliche Informationen zur Instanz enthält. Sie können die Informationen später verwenden, um den Status der gestarteten Instanz abzurufen oder sie zu beenden.
@@ -377,6 +374,63 @@ module.exports = async function (context) {
 };
 ```
 
+## <a name="pattern-6-aggregator-preview"></a>Muster 6: Aggregator (Vorschauversion)
+
+Beim sechsten Muster geht es um Aggregierung von Ereignisdaten über einen bestimmten Zeitraum in einer einzigen, adressierbaren *Entität*. In diesem Muster können die aggregierten Daten aus mehreren Quellen stammen, in Batches geliefert werden und über lange Zeiträume verteilt sein. Der Aggregator muss möglicherweise Aktionen für Ereignisdaten durchführen, wenn er diese empfängt, und es kann sein, dass externe Daten die aggregierten Daten abfragen müssen.
+
+![Aggregatordiagramm](./media/durable-functions-concepts/aggregator.png)
+
+Das Schwierige an der Implementierung dieses Musters mit normalen, zustandslosen Funktionen ist die Tatsache, dass das Steuern der Parallelität zur Herausforderung wird. Sie müssen sich nicht nur um mehrere Threads kümmern, die gleichzeitig dieselben Daten anpassen, sondern Sie müssen auch sicherstellen, dass der Aggregator immer nur auf einer VM ausgeführt wird.
+
+Wenn Sie eine [Durable Entity-Funktion](durable-functions-preview.md#entity-functions) verwenden, können Sie dieses Muster ohne Probleme als einzelne Funktion implementieren.
+
+```csharp
+public static async Task Counter(
+    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+    int operand = ctx.GetInput<int>();
+
+    switch (ctx.OperationName)
+    {
+        case "add":
+            currentValue += operand;
+            break;
+        case "subtract":
+            currentValue -= operand;
+            break;
+        case "reset":
+            await SendResetNotificationAsync();
+            currentValue = 0;
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+Clients können *Vorgänge* mit der`orchestrationClient`-Bindung für eine Entity-Funktion in eine Warteschlange einreihen.
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static async Task Run(
+    [EventHubTrigger("device-sensor-events")] EventData eventData,
+    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+{
+    var metricType = (string)eventData.Properties["metric"];
+    var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
+
+    // The "Counter/{metricType}" entity is created on-demand.
+    var entityId = new EntityId("Counter", metricType);
+    await entityClient.SignalEntityAsync(entityId, "add", delta);
+}
+```
+
+So ähnlich können Clients den Status einer Entity-Funktion mit Methoden in der `orchestrationClient`-Bindung abfragen.
+
+> [!NOTE]
+> Entity-Funktionen sind momentan nur in der [Vorschauversion von Durable Functions 2.0](durable-functions-preview.md) verfügbar.
+
 ## <a name="the-technology"></a>Die Technologie
 
 Im Hintergrund baut die Erweiterung Durable Functions auf dem [Durable Task Framework](https://github.com/Azure/durabletask) auf, einer Open Source-Bibliothek auf GitHub, die zum Erstellen von permanenten Aufgabenorchestrierungen verwendet wird. Wie Azure Functions die serverlose Weiterentwicklung von Azure WebJobs ist, so ist Durable Functions die serverlose Weiterentwicklung von Durable Task Framework. Microsoft und andere Unternehmen verwenden das Durable Task Framework intensiv zum Automatisieren unternehmenswichtiger Prozesse. Es ist wie geschaffen für die serverlose Azure Functions-Umgebung.
@@ -423,7 +477,7 @@ Speicher-Blobs werden hauptsächlich als Leasingmechanismus zum Koordinieren der
 
 ![Screenshot von Azure Storage-Explorer](./media/durable-functions-concepts/storage-explorer.png)
 
-> [!WARNING]
+> [!NOTE]
 > Es ist zwar einfach und bequem, den Ausführungsverlauf im Tabellenspeicher angezeigt zu bekommen, Sie sollten aber keine Abhängigkeiten von dieser Tabelle einrichten. Die Tabelle kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
 
 ## <a name="known-issues"></a>Bekannte Probleme

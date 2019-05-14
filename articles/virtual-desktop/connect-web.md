@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit dem Webclient von Windows Virtual Desktop (Vorschauversion) – Azure
-description: Es wird beschrieben, wie Sie eine Verbindung mit dem HTML5-Webclient von Windows Virtual Desktop (Vorschauversion) herstellen.
+title: Herstellen einer Verbindung mit Windows Virtual Desktop (Vorschauversion) über einen Webbrowser – Azure
+description: Erfahren Sie, wie Sie mit einem Webbrowser eine Verbindung mit Windows Virtual Desktop (Vorschauversion) herstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 231dc2b777ce7fa37f445215863a55e93562e411
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403747"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142447"
 ---
-# <a name="connect-with-the-web-client"></a>Herstellen einer Verbindung mit dem Webclient
+# <a name="connect-from-a-web-browser"></a>Herstellen einer Verbindung über einen Webbrowser
 
 Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Windows Virtual Desktop (Vorschauversion) zugreifen, ohne den langwierigen Installationsvorgang durchführen zu müssen.
 

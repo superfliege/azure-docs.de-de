@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/31/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762938"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146041"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -46,6 +46,50 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 Für die Runbooks für diese Lösung wird ein [ausführendes Azure-Konto](automation-create-runas-account.md) verwendet. Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
 Es wird empfohlen, für die Lösung zum Starten/Beenden von VMs ein separates Automation-Konto zu verwenden. Der Grund hierfür ist, dass die Azure-Modulversionen häufig aktualisiert werden und sich ihre Parameter ändern können. Die Lösung zum Starten/Beenden von VMs wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihr Automation-Produktionskonto importieren.
+
+### <a name="permissions-needed-to-deploy"></a>Für die Bereitstellung erforderliche Berechtigungen
+
+Ein Benutzer muss über bestimmte Berechtigungen verfügen, um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten bereitzustellen. Diese Berechtigungen sind unterschiedlich – je nachdem, ob ein vorab erstelltes Automation-Konto und ein vorab erstellter Log Analytics-Arbeitsbereich verwendet oder beides während der Bereitstellung neu erstellt wird.
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Bereits vorhandenes Automation- und Log Analytics-Konto
+
+Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein Automation-Konto und einen Log Analytics-Arbeitsbereich bereitzustellen, muss der Benutzer, der die Lösung bereitstellt, über die folgenden Berechtigungen für die **Ressourcengruppe** verfügen. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../role-based-access-control/custom-roles.md).
+
+| Berechtigung | `Scope`|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/schedules/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/runbooks/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/connections/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/certificates/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/modules/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/modules/read | Ressourcengruppe |
+| Microsoft.automation/automationAccounts/jobSchedules/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/jobs/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/jobs/read | Ressourcengruppe |
+| Microsoft.OperationsManagement/solutions/write | Ressourcengruppe |
+| Microsoft.OperationalInsights/workspaces/* | Ressourcengruppe |
+| Microsoft.Insights/diagnosticSettings/write | Ressourcengruppe |
+| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | Ressourcengruppe |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Ressourcengruppe |
+| Microsoft.Resources/deployments/* | Ressourcengruppe |
+
+### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Neues Automation-Konto und neuer Log Analytics-Arbeitsbereich
+
+Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein neues Automation-Konto und einen neuen Log Analytics-Arbeitsbereich bereitzustellen, benötigt der Benutzer, der die Lösung bereitstellt, neben den im obigen Abschnitt beschriebenen Berechtigungen zusätzlich die folgenden Berechtigungen:
+
+- Co-Administrator für das Abonnement – Dies ist erforderlich, um das klassische ausführende Konto zu erstellen.
+- Er muss Teil der Rolle **Anwendungsentwickler** sein. Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](manage-runas-account.md#permissions).
+
+| Berechtigung |`Scope`|
+| --- | --- |
+| Microsoft.Authorization/roleAssignments/read | Abonnement |
+| Microsoft.Authorization/roleAssignments/write | Abonnement |
+| Microsoft.Automation/automationAccounts/connections/read | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/certificates/read | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/write | Ressourcengruppe |
+| Microsoft.OperationalInsights/workspaces/write | Ressourcengruppe |
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -292,8 +336,8 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 
 |Abfragen | BESCHREIBUNG|
 |----------|----------|
-|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>Anzeigen der Lösung
 

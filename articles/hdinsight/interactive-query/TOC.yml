@@ -1,12 +1,17 @@
 - name: Azure HDInsight-Dokumentation
   href: /azure/hdinsight
-- name: Interaktive Abfrage mit HDInsight
+- name: Übersicht
   items:
     - name: Apache Hadoop-Komponenten in HDInsight
       href: ../hdinsight-component-versioning.md
       maintainContext: true
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+      maintainContext: true
+- name: Schnellstarts
+  items:
+    - name: 'Ausführen von Apache Hive-Abfragen: Apache Zeppelin'
+      href: ../hdinsight-connect-hive-zeppelin.md
       maintainContext: true
 - name: Erste Schritte
   items:
@@ -37,9 +42,6 @@
           href: ../hadoop/hdinsight-use-hive.md
           maintainContext: true
           items:
-            - name: Verwenden von Apache Zeppelin
-              href: ../hdinsight-connect-hive-zeppelin.md
-              maintainContext: true
             - name: Tools für Visual Studio
               href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
               maintainContext: true
@@ -180,7 +182,7 @@
             - name: Verwenden von cURL und der Azure-REST-API
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Verwenden der klassischen Azure-Befehlszeilenschnittstelle
+            - name: Verwenden der Azure-CLI
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: Erstellen bedarfsgesteuerter Cluster

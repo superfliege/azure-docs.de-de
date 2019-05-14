@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Verwenden eines SAML 2.0-Identitätsanbieters für einmaliges Anmelden | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Verwenden eines SAML 2.0-Identitätsanbieters für einmaliges Anmelden – Azure'
 description: In diesem Dokument wird beschrieben, wie ein mit SAML 2.0 kompatibler Identitätsanbieter (IdP, Identity Provider) für einmaliges Anmelden verwendet wird.
 services: active-directory
 author: billmath
@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878093"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138337"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -41,7 +41,7 @@ Microsoft unterstützt diese Anmeldung als Integration von Microsoft-Clouddienst
 >     - E-Mail-Client für Windows 8 und Windows 8.1
 >     - E-Mail-Client für Windows 10
 
-Alle anderen Clients sind nicht in diesem Anmeldeszenario mit Ihrem SAML 2.0-Identitätsanbieter verfügbar. Beispielsweise kann sich der Lync 2010-Desktopclient nicht mehr beim Dienst mit Ihrem SAML 2.0-Identitätsanbieter anmelden, der für einmaliges Anmelden konfiguriert ist.
+Alle anderen Clients sind nicht in diesem Anmeldeszenario mit Ihrem SAML 2.0-Identitätsanbieter verfügbar. Beispielsweise kann sich der Lync 2010-Desktopclient nicht beim Dienst mit Ihrem SAML 2.0-Identitätsanbieter anmelden, der für einmaliges Anmelden konfiguriert ist.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Azure AD-SAML 2.0-Protokollanforderungen
 Dieses Dokument enthält detaillierte Anforderungen an die Protokoll- und Benachrichtigungsformatierung, die Ihr SAML 2.0-Identitätsanbieter implementieren muss, um einen Verbund mit Azure AD zu bilden, damit die Anmeldung bei mehr als einem Microsoft-Clouddienst (wie Office 365) aktiviert werden kann. Die vertrauende SAML 2.0-Seite (SP-STS) für einen Microsoft-Clouddienst, die in diesem Szenario verwendet wird, ist Azure AD.
@@ -71,7 +71,7 @@ In der SAML-Antwortnachricht enthält der Signaturknoten Informationen über die
 Bindungen sind die transportbezogenen Kommunikationsparameter, die erforderlich sind. Die folgenden Anforderungen gelten für die Bindungen
 
 1. HTTPS ist der erforderliche Transport.
-2.  Azure AD erfordert HTTP POST für die Tokenübermittlung während der Anmeldung
+2.  Azure AD erfordert HTTP POST für die Tokenübermittlung während der Anmeldung.
 3.  Azure AD verwendet HTTP POST für die Authentifizierungsanforderung an den Identitätsanbieter und REDIRECT für die Abmeldenachricht an den Identitätsanbieter.
 
 ## <a name="required-attributes"></a>Erforderliche Attribute

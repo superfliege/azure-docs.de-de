@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 7/19/2018
+ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd60d6453b71387578b880ad580fb1741e6e512b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c4928050f945ac88dd1f86e2a13b5d26d385e55a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697901"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190036"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -34,15 +34,15 @@ Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkon
 
 ## <a name="azure-files-scale-targets"></a>Skalierbarkeitsziele für Azure Files
 
-### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premium-Dateien
+### <a name="premium-scale-targets"></a>Premium-Skalierbarkeitsziele
 
-Es gibt drei Kategorien von Einschränkungen, die für Premium-Dateien zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
+Es gibt drei Kategorien von Einschränkungen, die für Premium-Dateifreigaben zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
 
 Beispiel:  Eine einzelne Freigabe kann einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS zentral hochskaliert werden. Wenn Sie beispielsweise drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
 
 ### <a name="premium-filestorage-account-limits"></a>Grenzwerte für FileStorage Premium-Konten
 
-Für Premium-Dateien wird ein besonderes Speicherkonto mit dem Namen **FileStorage (Vorschauversion)** verwendet. Dieses Konto hat etwas andere Skalierbarkeitsziele als das für Standarddateien verwendete Speicherkonto. Die Skalierbarkeitsziele für das Speicherkonto finden Sie in der Tabelle im Abschnitt [Skalierbarkeitsziele für Azure Storage-Konten](#azure-storage-account-scale-targets).
+Premium-Dateifreigaben werden in einem speziellen Speicherkonto namens **FileStorage (Vorschauversion)** bereitgestellt. Dieses Konto hat etwas andere Skalierbarkeitsziele als das Speicherkonto, das für Standarddateifreigaben verwendet wird. Die Skalierbarkeitsziele für das Speicherkonto finden Sie in der Tabelle im Abschnitt [Skalierbarkeitsziele für Azure Storage-Konten](#azure-storage-account-scale-targets).
 
 > [!IMPORTANT]
 > Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.

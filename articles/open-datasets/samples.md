@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: c1b86199f13454f4785a6737b25e489d45dd53f8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027546"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442334"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Jupyter-Beispielnotebooks zeigen das Anreichern von Daten mit öffentlichen Datasets. 
 Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie Sie öffentliche Datasets laden und zum Anreichern von Demodaten verwenden. Zu den Techniken gehören die Verwendung von Apache Spark und Pandas zur Verarbeitung von Daten.
@@ -29,7 +29,7 @@ Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie
 ## <a name="join-demo-data-with-noaa-isd-data"></a>Verknüpfen von Demodaten mit NOAA-ISD-Daten 
 |Notizbuch        | BESCHREIBUNG                                    |
 |----------------|------------------------------------------------|
-|[Verknüpfen von Demodaten mit Wetterdaten – Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Verknüpfen Sie ein Demodataset für einen Monat von Sensorstandorten mit Wettermesswerten in einem Pandas-Datenrahmen.  |
+|[Verknüpfen von Demodaten mit Wetterdaten: Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Verknüpfen Sie ein Demodataset für einen Monat von Sensorstandorten mit Wettermesswerten in einem Pandas-Datenrahmen.  |
 |[Verknüpfen von Demodaten mit Wetterdaten – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | Verknüpfen Sie ein Demodataset von Sensorstandorten mit Wettermesswerten in einem Spark-Datenrahmen. |
 
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>Verknüpfen von Taxidaten aus New York mit NOAA-ISD-Daten 

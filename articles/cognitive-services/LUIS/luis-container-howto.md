@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000265"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073000"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -337,19 +337,28 @@ Der LUIS-Container sendet Abrechnungsinformationen an Azure und verwendet dafür
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](luis-container-configuration.md).
 
-## <a name="unsupported-dependencies"></a>Nicht unterstützte Abhängigkeiten
+## <a name="supported-dependencies-for-latest-container"></a>Unterstützte Abhängigkeiten für `latest`-Container
+
+Der neueste auf der Microsoft Build 2019 veröffentlichte Container unterstützt Folgendes:
+
+* Bing-Rechtschreibprüfung: Anforderungen an den Endpunkt der Abfragevorhersage mit Parametern des Typs `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` für Abfragezeichenfolgen. Im Tutorial [Bing-Rechtschreibprüfung V7](luis-tutorial-bing-spellcheck.md) erfahren Sie mehr. Wenn dieses Feature verwendet wird, sendet der Container die Äußerung an die Bing-Rechtschreibprüfung V7.
+* [Neue vordefinierte Bereiche](luis-reference-prebuilt-domains.md): Zu diesen auf Unternehmen fokussierten Domänen gehören Entitäten, Beispieläußerungen und Muster. Erweitern Sie diese Domänen für Ihre eigenen Zwecke. 
+
+<a name="unsupported-dependencies"></a>
+
+## <a name="unsupported-dependencies-for-latest-container"></a>Nicht unterstützte Abhängigkeiten für `latest`-Container
+
+Wenn Ihre LUIS-App nicht unterstützte Abhängigkeiten hat, ist der [Export für Container](#export-packaged-app-from-luis) erst möglich, nachdem Sie die nicht unterstützten Features entfernt haben. Wenn Sie den Export für Container versuchen, meldet das LUIS-Portal, dass Sie nicht unterstützte Features entfernen müssen.
 
 Sie können eine LUIS-Anwendung verwenden, sofern diese **keine** der folgenden Abhängigkeiten enthält:
 
 Nicht unterstützte App-Konfigurationen|Details|
 |--|--|
-|Nicht unterstützte Containerkulturen| Deutsch (de-DE)<br>Niederländisch (nl-NL)<br>Japanisch (ja-JP)<br>|
-|Nicht unterstützte Domänen|Vordefinierte Domänen, einschließlich vordefinierter Domänenabsichten und -entitäten|
+|Nicht unterstützte Containerkulturen| Niederländisch (nl-NL)<br>Japanisch (ja-JP)<br>Deutsch wird nur ab [Tokenizer 1.0.1](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
 |Nicht unterstützte Entitäten für alle Kulturen|Vordefinierte [KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase)-Entität für alle Kulturen|
 |Nicht unterstützte Entitäten für die Kultur Englisch (en-US)|Vordefinierte [GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2)-Entitäten|
 |Sprachvorbereitung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
 |Stimmungsanalyse|Externe Abhängigkeiten werden im Container nicht unterstützt.|
-|Bing-Rechtschreibprüfung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
 
 ## <a name="summary"></a>Zusammenfassung
 
