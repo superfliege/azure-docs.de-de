@@ -165,7 +165,7 @@
           href: grant-access-to-create-subscription.md
         - name: Mandantenübergreifende Authentifizierung
           href: authenticate-multi-tenant.md
-    - name: Überwachen von Bereitstellungen
+    - name: Überwachen von Änderungen
       items:
         - name: Anzeigen von Aktivitätsprotokollen
           href: resource-group-audit.md

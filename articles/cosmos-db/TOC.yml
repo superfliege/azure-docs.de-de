@@ -512,6 +512,8 @@
           href: data-explorer.md
         - name: Verwalten von Indizierungsrichtlinien
           href: how-to-manage-indexing-policy.md
+        - name: Definieren eindeutiger Schlüssel
+          href: how-to-define-unique-keys.md
         - name: Beispiele für SQL-Unterabfragen
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md
