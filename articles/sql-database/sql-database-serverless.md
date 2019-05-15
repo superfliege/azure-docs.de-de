@@ -11,22 +11,21 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/07/2019
-ms.openlocfilehash: 2ab8f272fc264f153144803be772d381c1780512
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/11/2019
+ms.openlocfilehash: ba79e2b9552f0c27ac11501b2b125a126e40eb1d
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143268"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551622"
 ---
 # <a name="sql-database-serverless-preview"></a>SQL-Datenbank – serverlos (Vorschau)
 
 ## <a name="what-is-the-serverless-compute-tier"></a>Was ist die serverlose Computeebene?
 
-SQL-Datenbank – serverlos (Vorschau) ist eine Computeebene, bei der die Nutzung von Computeressourcen sekundengenau abgerechnet wird. Serverlos ist preis-/leistungsoptimiert für einzelne Datenbanken, deren Nutzungsmuster Spitzen („Bursts“) aufweisen, bei denen eine gewisse Verzögerung in der Compute-Aufwärmphase nach Leerlaufzeiträumen ohne Nutzung akzeptabel ist.
-Im Gegensatz dazu wird bei öffentlich zugänglichen Angeboten in SQL-Datenbank die Nutzung von Computeressourcen auf Stundenbasis abgerechnet. Diese bereitgestellte Computeebene ist preis-/leistungsoptimiert für einzelne Datenbanken oder Pools für elastische Datenbanken mit höherer durchschnittlicher Nutzung, bei denen eine Verzögerung in der Compute-Aufwärmphase nicht akzeptabel ist.
+SQL-Datenbank – serverlos (Vorschau) ist eine Computeebene, bei der die Nutzung von Computeressourcen sekundengenau abgerechnet wird. Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen, unvorhersehbaren Nutzungsmustern, bei denen eine gewisse Verzögerung in der Compute-Aufwärmphase nach Leerlaufzeiträumen ohne Nutzung akzeptabel ist.
 
-Eine Datenbank in der serverlosen Computeebene wird parametrisiert durch den Computebereich, den sie nutzen kann, sowie durch eine Verzögerung durch automatisches Anhalten.
+Eine Datenbank in der serverlosen Computeebene wird durch den Computebereich parametrisiert, den sie nutzen kann, sowie durch eine Verzögerung durch automatisches Anhalten.
 
 ![Abrechnung – serverlos](./media/sql-database-serverless/serverless-billing.png)
 
@@ -44,22 +43,11 @@ Die Abrechnung für die Nutzung von Computeressourcen basiert auf der Menge der 
 
 ## <a name="scenarios"></a>Szenarien
 
-Serverlos ist preis-/leistungsoptimiert für einzelne Datenbanken, deren Nutzungsmuster Spitzen („Bursts“) aufweisen, bei denen eine gewisse Verzögerung in der Compute-Aufwärmphase nach Leerlaufzeiträumen ohne Nutzung akzeptabel ist. Die bereitgestellte Computeebene ist preis-/leistungsoptimiert für einzelne Datenbanken oder Pooldatenbanken mit höherer durchschnittlicher Nutzung, bei denen eine Verzögerung in der Compute-Aufwärmphase nicht akzeptabel ist.
-
-In der folgenden Tabelle werden die serverlose Computeebene und die bereitgestellte Computeebene verglichen:
-
-||Serverloses Computing|Bereitgestelltes Computing|
-|---|---|---|
-|**Szenario für typische Verwendung**|Datenbanken mit unvorhersehbarer Nutzung mit Spitzen, die sich mit inaktiven Zeiträumen abwechseln|Datenbanken oder Pools für elastische Datenbanken mit regelmäßiger Nutzung|
-|**Aufwand bei der Leistungsverwaltung**|Geringer|Höher|
-|**Compute-Skalierung**|Automatisch|Manuell|
-|**Compute-Reaktionsfähigkeit**|Geringer nach Inaktivitätszeiträumen|Unmittelbar|
-|**Granularität bei der Abrechnung**|Pro Sekunde|Pro Stunde|
-|
+Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen, unvorhersehbaren Nutzungsmustern, bei denen eine gewisse Verzögerung in der Compute-Aufwärmphase nach Leerlaufzeiträumen ohne Nutzung akzeptabel ist. Die bereitgestellte Computeebene ist dagegen preis-/leistungsoptimiert für Einzel- oder Pooldatenbanken mit höherer durchschnittlicher Nutzung, bei denen eine Verzögerung in der Compute-Aufwärmphase nicht akzeptabel ist.
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Ideal geeignete Szenarien für serverloses Computing
 
-- Einzelne Datenbanken mit Nutzungsmustern mit Spitzen, die sich mit Inaktivitätszeiträumen abwechseln, können von Kosteneinsparungen profitieren, die sich aus der sekundengenauen Abrechnung der Nutzung von Computeressourcen ergeben.
+- Einzeldatenbanken mit zeitweiligen, unvorhersehbaren Nutzungsmustern, die sich mit Inaktivitätszeiträumen abwechseln, können von Kosteneinsparungen profitieren, die sich aus der sekundengenauen Abrechnung der Nutzung von Computeressourcen ergeben.
 - Einzelne Datenbanken mit einem schwer prognostizierbaren Ressourcenbedarf und Kunden, die die Computeskalierung an den Dienst delegieren möchten.
 - Einzelne Datenbanken in der bereitgestellten Computeebene mit laufend schwankendem Leistungspegel.
 
@@ -67,12 +55,23 @@ In der folgenden Tabelle werden die serverlose Computeebene und die bereitgestel
 
 - Einzelne Datenbanken mit regelmäßigerer und erheblicher Nutzung von Computeressourcen über längere Zeiträume.
 - Datenbanken, die keine Leistungskompromisse durch häufigeres Begrenzen des Speichers oder Verzögerung beim automatischen Fortsetzen aus dem angehaltenen Zustand tolerieren können.
-- Mehrere Datenbanken mit Nutzungsmustern, die Spitzen aufweisen, die auf einem einzigen Server konsolidiert werden können und Pools für elastische Datenbanken für bessere Preisoptimierung nutzen können.
+- Mehrere Datenbanken mit zeitweiligen, unvorhersehbaren Nutzungsmustern, die auf einem einzigen Server konsolidiert werden können und Pools für elastische Datenbanken für bessere Preisoptimierung nutzen können.
 
+## <a name="comparison-with-provisioned-compute-tier"></a>Vergleich mit der bereitgestellten Computeebene
+
+Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der serverlosen Computeebene und der bereitgestellten Computeebene:
+
+| | **Serverloses Computing** | **Bereitgestelltes Computing** |
+|:---|:---|:---|
+|**Szenario für typische Verwendung**| Datenbanken mit zeitweiliger, unvorhersehbarer Nutzung, bei der inaktive Zeiträume auftreten | Datenbanken oder Pools für elastische Datenbanken mit regelmäßiger Nutzung|
+| **Aufwand bei der Leistungsverwaltung** |Geringer|Höher|
+|**Compute-Skalierung**|Automatisch|Manuell|
+|**Compute-Reaktionsfähigkeit**|Geringer nach Inaktivitätszeiträumen|Unmittelbar|
+|**Granularität bei der Abrechnung**|Pro Sekunde|Pro Stunde|
 
 ## <a name="purchasing-model-and-service-tier"></a>Kaufmodell und Dienstebene
 
-SQL-Datenbank – serverlos wird derzeit nur vom Tarif „Universell“ auf Hardware der Generation 5 im V-Kern-Kaufmodell unterstützt.
+„SQL-Datenbank – serverlos“ wird derzeit nur von der Ebene „Universell“ auf Hardware der Generation 5 im vCore-basierten Kaufmodell unterstützt.
 
 ## <a name="autoscaling"></a>Automatische Skalierung
 
@@ -111,12 +110,12 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |Automatische Optimierung|Anwendung und Überprüfung von Empfehlungen für die automatische Optimierung, z.B. die automatische Indizierung|
 |Kopieren von Datenbanken|Erstellen von Datenbanken als Kopie<br>Exportieren in eine BACPAC-Datei|
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|
-|Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags<br>Ändern der Maximal- und Minimalwerte für V-Kerne, der Verzögerung für das automatische Anhalten|
+|Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags<br>Ändern der Maximal- und Minimalwerte für V-Kerne und der Verzögerung für das automatische Anhalten|
 |SQL Server Management Studio (SSMS)|Durch Verwendung von SSMS Version 18 und Öffnen eines neuen Abfragefensters für eine Datenbank auf dem Server wird jede automatisch angehaltene Datenbank auf dem betreffenden Server fortgesetzt. Dieses Verhalten tritt nicht auf, wenn SSMS Version 17.9.1 verwendet wird und IntelliSense deaktiviert ist.|
 
 ### <a name="connectivity"></a>Konnektivität
 
-Wenn serverlose Datenbanken angehalten sind, wird die Datenbank bei der ersten Anmeldung fortgesetzt, und es wird ein Fehler zurückgegeben, in dem darauf hingewiesen wird, dass die Datenbank nicht verfügbar ist. Sobald die Datenbank fortgesetzt wird, muss die Anmeldung wiederholt werden, um die Verbindung herzustellen. Datenbankclients mit Wiederholungslogik für Verbindungen dürfen nicht geändert werden.
+Wenn serverlose Datenbanken angehalten sind, wird die Datenbank bei der ersten Anmeldung fortgesetzt, und es wird ein Fehler (Fehlercode 40613) mit dem Hinweis zurückgegeben, dass die Datenbank nicht verfügbar ist. Sobald die Datenbank fortgesetzt wird, muss die Anmeldung wiederholt werden, um die Verbindung herzustellen. Datenbankclients mit Wiederholungslogik für Verbindungen dürfen nicht geändert werden.
 
 ### <a name="latency"></a>Latency
 
@@ -135,13 +134,13 @@ Das automatische Anhalten und das automatische Fortsetzen werden von den folgend
 
 Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene gilt dasselbe Muster wie beim Erstellen einer neuen Datenbank in der bereitgestellten Computeebene; dieser Vorgang umfasst die folgenden zwei Schritte:
 
-1. Geben Sie den Namen des Dienstziels an. In der folgenden Tabelle werden die verfügbaren Dienstebenen und Computegrößen aufgelistet, die derzeit in der öffentlichen Vorschauversion verfügbar sind.
+1. Geben Sie den Namen des Dienstziels an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von V-Kernen vor. Die folgende Tabelle enthält die verschiedenen Optionen für Dienstziele:
 
-   |Dienstebene|Computegröße|
-   |---|---|
-   |Allgemeiner Zweck|GP_S_Gen5_1|
-   |Allgemeiner Zweck|GP_S_Gen5_2|
-   |Allgemeiner Zweck|GP_S_Gen5_4|
+   |Name des Dienstziels|Dienstebene|Hardwaregeneration|Maximale Anzahl von V-Kernen|
+   |---|---|---|---|
+   |GP_S_Gen5_1|Allgemeiner Zweck|Gen5|1|
+   |GP_S_Gen5_2|Allgemeiner Zweck|Gen5|2|
+   |GP_S_Gen5_4|Allgemeiner Zweck|Gen5|4|
 
 2. Geben Sie optional die Mindestanzahl virtueller Kerne und die Verzögerung für das automatische Anhalten an, um deren Standardwerte zu ändern. In der folgenden Tabelle werden die verfügbaren Werte für diese Parameter aufgeführt.
 
@@ -178,7 +177,7 @@ New-AzSqlDatabase `
 
 ### <a name="move-existing-database-into-the-serverless-compute-tier"></a>Verschieben einer vorhandenen Datenbank in die serverlose Computeebene
 
-Im folgenden Beispiel wird eine vorhandene einzelne Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesem Beispiel werden die Standardwerte für die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten übernommen.
+Im folgenden Beispiel wird eine vorhandene einzelne Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
 
 ```powershell
 Set-AzSqlDatabase
@@ -230,7 +229,7 @@ Der Benutzerressourcenpool ist die „Innengrenze“ der Ressourcenverwaltung f�
 |Entität|Metrik|BESCHREIBUNG|Units|
 |---|---|---|---|
 |App-Paket|app_cpu_percent|Prozentsatz der von der App genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die App.|Prozentsatz|
-|App-Paket|app_cpu_billed|Die Menge der Computeressourcen, die im Berichtszeitraum für die App abgerechnet wurden. Der während dieses Zeitraums zu zahlende Betrag ist das Produkt aus dieser Metrik und dem Einzelpreis für virtuelle Kerne.<br>Werte dieser Metrik werden bestimmt, indem der maximal genutzte Arbeitsspeicher und der pro Sekunde genutzte Speicher über einen Zeitraum aggregiert werden.<br>Liegt die genutzte Menge unter der bereitgestellten Mindestmenge (festgelegt durch Mindestanzahl virtueller Kerne und Minimalwert für Speicher), wird die bereitgestellte Mindestmenge berechnet.  Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.|Virtueller Kern – Sekunden|
+|App-Paket|app_cpu_billed|Die Menge der Computeressourcen, die im Berichtszeitraum für die App abgerechnet wurden. Der während dieses Zeitraums zu zahlende Betrag ist das Produkt aus dieser Metrik und dem Einzelpreis für virtuelle Kerne. <br><br>Werte dieser Metrik werden bestimmt, indem der maximal genutzte Arbeitsspeicher und der pro Sekunde genutzte Speicher über einen Zeitraum aggregiert werden. Liegt die genutzte Menge unter der bereitgestellten Mindestmenge (festgelegt durch Mindestanzahl virtueller Kerne und Minimalwert für Speicher), wird die bereitgestellte Mindestmenge berechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.|Virtueller Kern – Sekunden|
 |App-Paket|app_memory_percent|Prozentsatz des von der App genutzten Speichers, bezogen auf den maximal zulässigen Speicher für die App.|Prozentsatz|
 |Benutzerpool|cpu_percent|Prozentsatz der von der Benutzerworkload genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die Benutzerworkload.|Prozentsatz|
 |Benutzerpool|data_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Daten-IOPS, bezogen auf die maximal zulässige Daten-IOPS für die Benutzerworkload.|Prozentsatz|
@@ -262,20 +261,21 @@ Ressourceneinschränkungen werden unter [Serverlose Computeebene](sql-database-v
 
 ## <a name="billing"></a>Abrechnung
 
-Die auf Sekundenbasis abgerechnete Computeleistung basiert auf der maximal verwendeten CPU und dem verwendeten Arbeitsspeicher (pro Sekunde). Wenn die verwendete CPU und der verwendete Arbeitsspeicher kleiner als die bereitgestellte Mindestmenge sind, wird die bereitgestellte Menge abgerechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.
+Die abgerechnete Computeleistung basiert auf der maximal verwendeten CPU und dem verwendeten Arbeitsspeicher (pro Sekunde). Wenn die verwendete CPU und der verwendete Arbeitsspeicher kleiner als die bereitgestellte Mindestmenge sind, wird die bereitgestellte Menge abgerechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.
 
 - **Berechnete Ressource**: CPU und Arbeitsspeicher
 - **Berechneter Betrag ($)**: Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
 - **Fakturierungsintervall**: Pro Sekunde
 
+Der Einzelpreis für virtuelle Kerne ergibt sich aus den Kosten pro virtuellem Kern pro Sekunde. Informationen zu Einzelpreisen in einer bestimmten Region finden Sie auf der Seite [Azure SQL-Datenbank – Preise ](https://azure.microsoft.com/pricing/details/sql-database/single/).
+
 Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
 - **Metrik**: app_cpu_billed (virtueller Kern – Sekunden)
-- **Definition**: Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)*
+- **Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB · 1/3, genutzter Speicher GB · 1/3)
 - **Berichtsfrequenz**: Pro Minute
 
-> [!NOTE]
-> \* Diese Menge wird sekündlich berechnet und über eine Minute aggregiert.
+Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.
 
 **Beispiel**: Betrachten Sie eine Datenbank, die GP_S_Gen5_4 verwendet, mit der folgenden Nutzung über einen Zeitraum von einer Stunde:
 
@@ -289,7 +289,7 @@ Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 |0:06 – 1:00|1255|
 ||Gesamt: 1631|
 
-Angenommen, der Compute-Einzelpreis beträgt 0,2609 $/V-Kern/Stunde. Die berechneten Computekosten für diese Stunde werden anhand der folgenden Formel bestimmt: **0,2609 $/V-Kern/Stunde * 1631 V-Kern-Sekunden * 1 Stunde/3.600 Sekunden = 0,1232 $**
+Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde. Die berechneten Computekosten für diese Stunde werden anhand der folgenden Formel bestimmt: **0,000073 USD/V-Kern/Sekunde · 1631 V-Kern-Sekunden = 0,1191 USD**
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 
@@ -297,4 +297,5 @@ Die serverlose Computeebene ist in allen Regionen verfügbar, mit Ausnahme der f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ressourceneinschränkungen werden unter [Ressourceneinschränkungen für die serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier) beschrieben.
+- Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](sql-database-single-database-get-started.md).
+- Ressourceneinschränkungen werden unter [Ressourceneinschränkungen für die serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier) beschrieben.

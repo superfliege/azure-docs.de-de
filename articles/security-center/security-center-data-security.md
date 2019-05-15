@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902789"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234070"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center-Datensicherheit
 Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle, Absturzabbilddateien und Ähnliches), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
@@ -46,12 +46,18 @@ Azure Security Center analysiert Daten aus den folgenden Quellen, um über den S
 
 **Ihre Arbeitsbereiche**: Ein Arbeitsbereich wird für die folgenden geografischen Räume angegeben, und die von Ihren virtuellen Azure-Computern erfassten Daten, einschließlich von Absturzabbildern und einigen Typen von Warnungsdaten, werden im nächstgelegenen Arbeitsbereich gespeichert.
 
-| Geografischer Raum VM                        | Geografischer Raum Arbeitsbereich |
-|-------------------------------|---------------|
-| USA, Brasilien, Kanada | USA |
-| Europa, Vereinigtes Königreich        | Europa        |
-| Asien-Pazifik, Japan, Indien    | Asien-Pazifik  |
-| Australien                     | Australien     |
+| Geografischer Raum VM                              | Geografischer Raum Arbeitsbereich |
+|-------------------------------------|---------------|
+| USA, Brasilien, Südafrika | USA |
+| Kanada                              | Kanada        |
+| Europa (außer Vereinigtes Königreich)   | Europa        |
+| Vereinigtes Königreich                      | Vereinigtes Königreich |
+| Asien (außer Indien, Japan, Korea, China)   | Asien-Pazifik  |
+| Korea                              | Asien-Pazifik  |
+| Indien                               | Indien         |
+| Japan                               | Japan         |
+| China                               | China         |
+| Australien                           | Australien     |
 
 
 Momentaufnahmen von VM-Datenträgern werden im gleichen Speicherkonto gespeichert wie der VM-Datenträger.

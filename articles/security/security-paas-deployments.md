@@ -1,6 +1,6 @@
 ---
-title: Schützen von PaaS-Bereitstellungen | Microsoft-Dokumentation
-description: " Informieren Sie sich über die Sicherheitsvorteile von PaaS im Vergleich zu anderen Clouddienstmodellen, und machen Sie sich mit empfohlenen Vorgehensweisen für den Schutz Ihrer Azure-PaaS-Bereitstellung vertraut. "
+title: Bewährte Methoden für sichere PaaS-Bereitstellungen – Microsoft Azure
+description: Erfahren Sie mehr über bewährte Methoden für das Entwerfen, Erstellen und Verwalten sicherer Cloudanwendungen in Azure, und informieren Sie sich über die Sicherheitsvorteile von PaaS im Vergleich zu anderen Clouddienstmodellen.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404806"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231119"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -29,6 +29,8 @@ Dieser Artikel beschäftigt sich mit Folgendem:
 - Bewertung der Sicherheitsvorteile von PaaS (Platform-as-a-Service) im Vergleich zu anderen Clouddienstmodellen
 - Verlagerung des Sicherheitsfokus von netzwerkorientierter zu identitätsorientierter Bereichssicherheit
 - Implementierung allgemeiner Sicherheitsempfehlungen für PaaS
+
+[Entwickeln sicherer Anwendungen in Azure](abstract-develop-secure-apps.md) ist ein allgemeiner Leitfaden und behandelt die Sicherheitsfragen und Steuerelemente, die Sie beim Entwickeln von Anwendungen für die Cloud in den einzelnen Phasen des Softwareentwicklungszyklus berücksichtigen sollten.
 
 ## <a name="cloud-security-advantages"></a>Sicherheitsvorteile der Cloud
 Die Nutzung der Cloud bringt einige Sicherheitsvorteile mit sich. In einer lokalen Umgebung werden in Organisationen häufig nicht alle Zuständigkeitsbereiche abgedeckt, und für die Sicherheit stehen nur begrenzte Ressourcen zur Verfügung. So entsteht eine Umgebung, in der Angreifer Sicherheitslücken auf allen Ebenen ausnutzen können.
@@ -155,6 +157,10 @@ Verwenden Sie [Azure Application Insights](https://azure.microsoft.com/documenta
 
 Application Insights verfügt über umfassende Tools für die Interaktion mit den gesammelten Daten. Application Insights speichert die Daten in einem gemeinsamen Repository. Sie können gemeinsame Funktionen wie Warnungen, Dashboards und umfassende Analysen mit der Kusto-Abfragesprache nutzen.
 
+## <a name="perform-security-penetration-testing"></a>Ausführen von Penetrationstests
+Das Überprüfen von Abwehrmaßnahmen ist genauso wichtig wie das Testen jeder anderen Funktionalität. Richten Sie [Penetrationstests](azure-security-pen-testing.md) als standardmäßigen Bestandteil des Build- und Bereitstellungsprozesses ein. Planen Sie regelmäßige Sicherheitstests und Überprüfungen auf Sicherheitsrisiken für bereitgestellte Anwendungen, und überwachen Sie das System auf offene Ports, Endpunkte und Angriffe.
+
+Fuzzing ist eine Methode zum Auffinden von Programmfehlern (Codefehlern) durch Bereitstellung fehlerhafter Eingabedaten für Programmschnittstellen (Einstiegspunkte), die diese Daten analysieren und nutzen. [Microsoft Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/) ist ein cloudbasiertes Tool, mit dem Sie vor der Bereitstellung von Software in Azure nach enthaltenen Fehlern und anderen Sicherheitsrisiken suchen können. Das Tool dient zum Erkennen von Sicherheitsrisiken vor der Bereitstellung von Software, sodass Sie nach der Veröffentlichung keinen Fehler patchen, mit Abstürzen umgehen oder auf einen Angriff reagieren müssen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -166,6 +172,8 @@ In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellun
 - Azure Cache for Redis
 - Azure-Servicebus
 - Web Application Firewalls
+
+Der Artikel [Entwickeln sicherer Anwendungen in Azure](abstract-develop-secure-apps.md) behandelt die Sicherheitsfragen und Steuerelemente, die Sie beim Entwickeln von Anwendungen für die Cloud in den einzelnen Phasen des Softwareentwicklungszyklus berücksichtigen sollten.
 
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).
 

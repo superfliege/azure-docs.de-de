@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: 28a9b90e23d0d182197450e6449b8d3296fe99d6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112919"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235772"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Azure Security Center verwenden, um Sicherheitswarnungen zu verwalten und auf diese zu reagieren.
@@ -67,16 +67,16 @@ Im unteren Bereich dieser Seite werden Details zu den einzelnen Warnungen angeze
 
 ### <a name="alert-severity"></a>Schweregrad der Warnung
 
-> [!NOTE]
-> Der Schweregrad der Warnung wird im Portal und in der REST-API unterschiedlich angezeigt. Die Unterschiede sind in der Liste unten angegeben.
-
--   **Hoch:** Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird. 
--   **Mittel („Niedrig“ in REST-API):** Eine potenziell verdächtige Aktivität, die möglicherweise auf die Kompromittierung einer Ressource hindeutet.
+-   **Hoch**: Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird. 
+-   **Mittel:** Eine potenziell verdächtige Aktivität, die möglicherweise auf die Kompromittierung einer Ressource hindeutet.
 Security Center stuft die Analyse oder die ermittelten Ergebnisse als „Mittel“ und die schädliche Absicht als „Mittel“ bis „Hoch“ ein. Hierbei handelt es sich normalerweise um Erkennungen, die auf maschinellem Lernen oder Anomalien basieren. Ein Beispiel hierfür ist ein Anmeldeversuch, der von einem ungewöhnlichen Standort aus durchgeführt wird.
--   **Niedrig („Information“ in der REST-API):** Hierbei kann es sich um ein unschädliches positives Ergebnis oder um einen blockierten Angriff handeln. 
+-   **Niedrig**: Hierbei kann es sich um ein unschädliches positives Ergebnis oder um einen blockierten Angriff handeln. 
     - Security Center stuft die Absicht nicht als schädlich ein, und die Aktivität ist vermutlich harmlos. Das Löschen eines Protokolls ist beispielsweise eine Aktion, die ggf. von einem Angreifer durchgeführt wird, um Spuren zu verwischen. Häufig handelt es sich aber um einen Routinevorgang eines Administrators.
     - Security Center teilt Ihnen normalerweise nicht mit, wenn Angriffe blockiert wurden. Eine Ausnahme sind interessante Fälle, bei denen wir Ihnen raten, dass Sie sich diese ansehen. 
--   **Information („Im Hintergrund“ in der REST-API):** Warnungen vom Typ „Information“ werden nur angezeigt, wenn Sie für einen Sicherheitsincident einen Drilldown ausführen oder die REST-API mit einer bestimmten Warnungs-ID verwenden. Ein Incident besteht normalerweise aus mehreren Warnungen, von denen einige gesondert als „Information“ angezeigt werden, die aber im Zusammenhang mit anderen Warnungen durchaus interessant sein können und untersucht werden sollten. 
+-   **Informativ:** Warnungen vom Typ „Information“ werden nur angezeigt, wenn Sie für einen Sicherheitsincident einen Drilldown ausführen oder die REST-API mit einer bestimmten Warnungs-ID verwenden. Ein Incident besteht normalerweise aus mehreren Warnungen, von denen einige gesondert als „Information“ angezeigt werden, die aber im Zusammenhang mit anderen Warnungen durchaus interessant sein können und untersucht werden sollten.  
+
+> [!NOTE]
+> Bei Verwendung der API-Version **2015-06-01-preview** gibt es in Hinsicht darauf, welche Schweregrade von Alarmen auf welche Szenarien angewendet werden, Abweichungen gegenüber der oben aufgeführten Liste.  
 
 ### <a name="filtering-alerts"></a>Filtern von Warnungen
 Sie können Warnungen nach Datum, Status und Schweregrad filtern. Das Filtern von Warnungen kann nützlich für Szenarien sein, in denen Sie den Bereich der angezeigten Warnungen einschränken müssen. Es könnte beispielsweise sein, dass Sie während der Untersuchung einer möglichen Sicherheitsverletzung im System die Sicherheitswarnungen überprüfen möchten, die in den letzten 24 Stunden aufgetreten sind.

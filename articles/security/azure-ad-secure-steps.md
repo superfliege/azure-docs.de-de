@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314312"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236765"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -59,12 +59,12 @@ Angesichts der Häufigkeit, mit der Kennwörter erraten, per Phishing herausgefu
 
 Viele Organisationen verwenden die herkömmliche Kennwortkomplexität (die Erzwingung von Sonderzeichen, Zahlen sowie Groß- und Kleinschreibung) und Regeln für den Ablauf von Kennwörtern. [Forschungsergebnisse von Microsoft](https://aka.ms/passwordguidance) zeigen, dass diese Richtlinien Benutzer dazu veranlassen, Kennwörter auszuwählen, die verhältnismäßig einfach zu erraten sind.
 
-Das Azure AD-Feature der [dynamisch gesperrten Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords) nutzt aktuelle Informationen zum Angreiferverhalten, um Benutzer daran zu hindern, leicht zu erratende Kennwörter festzulegen. Diese Funktion ist immer aktiviert, wenn Benutzer in der Cloud erstellt werden, steht ab sofort auch für Hybridorganisationen bei der Bereitstellung des [Kennwortschutzes für Azure AD für Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) zur Verfügung. Der Azure AD-Kennwortschutz hindert Benutzer daran, diese allgemeinen Kennwörtern auszuwählen und kann erweitert werden, um Kennwörter, die von Ihnen angegebene benutzerdefinierte Schlüsselwörter enthalten, zu blockieren. Beispielsweise können Sie Ihre Benutzer daran hindern, Kennwörter mit Produktnamen Ihres Unternehmens oder Namen eines regionalen Sportteams auszuwählen.
+Das Azure AD-Feature der [dynamisch gesperrten Kennwörter](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) nutzt aktuelle Informationen zum Angreiferverhalten, um Benutzer daran zu hindern, leicht zu erratende Kennwörter festzulegen. Diese Funktion ist immer aktiviert, wenn Benutzer in der Cloud erstellt werden, steht ab sofort auch für Hybridorganisationen bei der Bereitstellung des [Kennwortschutzes für Azure AD für Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) zur Verfügung. Der Azure AD-Kennwortschutz hindert Benutzer daran, diese allgemeinen Kennwörtern auszuwählen und kann erweitert werden, um Kennwörter, die von Ihnen angegebene benutzerdefinierte Schlüsselwörter enthalten, zu blockieren. Beispielsweise können Sie Ihre Benutzer daran hindern, Kennwörter mit Produktnamen Ihres Unternehmens oder Namen eines regionalen Sportteams auszuwählen.
 
 Microsoft empfiehlt, die folgende moderne Kennwortrichtlinie basierend auf dem [NIST-Leitfaden](https://pages.nist.gov/800-63-3/sp800-63b.html) anzuwenden:
 
 1. Fordern Sie Kennwörter mit mindestens 8 Zeichen. Längere Kennwörter sind nicht unbedingt besser, da sie dazu führen, dass Benutzer vorhersagbare Kennwörter verwenden oder ihre Kennwörter in Dateien speichern oder sich aufschreiben.
-2. Deaktivieren Sie Ablaufregeln – diese veranlassen Benutzer dazu, einfach zu erratende Kennwörter wie **Sommer2018!** zu verwenden.
+2. Deaktivieren Sie Ablaufregeln – diese veranlassen Benutzer dazu, einfach zu erratende Kennwörter wie **Frühling2019!** zu verwenden.
 3. Deaktivieren Sie Anforderungen an die Zeichenzusammensetzung, und hindern Sie Benutzer daran, angriffsanfällige Kennwörter zu verwenden – dies führt dazu, dass Benutzer vorhersagbare Zeichenersetzungen in Kennwörtern verwenden.
 
 Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortablauf mithilfe von PowerShell für Benutzer verhindern](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy). Hybridorganisationen sollten diese Richtlinien mit [Domänengruppen-Richtlinieneinstellungen](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) oder [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) implementieren.
@@ -166,7 +166,7 @@ Azure AD Identity Protection bietet zwei wichtige Berichte, die Sie täglich üb
 
 ### <a name="audit-apps-and-consented-permissions"></a>Überwachen von Apps und Berechtigungen, denen zugestimmt wurde
 
-Benutzer können zu einer gefährdeten Website oder App weitergeleitet werden, die Zugriff auf deren Profilinformationen und Benutzerdaten (z.B. die E-Mail-Adresse) erlangt. Ein böswilliger Akteur kann mithilfe der Berechtigungen, denen zugestimmt wurde, Postfachdaten verschlüsseln und ein Lösegeld für die Herausgabe der Postfachdaten fordern. Administratoren sollten die [Berechtigungen, die Benutzern gewährt werden, überprüfen und überwachen](https://blogs.technet.microsoft.com/office365security/defending-against-illicit-consent-grants/).
+Benutzer können zu einer gefährdeten Website oder App weitergeleitet werden, die Zugriff auf deren Profilinformationen und Benutzerdaten (z.B. die E-Mail-Adresse) erlangt. Ein böswilliger Akteur kann mithilfe der Berechtigungen, denen zugestimmt wurde, Postfachdaten verschlüsseln und ein Lösegeld für die Herausgabe der Postfachdaten fordern. Administratoren sollten die [Berechtigungen, die Benutzern gewährt werden, überprüfen und überwachen](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants).
 
 ## <a name="step-5---enable-end-user-self-help"></a>Schritt 5: Aktivieren der Selbsthilfe für Benutzer
 
