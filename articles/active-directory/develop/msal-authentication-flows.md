@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über die von der Microsoft-Authentifizierungsbib
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191008"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406688"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -30,7 +30,7 @@ In diesem Artikel werden die verschiedenen Authentifizierungsflows beschrieben, 
 
 | Flow | BESCHREIBUNG | Verwendet für|  
 | ---- | ----------- | ------- | 
-| [Interaktiv](#interactive) | Ruft in einem interaktiven Prozess das Token ab, durch das der Benutzer über einen Browser oder ein Popupfenster zur Eingabe von Anmeldeinformationen aufgefordert wird. | [Desktop-Apps](scenario-desktop-overview.md), [mobile Apps](scenario-mobile-overview.md) |
+| [Interactive](#interactive) | Ruft in einem interaktiven Prozess das Token ab, durch das der Benutzer über einen Browser oder ein Popupfenster zur Eingabe von Anmeldeinformationen aufgefordert wird. | [Desktop-Apps](scenario-desktop-overview.md), [mobile Apps](scenario-mobile-overview.md) |
 | [Implizite Gewährung](#implicit-grant) | Ermöglicht es der App, Token abzurufen, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes.| [Single-Page-Webanwendungen (SPA)](scenario-spa-overview.md) |
 | [Autorisierungscode](#authorization-code) | Wird in Apps verwendet, die auf einem Gerät installiert sind, um auf geschützte Ressourcen wie Web-APIs zuzugreifen. Dadurch können Sie mobile und Desktop-Apps mit Anmeldefunktionen und API-Zugriff ausstatten. | [Desktop-Apps](scenario-desktop-overview.md), [mobile Apps](scenario-mobile-overview.md), [Web-Apps](scenario-web-app-call-api-overview.md) | 
 | [OBO (On-Behalf-Of)](#on-behalf-of) | Eine Anwendung ruft eine Dienst- oder Web-API auf, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. | [Web-APIs](scenario-web-api-call-api-overview.md) |
@@ -39,7 +39,7 @@ In diesem Artikel werden die verschiedenen Authentifizierungsflows beschrieben, 
 | [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Ermöglicht es Anwendungen auf Computern, die in eine Domäne oder Azure AD eingebunden sind, (ohne Eingriff des Benutzers über die Benutzeroberfläche) automatisch ein Token abzurufen.| [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 | [Benutzername/Kennwort](scenario-desktop-acquire-token.md#username--password) | Ermöglicht es einer Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. Dieser Flow wird nicht empfohlen. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#username--password) | 
 
-## <a name="interactive"></a>Interaktiv
+## <a name="interactive"></a>Interactive
 MSAL bietet die Möglichkeit, die Anmeldeinformationen interaktiv vom Benutzer abzufragen und mit diesen Anmeldeinformationen ein Token abzurufen.
 
 ![Interaktiver Flow](media/msal-authentication-flows/interactive.png)
@@ -51,7 +51,7 @@ Im Folgenden finden Sie weitere Informationen zur Verwendung von MSAL.NET für d
 
 Weitere Informationen zu interaktiven Aufrufen in MSAL.js finden Sie im Thema zum [Aufforderungsverhalten in interaktiven MSAL.js-Anforderungen](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Implizite Gewährung
+## <a name="implicit-grant"></a>Implicit grant (Implizite Gewährung)
 
 MSAL unterstützt den [impliziten OAuth 2-Gewährungsflow](v2-oauth2-implicit-grant-flow.md), wodurch die App Token von Microsoft Identity Platform abrufen kann, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes.
 
@@ -82,7 +82,7 @@ Wenn sich Benutzer bei Webanwendungen (Websites) anmelden, erhält die Webanwend
 
 MSAL unterstützt den [OAuth 2-On-Behalf-Of-Authentifizierungsflow](v2-oauth2-on-behalf-of-flow.md).  Dieser Flow wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstreamdienst stellen kann, muss für den Benutzer ein Zugriffstoken der Microsoft Identity Platform gesichert werden.
 
-![On-Behalf-Of-Flow](media/msal-authentication-flows/on-behalf-of.png)
+![„Im Auftrag von“-Ablauf](media/msal-authentication-flows/on-behalf-of.png)
 
 1. Ruft ein Zugriffstoken für die Web-API ab.
 2. Ein Client (Web-, Desktop-, mobile Anwendung oder Single-Page-Webanwendung) ruft eine geschützte Web-API auf und fügt dabei das Zugriffstoken als Bearertoken in den Authentifizierungsheader der HTTP-Anforderung ein. Die Web-API authentifiziert den Benutzer.
@@ -124,9 +124,9 @@ MSAL unterstützt den [OAuth 2-Gerätecodeflow](v2-oauth2-device-code.md), der e
 
 Mithilfe des Gerätecodeflows ruft die Anwendung Token in einem zweistufigen Prozess ab, der speziell für diese Geräte/Betriebssysteme entwickelt wurde. Beispiele sind Anwendungen auf iOT-Geräten oder Befehlszeilentools (CLI). 
 
-![Gerätecodeflow](media/msal-authentication-flows/device-code.png)
+![Gerätecodefluss](media/msal-authentication-flows/device-code.png)
 
-1. Sobald eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code bereit und fordert den Benutzer auf, mit einem anderen Gerät (z. B. einem Smartphone mit Internetverbindung) zu einer URL (z. B. http://microsoft.com/devicelogin) zu navigieren, unter der er den Code eingeben muss. Anschließend wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, der ggf. Zustimmungsaufforderungen und eine mehrstufige Authentifizierung umfasst.
+1. Sobald eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code bereit und fordert den Benutzer auf, mit einem anderen Gerät (z. B. einem Smartphone mit Internetverbindung) zu einer URL (z. B. https://microsoft.com/devicelogin) zu navigieren, unter der er den Code eingeben muss. Anschließend wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, der ggf. Zustimmungsaufforderungen und eine mehrstufige Authentifizierung umfasst.
 
 2. Nach erfolgreicher Authentifizierung empfängt die Befehlszeilen-App die erforderlichen Token über einen Backchannel und führt damit die benötigten Web-API-Aufrufe aus.
 

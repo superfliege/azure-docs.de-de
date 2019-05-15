@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137935"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227967"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -142,11 +142,11 @@ Hier können Sie Aktionsregeln je nach Bedarf aktivieren, deaktivieren und lösc
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Protokollwarnungen, die mit der Option [„Anzahl von Ergebnissen“](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) erstellt werden, generieren eine **einzige Warnungsinstanz** anhand sämtlicher Suchergebnisse (die sich z.B. über mehrere Computer erstrecken können). Wenn in diesem Szenario eine Aktionsregel den Filter „Warnungskontext (Nutzlast)“ verwendet, reagiert sie auf die Warnungsinstanz, sofern eine Übereinstimmung vorhanden ist. In Szenario 2, wie bereits beschrieben, gilt Folgendes: Wenn die Suchergebnisse für die generierte Protokollwarnung sowohl „Computer-01“ als auch „Computer-02“ enthalten, wird die gesamte Benachrichtigung unterdrückt (d.h., es wird überhaupt keine Benachrichtigung für „Computer-02“ generiert).
+Protokollwarnungen, die mit der Option [„Anzahl von Ergebnissen“](alerts-unified-log.md) erstellt werden, generieren eine **einzige Warnungsinstanz** anhand sämtlicher Suchergebnisse (die sich z.B. über mehrere Computer erstrecken können). Wenn in diesem Szenario eine Aktionsregel den Filter „Warnungskontext (Nutzlast)“ verwendet, reagiert sie auf die Warnungsinstanz, sofern eine Übereinstimmung vorhanden ist. In Szenario 2, wie bereits beschrieben, gilt Folgendes: Wenn die Suchergebnisse für die generierte Protokollwarnung sowohl „Computer-01“ als auch „Computer-02“ enthalten, wird die gesamte Benachrichtigung unterdrückt (d.h., es wird überhaupt keine Benachrichtigung für „Computer-02“ generiert).
 
 ![Aktionsregeln und Protokollwarnungen (Anzahl von Ergebnissen)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Um Protokollwarnungen mit Aktionsregeln optimal zu nutzen, empfiehlt es sich, Protokollwarnungen mit der Optionen [„Metrische Maßeinheit“](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) zu erstellen. Mit dieser Option werden entsprechend dem definierten Gruppenfeld separate Warnungsinstanzen generiert. In Szenario 2 werden schließlich separate Warnungsinstanzen für „Computer-01“ und „Computer-02“ generiert. Mi der im Szenario beschriebenen Aktionsregel wird nur die Benachrichtigung für „Computer-01“ unterdrückt, während die Benachrichtigung für „Computer-02“ weiterhin normal ausgelöst wird.
+Um Protokollwarnungen mit Aktionsregeln optimal zu nutzen, empfiehlt es sich, Protokollwarnungen mit der Optionen [„Metrische Maßeinheit“](alerts-unified-log.md) zu erstellen. Mit dieser Option werden entsprechend dem definierten Gruppenfeld separate Warnungsinstanzen generiert. In Szenario 2 werden schließlich separate Warnungsinstanzen für „Computer-01“ und „Computer-02“ generiert. Mi der im Szenario beschriebenen Aktionsregel wird nur die Benachrichtigung für „Computer-01“ unterdrückt, während die Benachrichtigung für „Computer-02“ weiterhin normal ausgelöst wird.
 
 ![Aktionsregeln und Protokollwarnungen (Anzahl von Ergebnissen)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 

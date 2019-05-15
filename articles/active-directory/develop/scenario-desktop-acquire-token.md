@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4389af86e27ddb04f5a3e5f53c5509eeede005
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080162"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407002"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web-APIs aufrufende Desktop-App – Aufruf eines Tokens
 
@@ -179,7 +179,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 - IWA ist für Apps bestimmt, die für die Plattformen .NET Framework, .NET Core und UWP geschrieben wurden.
 - IWA umgeht NICHT die MFA (mehrstufige Authentifizierung). Wenn MFA konfiguriert ist, kann IWA fehlschlagen, wenn eine MFA-Abfrage erforderlich ist, da bei MFA eine Benutzerinteraktion benötigt wird.
   > [!NOTE]
-  > Dies ist eine komplizierte Situation. IWA ist nicht interaktiv, 2FA erfordert jedoch eine Benutzerinteraktion. Die Anforderung der Ausführung von 2FA durch den Identitätsanbieter wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Wir haben festgestellt, dass 2FA erforderlich ist, wenn Sie sich aus dem Ausland anmelden, wenn Sie nicht über VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen verbindlichen Satz von Regeln; Azure Active Directory lernt laufend anhand von AI, ob 2FA erforderlich ist. Bei Fehlschlagen von IWA sollten Sie auf eine Eingabeaufforderung für Benutzer zurückgreifen (interaktive Authentifizierung oder Gerätecodeflow).
+  > Dies ist eine komplizierte Situation. IWA ist nicht interaktiv, 2FA erfordert jedoch eine Benutzerinteraktion. Die Anforderung der Ausführung von 2FA durch den Identitätsanbieter wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Wir haben festgestellt, dass die zweistufige Authentifizierung erforderlich ist, wenn Sie sich aus dem Ausland anmelden, wenn Sie nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen verbindlichen Satz von Regeln; Azure Active Directory lernt laufend anhand von AI, ob 2FA erforderlich ist. Bei Fehlschlagen von IWA sollten Sie auf eine Eingabeaufforderung für Benutzer zurückgreifen (interaktive Authentifizierung oder Gerätecodeflow).
 
 - Für die in `PublicClientApplicationBuilder` übergebene Autorität gilt Folgendes:
   - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` die GUID ist, die die Mandanten-ID oder eine Domäne darstellt, die dem Mandanten zugeordnet ist.
@@ -502,7 +502,7 @@ static async Task GetATokenForGraph()
   catch (MsalClientException ex) when (ex.ErrorCode == "unknown_user")
   {
    // the username was probably empty
-   // ex.Message = "Could not identify the user logged into the OS. See http://aka.ms/msal-net-iwa for details."
+   // ex.Message = "Could not identify the user logged into the OS. See https://aka.ms/msal-net-iwa for details."
    throw new ArgumentException("U/P: Wrong username", ex);
   }
   catch (MsalClientException ex) when (ex.ErrorCode == "parsing_wstrust_response_failed")
@@ -529,7 +529,7 @@ Wenn Sie ein Befehlszeilentool schreiben (das keine Websteuerelemente enthält) 
 
 Für die interaktive Authentifizierung mit Azure AD wird ein Webbrowser benötigt (Einzelheiten finden Sie unter [Verwendung von Webbrowsern](https://aka.ms/msal-net-uses-web-browser)). Für die Authentifizierung von Benutzer bei Geräten oder Betriebssystemen ohne Webbrowser ermöglicht der Gerätecodeflow, dass der Benutzer ein anderes Gerät (wie einen Computer oder ein Mobiltelefon) verwendet, um sich interaktiv anzumelden. Durch Nutzung des Gerätecodeflows ruft die Anwendung Token in einem Prozess mit zwei Schritten ab, der speziell für diese Geräte/Betriebssysteme entwickelt wurde. Beispiele für solche Anwendungen sind iOT-Anwendungen oder Befehlszeilentools (CLI). Dahinter steckt folgender Gedanke:
 
-1. Jedes Mal, wenn eine Authentifizierung erforderlich ist, gibt die App einen Code an und bittet den Benutzer, ein anderes Gerät zu verwenden (z.B. ein Smartphone mit Internetverbindung), um zu einer URL (z.B. `http://microsoft.com/devicelogin`) zu navigieren, unter welcher der Benutzer den Code eingeben muss. Anschließend wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, u.a. mit Zustimmungsaufforderung und mehrstufiger Authentifizierung, sofern erforderlich.
+1. Jedes Mal, wenn eine Authentifizierung erforderlich ist, gibt die App einen Code an und bittet den Benutzer, ein anderes Gerät zu verwenden (z.B. ein Smartphone mit Internetverbindung), um zu einer URL (z.B. `https://microsoft.com/devicelogin`) zu navigieren, unter welcher der Benutzer den Code eingeben muss. Anschließend wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, u.a. mit Zustimmungsaufforderung und mehrstufiger Authentifizierung, sofern erforderlich.
 
 2. Nach erfolgreicher Authentifizierung empfängt die Befehlszeilen-App die erforderlichen Token über einen Backchannel und führt damit die benötigten API-Aufrufe aus.
 

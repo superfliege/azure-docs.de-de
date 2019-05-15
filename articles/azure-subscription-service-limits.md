@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: 8d7fa7bbb501675ee38ccc9183e981ce7bb714cf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150350"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233707"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um mehr Dienste abzudecken.
@@ -127,9 +127,9 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure Resource Manager und vo
 #### <a name="shared-image-gallery-limits"></a>Einschränkungen des Katalogs mit geteilten Images
 
 Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ressourcen mithilfe des Katalogs mit geteilten Images:
-- 10 Kataloge mit geteilten Images pro Abonnement und Region
-- 200 Imagedefinitionen pro Abonnement und Region
-- 2000 Imageversionen pro Abonnement und Region
+- 100 Kataloge mit freigegebenen Images pro Abonnement und Region
+- 1.000 Imagedefinitionen pro Abonnement und Region
+- 10.000 Imageversionen pro Abonnement und Region
 
 ### <a name="virtual-machine-scale-sets-limits"></a>Grenzwerte für VM-Skalierungsgruppen
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]

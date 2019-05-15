@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 981198063b8e0951d4a4a4c4627d4b7966f34154
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c85ee31a54cdbbb09686a2d20200f65fdcd8994a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148979"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235914"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>Auswählen einer V-Kern-Dienstebene und Migrieren aus DTU-Dienstebenen
 
@@ -44,7 +44,7 @@ Die folgende Tabelle zeigt die Unterschiede zwischen diesen drei Tarifen:
 |Compute|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne<br/>**Serverloses Computing**:<br/>Gen5: 0,5 bis 4 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|
 |Arbeitsspeicher|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern<br/>**Serverloses Computing**:<br/>Gen5: 3GB pro virtuellem Kern|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern |**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern|
 |Storage|Verwendet Remotespeicher:<br/>**Bereitgestelltes Einzeldatenbank-Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Einzeldatenbank-Computing**:<br/>5 GB bis 1 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>**Bereitgestelltes Einzeldatenbank-Computing**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
-|Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern |Gen5: 5,1 GB pro Kern|
+|Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern |Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern|
 |Storage|Verwendet Remotespeicher:<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
 |E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro V-Kern mit maximal 7.000 IOPS</br>Verwaltete Instanz: Hängt von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) ab|5000 IOPS pro Kern mit maximal 200.000 IOPS|TBD|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|1 Replikat mit Lese-/Schreibzugriff und 0 bis 4 [Replikate mit Leseskalierung](sql-database-read-scale-out.md)|

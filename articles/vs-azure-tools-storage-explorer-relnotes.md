@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: c6416e36d7d2723577ca0d2009fb7bbad24f3b6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 18c52a47c291181547a9005c273dc1a329b8c207
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154698"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510967"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
@@ -82,7 +82,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
+* Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
 
 ## <a name="previous-releases"></a>Vorgängerversionen
 

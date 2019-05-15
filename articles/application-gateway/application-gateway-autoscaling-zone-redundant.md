@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202915"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510821"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatische Skalierung und zonenredundantes Application Gateway 
 
@@ -62,7 +62,7 @@ Leitfaden für Compute-Einheit:
 | Standard_v2                                       |    0,20             | 0,0080                          |
 | WAF_v2                                            |    0,36             | 0,0144                          |
 
-Die [Preisübersicht](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) wird aktualisiert, um die regionalen Preise am 14. Mai 2019 widerzuspiegeln. Die Abrechnung soll planmäßig am 1. Juni 2019 beginnen.
+Die [Preisübersicht](https://azure.microsoft.com/pricing/details/application-gateway/) wird aktualisiert, um die regionalen Preise am 14. Mai 2019 widerzuspiegeln. Die Abrechnung soll planmäßig am 1. Juni 2019 beginnen.
 
 **Beispiel 1**
 
@@ -93,7 +93,7 @@ Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (Compute-Einheit Max. (25/5
 
 Gesamtpreis = 267,84 $ + 85,71 $ = 353,55 $
 
-Die [Preisübersicht](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) wird aktualisiert, um die regionalen Preise am 14. Mai 2019 widerzuspiegeln. Die Abrechnung soll planmäßig am 1. Juni 2019 beginnen.
+Die [Preisübersicht](https://azure.microsoft.com/pricing/details/application-gateway/) wird aktualisiert, um die regionalen Preise am 14. Mai 2019 widerzuspiegeln. Die Abrechnung soll planmäßig am 1. Juni 2019 beginnen.
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Skalierung von Application Gateway und WAF v2
 

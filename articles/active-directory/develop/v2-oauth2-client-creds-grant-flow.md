@@ -3,8 +3,8 @@ title: Zugreifen auf sichere Ressourcen ohne Benutzerinteraktion mithilfe von Mi
 description: Erstellen von Webanwendungen mit der Microsoft Identity Platform-Implementierung des OAuth 2.0-Authentifizierungsprotokolls.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: df75d692bc61d155b35f5ce4e2bf08da6e4cbcc3
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190834"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507108"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Flow von OAuth 2.0-Clientanmeldeinformationen
+# <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](https://tools.ietf.org/html/rfc6749#section-4.4), die in RFC 6749 angegeben ist und gelegentlich als *zweibeinige OAuth-Autorisierung* bezeichnet wird, kann für den Zugriff auf webgehostete Ressourcen über die Identität einer Anwendung verwendet werden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
 
-Beim Flow zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit bietet die Microsoft Identity Platform auch die Möglichkeit, dass der aufrufende Dienst ein Zertifikat (statt eines gemeinsamen Geheimnisses) als Anmeldeinformationen verwendet.
+Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit bietet die Microsoft Identity Platform auch die Möglichkeit, dass der aufrufende Dienst ein Zertifikat (statt eines gemeinsamen Geheimnisses) als Anmeldeinformationen verwendet.
 
 > [!NOTE]
 > Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure AD. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
@@ -251,7 +251,7 @@ Eine Fehlerantwort sieht wie folgt aus:
 | `correlation_id` | Ein eindeutiger Bezeichner für die Anforderung, der bei der komponentenübergreifenden Diagnose hilfreich sein kann |
 
 > [!NOTE]
-> Damit Ihre Anwendung das v2-Token empfangen kann, können Sie die Manifestdatei der Anwendung im Azure-Portal aktualisieren. Sie können das Attribut `accessTokenAcceptedVersion` hinzufügen und den Wert auf 2 festlegen, wie in `"accessTokenAcceptedVersion": 2` zu sehen. Sie sollten den Artikel [Anwendungsmanifest](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference) lesen, um mehr darüber zu erfahren. Standardmäßig empfängt die Anwendung derzeit ein v1-Token. Wenn dies nicht im Anwendungs-/Web-API-Manifest definiert ist, wird für dieses Attribut im Manifest standardmäßig der Wert 1 festgelegt, sodass die Anwendung folglich v1-Token empfängt.  
+> Damit Ihre Anwendung das v2-Token empfangen kann, können Sie die Manifestdatei der Anwendung im Azure-Portal aktualisieren. Sie können das Attribut `accessTokenAcceptedVersion` hinzufügen und den Wert auf 2 festlegen, wie in `"accessTokenAcceptedVersion": 2` zu sehen. Sie sollten den Artikel [Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) lesen, um mehr darüber zu erfahren. Standardmäßig empfängt die Anwendung derzeit ein v1-Token. Wenn dies nicht im Anwendungs-/Web-API-Manifest definiert ist, wird für dieses Attribut im Manifest standardmäßig der Wert 1 festgelegt, sodass die Anwendung folglich v1-Token empfängt.  
 
 
 ## <a name="use-a-token"></a>Verwenden eines Tokens
