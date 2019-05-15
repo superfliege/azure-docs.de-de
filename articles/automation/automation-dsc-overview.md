@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 926629660c9593c59362bd1bc49c5115ac5e3187
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524938"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441057"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
@@ -81,6 +81,16 @@ Wenn sich Ihre Knoten in einem privaten Netzwerk befinden, sind nachfolgend der 
 * Globale URL: *.azure-automation.net
 * Globale URL von „US Gov Virginia“: *.azure-automation.us
 * Agent-Dienst: https://\<Arbeitsbereichs-ID\>.agentsvc.azure-automation.net
+
+#### <a name="proxy-support"></a>Proxyunterstützung
+
+Proxyunterstützung für den DSC-Agent ist in Windows, Version 1809 und höher, verfügbar.
+Um diese Option zu konfigurieren, legen Sie den Wert für **ProxyURL** und **ProxyCredential** im [Metakonfigurationsskript](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) fest, das zum Registrieren von Knoten verwendet wird.
+Proxy ist in DSC für frühere Versionen von Windows nicht verfügbar.
+
+Für Linux-Knoten unterstützt der DSC-Agent Proxy und nutzt die Variable „http_proxy“, um die URL zu bestimmen.
+
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure State Configuration-Netzwerkbereiche und Namespace
 
 Es wird empfohlen, beim Definieren von Ausnahmen die aufgeführten Adressen zu verwenden. Für IP-Adressen können Sie die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht.
 
