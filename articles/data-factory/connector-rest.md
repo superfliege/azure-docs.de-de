@@ -288,8 +288,8 @@ In Paginierungsregeln **unterstützte Schlüssel**:
 | Schlüssel | BESCHREIBUNG |
 |:--- |:--- |
 | AbsoluteUrl | Gibt die URL für die nächste Anforderung an. Sie kann **eine absolute oder eine relative URL sein**. |
-| QueryParameters.*request_query_parameter* ODER QueryParameters['request_query_parameter'] | „request_query_parameter“ wird vom Benutzer definiert und verweist auf einen Abfrageparameternamen in der nächsten HTTP-Anforderungs-URL. |
-| Headers.*request_header* ODER Headers['request_header'] | „request_header“ wird vom Benutzer definiert und verweist auf einen Headernamen in der nächsten HTTP-Anforderung. |
+| QueryParameters.*request_query_parameter* OR QueryParameters['request_query_parameter'] | „request_query_parameter“ wird vom Benutzer definiert und verweist auf einen Abfrageparameternamen in der nächsten HTTP-Anforderungs-URL. |
+| Headers.*request_header* OR Headers['request_header'] | „request_header“ wird vom Benutzer definiert und verweist auf einen Headernamen in der nächsten HTTP-Anforderung. |
 
 In Paginierungsregeln **unterstützte Werte**:
 
