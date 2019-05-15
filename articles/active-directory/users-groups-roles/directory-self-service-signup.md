@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f7aee10780512e284faccadface0dc928ef8270e
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201261"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501898"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Was ist die Self-Service-Registrierung für Azure Active Directory?
 
@@ -52,7 +52,7 @@ Ein Administrator kann diese Funktionen mit den folgenden Parametern des Azure A
 „AllowEmailVerifiedUsers“ und „AllowAdHocSubscriptions“ sind verzeichnisweite Einstellungen, die auf ein verwaltetes oder ein nicht verwaltetes Verzeichnis angewendet werden können. Hier sehen Sie ein Beispiel:
 
 * Ihr Administrator verwendet ein Verzeichnis mit einer verifizierten Domäne, z. B. „contoso.com“.
-* Sie verwenden B2B-Zusammenarbeit aus einem anderen Verzeichnis, um einen Benutzer, der noch nicht vorhanden ist (userdoesnotexist@contoso.com), in das Basisverzeichnis von „constoso.com“ einzuladen.
+* Sie verwenden B2B-Zusammenarbeit aus einem anderen Verzeichnis, um einen Benutzer, der noch nicht vorhanden ist (userdoesnotexist@contoso.com), in das Basisverzeichnis von „contoso.com“ einzuladen.
 * Für das Basisverzeichnis ist der Parameter „AllowEmailVerifiedUsers“ aktiviert.
 
 Wenn die oben genannten Bedingungen erfüllt sind, wird ein Mitgliedsbenutzer im Basisverzeichnis und ein B2B-Gastbenutzer im einladenden Verzeichnis erstellt.

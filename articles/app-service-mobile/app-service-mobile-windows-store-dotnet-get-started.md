@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 959c1ff8b199320105f650a7eb62a04bedb03b3b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771309"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412788"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Erstellen einer Windows-App mit einem Azure-Back-End
 
@@ -39,7 +39,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Windows 10
-* [Visual Studio Community 2017].
+* [Visual Studio Community].
 * Kenntnisse in der Entwicklung von UWP-Apps. In der [UWP-Dokumentation](https://docs.microsoft.com/windows/uwp/) finden Sie Informationen zu den [ersten Schritten](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) beim Erstellen von UWP-Apps.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Erstellen eines neuen Azure Mobile App-Back-Ends
@@ -70,7 +70,7 @@ Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine ne
     Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet.
 
 > [!TIP]
-> Sie können das UWP-App-Projekt der gleichen Projektmappe hinzufügen wie das Serverprojekt, falls Sie das .NET-Back-End nutzen. Dies erleichtert das Debuggen und Testen der App und des Back-Ends in der gleichen Visual Studio-Projektmappe. Wenn Sie der Back-End-Projektmappe ein UWP-App-Projekt hinzufügen möchten, müssen Sie Visual Studio 2017 verwenden.
+> Sie können das UWP-App-Projekt der gleichen Projektmappe hinzufügen wie das Serverprojekt, falls Sie das .NET-Back-End nutzen. Dies erleichtert das Debuggen und Testen der App und des Back-Ends in der gleichen Visual Studio-Projektmappe. Wenn Sie der Back-End-Projektmappe ein UWP-App-Projekt hinzufügen möchten, müssen Sie Visual Studio 2017 oder höher verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -86,4 +86,4 @@ Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine ne
 <!-- URLs. -->
 [Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community]: https://go.microsoft.com/fwLink/p/?LinkID=534203

@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010548"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416119"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
 
@@ -132,7 +132,7 @@ Um der vom System zugewiesenen verwalteten Identität Ihrer Logik-App den Zugrif
 
 1. Öffnen Sie im Azure-Portal die Azure-Ressource, wo Sie den Zugriff für Ihre verwaltete Identität zuweisen möchten. 
 
-1. Wählen Sie im Ressourcenmenü **Zugriffssteuerung (IAM)** und dann **Rollenzuweisung hinzufügen** aus. 
+1. Wählen Sie im Ressourcenmenü **Zugriffssteuerung (IAM)** aus. Wählen Sie in der Symbolleiste **Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
 
    ![Rollenzuweisung hinzufügen](./media/create-managed-service-identity/add-permissions-logic-app.png)
 

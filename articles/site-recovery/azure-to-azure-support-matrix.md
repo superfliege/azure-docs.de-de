@@ -1,23 +1,22 @@
 ---
 title: Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen mit Azure Site Recovery | Microsoft-Dokumentation
-description: Übersicht über die unterstützten Betriebssysteme und Konfigurationen für die Azure Site Recovery-Replikation von virtuellen Azure-Computern (VMs) aus einer Region in eine andere für die Notfallwiederherstellung.
-services: site-recovery
+description: Fasst die Voraussetzungen und die Unterstützung für Notfallwiederherstellung von Azure-VMs aus einer Region in einer anderen mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 1118d1de72ca7cd44844a0b526efd85eb419bc67
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149944"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412773"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Unterstützungsmatrix für die Replikation von Azure-VMs von einer Region in eine andere
 
-In diesem Artikel sind unterstützte Konfigurationen und Komponenten zusammengefasst, wenn Sie die Notfallwiederherstellung mit Replikation, Failover und Wiederherstellung von Azure-VMs aus einer Azure-Region in eine andere bereitstellen, indem Sie den [Azure Site Recovery](site-recovery-overview.md)-Dienst verwenden.
+Dieser Artikel fasst die Unterstützung und die Voraussetzungen zusammen, wenn Sie Notfallwiederherstellung von Azure-VMs aus einer Azure-Region in einer anderen mit dem Dienst [Azure Site Recovery](site-recovery-overview.md) einrichten.
 
 
 ## <a name="deployment-method-support"></a>Unterstützung für die Bereitstellungsmethode
@@ -48,7 +47,7 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
 Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
-Europa | „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Frankreich, Mitte“, „Frankreich, Süden“
+Europa | „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Frankreich, Mitte“, „Frankreich, Süden“, „Südafrika, Westen“, „Südafrika, Norden“
 Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
 Australien   | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
@@ -157,6 +156,7 @@ Azure-Katalogimages – von Drittanbietern veröffentlicht | Unterstützt | Wird
 Benutzerdefinierte Images – von Drittanbietern veröffentlicht | Unterstützt | Wird unterstützt, wenn auf der VM ein unterstütztes Betriebssystem ausgeführt wird.
 Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn eine VMware-VM oder ein physischer Computer mit Site Recovery zu Azure migriert wurde, müssen Sie die ältere Version des Mobility Service deinstallieren, die auf dem Computer ausgeführt wird, und den Computer neu starten, bevor er in einer anderen Azure-Region repliziert werden kann.
 RBAC-Richtlinien | Nicht unterstützt | Richtlinien für die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) auf virtuellen Computern werden nicht in die Failover-VM in der Zielregion repliziert.
+Erweiterungen | Nicht unterstützt | Erweiterungen werden nicht auf die Failover-VM in der Zielregion repliziert. Nach dem Failover müssen sie manuell installiert werden.
 
 ## <a name="replicated-machines---disk-actions"></a>Replizierte Computer – Datenträgeraktionen
 
@@ -191,7 +191,8 @@ Speicherplätze | Unterstützt |
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.   
 Azure Disk Encryption (ADE) für Windows | VMs, die für die [Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app), werden unterstützt. |
 Azure Disk Encryption (ADE) für Linux | Nicht unterstützt |
-Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
+Hinzufügen von Datenträgern im laufendem Betrieb | Unterstützt | Die Aktivierung der Replikation für einen Datenträger, den Sie einer replizierten Azure-VM hinzufügen, wird für VMs unterstützt, die verwaltete Datenträger verwenden.
+Entfernen von Datenträgern im laufendem Betrieb | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer erneut aktivieren.
 Ausschließen von Datenträgern | Unterstützung. Sie müssen [PowerShell](azure-to-azure-exclude-disks.md) zum Konfigurieren verwenden. |  Temporäre Datenträger sind standardmäßig ausgeschlossen.
 Speicherplätze direkt  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
 Dateiserver mit horizontaler Skalierung  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
@@ -243,7 +244,7 @@ Nicht authentifizierter Proxy | Unterstützt | [Weitere Informationen].(site-rec
 Authentifizierter Proxy | Nicht unterstützt | Wenn der virtuelle Computer einen authentifizierten Proxy für ausgehende Verbindungen verwendet, kann er nicht mit Azure Site Recovery repliziert werden.    
 VPN-Site-to-Site-Verbindung mit lokalem Standort<br/><br/>(mit oder ohne ExpressRoute)| Unterstützt | Stellen Sie sicher, dass die UDRs und NSGs so konfiguriert sind, dass der Datenverkehr für die Sitewiederherstellung nicht lokal weitergeleitet wird. [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)    
 VNet-zu-VNet-Verbindung | Unterstützt | [Weitere Informationen](site-recovery-azure-to-azure-networking-guidance.md)  
-Dienstendpunkte im virtuellen Netzwerk | Unterstützt | Wenn Sie den Zugriff auf virtuelle Netzwerke in Speicherkonten einschränken, stellen Sie sicher, dass den vertrauenswürdigen Microsoft-Diensten Zugriff auf das Speicherkonto gewährt wird.
+VNET-Dienstendpunkte | Unterstützt | Wenn Sie den Zugriff auf virtuelle Netzwerke in Speicherkonten einschränken, stellen Sie sicher, dass den vertrauenswürdigen Microsoft-Diensten Zugriff auf das Speicherkonto gewährt wird.
 Beschleunigte Netzwerke | Unterstützt | Auf dem virtuellen Quellcomputer muss der beschleunigte Netzwerkbetrieb aktiviert sein. [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
 
 

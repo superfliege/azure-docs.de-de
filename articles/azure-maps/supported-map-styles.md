@@ -3,17 +3,17 @@ title: Unterstützte Kartenstile in Azure Maps | Microsoft-Dokumentation
 description: In Azure Maps unterstützte Kartenstile
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570537"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230824"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -56,6 +56,17 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 **Anwendbare APIs:**
 * JS-Kartensteuerelement 
 * Android-Kartensteuerelement
+
+
+## <a name="grayscalelight"></a>grayscale_light
+**grayscale_light** ist eine helle Version des Stils „Straßenkarte“.
+
+![grayscale light](./media/supported-map-styles/grayscale_light.png)
+
+**Anwendbare APIs:**
+* JS-Kartensteuerelement
+* Android-Kartensteuerelement
+
 
 ## <a name="night"></a>Nacht
 **Nacht** ist eine dunkle Version des Kartenstils „Straße“ mit farbigen Straßen und Symbolen.

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 5/8/2019
 ms.author: barclayn
-ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608860"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467723"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -233,7 +233,7 @@ Microsoft hat nicht die Möglichkeit, eine Verbindung mit HSMs herzustellen, die
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>F: Was passiert, wenn ich mein HSM neu starten muss?
 
- Das HSM verfügt über eine Befehlszeilenoption für einen Neustart, und es sollte beachtet werden, dass die Option „Harter Neustart“ verwendet werden muss. Falls dies aus irgendeinem Grund fehlschlägt, können Sie eine Supportanfrage für Microsoft erstellen, um das Gerät physisch neu zu starten. 
+Das HSM verfügt über eine Befehlszeilenoption für den Neustart. Es kommt jedoch zeitweilig zu Problemen beim Neustart, der dann hängt. Aus diesem Grund wird als sicherste Neustartmethode empfohlen, dass Sie eine Supportanfrage bei Microsoft stellen, damit das Gerät physisch neu gestartet wird. 
 
 ## <a name="cryptography-and-standards"></a>Kryptografie und Standards
 

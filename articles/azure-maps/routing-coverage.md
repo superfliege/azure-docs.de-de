@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f9f5b24a52ebfb8b87f1abaa3b60091d7f4690ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870010"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230652"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps-Streckenabdeckung
 
@@ -27,9 +27,9 @@ Verschaffen Sie sich einen Überblick über die Abdeckung des [**Renderings**](r
 
 | Symbol             | Bedeutung                                |
 |--------------------|----------------------------------------|
-| ✓                  | Es wurden ausführliche Daten vom jeweiligen Land bereitgestellt.   |
-| Ø                  | Es wurden vereinfachte Daten vom jeweiligen Land bereitgestellt. |
-| Land nicht angegeben | Es liegen keine Daten vom jeweiligen Land vor.          |
+| ✓                  | Es wurden ausführliche Daten für das/die jeweilige Land/Region bereitgestellt.   |
+| Ø                  | Es wurden vereinfachte Daten für das/die jeweilige Land/Region bereitgestellt. |
+| Land nicht angegeben | Es liegen keine Daten für das/die jeweilige Land/Region vor.          |
 
 <br>  
 
@@ -220,9 +220,9 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | +Bermuda                       |        ✓       |                      |             |
 | +Britische Jungferninseln        |        ✓       |                      |             |
 | +Kaimaninseln                |        ✓       |                      |             |
-| +Gibraltar                      |        ✓       |         ✓            |             | 
+| +Gibraltar                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
-| +Turks- und Caicosinseln        |        ✓       |                      |             |
+| +Turks- und Caicosinseln      |        ✓       |                      |             |
 | Vatikanstadt                   |        ✓       |         ✓            |             |
 | Insel Man                    |        ✓       |                      |             |
 

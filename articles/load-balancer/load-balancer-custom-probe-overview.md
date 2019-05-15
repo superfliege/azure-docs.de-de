@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 05/07/2019
 ms.author: kumud
-ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450446"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415707"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -30,7 +30,7 @@ Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bes
 | | Standard-SKU | Basic-SKU |
 | --- | --- | --- |
 | [Testtypen](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Verhalten bei Tests mit Fehlern](#probedown) | Alle Tests mit Fehlern, alle TCP-Flows werden fortgesetzt. | Alle Tests mit Fehlern, alle TCP-Flows werden beendet. | 
+| [Verhalten bei Tests mit Fehlern](#probedown) | Alle Tests mit Fehlern, alle TCP-Flows werden fortgesetzt. | Alle Tests mit Fehlern, alle TCP-Flows laufen ab. | 
 
 > [!IMPORTANT]
 > Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
@@ -178,7 +178,7 @@ Load Balancer verwendet einen verteilten Dienst für die Stichprobenentnahme fü
 
 Das Diensttag „AzureLoadBalancer“ identifiziert diese IP-Quelladresse in Ihren [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) und lässt Datenverkehr von Integritätstests standardmäßig zu.
 
-Zusätzlich zu Load Balancer-Integritätstests wird diese IP-Adresse für die folgenden Vorgänge verwendet:
+Zusätzlich zu Load Balancer-Integritätstests [wird diese IP-Adresse für die folgenden Vorgänge verwendet](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
 - Ermöglichen der Kommunikation zwischen VM-Agent und Plattform, um zu signalisieren, dass sich der VM-Agent im Zustand „Bereit“ befindet.
 - Ermöglichen der Kommunikation mit dem virtuellen DNS-Server, um für die Kunden eine gefilterte Namensauflösung bereitzustellen, die keine benutzerdefinierten DNS-Server definieren.  Diese Filterung stellt sicher, dass Kunden nur die Hostnamen ihrer Bereitstellung auflösen können.
