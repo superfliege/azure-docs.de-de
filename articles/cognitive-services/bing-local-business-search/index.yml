@@ -6,8 +6,8 @@ metadata:
   title: 'Bing-Such-API für ortsansässige Unternehmen: Dokumentation'
   description: 'Die Bing-Such-API für ortsansässige Unternehmen ist ein RESTful-Dienst, mit dem Ihre Anwendungen basierend auf Suchabfragen Unternehmen in der näheren Umgebung suchen können.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.subservice: bing-local-business
   ms.tgt_pltfrm: na
   ms.devlang: na

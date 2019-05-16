@@ -6,15 +6,15 @@ metadata:
   title: 'Dokumentation zur Bing-News-Suche-API: Tutorials, Schnellstarts, API-Referenzen | Microsoft-Dokumentation'
   description: 'Hier wird gezeigt, wie Sie das Web mithilfe der Bing-News-Suche-API nach Nachrichten durchsuchen.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: Mithilfe der Bing-News-Suche-API können Sie die Nachrichtensuchfunktionen von Bing in Ihre Anwendungen integrieren. Sie können Suchabfragen über die API senden und ähnlich wie bei bing.com/news relevante Nachrichtenartikel aus verschiedenen Kategorien und Quellen abrufen.
 sections:

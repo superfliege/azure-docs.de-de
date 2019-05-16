@@ -1,7 +1,6 @@
 - name: Azure Blueprint – Dokumentation
   href: index.yml
 - name: Übersicht
-  expanded: true
   items:
     - name: 'Azure Blueprint: Übersicht'
       displayName: 'templates, policy, definition, assignment, rbac'
@@ -16,7 +15,6 @@
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
 - name: Lernprogramme
-  expanded: true
   items:
     - name: Erstellen aus einem Blaupausenbeispiel
       displayName: 'template, resource group, rbac, role assignment'
@@ -25,7 +23,6 @@
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
 - name: Beispiele
-  expanded: true
   items:
     - name: Index
       displayName: 'list, examples'
@@ -53,7 +50,6 @@
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
 - name: Konzepte
-  expanded: true
   items:
     - name: Lebenszyklus einer Blaupause
       displayName: 'publish, edit, delete, assignments'
@@ -71,7 +67,6 @@
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: Anleitungen
-  expanded: true
   items:
     - name: Verwalten von Zuweisungen mit PowerShell
       displayName: 'create, update, remove'
@@ -85,7 +80,6 @@
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: Referenzen
-  expanded: true
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

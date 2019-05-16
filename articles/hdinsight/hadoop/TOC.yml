@@ -4,6 +4,7 @@
   items:
     - name: Informationen zu Apache Hadoop in HDInsight
       href: apache-hadoop-introduction.md
+      maintainContext: true
     - name: Apache Hadoop-Architektur in HDInsight
       href: ../hdinsight-hadoop-architecture.md
       maintainContext: true
