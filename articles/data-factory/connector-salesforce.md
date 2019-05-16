@@ -315,25 +315,25 @@ Beim Kopieren von Daten aus Salesforce werden die folgenden Zuordnungen von Sale
 
 | Salesforce-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| Auto Number |Zeichenfolge |
-| Kontrollkästchen |Boolean |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency |Decimal |
-| Datum |Datetime |
-| Datum/Uhrzeit |Datetime |
-| E-Mail |Zeichenfolge |
-| id |Zeichenfolge |
-| Lookup Relationship |Zeichenfolge |
-| Multi-Select Picklist |Zeichenfolge |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
-| Prozent |Decimal |
-| Phone |Zeichenfolge |
-| Picklist |Zeichenfolge |
-| Text |Zeichenfolge |
-| Text Area |Zeichenfolge |
-| Text Area (Long) |Zeichenfolge |
-| Text Area (Rich) |Zeichenfolge |
-| Text (Encrypted) |Zeichenfolge |
-| URL |Zeichenfolge |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
