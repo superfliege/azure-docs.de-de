@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8605e614574b7ebd45e9f18c4e5685a9c5450e64
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731494"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409915"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für den Empfang von Aktivitätsprotokollwarnungs-Benachrichtigungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.
@@ -21,6 +21,10 @@ Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für de
 Weitere Informationen zu Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](activity-log-alerts.md).
 
 Weitere Informationen zu Aktionsgruppen, finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../../azure-monitor/platform/action-groups.md).
+
+> [!NOTE]
+> Für Ihre Webhook-Integrationen können Sie auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet. [Hier finden Sie Informationen zu den Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDefinitions).
+
 
 ## <a name="authenticate-the-webhook"></a>Authentifizieren des Webhooks
 Der Webhook kann optional tokenbasierte Autorisierung zur Authentifizierung verwenden. Der Webhook-URI wird mit einer Token-ID gespeichert, z.B. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
@@ -152,7 +156,7 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
                 "resourceGroupName": "<resource group>",
                 "resourceProviderName": "Microsoft.Resourcehealth/healthevent/action",
                 "status": "Active",
-                "subscriptionId": "<subscription Id",
+                "subscriptionId": "<subscription Id>",
                 "submissionTimestamp": "2018-09-04T23:11:06.1607287+00:00",
                 "resourceType": "Microsoft.Compute/virtualMachines"
             }
@@ -173,12 +177,12 @@ Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen f
 | conditionType |Muss immer „Event“ lauten. |
 | name |Der Name der Warnungsregel. |
 | id |Die Ressourcen-ID der Warnung. |
-| Beschreibung |Warnungsbeschreibung, die beim Erstellen der Warnung festgelegt wird. |
+| description |Warnungsbeschreibung, die beim Erstellen der Warnung festgelegt wird. |
 | subscriptionId |Die Azure-Abonnement-ID. |
 | timestamp |Die Zeit, zu der das Ereignis durch den Azure-Dienst generiert wurde, der die Anforderung verarbeitet hat. |
-| Ressourcen-ID |Ressourcen-ID der betroffenen Ressource. |
+| resourceId |Ressourcen-ID der betroffenen Ressource. |
 | resourceGroupName |Name der Ressourcengruppe für die betroffene Ressource. |
-| Eigenschaften |Eine Gruppe von `<Key, Value>`-Paaren (`Dictionary<String, String>`) mit Details zum Ereignis |
+| properties |Eine Gruppe von `<Key, Value>`-Paaren (`Dictionary<String, String>`) mit Details zum Ereignis |
 | event |Element, das Metadaten zum Ereignis enthält. |
 | authorization |Die Eigenschaften der rollenbasierten Zugriffssteuerung des Ereignisses. Zu diesen Eigenschaften zählen üblicherweise Aktion, Rolle und Bereich. |
 | category |Kategorie des Ereignisses. Unterstützte Werte: „Administration“, „Warnung“, „Sicherheit“, „Dienstintegrität“ und „Empfehlung“. |
@@ -191,7 +195,7 @@ Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen f
 | level |Einer der folgenden Werte: Critical, Error, Warning und Informational. |
 | operationId |Üblicherweise eine gemeinsame GUID für alle Ereignisse des gleichen Vorgangs. |
 | operationName |Name des Vorgangs. |
-| Eigenschaften |Die Eigenschaften des Ereignisses. |
+| properties |Die Eigenschaften des Ereignisses. |
 | status |Eine Zeichenfolge. Der Status des Vorgangs. Gängige Werte: „Gestartet“, „In Bearbeitung“, „Erfolgreich“, „Fehler“, „Aktiv“ und „Aufgelöst“. |
 | subStatus |Enthält üblicherweise den HTTP-Statuscode des zugehörigen REST-Aufrufs. Es können auch weitere Zeichenfolgen enthalten sein, die einen Unterstatus beschreiben. Gängige Unterstatuswerte: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503) und Gatewaytimeout (HTTP-Statuscode: 504). |
 

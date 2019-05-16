@@ -12,14 +12,14 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138346"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466560"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Aktivieren von sicheren Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (private Vorschau)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
 Um Ihren Dienst in vielen Regionen bereitzustellen und sicherzustellen, dass er in jeder Region wie erwartet ausgeführt wird, koordinieren Sie mit dem Bereitstellungs-Manager von Azure einen gestaffelten Rollout des Diensts. Gehen Sie wie bei jeder anderen Azure-Bereitstellung vor. Definieren Sie die Ressourcen für Ihren Dienst in [Resource Manager-Vorlagen](resource-group-authoring-templates.md). Wenn Sie die Vorlagen erstellt haben, beschreiben Sie mit dem Bereitstellungs-Manager die Topologie Ihres Diensts und den konkreten Rollout.
 
@@ -200,7 +200,9 @@ In der Rolloutvorlage erstellen Sie eine Artefaktquelle für die Binärdateien, 
 
 ### <a name="steps"></a>Schritte
 
-Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstellung ausgeführt werden soll. Derzeit ist nur der Schritt `wait` verfügbar. Der Warteschritt hält die Bereitstellung zwischendurch an. So können Sie überprüfen, ob Ihr Dienst wie erwartet ausgeführt wird, bevor Sie die nächste Diensteinheit bereitstellen. Das folgende Beispiel zeigt das allgemeine Format eines Warteschritts.
+Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstellung ausgeführt werden soll. Derzeit stehen nur die Schritte `wait` und „healthCheck“ zur Verfügung. 
+
+Der Warteschritt hält die Bereitstellung zwischendurch an. So können Sie überprüfen, ob Ihr Dienst wie erwartet ausgeführt wird, bevor Sie die nächste Diensteinheit bereitstellen. Das folgende Beispiel zeigt das allgemeine Format eines Warteschritts.
 
 ```json
 {
@@ -219,7 +221,7 @@ Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstell
 
 Die Eigenschaft „duration“ verwendet den [ISO 8601-Standard](https://en.wikipedia.org/wiki/ISO_8601#Durations). Das vorherige Beispiel gibt eine Wartezeit von einer Minute an.
 
-Weitere Informationen finden Sie in der [steps-Vorlagenreferenz](/azure/templates/Microsoft.DeploymentManager/steps).
+Weitere Informationen zum healthCheck-Schritt finden Sie unter []() und [](). Weitere Informationen finden Sie in der [Vorlagenreferenz für Schritte](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Rollouts
 

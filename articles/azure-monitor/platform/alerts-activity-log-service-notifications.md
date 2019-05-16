@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092213"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405695"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht
@@ -36,6 +36,10 @@ Sie können auch konfigurieren, an wen die Warnung gesendet werden soll:
 Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../../azure-monitor/platform/action-groups.md).
 
 Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnungen mithilfe von Azure Resource Manager-Vorlagen siehe [Resource Manager-Vorlagen](alerts-activity-log.md).
+
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Sehen Sie sich ein Video über das Einrichten der ersten Azure Service Health-Warnung an!
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>Warnung und neue Aktionsgruppe mit dem Azure-Portal
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Dienstintegrität** aus.
@@ -195,6 +199,8 @@ Nachdem Sie eine Warnung erstellt haben, wird sie unter **Überwachen** im Absch
 * Deaktivieren oder aktivieren Sie sie, wenn Sie den Empfang von Benachrichtigungen zu dieser Warnung vorübergehend beenden oder fortsetzen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
+- Erfahren Sie mehr über [bewährte Methoden zum Einrichten von Azure Service Health-Warnungen](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Erfahren Sie, wie Sie [mobile Pushbenachrichtigungen für Azure Service Health einrichten](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](../../service-health/service-health-alert-webhook-guide.md).
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/service-notifications.md).
 - Erfahren Sie mehr über [Ratenlimits für SMS, E-Mail-Nachrichten und Webhooks](../../azure-monitor/platform/alerts-rate-limiting.md).

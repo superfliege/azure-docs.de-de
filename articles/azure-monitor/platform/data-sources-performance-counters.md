@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728346"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205749"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -195,7 +195,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 | CounterValue |Numerischer Wert des Leistungsindikators |
 | InstanceName |Name der Ereignisinstanz.  Leer, wenn keine Instanz vorhanden ist. |
 | ObjectName |Name des Leistungsobjekts. |
-| SourceSystem |Typ des Agents, auf dem die Daten gesammelt wurden. <br><br>OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br>  Linux: Alle Linux-Agents  <br>  AzureStorage – Azure-Diagnose |
+| SourceSystem |Typ des Agents, auf dem die Daten gesammelt wurden. <br><br>OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br> Linux: Alle Linux-Agents  <br> AzureStorage – Azure-Diagnose |
 | TimeGenerated |Datum und Uhrzeit der Datenstichprobe. |
 
 ## <a name="sizing-estimates"></a>Größeneinschätzung
@@ -211,10 +211,10 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit de
 | Perf |Alle Leistungsdaten. |
 | Perf &#124; where Computer == "MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |
 | Perf &#124; where CounterName == "Aktuelle Warteschlangenlänge" |Alle Leistungsdaten eines bestimmten Leistungsindikators. |
-| Perf &#124; where ObjectName == "Prozessor" and CounterName == "% Prozessorzeit" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(Average) by Computer |Durchschnittliche CPU-Nutzung aller Computer. |
-| Perf &#124; where CounterName == "% Prozessorzeit" &#124; summarize AggregatedValue = max(Max) by Computer |Maximale CPU-Nutzung aller Computer. |
-| Perf &#124; where ObjectName == "Logischer Datenträger" and CounterName == "Aktuelle Warteschlangenlänge" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) by InstanceName |Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers |
-| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(Average, 95) by Computer |95. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
+| Perf &#124; where ObjectName == "Prozessor" and CounterName == "% Prozessorzeit" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(CounterValue) by Computer |Durchschnittliche CPU-Nutzung aller Computer. |
+| Perf &#124; where CounterName == "% Prozessorzeit" &#124; summarize AggregatedValue = max(CounterValue) by Computer |Maximale CPU-Nutzung aller Computer. |
+| Perf &#124; where ObjectName == "Logischer Datenträger" and CounterName == "Aktuelle Warteschlangenlänge" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) by InstanceName |Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers |
+| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern |
 | Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |

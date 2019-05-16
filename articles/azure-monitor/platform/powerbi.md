@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 05/01/219
 ms.author: bwren
-ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110170"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234199"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importieren von Azure Monitor-Protokolldaten in Power BI
 
@@ -60,7 +60,9 @@ Power BI Desktop ist eine Desktopanwendung, die Ihnen das Erstellen von Datasets
 ## <a name="publish-to-power-bi"></a>Veröffentlichen in Power BI
 Wenn Sie in Power BI veröffentlichen, werden ein Dataset und ein Bericht erstellt.  Wenn Sie einen Bericht in Power BI Desktop erstellen, wird dieser mit Ihren Daten veröffentlicht.  Wenn nicht, wird ein leerer Bericht erstellt.  Sie können den Bericht in Power BI ändern oder einen neuen auf Basis des Datasets erstellen.
 
-1. Erstellen Sie einen Bericht auf Basis Ihrer Daten.  Wenn Sie mit Power BI Desktop nicht vertraut sind, lesen Sie in der [Dokumentation](https://docs.microsoft.com/power-bi/desktop-report-view) dazu nach.  Wenn bereit sind, ihn an Power BI zu senden, klicken Sie auf **Veröffentlichen**.  Wählen Sie ein Ziel in Ihrem Power BI-Konto aus, wenn Sie dazu aufgefordert werden.  Sofern Sie kein bestimmtes Ziel verwenden möchten, verwenden Sie **Mein Arbeitsbereich**.
+1. Erstellen Sie einen Bericht auf Basis Ihrer Daten.  Wenn Sie mit Power BI Desktop nicht vertraut sind, lesen Sie in der [Dokumentation](https://docs.microsoft.com/power-bi/desktop-report-view) dazu nach.  
+1. Wenn bereit sind, ihn an Power BI zu senden, klicken Sie auf **Veröffentlichen**.  
+1. Wählen Sie ein Ziel in Ihrem Power BI-Konto aus, wenn Sie dazu aufgefordert werden.  Sofern Sie kein bestimmtes Ziel verwenden möchten, verwenden Sie **Mein Arbeitsbereich**.
 
     ![Veröffentlichen in Power BI Desktop](media/powerbi/desktop-publish.png)
 
@@ -70,7 +72,10 @@ Wenn Sie in Power BI veröffentlichen, werden ein Dataset und ein Bericht erstel
 ### <a name="configure-scheduled-refresh"></a>Konfigurieren von geplanten Aktualisierungen
 Das in Power BI erstellte Dataset enthält dieselben Daten, die zuvor in Power BI Desktop angezeigt wurden.  Sie müssen das Dataset in regelmäßigen Abständen aktualisieren, um die Abfrage erneut auszuführen und es mit den aktuellen Daten aus Azure Monitor zu füllen.  
 
-1. Klicken Sie auf den Arbeitsbereich, in dem Sie Ihren Bericht hochgeladen haben, und wählen Sie dann das Menü **Datasets**. Wählen Sie das Kontextmenü neben dem neuen Dataset und dann **Einstellungen** aus. Unter **Anmeldeinformationen für die Datenquelle** sollte eine Meldung angezeigt werden, dass die Anmeldeinformationen ungültig sind.  Dies liegt daran, dass Sie noch keine Anmeldeinformationen für das Dataset zum Aktualisieren seiner Daten bereitgestellt haben.  Klicken Sie auf **Anmeldeinformationen bearbeiten**, und geben Sie Anmeldeinformationen mit Zugriff auf den Log Analytics-Arbeitsbereich in Azure Monitor an.
+1. Klicken Sie auf den Arbeitsbereich, in dem Sie Ihren Bericht hochgeladen haben, und wählen Sie dann das Menü **Datasets**. 
+1. Wählen Sie das Kontextmenü neben dem neuen Dataset und dann **Einstellungen** aus. 
+1. Unter **Anmeldeinformationen für die Datenquelle** sollte eine Meldung angezeigt werden, dass die Anmeldeinformationen ungültig sind.  Dies liegt daran, dass Sie noch keine Anmeldeinformationen für das Dataset zum Aktualisieren seiner Daten bereitgestellt haben.  
+1. Klicken Sie auf **Anmeldeinformationen bearbeiten**, und geben Sie Anmeldeinformationen mit Zugriff auf den Log Analytics-Arbeitsbereich in Azure Monitor an. Wenn Sie die zweistufige Authentifizierung benötigen, wählen Sie **OAuth2** für die **Authentifizierungsmethode** aus, damit Sie zur Anmeldung mit Ihren Anmeldeinformationen aufgefordert werden.
 
     ![Power BI-Zeitplan](media/powerbi/powerbi-schedule.png)
 
