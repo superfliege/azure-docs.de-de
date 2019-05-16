@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418634"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234031"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifizieren von Problemen mit der Diagnosefunktion
 
@@ -118,7 +118,7 @@ Der Parameter **-Outcome** kann auch mit anderen optionalen Filterparametern kom
 
 Fehlerszenarien werden in die Bereiche „Dienstintern“ und „Außerhalb von Windows Virtual Desktop“ (extern) kategorisiert.
 
-* Internes Problem: Betrifft Szenarien, die nicht vom Mandantenadministrator gelöst werden können und als Supportproblem behandelt werden müssen. Geben Sie beim Erstellen eines Tickets die Aktivitäts-ID, den Mandantennamen und den ungefähren Zeitrahmen an, in dem das Problem aufgetreten ist.
+* Internes Problem: Betrifft Szenarien, die nicht vom Mandantenadministrator gelöst werden können und als ein Supportproblem behandelt werden müssen. Wenn Sie Feedback über die [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) bereitstellen, geben Sie die Aktivitäts-ID sowie den ungefähren Zeitrahmen an, in dem das Problem aufgetreten ist.
 * Externes Problem: Betrifft Szenarien, die vom Systemadministrator gelöst werden können. Dies erfolgt außerhalb von Windows Virtual Desktop.
 
 In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Administratoren ggf. auftreten können.

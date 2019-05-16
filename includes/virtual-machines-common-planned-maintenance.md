@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 4/30/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 747fb9a38cc0c27d162192f4f3ed928e8a968f27
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: adf99b941a775f105d8c65da3ac6c11dc7257120
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993107"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416298"
 ---
 Azure aktualisiert die Plattform regelmäßig, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. Die meisten dieser Updates haben keine Auswirkungen auf die gehosteten virtuellen Computer. Allerdings gibt es Fälle, in denen Updates Auswirkungen haben und in denen Azure das Verfahren mit den geringsten Auswirkungen für Updates wählt:
 
 - Wenn ein Update ohne Neustart möglich ist, wird die VM angehalten, während der Host aktualisiert wird, oder sie wird in Echtzeit zu einem bereits aktualisierten Host migriert.
 
-- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt, der Ihnen passt, selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel vier Wochen, sofern die Wartung nicht dringend ist. Azure setzt sich auch für Technologien ein, die die Zahl der Fälle verringern sollen, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
+- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt, der Ihnen passt, selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel 30 Tage, sofern die Wartung nicht dringend ist. Azure setzt sich auch für Technologien ein, die die Zahl der Fälle verringern sollen, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
 
 Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter „Verwalten der Verfügbarkeit virtueller Computer“ für [Windows](../articles/virtual-machines/windows/manage-availability.md) oder [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
@@ -29,13 +29,13 @@ Weitere Informationen zum Verwalten der geplanten Wartung finden Sie unter „Be
 
 ## <a name="maintenance-not-requiring-a-reboot"></a>Wartungsmaßnahmen, die keinen Neustart erfordern
 
-Das Ziel für die meisten Wartungsmaßnahmen mit Auswirkungen, die keinen Neustart erfordern, ist eine Pause von weniger als 10 Sekunden für den virtuellen Computer. Azure wählt den Updatemechanismus aus, der die geringsten Auswirkungen auf die VMs des Kunden hat. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Anschließend wird der Betrieb des virtuellen Computers fortgesetzt, und seine Uhr wird automatisch synchronisiert. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.  
+Wie bereits ausgeführt, werden die meisten Plattformupdates ausgeführt, ohne dass es Auswirkungen auf Kunden-VMs gibt. Ist es nicht möglich, ein Update ohne Auswirkungen durchzuführen, wählt Azure den Updatemechanismus aus, der die geringsten Auswirkungen auf die Kunden-VMs hat. Ein Großteil dieser Wartungsvorgänge mit Auswirkungen verursacht weniger als 10 Sekunden Pause für den jeweiligen virtuellen Computer. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Anschließend wird der Betrieb des virtuellen Computers fortgesetzt, und seine Uhr wird automatisch synchronisiert. Wartung mit Speicherbeibehaltung funktioniert für mehr als 90 % der virtuellen Azure-Computer. Ausnahmen sind lediglich die G-, M-, N- und H-Serie. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.  
 
 Diese Wartungsvorgänge ohne Neustart werden einzeln für jede Fehlerdomäne angewendet, und das Fortschreiten wird beendet, wenn Warnsignale zur Integrität empfangen werden. 
 
 Einige Anwendungen werden durch Updates dieser Art unter Umständen beeinträchtigt. Falls der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Solche Anwendungen können von der Nutzung geplanter Ereignisse für [Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) in der Vorbereitung der VM-Wartung profitieren und können dann Auswirkungen während der Azure-Wartung vermeiden. Azure arbeitet außerdem an Funktionen zur Wartungssteuerung für solche besonders empfindlichen Anwendungen. 
 
-## <a name="live-migration"></a>Livemigration
+### <a name="live-migration"></a>Livemigration
 
 Die Livemigration ist ein Vorgang ohne Neustart, bei dem der Arbeitsspeicher für den virtuellen Computer beibehalten wird und der zu einer eingeschränkten Pause oder einer Unterbrechung der Reaktion führt – in der Regel nicht länger als 5 Sekunden. Derzeit sind alle IaaS-VMs (Infrastructure-as-a-Service) mit Ausnahme der Serien G, M, N und H für die Live-Migration geeignet. Dies entspricht mehr als 90 % der IaaS-VMs, die in Azure bereitgestellt werden. 
 

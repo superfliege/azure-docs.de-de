@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 88b3ffa38eb42eef42c98920b2c3193661b1c0f5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801678"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236163"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)
 
@@ -32,7 +32,7 @@ Sie benötigen Folgendes, um Ihren Windows Virtual Desktop-Mandanten einzurichte
    * Dies gilt auch für CSP-Organisationen (Cloud Solution Provider), die einen Windows Virtual Desktop-Mandanten für ihre Kunden erstellen. Wenn Sie eine CSP-Organisation sind, müssen Sie sich als globaler Administrator der Azure Active Directory-Instanz des Kunden anmelden können.
    * Das Administratorkonto muss aus dem Azure Active Directory-Mandanten stammen, in dem Sie den Windows Virtual Desktop-Mandanten erstellen möchten. Azure Active Directory B2B-Konten (Gastkonten) werden bei diesem Prozess nicht unterstützt.
    * Das Administratorkonto muss ein Geschäfts-, Schul- oder Unikonto sein.
-* Azure-Abonnement-ID
+* Ein Azure-Abonnement
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Gewähren von Azure Active Directory-Berechtigungen für den Windows Virtual Desktop-Dienst (Vorschauversion)
 
@@ -49,7 +49,7 @@ Gewähren Sie die Dienstberechtigungen wie folgt:
 4. Wählen Sie **Akzeptieren** aus.
 5. Warten Sie eine Minute.
 6. Navigieren Sie zurück zur [Windows Virtual Desktop-Seite für die Einwilligung](https://rdweb.wvd.microsoft.com).
-7. Navigieren Sie zu **Consent Option** > **Client App** (Einwilligungsoption > Client-App), geben Sie denselben Azure AD-Mandantennamen bzw. die Verzeichnis-ID ein, und wählen Sie anschließend **Submit** (Absenden).
+7. Navigieren Sie zu **Consent Option** > **Client App** (Einwilligungsoption > Client-App), geben Sie den gleichen Azure Active Directory-Mandantennamen bzw. die Verzeichnis-ID ein, und wählen Sie anschließend **Submit** (Übermitteln) aus.
 8. Melden Sie sich (wie in Schritt 3) auf der Seite für die Windows Virtual Desktop-Einwilligung als globaler Administrator an.
 9. Wählen Sie **Akzeptieren** aus.
 
@@ -59,14 +59,42 @@ Wenn die Anwendungsrolle „TenantCreator“ einem Azure Active Directory-Benutz
 
 Weisen Sie die Anwendungsrolle „TenantCreator“ über Ihr globales Administratorkonto zu:
 
-1. Öffnen Sie einen Browser, und stellen Sie über Ihr globales Administratorkonto eine Verbindung mit dem [Azure Active Directory-Portal](https://aad.portal.azure.com) her.
-   - Wenn Sie mehrere Azure AD-Mandanten verwenden, besteht die bewährte Methode darin, eine private Browsersitzung zu öffnen und URLs zu kopieren und in die Adressleiste einzufügen.
-2. Wählen Sie **Unternehmensanwendungen**, und suchen Sie nach **Windows Virtual Desktop**. Die beiden Anwendungen, für die Sie im vorherigen Abschnitt die Einwilligung erteilt haben, werden angezeigt. Wählen Sie von diesen beiden Apps **Windows Virtual Desktop** aus.
-3. Wählen Sie **Benutzer und Gruppen** und dann **Benutzer hinzufügen**.
-4. Wählen Sie auf dem Blatt **Zuweisung hinzufügen** die Option „Benutzer und Gruppen“.
-5. Suchen Sie nach einem Benutzerkonto, das zum Erstellen Ihres Windows Virtual Desktop-Mandanten verwendet wird.
-   - Der Einfachheit halber kann dies das globale Administratorkonto sein.
-6. Wählen Sie das Benutzerkonto aus, klicken Sie auf die Schaltfläche **Auswählen**, und wählen Sie dann **Zuweisen**.
+1. Öffnen Sie einen Browser, und stellen Sie über Ihr globales Administratorkonto eine Verbindung mit dem [Azure-Portal](https://portal.azure.com) her.
+   - Wenn Sie mehrere Azure Active Directory-Mandanten verwenden, empfiehlt es sich, eine private Browsersitzung zu öffnen, die URLs zu kopieren und auf der Adressleiste einzufügen.
+2. Suchen Sie über die Suchleiste des Azure-Portals nach **Unternehmensanwendungen**, und wählen Sie den Eintrag aus, der unter der Kategorie **Dienste** angezeigt wird.
+3. Suchen Sie innerhalb von **Unternehmensanwendungen** nach **Windows Virtual Desktop**. Die beiden Anwendungen, für die Sie im vorherigen Abschnitt die Einwilligung erteilt haben, werden angezeigt. Wählen Sie von diesen beiden Apps **Windows Virtual Desktop** aus.
+        ![Screenshot: Suchergebnisse für „Windows Virtual Desktop“ in den Unternehmensanwendungen. Die App „Windows Virtual Desktop“ ist hervorgehoben.](media/tenant-enterprise-app.png)
+4. Wählen Sie **Benutzer und Gruppen**. Unter Umständen wird der Administrator, der die Zustimmung für die Anwendung erteilt hat, bereits mit der zugewiesenen Rolle **Standardzugriff** aufgeführt. Das reicht für die Erstellung eines Windows Virtual Desktop-Mandanten jedoch nicht aus. Führen Sie die weiteren Schritte dieser Anleitung aus, um einem Benutzer die Rolle **TenantCreator** hinzuzufügen.
+        ![Screenshot: Benutzer und Gruppen, die zur Verwaltung der Unternehmensanwendung „Windows Virtual Desktop“ zugewiesen sind. Der Screenshot zeigt nur eine einzelne Zuweisung für Standardzugriff.](media/tenant-default-access.png)
+5. Wählen Sie **Benutzer hinzufügen** und anschließend auf dem Blatt **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+6. Suchen Sie nach einem Benutzerkonto, das zum Erstellen Ihres Windows Virtual Desktop-Mandanten verwendet wird. Der Einfachheit halber kann dies das globale Administratorkonto sein.
+
+    ![Screenshot: Auswählen eines Benutzers, der als „TenantCreator“ hinzugefügt werden soll.](media/tenant-assign-user.png)
+
+   > [!NOTE]
+   > Sie müssen einen Benutzer (oder eine Gruppe mit einem Benutzer) auswählen, der aus diesem Azure Active Directory stammt. Sie können keinen Gastbenutzer (B2B) und keinen Dienstprinzipal auswählen.
+
+7. Wählen Sie das Benutzerkonto, die Schaltfläche **Auswählen** und anschließend **Zuweisen** aus.
+8. Vergewissern Sie sich auf der Seite **Windows Virtual Desktop – Benutzer und Gruppen**, dass für den Benutzer, der den Windows Virtual Desktop-Mandanten erstellt, ein neuer Eintrag mit der zugewiesenen Rolle **TenantCreator** angezeigt wird.
+        ![Screenshot: Benutzer und Gruppen, die zur Verwaltung der Unternehmensanwendung „Windows Virtual Desktop“ zugewiesen sind. Auf dem Screenshot ist nun ein zweiter Eintrag eines Benutzers zu sehen, der der Rolle „TenantCreator“ zugewiesen ist.](media/tenant-tenant-creator-added.png)
+
+Bevor Sie mit der Erstellung Ihres Windows Virtual Desktop-Mandanten fortfahren, benötigen Sie zwei Informationen:
+- ID Ihres Azure Active Directory-Mandanten (oder die **Verzeichnis-ID**)
+- ID Ihres Azure-Abonnements
+
+So ermitteln Sie die ID Ihres Azure Active Directory-Mandanten (oder der **Verzeichnis-ID**):
+1. Suchen Sie in der gleichen Azure-Portalsitzung über die Suchleiste nach **Azure Active Directory**, und wählen Sie den Eintrag aus, der unter der Kategorie **Dienste** angezeigt wird.
+        ![Screenshot: Suchergebnisse für „Azure Active Directory“ im Azure-Portal. Das Suchergebnis unter „Dienste“ ist hervorgehoben.](media/tenant-search-azure-active-directory.png)
+2. Scrollen Sie nach unten zu **Eigenschaften**, und wählen Sie die Option aus.
+3. Suchen Sie nach der **Verzeichnis-ID**, und wählen Sie das Symbol für die Zwischenablage aus. Fügen Sie sie an einem gut erreichbaren Ort ein, um sie später als **AadTenantId** verwenden zu können.
+        ![Screenshot: Azure Active Directory-Eigenschaften. Der Mauszeiger zeigt auf das Symbol, mit dem die Verzeichnis-ID in die Zwischenablage kopiert werden kann.](media/tenant-directory-id.png)
+
+So ermitteln Sie Ihre Azure-Abonnement-ID:
+1. Suchen Sie in der gleichen Azure-Portalsitzung über die Suchleiste nach **Abonnements**, und wählen Sie den Eintrag aus, der unter der Kategorie **Dienste** angezeigt wird.
+        ![Screenshot: Suchergebnisse für „Azure Active Directory“ im Azure-Portal. Das Suchergebnis unter „Dienste“ ist hervorgehoben.](media/tenant-search-subscription.png)
+2. Wählen Sie das Azure-Abonnement aus, das Sie für den Empfang von Benachrichtigungen des Windows Virtual Desktop-Diensts verwenden möchten.
+3. Zeigen Sie auf den Wert der **Abonnement-ID**, bis ein Symbol für die Zwischenablage angezeigt wird. Wählen Sie das Symbol für die Zwischenablage aus, und fügen Sie den Wert an einem gut erreichbaren Ort ein, um ihn später als **AzureSubscriptionId** verwenden zu können.
+        ![Screenshot: Eigenschaften des Azure-Abonnements. Der Mauszeiger zeigt auf das Symbol, mit dem die Abonnement-ID in die Zwischenablage kopiert werden kann.](media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Erstellen eines Windows Virtual Desktop-Mandanten (Vorschauversion)
 
@@ -94,7 +122,7 @@ New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihren Mandanten erstellt haben, müssen Sie einen Hostpool zusammenstellen. Weitere Informationen zu Hostpools finden Sie im Tutorial zum Erstellen eines Hostpools in Windows Virtual Desktop.
+Nachdem Sie Ihren Mandanten erstellt haben, müssen Sie in Azure Active Directory einen Dienstprinzipal erstellen und ihm innerhalb von Windows Virtual Desktop eine Rolle zuweisen. Der Dienstprinzipal ermöglicht die erfolgreiche Bereitstellung des Azure Marketplace-Angebots für Windows Virtual Desktop zur Erstellung eines Hostpools. Weitere Informationen zu Hostpools finden Sie im Tutorial zum Erstellen eines Hostpools in Windows Virtual Desktop.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Create a host pool with Azure Marketplace](./create-host-pools-azure-marketplace.md) (Tutorial: Erstellen eines Hostpools mit Azure Marketplace)
+> [Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](./create-service-principal-role-powershell.md)
