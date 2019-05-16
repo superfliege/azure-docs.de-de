@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Entpivotierungstransformation'
-description: 'Azure Data Factory Mapping Data Flow: Entpivotierungstransformation'
+title: 'Azure Data Factory-Mapping Data Flow: Entpivotierungstransformation'
+description: 'Azure Data Factory-Mapping Data Flow: Entpivotierungstransformation'
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -18,7 +18,7 @@ ms.locfileid: "57854250"
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Verwenden Sie in ADF Mapping Data Flow das Entpivotieren als Möglichkeit, ein nicht normalisiertes Dataset in eine stärker normalisierte Version zu ändern, indem Werte aus mehreren Spalten in einem einzelnen Datensatz in mehrere Datensätze mit den gleichen Werten in einer einzigen Spalte erweitert werden.
+Verwenden Sie in ADF-Mapping Data Flow das Entpivotieren als Möglichkeit, ein nicht normalisiertes Dataset in eine stärker normalisierte Version zu ändern, indem Werte aus mehreren Spalten in einem einzelnen Datensatz in mehrere Datensätze mit den gleichen Werten in einer einzigen Spalte erweitert werden.
 
 ![Entpivotierungstransformation](media/data-flow/unpivot1.png "Entpivotierungsoptionen 1")
 

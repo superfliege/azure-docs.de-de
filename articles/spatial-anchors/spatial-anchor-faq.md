@@ -33,15 +33,15 @@ Weitere Informationen finden Sie unter [Azure Spatial Anchors-Übersicht](overvi
 
 **F: Welche Konnektivitätsanforderungen gelten für Azure Spatial Anchors?**
 
-**A:** Azure Spatial Anchors funktioniert für WLAN- und mobile Breitbandverbindungen.
+**A:** Azure Spatial Anchors funktioniert mit WLAN- und mobile Breitbandverbindungen.
 
 **F: Wie präzise können mit Azure Spatial Anchors Anker gefunden werden?**
 
-**A:** Es gibt viele Faktoren, die sich auf das Präzision beim Auffinden von Ankern auswirken: Lichtverhältnisse, Objekte in der Umgebung und sogar die Oberfläche, auf der der Anker angeordnet ist. Gehen Sie wie folgt vor, um zu ermitteln, ob die Präzision für Ihre Zwecke ausreicht: Probieren Sie die Anker in Umgebungen aus, die für die später verwendeten Umgebungen repräsentativ sind. Falls Umgebungen vorhanden sind, in denen die Präzision Ihre Anforderungen nicht erfüllt, helfen Ihnen die Informationen unter [Logging and diagnostics in Azure Spatial Anchors](./concepts/logging-diagnostics.md) (Protokollierung und Diagnose in Azure Spatial Anchors) weiter.
+**A:** Es gibt viele Faktoren, die sich auf die Präzision beim Auffinden von Ankern auswirken: Lichtverhältnisse, Objekte in der Umgebung und sogar die Oberfläche, auf der der Anker angeordnet ist. Gehen Sie wie folgt vor, um zu ermitteln, ob die Präzision für Ihre Zwecke ausreicht: Probieren Sie die Anker in Umgebungen aus, die für die später verwendeten Umgebungen repräsentativ sind. Falls Umgebungen vorhanden sind, in denen die Präzision Ihre Anforderungen nicht erfüllt, helfen Ihnen die Informationen unter [Logging and diagnostics in Azure Spatial Anchors](./concepts/logging-diagnostics.md) (Protokollierung und Diagnose in Azure Spatial Anchors) weiter.
 
 **F: Wie lange dauert es, Anker zu erstellen und zu finden?**
 
-**A:** Die Dauer für das Erstellen und Finden von Ankern hängt von vielen Faktoren ab: Netzwerkverbindung, Verarbeitungseigenschaften und Last des Geräts und spezifische Umgebung. Unsere Kunden entwickeln Anwendungen in vielen Branchen, z. B. Fertigung, Einzelhandel und Gaming. Dies verdeutlicht, dass der Dienst in all diesen Fällen die Schaffung einer hervorragenden Benutzerumgebung für das jeweilige Szenario ermöglicht.
+**A:** Die Dauer für das Erstellen und Finden von Ankern hängt von vielen Faktoren ab: der Netzwerkverbindung, den Verarbeitungseigenschaften und der Last des Geräts sowie der konkreten Umgebung. Unsere Kunden entwickeln Anwendungen in vielen Branchen, z. B. Fertigung, Einzelhandel und Gaming. Dies verdeutlicht, dass der Dienst in all diesen Fällen die Schaffung einer hervorragenden Benutzerumgebung für das jeweilige Szenario ermöglicht.
 
 ## <a name="privacy-faq"></a>Datenschutz: Häufig gestellte Fragen
 
@@ -79,7 +79,7 @@ Die Zeitpunkte für die allgemeine Verfügbarkeit (General Availability, GA) wer
 
 **F: Gelten bestimmte Drosselungslimits?**
  
-**A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. Während dieser Phase der Vorschauversion haben wir unsere Tiering- und Preisstruktur noch nicht veröffentlicht, aber dies soll in Kürze erfolgen.
+**A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. Zum gegenwärtigen Zeitpunkt haben wir unsere Tarif- und Preisstruktur noch nicht bekannt gegeben. Dies werden wir voraussichtlich in Kürze nachholen.
 
 **F: In welchen Regionen ist Azure Spatial Anchors verfügbar?**
 

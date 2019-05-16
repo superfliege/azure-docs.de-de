@@ -1,38 +1,37 @@
 ---
 title: Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen in Azure API for FHIR
-description: In diesem Artikel wird beschrieben, wie Sie die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS) in Azure API for FHIR konfigurieren.
+description: In diesem Artikel wird beschrieben, wie Sie die Ressourcenfreigabe zwischen verschiedenen Ursprüngen in Azure API for FHIR konfigurieren.
 author: matjazl
 ms.author: matjazl
 ms.date: 3/11/2019
 ms.topic: reference
 ms.service: healthcare-apis
-ms.openlocfilehash: 4976ce5b8f0216e1a0978c7ad2225bf94e6af3cb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: c6bb39508055926323dad3dd6b50f9d60fdecdab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58408381"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233712"
 ---
-# <a name="configure-cross-origin-resource-sharing"></a>Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen
+# <a name="configure-cross-origin-resource-sharing-in-the-azure-api-for-fhir"></a>Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen in Azure API for FHIR
 
-Azure API for FHIR unterstützt die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing), mit der Sie Einstellungen konfigurieren können, damit Anwendungen aus einer Domäne (Ursprung) auf Ressourcen aus einer anderen Domäne (domänenübergreifende Anforderung) zugreifen können.
+Azure-API for Fast Healthcare Interoperability Resources (FHIR) unterstützt [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing). CORS erlaubt es Ihnen, Einstellungen so zu konfigurieren, dass Anwendungen aus einer Domäne (Ursprung) auf Ressourcen aus einer anderen Domäne zugreifen können, bekannt als domänenübergreifende Anforderung.
 
-CORS wird hauptsächlich in Single-Page-Apps verwendet, die RESTful-API-Aufrufe für eine andere Domäne aufrufen muss.
+CORS wird häufig in Single-Page-Apps verwendet, die eine RESTful-API für eine andere Domäne aufrufen müssen.
 
-Navigieren Sie zum Konfigurieren der CORS-Einstellung in Azure API for FHIR zur CORS-Einstellung. 
+Um eine CORS-Einstellung in Azure API for FHIR zu konfigurieren, geben Sie die folgenden Einstellungen an:
 
-Hier können Sie die folgenden Einstellungen vornehmen:
+- **Ursprünge (Access-Control-Allow-Origin)**. Eine Liste der Domänen, die Anforderungen zwischen verschiedenen Ursprüngen an Azure API for FHIR stellen dürfen. Jede Domäne (Ursprung) muss in einer separaten Zeile eingegeben werden. Sie können ein Sternchen (*) eingeben, um Aufrufe aus einer beliebigen Domäne zuzulassen, was wir aber nicht empfehlen, da es sich um ein Sicherheitsrisiko handelt.
 
-**Ursprünge (Access-Control-Allow-Origin):** Liste der Domänen, die Anforderungen zwischen verschiedenen Ursprüngen an Azure API for FHIR stellen dürfen. Jede Domäne (Ursprung) muss in einer separaten Zeile eingegeben werden. Sie können „*“ eingeben, um Anrufe aus beliebigen Domänen zuzulassen (nicht empfohlen, da dies ein Sicherheitsrisiko darstellt).
+- **Headers (Access-Control-Allow-Headers)**. Eine Liste der Header, die die Ursprungsanforderung enthalten soll. Um alle Header zuzulassen, geben Sie ein Sternchen (*) ein.
 
-**Headers (Access-Control-Allow-Headers):** Sie können eine Liste der Header angeben, die die Ursprungsanforderung enthalten soll. Sie können hier „*“ festlegen, um alle Header zuzulassen. 
+- **Methoden (Access-Control-Allow-Methods)**. Die zulässigen Methoden (PUT, GET, POST usw.) in einem API-Aufruf. Wählen Sie **Alle auswählen** aus, um alle Methoden zu verwenden.
 
-**Methoden (Access-Control-Allow-Methods):** Sie können zulässige Methoden (PUT, GET, POST,...) auswählen, die im API-Aufruf erlaubt sind. Sie können auch **Alle auswählen** für alle Methoden verwenden.
+- **Max. Alter (Access-Control-Max-Age)**. Der Wert in Sekunden, um die Ergebnisse der Preflight-Anforderung für „Access-Control-Allow-Headers“ und „Access-Control-Allow-Methods“ zwischenzuspeichern.
 
-**Max. Alter (Access-Control-Max-Age):** Wert in Sekunden, um die Ergebnisse der Preflight-Anforderung für **Access-Control-Allow-Methods** und **Access-Control-Allow-Headers** zwischenzuspeichern. 
+- **Anmeldeinformationen zulassen (Access-Control-Allow-Credentials)**. CORS-Anforderungen enthalten normalerweise keine Cookies, um [CSRF-Angriffe (siteübergreifende Anforderungsfälschung)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) zu verhindern. Wenn Sie diese Einstellung auswählen, kann die Anforderung so gestellt werden, dass sie Anmeldeinformationen (z. B. Cookies) enthält. Sie können diese Einstellung nicht konfigurieren, wenn Sie „Ursprünge“ bereits mit einem Sternchen (*) festgelegt haben.
 
-**Anmeldeinformationen zulassen (Access-Control-Allow-Credentials):** CORS-Anforderungen enthalten normalerweise keine Cookies, um [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)-Angriffe (siteübergreifende Anforderungsfälschung) zu verhindern. Wenn diese Option aktiviert ist, kann die Anforderung mit Anmeldeinformationen (z. B. Cookies) gestellt werden. Sie können diese Einstellung nicht festlegen, wenn Sie die Ursprünge auf „*“ festlegen.
+![CORS-Einstellungen (Ressourcenfreigabe zwischen verschiedenen Ursprüngen)](media/cors/cors.png)
 
-![](media/cors/cors.png)
-
-Sie können keine unterschiedlichen Einstellungen für verschiedene Domänenursprünge festlegen. Alle Einstellungen („Headers“, „Methoden“, „Max. Alter“ und „Anmeldeinformationen zulassen“) gelten für alle in der Einstellung „Ursprünge“ angegebenen Ursprünge.
+>[!NOTE]
+>Sie können keine unterschiedlichen Einstellungen für verschiedene Domänenursprünge festlegen. Alle Einstellungen (**Headers**, **Methoden**, **Max. Alter** und **Anmeldeinformationen zulassen**) gelten für alle in der Einstellung „Ursprünge“ angegebenen Ursprünge.

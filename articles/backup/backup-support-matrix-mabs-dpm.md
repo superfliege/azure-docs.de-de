@@ -43,7 +43,7 @@ Die Sicherung über MABS oder DPM und Azure Backup wird wie folgt durchgeführt:
 
 1. Auf allen Computern, die gesichert werden, wird jeweils der DPM- oder MABS-Schutz-Agent installiert.
 1. Computer und Apps werden im lokalen Speicher in DPM oder MABS gesichert.
-1. Der Microsoft Azure Recovery Services-Agent (MARS) wird auf dem DPM-Server oder auf MABS installiert.
+1. Der MARS-Agent (Microsoft Azure Recovery Services) wird auf dem DPM-Server oder auf MABS installiert.
 1. Mit dem MARS-Agent werden die DPM- oder MABS-Datenträger mithilfe von Azure Backup in einem Recovery Services-Sicherungstresor in Azure gesichert.
 
 Weitere Informationen finden Sie unter:

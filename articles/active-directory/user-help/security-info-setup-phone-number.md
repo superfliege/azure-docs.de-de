@@ -51,7 +51,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie Telefonanrufe als einer
 
     ![Feld „Methode hinzufügen“ mit ausgewählter Option „Telefon“](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Geben Sie auf der Seite **Telefon** die Telefonnummer für Ihr Mobilgerät ein, wählen **Anrufen**, und wählen Sie dann **Weiter** aus.
+4. Geben Sie auf der Seite **Telefon** die Telefonnummer für Ihr Mobilgerät ein, wählen Sie **Anrufen** aus, und wählen Sie dann **Weiter** aus.
 
     ![Telefonnummer hinzufügen und Telefonanrufe wählen](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 

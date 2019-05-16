@@ -312,7 +312,7 @@ Die Kategorie der direkten Methoden verfolgt Anforderung-Antwort-Interaktionen, 
 
 #### <a name="distributed-tracing-preview"></a>Verteilte Ablaufverfolgung (Vorschauversion)
 
-Die Kategorie der verteilte Ablaufverfolgung verfolgt die Korrelations-IDs für Nachrichten nach, die den Kontextheader für Ablaufverfolgung enthalten. Zur vollständigen Aktivierung dieser Protokolle muss der clientseitige Code gemäß der Anleitung in [Analyze and diagnose IoT applications end-to-end with IoT Hub distributed tracing (preview)](iot-hub-distributed-tracing.md) (End-to-End-Analyse und -Diagnose von IoT-Anwendungen mit der verteilten Ablaufverfolgung von IoT Hub (Vorschauversion)) aktualisiert werden.
+Die Kategorie für verteilte Ablaufverfolgung verfolgt die Korrelations-IDs für Nachrichten nach, die den Kontextheader für Ablaufverfolgung enthalten. Zur vollständigen Aktivierung dieser Protokolle muss der clientseitige Code gemäß der Anleitung in [Analyze and diagnose IoT applications end-to-end with IoT Hub distributed tracing (preview)](iot-hub-distributed-tracing.md) (End-to-End-Analyse und -Diagnose von IoT-Anwendungen mit der verteilten Ablaufverfolgung von IoT Hub (Vorschauversion)) aktualisiert werden.
 
 Hinweis: `correlationId` entspricht dem [W3C-Vorschlag für Ablaufverfolgungskontext](https://github.com/w3c/trace-context) insofern, dass sowohl ein `trace-id`- als auch ein `span-id`-Element enthalten ist.
 

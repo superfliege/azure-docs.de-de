@@ -151,7 +151,7 @@ Sie können ein IoT Edge-Modul entweder über Azure Marketplace oder das Azure-P
 
 1. Legen Sie fest, ob das Modul einer neuen Bereitstellung oder einem Klon einer vorhandenen Bereitstellung hinzugefügt werden soll; wählen Sie für die Klonoption die vorhandene Bereitstellung aus der Liste aus.
 
-1. Wählen Sie **Erstellen**, um mit der Erstellung einer bedarfsorientierten Bereitstellung fortzufahren. Sie können die gleichen Details angeben, wie für jede Bereitstellung.
+1. Wählen Sie **Erstellen**, um mit der Erstellung einer bedarfsorientierten Bereitstellung fortzufahren. Sie können die gleichen Details wie für jede andere Bereitstellung angeben.
 
 ## <a name="monitor-a-deployment"></a>Überwachen einer Bereitstellung
 
