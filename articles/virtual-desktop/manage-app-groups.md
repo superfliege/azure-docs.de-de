@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578746"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233910"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion)
 
@@ -73,7 +73,7 @@ Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerSh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach Erstellung der App-Gruppen können Sie Dienstprinzipale erstellen und Ihren Benutzern Rollen zuweisen. Eine entsprechende Anleitung finden Sie im Tutorial zur Erstellung von Dienstprinzipalen und Rollenzuweisungen mit PowerShell.
+In diesem Tutorial haben Sie erfahren, wie Sie App-Gruppen erstellen, sie mit RemoteApps auffüllen und der App-Gruppe Benutzer hinzufügen. Fahren Sie mit den Anleitungsartikeln zur Verbindungsherstellung mit Windows Virtual Desktop fort, um mehr zur Anmeldung an Windows Virtual Desktop zu erfahren.
 
-> [!div class="nextstepaction"]
-> [Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](create-service-principal-role-powershell.md)
+- [Connect to the Remote Desktop client on Windows 7 and Windows 10](connect-windows-7-and-10.md) (Herstellen einer Verbindung mit dem Remotedesktopclient unter Windows 7 und Windows 10)
+- [Connect to the Windows Virtual Desktop Preview web client](connect-web.md) (Herstellen einer Verbindung mit dem Webclient von Windows Virtual Desktop (Vorschauversion))

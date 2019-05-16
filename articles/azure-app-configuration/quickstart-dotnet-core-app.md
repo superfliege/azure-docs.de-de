@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998089"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408722"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Schnellstart: Erstellen einer .NET Core-App mit App Configuration
 
@@ -39,7 +39,7 @@ Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), um 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Schlüssel/Wert-Explorer** > **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** > **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
     | Schlüssel | Wert |
     |---|---|
@@ -61,13 +61,13 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.mic
 
 1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Extensions.Configuration.AzureAppConfiguration` hinzu, indem Sie den folgenden Befehl ausführen:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
 
         dotnet restore
 
-3. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
+3. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

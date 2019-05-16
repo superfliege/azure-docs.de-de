@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 29cea7e72d6bd7f64f6cf2a68b7620090ea4eef3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e53f0bd1af3940b4d2f653b5ef43170212c09a43
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995932"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408682"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer ASP.NET Core-App mit Azure App Configuration
 
@@ -28,6 +28,8 @@ Azure App Configuration ist ein verwalteter Konfigurationsdienst in Azure. Mit d
 Mit ASP.NET Core wird ein Konfigurationsobjekt basierend auf nur einem Schlüssel-Wert-Paar erstellt, indem Einstellungen einer oder mehrerer Datenbanken verwendet werden, die von einer Anwendung angegeben werden. Diese Datenquellen werden als *Konfigurationsanbieter* bezeichnet. Da der .NET Core-Client von App Configuration als ein Anbieter dieser Art implementiert wird, wird der Dienst wie jede andere Datenquelle angezeigt.
 
 Sie können einen beliebigen Code-Editor nutzen, um die Schritte dieser Schnellstartanleitung auszuführen. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
+
+![Schnellstartanleitung: Lokales Starten der App](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,7 +41,7 @@ Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), um 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Schlüssel/Wert-Explorer** > **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** > **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
     | Schlüssel | Wert |
     |---|---|
@@ -64,7 +66,7 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.micr
 
 Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com/aspnet/core/security/app-secrets) hinzu. Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit außerhalb Ihrer Projektstruktur gespeichert. Mit diesem Ansatz können Sie verhindern, dass App-Geheimnisse versehentlich im Quellcode angegeben werden.
 
-- Öffnen Sie die Datei mit der Endung *.csproj*. Fügen Sie, wie hier gezeigt, ein `UserSecretsId`-Element hinzu, und ersetzen Sie dessen Wert durch Ihren eigenen Wert. Normalerweise ist dies eine GUID. Speichern Sie die Datei .
+- Öffnen Sie die Datei *.csproj*. Fügen Sie, wie hier gezeigt, ein `UserSecretsId`-Element hinzu, und ersetzen Sie dessen Wert durch Ihren eigenen Wert. Normalerweise ist dies eine GUID. Speichern Sie die Datei .
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -86,7 +88,7 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
 
 1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Extensions.Configuration.AzureAppConfiguration` hinzu, indem Sie den folgenden Befehl ausführen:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
 
@@ -100,11 +102,11 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    Der Geheimnis-Manager wird nur verwendet, um die Web-App lokal zu testen. Nach dem Bereitstellen der App (z. B. für [Azure App Service](https://azure.microsoft.com/services/app-service/web)) verwenden Sie eine Anwendungseinstellung, z. B. **Verbindungszeichenfolgen** in App Service. Sie verwenden diese Einstellung, anstatt die Verbindungszeichenfolge im Geheimnis-Manager zu speichern.
+    Der Geheimnis-Manager wird nur verwendet, um die Web-App lokal zu testen. Nach dem Bereitstellen der App (etwa in [Azure App Service](https://azure.microsoft.com/services/app-service/web)) verwenden Sie eine Anwendungseinstellung (z. B. **Verbindungszeichenfolgen**) in App Service statt den Geheimnis-Manager, um die Verbindungszeichenfolge zu speichern.
 
     Auf dieses Geheimnis wird mit der Konfigurations-API zugegriffen. Ein Doppelpunkt (:) kann im Konfigurationsnamen mit der Konfigurations-API auf allen unterstützten Plattformen verwendet werden. Siehe [Konfiguration nach Umgebung](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
+4. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -118,15 +120,12 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .SetOfflineCache(new OfflineFileCache());
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
 
-6. Öffnen Sie die Datei „Index.cshtml“ im Verzeichnis „Views > Home“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
+6. Öffnen Sie die Datei *Index.cshtml* im Verzeichnis „Views > Home“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -152,7 +151,7 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
     </html>
     ```
 
-7. Öffnen Sie die Datei „_Layout.cshtml“ im Verzeichnis „Views > Shared“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
+7. Öffnen Sie die Datei *_Layout.cshtml* im Verzeichnis „Views > Shared“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
 
     ```html
     <!DOCTYPE html>
@@ -190,8 +189,6 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
         dotnet run
 
 3. Öffnen Sie ein Browserfenster, und navigieren Sie zu `http://localhost:5000`. Dies ist die Standard-URL für die lokal gehostete Web-App.
-
-    ![Schnellstartanleitung: Lokales Starten der App](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

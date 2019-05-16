@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 3f1ab5c2cb30dd4067c07833529e6a6a0c71e286
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 1ee4d546ce823f48a597331276813b42d91e01e4
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136662"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415981"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Tutorial: Migrieren von RDS PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS
 
@@ -50,10 +50,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
     Darüber hinaus muss die RDS PostgreSQL-Version mit der Azure Database for PostgreSQL-Version übereinstimmen. Beispiel: RDS PostgreSQL 9.5.11.5 kann nur zu Azure Database for PostgreSQL 9.5.11 migriert werden, nicht zu Version 9.6.7.
 
     > [!NOTE]
-    > Für PostgreSQL Version 10 unterstützt DMS zurzeit nur die Migration von Version 10.3 zu Azure Database for PostgreSQL. Wir planen, neuere Versionen von PostgreSQL schon bald zu unterstützen.
+    > Für PostgreSQL Version 10 unterstützt DMS zurzeit nur die Migration von Version 10.3 zu Azure Database for PostgreSQL.
 
 * Erstellen Sie eine Instanz von [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal). Lesen Sie diesen [Abschnitt](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) des Dokuments, um zu erfahren, wie Sie mit pgAdmin eine Verbindung mit dem PostgreSQL-Server herstellen können.
-* Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt.
+* Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 * Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445 und 12000. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die PostgreSQL Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 5432).
@@ -74,13 +74,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 1. Extrahieren Sie das Schema aus der Quelldatenbank, und wenden Sie es auf die Zieldatenbank an, um die Migration aller Datenbankobjekte wie Tabellenschemas, Indizes und gespeicherten Prozeduren abzuschließen.
 
     Die einfachste Möglichkeit zum Migrieren nur des Schemas ist die Verwendung von pg_dump mit der Option „-s“. Weitere Informationen finden Sie in den [Beispielen](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) im Postgres-Tutorial zu pg_dump.
-    
+
     ```
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
-    
+
     Zum Sichern einer Schemadatei für die Datenbank **dvdrental** verwenden Sie z.B. den folgenden Befehl:
-    
+
     ```
     pg_dump -o -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
     ```
@@ -108,8 +108,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
     SET group_concat_max_len = 8192;
         SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
         FROM
-        (SELECT 
-        KCU.REFERENCED_TABLE_SCHEMA as SchemaName,    
+        (SELECT
+        KCU.REFERENCED_TABLE_SCHEMA as SchemaName,
         KCU.TABLE_NAME,
         KCU.COLUMN_NAME,
         CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
@@ -121,7 +121,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
       AND KCU.REFERENCED_TABLE_SCHEMA = 'sakila') Queries
       GROUP BY SchemaName;
     ```
-        
+
 5. Führen Sie „drop foreign key“ (zweite Spalte) im Abfrageergebnis aus, um den Fremdschlüssel zu löschen.
 
 6. Enthalten die Daten einen Trigger (INSERT- oder UPDATE-Trigger), wird die Datenintegrität im Ziel vor dem Replizieren von Daten aus der Quelle erzwungen. Es wird empfohlen, während der Migration die Trigger in allen Tabellen *im Ziel* zu deaktivieren und die Trigger nach Abschluss der Migration erneut zu aktivieren.
@@ -252,7 +252,7 @@ Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbank
 1. Wenn Sie die Datenmigration abschließen möchten, klicken Sie auf **Übernahme starten**.
 
     ![Starten der Übernahme](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-start-cutover.png)
- 
+
 2. Achten Sie darauf, alle eingehenden Transaktionen für die Quelldatenbank zu beenden. Warten Sie, bis der Zähler **Ausstehende Änderungen** das Ergebnis **0** zeigt.
 3. Aktivieren Sie **Bestätigen**, und klicken Sie dann auf **Anwenden**.
 4. Wenn als Status der Datenmigration **Abgeschlossen** angezeigt wird, stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen Azure Database for PostgreSQL-Zieldatenbank her.
@@ -261,6 +261,6 @@ Die Onlinemigration von einer lokalen Instanz von PostgreSQL zu Azure Database f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-- Weitere Informationen zu Azure Database for PostgreSQL finden Sie im Artikel [Was ist Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
-- Wenn Sie weitere Fragen haben, senden Sie eine E-Mail an den Alias [Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+* Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
+* Weitere Informationen zu Azure Database for PostgreSQL finden Sie im Artikel [Was ist Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Wenn Sie weitere Fragen haben, senden Sie eine E-Mail an den Alias [Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com).

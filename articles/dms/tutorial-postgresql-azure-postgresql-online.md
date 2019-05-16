@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 67212986e0478a03ac2ef1b5f30488cc1c7f869d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137412"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415687"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Tutorial: Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS
 
@@ -24,7 +24,6 @@ Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler A
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-
 > * Migrieren des Beispielschemas mit dem Hilfsprogramm pg_dump
 > * Erstellen einer Instanz von Azure Database Migration Service
 > * Erstellen Sie ein Migrationsprojekt mithilfe von Azure Database Migration Service.
@@ -46,10 +45,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
     Darüber hinaus muss die lokale PostgreSQL-Version mit der Azure Database for PostgreSQL-Version übereinstimmen. Beispiel: PostgreSQL 9.5.11.5 kann nur zu Azure Database for PostgreSQL 9.5.11 migriert, aber nicht auf Version 9.6.7 aktualisiert werden.
 
     > [!NOTE]
-    > Für PostgreSQL Version 10 unterstützt DMS zurzeit nur die Migration von Version 10.3 zu Azure Database for PostgreSQL. Wir planen, neuere Versionen von PostgreSQL schon bald zu unterstützen.
+    > Für PostgreSQL Version 10 unterstützt DMS zurzeit nur die Migration von Version 10.3 zu Azure Database for PostgreSQL.
 
 * [Erstellen einer Instanz in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
-* Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt.
+* Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
     > [!NOTE]
     > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des VNET-Setups die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
@@ -65,6 +64,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Wenn Sie eine Firewall-Appliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, damit Azure Database Migration Service auf die Quelldatenbanken für die Migration zugreifen kann.
 * Erstellen Sie für Azure Database for PostgreSQL eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNET an.
 * Es gibt zwei Methoden zum Aufrufen der CLI:
+
     * Wählen Sie im Azure-Portal rechts oben die Cloud Shell-Schaltfläche aus:
 
        ![Cloud Shell-Schaltfläche im Azure-Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
@@ -210,6 +210,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
    ```
 
    Der folgende Befehl erstellt z.B. einen Dienst in:
+
    * Standort: USA (Ost 2)
    * Abonnement: 97181df2-909d-420b-ab93-1bff15acb6b7
    * Ressourcengruppenname: PostgresDemo

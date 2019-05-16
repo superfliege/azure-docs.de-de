@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1cecafb013b5d22557961e98935fc9a2fee2a79b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199097"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416293"
 ---
 1. Wählen Sie in der linken oberen Ecke des Azure-Portals die Schaltfläche **Ressource erstellen** und dann **Compute** > **Funktions-App**.
 
@@ -41,4 +41,4 @@ ms.locfileid: "65199097"
 
     ![Definieren neuer Funktions-App-Einstellungen](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-5. Wählen Sie **Zu Ressource wechseln**, um Ihre neue Funktionen-App anzuzeigen.
+5. Wählen Sie **Zu Ressource wechseln**, um Ihre neue Funktionen-App anzuzeigen. Sie können auch die Option **An Dashboard anheften** auswählen. Wenn Sie die Funktions-App anheften, können Sie einfacher über das Dashboard auf sie zugreifen.

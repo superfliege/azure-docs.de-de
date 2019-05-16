@@ -1,10 +1,10 @@
 ---
-title: Konfigurieren einer Anwendung für den Zugriff auf Web-APIs (Vorschauversion) | Azure
+title: 'Konfigurieren einer Anwendung für den Zugriff auf Web-APIs: Microsoft Identity Platform'
 description: Es wird beschrieben, wie Sie bei der Microsoft Identity Platform registrierte Anwendung so konfigurieren, dass sie Umleitungs-URIs, Anmeldeinformationen oder Berechtigungen für den Zugriff auf Web-APIs enthält.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e88cedfd098f450e8faeea894f7fdfc796cf17
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7b2f5331b22f6292b00c367c6abb8cd4f439a70c
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999585"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413979"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs (Vorschauversion)
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 
 Damit eine Webanwendung oder vertrauliche Clientanwendung an einem Flow zur Autorisierungsgenehmigung teilnehmen kann, bei dem eine Authentifizierung (und das Abrufen eines Zugriffstokens) erforderlich ist, benötigt sie sichere Anmeldeinformationen. Die Standardauthentifizierungsmethode im Azure-Portal ist „Client-ID + geheimer Schlüssel“.
 
@@ -49,7 +49,6 @@ Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 * Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
 * Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
   * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
-* Aktivieren Sie die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
@@ -57,11 +56,11 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren k
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** aus.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
 1. Führen Sie die Schritte zum Konfigurieren Ihrer Anwendung für den Zugriff auf Web-APIs aus: 
     * [Hinzufügen von Umleitungs-URIs zur Anwendung](#add-redirect-uris-to-your-application)
-    * [Hinzufügen von Anmeldeinformationen zur Webanwendung](#add-credentials-to-your-web-application)
+    * [Hinzufügen von Anmeldeinformationen zu Ihrer Webanwendung](#add-credentials-to-your-web-application)
     * [Hinzufügen von Zugriffsberechtigungen für Web-APIs](#add-permissions-to-access-web-apis)
 
 ## <a name="add-redirect-uris-to-your-application"></a>Hinzufügen von Umleitungs-URIs zur Anwendung

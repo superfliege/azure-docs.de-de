@@ -1,10 +1,10 @@
 ---
-title: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs (Vorschauversion) | Azure
+title: 'Konfigurieren einer Anwendung zum Verfügbarmachen von Web-APIs: Microsoft Identity Platform'
 description: Es wird beschrieben, wie Sie eine Anwendung so konfigurieren, dass eine neue Berechtigung bzw. ein Bereich und eine Rolle bereitgestellt werden, um die Anwendung für Clientanwendungen verfügbar zu machen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1148fb221e82963ea39ece3e18598e38d633238d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080844"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413954"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs (Vorschauversion)
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs
 
 Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung stellen, indem Sie [Berechtigungen/Bereiche](developer-glossary.md#scopes) und [Rollen](developer-glossary.md#roles) verfügbar machen. Eine ordnungsgemäß konfigurierte Web-API wird auf die gleiche Weise wie andere Microsoft-Web-APIs (einschließlich der Graph-API und der Office 365-APIs) zur Verfügung gestellt.
 
@@ -37,7 +37,6 @@ Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 * Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
 * Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
   * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
-* Aktivieren Sie die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
@@ -45,7 +44,7 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren k
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** aus.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
 1. Wählen Sie aus, welche Methode Sie verwenden möchten (Benutzeroberfläche oder Anwendungsmanifest), um einen neuen Bereich verfügbar zu machen:
     * [Verfügbarmachen eines neuen Bereichs über die Benutzeroberfläche](#expose-a-new-scope-through-the-ui)

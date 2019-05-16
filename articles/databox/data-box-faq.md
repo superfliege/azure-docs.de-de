@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/25/2019
+ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4308eea3384b20f21ffcf378f711a705f9f9e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077342"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473266"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -36,12 +36,12 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 A.  Der Azure Data Box-Dienst wurde für die Offlineerfassung von Daten konzipiert. Dieser Dienst verwaltet eine Palette von Produkten mit unterschiedlichen Speicherkapazitäten, die alle auf den Datentransport ausgelegt sind. 
 
 ### <a name="q-what-is-azure-data-box"></a>F: Was ist Azure Data Box?
-A. Die Azure Data Box ermöglicht eine schnelle, kostengünstige und sichere Übertragung von Daten im Terabyte-Bereich in und aus Azure. Sie können das Data Box-Gerät im Azure-Portal bestellen. Microsoft liefert Ihnen über einen regionalen Zustelldienst ein Speichergerät mit einer nutzbaren Kapazität von 80 TB. 
+A. Azure Data Box ermöglicht eine schnelle, kostengünstige und sichere Übertragung von Daten im Terabyte-Bereich in Azure. Sie können das Data Box-Gerät im Azure-Portal bestellen. Microsoft liefert Ihnen über einen regionalen Zustelldienst ein Speichergerät mit einer nutzbaren Kapazität von 80 TB. 
 
 Nach Empfang des Geräts können Sie es auf der lokalen Webbenutzeroberfläche schnell einrichten. Kopieren Sie die Daten von Ihren Servern auf das Gerät, und senden Sie es zurück an Azure. Im Azure-Rechenzentrum werden Ihre Daten dann automatisch vom Gerät in Azure hochgeladen. Der gesamte Prozess wird im Azure-Portal vom Data Box-Dienst von Anfang bis Ende nachverfolgt.
 
 ### <a name="q-when-should-i-use-data-box"></a>F: Wann sollte ich Data Box nutzen?
-A. Sie profitieren von der Verwendung von Data Box, wenn Sie über 40-500 TB an Daten verfügen, die Sie in Azure übertragen möchten. Verwenden Sie Data Box Disk für Datenmengen von weniger als 40 TB und Data Box Heavy für Datenmengen von mehr als 500 TB.
+A. Sie profitieren von der Verwendung von Data Box, wenn Sie über 40-500 TB an Daten verfügen, die Sie in Azure übertragen möchten. Verwenden Sie Data Box Disk für Datenmengen von weniger als 40 TB und [Data Box Heavy](data-box-heavy-overview.md) für Datenmengen von mehr als 500 TB.
 
 ### <a name="q-what-is-the-price-of-data-box"></a>F: Was kostet Data Box?
 A. Data Box ist gegen eine Schutzgebühr für 10 Tage erhältlich. Wenn Sie beim Anlegen eines Auftrags im Azure-Portal das Produktmodell auswählen, werden die Gebühren für das Gerät angezeigt. Der Versand ist kostenlos, aber es fallen Gebühren für Azure Storage an. Weitere Informationen finden Sie unter [Azure Data Box – Preise](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -50,7 +50,7 @@ A. Data Box ist gegen eine Schutzgebühr für 10 Tage erhältlich. Wenn Sie beim
 A. Data Box hat eine Rohkapazität von 100 TB und eine nutzbare Kapazität von 80 TB. Sie können mit Data Box bis zu 80 TB Daten übertragen. Um eine größere Datenmenge zu übertragen, müssen Sie weitere Datenträger bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>F: Wie kann ich prüfen, ob Data Box in meiner Region verfügbar ist? 
-A.  Informationen, in welchen Länder Data Box verfügbar ist, finden Sie unter [Regionale Verfügbarkeit](data-box-overview.md#region-availability).  
+A.  Informationen dazu, in welchen Ländern/Regionen Data Box verfügbar ist, finden Sie unter [Was ist Azure Data Box?](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>F: In welchen Regionen kann ich Daten mit Data Box speichern?
 A. Data Box wird in allen Regionen in den USA, Europa, Norden, Europa, Westen, Frankreich und im Vereinigten Königreich unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-overview.md#region-availability).

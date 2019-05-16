@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 131b86fec5fb51c6ff6f29a8e0beed86145a24b7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 266e4a16a69d7200fbe8b58bc20339b6979db877
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136637"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415918"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS
 
@@ -54,7 +54,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     > Falls Sie SQL Server Integration Services (SSIS) verwenden und die Katalogdatenbank für Ihre SSIS-Projekte/-Pakete (SSISDB) von SQL Server zu Azure SQL-Datenbank migrieren möchten, wird die Ziel-SSISDB automatisch für Sie erstellt und verwaltet, wenn Sie SSIS in Azure Data Factory (ADF) bereitstellen. Weitere Informationen zur Migration von SSIS-Paketen finden Sie im Artikel [Migrieren von SQL Server Integration Services-Paketen in Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
 - Laden Sie mindestens Version 3.3 des [Datenmigrations-Assistenten](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) herunter, und installieren Sie sie.
-- Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Standort-zu-Standort-Konnektivität für Ihre lokalen Quellserver bereitstellt.
+- Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
     > [!NOTE]
     > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des VNET-Setups die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
@@ -64,7 +64,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     >
     > Diese Konfiguration ist erforderlich, da Azure Database Migration Service über keine Internetverbindung verfügt.
 
-- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem Azure-VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die SQL Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 1433).
 - Bei der Ausführung mehrerer benannter SQL Server-Instanzen mit dynamischen Ports empfiehlt es sich, den SQL-Browser-Dienst zu aktivieren und den Zugriff auf den UDP-Port 1434 durch Ihre Firewalls zuzulassen, sodass Azure Database Migration Service eine Verbindung mit einer benannten Instanz auf Ihrem Quellserver herstellen kann.
@@ -86,6 +86,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     FROM sys.tables WHERE type = 'U' and is_ms_shipped = 0 AND
     OBJECTPROPERTY(OBJECT_ID, 'TableHasPrimaryKey') = 0;
      ```
+
     >Wenn in den Ergebnissen für mindestens eine Tabelle „0“ für „is_tracked_by_cdc“ angezeigt wird, aktivieren Sie die Änderungserfassung für die Datenbank und die jeweiligen Tabellen. Gehen Sie dazu wie im Artikel [Aktivieren und Deaktivieren von Change Data Capture (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017) beschrieben vor.
 
 - Konfigurieren Sie die Verteilerrolle für die SQL Server-Quellinstanz.
@@ -99,6 +100,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     EXEC @installed = sys.sp_MS_replication_installed;
     SELECT @installed as installed;
     ```
+
     Wenn im Ergebnis eine Fehlermeldung zurückgegeben wird, in der die Installation von Replikationskomponenten vorgeschlagen wird, installieren Sie die SQL Server-Replikationskomponenten über das Verfahren im folgenden Artikel: [Installieren der SQL Server-Replikation](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-replication?view=sql-server-2017).
 
     Wenn die Replikation bereits installiert ist, überprüfen Sie anhand des folgenden T-SQL-Befehls, ob die Verteilungsrolle auf dem SQL Server-Quellserver konfiguriert ist.
@@ -118,6 +120,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     select * from sys.triggers
     DISABLE TRIGGER (Transact-SQL)
     ```
+
     Weitere Informationen finden Sie im Artikel [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017). 
 
 ## <a name="assess-your-on-premises-database"></a>Bewerten Ihrer lokalen Datenbank
@@ -160,6 +163,7 @@ Nachdem Sie sich mit der Bewertung vertraut gemacht und sich davon überzeugt ha
 
 > [!NOTE]
 > Bevor Sie ein Migrationsprojekt im DMA erstellen, vergewissern Sie sich, dass Sie bereits eine Azure SQL-Datenbank bereitgestellt haben, wie in den Voraussetzungen aufgeführt. Zum Zweck dieses Tutorials lautet der Name der Azure SQL-Datenbank **AdventureWorksAzure**. Sie können sie jedoch nach Bedarf umbenennen.
+
 > [!IMPORTANT]
 > Bei Verwendung von SSIS wird die Migration der Quell-SSISDB derzeit von DMA nicht unterstützt. Sie können jedoch Ihre SSIS-Projekte/-Pakete in der von Azure SQL-Datenbank gehosteten Ziel-SSISDB neu bereitstellen. Weitere Informationen zur Migration von SSIS-Paketen finden Sie im Artikel [Migrieren von SQL Server Integration Services-Paketen in Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
@@ -208,7 +212,7 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu einer Einzel- od
 
 3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
 
-    ![Registrieren des Ressourcenanbieters](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)    
+    ![Registrieren des Ressourcenanbieters](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)
 
 ## <a name="create-an-instance"></a>Erstellen einer Instanz
 
@@ -224,11 +228,11 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu einer Einzel- od
 
 4. Wählen Sie den Standort aus, an dem Sie die Azure Database Migration Service-Instanz erstellen möchten. 
 
-5. Wählen Sie ein vorhandenes virtuelles Netzwerk (VNET) aus, oder erstellen Sie ein neues.
+5. Wählen Sie ein vorhandenes VNet aus, oder erstellen Sie ein neues VNet.
 
-    Das VNET erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
+    Das VNET erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
 
-    Weitere Informationen zum Erstellen des VNET im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
+    Weitere Informationen zum Erstellen eines VNet im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
 
 6. Wählen Sie einen Tarif.
 

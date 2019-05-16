@@ -14,16 +14,18 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793950"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230623"
 ---
-# <a name="what-is-api-management"></a>Was ist API Management?
+# <a name="about-api-management"></a>Informationen zu API Management
 
-API Management (APIM) unterstützt Organisationen beim Veröffentlichen von APIs für externe Entwickler, Partnerentwickler und interne Entwickler, um das volle Potenzial von Daten und Diensten ausschöpfen zu können. Unternehmen sind weltweit dabei, ihren Betrieb als digitale Plattform zu erweitern, neue Kanäle zu erschließen, neue Kunden zu finden und die Bindung zu existierenden Kunden zu vertiefen. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, geschäftlichen Erkenntnissen, Analysen, Sicherheit und Schutz. Mithilfe von Azure API Management können Sie ein API-Programm mit vollem Funktionsumfang auf einem beliebigen Back-End starten.
+Mit API Management (APIM) können Sie konsistente und moderne API-Gateways für vorhandene Back-End-Dienste erstellen.
+
+API Management unterstützt Organisationen beim Veröffentlichen von APIs für externe Entwickler, Partnerentwickler und interne Entwickler, um das volle Potenzial von Daten und Diensten ausschöpfen zu können. Unternehmen sind weltweit dabei, ihren Betrieb als digitale Plattform zu erweitern, neue Kanäle zu erschließen, neue Kunden zu finden und die Bindung zu existierenden Kunden zu vertiefen. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, geschäftlichen Erkenntnissen, Analysen, Sicherheit und Schutz. Mithilfe von Azure API Management können Sie ein API-Programm mit vollem Funktionsumfang auf einem beliebigen Back-End starten.
 
 Dieser Artikel enthält eine Übersicht über allgemeine Szenarien mit APIM.  Außerdem finden Sie hier eine Kurzübersicht über die Hauptkomponenten des APIM-Systems. Im Anschluss werden die einzelnen Komponenten ausführlicher behandelt.
 

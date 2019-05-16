@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: edc75711d8f727d8b1c9359835c6d5ebd575ff71
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678648"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233449"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central
 
@@ -33,7 +33,6 @@ _Bediener_ verwenden die Benutzeroberfläche von Azure IoT Central, um ihre Azur
 - Behandeln und Beheben von Problemen mit Ihren Geräten
 - Bereitstellen von neuen Geräten
 
-
 ## <a name="use-the-left-navigation-menu"></a>Verwenden des linken Navigationsmenüs
 
 Über das linke Navigationsmenü können Sie auf die verschiedenen Bereiche der Anwendung zugreifen. Wählen Sie **<** oder **>** aus, um die Navigationsleiste zu erweitern oder zu reduzieren:
@@ -51,11 +50,14 @@ Das obere Menü wird auf jeder Seite angezeigt:
 - Wenn Sie nach Gerätevorlagen und Geräten suchen möchten, geben Sie einen Wert für die **Suche** ein.
 - Wählen Sie zum Ändern der Sprache der Benutzeroberfläche oder des Designs das Symbol **Einstellungen** aus.
 - Wählen Sie das Symbol **Konto** aus, um sich von der Anwendung abzumelden.
-- Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen.
+- Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. In einer Testanwendung beinhalten die Supportressourcen Zugriff auf den [Livechat](howto-show-hide-chat.md).
 
 Sie können zwischen einem hellen und einem dunklen Benutzeroberflächendesign wählen:
 
 ![Auswählen eines Designs für die Benutzeroberfläche](media/overview-iot-central-tour/themes.png)
+
+> [!NOTE]
+> Die Option zum Wählen zwischen hellen und dunklen Designs ist nicht verfügbar, wenn Ihr Administrator ein benutzerdefiniertes Design für die Anwendung konfiguriert hat.
 
 ## <a name="dashboard"></a>Dashboard
 

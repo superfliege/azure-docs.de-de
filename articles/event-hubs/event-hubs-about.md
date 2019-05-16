@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680326"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236241"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs: Big Data-Streamingplattform und Ereigniserfassungsdienst
 Bei Azure Event Hubs handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. Mit diesem Dienst können Millionen von Ereignissen pro Sekunde empfangen und verarbeitet werden. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden.
@@ -87,6 +87,7 @@ Lesen Sie zum Einstieg in die Verwendung von Event Hubs die Tutorials zum **Send
 - [Go](event-hubs-go-get-started-send.md)
 - [C (nur senden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (nur empfangen)](event-hubs-storm-getstarted-receive.md)
+
 
 Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
 

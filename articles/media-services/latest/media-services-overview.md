@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 04/18/2019
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 91297a02966000899ab79dfb86446890e9c4439a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148713"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414023"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3: Übersicht
 
@@ -48,7 +48,8 @@ Media Services ermöglicht es Ihnen, eine Vielzahl von Medienworkflows in der Cl
 
 Hier erfahren Sie, wie Sie mit Media Services Videos v3 Inhalte codieren und packen sowie Videos on Demand streamen, live übertragen und analysieren. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
 
-Machen Sie sich zunächst mit den [grundlegenden Konzepten](concepts-overview.md) vertraut, bevor Sie mit der Entwicklung beginnen.<br/>
+> [!TIP]
+> Machen Sie sich zunächst mit Folgendem vertraut, bevor Sie mit der Entwicklung beginnen:<br/>* [Grundlegende Konzepte](concepts-overview.md) (beinhaltet wichtige Konzepte wie Verpacken, Codierung, Schutz usw.)<br/>* [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md) (Informationen zum Zugreifen auf APIs, Namenskonventionen usw.)
 
 ### <a name="quickstarts"></a>Schnellstarts  
 
@@ -86,9 +87,5 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie kann ich erste Schritte mit v3 ausführen? 
-
-> [!div class="nextstepaction"]
-> [Kenntnisse grundlegender Konzepte](concepts-overview.md)<br/>
-> [Entwickeln mit der Media Services v3-API und SDKs](developers-guide.md) 
+[Kenntnisse grundlegender Konzepte](concepts-overview.md)
 
