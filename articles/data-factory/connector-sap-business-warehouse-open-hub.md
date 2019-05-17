@@ -102,7 +102,7 @@ Folgende Eigenschaften werden für den mit SAP Business Warehouse Open Hub verkn
 | server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Ja |
 | systemNumber | Die Systemnummer des SAP BW-Systems.<br/>Zulässiger Wert: Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
 | clientId | Client-ID des Clients im SAP BW-System.<br/>Zulässiger Wert: Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
-| Language | Sprache, die das SAP-System verwendet. | Nein (Standardwert ist **EN**).|
+| language | Sprache, die das SAP-System verwendet. | Nein (Standardwert ist **EN**).|
 | userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat. | Ja |
 | password | Kennwort für den Benutzer Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
