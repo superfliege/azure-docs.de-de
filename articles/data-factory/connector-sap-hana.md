@@ -162,23 +162,23 @@ Beim Kopieren von Daten aus SAP HANA werden die folgenden Zuordnungen von SAP HA
 
 | SAP HANA-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| ALPHANUM | Zeichenfolge |
+| ALPHANUM | String |
 | BIGINT | Int64 |
 | BLOB | Byte[] |
 | BOOLEAN | Byte |
 | CLOB | Byte[] |
-| DATE | Datetime |
-| DECIMAL | DECIMAL |
+| DATE | DateTime |
+| DECIMAL | Decimal |
 | DOUBLE | Single |
 | INT | Int32 |
-| NVARCHAR | Zeichenfolge |
+| NVARCHAR | String |
 | REAL | Single |
-| SECONDDATE | Datetime |
+| SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| TIME | Zeitraum |
-| TIMESTAMP | Datetime |
+| TIME | TimeSpan |
+| TIMESTAMP | DateTime |
 | TINYINT | Byte |
-| VARCHAR | Zeichenfolge |
+| VARCHAR | String |
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
