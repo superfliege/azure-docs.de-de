@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 267b6afd7cd3131dcd138dfb631335f58cec833a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524632"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407929"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -368,7 +368,7 @@ Um Active Directory lokal bereitzustellen, muss ein Agent auf einem Server insta
 
 Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[lokalen Bereitstellungs-Agent hier](https://go.microsoft.com/fwlink/?linkid=847801)** herunterladen. Führen Sie die folgenden Schritte aus, um die Agent-Konfiguration abzuschließen.
 
-1. Melden Sie sich auf dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
+1. Melden Sie sich bei dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
 2. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren**.
 
    ![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
@@ -816,7 +816,7 @@ Wenn Sie eine neue Idee vorschlagen, überprüfen Sie bitte, ob eine ähnliche F
 
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Wie kann ich die Version meines Bereitstellungs-Agents ermitteln?
 
-* Melden Sie sich beim Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
+* Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
 * Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms**.
 * Suchen Sie nach der Version für den Eintrag **Microsoft Azure AD Connect-Bereitstellungs-Agent**.
 
@@ -867,7 +867,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
 #### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>Wie hebe ich die Registrierung der meinem Bereitstellungs-Agent zugeordneten Domäne wieder auf?
 
 * Rufen Sie über das Azure-Portal die *Mandanten-ID* Ihres Azure AD-Mandanten ab.
-* Melden Sie sich beim Windows Server an, auf dem der Bereitstellungs-Agent ausgeführt wird.
+* Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent ausgeführt wird.
 * Öffnen Sie PowerShell als Windows-Administrator.
 * Wechseln Sie in das Verzeichnis mit den Registrierungsskripten und führen Sie die folgenden Befehle aus, um den Parameter \[tenant ID\] durch den Wert Ihrer Mandanten-ID zu ersetzen.
 
@@ -878,7 +878,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
   ```
 
 * Kopieren Sie den Wert des Feldes „id“ aus der Liste der angezeigten Agents aus der Ressource, deren *resourceName* Ihrem AD-Domänennamen entspricht.
-* Fügen Sie die ID in folgenden Befehl ein, und führen sie in Powershell aus.
+* Fügen Sie den ID-Wert in den folgenden Befehl ein, und führen sie ihn in PowerShell aus.
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
@@ -889,7 +889,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
 
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>Wie deinstalliere ich den Bereitstellungs-Agent?
 
-* Melden Sie sich beim Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
+* Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
 * Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms**.
 * Deinstallieren Sie die folgenden Programme:
   * Microsoft Azure AD Connect-Bereitstellungs-Agent
@@ -946,9 +946,9 @@ Die Lösung unterstützt derzeit keine Einstellung von binären Attributen wie *
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Wie formatiere ich Anzeigenamen in AD basierend auf den Attributen für Abteilung/Land/Stadt des Benutzers und wie gehe mit regionalen Abweichungen um?
 
-Es ist eine häufige Anforderung, das Attribut *displayName* in AD so zu konfigurieren, dass es auch Informationen über die Abteilung und das Land des Benutzers liefert. Wenn John Smith z.B. in der Marketingabteilung in den USA arbeitet, kann sein *displayName* als *Smith, John (Marketing-US)* angezeigt werden.
+Es ist eine häufige Anforderung, das Attribut *displayName* in AD so zu konfigurieren, dass es auch Informationen über die Abteilung und das Land / die Region des Benutzers liefert. Wenn John Smith z.B. in der Marketingabteilung in den USA arbeitet, kann sein *displayName* als *Smith, John (Marketing-US)* angezeigt werden.
 
-So können Sie Sie solche Anforderungen für die Konstruktion von *CN* oder *displayName* verarbeiten, um Attribute wie Unternehmen, Geschäftseinheit, Stadt oder Land aufzunehmen.
+So können Sie solche Anforderungen für die Konstruktion von *CN* oder *displayName* verarbeiten, um Attribute wie Unternehmen, Geschäftseinheit, Stadt oder Land/Region aufzunehmen.
 
 * Jedes Workday-Attribut wird über einen zugrundeliegenden XPATH-API-Ausdruck abgerufen, der in **Attributzuordnung -> Abschnitt „Erweitert“ -> Attributliste für Workday bearbeiten** konfigurierbar ist. Hier ist der XPATH-API-Standardausdruck für die Workday-Attribute *PreferredFirstName*, *PreferredLastName*, *Company* und *SupervisoryOrganization*.
 
@@ -976,7 +976,7 @@ So können Sie Sie solche Anforderungen für die Konstruktion von *CN* oder *dis
 
   Vergewissern Sie sich bei Ihrem Workday-Team, dass die obigen API-Ausdrücke für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
 
-* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, Nachnamen, das Land und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
+* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, Nachnamen, das Land / die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1236,7 +1236,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">

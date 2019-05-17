@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685927"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471644"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -41,7 +41,7 @@ Weitere Informationen zum Sichern finden Sie in den Artikeln zu [Sicherungsserve
 **Aktion** | **Unterstützung**
 --- | ---
 Aktivieren der Sicherung beim Erstellen eines virtuellen Windows-Azure-Computers | Unterstützung für:  Windows Server 2019 (Datacenter/Datacenter Core), Windows Server 2016 (Datacenter/Datacenter Core), Windows Server 2012 R2 Datacenter, Windows Server 2008 R2 (RTM und SP1)
-Aktivieren der Sicherung beim Erstellen eines virtuellen Linux-Computers | Unterstützung für:<br/><br/> – Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> – Debian: 8, 9<br/><br/> – CentOS: 6.9, 7.3<br/><br/> – Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
+Aktivieren der Sicherung beim Erstellen eines virtuellen Linux-Computers | Unterstützung für:<br/><br/> – Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> – Debian: 8, 9<br/><br/> – CentOS: 6.9, 7.3<br/><br/> – Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Sichern eines heruntergefahrenen virtuellen Computers / einer Offline-VM |  Unterstützt.<br/><br/> Die Momentaufnahme ist nur ausfallkonsistent, jedoch nicht anwendungskonsistent.
 Sicherung von Datenträgern nach Migration zu verwalteten Datenträgern |  Unterstützt.<br/><br/> Sicherung wird weiterhin durchgeführt. Es ist keine Aktion erforderlich.
 Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Nicht unterstützt.<br/><br/> In Azure Backup können die älteren Ressourcenpunkte nicht gelöscht werden, und bei den Sicherungen treten Fehler auf, wenn die maximale Anzahl der Wiederherstellungspunkte erreicht ist.
@@ -150,6 +150,7 @@ Sicherung von über den [Azure Marketplace](https://azuremarketplace.microsoft.c
 Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanbieter) |    Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden.
 Sicherung von zu Azure migrierten VMs  |  Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
 Sichern der Konsistenz mehrerer virtueller Computer | Azure Backup bietet keine mehrere virtuelle Computer übergreifende Konsistenz von Daten und Anwendungen.
+Sichern mit [Diagnoseeinstellungen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Nicht unterstützt. <br/><br/> Wenn die Wiederherstellung der Azure-VM mit Diagnoseeinstellungen mithilfe der Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) ausgelöst wird, tritt bei der Wiederherstellung ein Fehler auf.
 
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
