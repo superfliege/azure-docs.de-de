@@ -42,7 +42,7 @@ Folgende Eigenschaften werden für den mit SAP Cloud for Customer verknüpften D
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomer**. | JA |
-| URL | Die URL des SAP C4C OData-Diensts. | JA |
+| url | Die URL des SAP C4C OData-Diensts. | JA |
 | username | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | JA |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Quelle: Nein, Senke: Ja |
