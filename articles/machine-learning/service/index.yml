@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 05/06/2019
+  ms.date: 05/14/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -36,6 +36,7 @@ sections:
         items:
           - html: '<a href="quickstart-run-cloud-notebook">Quickstart: Use a cloud-based notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden eines cloudbasierten Notebookservers für die ersten Schritte mit Azure Machine Learning) – keine Installation erforderlich'
           - html: '<a href="quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
+          - html: <a href="ui-quickstart-run-experiment">Vorbereiten und Visualisieren von Daten auf der grafischen Benutzeroberfläche ohne Schreiben von Code</a>
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
@@ -45,6 +46,7 @@ sections:
         items:
           - html: '<a href="tutorial-train-models-with-aml">Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service</a> und <a href="tutorial-deploy-models-with-aml">Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances</a> (<b>zweiteilige Reihe</b>)'
           - html: '<a href="tutorial-data-prep">Tutorial: Vorbereiten von Daten für die Regressionsmodellierung</a> und <a href="tutorial-auto-train-models">Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning</a> (<b>zweiteilige Reihe</b>)'
+          - html: <a href="ui-tutorial-automobile-price-train-score">Prognostizieren von Automobilpreisen</a> mithilfe der grafischen Benutzeroberfläche und <a href="ui-tutorial-automobile-price-deploy">Bereitstellen</a> des Regressionsmodells
   - title: Beispiele
     items:
       - type: paragraph

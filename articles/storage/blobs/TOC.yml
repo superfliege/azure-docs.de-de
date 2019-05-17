@@ -413,7 +413,7 @@
             - name: 'Blobs, Warteschlangen, Tabellen und Dateien'
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
             - name: Datenverschiebung
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
+              href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: Ressourcen-Manager
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
         - name: Java
@@ -475,21 +475,23 @@
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: NuGet-Pakete
           items:
-            - name: Azure Storage-Clientbibliothek für .NET
-              href: 'https://www.nuget.org/packages/WindowsAzure.Storage/'
+            - name: Allgemeine Azure Storage-Clientbibliothek
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+            - name: Clientbibliothek für Azure Blob Storage
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/'
             - name: Azure Storage-Datenverschiebungsbibliothek
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
             - name: Azure-Konfigurations-Manager
-              href: 'https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/'
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
         - name: Quellcode
           items:
             - name: .NET
               items:
-                - name: 'Blobs, Warteschlangen, Tabellen und Dateien'
-                  href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+                - name: 'Blobs, Warteschlangen und Dateien'
+                  href: 'https://github.com/Azure/azure-storage-net'
                 - name: Datenverschiebung
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
-                - name: Ressourcen-Manager
+                  href: /dotnet/api/microsoft.azure.storage.datamovement
+                - name: Speicherressourcenanbieter
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
             - name: Java
               items:

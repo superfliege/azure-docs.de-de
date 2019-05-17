@@ -34,6 +34,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Konzepte
   items:
+    - name: "Auswählen einer Stream\_Analytics-Technologie"
+      href: streaming-technologies.md
     - name: Eingabetypen für einen Auftrag
       items:
         - name: Übersicht über Eingaben

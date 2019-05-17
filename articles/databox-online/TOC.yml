@@ -67,8 +67,10 @@
           href: data-box-edge-deploy-connect-setup-activate.md
         - name: '4 – Hinzufügen, Herstellen der Verbindung zum Freigeben'
           href: data-box-edge-deploy-add-shares.md
-        - name: '5: Konfigurieren der Computeumgebung'
+        - name: '5a: Konfigurieren der Computeumgebung (einfach)'
           href: data-box-edge-deploy-configure-compute.md
+        - name: '5b: Konfigurieren der Computeumgebung (erweitert)'
+          href: data-box-edge-deploy-configure-compute-advanced.md
     - name: Konzepte
       items:
         - name: Überprüfen der Anforderungen

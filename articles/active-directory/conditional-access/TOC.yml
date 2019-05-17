@@ -50,6 +50,8 @@
       href: app-protection-based-conditional-access.md
     - name: Vorschreiben der Verwendung verwalteter Geräte
       href: require-managed-devices.md
+    - name: Vorschreiben vertrauenswürdiger Netzwerke für die MFA-Registrierung
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vorschreiben der Verwendung der MFA für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken
       href: untrusted-networks.md
     - name: Vorschreiben der Verwendung von Nutzungsbedingungen

@@ -7,7 +7,7 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie intelligente Algorithmen für natürliche Kommunikationsmethoden in Ihre Apps, Websites und Bots integrieren, damit diese sehen, hören, sprechen sowie Benutzeranforderungen interpretieren können. Tutorials, Schnellstartanleitungen, API-Referenzen und Beispiele veranschaulichen die Vorgehensweise.'
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 12/04/2018
+  ms.date: 5/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na
@@ -34,20 +34,28 @@ sections:
       - items:
           - html: '<a href="service/quickstart-run-cloud-notebook">Quickstart: Use a cloud-based notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden eines cloudbasierten Notebookservers für die ersten Schritte mit Azure Machine Learning) – keine Installation erforderlich'
           - html: '<a href="service/quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
+          - html: <a href="service/ui-quickstart-run-experiment">Ausführen eines Experiments auf der grafischen Benutzeroberfläche </a> (ohne Code)
         style: unordered
         type: list
-      - text: '<b>Tutorial zur Bildklassifizierung mit MNIST-Daten:</b>'
+      - text: '<b>Tutorial: Bildklassifizierung von MNIST-Daten mit dem SDK:</b>'
         type: paragraph
       - items:
           - html: 'Teil 1: <a href="service/tutorial-train-models-with-aml">Trainieren eines eigenen Modells</a>'
           - html: 'Teil 2: <a href="service/tutorial-deploy-models-with-aml">Bereitstellen des Modells</a>'
         style: unordered
         type: list
-      - text: '<b>Tutorial zur Regressionsmodellierung mit NYC Taxi-Daten:</b>'
+      - text: '<b>Tutorial: Prognostizieren der Taxifahrpreise mit dem SDK:</b>'
         type: paragraph
       - items:
           - html: 'Teil 1: <a href="service/tutorial-data-prep">Vorbereiten der Daten für die Modellierung</a>'
           - html: 'Teil 2: <a href="service/tutorial-auto-train-models">Trainieren von Modellen durch automatisiertes Machine Learning</a>'
+        style: unordered
+        type: list
+      - text: '<b>Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche:</b>'
+        type: paragraph
+      - items:
+          - html: 'Teil 1: <a href="service/ui-tutorial-automobile-price-train-score">Prognostizieren von Fahrzeugpreisen</a>'
+          - html: 'Teil 2: <a href="service/ui-tutorial-automobile-price-deploy">Bereitstellen des Regressionsmodells</a>'
         style: unordered
         type: list
       - text: '<b>Nutzen der Modelle:</b>'

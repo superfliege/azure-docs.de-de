@@ -17,6 +17,9 @@
       href: quickstart-assign-role-user-portal.md
     - name: 'Gewähren des Zugriffs für einen Benutzer: PowerShell'
       href: tutorial-role-assignments-user-powershell.md
+    - name: 'Gewähren des Zugriffs für einen Benutzer: Resource Manager-Vorlage'
+      displayName: 'ARM, resource manager template'
+      href: tutorial-role-assignments-user-template.md
     - name: 'Gewähren des Zugriffs für eine Gruppe: PowerShell'
       href: tutorial-role-assignments-group-powershell.md
     - name: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'
@@ -88,6 +91,7 @@
     - name: REST-API
       href: /rest/api/authorization/
     - name: Resource Manager-Vorlagen
+      displayName: ARM
       items:
         - name: Rollenzuweisungen
           href: /azure/templates/microsoft.authorization/roleassignments

@@ -463,3 +463,25 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Anfordern von Support
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: Kommerzielles Marketplace-Portal in Partner Center
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist der kommerzielle Marketplace?
+          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Kontoverwaltung
+      items:
+        - name: Erstellen eines neuen Partner Center-Kontos
+          href: ./partner-center-portal/create-account.md
+        - name: Verwalten Ihres Partner Center-Kontos
+          href: ./partner-center-portal/manage-account.md
+        - name: Suchen oder Erstellen eines Geschäftskontos
+          href: ./partner-center-portal/company-work-accounts.md
+    - name: Erstellen eines neuen Angebots
+      items:
+        - name: Erstellen eines SaaS-Angebots
+          href: ./partner-center-portal/create-new-saas-offer.md
+    - name: Veröffentlichungsstatus
+      href: ./partner-center-portal/publishing-status.md
+    - name: Aktualisieren vorhandener Angebote
+      href: ./partner-center-portal/update-existing-offer.md

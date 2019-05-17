@@ -167,6 +167,8 @@
           href: application-provisioning-config-problem.md
         - name: Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Katalog-App
           href: application-provisioning-config-problem-storage-limit.md
+        - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
+          href: user-provisioning-sync-attributes-for-mapping.md
         - name: 'Benutzer werden nicht bereitgestellt: Katalog-App'
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: 'Falsche Benutzer bereitgestellt : Katalog-App'
