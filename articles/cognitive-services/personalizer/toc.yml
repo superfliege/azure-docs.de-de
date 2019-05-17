@@ -49,14 +49,6 @@
       items:
         - name: Offlineauswertung
           href: how-to-offline-evaluation.md
-    - name: Verwenden von Containern
-      items:
-        - name: Installieren und Ausführen von Containern
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
-          href: personalizer-container-howto.md
-        - name: Konfigurieren von Containern
-          href: personalizer-container-configuration.md
-          displayName: 'docker, run, apikey'
 - name: Verweis
   items:
     - name: Beispiele

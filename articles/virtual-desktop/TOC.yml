@@ -32,8 +32,6 @@
       href: create-host-pools-user-profile.md
     - name: Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
       href: configure-host-pool-load-balancing.md
-    - name: Identifizieren von Problemen mit der Diagnosefunktion
-      href: diagnostics-role-service.md
     - name: Vorbereiten und Anpassen eines VHD-Masterimages
       href: set-up-customize-master-image.md
     - name: Installieren von Office für ein VHD-Masterimage
@@ -54,6 +52,8 @@
   items:
     - name: 'Übersicht über die Problembehandlung, Feedback und Support'
       href: troubleshoot-set-up-overview.md
+    - name: Identifizieren von Problemen mit der Diagnosefunktion
+      href: diagnostics-role-service.md
     - name: Erstellung von Mandanten- und Hostpools
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
