@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a04f6fab26a47b87bf55f1714522cad648dc5fad
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918228"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205920"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -43,7 +43,7 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator-Hub
 
 > [!NOTE]
-> Der Microsoft Translator-Legacyhub wird am 30. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
+> Der veraltete Microsoft Translator-Hub wird am 17. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub
 
@@ -60,8 +60,6 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 
 > [!NOTE]
 > Seit dem 1. Februar 2018 sind „AddTranslation()“ und „AddTranslationArray()“ nicht mehr für die Verwendung mit der Textübersetzungs-API V2.0 verfügbar. Diese Methoden schlagen fehl, und nichts wird geschrieben. Die Textübersetzungs-API V3.0 unterstützt diese Methoden nicht.
-> 
-> In der Translator-Hub-API stehen ähnliche Funktionen zur Verfügung. Siehe [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918415"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463631"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -64,8 +64,8 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
 
     Das Verzeichnis wird für das Abonnement geändert, und eine Erfolgsmeldung wird angezeigt.
 
-    ![Nachricht über die erfolgreiche Änderung des Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
-4. Rufen Sie mithilfe des **Verzeichnisumschalters** Ihr neues Verzeichnis auf. Es kann bis zu zehn Minuten dauern, bis alles richtig angezeigt wird.
+    ![Nachricht über die erfolgreiche Änderung des Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+4. Rufen Sie mithilfe des **Verzeichnisumschalters** Ihr neues Verzeichnis auf. Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es anscheinend zu lange dauert, stellen Sie sicher, dass der **Globale Abonnementfilter** für das verschobene Abonnement nicht einfach nur ausgeblendet ist.
 
     ![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

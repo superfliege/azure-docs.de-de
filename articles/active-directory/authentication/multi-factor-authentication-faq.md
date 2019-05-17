@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006028"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228171"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -59,7 +59,7 @@ In Kanada verwendet Microsoft die folgenden SMS-Kurzcodes:
    * 759731 
    * 673801
 
-Microsoft kann keine Bereitstellung konsistenter SMS- oder Sprachaufforderungen für Multi-Factor Authentication an dieselbe Nummer garantieren. Im Interesse unserer Benutzer kann Microsoft jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Streckenanpassungen zur Verbesserung der SMS-Bereitstellung vornehmen. Microsoft unterstützt keine Kurzcodes für Länder außerhalb der USA und Kanadas.
+Microsoft kann keine Bereitstellung konsistenter SMS- oder Sprachaufforderungen für Multi-Factor Authentication an dieselbe Nummer garantieren. Im Interesse unserer Benutzer kann Microsoft jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Streckenanpassungen zur Verbesserung der SMS-Bereitstellung vornehmen. Microsoft unterstützt keine Kurzcodes für Länder/Regionen außerhalb der USA und Kanadas.
 
 ## <a name="billing"></a>Abrechnung
 
@@ -95,7 +95,7 @@ Multi-Factor Authentication für Office 365-Benutzer stellt einen Teil der Azure
 
 Wenn Ihre Organisation MFA als eigenständigen Dienst mit nutzungsbasierter Abrechnung erwirbt, wählen Sie bei der Erstellung eines MFA-Anbieters ein Abrechnungsmodell aus. Das Abrechnungsmodell kann nach der Erstellung eines MFA-Anbieters nicht mehr geändert werden. Sie können allerdings den MFA-Anbieter löschen und dann einen Anbieter mit einem anderen Abrechnungsmodell erstellen.
 
-Bei der Erstellung können Sie den MFA-Anbieter mit einer Azure Active Directory-Instanz (auch „Azure AD-Mandant“ genannt) verknüpfen. Wenn der aktuelle MFA-Anbieter mit einem Azure AD-Mandanten verknüpft ist, können Sie den MFA-Anbieter problemlos löschen und einen neuen erstellen, der mit dem gleichen Azure AD-Mandanten verknüpft ist. Sofern die Anzahl der für MFA, Azure AD Premium oder Enterprise Mobility + Security (EMS) erworbenen Lizenzen für alle Benutzer ausreicht, für die MFA aktiviert ist, können Sie den MFA-Anbieter auch ganz löschen.
+Bei der Erstellung können Sie den MFA-Anbieter mit einer Azure Active Directory-Instanz bzw. einem „Azure AD-Mandanten“ verknüpfen. Wenn der aktuelle MFA-Anbieter mit einem Azure AD-Mandanten verknüpft ist, können Sie den MFA-Anbieter problemlos löschen und einen neuen erstellen, der mit dem gleichen Azure AD-Mandanten verknüpft ist. Sofern die Anzahl der für MFA, Azure AD Premium oder Enterprise Mobility + Security (EMS) erworbenen Lizenzen für alle Benutzer ausreicht, für die MFA aktiviert ist, können Sie den MFA-Anbieter auch ganz löschen.
 
 Falls Ihr MFA-Anbieter *nicht* mit einem Azure AD-Mandanten verknüpft ist oder Sie den neuen MFA-Anbieter mit einem anderen Azure AD-Mandanten verknüpfen, werden Benutzereinstellungen und Konfigurationsoptionen nicht übernommen. Darüber hinaus müssen vorhandene Azure MFA-Server unter Verwendung von Aktivierungsanmeldeinformationen des neuen MFA-Anbieters erneut aktiviert werden. Wenn Sie die MFA-Server erneut aktivieren, um sie mit dem neuen MFA-Anbieter zu verknüpfen, hat das keinerlei Auswirkungen auf die Authentifizierung per Telefonanruf oder SMS, aber Benachrichtigungen der mobilen App funktionieren erst wieder, wenn die Benutzer die mobile App erneut aktivieren.
 
@@ -142,15 +142,15 @@ Wenn Ihre Organisation keine Legacyclients verwendet, sollten Sie die Erstellung
 > [!NOTE]
 > Moderne Authentifizierung für Office 2013-Clients
 >
-> App-Kennwörter werden nur für Apps benötigt, die keine moderne Authentifizierung unterstützen. Office 2013-Clients unterstützen moderne Authentifizierungsprotokolle, müssen aber konfiguriert werden. Die moderne Authentifizierung steht nun für alle Kunden zur Verfügung, die das Office 2013-Update vom März 2015 oder höher verwenden. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced (Ankündigung der Public Preview für moderne Authentifizierung in Office 2013)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> App-Kennwörter werden nur für Apps benötigt, die keine moderne Authentifizierung unterstützen. Office 2013-Clients unterstützen moderne Authentifizierungsprotokolle, müssen aber konfiguriert werden. Die moderne Authentifizierung steht nun für alle Kunden zur Verfügung, die das Office 2013-Update vom März 2015 oder höher verwenden. Weitere Informationen finden Sie in dem Blogbeitrag [Updated Office 365 modern authentication (Aktualisierte moderne Authentifizierung in Office 365)](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
 **F: Meine Benutzer erhalten manchmal keine SMS, oder es tritt ein Timeout auf, nachdem sie auf eine bidirektionale SMS geantwortet haben.**
 
-Die Übermittlung von SMS und der Empfang von Antworten auf bidirektionale SMS können nicht garantiert werden, da die Zuverlässigkeit des Diensts durch unkontrollierbare Faktoren beeinträchtigt werden kann. Unter diese Faktoren fallen das Bestimmungsland, der Mobilfunkanbieter und die Signalstärke.
+Die Übermittlung von SMS und der Empfang von Antworten auf bidirektionale SMS können nicht garantiert werden, da die Zuverlässigkeit des Diensts durch unkontrollierbare Faktoren beeinträchtigt werden kann. Unter diese Faktoren fallen Bestimmungsland/-region, der Mobilfunkanbieter und die Signalstärke.
 
 Falls Ihre Benutzer häufig SMS-Empfangsprobleme haben, fordern Sie sie auf, die mobile App oder die Telefonanrufmethode zu verwenden. Die mobile App kann sowohl über Mobilfunk- als auch WLAN-Verbindungen Benachrichtigungen empfangen. Darüber hinaus kann die mobile App Überprüfungscodes auch dann generieren, wenn das Gerät noch gar kein Signal empfangen hat. Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) und [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) verfügbar.
 
-Wenn Sie Textnachrichten benutzen müssen, sollte nach Möglichkeit die unidirektionale SMS der bidirektionalen SMS vorgezogen werden. Das unidirektionale SMS-Verfahren ist zuverlässiger und verhindert, dass für die Benutzer zusätzliche SMS-Gebühren entstehen, wenn sie z.B. auf eine SMS antworten, die aus einem anderen Land gesendet wurde.
+Wenn Sie Textnachrichten benutzen müssen, sollte nach Möglichkeit die unidirektionale SMS der bidirektionalen SMS vorgezogen werden. Das unidirektionale SMS-Verfahren ist zuverlässiger und verhindert, dass für die Benutzer zusätzliche SMS-Gebühren entstehen, wenn sie z.B. auf eine SMS antworten, die aus einem anderen Land / einer anderen Region gesendet wurde.
 
 **F: Kann ich ändern, wie lange meine Benutzer für die Eingabe des Überprüfungscodes aus einer SMS Zeit haben, bevor ein Timeout auftritt?**
 

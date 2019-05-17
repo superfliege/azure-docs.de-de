@@ -3,7 +3,7 @@ title: Arbeiten mit Sicherheitsrichtlinien | Microsoft-Dokumentation
 description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlinien i Azure Security Center arbeiten.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 5/05/2019
 ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578440"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236305"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -110,6 +110,9 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
    ![Richtlinienverwaltung](./media/tutorial-security-policy/policy-management.png)
 
 2. Klicken Sie auf das Abonnement, für das Sie die Empfehlung deaktivieren möchten.
+
+   > [!Note]
+   > Denken Sie daran, dass eine Verwaltungsgruppe ihre Richtlinien auf ihre Abonnements anwendet. Aus diesem Grund erhalten Sie weiterhin Richtlinienempfehlungen, wenn Sie eine Abonnementrichtlinie deaktivieren und das Abonnement zu einer Verwaltungsgruppe gehört, die immer noch dieselbe Richtlinie verwendet. Die Richtlinie wird immer noch von der Verwaltungsebene aus angewandt, und die Empfehlungen werden immer noch generiert.
 
 1. Klicken Sie auf die zugewiesene Richtlinie.
 
@@ -243,8 +246,8 @@ In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
 ### <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
 Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Dabei werden integrierte Rollen bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Das bedeutet, dass Benutzern die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-- Benutzer mit Leseberechtigung für Sicherheitsfunktionen: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
-- Sicherheitsadministrator: Verfügt über dieselben Anzeigeberechtigungen wie ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
+- Sicherheitsleseberechtigter: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
+- Sicherheitsadministrator: Verfügt über dieselben Anzeigeberechtigungen wie ein Sicherheitsleseberechtigter, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
 
 
 

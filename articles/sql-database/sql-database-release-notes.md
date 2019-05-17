@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 05/07/2019
 ms.author: carlrab
-ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495104"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406583"
 ---
 # <a name="sql-database-release-notes"></a>Versionshinweise zu SQL-Datenbank
 
@@ -25,6 +25,7 @@ In diesem Artikel erhalten Sie weitere Informationen zu den neuen Features und V
 
 | Feature | Details |
 | ---| --- |
+| Serverlose Computeebene | Weitere Informationen finden Sie unter [SQL-Datenbank – serverlos (Vorschau)](sql-database-serverless.md).|
 | Aufträge für die elastische Datenbank | Weitere Informationen finden Sie unter [Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md). |
 | Elastische Transaktionen | [Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank](sql-database-elastic-transactions-overview.md) |
 | Elastische Abfragen | Weitere Informationen finden Sie unter [Übersicht über elastische Abfragen](sql-database-elastic-query-overview.md). |
@@ -45,6 +46,32 @@ In diesem Artikel erhalten Sie weitere Informationen zu den neuen Features und V
 |Azure SQL-Analyse|Weitere Informationen finden Sie unter [Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md).|
 | Unterstützung von Zeitzonen für verwaltete Instanzen|Weitere Informationen finden Sie unter [Time Zone in Azure SQL Database Managed Instance (Zeitzone in verwalteter Azure SQL-Datenbank-Instanz)](sql-database-managed-instance-timezone.md).|
 |||
+
+## <a name="may-2019"></a>Mai 2019
+
+### <a name="service-improvements"></a>Verbesserungen beim Dienst
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|Hyperscale-Dienstebene| Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau) für bis zu 100TB](sql-database-service-tier-hyperscale.md).|
+|Serverlose Computeebene| Weitere Informationen finden Sie unter [SQL-Datenbank – serverlos (Vorschau)](sql-database-serverless.md).|
+
+
+## <a name="april-2019"></a>April 2019
+
+### <a name="service-improvements"></a>Verbesserungen beim Dienst
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+| Öffentliche Endpunkte für die verwaltete Instanz | Weitere Informationen finden Sie unter [Sicheres Verwenden einer verwalteten Azure SQL-Datenbank-Instanz mit öffentlichem Endpunkt](sql-database-managed-instance-public-endpoint-securely.md).
+| Zeitzonenunterstützung für die verwaltete Instanz | Weitere Informationen finden Sie unter [Zeitzone in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion)](sql-database-managed-instance-timezone.md)
+
+### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
+
+| Verbesserungen bei der Dokumentation | Details |
+| --- | --- |
+| Öffentliche Endpunkte für die verwaltete Instanz | Weitere Informationen finden Sie unter [Sicheres Verwenden einer verwalteten Azure SQL-Datenbank-Instanz mit öffentlichem Endpunkt](sql-database-managed-instance-public-endpoint-securely.md).
+| Zeitzonenunterstützung für die verwaltete Instanz | Weitere Informationen finden Sie unter [Zeitzone in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion)](sql-database-managed-instance-timezone.md)
 
 ## <a name="march-2019"></a>März 2019
 

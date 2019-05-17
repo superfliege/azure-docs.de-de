@@ -8,16 +8,21 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/08/2019
 ms.author: raynew
-ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361359"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413927"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
-Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. 
+Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen.</br>
+Informationen zu bestimmten Abfragen in verschiedenen ASR-Szenarien finden Sie in den häufig gestellten Fragen zu bestimmten Szenarien.<br>
 
+- [Notfallwiederherstellung von virtuellen Azure-Computern in Azure](azure-to-azure-common-questions.md)
+- [Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-common-questions.md)
+- [Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure](hyper-v-azure-common-questions.md)
+ 
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-does-site-recovery-do"></a>Welche Funktion hat Site Recovery?
@@ -223,7 +228,7 @@ Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ei
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Kann ich Site Recovery-Szenarien mit einem SDK automatisieren?
 Ja. Sie können Site Recovery-Workflows mithilfe der REST-API, PowerShell oder Azure SDK automatisieren. Derzeit unterstützte Szenarien für die Bereitstellung von Site Recovery mit PowerShell:
 
-* [Replizieren von Hyper-V-VMs in VMM-Clouds in Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
+* [Replizieren von Hyper-V-VMs in VMM-Clouds im Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
 * [Replizieren von Hyper-V-VMs ohne VMM in Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)
 * [Replizieren von VMware in Azure mit PowerShell Resource Manager](vmware-azure-disaster-recovery-powershell.md)
 

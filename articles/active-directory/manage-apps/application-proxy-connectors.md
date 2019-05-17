@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: cb2a2aa8204ef442bbe3a0e6ff9018cd3f153910
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684088"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406496"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -29,7 +29,7 @@ Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind u
 
 ## <a name="requirements-and-deployment"></a>Anforderungen und Bereitstellung
 
-Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder 2016. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können. 
+Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder höher. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können. 
 
 ### <a name="windows-server"></a>Windows-Server
 Sie benötigen einen Server, auf dem Windows Server 2012 R2 oder höher ausgeführt wird und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in Azure sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
@@ -103,7 +103,7 @@ Sie sollten unbedingt sicherstellen, dass Sie ausreichend Kapazität zwischen de
 
 ## <a name="security-and-networking"></a>Sicherheit und Netzwerk
 
-Connectors können überall im Netzwerk installiert werden, sodass Anforderungen an den Anwendungsproxydienst gesendet werden können. Wichtig ist nur, dass der Computer, auf dem der Connector ausgeführt ist, ebenfalls Zugriff auf Ihre Apps hat. Sie können die Connectors in Ihrem Unternehmensnetzwerk oder auf einem virtuellen Computer installieren, der in der Cloud ausgeführt wird. Connectors können in einer demilitarisierten Zone (Demilitarized Zone, DMZ) ausgeführt werden, aber dies ist nicht notwendig, da der gesamte Datenverkehr ausgehend ist und das Netzwerk somit sicher bleibt.
+Connectors können überall im Netzwerk installiert werden, sodass Anforderungen an den Anwendungsproxydienst gesendet werden können. Wichtig ist nur, dass der Computer, auf dem der Connector ausgeführt ist, ebenfalls Zugriff auf Ihre Apps hat. Sie können die Connectors in Ihrem Unternehmensnetzwerk oder auf einem virtuellen Computer installieren, der in der Cloud ausgeführt wird. Connectors können in einem Umkreisnetzwerk, auch bekannt als demilitarisierte Zone (Demilitarized Zone, DMZ) ausgeführt werden, aber dies ist nicht notwendig, da der gesamte Datenverkehr ausgehend ist und das Netzwerk somit sicher bleibt.
 
 Connectors senden nur ausgehende Anforderungen. Der ausgehende Datenverkehr wird an den Anwendungsproxydienst und die veröffentlichten Anwendungen gesendet. Das Öffnen von eingehenden Ports ist nicht erforderlich, da der Datenverkehr nach dem Einrichten einer Sitzung in beide Richtungen fließt. Auch der eingehende Zugriff über die Firewalls muss nicht konfiguriert werden. 
 

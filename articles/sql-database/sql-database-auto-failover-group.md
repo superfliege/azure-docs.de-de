@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2019
-ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/06/2019
+ms.openlocfilehash: 595d1b84aab55a77f21a9840c5bae9ee996424be
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009071"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415930"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
-Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem SQL-Datenbank-Server oder aller Datenbanken in einer verwalteten Instanz in eine andere Region verwalten können (derzeit für verwaltete Instanzen als öffentliche Vorschauversion verfügbar). Hierbei wird die gleiche zugrunde liegende Technologie wie bei der [aktiven Georeplikation](sql-database-active-geo-replication.md) verwendet. Sie können ein Failover manuell initiieren oder basierend auf einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
+Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem SQL-Datenbank-Server oder aller Datenbanken in einer verwalteten Instanz zu einer anderen Region verwalten können. Hierbei wird die gleiche zugrunde liegende Technologie wie bei der [aktiven Georeplikation](sql-database-active-geo-replication.md) verwendet. Sie können ein Failover manuell initiieren oder basierend auf einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
 
 > [!NOTE]
-> Wenn Sie mit Singletons oder in einem Pool zusammengefassten Datenbanken auf einem SQL-Datenbank-Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md).
+> Wenn Sie mit Einzel- oder Pooldatenbanken auf einem SQL-Datenbank-Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md).
 
 Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. Darüber hinaus bieten Gruppen für automatisches Failover Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten. Die spezifischen RPO- und RTO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 
@@ -42,15 +42,11 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Failovergruppe**
 
-  Eine Failovergruppe ist eine Gruppe von Datenbanken, die von einem einzelnen SQL-Datenbank-Server oder innerhalb einer einzelnen verwalteten Instanz verwaltet werden. Diese Datenbanken sind eine Einheit, für die ein Failover in eine andere Region durchgeführt werden kann, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind.
+  Eine Failovergruppe ist eine Gruppe von Datenbanken, die von einem einzelnen SQL-Datenbank-Server oder innerhalb einer einzelnen verwalteten Instanz verwaltet werden. Diese Datenbanken sind eine Einheit, für die ein Failover in eine andere Region durchgeführt werden kann, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind. Wenn eine Failovergruppe für verwaltete Instanzen erstellt wird, enthält sie alle Benutzerdatenbanken in der Instanz, und darum kann nur eine Failovergruppe auf einer Instanz konfiguriert werden.
 
-  - **SQL-Datenbank-Server**
+- **SQL-Datenbank-Server**
 
      Bei SQL-Datenbank-Servern können einige oder alle Benutzerdatenbanken auf einem einzelnen SQL-Datenbank-Server in einer Failovergruppe platziert werden. Außerdem unterstützt ein SQL-Datenbank-Server mehrere Failovergruppen auf einem einzelnen SQL-Datenbank-Server.
-
-  - **Verwaltete Instanzen**
-  
-     Bei einer verwalteten Instanz enthält eine Failovergruppe alle Benutzerdatenbanken in der verwalteten Instanz. Daher unterstützt eine verwaltete Instanz nur eine einzelne Failovergruppe.
 
 - **Primärer Server/verwaltete Instanz**
 
@@ -58,42 +54,33 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Sekundärer Server/verwaltete Instanz**
 
-  Der SQL-Datenbank-Server oder die verwaltete Instanz, auf dem bzw. der die sekundäre Datenbanken in der Failovergruppe gehostet werden. Der sekundäre Server/verwaltete Instanz kann sich nicht in der gleichen Region wie der primäre Server/verwaltete Instanz befinden.
+  Der SQL-Datenbank-Server oder die verwaltete Instanz, auf dem bzw. der die sekundären Datenbanken in der Failovergruppe gehostet werden. Der sekundäre Server/verwaltete Instanz kann sich nicht in der gleichen Region wie der primäre Server/verwaltete Instanz befinden.
 
 - **Hinzufügen einzelner Datenbanken zu Failovergruppe**
 
   Sie können mehrere einzelne Datenbanken auf demselben SQL-Datenbank-Server in dieselbe Failovergruppe einfügen. Wenn Sie der Failovergruppe eine einzelne Datenbank hinzufügen, wird auf dem sekundären Server automatisch eine sekundäre Datenbank mit derselben Edition und Computegröße erstellt.  Sie haben diesen Server beim Erstellen der Failovergruppe angegeben. Wenn Sie eine Datenbank hinzufügen, die bereits auf dem sekundären Server eine sekundäre Datenbank hat, erbt die Gruppe diese Verknüpfung für die Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank auf dem sekundären Server erstellt.
   
-> [!IMPORTANT]
+  > [!IMPORTANT]
   > In einer verwalteten Instanz werden alle Benutzerdatenbanken repliziert. Sie können nicht eine Teilmenge der Benutzerdatenbanken für die Replikation in der Failovergruppe auswählen.
 
 - **Hinzufügen von Datenbanken im Pool für elastische Datenbanken zu Failovergruppe**
 
   Sie können mehrere oder alle Datenbanken in einem Pool für elastische Datenbanken in dieselbe Failovergruppe einfügen. Wenn sich die primäre Datenbank in einem Pool für elastische Datenbanken befindet, wird die sekundäre Datenbank automatisch im Pool für elastische Datenbanken desselben Namens (sekundärer Pool) erstellt. Sie müssen sicherstellen, dass der sekundäre Server einen Pool für elastische Datenbanken mit genau demselben Namen und ausreichend freier Kapazität zum Hosten der sekundären Datenbanken enthält, die von der Failovergruppe erstellt werden. Wenn Sie im Pool eine Datenbank hinzufügen, die bereits im sekundären Pool eine sekundäre Datenbank hat, erbt die Gruppe diese Verknüpfung für die Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank im sekundären Pool erstellt.
   
-  - **Lese-/Schreib-Failovergruppenlistener**
+- **DNS-Zone**
 
-  Ein DNS CNAME-Eintrag, der auf die URL der aktuellen primären Datenbank verweist. Er ermöglicht Lese-/Schreib-SQL-Anwendungen das transparente erneute Herstellen einer Verbindung mit der primären Datenbank, wenn die primäre Datenbank nach einem Failover geändert wird.
+  Eine eindeutige ID, die automatisch generiert wird, wenn eine neue Instanz erstellt wird. Ein Zertifikat mit mehreren Domänen (SAN) für diese Instanz wird bereitgestellt, um die Clientverbindungen mit einer beliebigen Instanz in der gleichen DNS-Zone zu authentifizieren. Die beiden verwalteten Instanzen in der gleichen Failovergruppe müssen die DNS-Zone gemeinsam verwenden. 
+  
+  > [!NOTE]
+  > Eine DNS-Zonen-ID ist für Failovergruppen, die für SQL-Datenbank-Server-Instanzen erstellt werden, nicht erforderlich.
 
-  - **DNS CNAME-Eintrag des SQL-Datenbank-Servers für Lese-/Schreib-Listener**
+- **Lese-/Schreib-Failovergruppenlistener**
 
-     Auf einem SQL-Datenbank-Server hat der DNS CNAME-Eintrag für die Failovergruppe, die auf die URL der aktuellen primären Datenbank verweist, die Form `<fog-name>.database.windows.net`.
-
-  - **DNS CNAME-Eintrag der verwalteten Instanz für Lese-/Schreib-Listener**
-
-     In einer verwalteten Instanz hat der DNS CNAME-Eintrag für die Failovergruppe, die auf die URL der aktuellen primären Datenbank verweist, die Form `<fog-name>.zone_id.database.windows.net`.
+  Ein DNS CNAME-Eintrag, der auf die URL der aktuellen primären Datenbank verweist. Er ermöglicht Lese-/Schreib-SQL-Anwendungen das transparente erneute Herstellen einer Verbindung mit der primären Datenbank, wenn die primäre Datenbank nach einem Failover geändert wird. Wenn die Failovergruppe auf einem SQL-Datenbank-Server erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.database.windows.net`. Wenn die Failovergruppe auf einer verwalteten Instanz erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.zone_id.database.windows.net`.
 
 - **Nur-Lese-Failovergruppenlistener**
 
-  Ein DNS CNAME-Eintrag, der auf den schreibgeschützten Listener verweist, der wiederum auf die URL der sekundären Datenbank verweist. Er ermöglicht den schreibgeschützten SQL-Anwendungen das transparente Herstellen einer Verbindung mit der sekundären Datenbank unter Verwendung der angegebenen Regeln für den Lastenausgleich.
-
-  - **DNS CNAME-Eintrag des SQL-Datenbank-Servers für schreibgeschützte Listener**
-
-     Auf einem SQL-Datenbank-Server hat der DNS CNAME-Eintrag für den schreibgeschützten Listener, der auf die URL der sekundären Datenbank verweist, die Form `'.secondary.database.windows.net`.
-
-  - **DNS CNAME-Eintrag der verwalteten Instanz für Nur-Lese-Listener**
-
-     In einer verwalteten Instanz hat der DNS CNAME-Eintrag für den Nur-Lese-Listener, der auf die URL der aktuellen sekundären Datenbank verweist, die Form `<fog-name>.zone_id.database.windows.net`.
+  Ein DNS CNAME-Eintrag, der auf den schreibgeschützten Listener verweist, der wiederum auf die URL der sekundären Datenbank verweist. Er ermöglicht den schreibgeschützten SQL-Anwendungen das transparente Herstellen einer Verbindung mit der sekundären Datenbank unter Verwendung der angegebenen Regeln für den Lastenausgleich. Wenn die Failovergruppe auf einem SQL-Datenbank-Server erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.secondary.database.windows.net`. Wenn die Failovergruppe auf einer verwalteten Instanz erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.zone_id.secondary.database.windows.net`.
 
 - **Richtlinie für automatisches Failover**
 
@@ -127,7 +114,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
   Sie können mehrere Failovergruppen für das gleiche Serverpaar konfigurieren, um die Skalierung der Failover zu steuern. Jede Gruppe führt ein unabhängiges Failover durch. Wenn Ihre mehrinstanzenfähige Anwendung Pools für elastische Datenbanken verwendet, können Sie diese Funktion zum Mischen primärer und sekundärer Datenbanken in den einzelnen Pools verwenden. Auf diese Weise können Sie die Auswirkungen eines Ausfalls auf nur die Hälfte der Mandanten reduzieren.
 
-  > [!IMPORTANT]
+  > [!NOTE]
   > Eine verwaltete Instanz bietet keine Unterstützung für mehrere Failovergruppen.
   
 ## <a name="permissions"></a>Berechtigungen
@@ -173,8 +160,8 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
 
   Wenn ein Ausfall erkannt wird, wartet SQL für den mit **GracePeriodWithDataLossHours** festgelegten Zeitraum. Der Standardwert ist 1 Stunde. Wenn keine Datenverluste auftreten dürfen, legen Sie **GracePeriodWithDataLossHours** auf eine ausreichend große Zahl fest, z.B. 24 Stunden. Verwenden Sie manuelles Gruppenfailover für ein Failback von der sekundären zur primären Datenbank.
 
-> [!IMPORTANT]
-> Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und über 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
+  > [!IMPORTANT]
+  > Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und über 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Bewährte Methoden für die Verwendung von Failovergruppen für verwaltete Instanzen
 
@@ -189,7 +176,7 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
 - **Erstellen der sekundären Instanz in der gleichen DNS-Zone wie die primäre Instanz**
 
-  Beim Erstellen einer neuen Instanz wird automatisch eine eindeutige ID als DNS-Zone generiert und in den DNS-Instanznamen eingefügt. Ein Zertifikat mit mehreren Domänen (SAN) für diese Instanz wird mit dem SAN-Feld in der Form `zone_id.database.windows.net` bereitgestellt. Dieses Zertifikat kann zum Authentifizieren der Clientverbindungen mit einer Instanz in der gleichen DNS-Zone verwendet werden. Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Dazu wird ein optionaler Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben.
+  Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Hierzu können Sie einen optionalen Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben. 
 
   Weitere Informationen zum Erstellen der sekundären Instanz in der gleichen DNS-Zone wie die primäre Instanz finden Sie unter [Verwalten von Failovergruppen mit verwalteten Instanzen (Vorschau)](#powershell-managing-failover-groups-with-managed-instances-preview).
 
@@ -232,14 +219,14 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
 ## <a name="failover-groups-and-network-security"></a>Failovergruppen und Netzwerksicherheit
 
-Für einige Anwendungen erfordern die Sicherheitsregeln, dass der Netzwerkzugriff auf die Datenebene auf eine bestimmte Komponente oder Komponenten wie virtueller Computer, Webdienst usw. beschränkt ist. Diese Anforderung stellt für den Entwurf der Geschäftskontinuität und die Verwendung der Failovergruppen eine Herausforderung dar. Sie sollten bei der Implementierung eines solchen eingeschränkten Zugriffs die folgenden Optionen berücksichtigen.
+Für einige Anwendungen erfordern die Sicherheitsregeln, dass der Netzwerkzugriff auf die Datenebene auf eine bestimmte Komponente oder Komponenten wie virtueller Computer, Webdienst usw. beschränkt ist. Diese Anforderung stellt für den Entwurf der Geschäftskontinuität und die Verwendung der Failovergruppen eine Herausforderung dar. Berücksichtigen Sie bei der Implementierung eines solchen eingeschränkten Zugriffs die folgenden Optionen.
 
-### <a name="using-failover-groups-and-virtual-network-rules"></a>Verwendung von Regeln für Failovergruppen und virtuelle Netzwerke
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Verwendung von Failovergruppen und VNET-Regeln
 
-Wenn Sie [Dienstendpunkte des virtuellen Netzwerks und Regeln](sql-database-vnet-service-endpoint-rule-overview.md) verwenden, um den Zugriff auf Ihre SQL-Datenbank-Instanz einzuschränken, denken Sie daran, dass jeder Dienstendpunkt des virtuellen Netzwerks nur für eine einzige Azure-Region gilt. Der Endpunkt ermöglicht anderen Regionen nicht das Akzeptieren von Nachrichten aus dem Subnetz. Aus diesem Grund können nur die Clientanwendungen, die in der gleichen Region bereitgestellt werden, eine Verbindung mit der primären Datenbank herstellen. Da das Failover dazu führt, dass die SQL-Clientsitzungen zu dem Server in der anderen (sekundären) Region umgeleitet werden, treten bei diesen Sitzungen Fehler auf, wenn sie von Clients ausgehen, die sich außerhalb dieser Region befinden. Aus diesem Grund kann die Richtlinie für automatisches Failover nicht aktiviert werden, wenn die beteiligten Server in den Regeln für virtuelle Netzwerke enthalten sind. Um das manuelle Failover zu unterstützen, gehen Sie folgendermaßen vor:
+Wenn Sie [Virtual Network-Dienstendpunkte und -Regeln](sql-database-vnet-service-endpoint-rule-overview.md) verwenden, um den Zugriff auf Ihre SQL-Datenbank-Instanz einzuschränken, denken Sie daran, dass jeder Virtual Network-Dienstendpunkt nur für eine einzige Azure-Region gilt. Der Endpunkt ermöglicht anderen Regionen nicht das Akzeptieren von Nachrichten aus dem Subnetz. Aus diesem Grund können nur die Clientanwendungen, die in der gleichen Region bereitgestellt werden, eine Verbindung mit der primären Datenbank herstellen. Da das Failover dazu führt, dass die SQL-Clientsitzungen zu dem Server in der anderen (sekundären) Region umgeleitet werden, treten bei diesen Sitzungen Fehler auf, wenn sie von Clients ausgehen, die sich außerhalb dieser Region befinden. Aus diesem Grund kann die Richtlinie für automatisches Failover nicht aktiviert werden, wenn die beteiligten Server in den VNET-Regeln enthalten sind. Um das manuelle Failover zu unterstützen, gehen Sie folgendermaßen vor:
 
 1. Stellen Sie die redundanten Kopien der Front-End-Komponenten der Anwendung (Webdienst, VMs usw.) in der sekundären Region bereit.
-2. Konfigurieren Sie die [Regeln für virtuelle Netzwerke](sql-database-vnet-service-endpoint-rule-overview.md) individuell für den primären und sekundären Server.
+2. Konfigurieren Sie die [VNET-Regeln](sql-database-vnet-service-endpoint-rule-overview.md) individuell für den primären und sekundären Server.
 3. Aktivieren Sie das [Front-End-Failover durch eine Traffic Manager-Konfiguration](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime).
 4. Initiieren Sie ein manuelles Failover, wenn der Ausfall erkannt wird. Diese Option ist für die Anwendungen optimiert, die konsistente Latenz zwischen Front-End und Datenebene erfordern, und unterstützt die Wiederherstellung, wenn Front-End, Datenebene oder beide vom Ausfall betroffen sind.
 
@@ -266,7 +253,7 @@ Die oben genannte Konfiguration sorgt dafür, dass das automatische Failover kei
 
 ## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Aktivieren der geografischen Replikation zwischen verwalteten Instanzen und ihren VNETs
 
-Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Instanzen in zwei verschiedenen Regionen einrichten, wird jede Instanz mit einem unabhängigen VNET isoliert. Um Replikationsdatenverkehr zwischen diesen VNETs zuzulassen, müssen die folgenden Voraussetzungen erfüllt sein:
+Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Instanzen in zwei verschiedenen Regionen einrichten, wird jede Instanz mit einem unabhängigen VNET isoliert. Um Replikationsdatenverkehr zwischen diesen VNETs zuzulassen, müssen diese Voraussetzungen erfüllt sein:
 
 1. Die beiden verwalteten Instanzen müssen sich in verschiedenen Azure-Regionen befinden.
 2. Ihre sekundäre Datenbank muss leer sein (keine Benutzerdatenbanken).
@@ -275,10 +262,10 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Inst
 5. Die beiden VNETs der verwalteten Instanzen dürfen keine überlappenden IP-Adressen aufweisen.
 6. Sie müssen die Netzwerksicherheitsgruppen (NSG) so einrichten, dass die Ports 5022 und der Bereich von 11000 bis 12000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz offen sind. Dadurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
 
-    > [!IMPORTANT]
-    > Falsch konfigurierte NSG-Sicherheitsregeln führen zu unterbrochenen Datenbankkopiervorgängen.
+   > [!IMPORTANT]
+   > Falsch konfigurierte NSG-Sicherheitsregeln führen zu unterbrochenen Datenbankkopiervorgängen.
 
-7. Sie müssen den DNS-Zonenpartner auf der sekundären Instanz konfigurieren. Eine DNS-Zone ist eine Eigenschaft einer verwalteten Instanz. Sie stellt den Teil des Hostnamens dar, der auf den Namen der verwalteten Instanz folgt und dem Präfix `.database.windows.net` vorangestellt ist. Sie wird während der Erstellung der ersten verwalteten Instanz in jedem VNET als zufällige Zeichenfolge generiert. Die DNS-Zone kann nach der Erstellung der verwalteten Instanz nicht geändert werden, und alle verwalteten Instanzen im gleichen Subnetz verwenden den gleichen DNS-Zonenwert. Zum Einrichten einer Failovergruppe für verwaltete Instanzen müssen die primäre und die sekundäre verwaltete Instanz denselben DNS-Zonenwert aufweisen. Dazu geben Sie den Parameter „DnsZonePartner“ beim Erstellen der sekundären verwalteten Instanz an. Die Eigenschaft für den DNS-Zonenpartner legt die verwaltete Instanz fest, mit der eine Instanzfailovergruppe gemeinsam verwendet werden soll. Durch Übergeben der Ressourcen-ID einer anderen verwalteten Instanz als Eingabe für „DnsZonePartner“ erbt die verwaltete Instanz, die gerade erstellt wird, den DNS-Zonenwert der verwalteten Partnerinstanz.
+7. Die zweite Instanz ist mit der richtigen DNS-Zonen-ID konfiguriert. Die DNS-Zone ist eine Eigenschaft einer verwalteten Instanz, und ihre ID ist in der Hostnamenadresse enthalten. Die Zonen-ID wird als zufällige Zeichenfolge generiert, wenn die erste verwaltete Instanz in jedem VNET erstellt und die gleiche ID alle anderen Instanzen im selben Subnetz zugewiesen wird. Nach der Zuweisung kann die DNS-Zone nicht geändert werden. Verwaltete Instanzen in der gleichen Failovergruppe müssen die DNS-Zone gemeinsam verwenden. Sie erreichen dies durch Übergeben der Zonen-ID der primären Instanz als Wert des DnsZonePartner-Parameters beim Erstellen der sekundären Instanz. 
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
 
@@ -349,7 +336,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Entfernt eine Failovergruppe.|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit einzelnen und in einem Pool zusammengefassten Datenbanken
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit Einzel- und Pooldatenbanken
 
 | API | BESCHREIBUNG |
 | --- | --- |
@@ -377,9 +364,9 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 - Beispielskripts:
   - [Configure and failover a single database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) (Konfiguration und Failover einer einzelnen Datenbank mithilfe von aktiver Georeplikation)
-  - [Configure and failover a pooled database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md) (Konfiguration und Failover einer gepoolten Datenbank mithilfe von aktiver Georeplikation)
+  - [Configure and failover a pooled database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md) (Konfiguration und Failover einer Pooldatenbank mithilfe von aktiver Georeplikation)
   - [Konfiguration und Failover einer Failovergruppe für eine einzelne Datenbank](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 - Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Weitere Informationen zu Authentifizierungsanforderungen für einen neuen primären Server und die Datenbank finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).

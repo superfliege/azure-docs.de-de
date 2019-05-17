@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/27/2017
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685148"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471737"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 
@@ -34,21 +34,21 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 
 ## <a name="video"></a>Video
 
-### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>In diesem Video erfahren Sie mehr über das Time Series Insights-Dateneingangsverhalten und dessen Planung.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Erfahren Sie mehr über das Time Series Insights-Dateneingangsverhalten und dessen Planung.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Überwachen von Latenz und Drosselung mit Warnungen
 
-Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme diagnostizieren und verringern. 
+Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme diagnostizieren und verringern.
 
-1. Klicken Sie im Azure-Portal auf **Metriken**. 
+1. Klicken Sie im Azure-Portal auf **Metriken**.
 
-   ![Metriken](media/environment-mitigate-latency/add-metrics.png)
+   [![Metriken](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-2. Klicken Sie auf **Metrikwarnung hinzufügen**.  
+1. Klicken Sie auf **Metrikwarnung hinzufügen**.  
 
-    ![Metrikwarnung hinzufügen](media/environment-mitigate-latency/add-metric-alert.png)
+   [![Hinzufügen einer Metrikwarnung](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 
 Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
 
@@ -64,19 +64,19 @@ Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
 
 ![Latency](media/environment-mitigate-latency/latency.png)
 
-Bei einer Drosselung wird ein Wert für *Eingang Zeitverzögerung für empfangene Nachrichten* angezeigt, um sie zu informieren, wie viele Sekunden TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
+* Bei einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um sie zu informieren, wie viele Sekunden TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
 
-Wenn Sie beispielsweise über eine S1-Umgebung mit nur einer Einheit verfügen und sehen, dass ein Rückstand von fünf Millionen Nachrichten besteht, können Sie die Größe Ihrer Umgebung ca. einen Tag lang auf sechs Einheiten erhöhen, um den Rückstand aufzuholen.  Sie können die Größe auch stärker erhöhen, um den Rückstand schneller wettzumachen.  Der Abgleichszeitraum tritt bei der anfänglichen Bereitstellung einer Umgebung häufig auf, z.B. wenn Sie diesen mit einer Ereignisquelle verbinden, die bereits Ereignisse enthält, oder wenn Sie einen Massenupload für viele Verlaufsdaten durchführen.
+  Wenn Sie beispielsweise über eine S1-Umgebung mit nur einer Einheit verfügen und sehen, dass ein Rückstand von 5.000.000 Nachrichten besteht, können Sie die Größe Ihrer Umgebung ungefähr einen Tag lang auf sechs Einheiten erhöhen, um den Rückstand aufzuholen.  Sie können die Größe auch stärker erhöhen, um den Rückstand schneller wettzumachen. Der Abgleichszeitraum tritt bei der anfänglichen Bereitstellung einer Umgebung häufig auf, z.B. wenn Sie diesen mit einer Ereignisquelle verbinden, die bereits Ereignisse enthält, oder wenn Sie einen Massenupload für viele Verlaufsdaten durchführen.
 
-Eine andere Möglichkeit besteht darin, eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) für einen Zeitraum von zwei Stunden so festzulegen, dass der Schwellenwert leicht unterhalb der Gesamtkapazität Ihrer Umgebung liegt.  Anhand dieser Warnung können Sie feststellen, ob die Kapazität konstant ausgelastet ist. Dies gibt eine hohe Wahrscheinlichkeit von Latenz an.  
+* Eine andere Möglichkeit besteht darin, eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) für einen Zeitraum von zwei Stunden so festzulegen, dass der Schwellenwert leicht unterhalb der Gesamtkapazität Ihrer Umgebung liegt.  Anhand dieser Warnung können Sie feststellen, ob die Kapazität konstant ausgelastet ist. Dies gibt eine hohe Wahrscheinlichkeit von Latenz an. 
 
-Wenn Sie beispielsweise drei S1-Einheiten (oder eine Eingangskapazität von 2.100 Ereignissen pro Minute) bereitgestellt haben, können Sie eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) >= 1.900 Ereignisse für 2 Stunden festlegen. Wenn dieser Schwellenwert konstant überschritten und dadurch die Warnung ausgelöst wird, ist die Bereitstellung wahrscheinlich nicht ausreichend.  
+  Wenn Sie beispielsweise drei S1-Einheiten (oder eine Eingangskapazität von 2.100 Ereignissen pro Minute) bereitgestellt haben, können Sie eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) >= 1.900 Ereignisse für 2 Stunden festlegen. Wenn dieser Schwellenwert konstant überschritten und dadurch die Warnung ausgelöst wird, ist die Bereitstellung wahrscheinlich nicht ausreichend.  
 
-Auch wenn Sie vermuten, dass eine Drosselung vorliegt, können Sie die Warnung vom Typ **Ingress Received Messages** (Eingang empfangene Nachrichten) mit den ausgehenden Nachrichten der Ereignisquelle vergleichen.  Wenn der Eingang in den Event Hub größer ist als der Wert für **Ingress Received Messages** (Eingang empfangene Nachrichten), wird der Time Series Insights-Dienst wahrscheinlich gedrosselt.
+* Wenn Sie vermuten, dass eine Drosselung vorliegt, können Sie die Warnung vom Typ **Ingress Received Messages** (Eingang empfangene Nachrichten) mit den ausgehenden Nachrichten der Ereignisquelle vergleichen.  Wenn der Eingang in den Event Hub größer ist als der Wert für **Ingress Received Messages** (Eingang empfangene Nachrichten), wird der Time Series Insights-Dienst wahrscheinlich gedrosselt.
 
 ## <a name="improving-performance"></a>Verbessern der Leistung
 
-Um die Drosselung oder Latenz zu reduzieren, empfiehlt es sich, dies durch Erhöhen der Kapazität der Umgebung zu beheben. 
+Um die Drosselung oder Latenz zu reduzieren, empfiehlt es sich, dies durch Erhöhen der Kapazität der Umgebung zu beheben.
 
 Sie können Latenz und Drosselung vermeiden, indem Sie die Umgebung korrekt für die Menge der zu analysierenden Daten konfigurieren. Weitere Informationen zum Hinzufügen von Kapazität zu Ihrer Umgebung finden Sie unter [Skalieren Ihrer Umgebung](time-series-insights-how-to-scale-your-environment.md).
 

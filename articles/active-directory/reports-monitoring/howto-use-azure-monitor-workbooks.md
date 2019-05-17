@@ -14,62 +14,61 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2c9b3d0ef110fea0629af345a71d0d7b7cce7313
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012911"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406591"
 ---
-# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Gewusst wie: Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
+# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
 
 Möchten Sie:
 
-- Die Auswirkungen Ihrer [Richtlinien für bedingten Zugriff](../conditional-access/overview.md) auf die Anmeldung Ihrer Benutzer verstehen?
+- Die Auswirkung Ihrer [Richtlinien für bedingten Zugriff](../conditional-access/overview.md) auf die Anmeldung Ihrer Benutzer verstehen?
 
 - Anmeldefehler beheben, um eine bessere Übersicht über die Anmeldeintegrität in Ihrer Organisation zu erhalten, sowie Probleme schnell beheben?
 
-- Wissen, welche Benutzer sich über Legacyauthentifizierungen bei Ihrer Umgebung anmelden? Durch [Blockieren der Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) können Sie den Schutz Ihres Mandanten verbessern.
+- Wissen, welche Benutzer sich über Legacyauthentifizierungen bei Ihrer Umgebung anmelden? (Durch [Blockieren der Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) können Sie den Schutz Ihres Mandanten verbessern.)
 
-
-[Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Azure-Metriken und Parameter zu umfassenden interaktiven Berichten. Azure Active Directory umfasst Arbeitsmappen, mit deren Hilfe Sie Antworten auf die Fragen oben erhalten.
+Damit Sie diese Fragen beantworten können, stellt Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten. 
 
 Dieser Artikel:
 
-- Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) vertraut sind.
+- Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) vertraut sind.
 
-- Erläutert, wie Sie mithilfe der Azure Monitor-Arbeitsmappen zur Überwachung Antworten auf die Fragen oben erhalten.
+- Erläutert die Verwendung von Monitor-Arbeitsmappen, damit Sie die Auswirkungen Ihrer Richtlinien für bedingten Zugriff verstehen, zum Beheben von Anmeldefehlern und zum Identifizieren von Legacyauthentifizierungen.
  
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um dieses Feature verwenden zu können:
+Zum Verwenden von Monitor-Arbeitsmappen benötigen Sie:
 
-- Einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1/P2). Wie Sie eine Premium-Lizenz erhalten, erfahren Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1 oder P2). Wie Sie eine Premium-Lizenz erhalten, erfahren Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
 
 - Einen [Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-## <a name="access-workbooks"></a>Zugriff auf Arbeitsmappen 
+## <a name="workbook-access"></a>Arbeitsmappenzugriff 
 
 So greifen Sie auf Arbeitsmappen zu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf der linken Navigationsleiste auf **Azure Active Directory**.
+2. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
 
-3. Klicken Sie im Abschnitt **Überwachung** auf **Insights**. 
+3. Wählen Sie im Abschnitt **Überwachung** die Option **Einblicke** aus. 
 
-    ![Einblicke](./media/howto-use-azure-monitor-workbooks/41.png)
+    ![„Einblicke“ auswählen](./media/howto-use-azure-monitor-workbooks/41.png)
 
-4. Klicken Sie auf einen Bericht oder eine Vorlage oder auf der Symbolleiste auf **Öffnen**. 
+4. Wählen Sie einen Bericht oder eine Vorlage aus, oder wählen Sie auf der Symbolleiste **Öffnen** aus. 
 
-    ![Gallery](./media/howto-use-azure-monitor-workbooks/42.png)
+    ![„Öffnen“ auswählen](./media/howto-use-azure-monitor-workbooks/42.png)
 
 
 ## <a name="sign-in-analysis"></a>Analyse der Anmeldungen
 
-Klicken Sie für den Zugriff auf die Arbeitsmappe zur Analyse der Anmeldungen im Abschnitt **Nutzung** auf **Anmeldungen**. 
+Wählen Sie für den Zugriff auf die Arbeitsmappe zur Analyse der Anmeldungen im Abschnitt **Nutzung** die Option **Anmeldungen** aus. 
 
 Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
@@ -81,7 +80,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Fehler
 
-Sie können die einzelnen Trends nach folgenden Komponenten filtern:
+Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 - Zeitbereich
 
@@ -89,24 +88,24 @@ Sie können die einzelnen Trends nach folgenden Komponenten filtern:
 
 - Benutzer
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/43.png)
+![Analyse der Anmeldungen](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
-Für jeden Trend erhalten Sie eine Aufschlüsselung nach folgenden Bereichen:
+Für jeden Trend erhalten Sie eine Aufschlüsselung nach folgenden Kategorien:
 
-- Standort
+- Location
 
-    ![Gallery](./media/howto-use-azure-monitor-workbooks/45.png)
+    ![Anmeldungen nach Ort](./media/howto-use-azure-monitor-workbooks/45.png)
 
 - Gerät
 
-    ![Gallery](./media/howto-use-azure-monitor-workbooks/46.png)
+    ![Anmeldungen nach Gerät](./media/howto-use-azure-monitor-workbooks/46.png)
 
 
 ## <a name="sign-ins-using-legacy-authentication"></a>Anmeldungen mit Legacyauthentifizierung 
 
 
-Klicken Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen mit [Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) im Abschnitt **Nutzung** auf **Anmeldungen mit Legacyauthentifizierung**. 
+Wählen Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen mit [Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) im Abschnitt **Nutzung** die Option **Anmeldungen mit Legacyauthentifizierung** aus. 
 
 Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
@@ -115,7 +114,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 - Erfolgreich
 
 
-Sie können die einzelnen Trends nach folgenden Komponenten filtern:
+Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 - Zeitbereich
 
@@ -123,25 +122,23 @@ Sie können die einzelnen Trends nach folgenden Komponenten filtern:
 
 - Benutzer
 
-- Protokolle 
+- Protokolle
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/47.png)
+![Anmeldungen mit Legacyauthentifizierung](./media/howto-use-azure-monitor-workbooks/47.png)
 
 
 Für jeden Trend erhalten Sie eine Aufschlüsselung nach App und Protokoll.
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/48.png)
+![Anmeldungen mit Legacyauthentifizierung nach App und Protokoll](./media/howto-use-azure-monitor-workbooks/48.png)
 
 
 
 ## <a name="sign-ins-by-conditional-access"></a>Anmeldungen mithilfe des bedingten Zugriffs 
 
 
-Klicken Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach [Richtlinien für bedingten Zugriff](../conditional-access/overview.md) im Abschnitt **Bedingter Zugriff** auf **Anmeldungen mithilfe des bedingten Zugriffs**. 
+Wählen Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach [Richtlinien für bedingten Zugriff](../conditional-access/overview.md) im Abschnitt **Bedingter Zugriff** die Option **Anmeldungen mithilfe des bedingten Zugriffs** aus. 
 
-Mit dieser Arbeitsmappe wird der Trend für deaktivierte Anmeldungen angezeigt.
-
-Sie können die einzelnen Trends nach folgenden Komponenten filtern:
+Mit dieser Arbeitsmappe werden die Trends für deaktivierte Anmeldungen angezeigt. Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 - Zeitbereich
 
@@ -149,10 +146,10 @@ Sie können die einzelnen Trends nach folgenden Komponenten filtern:
 
 - Benutzer
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/49.png)
+![Anmeldungen mithilfe des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
-Für die deaktivierten Anmeldungen erhalten Sie eine Aufschlüsselung nach dem Status des bedingten Zugriffs.
+Für deaktivierte Anmeldungen erhalten Sie eine Aufschlüsselung nach dem Status des bedingten Zugriffs.
 
 ![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
@@ -165,7 +162,7 @@ Für die deaktivierten Anmeldungen erhalten Sie eine Aufschlüsselung nach dem S
 
 ## <a name="sign-ins-by-grant-controls"></a>Anmeldungen nach Steuerelementen zur Rechteerteilung
 
-Klicken Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach [Steuerelementen zur Rechteerteilung](../conditional-access/controls.md) im Abschnitt **Bedingter Zugriff** auf **Anmeldungen nach Steuerelementen zur Rechteerteilung**. 
+Wählen Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach [Steuerelementen zur Rechteerteilung](../conditional-access/controls.md) im Abschnitt **Bedingter Zugriff** die Option **Anmeldungen nach Steuerelementen zur Rechteerteilung** aus. 
 
 Mit dieser Arbeitsmappe werden die folgenden Trends für deaktivierte Anmeldungen angezeigt:
 
@@ -178,7 +175,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für deaktivierte Anmeldunge
 - Andere
 
 
-Sie können die einzelnen Trends nach folgenden Komponenten filtern:
+Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 - Zeitbereich
 
@@ -186,12 +183,12 @@ Sie können die einzelnen Trends nach folgenden Komponenten filtern:
 
 - Benutzer
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/50.png)
+![Anmeldungen nach Steuerelementen zur Rechteerteilung](./media/howto-use-azure-monitor-workbooks/50.png)
 
 
 Für jeden Trend erhalten Sie eine Aufschlüsselung nach App und Protokoll.
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/51.png)
+![Aufschlüsselung der aktuellen Anmeldungen](./media/howto-use-azure-monitor-workbooks/51.png)
 
 
 
@@ -205,7 +202,7 @@ Verwenden Sie die Arbeitsmappe zur **Analyse der Anmeldungsfehler**, um Fehler i
 - Legacyauthentifizierung 
 
 
-Klicken Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach Daten zum bedingten Zugriff im Abschnitt **Problembehandlung** auf **Anmeldungen mit Legacyauthentifizierung**. 
+Wählen Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach Daten zum bedingten Zugriff im Abschnitt **Problembehandlung** die Option **Anmeldungen mit Legacyauthentifizierung** aus. 
 
 Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
@@ -218,7 +215,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 - Fehler
 
 
-Sie können die einzelnen Trends nach folgenden Komponenten filtern:
+Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 - Zeitbereich
 
@@ -226,18 +223,18 @@ Sie können die einzelnen Trends nach folgenden Komponenten filtern:
 
 - Benutzer
 
-![Gallery](./media/howto-use-azure-monitor-workbooks/52.png)
+![Problembehandlung bei Anmeldungen](./media/howto-use-azure-monitor-workbooks/52.png)
 
 
-Für die Problembehandlung von Anmeldungen erhalten Sie eine Aufschlüsselung nach folgenden Bereichen:
+Damit Sie Probleme mit Anmeldungen beheben können, bietet Azure Monitor Ihnen eine Aufschlüsselung nach den folgenden Kategorien:
 
 - Häufigste Fehler
 
-    ![Gallery](./media/howto-use-azure-monitor-workbooks/53.png)
+    ![Zusammenfassung der häufigsten Fehler](./media/howto-use-azure-monitor-workbooks/53.png)
 
 - Anmeldungen mit Benutzeraktionen
 
-    ![Gallery](./media/howto-use-azure-monitor-workbooks/54.png)
+    ![Zusammenfassung der Anmeldungen mit Benutzeraktionen](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
 
@@ -246,4 +243,4 @@ Für die Problembehandlung von Anmeldungen erhalten Sie eine Aufschlüsselung na
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
+[Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).

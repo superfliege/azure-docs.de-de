@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679345"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466506"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
@@ -68,8 +68,7 @@ Um eine neue Telemetriemessung hinzuzufügen, wählen Sie **+ Neue Messung** aus
 
 > [!NOTE]
 > Die Feldnamen in der Gerätevorlage müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Telemetriemessung in der Anwendung angezeigt werden, wenn ein echtes Gerät verbunden ist. Gehen Sie beim Konfigurieren von Einstellungen, Geräteeigenschaften und Befehlen auf die gleiche Weise vor, wenn Sie die Gerätevorlage in den folgenden Abschnitten weiter definieren.
-
-Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
+png. Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
 
 | Anzeigename        | Feldname    |  Units    | Min   |max|
 | --------------------| ------------- |-----------|-------|---|
@@ -239,7 +238,7 @@ Sie können z. B. einen neuen **Echo**-Befehl hinzufügen, indem Sie die Regist
 | --------------| -----------|---------------- | --------- |
 | Echo-Befehl  | Echo       |  30             | text      |
 
-![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho.png)
+![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho1.png)
 
 Nach der Auswahl von **Speichern** wird der Befehl **Echo** als Kachel angezeigt und kann vom **Device Explorer** verwendet werden, sobald Ihr echtes Gerät verbunden ist. Die Feldnamen Ihres Befehls müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Befehle erfolgreich ausgeführt werden können.
 
@@ -255,7 +254,7 @@ Im Dashboard findet ein Operator Informationen zu einem Gerät. Als Hersteller k
 
 Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen, indem Sie die Registerkarte **Dashboard** und die Kachel aus der Bibliothek auswählen:
 
-![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
 Wenn jetzt Bediener das Dashboard im **Device Explorer** anzeigen, können sie die Kachel sehen.
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 209a91453875531e81ddbcead8c1ed2fb309a0a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 996111fbe23000182dab774ba3bbad0cc6435824
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147443"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412724"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – IntelliJ
 
@@ -102,7 +102,7 @@ In den folgenden Schritten wird erläutert, wie Sie die Microservices für die R
 
 Die folgende Abbildung zeigt als Beispiel das Hinzufügen einer Konfiguration für einen Dienst:
 
-[![Add-Configuration](./media/deploy-locally-intelliJ/run-configurations.png)](./media/deploy-locally-intelliJ/run-configurations.png#lightbox)
+[![Add-Configuration](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 
 #### <a name="create-compound-configuration"></a>Erstellen einer Kombinationskonfiguration
@@ -113,12 +113,9 @@ Die folgende Abbildung zeigt als Beispiel das Hinzufügen einer Konfiguration f�
 
 Die folgende Abbildung zeigt als Beispiel das Hinzufügen aller SBT-Aufgaben zu einer einzigen Konfiguration:
 
+[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intelliJ/all-services.png)](./media/deploy-locally-intelliJ/all-services.png#lightbox)
-
-
-
-1. Klicken Sie auf **Ausführen**, um die Webdienste auf dem lokalen Computer zu erstellen und auszuführen.
+Klicken Sie auf **Ausführen**, um die Webdienste auf dem lokalen Computer zu erstellen und auszuführen.
 
 Für jeden Webdienst werden eine Eingabeaufforderung und ein Webbrowserfenster geöffnet. An der Eingabeaufforderung wird die Ausgabe von dem ausgeführten Dienst angezeigt, und im Browserfenster können Sie den Status überwachen. Schließen Sie die Eingabeaufforderungen und Webseiten nicht, dadurch werden die Webdienste beendet.
 

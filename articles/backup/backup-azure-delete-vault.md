@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: e7cea725a25d48ac9f1ffad6acc434e21145890e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652215"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473243"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
@@ -45,49 +45,35 @@ Wenn eine Fehlermeldung angezeigt wird, entfernen Sie [Sicherungselemente](#remo
 ![Tresorfehler beim Löschen](./media/backup-azure-delete-vault/error.png)
 
 
-## <a name="delete-the-recovery-services-vault-by-force"></a>Löschen des Recovery Services-Tresors erzwingen
-
-Sie können das Löschen eines Tresors mit PowerShell erzwingen. „Erzwingen“ bedeutet, dass der Tresor und alle zugehörigen Sicherungsdaten unwiderruflich gelöscht werden.
+## <a name="delete-the-recovery-services-vault-using-azure-resource-manager-client"></a>Löschen des Recovery Services-Tresors mit dem Azure Resource Manager-Client
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+1. Installieren Sie chocolatey von [hier](https://chocolatey.org/) aus, und installieren Sie ARMClient mit folgendem Befehl:
 
-So erzwingen Sie das Löschen eines Tresors:
+   ` choco install armclient --source=https://chocolatey.org/api/v2/ `
+2. Anmelden beim Azure-Konto unter Ausführung des folgenden Befehls
 
-1. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die angezeigten Anweisungen.
+    ` ARMClient.exe login [environment name] `
 
-   ```powershell
-    Connect-AzAccount
+3. Suchen Sie im Azure-Portal nach der Abonnement-ID und dem Ressourcengruppennamen für den Tresor, den Sie löschen möchten.
+
+Weitere Informationen zum Befehl ARMClient finden Sie in diesem [Dokument](https://github.com/projectkudu/ARMClient/blob/master/README.md).
+
+### <a name="use-azure-resource-manager-client-to-delete-recovery-services-vault"></a>Löschen des Recovery Services-Tresors mit dem Azure Resource Manager
+
+1. Führen Sie mit Ihrer Abonnement-ID, dem Namen der Ressourcengruppe und dem Namen des Tresors den folgenden Befehl aus. Wenn Sie den Befehl ausführen, wird der Tresor gelöscht, wenn keine Abhängigkeiten vorliegen.
+
    ```
-2. Bei der ersten Verwendung von Azure Backup müssen Sie den Azure Recovery Service-Anbieter in Ihrem Abonnement mit [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) registrieren.
-
-   ```powershell
-    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-   ```
-
-3. Öffnen Sie ein PowerShell-Fenster mit Administratorrechten.
-4. Verwenden Sie `Set-ExecutionPolicy Unrestricted`, um alle Einschränkungen zu entfernen.
-5. Führen Sie den folgenden Befehl aus, um das Azure Resource Manager-Clientpaket von chocolately.org herunterzuladen.
-
-    `iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
-
-6. Verwenden Sie den folgenden Befehl aus, um den Azure Resource Manager-API-Client zu installieren.
-
-   `choco.exe install armclient`
-
-7. Suchen Sie im Azure-Portal nach der Abonnement-ID und dem Ressourcengruppennamen für den Tresor, den Sie löschen möchten.
-8. Führen Sie in PowerShell mit Ihrer Abonnement-ID, dem Namen der Ressourcengruppe und dem Namen des Tresors den folgenden Befehl aus. Wenn Sie den Befehl ausführen, werden der Tresor und alle Abhängigkeiten gelöscht.
-
-   ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-9. Wenn der Tresor nicht leer ist, wird die folgende Fehlermeldung angezeigt: „Vault cannot be deleted as there are existing resources within this vault“ (Der Tresor kann nicht gelöscht werden, weil darin Ressourcen enthalten sind). Gehen Sie folgendermaßen vor, um in einem Tresor enthaltene Ressourcen zu entfernen:
+2. Wenn der Tresor nicht leer ist, wird die folgende Fehlermeldung angezeigt: „Vault cannot be deleted as there are existing resources within this vault“ (Der Tresor kann nicht gelöscht werden, weil darin Ressourcen enthalten sind). Gehen Sie folgendermaßen vor, um in einem Tresor enthaltene geschützte Elemente / Container zu entfernen:
 
-   ```powershell
+   ```
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-10. Vergewissern Sie sich im Azure-Portal, dass der Tresor gelöscht wird.
+3. Vergewissern Sie sich im Azure-Portal, dass der Tresor gelöscht wird.
 
 
 ## <a name="remove-vault-items-and-delete-the-vault"></a>Entfernen von Tresorelementen und Löschen des Tresors
@@ -130,22 +116,10 @@ Dieses Verfahren stellt ein Beispiel für das Entfernen von Sicherungsdaten aus 
 
     ![Tresor auswählen, um das zugehörige Dashboard zu öffnen](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
-2. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie dann **Löschen** aus.
-
-    ![Sicherungstyp auswählen](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
-
-3. . Wählen Sie unter **Sicherung beenden** > **Option auswählen** die Option **Sicherungsdaten löschen** aus.
-4. Geben Sie den Namen des Elements ein, und klicken Sie auf **Sicherung beenden**.
-   - Hiermit bestätigen Sie, dass Sie das Element löschen möchten.
-   - Nach dieser Bestätigung wird die Schaltfläche **Sicherung beenden** aktiviert.
-   - Wenn Sie die Daten beibehalten und nicht löschen, können Sie den Tresor nicht löschen.
-
-     ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
-
-5. Sie können optional einen Grund angeben, warum Sie die Daten löschen, und Kommentare hinzufügen.
-6. Überprüfen Sie die Azure-Meldungen, um sicherzustellen, dass der Löschvorgang abgeschlossen wurde. ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png).
-7. Nach Abschluss des Vorgangs zeigt der Dienst die folgende Nachricht an: **the backup process was stopped and the backup data was deleted** (Der Sicherungsvorgang wurde beendet und die Sicherungsdaten wurden gelöscht).
-8. Klicken Sie nach dem Löschen eines Elements aus der Liste auf das Menü **Sicherungselemente** und dann auf **Aktualisieren**, um die Elemente des Tresors anzuzeigen.
+3. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie dann **Löschen** aus.
+4. Überprüfen Sie die Azure-Meldungen, um sicherzustellen, dass der Löschvorgang abgeschlossen wurde. ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png).
+5. Nach Abschluss des Vorgangs zeigt der Dienst die folgende Nachricht an: **the backup process was stopped and the backup data was deleted** (Der Sicherungsvorgang wurde beendet und die Sicherungsdaten wurden gelöscht).
+6. Klicken Sie nach dem Löschen eines Elements aus der Liste auf das Menü **Sicherungsinfrastruktur** und dann auf **Aktualisieren**, um die Elemente im Tresor anzuzeigen.
 
 
 ### <a name="remove-azure-backup-agent-recovery-points"></a>Entfernen von Wiederherstellungspunkten für den Azure Backup-Agent
@@ -168,32 +142,23 @@ Dieses Verfahren stellt ein Beispiel für das Entfernen von Sicherungsdaten aus 
     ![ausgewählten Server entfernen](./media/backup-azure-delete-vault/selected-protected-server-click-delete.png)
 
 6. Geben Sie im Menü **Löschen** den Namen des Elements ein, und klicken Sie auf **Löschen**.
-   - Hiermit bestätigen Sie, dass Sie das Element löschen möchten.
-   - Nach dieser Bestätigung wird die Schaltfläche **Sicherung beenden** aktiviert.
-   - Wenn Sie die Daten beibehalten und nicht löschen, können Sie den Tresor nicht löschen.
 
      ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/delete-protected-server-dialog.png)
 
 7. Sie können optional einen Grund angeben, warum Sie die Daten löschen, und Kommentare hinzufügen.
 8. Überprüfen Sie die Azure-Meldungen, um sicherzustellen, dass der Löschvorgang abgeschlossen wurde. ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png).
-7. Nach Abschluss des Vorgangs zeigt der Dienst die folgende Nachricht an: **the backup process was stopped and the backup data was deleted** (Der Sicherungsvorgang wurde beendet und die Sicherungsdaten wurden gelöscht).
-8. Klicken Sie nach dem Löschen eines Elements aus der Liste auf das Menü **Sicherungselemente** und dann auf **Aktualisieren**, um die Elemente des Tresors anzuzeigen.
-
-
-
-
-
+9. Klicken Sie nach dem Löschen eines Elements aus der Liste auf das Menü **Sicherungsinfrastruktur** und dann auf **Aktualisieren**, um die Elemente im Tresor anzuzeigen.
 
 ### <a name="delete-the-vault-after-removing-dependencies"></a>Löschen des Tresors nach dem Entfernen der Abhängigkeiten
 
 1. Nachdem alle Abhängigkeiten entfernt wurden, scrollen Sie im Tresormenü zum Bereich **Zusammenfassung**.
 2. Vergewissern Sie sich, dass keine **Sicherungselemente**, **Sicherungsverwaltungsserver** oder **Replizierte Elemente** aufgelistet werden. Wenn weiterhin Elemente im Tresor angezeigt werden, entfernen Sie diese.
 
-2. Wenn sich keine Elemente mehr in Tresor befinden, klicken Sie im Tresor-Dashboard auf **Löschen**.
+3. Wenn sich keine Elemente mehr in Tresor befinden, klicken Sie im Tresor-Dashboard auf **Löschen**.
 
     ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/vault-ready-to-delete.png)
 
-1. Klicken Sie auf **Ja**, um das Löschen des Tresors zu bestätigen. Der Tresor wird gelöscht, und Sie gelangen im Portal zurück zum Dienstmenü **Neu** .
+4. Klicken Sie auf **Ja**, um das Löschen des Tresors zu bestätigen. Der Tresor wird gelöscht, und Sie gelangen im Portal zurück zum Dienstmenü **Neu** .
 
 ## <a name="what-if-i-stop-the-backup-process-but-retain-the-data"></a>Was passiert, wenn ich den Sicherungsprozess beende, die Daten aber beibehalten?
 

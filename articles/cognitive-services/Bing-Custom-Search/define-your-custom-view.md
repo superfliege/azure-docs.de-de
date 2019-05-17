@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 83ae5f923130ecb46b7b94cd8112ee45ae13e3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234814"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236260"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -27,7 +27,7 @@ Verwenden Sie beim Definieren Ihrer Websegmente Folgendes:
 
 | Segmentname | BESCHREIBUNG                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domäne     | Ein Domänensegment umfasst alle Inhalte, die innerhalb einer Internetdomäne gefunden werden. Beispiel: `www.microsoft.com`. Das Weglassen von `www.` bewirkt, dass Bing auch die Unterdomänen der Domäne durchsucht. Wenn Sie beispielsweise  `microsoft.com` angeben, gibt Bing auch Ergebnisse für  `support.microsoft.com` oder `technet.microsoft.com` zurück. |
+| Domäne     | Ein Domänensegment umfasst alle Inhalte, die innerhalb einer Internetdomäne gefunden werden. Beispiel: `www.microsoft.com`. Das Weglassen von `www.` bewirkt, dass Bing auch die Unterdomänen der Domäne durchsucht. Wenn Sie z.B. `microsoft.com` angeben, gibt Bing auch Ergebnisse von `support.microsoft.com` oder `technet.microsoft.com` zurück. |
 | Unterseite    | Ein Unterseitensegment umfasst sämtliche Inhalte, die auf der Unterseite und in den Pfaden darunter gefunden werden. Sie können maximal zwei Unterseiten im Pfad angeben. Zum Beispiel, `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Webseite    | Ein Webseitensegment kann nur diese Webseite in eine benutzerdefinierten Suche einschließen. Sie können optional angeben, ob Unterseiten enthalten sein sollen.                                                                                                                                                                                  |
 
@@ -118,9 +118,9 @@ Im Portal können Sie für bestimmte Suchbegriffe auch URLs oben in den Sucherge
 
 Sie haben zwei Möglichkeiten, um eine Webseite im oberen Bereich anzuheften:
 
-* Geben Sie auf der Registerkarte  **Angeheftet**  die URL der Webseite, die oben angeheftet werden soll, und die entsprechende Abfrage ein.
+* Geben Sie auf der **angehefteten** Registerkarte die URL der Webseite, die oben angeheftet werden soll, und die zugehörige Abfrage ein.
 
-* Geben Sie im Bereich **Vorschau** eine Suchabfrage ein, und klicken Sie auf „Suchen“. Suchen Sie nach der Webseite, die Sie für Ihre Abfrage anheften möchten, und klicken Sie auf  **Oben anheften**. Die Webseite und die Abfrage werden der Liste **Angeheftet** hinzugefügt.
+* Geben Sie im Bereich **Vorschau** eine Suchabfrage ein, und klicken Sie auf „Suchen“. Suchen Sie die Webseite, die Sie für die Abfrage anheften möchten, und klicken Sie auf **Oben anheften**. Die Webseite und die Abfrage werden der Liste **Angeheftet** hinzugefügt.
 
 ### <a name="specify-the-pins-match-condition"></a>Angeben der Übereinstimmungsbedingung für das Anheften
 

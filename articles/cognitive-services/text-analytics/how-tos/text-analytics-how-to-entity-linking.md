@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997307"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231429"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -42,7 +42,7 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | Type  | SubType | Beispiel |
 |:-----------   |:------------- |:---------|
 | Person        | N/V\*         | „Jeff“, „Bill Gates“     |
-| Standort      | N/V\*         | „Redmond, Washington“, „Paris“  |
+| Location      | N/V\*         | „Redmond, Washington“, „Paris“  |
 | Organisation  | N/V\*         | „Microsoft“   |
 | Menge      | Number        | „6“, „sechs“     | 
 | Menge      | Prozentsatz    | „50 %“, „fünfzig Prozent“| 
@@ -54,7 +54,7 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | Menge      | Temperatur   | „32 Grad“    |
 | Datetime      | N/V\*         | „18:30 4. Februar 2012“      | 
 | Datetime      | Datum          | „2. Mai 2017“ und „02/05/2017“   | 
-| Datetime      | Zeit          | „8:00“, „8 Uhr“  | 
+| Datetime      | Time          | „8:00“, „8 Uhr“  | 
 | Datetime      | DateRange     | „2. Mai bis 5. Mai“    | 
 | Datetime      | TimeRange     | „18: 00 Uhr bis 19 Uhr“     | 
 | Datetime      | Duration      | „1 Minute und 45 Sekunden“   | 
@@ -63,7 +63,7 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | URL           | N/V\*         | "https:\//www.bing.com"    |
 | E-Mail         | N/V\*         | "support@contoso.com" |
 
-\* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.
+\* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.  Alle aufgelisteten unterstützten Entitätstypen, die nur für Englisch, Chinesisch (vereinfacht), Französisch, Deutsch und Spanisch verfügbar sind.
 
 
 

@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 04/29/2019
+ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "61424908"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510765"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe des Azure-Portals
 
-In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal Lesereplikate im Azure Database for MySQL-Dienst erstellen und verwalten, die sich in der gleichen Azure-Region befinden wie der Masterserver. Dieses Feature ist zurzeit als öffentliche Vorschauversion verfügbar.
+In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MySQL-Dienst über das Azure-Portal erstellen und verwalten.
+
+> [!IMPORTANT]
+> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,9 +41,15 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
    ![Azure Database for MySQL: Replikation](./media/howto-read-replica-portal/add-replica.png)
 
-5. Geben Sie einen Namen für den Replikatserver ein, und klicken Sie auf **OK**, um die Erstellung des Replikats zu bestätigen.
+5. Geben Sie einen Namen für den Replikatserver ein.
 
-   ![Azure Database for MySQL: Replikat erstellen](./media/howto-read-replica-portal/create-replica.png)
+    ![Azure Database for MySQL – Replikatname](./media/howto-read-replica-portal/replica-name.png)
+
+6. Wählen Sie den Standort für den Replikatserver aus. Sie können ein Replikat in einer beliebigen Azur-Region erstellen. Der Standardstandort ist derselbe wie beim Masterserver.
+
+    ![Azure Database for MySQL – Replikatstandort](./media/howto-read-replica-portal/replica-location.png)
+
+7. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
 
 > [!NOTE]
 > Lesereplikate werden mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Masterserver, damit das Replikat über genügend Kapazität verfügt.
@@ -115,7 +124,7 @@ Führen Sie die folgenden Schritte aus, um einen Masterserver im Azure-Portal zu
 
 2. Wählen Sie auf der Seitenleiste im Abschnitt **Überwachung** die Option **Metriken** aus:
 
-3. Wählen Sie in der Dropdownliste der verfügbaren Metriken die Option **Replication lag in seconds** (Replikationsverzögerung in Sekunden) aus. 
+3. Wählen Sie in der Dropdownliste der verfügbaren Metriken die Option **Replication lag in seconds** (Replikationsverzögerung in Sekunden) aus.
 
    ![Auswählen der Replikationsverzögerung](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 

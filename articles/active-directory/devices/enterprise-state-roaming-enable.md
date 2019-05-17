@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519288"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230928"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivieren von Enterprise State Roaming in Azure Active Directory
 Enterprise State Roaming ist für jedes Unternehmen mit einer Azure AD Premium- oder Enterprise Mobility + Security-Lizenz (EMS) verfügbar. Weitere Informationen zum Erhalt eines Azure AD-Abonnements finden Sie auf der [Azure AD-Produktseite](https://azure.microsoft.com/services/active-directory) .
@@ -46,9 +46,9 @@ Enterprise State Roaming-Daten werden in [Azure-Regionen](https://azure.microsof
 
 Wert für Land/Region | Daten gehostet in
 ---------------------|-------------------------
-Ein EMEA-Land, z.B. Frankreich oder Sambia | Eine oder mehrere Azure-Regionen in Europa 
-Ein Land in Nordamerika, z.B. USA oder Kanada | Eine oder mehrere Azure-Regionen in den USA
-Ein APAC-Land, z.B. Australien oder Neuseeland | Eine oder mehrere Azure-Regionen in Asien
+EMEA-Länder/-Regionen, z.B. Frankreich oder Sambia | Eine oder mehrere Azure-Regionen in Europa 
+Ein Land / eine Region aus Nordamerika wie USA oder Kanada | Eine oder mehrere Azure-Regionen in den USA
+APAC-Länder/-Regionen, z.B. Australien oder Neuseeland | Eine oder mehrere Azure-Regionen in Asien
 Regionen „Südamerika“ und „Antarktis“ | Eine oder mehrere Azure-Regionen in den USA
 
 Der Wert für Land/Region wird im Rahmen der Azure AD-Verzeichniserstellung festgelegt und kann später nicht mehr geändert werden. Wenn Sie ausführliche Informationen zum Speicherort Ihrer Daten benötigen, können Sie beim [Azure-Support](https://azure.microsoft.com/support/options/) ein Ticket erstellen.

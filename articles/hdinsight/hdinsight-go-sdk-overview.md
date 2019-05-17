@@ -1,23 +1,23 @@
 ---
-title: Azure HDInsight Go SDK
-description: Referenz zum Azure HDInsight Go SDK
+title: Azure HDInsight SDK für Go
+description: Referenz zum Azure HDInsight SDK für Go
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 05/8/2019
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 113948d77d87a34822f81f020b03f6628b9c5e84
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700605"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466220"
 ---
-# <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK – Vorschau
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK für Go (Vorschau)
 
 ## <a name="overview"></a>Übersicht
-Das HDInsight Go SDK bietet Klassen und Funktionen, mit denen Sie Ihre HDInsight-Cluster verwalten können. Es enthält Vorgänge zum Erstellen, Löschen, Aktualisieren, Auflisten, Ändern der Größe, Ausführen von Skriptaktionen, Überwachen, Abrufen der Eigenschaften von HDInsight-Clustern und mehr.
+Das HDInsight SDK für Go bietet Klassen und Funktionen, mit denen Sie Ihre HDInsight-Cluster verwalten können. Es enthält Vorgänge zum Erstellen, Löschen, Aktualisieren, Auflisten, Ändern der Größe, Ausführen von Skriptaktionen, Überwachen, Abrufen der Eigenschaften von HDInsight-Clustern und mehr.
 
 > [!NOTE]  
 >GoDoc-Referenzmaterial für dieses SDK ist auch [hier verfügbar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).

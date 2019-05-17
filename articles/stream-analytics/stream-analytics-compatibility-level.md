@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 5/2/2019
+ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998259"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205458"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -25,8 +25,8 @@ Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Au
 
 Azure Stream Analytics unterstützt zurzeit drei Kompatibilitätsgrade:
 
-* 1.0: Standardgrad
-* 1.1: Verhalten des aktuellen Release
+* 1.0 – Vorheriges Verhalten
+* 1.1 – Standardverhalten
 * 1.2 (Vorschau): neuestes Verhalten mit den neuesten Verbesserungen zum Testen
 
 Der ursprüngliche Kompatibilitätsgrad „1.0“ wurde mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt.
@@ -49,7 +49,7 @@ So aktualisieren Sie den Kompatibilitätsgrad des Auftrags im Azure-Portal
 
 Wenn Sie den Kompatibilitätsgrad aktualisieren, überprüft der T-SQL-Compiler den Auftrag mit der Syntax, die dem ausgewählten Kompatibilitätsgrad entspricht.
 
-## <a name="compatibility-level-12"></a>Kompatibilitätsgrad 1.2
+## <a name="compatibility-level-12-preview"></a>Kompatibilitätsgrad 1.2 (Vorschau)
 
 Beim Kompatibilitätsgrad 1.2 wurden die folgenden grundlegenden Änderungen eingeführt:
 

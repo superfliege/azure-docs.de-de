@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Ausführen von Bildvorgängen – Java'
+title: Ausführen von Bildvorgängen – Java
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie mehr über eine grundlegende Java Swing-App, die die Maschinelles Sehen-API in Azure Cognitive Services verwendet. Führen Sie eine optische Zeichenerkennung durch, erstellen Sie Miniaturansichten, und arbeiten Sie mit visuellen Merkmalen in einem Bild.
 services: cognitive-services
@@ -7,18 +7,18 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
+ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
-ms.date: 09/21/2017
-ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 04/30/2019
+ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868088"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232636"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>Tutorial: Maschinelles Sehen-API (Java)
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Verwenden von Maschinelles Sehen-Features mit REST-API und Java
 
 Dieses Tutorial zeigt die Funktionen der Maschinellen Sehen-REST-API von Azure Cognitive Services.
 
@@ -34,7 +34,7 @@ Dieses Tutorial erklärt, wie Sie mit maschinellem Sehen folgende Aufgaben ausf�
 > * Lesen von gedrucktem Text in Bildern
 > * Lesen von handgeschriebenem Text in Bildern
 
-Die Java Swing-Formularanwendung wurde bereits geschrieben, verfügt jedoch über keine Funktionen. In diesem Tutorial fügen Sie den spezifischen Code der Maschinellen Sehen-REST-API hinzu, um die Funktionalität der Anwendung zu vervollständigen.
+Die Java Swing-Formularanwendung wurde bereits geschrieben, hat aber keine Funktionalität. In diesem Tutorial fügen Sie den spezifischen Code der Maschinellen Sehen-REST-API hinzu, um die Funktionalität der Anwendung zu vervollständigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,13 +42,13 @@ Die Java Swing-Formularanwendung wurde bereits geschrieben, verfügt jedoch übe
 
 Dieses Tutorial wurde mit der NetBeans-IDE entwickelt. Insbesondere mit der **Java SE** von NetBeans, die Sie [hier herunterladen](https://netbeans.org/downloads/index.html) können.
 
-### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Abonnieren der Maschinelles Sehen-API und Anfordern eines Abonnementschlüssels 
+### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Abonnieren der Maschinelles Sehen-API und Anfordern eines Abonnementschlüssels
 
-Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnieren, die zum Funktionsumfang von Azure Cognitive Services gehört. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). In diesem Tutorial sind sowohl der Primär- als auch der Sekundärschlüssel gültig. 
+Vor dem Erstellen des Beispiels müssen Sie die Maschinelles Sehen-API abonnieren, die zu den Azure Cognitive Services gehört. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). In diesem Tutorial sind sowohl der Primär- als auch der Sekundärschlüssel gültig.
 
-## <a name="acquire-the-incomplete-tutorial-project"></a>Beziehen des unvollständigen Tutorialprojekts
+## <a name="acquire-incomplete-tutorial-project"></a>Abrufen eines unvollständigen Tutorialprojekts
 
-### <a name="download-the-tutorial-project"></a>Herunterladen des Tutorialprojekts
+### <a name="download-the-project"></a>Herunterladen des Projekts
 
 1. Öffnen Sie das Repository [Tutorial: Maschinelles Sehen von Cognitive Services in Java](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial).
 1. Klicken Sie auf die Schaltfläche **Klonen oder Herunterladen**.
@@ -78,7 +78,7 @@ Importieren Sie die Datei **cognitive-services-java-computer-vision-tutorial-mas
 
 1. Beenden Sie die Tutorialanwendung.
 
-## <a name="add-the-tutorial-code-to-the-project"></a>Hinzufügen des Tutorialcodes zum Projekt
+## <a name="add-tutorial-code-to-the-project"></a>Hinzufügen von Tutorialcode zum Projekt
 
 Die Java Swing-Anwendung verfügt über sechs Registerkarten. Jede Registerkarte zeigt eine andere Funktion von Maschinelles Sehen (Analysieren, OCR usw.). Die sechs Tutorialabschnitte sind voneinander unabhängig, sodass Sie beliebig viele der Abschnitte hinzufügen können. Darüber hinaus können Sie die Abschnitte in beliebiger Reihenfolge hinzufügen.
 
@@ -88,7 +88,7 @@ Das Analysefeature von Maschinelles Sehen überprüft Bilder auf mehr als 2.000 
 
 Um die Analysefunktion der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Hinzufügen des Ereignishandlercodes für die Analyseschaltfläche
 
 Die Ereignishandlermethode **analyzeImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **AnalyzeImage** auf, um das Bild zu analysieren. Wenn **AnalyzeImage** zurückgegeben wird, zeigt die Methode die formatierte JSON-Antwort im Textbereich **Antwort** an, extrahiert die erste Beschriftung aus **JSONObject** und zeigt die Beschriftung sowie den Zuverlässigkeitsgrad an, dass die Beschriftung korrekt identifiziert wurde.
 
@@ -202,7 +202,7 @@ Kopieren Sie die Methode **AnalyzeImage** und fügen Sie sie direkt unter der Me
     }
  ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-analyze-function"></a>Ausführen der Analysefunktion
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem zu analysierenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -326,7 +326,7 @@ Kopieren Sie die Methode **LandmarkImage** und fügen Sie sie direkt unter der M
     }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-landmark-function"></a>Ausführen der Wahrzeichenfunktion
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Wahrzeichen**, geben Sie eine URL zu einem Bild eines Wahrzeichens ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -336,7 +336,7 @@ Die Funktion „Prominente“ für Maschinelles Sehen analysiert Bilder hinsicht
 
 Um die Funktion „Prominente“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Hinzufügen des Ereignishandlercodes für die Prominentenschaltfläche
 
 Die Ereignishandlermethode **celebritiesImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **CelebritiesImage** auf, um das Bild zu analysieren. Wenn **CelebritiesImage** zurückgegeben wird, zeigt die Methode die formatierte JSON-Antwort im Textbereich **Antwort** an, extrahiert den ersten Prominentennamen aus **JSONObject** und zeigt ihn im Fenster gemeinsam mit dem Zuverlässigkeitsgrad an, dass der Prominente korrekt identifiziert wurde.
 
@@ -450,7 +450,7 @@ Kopieren Sie die Methode **CelebritiesImage** und fügen Sie sie direkt unter de
     }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-celebrities-function"></a>Ausführen der Prominentenfunktion
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Prominente**, geben Sie eine URL zu einem Bild eines Prominenten ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -460,7 +460,7 @@ Die Funktion „Miniaturansicht“ für Maschinelles Sehen generiert Miniaturans
 
 Um die Funktion „Miniaturansicht“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Hinzufügen des Ereignishandlercodes für die Miniaturansichtsschaltfläche
 
 Die Ereignishandlermethode **thumbnailImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **getThumbnailImage** auf, um die Miniaturansicht zu erstellen. Wenn **getThumbnailImage** zurückgegeben wird, zeigt die Methode die generierte Miniaturansicht an.
 
@@ -573,7 +573,7 @@ Kopieren Sie die folgende Methode **getThumbnailImage** und fügen Sie sie direk
     }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-thumbnail-function"></a>Ausführen der Miniaturansichtsfunktion
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Miniaturansicht**, geben Sie eine URL zu einem Bild ein, und klicken Sie dann auf die Schaltfläche **Miniaturansicht generieren**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -583,7 +583,7 @@ Die OCR-Funktion (Optical Character Recognition) für Maschinelles Sehen analysi
 
 Um die OCR-Funktion der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Hinzufügen des Ereignishandlercodes für die OCR-Schaltfläche
 
 Die Ereignishandlermethode **ocrImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **OcrImage** auf, um das Bild zu analysieren. Wenn **OcrImage** zurückgegeben wird, zeigt die Methode den erkannten Text im formatierten JSON-Format im Textbereich **Antwort** an.
 
@@ -684,7 +684,7 @@ Kopieren Sie die folgende Methode **OcrImage** und fügen Sie sie direkt unter d
     }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-ocr-function"></a>Ausführen der OCR-Funktion
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **OCR**, geben Sie eine URL zu einem Bild von gedrucktem Text ein, und klicken Sie dann auf die Schaltfläche **Bild lesen**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -694,7 +694,7 @@ Die Funktion „Schrifterkennung“ für Maschinelles Sehen analysiert Bilder hi
 
 Um die Funktion der Schrifterkennung der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Hinzufügen des Ereignishandlercodes für die Schrifterkennungsschaltfläche
 
 Die Ereignishandlermethode **handwritingImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **HandwritingImage** auf, um das Bild zu analysieren. Wenn **HandwritingImage** zurückgegeben wird, zeigt die Methode den erkannten Text im formatierten JSON-Format im Textbereich **Antwort** an.
 
@@ -842,11 +842,12 @@ Kopieren Sie die folgende Methode **HandwritingImage** und fügen Sie sie direkt
     }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-handwriting-function"></a>Ausführen der Schrifterkennungsfunktion
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Handgeschriebenen Text lesen**, geben Sie eine URL zu einem Bild von handgeschriebenem Text ein, und klicken Sie dann auf die Schaltfläche **Bild lesen**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial zur Maschinelles Sehen-API in C&#35;](CSharpTutorial.md)
-- [Tutorial zur Maschinelles Sehen-API in Python](PythonTutorial.md)
+In diesem Leitfaden haben Sie die Maschinelles Sehen-REST-API mit Java verwendet, um viele der verfügbaren Features zur Bildanalyse zu testen. In der Referenzdokumentation finden Sie weitere Informationen zu den beteiligten APIs.
+
+- [Maschinelles Sehen-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

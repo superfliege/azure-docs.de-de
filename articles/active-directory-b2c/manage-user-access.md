@@ -1,6 +1,6 @@
 ---
 title: Verwalten des Benutzerzugriffs in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Minderjährige identifizieren, das Geburtsdatum und das Land erfassen und in Ihrer Anwendung per Azure AD B2C die Zustimmung zu den Nutzungsbedingungen einholen.
+description: Erfahren Sie, wie Sie mithilfe von Azure AD B2C in Ihrer Anwendung Minderjährige identifizieren, Geburtsdatum und Daten zu Land/Region erfassen und Akzeptanz von Nutzungsbedingungen abrufen.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cddaf59a1202c9c19018427c06639686e905bb64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691103"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228020"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ In diesem Artikel wird erläutert, wie Sie den Benutzerzugriff auf Ihre Anwendun
 
 - Identifizieren von Minderjährigen und Steuern des Benutzerzugriffs auf Ihre Anwendung
 - Anfordern der Zustimmung durch die Eltern, wenn Minderjährige Ihre Anwendungen nutzen möchten
-- Erfassen des Geburtsdatums und Lands von Benutzern
+- Erfassen des Geburtsdatums und von Daten zu Land/Region von Benutzern.
 - Einholen der Zustimmung zu den Nutzungsbedingungen und Durchführen der Alterskontrolle
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -58,11 +58,11 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](active-directory-b2c-reference-custom-attr.md). Bei der Adressierung von erweiterten Attributen per Azure AD-Graph-API müssen Sie die lange Version des Attributs verwenden, z.B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-country-data"></a>Erfassen des Geburtsdatums und des Lands
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Erfassen des Geburtsdatums und von Daten zu Land/Region von Benutzern
 
-Anwendungen können Azure AD B2C nutzen, um während der Registrierung Daten zum Geburtsdatum und Land für alle Benutzer zu erfassen. Falls diese Informationen nicht bereits vorhanden sind, kann die Anwendung sie während des nächsten Authentifizierungsprozesses (Anmeldung) vom Benutzer anfordern. Benutzer können den Vorgang nicht fortsetzen, ohne das Geburtsdatum und das Land anzugeben. Azure AD B2C ermittelt anhand der Informationen, ob die Person gemäß den Bestimmungen des jeweiligen Lands als minderjährig gilt. 
+Anwendungen können sich beim Erfassen des Geburtsdatums und von Land/Region-Informationen von allen Benutzern während der Registrierung auf Azure AD B2C verlassen. Falls diese Informationen nicht bereits vorhanden sind, kann die Anwendung sie während des nächsten Authentifizierungsprozesses (Anmeldung) vom Benutzer anfordern. Benutzer können nicht fortfahren, ohne ihr Geburtsdatum und Land/Region-Informationen anzugeben. Azure AD B2C verwendet die Informationen, um festzustellen, ob die Person gemäß der gesetzlichen Vorschriften dieses Landes / dieser Region minderjährig ist. 
 
-Mit einem angepassten Benutzerflow können das Geburtsdatum und das Land erfasst werden, und die Transformation von Azure AD B2C-Ansprüchen kann genutzt werden, um die Altersgruppe (**ageGroup**) zu ermitteln und das Ergebnis im Verzeichnis zu speichern (oder das Geburtsdatum und Land direkt zu speichern).
+Ein benutzerdefinierter Benutzerflow ermöglicht das Erfassen von Geburtsdatum und Land/Region-Informationen und kann mit der Azure AD B2C-Anforderungstransformation die **ageGroup** bestimmen und das Ergebnis im Verzeichnis speichern (oder Geburtsdatum und Land/Region-Informationen direkt speichern).
 
 In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Geburtsdatum des Benutzers die Altersgruppe (**ageGroup**) berechnet wird:
 
@@ -78,7 +78,7 @@ In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Gebur
 
 4. Wenn für keine Berechnung TRUE zurückgegeben wurde, wird für die Berechnung **Adult** zurückgegeben.
 
-Falls für eine Anwendung mit anderen Methoden auf zuverlässige Weise Daten zum Geburtsdatum oder Land erfasst wurden, kann die Anwendung die Graph-API nutzen, um den Benutzerdatensatz mit diesen Informationen zu aktualisieren. Beispiel: 
+Wenn eine Anwendung zuverlässig Geburtsdatum oder Land/Region-Informationen mittels anderer Methoden gesammelt hat, kann die Anwendung die Graph-API verwenden, um den Benutzerdatensatz mit diesen Informationen zu aktualisieren. Beispiel: 
 
 - Wenn für einen Benutzer bekannt ist, dass es sich um eine erwachsene Person handelt, wird das Verzeichnisattribut **ageGroup** auf den Wert **Adult** aktualisiert.
 - Falls ein Benutzer sicher als minderjährig eingestuft wird, wird das Verzeichnisattribut **ageGroup** auf den Wert **Minor** aktualisiert und **consentProvidedForMinor** entsprechend festgelegt.

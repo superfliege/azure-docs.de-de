@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082618"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407866"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -233,13 +233,13 @@ Zum Hinzufügen von Besitzern zu einer Gruppe verwenden Sie das Cmdlet „Add-Az
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Der Parameter „-ObjectId“ ist die Objekt-ID der Gruppe, der ein Besitzer hinzugefügt werden soll, „-RefObjectId“ ist die Objekt-ID des Benutzers, der als Besitzer der Gruppe hinzugefügt werden soll.
+Der Parameter -ObjectId ist die Objekt-ID der Gruppe, der ein Besitzer hinzugefügt werden soll, -RefObjectId ist die Objekt-ID des Benutzers oder Dienstprinzipals, der als Besitzer der Gruppe hinzugefügt werden soll.
 
 Zum Abrufen der Besitzer einer Gruppe verwenden Sie das Cmdlet „Get-AzureADGroupOwner“:
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
-Das Cmdlet gibt die Liste der Besitzer für die angegebene Gruppe zurück:
+Das Cmdlet gibt die Liste der Besitzer (Benutzer und Dienstprinzipale) für die angegebene Gruppe zurück:
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------

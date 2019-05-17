@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555420"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205013"
 ---
 # <a name="data-querying"></a>Datenabfragen
 
@@ -35,9 +35,9 @@ Die [Zeitreihenausdrucksprache (TSX)](https://docs.microsoft.com/rest/api/time-s
 
 Die folgenden Kern-APIs werden unterstützt.
 
-![TSQ][1]
+[ ![Zeitreihenabfrage (TSQ): Übersicht](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
-### <a name="environment-apis"></a>Umgebungs-APIs
+## <a name="environment-apis"></a>Umgebungs-APIs
 
 Die folgenden Umgebungs-APIs sind verfügbar:
 
@@ -45,7 +45,7 @@ Die folgenden Umgebungs-APIs sind verfügbar:
 * [„Umgebungsverfügbarkeit abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Gibt die Verteilung der Anzahl von Ereignissen über den Ereigniszeitstempel `$ts` zurück. Diese API hilft dabei zu bestimmen, ob Ereignisse in dem Zeitstempel vorhanden sind, indem die Anzahl von Ereignissen, sofern welche vorhanden sind, zurückgegeben wird.
 * [„Ereignisschema abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Gibt die Ereignisschema-Metadaten für einen bestimmten Suchzeitraum zurück. Diese API hilft beim Abrufen aller Metadaten und Eigenschaften, die im Schema für den angegebenen Suchzeitraum zur Verfügung stehen.
 
-### <a name="time-series-model-query-tsm-q-apis"></a>Zeitreihenmodellabfrage (TSM-Q)-APIs
+## <a name="time-series-model-query-tsm-q-apis"></a>Zeitreihenmodellabfrage (TSM-Q)-APIs
 
 Die folgenden Zeitreihenmodellabfrage-APIs sind verfügbar:
 
@@ -54,7 +54,7 @@ Die folgenden Zeitreihenmodellabfrage-APIs sind verfügbar:
 * [Hierarchien-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): Ermöglicht CRUD mit Zeitreihenhierarchien und deren zugeordneten Feldpfaden.
 * [Instanzen-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): Ermöglicht CRUD mit Zeitreiheninstanzen und deren zugeordneten Instanzenfeldern.
 
-### <a name="time-series-query-tsq-apis"></a>Zeitreihenabfrage (TSQ)-APIs
+## <a name="time-series-query-tsq-apis"></a>Zeitreihenabfrage (TSQ)-APIs
 
 Die folgenden Zeitreihenabfrage-APIs sind verfügbar:
 
@@ -75,11 +75,8 @@ Die folgenden Zeitreihenabfrage-APIs sind verfügbar:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen:
+- Erfahren Sie mehr über [Datenspeicherung und Dateneingang](./time-series-insights-update-storage-ingress.md) in Azure Time Series Insights Preview.
 
-- [Speicherung und Datenerfassung in Azure Time Series Insights Preview](./time-series-insights-update-storage-ingress.md)
-- [Datenmodellierung](./time-series-insights-update-tsm.md)
-- [Bewährte Methoden für die Auswahl einer Time Series-ID](./time-series-insights-update-how-to-id.md)
+- Lesen Sie den Artikel über [Datenmodellierung](./time-series-insights-update-tsm.md) in Time Series Insights Preview.
 
-<!-- Images -->
-[1]: media/v2-update-tsq/tsq.png
+- Entdecken Sie [bewährte Methoden, wenn Sie eine Time Series-ID auswählen](./time-series-insights-update-how-to-id.md).

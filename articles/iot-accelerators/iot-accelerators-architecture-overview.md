@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467314"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466467"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Einführung in die Azure IoT-Referenzarchitektur
 
@@ -38,7 +38,7 @@ Die [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture) wird lauf
 
 In der Referenzarchitektur werden die folgenden wichtigsten Subsysteme angegeben:
 
-![Wichtigste Subsysteme](media/iot-accelerators-architecture-overview/CoreSubsystems.png)
+![Wichtigste Subsysteme](media/iot-accelerators-architecture-overview/coresubsystems1.png)
 
 In den folgenden Abschnitten wird beschrieben, in welchem Verhältnis die Komponenten des Solution Accelerators für die Remoteüberwachung zu diesen Subsystemen stehen.
 

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: e2068283414ef2fabb44e9876f6727cc0fe3530b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223817"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233523"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -37,11 +37,11 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
-| Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
+| V-Kerne | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
 | Arbeitsspeicher | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
-| In-Memory-OLTP-Speicher | 3GB pro virtuellem Kern | 2,6GB pro virtuellem Kern |
-| Maximaler Speicher (universell) |  8 TB | 8 TB |
-| Max. Speicherkapazität (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
+| Max. In-Memory-OLTP-Arbeitsspeicher | 3GB pro virtuellem Kern | 2,6GB pro virtuellem Kern |
+| Max. Instanzspeichergröße (allgemeiner Zweck) |  8 TB | 8 TB |
+| Max. Instanzspeichergröße (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
@@ -50,12 +50,12 @@ Eine verwaltete Instanz verfügt über zwei Dienstebenen: „Universell“und �
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
 | Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Arbeitsspeicher | Gen4: 56 GB bis 168 GB<br/>Gen5: 40,8 GB bis 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 GB bis 168 GB <br/> Gen5: 40,8 GB bis 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
-| Max. Speichergröße | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
+| Arbeitsspeicher | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern) | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern) |
+| Max. Instanzspeichergröße | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
-| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K bis 110 K (1,375 pro virtuellem Kern) |
+| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11K – 110K (1.375/V-Kern) |
 | Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 bis 48 MB/Sek. pro virtuellem Kern |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856880"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228395"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Verwaltete Identitäten für Azure-Ressourcen mit Service Bus 
 
@@ -29,7 +29,7 @@ Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitä
 
 ## <a name="service-bus-roles-and-permissions"></a>Service Bus-Rollen und -Berechtigungen
 
-Sie können eine verwaltete Identität nur den Rollen „Besitzer“ oder „Mitwirkender“ eines Service Bus-Namespace hinzufügen. Damit erhält die Identität vollständige Kontrolle über alle Entitäten im Namespace. Verwaltungsvorgänge, bei denen die Namespacetopologie geändert wird, werden anfänglich jedoch nur über Azure Resource Manager unterstützt. Die Unterstützung erfolgt nicht über die native Service Bus-REST-Verwaltungsschnittstelle. Diese Unterstützung bedeutet auch, dass Sie das .NET Framework-Clientobjekt [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) innerhalb einer verwalteten Identität nicht verwenden können.
+Sie können eine verwaltete Identität nur den Rollen „Besitzer“ oder „Mitwirkender“ eines Service Bus-Namespace hinzufügen. Damit erhält die Identität vollständige Kontrolle über alle Entitäten im Namespace. Verwaltungsvorgänge, bei denen die Namespacetopologie geändert wird, werden anfänglich jedoch nur über Azure Resource Manager unterstützt. Die Unterstützung erfolgt nicht über die native Service Bus-REST-Verwaltungsschnittstelle. Diese Unterstützung bedeutet auch, dass Sie das .NET Framework-Client-[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)- oder das .NET Standard-Client-[ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient)-Objekt innerhalb einer verwalteten Identität nicht verwenden können.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Verwenden von Service Bus mit verwalteten Identitäten für Azure-Ressourcen
 

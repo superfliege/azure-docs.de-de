@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/18/2018
+ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996168"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463496"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -177,6 +177,8 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |90051| Invalid Delegation Token. Invalid national Cloud ID ({cloudId}) is specified. (Das Delegierungstoken ist ungültig. Eine ungültige nationale Cloud-ID ({cloudId}) wurde angegeben.)|
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
 |90094| Für die Gewährung sind Administratorberechtigungen erforderlich. Bitten Sie den Mandantenadministrator, Zustimmung für diese Anwendung bereitzustellen.|
+|500021|Mandant wird durch den Unternehmensproxy eingeschränkt. Ressourcenzugriff wird verweigert.|
+|500121| Fehler bei der Authentifizierung während starker Authentifizierungsanforderung.|
 |500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
 |530021|Application does not meet the conditional access approved app requirements. (Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.)|
 

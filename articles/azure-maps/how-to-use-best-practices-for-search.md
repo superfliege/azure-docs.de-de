@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e60b202a32745062d2078d9721dfeba7aba69bda
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713893"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205620"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Bewährte Methoden zum Verwenden des Suchdiensts von Azure Maps
 
@@ -49,7 +49,7 @@ Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Länder
 
    Um Ihre Ergebnisse in den für Ihren Benutzer relevanten geografischen Raum zu lenken, sollten Sie immer die maximal mögliche Detailstufe für die Standorteingabe hinzufügen. Sie können die Suchergebnisse einschränken, indem Sie die folgenden Eingabetypen hinzufügen:
 
-   1. Legen Sie den Parameter `countrySet` fest, z. B. „US, FR“. Das Standardsuchverhalten besteht darin, die ganze Welt zu durchsuchen und möglicherweise unerwünschte Ergebnisse zu erhalten. Wenn Ihre Suchanfrage keinen `countrySet`-Parameter enthält, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens **Bellevue** liefert z. B. Ergebnisse aus den USA und Frankreich, da es in Frankreich und in den USA Städte namens **Bellevue** gibt.
+   1. Legen Sie die `countrySet`-Parameter fest, z.B. „US,FR“. Das Standardsuchverhalten besteht darin, die ganze Welt zu durchsuchen und möglicherweise unerwünschte Ergebnisse zu erhalten. Wenn Ihre Suchanfrage keinen `countrySet`-Parameter enthält, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens **Bellevue** liefert z. B. Ergebnisse aus den USA und Frankreich, da es in Frankreich und in den USA Städte namens **Bellevue** gibt.
 
    2. Sie können die Parameter `btmRight` und `topleft` verwenden, um den Begrenzungsrahmen so festzulegen, damit die Suche auf einen bestimmten Bereich auf der Karte eingeschränkt wird.
 

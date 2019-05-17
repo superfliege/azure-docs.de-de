@@ -4,16 +4,16 @@ description: Verwenden Sie den IoT Central-Connector in Microsoft Flow zum Ausl�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497736"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467985"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 
@@ -43,7 +43,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine mobile Benachrichtigung in der mo
 
 1. Es wird eine Liste von Workflows angezeigt, auf die Sie Zugriff haben und die dieser IoT Central-Regel angefügt sind. Klicken Sie auf **Vorlagen erkunden** oder **Neu > Aus Vorlage erstellen**, um aus einer der verfügbaren Vorlagen zu wählen. 
 
-    ![Verfügbare Microsoft Flow-Vorlagen](media/howto-add-microsoft-flow/flowtemplates.png)
+    ![Verfügbare Microsoft Flow-Vorlagen](media/howto-add-microsoft-flow/flowtemplates1.png)
 
 1. Sie werden aufgefordert, sich bei den Connectors in der von Ihnen gewählten Vorlage anzumelden. Sobald die Connectors angemeldet sind, gelangen Sie zum Designer, mit dem Sie Ihren Workflow erstellen können. Der Workflow verfügt über einen IoT Central-Auslöser, in den Ihre Anwendung und Regel bereits eingetragen sind.
 
@@ -52,7 +52,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine mobile Benachrichtigung in der mo
     > [!NOTE]
     > Wählen Sie im Fenster für dynamischen Inhalt den Text **Weitere Informationen** aus, um Mess- und Eigenschaftswerte abzurufen, welche die Regel ausgelöst haben.
 
-    ![Flow-Bearbeitungsaktion mit geöffnetem dynamischem Bereich](./media/howto-add-microsoft-flow/flowdynamicpane.png)
+    ![Flow-Bearbeitungsaktion mit geöffnetem dynamischem Bereich](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
 1. Wenn Sie die Bearbeitung Ihrer Aktion abgeschlossen haben, wählen Sie **Speichern** aus. Sie werden zur Übersichtsseite des Workflows weitergeleitet. Hier können Sie den Ausführungsverlauf anzeigen und für Kollegen freigeben.
 
@@ -79,7 +79,7 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
 
 1. Wählen Sie das Feld „Gerätename“ aus. Wählen Sie im dynamischen Inhaltsbereich **Gerätename** aus. Dieser Wert wird aus der Eingabe des Benutzers über die mobile App übergeben und entspricht dem Namen Ihres neuen Geräts in IoT Central. In diesem Beispiel ist das einzige erforderliche Feld der Gerätenamen, gekennzeichnet mit einem roten Sternchen. Eine andere Gerätevorlage weist möglicherweise mehrere erforderliche Felder auf, die zum Erstellen eines neuen Geräts ausgefüllt werden müssen.
 
-    ![Dynamischer Bereich der Flow-Aktion zum Erstellen eines Geräts](./media/howto-add-microsoft-flow/flowcreatedevice.png)
+    ![Dynamischer Bereich der Flow-Aktion zum Erstellen eines Geräts](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
 1. (Optional) Füllen Sie andere Felder aus, die Sie zum Erstellen neuer Geräte für geeignet halten.
 
@@ -101,13 +101,16 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
 
 1. Fügen Sie eine neue Aktion hinzu. Suchen Sie nach der Aktion **Azure IoT Central – Aktualisieren eines Geräts**.
 
-1. Wählen Sie aus der Dropdownliste Ihre Anwendung aus. Jetzt benötigen Sie eine ID des vorhandenen Geräts, das Sie aktualisieren möchten. Sie können die ID des IoT Central-Geräts über den **Device Explorer** abrufen.
+1. Wählen Sie aus der Dropdownliste Ihre Anwendung aus. Jetzt benötigen Sie eine ID des vorhandenen Geräts, das Sie aktualisieren möchten. 
 
-    ![Geräte-ID im Device Explorer von IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.png)
+    > [!NOTE] 
+    > **Sie müssen die ID aus der URL verwenden**, die auf der Seite „Gerätedetails“ des zu aktualisierenden Geräts zu finden ist. Die Geräte-ID in der Geräteliste von Device Explorer ist für die Verwendung in Microsoft Flow nicht geeignet.
+
+    ![IoT Central-ID aus der URL](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
 1. Sie können den Gerätenamen aktualisieren. Um beliebige Geräteeigenschaften und -einstellungen zu aktualisieren, müssen Sie in der Dropdownliste **Gerätevorlage** die Gerätevorlage des Geräts auswählen, das Sie aktualisieren möchten. Die Aktionskachel wird erweitert, um alle Eigenschaften und Einstellungen anzuzeigen, die Sie aktualisieren können.
 
-    ![Flow-Workflow zum Aktualisieren eines Geräts](./media/howto-add-microsoft-flow/flowupdatedevice.png)
+    ![Flow-Workflow zum Aktualisieren eines Geräts](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
 1. Wählen Sie die Eigenschaften und Einstellungen aus, die Sie aktualisieren möchten. Wählen Sie im dynamischen Inhaltsbereich die entsprechende Eingabe vom Auslöser aus. In diesem Beispiel wird der Wert „Speicherort“ nach unten weitergegeben, um die Eigenschaft „Speicherort“ des Geräts zu aktualisieren.
 
@@ -117,19 +120,32 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
 
 ## <a name="get-device-information-in-a-workflow"></a>Abrufen von Geräteinformationen in einem Workflow
 
-Sie können Geräteinformationen mit der Aktion **Azure IoT Central - Get a device** (Azure IoT Central – Abrufen eines Geräts) mithilfe der Geräte-ID abrufen. Dabei erhalten Sie Informationen wie Gerätename, Gerätevorlagenname, Eigenschaftswerte und Einstellungswerte, um diese an spätere Aktionen im Workflow zu übergeben. Hier sehen Sie einen Beispielsworkflow, bei dem der Eigenschaftswert „Kundenname“ von einem Gerät an Microsoft Teams übergeben wird.
+Sie können Geräteinformationen mit der Aktion **Azure IoT Central – Get a device** (Azure IoT Central – Abrufen eines Geräts) anhand der Geräte-ID abrufen. 
+> [!NOTE] 
+> **Sie müssen die ID aus der URL verwenden**, die auf der Seite „Gerätedetails“ des zu aktualisierenden Geräts zu finden ist. Die Geräte-ID in der Geräteliste von Device Explorer ist für die Verwendung in Microsoft Flow nicht geeignet.
 
-   ![Flow-Workflow zum Abrufen eines Geräts](./media/howto-add-microsoft-flow/flowgetdevice.png)
+Dabei erhalten Sie Informationen wie Gerätename, Gerätevorlagenname, Eigenschaftswerte und Einstellungswerte, um diese an spätere Aktionen im Workflow zu übergeben. Hier sehen Sie einen Beispielsworkflow, bei dem der Eigenschaftswert „Kundenname“ von einem Gerät an Microsoft Teams übergeben wird.
+
+   ![Flow-Workflow zum Abrufen eines Geräts](./media/howto-add-microsoft-flow/flowgetdevice1.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>Ausführen eines Befehls auf einem Gerät in einem Workflow
-Sie können einen Befehl auf einem Gerät mit der Aktion **Azure IoT Central - Run a command** (Azure IoT Central – Ausführen eines Befehls) mithilfe der Geräte-ID ausführen. Wählen Sie den auszuführenden Befehl aus, und übergeben Sie mit dieser Aktion die Parameter des Befehls. Hier ist ein Beispielworkflow, der ein Gerät über eine Schaltfläche für einen Neustartbefehl in der mobilen Microsoft Flow-App ausführt.
+Sie können einen Befehl auf einem Gerät, das anhand seiner ID angegeben wurde, mit der Aktion **Azure IoT Central – Run a command** (Azure IoT Central – Ausführen eines Befehls) ausführen. 
 
-   ![Flow-Workflow zum Abrufen eines Geräts](./media/howto-add-microsoft-flow/flowrunacommand.png)
+> [!NOTE] 
+> **Sie müssen die ID aus der URL verwenden**, die auf der Seite „Gerätedetails“ des zu aktualisierenden Geräts zu finden ist. Die Geräte-ID in der Geräteliste von Device Explorer ist für die Verwendung in Microsoft Flow nicht geeignet.
+    
+Wählen Sie den auszuführenden Befehl aus, und übergeben Sie mit dieser Aktion die Parameter des Befehls. Hier ist ein Beispielworkflow, der ein Gerät über eine Schaltfläche für einen Neustartbefehl in der mobilen Microsoft Flow-App ausführt.
+
+   ![Flow-Workflow zum Abrufen eines Geräts](./media/howto-add-microsoft-flow/flowrunacommand1.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>Löschen eines Geräts in einem Workflow
 
-Sie können ein Gerät mit der Aktion **Azure IoT Central – Löschen eines Geräts** mithilfe seiner Geräte-ID löschen. Hier ist ein Beispielworkflow, der ein Gerät auf Schaltflächendruck in der mobilen Microsoft Flow-App löscht.
+Sie können ein Gerät mit der Aktion **Azure IoT Central – Delete a device** (Azure IoT Central – Löschen eines Geräts) anhand seiner ID löschen. 
+> [!NOTE] 
+> **Sie müssen die ID aus der URL verwenden**, die auf der Seite „Gerätedetails“ des zu aktualisierenden Geräts zu finden ist. Die Geräte-ID in der Geräteliste von Device Explorer ist für die Verwendung in Microsoft Flow nicht geeignet.
+
+Hier ist ein Beispielworkflow, der ein Gerät auf Schaltflächendruck in der mobilen Microsoft Flow-App löscht.
 
    ![Flow-Workflow zum Löschen eines Geräts](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 

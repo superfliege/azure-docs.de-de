@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5064f47444b4ca6d9194ed66144938e6e3d51a4e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 051886f98d6d35594336291bbb2defb2a4acdfc5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732364"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233052"
 ---
-# <a name="what-are-mapping-data-flows-in-azure-data-factory"></a>Was sind Mapping Data Flows in Azure Data Factory?
+# <a name="what-are-mapping-data-flows"></a>Was sind Mapping Data Flows?
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Mit Mapping Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines mit horizontal skalierten Azure Databricks-Clustern ausgeführt.
+Mapping Data Flows sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines mit horizontal skalierten Azure Databricks-Clustern ausgeführt.
 
 Die Absicht von Azure Data Factory-Datenfluss ist es, eine vollständig visuelle Erfahrung ohne Codeerstellung zu ermöglichen. Ihre Datenflüsse werden in Ihrem eigenen Ausführungscluster für die horizontal skalierte Datenverarbeitung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
 

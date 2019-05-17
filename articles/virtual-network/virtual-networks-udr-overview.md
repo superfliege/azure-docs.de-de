@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
-ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 011ce61f9ac0656db8804c203000f54a7146afe0
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878501"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408196"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -32,7 +32,7 @@ Azure erstellt automatisch Systemrouten und weist die Routen allen Subnetzen ein
 Jede Route enthält ein Adresspräfix und einen Typ des nächsten Hops. Wenn Datenverkehr, der ein Subnetz verlässt, an eine IP-Adresse innerhalb des Adresspräfix einer Route gesendet wird, ist die Route mit dem Präfix die von Azure verwendete Route. Erfahren Sie mehr darüber, [wie Azure eine Route auswählt](#how-azure-selects-a-route), wenn mehrere Routen die gleichen Präfixe oder überlappende Präfixe enthalten. Bei jeder Erstellung eines virtuellen Netzwerks erstellt Azure automatisch die folgenden Standardsystemrouten für jedes Subnetz im virtuellen Netzwerk:
 
 
-|Quelle |Adresspräfixe                                        |Typ des nächsten Hops  |
+|`Source` |Adresspräfixe                                        |Typ des nächsten Hops  |
 |-------|---------                                               |---------      |
 |Standard|Für das virtuelle Netzwerk eindeutig                           |Virtuelles Netzwerk|
 |Standard|0.0.0.0/0                                               |Internet       |
@@ -57,7 +57,7 @@ Die in der obigen Tabelle aufgeführten Typen des nächsten Hops geben an, wie D
 
 Azure fügt zusätzliche Standardsystemrouten für unterschiedliche Azure-Funktionen hinzu. Dies gilt aber nur, wenn Sie die Funktionen aktivieren. Je nach Funktion fügt Azure optionale Standardrouten entweder spezifischen Subnetzen im virtuellen Netzwerk oder allen Subnetzen in einem virtuellen Netzwerk hinzu. Hier sind die zusätzlichen Systemrouten und Typen des nächsten Hops aufgeführt, die von Azure hinzugefügt werden können, wenn Sie die unterschiedlichen Funktionen aktivieren:
 
-|Quelle                 |Adresspräfixe                       |Typ des nächsten Hops|Subnetz im virtuellen Netzwerk, dem die Route hinzugefügt wird|
+|`Source`                 |Adresspräfixe                       |Typ des nächsten Hops|Subnetz im virtuellen Netzwerk, dem die Route hinzugefügt wird|
 |-----                  |----                                   |---------                    |--------|
 |Standard                |Eindeutig für das virtuelle Netzwerk, z.B.: 10.1.0.0/16|VNet-Peering                 |Alle|
 |Gateway des virtuellen Netzwerks|Präfixe, die lokal oder per BGP angekündigt werden oder im Gateway des lokalen Netzwerks konfiguriert sind     |Gateway des virtuellen Netzwerks      |Alle|
@@ -139,7 +139,7 @@ Wenn mehrere Routen das gleiche Präfix enthalten, wählt Azure den Routentyp na
 Eine Routentabelle enthält beispielsweise die folgenden Routen:
 
 
-|Quelle   |Adresspräfixe  |Typ des nächsten Hops           |
+|`Source`   |Adresspräfixe  |Typ des nächsten Hops           |
 |---------|---------         |-------                 |
 |Standard  | 0.0.0.0/0        |Internet                |
 |Benutzer     | 0.0.0.0/0        |Gateway des virtuellen Netzwerks |
@@ -205,7 +205,7 @@ Mit den Pfeilen ist der Weg des Datenverkehrs angegeben.
 
 Die Routentabelle für *Subnet1* in der Abbildung enthält die folgenden Routen:
 
-|ID  |Quelle |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
+|ID  |`Source` |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standard|Ungültig|10.0.0.0/16         |Virtuelles Netzwerk        |                   |              |
 |2   |Benutzer   |Aktiv |10.0.0.0/16         |Virtuelles Gerät      |10.0.100.4         |Within-VNet1  |
@@ -225,7 +225,7 @@ Es folgen Erklärungen der einzelnen Routen-IDs:
 1. Azure hat diese Route automatisch für alle Subnetze in *Virtual-network-1* hinzugefügt, da 10.0.0.0/16 der einzige Adressbereich ist, der im Adressraum für das virtuelle Netzwerk definiert ist. Wenn die benutzerdefinierte Route in Route ID2 nicht erstellt worden wäre, würde Datenverkehr, der an eine Adresse zwischen 10.0.0.1 und 10.0.255.254 gesendet wird, innerhalb des virtuellen Netzwerks weitergeleitet werden. Der Grund ist, dass das Präfix länger als 0.0.0.0/0 ist und nicht innerhalb der Adresspräfixe von anderen Routen liegt. Azure hat den Status automatisch von *Aktiv* in *Ungültig* geändert, als ID2 (eine benutzerdefinierte Route) hinzugefügt wurde, da sie über das gleiche Präfix wie die Standardroute verfügt und Standardrouten von benutzerdefinierten Routen außer Kraft gesetzt werden. Der Status dieser Route lautet weiterhin *Aktiv* für *Subnet2*, da die Routentabelle, in der sich die benutzerdefinierte Route ID2 befindet, *Subnet2* nicht zugeordnet ist.
 2. Diese Route wurde von Azure hinzugefügt, als eine benutzerdefinierte Route für das Adresspräfix 10.0.0.0/16 dem Subnetz *Subnet1* im virtuellen Netzwerk *Virtual-network-1* zugeordnet wurde. Die benutzerdefinierte Route gibt 10.0.100.4 als IP-Adresse des virtuellen Geräts an, da die Adresse die private IP-Adresse ist, die der VM des virtuellen Geräts zugewiesen ist. Die Routentabelle, in der diese Route enthalten ist, ist *Subnet2* nicht zugeordnet und wird daher in der Routentabelle für *Subnet2* auch nicht angezeigt. Diese Route setzt die Standardroute für das Präfix 10.0.0.0/16 (ID1) außer Kraft, über die Datenverkehr, der an 10.0.0.1 und 10.0.255.254 im virtuellen Netzwerk adressiert ist, automatisch über den Typ des nächsten Hops für das virtuelle Netzwerk weitergeleitet wurde. Diese Route ist vorhanden, um [Anforderung](#requirements) 3 zu erfüllen und für den gesamten ausgehenden Datenverkehr den Weg über ein virtuelles Gerät zu erzwingen.
 3. Diese Route wurde von Azure hinzugefügt, als eine benutzerdefinierte Route für das Adresspräfix 10.0.0.0/24 dem Subnetz *Subnet1* zugeordnet wurde. Der Datenverkehr, der für Adressen zwischen 10.0.0.1 und 10.0.0.254 bestimmt ist, verbleibt im Subnetz und wird nicht an das virtuelle Gerät weitergeleitet, das in der vorherigen Regel (ID2) angegeben ist. Der Grund ist, dass ein längeres Präfix als für die Route ID2 verwendet wird. Diese Route wurde *Subnet2* nicht zugeordnet, sodass sie in der Routentabelle für *Subnet2* nicht angezeigt wird. Diese Route setzt die Route ID2 für Datenverkehr in *Subnet1* effektiv außer Kraft. Diese Route ist vorhanden, um [Anforderung](#requirements) 3 zu erfüllen.
-4. Azure hat die Routen unter den IDs 4 und 5 für alle Subnetze in *Virtual-network-1* automatisch hinzugefügt, als für das virtuelle Netzwerk das Peering mit *Virtual-network-2* durchgeführt wurde. *Virtual-network-2* hat in seinem Adressraum zwei Adressbereiche: 10.1.0.0/16 und 10.2.0.0/16, sodass Azure eine Route für jeden Bereich hinzugefügt hat. Wenn die benutzerdefinierte Route unter den Routen-IDs 6 und 7 nicht erstellt worden wäre, würde Datenverkehr, der an eine Adresse zwischen 10.1.0.1 bis 10.1.255.254 und 10.2.0.1 bis 10.2.255.254 gesendet wird, an das per Peering verknüpfte virtuelle Netzwerk weitergeleitet werden. Der Grund ist, dass das Präfix länger als 0.0.0.0/0 ist und nicht innerhalb der Adresspräfixe von anderen Routen liegt. Azure hat den Status automatisch von *Aktiv* in *Ungültig* geändert, als die Routen unter den IDs 6 und 7 hinzugefügt wurden. Der Grund ist, dass sie über die gleichen Präfixe wie die Routen unter den IDs 4 und 5 verfügen und dass Standardrouten von benutzerdefinierten Routen außer Kraft gesetzt werden. Der Status der Routen in den IDs 4 und 5 lautet weiterhin *Aktiv* für *Subnet2*, da die Routentabelle, in der sich die benutzerdefinierten Routen unter den IDs 4 und 5 befinden, *Subnet2* nicht zugeordnet sind. Ein VNet-Peering wurde erstellt, um [Anforderung](#requirements) 1 zu erfüllen.
+4. Azure hat die Routen unter den IDs 4 und 5 für alle Subnetze in *Virtual-network-1* automatisch hinzugefügt, als für das virtuelle Netzwerk das Peering mit *Virtual-network-2* durchgeführt wurde. *Virtual-network-2* hat in seinem Adressraum zwei Adressbereiche: 10.1.0.0/16 und 10.2.0.0/16, sodass Azure eine Route für jeden Bereich hinzugefügt hat. Wenn die benutzerdefinierte Route unter den Routen-IDs 6 und 7 nicht erstellt worden wäre, würde Datenverkehr, der an eine Adresse zwischen 10.1.0.1 bis 10.1.255.254 und 10.2.0.1 bis 10.2.255.254 gesendet wird, an das per Peering verknüpfte virtuelle Netzwerk weitergeleitet werden. Der Grund ist, dass das Präfix länger als 0.0.0.0/0 ist und nicht innerhalb der Adresspräfixe von anderen Routen liegt. Azure hat den Status automatisch von *Aktiv* in *Ungültig* geändert, als die Routen unter den IDs 6 und 7 hinzugefügt wurden. Der Grund ist, dass sie über die gleichen Präfixe wie die Routen unter den IDs 4 und 5 verfügen und dass Standardrouten von benutzerdefinierten Routen außer Kraft gesetzt werden. Der Status der Routen in ID 4 und 5 ist immer noch *Aktiv* für *Subnet2*, da die Routentabelle, in der sich die benutzerdefinierten Routen in ID 6 und 7 befinden, nicht *Subnet2* zugeordnet ist. Ein VNet-Peering wurde erstellt, um [Anforderung](#requirements) 1 zu erfüllen.
 5. Hier gilt die gleiche Erklärung wie für ID4.
 6. Azure hat diese Route und die Route unter ID7 hinzugefügt, als die benutzerdefinierten Routen für die Adresspräfixe 10.1.0.0/16 und 10.2.0.0/16 dem Subnetz *Subnet1* zugeordnet wurden. Datenverkehr, der für Adressen zwischen 10.1.0.1 bis 10.1.255.254 und 10.2.0.1 bis 10.2.255.254 bestimmt ist, wird von Azure verworfen und nicht an das per Peering verknüpfte virtuelle Netzwerk weitergeleitet, da Standardrouten von benutzerdefinierten Routen außer Kraft gesetzt werden. Die Routen wurden *Subnet2* nicht zugeordnet, sodass sie in der Routentabelle für *Subnet2* nicht angezeigt werden. Die Routen setzen die Routen ID4 und ID5 für Datenverkehr außer Kraft, der *Subnet1* verlässt. Die Routen ID6 und ID7 sind vorhanden, um [Anforderung](#requirements) 3 zum Verwerfen von Datenverkehr zu erfüllen, der für das andere virtuelle Netzwerk bestimmt ist.
 7. Hier gilt die gleiche Erklärung wie für ID6.
@@ -239,7 +239,7 @@ Es folgen Erklärungen der einzelnen Routen-IDs:
 
 Die Routentabelle für *Subnet2* in der Abbildung enthält die folgenden Routen:
 
-|Quelle  |Zustand  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
+|`Source`  |Zustand  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
 |------- |-------|------              |-------                   |--------           
 |Standard |Aktiv |10.0.0.0/16         |Virtuelles Netzwerk           |                   |
 |Standard |Aktiv |10.1.0.0/16         |VNet-Peering              |                   |

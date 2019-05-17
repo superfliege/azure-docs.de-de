@@ -13,12 +13,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd57eadc2c42c17343eee6d813072866e8ea09e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196211"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413986"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
 
@@ -145,7 +145,7 @@ Zusätzliche Änderungen bei Auswahl der Option **Verzeichnisdaten lesen**:
 
 ### <a name="file-backup-visual-studio-2015"></a>Dateisicherung (Visual Studio 2015)
 
-Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänderte und entfernte Dateien. Alle betroffenen Dateien werden im Ordner `Backup/AzureAD` gespeichert. Visual Studio 2017 erstellt keine Sicherungen.
+Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänderte und entfernte Dateien. Alle betroffenen Dateien werden im Ordner `Backup/AzureAD` gespeichert. Visual Studio 2017 und höher erstellt keine Sicherungen.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

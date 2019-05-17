@@ -6,12 +6,12 @@ author: vhorne
 ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
-ms.openlocfilehash: c2d49defa2e0fbbd12c5403ccca74e91cf4ec981
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7c30e0aa0ae9735f5d08e1a2c4d6e6d36d778e27
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501831"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410241"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall mithilfe von Azure PowerShell
 
@@ -234,10 +234,10 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
 1. Führen Sie die folgenden Befehle aus:
 
    ```
-   Invoke-WebRequest -Uri http://www.google.com
+   Invoke-WebRequest -Uri https://www.google.com
    Invoke-WebRequest -Uri https://www.google.com
 
-   Invoke-WebRequest -Uri http://www.microsoft.com
+   Invoke-WebRequest -Uri https://www.microsoft.com
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 

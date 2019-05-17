@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165619"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230044"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die zweistufige Überprüfung
 Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
@@ -69,7 +69,7 @@ Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticat
    ![Feld für die Eingabe einer PIN](./media/multi-factor-authentication-end-user-first-time/scan3.png)
 
 8. Tippen Sie nach der PIN-Eingabe auf **Schließen**. Die Überprüfung sollte jetzt erfolgreich abgeschlossen sein.
-9. Sie sollten Ihre Mobiltelefonnummer eingeben, falls Sie einmal keinen Zugang zu Ihrer mobilen App mehr haben. Wählen Sie in der Dropdownliste Ihr Land aus, und geben Sie im Feld neben dem Land Ihre Mobiltelefonnummer ein. Klicken Sie auf **Weiter**.
+9. Sie sollten Ihre Mobiltelefonnummer eingeben, falls Sie einmal keinen Zugang zu Ihrer mobilen App mehr haben. Wählen Sie Ihr Land / Ihre Region in der Dropdownliste aus, und geben Sie Ihre Mobiltelefonnummer in das Feld neben dem Namen von Land/Region ein. Klicken Sie auf **Weiter**.
 10. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die zweistufige Überprüfung nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
 11. Wenn Sie solche Apps verwenden, kopieren Sie das angegebene App-Kennwort, und fügen Sie es anstelle des regulären Kennworts in die App ein. Sie können das gleiche App-Kennwort für mehrere Apps verwenden. Weitere Informationen finden Sie unter [Hilfe bei App-Kennwörtern].
 12. Klicken Sie auf **Fertig**.
@@ -87,7 +87,7 @@ Gehen Sie folgendermaßen vor, wenn Sie der mobilen Anwendung manuell ein Konto 
 1. Wählen Sie in der Dropdownliste **Telefon für Authentifizierung** aus.  
 
     ![Einrichtung](./media/multi-factor-authentication-end-user-first-time/phone.png)  
-2. Wählen Sie Ihr Land aus der Dropdownliste aus, und geben Sie Ihre Mobiltelefonnummer ein.
+2. Wählen Sie Ihr Land / Ihre Region in der Dropdownliste aus, und geben Sie Ihre Mobiltelefonnummer ein.
 3. Wählen Sie die gewünschte Methode für das Mobiltelefon aus: SMS oder Anruf.
 4. Wählen Sie **Kontaktformular** aus, um Ihre Telefonnummer überprüfen zu lassen. Abhängig vom ausgewählten Modus senden wir Ihnen eine SMS oder rufen Sie an. Befolgen Sie die Anweisungen auf dem Bildschirm, und wählen Sie dann **Überprüfen** aus.
 5. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die zweistufige Überprüfung nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d80f58215b1a8f1b93db158cd2f47186ba6354a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5b87e452b0c79ae9cdc1d7f9f391a611dceda2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180288"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231514"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
@@ -39,7 +39,7 @@ Wenn eine Anwendung über den Azure AD-Anwendungsproxy veröffentlicht wird, fli
 
 ## <a name="tenant-location-and-application-proxy-service"></a>Mandantenstandort und Anwendungsproxydienst
 
-Wenn Sie die Registrierung für einen Azure AD-Mandanten durchführen, wird die Region Ihres Mandanten anhand des von Ihnen angegebenen Lands ermittelt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region ausgewählt oder erstellt.
+Wenn Sie sich für einen Azure AD-Mandanten registrieren, wird die Region Ihres Mandanten durch Ihre Angabe von Land/Region bestimmt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region ausgewählt oder erstellt.
 
 Wenn das Land oder die Region Ihres Azure AD-Mandanten beispielsweise das Vereinigte Königreich ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in EU-Rechenzentren verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
 
@@ -78,7 +78,7 @@ Wenn Sie für die Verbindung zwischen Azure und Ihrem Unternehmensnetzwerk über
 
 ## <a name="focus-your-optimization-strategy"></a>Präzises Ausrichten Ihrer Optimierungsstrategie
 
-Sie können nicht viel tun, um die Verbindung zwischen Ihren Benutzern und dem Anwendungsproxydienst zu steuern. Benutzer können auf Ihre Apps über ein privates Netzwerk, in einem Café oder von einem anderen Land aus zugreifen. Stattdessen können Sie die Verbindungen vom Anwendungsproxydienst zu den Anwendungsproxyconnectors und den Apps optimieren. Halten Sie sich bei der Einrichtung Ihrer Umgebung an folgende Muster.
+Sie können nicht viel tun, um die Verbindung zwischen Ihren Benutzern und dem Anwendungsproxydienst zu steuern. Benutzer können von einem Heimnetzwerk, einem Lokal oder anderen Ländern/Regionen aus auf Ihre Apps zugreifen. Stattdessen können Sie die Verbindungen vom Anwendungsproxydienst zu den Anwendungsproxyconnectors und den Apps optimieren. Halten Sie sich bei der Einrichtung Ihrer Umgebung an folgende Muster.
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Muster 1: Platzieren des Connectors in der Nähe der Anwendung
 

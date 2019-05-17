@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122789"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415480"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -150,6 +150,12 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 
 > [!NOTE]
 > Bei beiden Optionen wird der Mobility Service nicht von den geschützten Servern deinstalliert. Sie müssen die Deinstallation manuell vornehmen. Wenn Sie den Server erneut mit demselben Konfigurationsserver schützen möchten, können Sie die Deinstallation des Mobility Service überspringen.
+
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Deaktivieren des Schutzes für eine Azure-VM (Azure zu Azure)
+
+-  Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
+> [!NOTE]
+> Der Mobility Service wird nicht von den geschützten Servern deinstalliert, Sie müssen ihn manuell deinstallieren. Wenn Sie planen, den Server erneut zu schützen, können Sie die Deinstallation des Mobility Service überspringen.
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer (Hyper-V nach Azure)
 

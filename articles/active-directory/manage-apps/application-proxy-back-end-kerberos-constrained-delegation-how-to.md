@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 04/23/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8413c75a683ff135b3442da6c6a94787ed0866ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177528"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441449"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 
@@ -177,7 +177,7 @@ Wenn dies dennoch keine Abhilfe leistet, kann Microsoft-Support Ihnen weiter hel
 
 ## <a name="other-scenarios"></a>Andere Szenarien
 
-- Der Azure-Anwendungsproxy fordert vor dem Senden der Anforderung an eine Anwendung ein Kerberos-Ticket an. Bei einigen Drittanbieteranwendungen wie Tableau Server ist diese Authentifizierungsmethode unüblich. Bei diesen Anwendungen werden konventionellere Aushandlungen erwartet. Die erste Anforderung ist anonym, wodurch es der Anwendung ermöglicht wird, mit den Authentifizierungstypen zu antworten, die sie über eine 401-Meldung unterstützt.
+- Der Azure-Anwendungsproxy fordert vor dem Senden der Anforderung an eine Anwendung ein Kerberos-Ticket an. Bei einigen Drittanbieteranwendungen ist diese Authentifizierungsmethode unüblich. Bei diesen Anwendungen werden konventionellere Aushandlungen erwartet. Die erste Anforderung ist anonym, wodurch es der Anwendung ermöglicht wird, mit den Authentifizierungstypen zu antworten, die sie über eine 401-Meldung unterstützt.
 
 - Die Mehrfachhopauthentifizierung wird häufig in Szenarien verwendet, in denen eine Anwendung abgestuft wird, mit einem Back-End und Front-End, die beide eine Authentifizierung erfordern, z.B. SQL Server Reporting Services. Informationen zum Konfigurieren des Mehrfachhopszenarios finden Sie im Supportartikel [Eingeschränkte Kerberos-Delegierung mit eventuell erforderlicher Protokollübertragung in Mehrfachhopszenarien](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 

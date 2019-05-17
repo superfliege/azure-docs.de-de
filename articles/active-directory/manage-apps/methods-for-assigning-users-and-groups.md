@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 04/26/2019
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cbd40f2ab91f854f46dc3e62bccbc8a3264f97f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bdf19d2001f84fab6978bfc34ef14a361b89edea
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087464"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441426"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory
 In diesem Artikel wird das Zuweisen von Benutzern oder Gruppen zu einer Anwendung in Azure Active Directory (Azure AD) veranschaulicht. Benutzer müssen zuerst zu einer Anwendung zugewiesen werden, bevor ein Administrator ihnen Zugriff für Folgendes gewähren kann:
@@ -31,6 +31,8 @@ In diesem Artikel wird das Zuweisen von Benutzern oder Gruppen zu einer Anwendun
 -   Eine Anwendung wird in ihrem [Anwendungszugriffsbereich](https://myapps.microsoft.com/) oder in der mobilen Anwendung angezeigt.
 
 -   Eine Anwendung wird in ihrem [Startprogramm für Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) angezeigt.
+
+Die Verfügbarkeit der gruppenbasierten Zuweisung richtet sich nach Ihrer Lizenzvereinbarung. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt, und geschachtelte Gruppenmitgliedschaften werden derzeit nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern. So fordern Sie eine Benutzerzuweisung an

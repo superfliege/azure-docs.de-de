@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Ausführen von Bildvorgängen – JavaScript'
+title: Ausführen von Bildvorgängen – JavaScript
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie mehr über eine grundlegende JavaScript-App, die die Maschinelles Sehen-API in Azure Cognitive Services verwendet. Führen Sie eine optische Zeichenerkennung durch, erstellen Sie Miniaturansichten, und arbeiten Sie mit visuellen Merkmalen in einem Bild.
 services: cognitive-services
@@ -7,62 +7,58 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 09/19/2017
+ms.topic: conceptual
+ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 91af70406590ab8e65a5d4a4b53835e9e4d4ed2a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865072"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231663"
 ---
-# <a name="tutorial-computer-vision-api-javascript"></a>Tutorial: Maschinelles Sehen-API (JavaScript)
+# <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>Verwenden von Features des maschinellen Sehens mit der REST-API und JavaScript
 
-Dieses Tutorial zeigt die Funktionen der Maschinellen Sehen-REST-API von Azure Cognitive Services.
+Dieser Leitfaden zeigt die Features der Maschinelles Sehen-REST-API von Azure Cognitive Services.
 
 Erfahren Sie mehr über eine JavaScript-Anwendung, die die Maschinelles Sehen-REST-API verwendet, um die optische Zeichenerkennung (OCR) auszuführen, Miniaturansichten mithilfe der Funktion „Intelligentes Zuschneiden“ zu erstellen, sowie visuelle Merkmale zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. In diesem Beispiel können Sie eine Bild-URL zur Analyse oder Verarbeitung einreichen. Sie können dieses Open-Source-Beispiel als Vorlage für die Erstellung Ihrer eigenen JavaScript-App verwenden, um die Maschinelles Sehen-REST-API zu verwenden.
 
-Die JavaScript-Formularanwendung wurde bereits geschrieben, hat jedoch keine Maschinelles Sehen-Funktion. In diesem Tutorial fügen Sie den spezifischen Code der Maschinellen Sehen-REST-API hinzu, um die Funktionalität der Anwendung zu vervollständigen.
+Die JavaScript-Formularanwendung wurde bereits geschrieben, hat jedoch keine Maschinelles Sehen-Funktion. In diesem Leitfaden fügen Sie den spezifischen Code der Maschinelles Sehen-REST-API hinzu, um die Funktionalität der Anwendung zu vervollständigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="platform-requirements"></a>Plattformanforderungen
 
-Dieses Tutorial mit einem einfachen Text-Editor entwickelt.
+Sie können die Schritte in diesem Leitfaden mit einem einfachen Text-Editor ausführen.
 
-### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Abonnieren der Maschinelles Sehen-API und Anfordern eines Abonnementschlüssels 
+### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Abonnieren der Maschinelles Sehen-API und Anfordern eines Abonnementschlüssels
 
-Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnieren, die zum Funktionsumfang von Azure Cognitive Services gehört. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). In diesem Tutorial sind sowohl der Primär- als auch der Sekundärschlüssel gültig. 
+Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnieren, die zum Funktionsumfang von Azure Cognitive Services gehört. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). Primäre und sekundäre Schlüssel können in diesem Leitfaden verwendet werden.
 
-## <a name="acquire-the-incomplete-tutorial-project"></a>Beziehen des unvollständigen Tutorialprojekts
+## <a name="acquire-incomplete-tutorial-project"></a>Abrufen eines unvollständigen Tutorialprojekts
 
-### <a name="download-the-tutorial-project"></a>Herunterladen des Tutorialprojekts
+### <a name="download-the-project"></a>Herunterladen des Projekts
 
 Klonen Sie das [Tutorial zur Machinelles-Sehen-JavaScript-API der Cognitive Services](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial), oder laden Sie die ZIP-Datei herunter und extrahieren Sie sie in einem leeren Verzeichnis.
 
-Wenn Sie das abgeschlossene Tutorial mit dem durchgängig hinzugefügten Tutorialcode verwenden möchten, können Sie die Dateien im Ordner **Abgeschlossen** verwenden.
+Wenn Sie lieber das fertige Projekt mit dem gesamten hinzugefügten Tutorialcode verwenden möchten, können Sie die Dateien im **Completed**-Ordner verwenden.
 
-## <a name="add-the-tutorial-code-to-the-project"></a>Hinzufügen des Tutorialcodes zum Projekt
+## <a name="add-tutorial-code-to-the-project"></a>Hinzufügen von Tutorialcode zum Projekt
 
-Die JavaScript-Anwendung ist mit sechs HTML-Dateien eingerichtet, eine für jede Funktion. Jede Datei zeigt eine andere Funktion für Maschinelles Sehen (Analysieren, OCR usw.). Die sechs Tutorialabschnitte enthalten keine Abhängigkeiten, sodass Sie den Tutorialcode einer Datei, allen sechs Dateien oder nur ein paar Dateien hinzufügen können. Sie können den Tutorialcode außerdem in beliebiger Reihenfolge zu den Dateien hinzufügen.
-
-Lassen Sie uns anfangen.
+Die JavaScript-Anwendung ist mit sechs HTML-Dateien eingerichtet, eine für jede Funktion. Jede Datei veranschaulicht eine andere Funktion des maschinellen Sehens (Analysieren, OCR usw.). Die sechs Abschnitte sind nicht voneinander abhängig, sodass Sie den Code des Tutorials einer Datei, allen sechs Dateien oder nur ein paar Dateien hinzufügen können. Sie können den Tutorialcode außerdem in beliebiger Reihenfolge zu den Dateien hinzufügen.
 
 ### <a name="analyze-an-image"></a>Analysieren von Bildern
 
-Das Analysefeature von Maschinelles Sehen überprüft Bilder auf mehr als 2.000 erkennbare Objekte, Lebewesen, Landschaften und Aktionen. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das das Bild mit entsprechenden Tags, einer Farbanalyse, Beschriftungen und mehr beschreibt.
+Die Analysefunktion des maschinellen Sehens scannt ein Bild für Tausende von erkennbaren Objekten, Lebewesen, Landschaften und Aktionen. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das das Bild mit entsprechenden Tags, einer Farbanalyse, Beschriftungen und mehr beschreibt.
 
-Um die Analysefunktion der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
+Um die Analysefunktion der Anwendung ausführen zu können, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Hinzufügen des Ereignishandlercodes für die Analyseschaltfläche
 
 Öffnen Sie die Datei **analyze.html** in einem Text-Editor, und suchen Sie die Funktion **AnalyzeButtonClick** im unteren Bereich der Datei.
 
-Die Ereignishandlerfunktion **AnalyzeButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **AnalyzeImage** auf, um das Bild zu analysieren.
-
-Kopieren Sie den folgenden Code in die Funktion **analyzeButtonClick**.
+Die Ereignishandlerfunktion **AnalyzeButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **AnalyzeImage** auf, um das Bild zu analysieren. Kopieren Sie den folgenden Code in die Funktion **analyzeButtonClick**.
 
 ```javascript
 function analyzeButtonClick() {
@@ -154,7 +150,7 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-analyze-function"></a>Ausführen der Analysefunktion
 
 Speichern Sie die Datei **analyze.html**, und öffnen Sie sie in einem Webbrowser. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem zu analysierenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -162,15 +158,13 @@ Speichern Sie die Datei **analyze.html**, und öffnen Sie sie in einem Webbrowse
 
 Die Funktion „Wahrzeichen“ für Maschinelles Sehen analysiert Bilder hinsichtlich Naturdenkmäler oder künstliche Wahrzeichen, wie z.B. Berge oder berühmte Gebäude. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das die im Bild gefundenen Wahrzeichen identifiziert.
 
-Um die Funktion „Wahrzeichen“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
+Um die Wahrzeichenfunktion der Anwendung ausführen zu können, führen Sie folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-landmark-button"></a>Hinzufügen des Ereignishandlercodes für die Wahrzeichenschaltfläche
 
 Öffnen Sie die Datei **landmark.html** in einem Text-Editor, und suchen Sie die Funktion **landmarkButtonClick** im unteren Bereich der Datei.
 
-Die Ereignishandlerfunktion **landmarkButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **IdentifyLandmarks** auf, um das Bild zu analysieren.
-
-Kopieren Sie den folgenden Code in die Funktion **landmarkButtonClick**.
+Die Ereignishandlerfunktion **landmarkButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **IdentifyLandmarks** auf, um das Bild zu analysieren. Kopieren Sie den folgenden Code in die Funktion **landmarkButtonClick**.
 
 ```javascript
 function landmarkButtonClick() {
@@ -261,7 +255,7 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-landmark-function"></a>Ausführen der Wahrzeichenfunktion
 
 Speichern Sie die Datei **landmark.html**, und öffnen Sie sie in einem Webbrowser. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem zu analysierenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -269,15 +263,13 @@ Speichern Sie die Datei **landmark.html**, und öffnen Sie sie in einem Webbrows
 
 Die Funktion „Prominente“ für Maschinelles Sehen analysiert Bilder hinsichtlich berühmter Persönlichkeiten. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das die im Bild gefundenen Prominenten identifiziert.
 
-Um die Funktion „Prominente“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
+Um die Prominentenfunktion der Anwendung ausführen zu können, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Hinzufügen des Ereignishandlercodes für die Prominentenschaltfläche
 
 Öffnen Sie die Datei **celebrities.html** in einem Text-Editor, und suchen Sie die Funktion **celebritiesButtonClick** im unteren Bereich der Datei.
 
-Die Ereignishandlerfunktion **celebritiesButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **IdentifyCelebrities** auf, um das Bild zu analysieren.
-
-Kopieren Sie den folgenden Code in die Funktion **celebritiesButtonClick**.
+Die Ereignishandlerfunktion **celebritiesButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **IdentifyCelebrities** auf, um das Bild zu analysieren. Kopieren Sie den folgenden Code in die Funktion **celebritiesButtonClick**.
 
 ```javascript
 function celebritiesButtonClick() {
@@ -364,7 +356,7 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-celebrities-function"></a>Ausführen der Prominentenfunktion
 
 Speichern Sie die Datei **celebrities.html**, und öffnen Sie sie in einem Webbrowser. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem zu analysierenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -372,15 +364,13 @@ Speichern Sie die Datei **celebrities.html**, und öffnen Sie sie in einem Webbr
 
 Die Funktion „Miniaturansicht“ für Maschinelles Sehen generiert Miniaturansichten aus Bildern. Mithilfe der Funktion **Intelligentes Zuschneiden** identifiziert die Funktion „Miniaturansicht“ den für ein Bild relevanten Bereich, und zentriert das Miniaturbild auf diesem Bereich, um optisch ansprechendere Miniaturbilder zu generieren.
 
-Um die Funktion „Miniaturansicht“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
+Um die Miniaturansichtsfunktion der Anwendung ausführen zu können, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Hinzufügen des Ereignishandlercodes für die Miniaturansichtsschaltfläche
 
 Öffnen Sie die Datei **thumbnail.html** in einem Text-Editor, und suchen Sie die Funktion **thumbnailButtonClick** im unteren Bereich der Datei.
 
-Die Ereignishandlerfunktion **thumbnailButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an, und ruft dann die Funktion **getThumbnail** zweimal auf, um zwei Miniaturansichten zu erstellen – einmal mit der Funktion „Intelligentes Zuschneiden“ und einmal ohne diese Funktion.
-
-Kopieren Sie den folgenden Code in die Funktion **thumbnailButtonClick**.
+Die Ereignishandlerfunktion **thumbnailButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an, und ruft dann die Funktion **getThumbnail** zweimal auf, um zwei Miniaturansichten zu erstellen – einmal mit der Funktion „Intelligentes Zuschneiden“ und einmal ohne diese Funktion. Kopieren Sie den folgenden Code in die Funktion **thumbnailButtonClick**.
 
 ```javascript
 function thumbnailButtonClick() {
@@ -485,7 +475,7 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-thumbnail-function"></a>Ausführen der Miniaturansichtsfunktion
 
 Speichern Sie die Datei **thumbnail.html**, und öffnen Sie sie in einem Webbrowser. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem zu analysierenden Bild ein, und klicken Sie dann auf die Schaltfläche **Miniaturansichten generieren**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
@@ -493,15 +483,13 @@ Speichern Sie die Datei **thumbnail.html**, und öffnen Sie sie in einem Webbrow
 
 Die OCR-Funktion (Optical Character Recognition) für Maschinelles Sehen analysiert Bilder hinsichtlich gedrucktem Text. Nach Abschluss der Analyse gibt OCR ein JSON-Objekt zurück, das den Text und die Position des Textes im Bild enthält.
 
-Um die OCR-Funktion der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
+Um die OCR-Funktion der Anwendung ausführen zu können, führen Sie die folgenden Schritte aus:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR-Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Hinzufügen des Ereignishandlercodes für die OCR-Schaltfläche
 
 Öffnen Sie die Datei **ocr.html** in einem Text-Editor, und suchen Sie die Funktion **ocrButtonClick** im unteren Bereich der Datei.
 
-Die Ereignishandlerfunktion **ocrButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **ReadOcrImage** auf, um das Bild zu analysieren.
-
-Kopieren Sie den folgenden Code in die Funktion **ocrButtonClick**.
+Die Ereignishandlerfunktion **ocrButtonClick** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Funktion **ReadOcrImage** auf, um das Bild zu analysieren. Kopieren Sie den folgenden Code in die Funktion **ocrButtonClick**.
 
 ```javascript
 function ocrButtonClick() {
@@ -580,17 +568,17 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-ocr-function"></a>Ausführen der OCR-Funktion
 
 Speichern Sie die Datei **ocr.html**, und öffnen Sie sie in einem Webbrowser. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem auszulesenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild auslesen**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
-### <a name="read-handwritten-text-handwriting-recognition"></a>Auslesen von Hand geschriebenem Text (Schrifterkennung)
+### <a name="read-handwritten-text-handwriting-recognition"></a>Lesen von handgeschriebenem Text (Schrifterkennung)
 
 Die Funktion „Schrifterkennung“ für Maschinelles Sehen analysiert Bilder hinsichtlich handgeschriebenem Text. Nach Abschluss der Analyse gibt die Schrifterkennung ein JSON-Objekt zurück, das den Text und die Position des Textes im Bild enthält.
 
-Um die Funktion der Schrifterkennung der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
+Um die Schrifterkennungsfunktion der Anwendung ausführen zu können, führen Sie die folgenden Schritte aus:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Hinzufügen des Ereignishandlercodes für die Schrifterkennungsschaltfläche
 
 Öffnen Sie die Datei **handwriting.html** in einem Text-Editor, und suchen Sie die Funktion **handwritingButtonClick** im unteren Bereich der Datei.
 
@@ -739,11 +727,12 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-application"></a>Ausführen der Anwendung
+#### <a name="run-the-handwriting-function"></a>Ausführen der Schrifterkennungsfunktion
 
 Speichern Sie die Datei **handwriting.html**, und öffnen Sie sie in einem Webbrowser. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem auszulesenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild auslesen**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial zur Maschinelles Sehen-API in C&#35;](CSharpTutorial.md)
-- [Tutorial zur Maschinelles Sehen-API in Python](PythonTutorial.md)
+In diesem Leitfaden haben Sie die Maschinelles Sehen-REST-API mit JavaScript verwendet, um viele der verfügbaren Features zur Bildanalyse zu testen. In der Referenzdokumentation finden Sie weitere Informationen zu den beteiligten APIs.
+
+- [Maschinelles Sehen-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

@@ -1,44 +1,41 @@
 ---
 title: ESP-Konfiguration (Enterprise-Sicherheitspaket) mithilfe von Azure Active Directory Domain Services – Azure HDInsight
 description: Erfahren Sie mehr über das Einrichten und Konfigurieren eines HDInsight-Clusters Enterprise-Sicherheitspaket mithilfe von Azure Active Directory Domain Services.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.reviewer: hrasheed
+ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 03/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b7364a2bb32f2d38f5cf9ddeddd5e4e1f928e01
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 04/23/2019
+ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519790"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415486"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services
 
-ESP-Cluster ermöglichen Mehrbenutzerzugriff in Azure HDInsight-Clustern. HDInsight-Cluster mit ESP sind mit einer Domäne verbunden, sodass Domänenbenutzer ihre Domänenanmeldeinformationen zum Authentifizieren beim Cluster verwenden und Big Data-Aufträge ausführen können. 
+ESP-Cluster ermöglichen Mehrbenutzerzugriff in Azure HDInsight-Clustern. HDInsight-Cluster mit ESP sind mit einer Domäne verbunden, sodass Domänenbenutzer ihre Domänenanmeldeinformationen zum Authentifizieren beim Cluster verwenden und Big Data-Aufträge ausführen können.
 
 In diesem Artikel erfahren Sie, wie Sie einen HDInsight-Cluster mit ESP mit Azure Active Directory Domain Services (Azure AD DS) einrichten und konfigurieren.
 
->[!NOTE]  
->ESP ist in HDI 3.6 für Apache Spark, Interactive und Apache Hadoop allgemein verfügbar. Für Apache HBase- und Apache Kafka-Clustertypen ist ESP in der Vorschau.
+> [!NOTE]  
+> ESP ist in HDInsight 3.6 und 4.0 für Clustertypen allgemein verfügbar: Apache Spark, Interactive, Apache Hadoop und HBase. ESP für den Clustertyp Apache Kafka befindet sich in der Vorschauphase.
 
 ## <a name="enable-azure-ad-ds"></a>Aktivieren von Azure AD DS
 
 > [!NOTE]  
-> Nur Mandantenadministratoren verfügen über die Berechtigungen zum Aktivieren von Azure AD DS. Wenn es sich bei dem Clusterspeicher um Azure Data Lake Storage (ADLS) Gen1 oder Gen2 handelt, müssen Sie Multi-Factor Authentication (MFA) nur für Benutzer deaktivieren, die mittels Kerberos-Authentifizierung auf den Cluster zugreifen müssen. Sie können [vertrauenswürdige IP-Adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) oder [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) verwenden, um MFA nur für bestimmte Benutzer zu deaktivieren, wenn diese auf den VNET-IP-Adressbereich des HDInsight-Clusters zugreifen. Bei Verwendung von bedingtem Zugriff muss der AD-Dienstendpunkt im HDInsight-VNET aktiviert sein.
+> Nur Mandantenadministratoren verfügen über die Berechtigungen zum Aktivieren von Azure AD DS. Wenn Azure Data Lake Storage (ADLS) Gen 1 oder Gen 2 als Clusterspeicher verwendet wird, müssen Sie die Multi-Factor Authentication (MFA) nur für Benutzer deaktivieren, die mit grundlegenden Kerberos-Authentifizierungen auf den Cluster zugreifen müssen. Sie können [vertrauenswürdige IP-Adressen](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) oder [bedingten Zugriff](../../active-directory/conditional-access/overview.md) verwenden, um MFA nur für bestimmte Benutzer zu deaktivieren, wenn diese auf den VNET-IP-Adressbereich des HDInsight-Clusters zugreifen. Bei Verwendung von bedingtem Zugriff muss der AD-Dienstendpunkt im HDInsight-VNET aktiviert sein.
 >
->Wenn der Clusterspeicher Azure Blob Storage (WASB) ist, deaktivieren Sie MFA nicht.
-
-
+> Wenn der Clusterspeicher Azure Blob Storage (WASB) ist, deaktivieren Sie MFA nicht.
 
 Das Aktivieren von AD DS ist eine Voraussetzung zum Erstellen eines HDInsight-Clusters mit ESP. Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 Wenn Azure AD DS aktiviert ist, beginnen alle Benutzer und Objekte standardmäßig mit der Synchronisierung von Azure Active Directory (AAD) zu Azure AD DS. Die Dauer des Synchronisierungsvorgangs hängt von der Anzahl von Objekten in Azure AD ab. Die Synchronisierung kann bei Hunderttausenden von Objekten einige Tage dauern. 
 
-Kunden können wählen, ob sie nur die Gruppen synchronisieren möchten, die Zugriff auf die HDInsight-Cluster benötigen. Diese Option, nur bestimmte Gruppen zu synchronisieren, wird als *bereichsbezogene Synchronisierung* bezeichnet. Anweisungen finden Sie unter [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihrer verwalteten Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization).
+Sie können auswählen, nur die Gruppen zu synchronisieren, die Zugriff auf die HDInsight-Cluster benötigen. Diese Option, nur bestimmte Gruppen zu synchronisieren, wird als *bereichsbezogene Synchronisierung* bezeichnet. Anweisungen finden Sie unter [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihrer verwalteten Domäne](../../active-directory-domain-services/active-directory-ds-scoped-synchronization.md).
 
 Wenn Sie Secure LDAP aktivieren, geben Sie den Domänennamen im Antragstellernamen und im alternativen Antragstellernamen im Zertifikat ein. Wenn Ihr Domänenname beispielsweise *contoso100.onmicrosoft.com* lautet, stellen Sie sicher, dass der genaue Name im Antragstellernamen und im alternativen Antragstellernamen des Zertifikats vorhanden ist. Weitere Informationen finden Sie unter [Konfigurieren von sicherem LDAP für eine durch Azure AD DS verwaltete Domäne](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). Nachfolgend sehen Sie ein Beispiel zum Erstellen eines selbstsignierten Zertifikats mit dem Domänennamen (*contoso100.onmicrosoft.com*) im Antragstellernamen und im alternativen Antragstellernamen (DnsName):
 
@@ -47,7 +44,7 @@ $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.contoso100.onmicrosoft.com, contoso100.onmicrosoft.com
-``` 
+```
 
 ## <a name="check-azure-ad-ds-health-status"></a>Überprüfen des AD DS-Integritätsstatus
 Zeigen Sie den Integritätsstatus Ihrer Azure Active Directory Domain Services an, indem Sie **Integrität** unter der Kategorie **Verwalten** auswählen. Stellen Sie sicher, dass der Status von AD DS grün (wird ausgeführt) und die Synchronisierung abgeschlossen ist.
@@ -56,22 +53,22 @@ Zeigen Sie den Integritätsstatus Ihrer Azure Active Directory Domain Services a
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Erstellen und Autorisieren einer verwalteten Identität
 
-Eine **benutzerseitig zugewiesene verwaltete Identität** wird verwendet, um Domänendienstvorgänge zu vereinfachen und zu schützen. Wenn Sie der verwalteten Identität die Rolle „HDInsight-Domänendienste: Mitwirkender“ zuweisen, kann sie Domänendienstvorgänge lesen, erstellen, ändern und löschen. Für das HDInsight Enterprise-Sicherheitspaket werden bestimmte Domain Services-Vorgänge wie das Erstellen von Organisationseinheiten und Dienstprinzipalen benötigt. Verwaltete Identitäten können in jedem Abonnement erstellt werden. Weitere allgemeine Informationen zu verwalteten Identitäten finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](../hdinsight-managed-identities.md).
+Eine **benutzerseitig zugewiesene verwaltete Identität** wird verwendet, um Domänendienstvorgänge zu vereinfachen und zu schützen. Wenn Sie der verwalteten Identität die Rolle „HDInsight-Domänendienste: Mitwirkender“ zuweisen, kann sie Domänendienstvorgänge lesen, erstellen, ändern und löschen. Bestimmte Domänendienstvorgänge wie das Erstellen von Organisationseinheiten und Dienstprinzipalen sind für das HDInsight-Enterprise-Sicherheitspaket erforderlich. Verwaltete Identitäten können in jedem Abonnement erstellt werden. Weitere allgemeine Informationen zu verwalteten Identitäten finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](../hdinsight-managed-identities.md).
 
-Erstellen Sie zum Einrichten von ESP-Clustern eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. Die genaue Vorgehensweise finden Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer benutzerseitig zugewiesenen verwalteten Identität über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). Weisen Sie anschließend der verwalteten Identität die Rolle **HDInsight-Domänendienste: Mitwirkender** in der Azure AD DS-Zugriffssteuerung zu. (Für diese Rollenzuweisung sind AAD DS-Administratorrechte erforderlich.)
+Erstellen Sie zum Einrichten von ESP-Clustern eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. Die genaue Vorgehensweise finden Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer benutzerseitig zugewiesenen verwalteten Identität über das Azure-Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Weisen Sie anschließend der verwalteten Identität die Rolle **HDInsight-Domänendienste: Mitwirkender** in der Azure AD DS-Zugriffssteuerung zu. (Für diese Rollenzuweisung sind AAD DS-Administratorrechte erforderlich.)
 
 ![Azure Active Directory Domain Services-Zugriffssteuerung](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
 Die Zuweisung der Rolle **HDInsight-Domänendienste: Mitwirkender** stellt sicher, dass die Identität über den richtigen Zugriff (im Auftrag von) verfügt, um Domänendienstvorgänge (etwa Erstellen oder Löschen von Organisationseinheiten) in der AAD DS-Domäne auszuführen.
 
-Wenn die verwaltete Identität erstellt und der richtigen Rolle zugewiesen wurde, kann der AD DS-Administrator festlegen, wer diese verwaltete Identität verwenden darf. Um Benutzer für die verwaltete Identität einzurichten, muss der Administrator die verwaltete Identität im Portal auswählen und dann unter **Übersicht** auf **Zugriffssteuerung (IAM)** klicken. Weisen Sie dann auf der rechten Seite den Benutzern oder Gruppen, die HDInsight ESP-Cluster erstellen möchten, die Rolle **Operator für verwaltete Identität** zu. So kann beispielsweise der AD DS-Administrator diese Rolle der Gruppe „MarketingTeam“ für die verwaltete Identität „sjmsi“ zuweisen, wie in der folgenden Abbildung dargestellt. Dadurch wird sichergestellt, dass die entsprechenden Personen in der Organisation Zugriff auf diese verwaltete Identität haben, um ESP-Cluster zu erstellen.
+Wenn die verwaltete Identität erstellt und der richtigen Rolle zugewiesen wurde, kann der AD DS-Administrator festlegen, wer diese verwaltete Identität verwenden darf. Um Benutzer für die verwaltete Identität einzurichten, muss der Administrator die verwaltete Identität im Portal auswählen und dann unter **Übersicht** auf **Zugriffssteuerung (IAM)** klicken. Weisen Sie dann auf der rechten Seite den Benutzern oder Gruppen, die HDInsight ESP-Cluster erstellen möchten, die Rolle **Operator für verwaltete Identität** zu. Der AAD-DS-Administrator kann diese Rolle z.B. der Gruppe **MarketingTeam** für die verwaltete Identität **sjmsi** zuweisen, wie in der folgenden Abbildung dargestellt. Dadurch wird sichergestellt, dass die entsprechenden Personen in der Organisation Zugriff auf diese verwaltete Identität haben, um ESP-Cluster zu erstellen.
 
 ![Rollenzuweisung „Operator für verwaltete Identität“ in HDInsight](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="networking-considerations"></a>Überlegungen zum Netzwerkbetrieb
 
 > [!NOTE]  
-> Azure AD DS muss in einem Azure Resource Manager (ARM) basierten VNET bereitgestellt werden. Klassische virtuelle Netzwerke werden für Azure AD-DS nicht unterstützt. Weitere Details finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network).
+> Azure AD DS muss in einem Azure Resource Manager (ARM) basierten VNET bereitgestellt werden. Klassische virtuelle Netzwerke werden für Azure AD-DS nicht unterstützt. Weitere Details finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/active-directory-ds-getting-started-network.md).
 
 Wenn Sie AD DS aktiviert haben, wird ein lokaler DNS-Server auf den Azure-VMs ausgeführt. Konfigurieren Sie Ihr virtuelles AD DS-Netzwerk (VNET), um diese benutzerdefinierten DNS-Server zu verwenden. Um die richtigen IP-Adressen zu finden, wählen Sie **Eigenschaften** unter der Kategorie **Verwalten** aus, und sehen Sie sich die unter **IP-Adresse im virtuellen Netzwerk** aufgeführten IP-Adressen an.
 
@@ -87,10 +84,10 @@ Nachdem die VNETs durchsucht wurden, konfigurieren Sie das HDInsight-VNET so, da
 
 ![Konfigurieren von benutzerdefinierten DNS-Servern für VNET mit Peering](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG) verwenden, müssen Sie die [erforderlichen IP-Adressen](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network) für den eingehenden und ausgehenden Datenverkehr zulassen. 
+Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG) verwenden, müssen Sie die [erforderlichen IP-Adressen](../hdinsight-extend-hadoop-virtual-network.md) für den eingehenden und ausgehenden Datenverkehr zulassen. 
 
 **Um zu testen**, ob Ihr Netzwerk korrekt eingerichtet ist, verknüpfen Sie eine Windows-VM mit dem HDInsight-VNET/Subnetz, pingen Sie den Domänennamen (er sollte sich in eine IP-Adresse auflösen), und führen Sie dann **ldp.exe** aus, um auf die AD DS-Domäne zuzugreifen. Verknüpfen Sie dann diese **Windows-VM mit der Domäne zum Bestätigen**, dass alle erforderlichen RPC-Aufrufe zwischen Client und Server erfolgreich sind. Sie können auch **nslookup** verwenden, um den Netzwerkzugriff auf Ihr Speicherkonto oder eine beliebige externe Datenbank zu bestätigen (z.B. externer Hive-Metastore oder Ranger-Datenbank).
-Achten Sie darauf, dass alle [benötigten Ports](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in der Whitelist der Regeln der Netzwerksicherheitsgruppe (NSG) des AAD DS-Subnetzes enthalten sind, wenn AAD DS durch eine NSG gesichert ist. Wenn der Domänenbeitritt dieses virtuellen Windows-Computers erfolgreich ist, können Sie mit dem nächsten Schritt fortfahren und ESP-Cluster erstellen.
+Achten Sie darauf, dass alle [benötigten Ports](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in der Whitelist der Regeln der Netzwerksicherheitsgruppe (NSG) des AAD DS-Subnetzes enthalten sind, wenn AAD DS durch eine NSG gesichert ist. Wenn der Domänenbeitritt dieses virtuellen Windows-Computers erfolgreich ist, können Sie mit dem nächsten Schritt fortfahren und ESP-Cluster erstellen.
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Erstellen eines HDInsight-Clusters mit ESP
 
@@ -99,10 +96,9 @@ Wenn Sie die vorherigen Schritte korrekt festgelegt haben, erstellen Sie im näc
 > [!NOTE]  
 > Die ersten sechs Zeichen des ESP-Clusternamens müssen in Ihrer Umgebung eindeutig sein. Bei mehreren ESP-Clustern in verschiedenen VNETs müssen Sie beispielsweise eine Benennungskonvention wählen, die sicherstellt, dass die ersten sechs Zeichen des Clusternamens eindeutig sind.
 
-
 ![Azure HDInsight Enterprise-Sicherheitspaket – Domänenüberprüfung](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 
-Sobald Sie ESP aktivieren, werden häufige Fehlkonfigurationen im Zusammenhang mit Azure AD DS automatisch erkannt und validiert. Nach dem Beheben dieser Fehler können Sie mit dem nächsten Schritt fortfahren: 
+Sobald Sie ESP aktivieren, werden häufige Fehlkonfigurationen im Zusammenhang mit Azure AD DS automatisch erkannt und validiert. Nachdem Sie diese Fehler behoben haben, können Sie mit dem nächsten Schritt fortfahren: 
 
 ![Azure HDInsight Enterprise-Sicherheitspaket – fehlgeschlagene Domänenüberprüfung](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
 
@@ -122,7 +118,7 @@ Die von Ihnen erstellte verwaltete Identität kann beim Erstellen eines neuen Cl
 
 ![Konfiguration von Active Directory Domain Services für Azure HDInsight ESP](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Informationen zum Konfigurieren von Hive-Richtlinien und zum Ausführen von Hive-Abfragen finden Sie unter [Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket](apache-domain-joined-run-hive.md).
 * Informationen zum Verwenden von HDInsight-Clustern mit ESP finden Sie unter [Verwenden von SSH mit Linux-basiertem Apache Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b0c1b877a9468ce9c3b851bce62cb87c64c04260
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010241"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472734"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
 
@@ -71,10 +71,11 @@ Eine gängige Methode, den Vorteil des Nachrichtenablaufs zu nutzen und zu verme
 
 ## <a name="message-feedback"></a>Nachrichtenfeedback
 
-Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback auf Nachrichtenbasis anfordern, um über den finalen Status dieser Nachricht informiert zu werden.
+Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback auf Nachrichtenbasis anfordern, um über den finalen Status dieser Nachricht informiert zu werden. Dies geschieht durch Festlegen der Anwendungseigenschaft `iothub-ack` in der C2D-Nachricht, die an einen der folgenden Werte gesendet wird:
 
-| Ack-Eigenschaft | Verhalten |
+| Ack-Eigenschaftswert | Verhalten |
 | ------------ | -------- |
+| **keine**     | IoT Hub generiert keine Feedbacknachricht (Standardverhalten). |
 | **positive** | Wenn die C2D-Nachricht den Status **Abgeschlossen** erreicht, generiert IoT Hub eine Feedbacknachricht. |
 | **negative** | Wenn die Cloud-zu-Gerät-Nachricht den Status **Unzustellbar** erreicht, generiert IoT Hub eine Feedbacknachricht. |
 | **full**     | IoT Hub generiert in beiden Fällen eine Feedbacknachricht. |

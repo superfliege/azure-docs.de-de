@@ -3,8 +3,8 @@ title: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen in Az
 description: Hier erfahren Sie, wie Sie die Ansprüche im SAML-Token für Unternehmensanwendungen in Azure AD anpassen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878569"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231346"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -116,7 +116,7 @@ Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 | **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
 | **Contains()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe dem angegebenen Wert entspricht. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die E-Mail-Adresse des Benutzers ist, wenn er die Domäne „@contoso.com“ enthält, andernfalls soll der Benutzerprinzipalname ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.email<br/>*Wert*: „@contoso.com“<br/>Parameter 2 (Ausgabe): user.email<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.userprincipalname |
 | **EndWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert endet. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID des Benutzers ist, wenn „employeeid“ mit „000“ endet, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.employeeid<br/>*Value*: „000“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
-| **StartWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert beginnt. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID (employeeid) des Benutzers ist, wenn das Land (country) mit „US“ beginnt, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.country<br/>*Value*: „US“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
+| **StartWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert beginnt. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Wenn Sie beispielsweise einen Anspruch ausgeben möchten, bei dem der Wert die „employeeid“ des Benutzer ist, wenn das Land bzw. die Region mit „US“ beginnt, und Sie andernfalls ein Erweiterungsattribut ausgeben möchten. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.country<br/>*Value*: „US“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
 | **Extract() – nach dem Abgleich** | Gibt die Teilzeichenfolge bei Übereinstimmung mit dem angegebenen Wert zurück.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon“ und der übereinstimmende Wert „Finance_“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
 | **Extract() – vor dem Abgleich** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „BSimon_US“ und der übereinstimmende Wert „_US“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
 | **Extract() – zwischen Abgleichen** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon_US“ ist, der erste übereinstimmende Wert „Finance_“ und der zweite übereinstimmende Wert „_US“ lautet, dann ist die Ausgabe des Anspruchs „BSimon“. |

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103059"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441640"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -70,7 +70,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
         - **Hintergrundfarbe der Anmeldeseite.** Geben Sie die hexadezimale Farbe an (z. B. ist Weiß = #FFFFFF), die in Situationen mit niedriger Bandbreite anstelle Ihres Hintergrundbilds angezeigt werden soll. Wir empfehlen, dass Sie die primäre Farbe Ihres Bannerlogos oder die Farbe Ihrer Organisation verwenden.
 
-        - **Bild für quadratisches Logo.** Wählen Sie ein PNG- (bevorzugt) oder JPG-Bild des Logos Ihrer Organisation aus, das Benutzern während des Installationsprozesses für neue Windows 10 Enterprise-Geräte angezeigt werden soll. Dieses Bild wird nur für die Windows-Authentifizierung verwendet und wird nur auf Mandanten angezeigt, die [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) für die Bereitstellung oder für Kennworteingabeseiten in anderen Windows 10-Erfahrungen verwenden.
+        - **Bild für quadratisches Logo.** Wählen Sie ein PNG- (bevorzugt) oder JPG-Bild des Logos Ihrer Organisation aus, das Benutzern während des Installationsprozesses für neue Windows 10 Enterprise-Geräte angezeigt werden soll. Dieses Bild wird nur für die Windows-Authentifizierung verwendet und wird nur auf Mandanten angezeigt, die [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) für die Bereitstellung oder für Kennworteingabeseiten in anderen Windows 10-Erfahrungen verwenden. In einigen Fällen kann es auch im Zustimmungsdialogfeld angezeigt werden.
         
             Das Bild darf nicht größer als 240 x 240 Pixel sein und muss eine Dateigröße von weniger als 10 KB einhalten. Wir empfehlen, ein transparentes Bild zu verwenden, weil der Hintergrund unter Umständen nicht mit Ihrem Logohintergrund übereinstimmt. Wir empfehlen ferner, um das Bild herum keine Auffüllung vorzunehmen, da Ihr Logo sonst klein wirken könnte.
     

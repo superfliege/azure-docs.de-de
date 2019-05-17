@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4d67b64d8fc7c5063e96ed2a2502e9cbecd6065
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790093"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229867"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
 > [!NOTE]
 > Dieser Artikel gilt sowohl für die öffentliche Azure-Cloud als auch für die Government-Cloud, sofern nichts anderes angegeben ist.
 
-Das Azure-Portal dient als Hub für alle Azure-Dienste und bietet eine umfassende Verwaltungsoberfläche mit Funktionen wie Dashboards für das Anheften von Ressourcen, einer intelligenten Suche nach Ressourcen und Tagging für die Ressourcenverwaltung. Zum Konsolidieren und Optimieren des Überwachungs- und Verwaltungsworkflows haben wir damit begonnen, die Funktionen des OMS-Portals in das Azure-Portal einzubinden. Alle Features des OMS-Portals sind nun auch Bestandteil des Azure-Portals. Tatsächlich sind einige der neuen Features, wie z.B. Traffic Analytics, nur im Azure-Portal verfügbar. Sie können alle Aufgaben, die Sie bisher im OMS-Portal erledigt haben, nun im Azure-Portal ausführen – und dazu noch vieles mehr. Wenn Sie das Azure-Portal noch nicht verwenden – fangen Sie am besten heute noch damit an!
+**Das OMS-Portal für die öffentliche Azure-Cloud wurde offiziell eingestellt. Das OMS-Portal für die Azure US Government-Cloud wird offiziell am 15. Mai 2019 eingestellt.** Wir freuen uns auf den Wechsel zum Azure-Portal und gehen davon aus, dass der Übergang reibungslos abläuft. Wir wissen aber, dass Änderungen schwierig sind und Störungen verursachen können. Senden Sie Fragen, Feedback oder Bedenken an **LAUpgradeFeedback\@microsoft.com**. Im weiteren Verlauf dieses Artikels werden die wichtigsten Szenarien sowie die Roadmap für diesen Übergang beschrieben.
 
-Für die kommerzielle Azure-Cloud **wird das OMS-Portal am 15. Januar 2019 offiziell außer Betrieb gesetzt**. Für die Azure US Government-Cloud **wird das OMS-Portal am 30. März 2019 offiziell außer Betrieb gesetzt**. Wir freuen uns auf den Wechsel zum Azure-Portal und gehen davon aus, dass der Übergang reibungslos abläuft. Wir wissen aber, dass Änderungen schwierig sind und Störungen verursachen können. Senden Sie Fragen, Feedback oder Bedenken an **LAUpgradeFeedback\@microsoft.com**. Im weiteren Verlauf dieses Artikels werden die wichtigsten Szenarien sowie die Roadmap für diesen Übergang beschrieben.
+Das Azure-Portal dient als Hub für alle Azure-Dienste und bietet eine umfassende Verwaltungsoberfläche mit Funktionen wie Dashboards für das Anheften von Ressourcen, einer intelligenten Suche nach Ressourcen und Tagging für die Ressourcenverwaltung. Zum Konsolidieren und Optimieren des Überwachungs- und Verwaltungsworkflows haben wir damit begonnen, die Funktionen des OMS-Portals in das Azure-Portal einzubinden. Alle Features des OMS-Portals sind nun auch Bestandteil des Azure-Portals. Tatsächlich sind einige der neuen Features, wie z.B. Traffic Analytics, nur im Azure-Portal verfügbar. Sie können alle Aufgaben, die Sie bisher im OMS-Portal erledigt haben, nun im Azure-Portal ausführen – und dazu noch vieles mehr. Wenn Sie das Azure-Portal noch nicht verwenden – fangen Sie am besten heute noch damit an!
 
 ## <a name="what-is-changing"></a>Was ändert sich? 
 Die folgenden Änderungen werden mit der Einstellung des OMS-Portals angekündigt. Die einzelnen Änderungen werden in den nachstehenden Abschnitten ausführlicher erläutert.
@@ -76,10 +76,7 @@ Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie
 
 ### <a name="alert-extension"></a>Warnungserweiterung  
 
-> [!NOTE]
-> Warnungen wurden jetzt vollständig auf das Azure-Portal für die öffentliche Cloud erweitert. Vorhandene Warnungsregeln können im OMS-Portal angezeigt werden, aber sie können nur im Azure-Portal verwaltet werden. Die Erweiterung von Warnungen auf das Azure-Portal beginnt für die Azure Government-Cloud im Februar 2019.
-
-Warnungen wurden [in das Azure-Portal erweitert](alerts-extend.md). Sobald dieser Prozess abgeschlossen ist, sind Verwaltungsaktionen für Warnungen nur noch im Azure-Portal verfügbar. Vorhandene Warnungen werden weiterhin im OMS-Portal aufgeführt. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
+Warnungen wurden [in das Azure-Portal erweitert](alerts-extend.md). Vorhandene Warnungen werden weiterhin im OMS-Portal aufgelistet, aber Sie können sie nur im Azure-Portal verwalten. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
 
 ### <a name="alert-management-solution"></a>Lösung „Alert Management“
 Die [Warnungsverwaltungslösung](alert-management-solution.md) ist entgegen einer früheren Ankündigung weiterhin im Azure-Portal verfügbar und wird weiterhin vollständig unterstützt. Die Lösung kann weiterhin über den Azure Marketplace installiert werden.
