@@ -4,7 +4,7 @@ description: Erfahren Sie, wie die Microsoft-Anmeldung für eine ASP.NET-Lösung
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f88643000b85965b2f275cc6e7494f427d0fe43e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191042"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231156"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -38,7 +38,7 @@ Am Ende dieses Schnellstarts akzeptiert Ihre Anwendung Anmeldungen von Geschäft
 
 Stellen Sie zu Beginn sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Visual Studio 2015 Update 3 oder Visual Studio 2019 ist installiert. Sie haben beides nicht? [Visual Studio 2019 kostenlos herunterladen](https://www.visualstudio.com/downloads/)
+* Installation von Visual Studio 2015 Update 3 oder höher Sie haben beides nicht? [Visual Studio 2019 kostenlos herunterladen](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Szenario: Anmelden von Benutzern von Geschäfts-, Schul- oder Unikonten in Ihrer ASP.NET-App
 
@@ -70,9 +70,10 @@ Um stattdessen das Visual Studio-Projekt dieses Beispiels herunterzuladen, führ
 ## <a name="step-2-create-your-aspnet-project"></a>Schritt 2: Erstellen des ASP.NET-Projekts
 
 1. Navigieren Sie in Visual Studio zu **Datei > Neu > Projekt**.
-2. Wählen Sie unter **Visual C#\Web** die Option **ASP.NET-Webanwendung (.NET Framework)** aus.
-3. Geben Sie der Anwendung einen Namen, und klicken Sie auf **OK**.
-4. Wählen Sie **Leer** aus, und aktivieren Sie dann das Kontrollkästchen, um **MVC**-Verweise hinzuzufügen.
+2. Wählen Sie unter **Projekttyp** die Option **Web** und anschließend **ASP.NET-Webanwendung (.NET Framework)** aus.
+3. Geben Sie der Anwendung einen Namen, und klicken Sie auf **Erstellen**.
+4. Wählen Sie **Leer** und anschließend unter **Ordner und Kernverweise hinzufügen** die Option **MVC** aus, um MVC-Verweise hinzuzufügen.
+5. Klicken Sie auf **Erstellen**.
 
 ## <a name="step-3-add-authentication-components"></a>Schritt 3: Hinzufügen von Authentifizierungskomponenten
 
@@ -125,7 +126,7 @@ Erstellen Sie eine *Startklasse* der OWIN-Middleware:
 Erstellen Sie einen neuen Controller, um An- und Abmeldeverfahren bereitzustellen.
 
 1.  Klicken Sie mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie dann **Hinzufügen > Controller** aus.
-2.  Wählen Sie **MVC (.NET-Version)-Controller – Leer** aus.
+2.  Wählen Sie **MVC {Version}-Controller – Leer** aus.
 3.  Wählen Sie **Hinzufügen**.
 4.  Nennen Sie den Controller `HomeController`, und wählen Sie **Hinzufügen** aus.
 5.  Fügen Sie der Klasse **OWIN**-Namespaces hinzu:

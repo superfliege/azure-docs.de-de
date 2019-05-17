@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878722"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236898"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure 
 
@@ -140,9 +140,10 @@ Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung aus
       2. Um GUI-Timeouts zwischen lokal bereitgestellten grafischen SAP-Benutzeroberflächen und in Azure bereitgestellten SAP-Anwendungsschichten zu vermeiden, überprüfen Sie, ob die folgenden Parameter in der Datei „default.pfl“ oder im Profil für die Instanz festgelegt wurden:
          1.   rdisp/keepalive_timeout = 3600
          2.   rdisp/keepalive = 20
-      3. Wenn Sie eine Konfiguration mit Windows-Failovercluster verwenden, stellen Sie sicher, dass die Zeit zum Reagieren auf nicht reagierende Knoten für Azure richtig festgelegt ist. Im Microsoft-Artikel [Tuning Failover Cluster Network Thresholds](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) (Optimieren der Netzwerkschwellenwerte für Failovercluster) werden die Parameter und ihre Auswirkungen auf Failover aufgeführt. Von den aufgelisteten Parametern sollten für diese beiden Parameter die folgenden Werte festgelegt werden:
-         1.   SameSubNetDelay = 2
+      3. Wenn Sie eine Konfiguration mit Windows-Failovercluster verwenden, stellen Sie sicher, dass die Zeit zum Reagieren auf nicht reagierende Knoten für Azure richtig festgelegt ist. Im Microsoft-Artikel [Tuning Failover Cluster Network Thresholds](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) (Optimieren der Netzwerkschwellenwerte für Failovercluster) werden die Parameter und ihre Auswirkungen auf Failover aufgeführt. Davon ausgehend, dass sich die Clusterknoten im selben Subnetz befinden, sollten die folgenden Parameter geändert werden:
+         1.   SameSubNetDelay = 2000
          2.   SameSubNetThreshold = 15
+         3.   RoutingHistorylength = 30
 4. Testen Ihrer Verfahren für Hochverfügbarkeit und Notfallwiederherstellung
    1. Simulieren Sie Failoversituationen, indem Sie virtuelle Computer (Windows-Gastbetriebssystem) herunterfahren oder Betriebssysteme in den Panikmodus (Linux-Gastbetriebssystem) versetzen, um herauszufinden, ob die Failoverkonfigurationen erwartungsgemäß funktionieren. 
    2. Messen Sie die benötigten Zeiten zum Ausführen eines Failovers. Wenn Sie die Zeiten zu lang sind, erwägen Sie Folgendes:

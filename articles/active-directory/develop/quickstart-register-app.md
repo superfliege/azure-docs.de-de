@@ -1,10 +1,10 @@
 ---
-title: Registrieren einer App bei der Microsoft Identity Platform (Vorschauversion) | Azure
+title: 'Registrieren einer App bei Microsoft Identity Platform: Microsoft Identity Platform'
 description: Hier erfahren Sie, wie Sie eine Anwendung hinzufügen und bei der Microsoft Identity Platform registrieren.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,33 +12,29 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/02/2018
-ms.author: celested
+ms.date: 05/09/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 366d6fe8921a5330f48da2879444e0b80cbc9bd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6943ad460bb5d852220e704492f892961992a59f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090711"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413605"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform (Vorschauversion)
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
 Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerzielle Clouddienste oder Branchenanwendungen entwickeln, die in die Microsoft Identity Platform integriert werden können, um eine sichere Anmeldung und Autorisierung für ihre Dienste bereitzustellen.
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Portal unter Verwendung von **App-Registrierungen (Vorschauversion)** hinzufügen und registrieren, um die Anwendung in die Microsoft Identity Platform integrieren zu können. Weitere Informationen zu den neuen Features und den Verbesserungen in der neuen App-Registrierungsumgebung finden Sie in [diesem Blogbeitrag](https://developer.microsoft.com/graph/blogs/new-app-registration/). 
-
-## <a name="prerequisite"></a>Voraussetzung
-
-Aktivieren Sie zunächst die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Portal unter Verwendung von **App-Registrierungen** hinzufügen und registrieren, um die Anwendung in Microsoft Identity Platform integrieren zu können. Weitere Informationen zu den neuen Features und den Verbesserungen in der neuen App-Registrierungsumgebung finden Sie in [diesem Blogbeitrag](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Registrieren einer neuen Anwendung mit dem Azure-Portal
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus, und klicken Sie anschließend auf **App-Registrierungen (Vorschau) > Neue Registrierung**.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen > Neue Registrierung** aus.
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 
    - **Name**: Geben Sie einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird.

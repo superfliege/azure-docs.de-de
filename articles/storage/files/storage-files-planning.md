@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073351"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232760"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -94,7 +94,7 @@ Premium-Dateifreigaben (Vorschau) werden basierend auf einem festen Verhältnis 
 
 Auf einer Best-Effort-Basis können alle Freigaben für 60 Minuten oder länger (je nach Größe der Freigabe) auf bis zu 3 IOPS pro GiB an bereitgestelltem Speicher erhöht werden (Burst). Neue Freigaben beginnen mit dem vollständigen Burstguthaben, basierend auf der bereitgestellten Kapazität.
 
-Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die minimale Größe beträgt 100GiB, die nächste Größe ist 101GIB usw.
+Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die Mindestgröße beträgt 100 GiB, die nächste Größe ist 101 GiB usw.
 
 > [!TIP]
 > IOPS-Grundwert = 1 + 1 * bereitgestellte GiB. (Bis zu 100.000 IOPS).

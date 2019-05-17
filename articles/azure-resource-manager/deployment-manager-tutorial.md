@@ -13,19 +13,22 @@ ms.devlang: na
 ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880048"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466299"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
 Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
 
 * **Eine Topologievorlage:** Beschreibt, welche Azure-Ressourcen Ihre Anwendungen umfassen und wo sie bereitgestellt werden sollen.
 * **Eine Rolloutvorlage:** Beschreibt die Schritte, die beim Bereitstellen Ihrer Anwendungen ausgeführt werden müssen.
+
+> [!IMPORTANT]
+> Falls Ihr Abonnement als Canary-Abonnement zum Testen neuer Azure-Features markiert ist, kann der Azure-Bereitstellungs-Manager nur zur Bereitstellung in den Canary-Regionen verwendet werden. 
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -432,4 +435,4 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie sich mit der Verwendung des Azure-Bereitstellungs-Managers vertraut gemacht. Weitere Informationen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/).
+In diesem Tutorial haben Sie sich mit der Verwendung des Azure-Bereitstellungs-Managers vertraut gemacht. Informationen zum Integrieren der Integritätsüberwachung in den Azure-Bereitstellungs-Manager finden Sie unter [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).

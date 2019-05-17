@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/15/2019
+ms.date: 05/02/2019
 ms.author: gwallace
-ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007082"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408275"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -206,6 +206,16 @@ Wenn Sie die Erweiterung für benutzerdefinierte Skripts mehrmals ausführen mö
 
 * Der Parameter **Name** der Erweiterung ist identisch mit dem der vorherigen Bereitstellung der Erweiterung.
 * Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt. In dem Befehl können Sie eine dynamische Eigenschaft hinzufügen, z.B. „timestamp“.
+
+Alternativ können Sie die [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag)-Eigenschaft auf **true** festlegen.
+
+### <a name="using-invoke-webrequest"></a>Verwenden von Invoke-WebRequest
+
+Wenn Sie [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) in Ihrem Skript verwenden, müssen Sie den Parameter `-UseBasicParsing` angeben. Andernfalls erhalten Sie den folgenden Fehler beim Überprüfen des detaillierten Status:
+
+```error
+The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
+```
 
 ## <a name="classic-vms"></a>Klassische virtuelle Computer
 

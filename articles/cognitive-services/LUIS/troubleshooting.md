@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 132ba922fa73c73d0e001e84659b5a24996d406b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072766"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235790"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -294,7 +294,7 @@ Die folgenden Features wurden bei der Build 2019-Konferenz veröffentlicht:
 
 * [Migrationsanleitung für die Vorschauversion der V3-API](luis-migration-api-v3.md)
 * [Verbessertes Analytics-Dashboard](luis-how-to-use-dashboard.md)
-* [Verbesserte vordefinierte Domänen](luis-reference-prebuilt-domains.md) funktionieren mit V2- und V3-APIs
+* [Verbesserte vordefinierte Domänen](luis-reference-prebuilt-domains.md) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

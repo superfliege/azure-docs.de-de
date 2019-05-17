@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 1228c770799de37c85b8a48b1dc923ac8294eeca
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012976"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233084"
 ---
 # <a name="configure-prerequisites"></a>Konfigurieren der Voraussetzungen
 
@@ -39,8 +39,8 @@ Dies ist zwar die einfachste Option, sie bietet jedoch begrenzte Anpassungsmögl
 - **Datenträgertyp**: Managed Disks wird verwendet.
 - **Netzwerk**: Unterstützung eines neuen oder bereits vorhandenen Netzwerks sowie eines benutzerdefinierten CIDR-Bereichs.
 - **CNS:** CNS kann aktiviert werden.
-- **Metriken**: Metriken können aktiviert werden.
-- **Protokollierung:** Protokollierung kann aktiviert werden.
+- **Metriken**: Hawkular Metrics kann aktiviert werden.
+- **Protokollierung:** EFK-Protokollierung kann aktiviert werden.
 - **Azure-Cloudanbieter**: Standardmäßig aktiviert, kann deaktiviert werden.
 
 Klickern Sie oben links im Azure-Portal auf **Ressource erstellen**, geben Sie im Suchfeld „openshift container platform“ ein, und drücken Sie die EINGABETASTE.
@@ -70,7 +70,7 @@ Geben Sie Werte für die Eingabeparameter ein, und klicken Sie auf **OK**.
 | SSH Public Key for Admin User (Öffentlicher SSH-Schlüssel für Administratorbenutzer) | Öffentlicher SSH-Schlüssel zum Anmelden bei der VM – darf keine Passphrase aufweisen |
 | Abonnement | Azure-Abonnement, in dem der Cluster bereitgestellt werden soll |
 | Ressourcengruppe | Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene leere Ressourcengruppe für Clusterressourcen aus. |
-| Standort | Azure-Region, in der der Cluster bereitgestellt werden soll |
+| Location | Azure-Region, in der der Cluster bereitgestellt werden soll |
 
    ![Blatt „Grundlagen“ für Angebot](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
@@ -81,7 +81,7 @@ Geben Sie Werte für die Eingabeparameter ein, und klicken Sie auf **OK**.
 
 | Eingabeparameter | Beschreibung des Parameters |
 |-----------------------|-----------------|
-| OCP Cluster Name Prefix (OCP-Clusternamenspräfix) | Der auf allen VM-Instanzen zu erstellende Administratorbenutzer |
+| OCP Cluster Name Prefix (OCP-Clusternamenspräfix) | Cluster-Präfix, mit dem Hostnamen für alle Knoten konfiguriert werden. Zwischen 1 und 20 Zeichen |
 | Master Node Size (Größe des Masterknotens) | Übernehmen Sie die VM-Standardgröße, oder klicken Sie auf **Größe ändern**, um eine andere VM-Größe auszuwählen.  Wählen Sie eine für Ihre Workload geeignete VM-Größe aus |
 | Infrastructure Node Size (Größe des Infrastruktur-Knotens) | Übernehmen Sie die VM-Standardgröße, oder klicken Sie auf **Größe ändern**, um eine andere VM-Größe auszuwählen.  Wählen Sie eine für Ihre Workload geeignete VM-Größe aus |
 | Number of Application Nodes (Anzahl der Anwendungsknoten) | Übernehmen Sie die VM-Standardgröße, oder klicken Sie auf **Größe ändern**, um eine andere VM-Größe auszuwählen.  Wählen Sie eine für Ihre Workload geeignete VM-Größe aus |

@@ -9,37 +9,40 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6bfeb820b34d36fc370de7f81694086aeea8515
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 8c7a24c4c4e071271d16de036ef6896e9d172913
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193959"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406331"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
-Time Series Insights ist zum Speichern, Visualisieren und Abfragen großer Mengen an Zeitreihendaten ausgelegt, z.B. der von IoT-Geräten generierten Daten.  Wenn Sie Zeitreihendaten in der Cloud speichern, verwalten, abfragen oder visualisieren möchten, ist Time Series Insights wahrscheinlich der richtige Dienst für Sie.  
+Azure Time Series Insights (TSI) ist zum Speichern, Visualisieren und Abfragen großer Mengen an Zeitreihendaten ausgelegt, beispielsweise der von IoT-Geräten generierten Daten.  Wenn Sie Zeitreihendaten in der Cloud speichern, verwalten, abfragen oder visualisieren möchten, ist Time Series Insights wahrscheinlich der richtige Dienst für Sie.  
 
 ![Flussdiagramm für Time Series Insights](media/overview/time-series-insights-flowchart.png)
 
 Time Series Insights hat vier Hauptaufgaben bzw. -merkmale:
 
-- Erstens ist die Lösung vollständig in Cloudgateways wie Azure IoT Hub und Azure Event Hubs integriert. Sie stellt einfach eine Verbindung mit diesen Ereignisquellen her und analysiert JSON in Nachrichten und Strukturen, die Daten in fehlerfreien Zeilen und Spalten enthalten. Die Lösung verbindet Metadaten mit Telemetrie und indiziert Ihre Daten in einem einspaltigem Speicher.
-- Zweitens verwaltet Time Series Insights die Speicherung Ihrer Daten. Um einen jederzeitigen Zugriff auf Daten zu gewährleisten, speichert die Lösung Ihre Daten bis zu 400 Tage im Arbeitsspeicher und auf SSD-Datenträgern. Sie können im Bedarfsfall Milliarden von Ereignissen in Sekundenschnelle interaktiv abfragen.
-- Drittens bietet Time Series Insights über den TSI-Explorer eine standardmäßige Visualisierung.  
-- Viertens bietet Time Series Insights einen Abfragedienst, sowohl im TSI-Explorer als auch durch den Einsatz von APIs, die einfach zu integrieren sind, um Ihre Zeitreihendaten in kundenspezifische Anwendungen einzubetten.  
+1. Die Lösung ist vollständig in Cloudgateways wie Azure IoT Hub und Azure Event Hubs integriert. Sie stellt einfach eine Verbindung mit diesen Ereignisquellen her und analysiert JSON in Nachrichten und Strukturen, die Daten in fehlerfreien Zeilen und Spalten enthalten. Die Lösung verbindet Metadaten mit Telemetrie und indiziert Ihre Daten in einem einspaltigem Speicher.
+1. TSI verwaltet die Speicherung Ihrer Daten. Um einen jederzeitigen Zugriff auf Daten zu gewährleisten, speichert die Lösung Ihre Daten bis zu 400 Tage im Arbeitsspeicher und auf SSD-Datenträgern. Sie können im Bedarfsfall Milliarden von Ereignissen in Sekundenschnelle interaktiv abfragen.
+1. TSI bietet vorkonfigurierte Visualisierung über den TSI-Explorer.  
+1. TSI bietet einen Abfragedienst, sowohl im TSI-Explorer als auch durch den Einsatz von APIs, die einfach zu integrieren sind, um Ihre Zeitreihendaten in kundenspezifische Anwendungen einzubetten.  
 
-Wenn Sie eine Anwendung zur internen Verwendung oder zur Verwendung durch externe Kunden erstellen, kann Time Series Insights als Back-End für die Indizierung, Speicherung und Aggregation von Zeitreihendaten verwendet werden. Darüber hinaus können Sie eine benutzerdefinierte Visualisierungs- und Benutzeroberfläche erstellen.  Time Series Insights stellt Abfrage-APIs zum Ermöglichen dieses Szenarios zur Verfügung.  
+Wenn Sie eine Anwendung zur internen Verwendung oder zur Verwendung durch externe Kunden erstellen, kann TSI als Back-End für die Indizierung, Speicherung und Aggregation von Zeitreihendaten verwendet werden. Darüber hinaus können Sie mit dem [Client SDK](tutorial-explore-js-client-lib.md) eine benutzerdefinierte Visualisierungs- und Benutzeroberfläche erstellen. TSI verfügt außerdem über mehrere [Abfrage-APIs](how-to-shape-query-json.md) für diese kundenspezifischen Szenarien.  
 
-Wenn Sie nicht sicher sind, ob es sich bei Ihren Daten um Zeitreihendaten handelt, erhalten Sie hier alle wichtigen Informationen.  Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert.  Sie sind insofern eindeutig, als sie über einen Zeitstempel verfügen und Zeit als Achse am aussagekräftigsten ist.  Zeitreihendaten gehen normalerweise in zeitlicher Reihenfolge ein und werden in der Regel als Einfügung und nicht als Aktualisierung in der Datenbank behandelt.  Da in Time Series Insights jedes neue Ereignis als Zeile erfasst und gespeichert wird, werden Änderungen im Lauf der Zeit gemessen, sodass Sie zurückblicken und zukünftige Änderungen vorhersagen können.  Die Speicherung, Indizierung, Abfrage, Analyse und Visualisierung großer Mengen an Zeitreihendaten können eine Herausforderung darstellen.  
+Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert. Zeitreihendaten werden daher anhand von Zeitstempeln indiziert. Zeit ist die aussagekräftigste Achse für die Organisation solcher Daten. Zeitreihendaten gehen normalerweise in sequenzieller Reihenfolge ein und werden infolgedessen in der Regel als Einfügung und nicht als Aktualisierung der Datenbank behandelt.
+
+Die Speicherung, Indizierung, Abfrage, Analyse und Visualisierung großer Mengen an Zeitreihendaten können eine Herausforderung darstellen.
+Azure Time Series Insights erfasst und speichert jedoch jedes neue Ereignis als Zeile, und Änderungen werden im Lauf der Zeit gemessen, sodass Sie zurückblicken und Erkenntnisse aus der Vergangenheit gewinnen sowie zukünftige Änderungen vorhersagen können.
 
 ## <a name="video"></a>Video
 
-In diesem Video zeigen wir eine Übersicht über Time Series Insights, eine cloudbasierte IoT-Analyseplattform.
+### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Dieses Video enthält Informationen zu Azure Time Series Insights, der cloudbasierten IoT-Analyseplattform.</br>
 
-> [!VIDEO https://youtube.com/embed/GaARrFfjoss]
+[![VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Primäre Szenarien
 
@@ -62,22 +65,28 @@ In diesem Video zeigen wir eine Übersicht über Time Series Insights, eine clou
 
 - **Schneller Einstieg:** Azure Time Series Insights erfordert keine Vorbereitung der Daten. Stellen Sie binnen weniger Minuten eine Verbindung mit unzähligen Ereignissen in Ihrem Azure IoT Hub oder Event Hub her. Sobald eine Verbindung besteht, können Sie Sensordaten visualisieren, mit ihnen interagieren und Ihre IoT-Lösungen überprüfen. Sie können mit Ihren Daten interagieren, ohne Code zu schreiben.
 Sie müssen keine neue Sprache lernen: Für fortgeschrittene Benutzer steht in Time Series Insights eine Oberfläche für präzise Freitextabfragen und eine Point-and-Click-Datenuntersuchung zur Verfügung.
+
 - **Einblicke nahezu in Echtzeit:** Mit Time Series Insights können pro Tag unzählige Sensorereignisse erfasst werden – mit einer Latenz von einer Minute. Time Series Insights bietet Einblicke in Ihre Sensordaten. So können Sie Trends und Anomalien erkennen, Ursachenanalysen durchführen und teure Ausfallzeiten vermeiden. Dank der Korrelation von Echtzeit- und Verlaufsdaten können Sie mit Time Series Insights versteckte Trends in den Daten aufdecken.
+
 - **Erstellen von benutzerdefinierten Lösungen:** Integrieren Sie die Azure Time Series Insights-Daten in Ihre bestehenden Anwendungen, oder erstellen Sie mithilfe der Time Series Insights-REST-APIs neue benutzerdefinierte Lösungen. Erstellen Sie personalisierte Ansichten, die Sie mit anderen teilen können, um ihnen die Untersuchung Ihrer Daten zu ermöglichen.
+
 - **Skalierbarkeit:** Time Series Insights ist für die skalierte IoT-Nutzung ausgelegt. Es können zwischen 1 Million und 100 Millionen Ereignisse pro Tag erfasst werden, und die Standardaufbewahrungsdauer beträgt 31 Tage. Sie können sowohl Verlaufsdaten als auch Livedatenströme nahezu in Echtzeit visualisieren und analysieren. Für die Zukunft ist geplant, die Eingangs- und Aufbewahrungsraten weiter zu erhöhen, um unternehmensweite Skalierungen zu ermöglichen.
 
 ## <a name="getting-started"></a>Erste Schritte
-Die ersten Schritte nehmen weniger als 5 Minuten in Anspruch. 
 
-1.  Stellen Sie zunächst eine Time Series Insights-Umgebung über das Azure-Portal bereit. 
-2.  Verbinden Sie eine Ereignisquelle, beispielsweise einen Azure IoT Hub oder Event Hub.  
-3.  Laden Sie Verweisdaten hoch. (Dies ist kein zusätzlicher Dienst.)
-4.  Sie können Ihre Daten innerhalb von Minuten mit dem Time Series Insights-Explorer anzeigen.
+Die ersten Schritte nehmen weniger als 5 Minuten in Anspruch.
+
+1. Stellen Sie zunächst eine Time Series Insights-Umgebung über das Azure-Portal bereit.
+1. Verbinden Sie eine Ereignisquelle, beispielsweise einen Azure IoT Hub oder Event Hub.  
+1. Laden Sie Verweisdaten hoch. (Dies ist kein zusätzlicher Dienst.)
+1. Sie können Ihre Daten innerhalb von Minuten mit dem Time Series Insights-Explorer anzeigen.
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights-Explorer
+
 Dieses Diagramm ist ein Beispiel für über den Explorer angezeigte Time Series Insights-Daten: ![Time Series Insights-Explorer](media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
- - [Erkunden des Time Series Insights-Explorers in einer Demoumgebung](./time-series-quickstart.md)
- - [Planen Ihrer Time Series Insights-Umgebung](time-series-insights-environment-planning.md)
 
+- Sehen Sie sich die allgemein verfügbare [kostenlose Demoumgebung](./time-series-quickstart.md) von Azure Time Series Insights an.
+
+- Informieren Sie sich ausführlicher über die [Planung Ihrer Time Series Insights-Umgebung](time-series-insights-environment-planning.md).

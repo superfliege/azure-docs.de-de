@@ -1,24 +1,25 @@
 ---
 title: Was ist Azure Active Directory? – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zu Azure Active Directory – insbesondere zur erforderlichen Terminologie, zur Zielgruppe, zur Lizenzierung sowie zu zugehörigen Features.
+description: Hier finden Sie eine Übersicht und konzeptionelle Informationen zu Azure Active Directory, u. a. Terminologie, Informationen zu verfügbaren Lizenzen und eine Liste der zugehörigen Features mit Links zu weiteren Informationen.
 services: active-directory
 author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
-ms.date: 11/13/2018
+ms.date: 05/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d3b3cd7e759892c2215f190a682f5f69818958d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ce8fad7f0dc76aad306e0f2a8e26692ec997952c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442359"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470362"
 ---
-# <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory? 
-Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Azure AD hilft Ihren Mitarbeitern bei der Anmeldung und beim Zugriff auf folgende Ressourcen:
+# <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
+
+Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft, mit dem sich Ihre Mitarbeiter anmelden und auf die folgenden Ressourcen zugreifen können:
 
 - Externe Ressourcen (beispielsweise Microsoft Office 365, das Azure-Portal und tausende andere SaaS-Anwendungen)
 
@@ -27,6 +28,7 @@ Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriff
 Anhand der verschiedenen Poster aus der Reihe [Microsoft-Cloud-Identität für Enterprise-Architekten](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) können Sie sich mit den zentralen Identitätsdiensten in Azure, Azure AD und Office 365 vertraut machen.
 
 ## <a name="who-uses-azure-ad"></a>Azure AD-Zielgruppe
+
 Azure AD ist für folgende Benutzer konzipiert:
 
 - **IT-Administratoren.** Als IT-Administrator können Sie mit Azure AD den Zugriff auf Ihre Apps und App-Ressourcen steuern, um die Anforderungen Ihres Unternehmens zu erfüllen. So können Sie mit Azure AD beispielsweise beim Zugriff auf wichtige Organisationsressourcen eine mehrstufige Authentifizierung erzwingen. Darüber hinaus können Sie mit Azure AD die Benutzerbereitstellung zwischen Ihrem vorhandenen Windows Server-AD und Ihren Cloud-Apps (einschließlich Office 365) automatisieren. Azure AD bietet außerdem leistungsfähige Tools zum automatischen Schutz von Benutzeridentitäten und Anmeldeinformationen, um Ihre Anforderungen in puncto Zugriffssteuerung zu erfüllen. Registrieren Sie sich für eine [kostenlose 30-tägige Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/), um die Lösung kennenzulernen.
@@ -36,12 +38,15 @@ Azure AD ist für folgende Benutzer konzipiert:
 - **Abonnenten von Microsoft 365, Office 365, Azure oder Dynamics CRM Online:** Als Abonnent verwenden Sie bereits Azure AD. Jeder Mandant von Microsoft 365, Office 365, Azure oder Dynamics CRM Online ist automatisch auch ein Azure AD-Mandant. Sie können sofort mit der Verwaltung des Zugriffs auf Ihre integrierten Cloud-Apps beginnen.
 
 ## <a name="what-are-the-azure-ad-licenses"></a>Was sind Azure AD-Lizenzen?
-Microsoft Online-Unternehmensdienste wie Office 365 und Microsoft Azure benötigen Azure AD für die Anmeldung sowie zum Schutz von Identitäten. Wenn Sie also einen Microsoft Online-Unternehmensdienst abonnieren, erhalten Sie automatisch Azure AD und damit Zugriff auf alle kostenlosen Features.
 
-Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige Funktionen hinzufügen, indem Sie auf Azure Active Directory-Lizenzen vom Typ „Basic“, „Premium P1“ oder „Premium P2“ upgraden. Die kostenpflichtigen Azure AD-Lizenzen ergänzen Ihr kostenloses Verzeichnis und bieten Self-Service-Funktionen, eine erweiterte Überwachung, Sicherheitsberichte sowie sicheren Zugriff für Ihre mobilen Mitarbeiter.
+Microsoft Online-Unternehmensdienste wie Office 365 und Microsoft Azure benötigen Azure AD für die Anmeldung sowie zum Schutz von Identitäten. Wenn Sie einen Microsoft Online-Unternehmensdienst abonnieren, erhalten Sie automatisch Azure AD und damit Zugriff auf alle kostenlosen Features.
+
+Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige Funktionen hinzufügen, indem Sie auf Azure Active Directory-Lizenzen vom Typ „Basic“, „Premium P1“ oder „Premium P2“ upgraden. Die kostenpflichtigen Azure AD-Lizenzen ergänzen Ihr kostenloses Verzeichnis und bieten Self-Service-Funktionen, eine erweiterte Überwachung, Sicherheitsberichte sowie sicheren Zugriff für Ihre mobilen Benutzer.
 
 >[!Note]
->Informationen zu den Preisoptionen für diese Lizenzen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).<br><br>Azure Active Directory Premium P1, Premium P2 und Azure Active Directory Basic werden derzeit in China nicht unterstützt. Weitere Informationen zu den Preisen von Azure AD erhalten Sie bei Bedarf im [Azure Active Directory-Forum](https://azure.microsoft.com/support/community/?product=active-directory).
+>Informationen zu den Preisoptionen für diese Lizenzen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+>
+>Azure Active Directory Premium P1, Premium P2 und Azure Active Directory Basic werden derzeit in China nicht unterstützt. Weitere Informationen zu den Preisen von Azure AD erhalten Sie im [Azure Active Directory-Forum](https://azure.microsoft.com/support/community/?product=active-directory).
 
 - **Azure Active Directory Free:** Bietet Benutzer- und Gruppenverwaltung, lokale Verzeichnissynchronisierung und einfache Berichte sowie einmaliges Anmelden für Azure, Office 365 und zahlreiche beliebte SaaS-Apps.
 
@@ -56,6 +61,7 @@ Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige
 Weitere Informationen zum Zuordnen eines Azure-Abonnements zu Azure AD finden Sie unter [ Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) und weitere Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern unter [ Zuweisen oder Entfernen von Azure Active Directory-Lizenzen](license-users-groups.md).
 
 ## <a name="terminology"></a>Begriff
+
 Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation sollten Sie sich mit den folgenden Begriffen vertraut machen:
 
 |Begriff oder Konzept|BESCHREIBUNG|
@@ -74,6 +80,7 @@ Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation soll
 |Microsoft-Konto (auch MSA genannt)|Persönliche Microsoft-Konten, die Zugriff auf Ihre endbenutzerorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Office 365 bieten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert.|
 
 ## <a name="which-features-work-in-azure-ad"></a>Welche Features können in Azure AD verwendet werden?
+
 Nachdem Sie Ihre Azure AD-Lizenz gewählt haben, erhalten Sie Zugriff auf einige oder alle der folgenden Features für Ihre Organisation:
 
 |Category (Kategorie)|BESCHREIBUNG|
@@ -91,11 +98,11 @@ Nachdem Sie Ihre Azure AD-Lizenz gewählt haben, erhalten Sie Zugriff auf einige
 |Identitätsgovernance|Verwalten Sie die Identität Ihrer Organisation über Zugriffssteuerungen für Mitarbeiter, Geschäftspartner, Anbieter, Dienste und Apps. Sie können auch Zugriffsüberprüfungen durchführen. Weitere Informationen finden Sie unter [Was ist Azure AD Identity Governance?](../governance/identity-governance-overview.md) sowie unter [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md).|
 |Schutz der Identität (Identity Protection)|Erkennen Sie potenzielle Sicherheitsrisiken für die Identitäten Ihrer Organisation, konfigurieren Sie Richtlinien, um auf verdächtige Aktivitäten zu reagieren, und ergreifen Sie geeignete Gegenmaßnahmen. Weitere Informationen finden Sie unter [Azure AD Identity Protection](../identity-protection/index.yml).|
 |Verwaltete Identitäten für Azure-Ressourcen|Stellt für Ihre Azure-Dienste eine automatisch verwaltete Identität in Azure AD bereit, die jeden von Azure AD unterstützten Authentifizierungsdienst authentifizieren kann (einschließlich Key Vault). Weitere Informationen finden Sie im unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md).|
-|Privileged Identity Management (PIM)|Verwalten, steuern und überwachen Sie den Zugriff innerhalb Ihrer Organisation. Dieses Feature umfasst den Zugriff auf Ressourcen in Azure AD, auf Azure-Ressourcen und auf andere Microsoft-Onlinedienste wie Office 365 oder Intune. Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Management?](../privileged-identity-management/index.yml).|
+|Privileged Identity Management (PIM)|Verwalten, steuern und überwachen Sie den Zugriff innerhalb Ihrer Organisation. Dieses Feature umfasst den Zugriff auf Ressourcen in Azure AD und Azure sowie auf andere Microsoft Online Services wie Office 365 oder Intune. Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Management?](../privileged-identity-management/index.yml).|
 |Berichte und Überwachung|Gewinnen Sie Erkenntnisse zur Sicherheit und zu Verwendungsmustern in Ihrer Umgebung. Weitere Informationen finden Sie unter [Azure Active Directory-Berichte und -Überwachung](../reports-monitoring/index.yml).|
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Gewusst wie: Registrieren für Azure Active Directory Premium](active-directory-get-started-premium.md)
 
 - [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

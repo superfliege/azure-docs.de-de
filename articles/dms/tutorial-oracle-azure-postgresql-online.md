@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 6f94fa8b5c0d972d9cdbe86c480a712f7e44c29f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: b73249a9f72e4616f6d36e16f110913278f04590
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157208"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415600"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Tutorial: Onlinemigration von Oracle zu Azure Database for PostgreSQL mit DMS (Vorschauversion)
 
@@ -50,7 +50,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Laden Sie ora2pg herunter, und installieren Sie das Tool unter [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) oder unter [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf).
 * [Erstellen einer Instanz in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Stellen Sie eine Verbindung mit der Instanz her, und erstellen Sie eine Datenbank gemäß den Anweisungen in [diesem Dokument](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Erstellen Sie ein virtuelles Azure-Netzwerk (VNet) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNet finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln, die Schritt-für-Schritt-Anleitungen bieten.
+* Erstellen Sie ein virtuelles Azure-Netzwerk (VNet) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
   > [!NOTE]
   > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des VNet-Setups die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
@@ -192,7 +192,7 @@ Zum Bewerten des erforderlichen Aufwands für die Migration von Oracle zu Azure 
 
 Die meisten Kunden wenden sehr viel Zeit dafür auf, den Bewertungsbericht zu überprüfen und den Aufwand für die automatische und manuelle Konvertierung zu berücksichtigen.
 
-Informationen darüber, wie Sie ora2pg zum Erstellen eines Bewertungsberichts konfigurieren und ausführen, finden Sie im Abschnitt **Pre-Migration: Assessment** des Whitepapers [Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). [Hier](http://ora2pg.darold.net/report.html) finden Sie ein Beispiel für einen ora2pg-Bewertungsbericht zu Referenzzwecken.
+Wenn Sie ora2pg zum Erstellen eines Bewertungsberichts konfigurieren und ausführen möchten, lesen Sie die Informationen im Abschnitt **Premigration: Assessment** (Prämigration: Bewertung) des Artikels [Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) (Cookbook: Oracle zu Azure Database for PostgreSQL). [Hier](http://ora2pg.darold.net/report.html) finden Sie ein Beispiel für einen ora2pg-Bewertungsbericht zu Referenzzwecken.
 
 ## <a name="export-the-oracle-schema"></a>Exportieren des Oracle-Schemas
 
@@ -347,7 +347,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 ## <a name="upload-oracle-oci-driver"></a>Hochladen des Oracle OCI-Treibers
 
-1. Wählen Sie **Speichern** aus, melden Sie sich auf dem Bildschirm **OCI-Treiber installieren** bei Ihrem Oracle-Konto an, und laden Sie dann den Treiber **instantclient-basiclite-windows.x64-12.2.0.1.0.zip (37,128,586 bytes) (cksum - 865082268)** von [hier](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst) herunter.
+1. Wählen Sie **Speichern** aus, melden Sie sich auf dem Bildschirm **OCI-Treiber installieren** bei Ihrem Oracle-Konto an, und laden Sie dann den Treiber **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 bytes) (cksum - 865082268) [hier](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst) herunter.
 2. Laden Sie den Treiber in einen freigegebenen Ordner herunter.
 
    Stellen Sie sicher, dass der Ordner mit dem von Ihnen angegebenen Benutzernamen mit minimalem schreibgeschützten Zugriff freigegeben ist. Azure Database Migration Service greift auf die Freigabe zu und liest daraus, um den OCI-Treiber in Azure hochzuladen. Dabei erfolgt ein Identitätswechsel des von Ihnen angegebenen Benutzernamens.

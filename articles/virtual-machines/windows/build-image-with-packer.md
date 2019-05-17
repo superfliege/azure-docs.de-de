@@ -14,19 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: f768582e8ef32bc654a2f797c5c7a481a26fb643
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 012f4e479a5b8ea2e3ddea1bfde70ab10ee4e834
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734182"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467043"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Windows-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Windows-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Betriebssysteme und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel wird erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
 
 Dieser Artikel wurde zuletzt am 21.02.2019 unter Verwendung von Version 1.3.0 des [Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) und Version 1.3.4 von [Packer](https://www.packer.io/docs/install/index.html) geprüft.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+> [!NOTE]
+> Azure bietet jetzt einen Dienst zum Definieren und Erstellen eigener benutzerdefinierter Images: Azure Image Builder (Vorschauversion). Azure Image Builder baut auf Packer auf, daher können Sie sogar Ihre vorhandenen Packer Shell Provisioner-Skripts importieren. Informationen zu den ersten Schritten mit Azure Image Builder finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Azure Image Builder](image-builder.md).
 
 ## <a name="create-azure-resource-group"></a>Erstellen einer Azure-Ressourcengruppe
 Während des Buildprozesses zum Erstellen der Quell-VM erstellt Packer temporäre Azure-Ressourcen. Zum Erfassen dieser Quell-VM zur Verwendung als Image müssen Sie eine Ressourcengruppe definieren. Die Ausgabe des Packer-Buildprozesses wird in dieser Ressourcengruppe gespeichert.
@@ -248,6 +249,4 @@ Um Ihre VM in Aktion zu sehen, die die IIS-Installation von der Packer-Bereitste
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Beispiel haben Sie Packer zum Erstellen eines VM-Images verwendet, in dem IIS bereits installiert ist. Sie können dieses VM-Image zusammen mit vorhandenen Bereitstellungsworkflows nutzen, um z.B. Ihre anhand des Images erstellte App mit Azure DevOps Services, Ansible, Chef oder Puppet auf VMs bereitzustellen.
-
-Weitere Packer-Beispielvorlagen für andere Windows-Distributionen finden Sie in [diesem GitHub-Repository](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Sie können mit [Azure Image Builder](image-builder.md) auch vorhandene Packer Provisioner-Skripts verwenden.

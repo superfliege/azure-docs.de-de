@@ -7,14 +7,14 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: overview
-ms.date: 05/06/2019
+ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 6121c0f654a61a147e84f0697f3ddb06b7c5db92
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bfa3e63a433a6948f05ece7ec3c3a6180933510b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079948"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466170"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -38,9 +38,9 @@ Azure Red Hat OpenShift-Knoten werden auf virtuellen Azure-Computern ausgeführt
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuelle Netzwerke und Eingang
 
-Sie können einen Azure Red Hat OpenShift-Cluster in einem vorhandenen virtuellen Netzwerk bereitstellen. Bei dieser Konfiguration wird jedem Pod im Cluster eine IP-Adresse im virtuellen Netzwerk zugewiesen, und es ist jeweils eine direkte Kommunikation mit anderen Pods im Cluster und anderen Knoten im virtuellen Netzwerk möglich. Pods können auch eine Verbindung mit anderen Diensten eines mittels Peering verbundenen virtuellen Netzwerks sowie mit lokalen Netzwerken über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/)- oder S2S-VPN-Verbindungen (Site-to-Site) herstellen.
+Sie können einen Azure Red Hat OpenShift-Cluster über Peering mit einem vorhandenen virtuellen Netzwerk verbinden. In dieser Konfiguration können Pods eine Verbindung mit anderen Diensten eines mittels Peering verbundenen virtuellen Netzwerks sowie mit lokalen Netzwerken über [ExpressRoute-](https://docs.microsoft.com/azure/expressroute/) oder S2S-VPN-Verbindungen (Site-to-Site) herstellen.
 
-Weitere Informationen finden Sie unter [Erstellen eines Microsoft Red Hat OpenShift-Clusters in Azure](tutorial-create-cluster.md).
+Weitere Informationen finden Sie unter [Verbinden des virtuellen Netzwerks eines Clusters mit einem bestehenden virtuellen Netzwerk ](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network).
 
 ## <a name="kubernetes-certification"></a>Kubernetes-Zertifizierung
 

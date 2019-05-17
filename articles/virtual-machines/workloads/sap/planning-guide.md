@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2ddcf1f38d3d92f9d9bdd12203ebf99f20600478
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999534"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409782"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -391,17 +391,10 @@ Allgemeine standardmäßige und maximale Einschränkungen von Azure-Abonnements 
 ## <a name="possible-scenarios"></a>Mögliche Szenarien
 SAP wird in Unternehmen häufig als eine der Anwendungen angesehen, die am wichtigsten für den Erfolg sind. Die Architektur und Abläufe dieser Anwendungen sind in der Regel komplex, und es ist wichtig, dass Sie die Verfügbarkeits- und Leistungsanforderungen erfüllen.
 
-Daher müssen sich Unternehmen sorgfältig überlegen, welche Anwendungen in einer öffentlichen Cloudumgebung unabhängig vom ausgewählten Cloudanbieter ausgeführt werden können.
+Unternehmen müssen daher sorgfältig abwägen, welchen Cloudanbieter sie auswählen, bei dem diese unternehmenskritischen Geschäftsprozesse ausgeführt werden sollen. Azure ist die ideale öffentliche Cloudplattform für unternehmenskritische SAP-Anwendungen und Geschäftsprozesse. Angesichts der Vielfältigkeit der Azure-Infrastruktur können heute nahezu sämtliche vorhandene SAP NetWeaver -und S/4HANA-Systeme in Azure gehostet werden. Azure bietet VMs mit vielen Terabyte Arbeitsspeicher und mehr als 200 CPUs an. Darüber hinaus bietet Azure [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) als Möglichkeit, HANA-Bereitstellungen horizontal auf bis zu 24 TB und ANA-Bereitstellungen horizontal auf bis zu 120 TB zu skalieren. 
 
-Mögliche Systemtypen für die Bereitstellung von SAP NetWeaver-basierten Anwendungen innerhalb öffentlicher Cloudumgebungen sind unten aufgeführt:
 
-1. Produktionssysteme mittlerer Größe
-2. Entwicklungssysteme
-3. Testsysteme
-4. Prototypsysteme
-5. Schulungs-/Demonstrationssysteme
-
-Um SAP-Systeme erfolgreich in Azure IaaS oder IaaS bereitzustellen, müssen Sie die wichtigsten Unterschiede zwischen den Angeboten herkömmlicher Outsourcer oder Hoster und IaaS-Angeboten kennen. Während herkömmliche Hoster oder Outsourcer die Infrastruktur (Netzwerk-, Speicher- und Servertyp) an die Workload anpassen, die ein Kunde hosten möchte, liegt es in der Verantwortung des Kunden, die richtige Workload für IaaS-Bereitstellungen auszuwählen.
+Um SAP-Systeme erfolgreich in Azure IaaS oder IaaS bereitzustellen, müssen Sie die wichtigsten Unterschiede zwischen den Angeboten herkömmlicher Outsourcer oder Hoster und IaaS-Angeboten kennen. Während herkömmliche Hoster oder Outsourcer die Infrastruktur (Netzwerk-, Speicher- und Servertyp) an die Workload anpassen, die ein Kunde hosten möchte, liegt es stattdessen in der Verantwortung des Kunden, die richtigen Azure-Komponenten für VMs, Speicher und Netzwerk bei IaaS-Bereitstellungen auszuwählen.
 
 Als ersten Schritt müssen Kunden die folgenden Punkte überprüfen:
 
@@ -422,11 +415,13 @@ Die meisten dieser Daten finden Sie [hier (für Linux)][virtual-machines-sizes-l
 
 Denken Sie daran, dass die im oben stehenden Link aufgeführten Grenzwerte die Obergrenzen darstellen. Das bedeutet nicht, dass die Grenzwerte für die Ressourcen, z.B. IOPS, immer bereitgestellt werden können. Ausnahmen sind jedoch die CPU- und Speicherressourcen eines ausgewählten Typs virtueller Computer. Für die Typen virtueller Computer, die von SAP unterstützt werden, sind die CPU- und Speicherressourcen reserviert und stehen somit jederzeit zur Nutzung auf dem virtuellen Computer zur Verfügung.
 
-Die Microsoft Azure-Plattform ist wie andere IaaS-Plattformen eine Plattform mit mehreren Mandanten. Infolgedessen werden Speicher-, Netzwerk- und andere Ressourcen von Mandanten gemeinsam genutzt. Intelligente Drosselungs- und Kontingentlogik wird verwendet, um zu verhindern, dass ein Mandant die Leistung eines anderen Mandanten deutlich beeinträchtigt ("Noisy Neighbor"). Obwohl durch Logik in Azure versucht wird, Bandbreitenabweichungen klein zu halten, tendieren Plattformen mit umfangreicher gemeinsamer Nutzung zu größeren Abweichungen bei Ressourcen-/Bandbreitenverfügbarkeit, als viele Kunden von ihren lokalen Bereitstellungen gewohnt sind. Daher erleben Sie möglicherweise im Hinblick auf Netzwerk- oder Speicher-E/A (Volumen und Latenz) minütlich variierende Bandbreiten. Die Wahrscheinlichkeit, dass ein SAP-System in Azure stärkere Schwankungen als ein lokales System aufweist, muss berücksichtigt werden.
+Die Microsoft Azure-Plattform ist eine Plattform für mehrere Mandanten. Infolgedessen werden Speicher-, Netzwerk- und andere Ressourcen von Mandanten gemeinsam genutzt. Intelligente Drosselungs- und Kontingentlogik wird verwendet, um zu verhindern, dass ein Mandant die Leistung eines anderen Mandanten deutlich beeinträchtigt ("Noisy Neighbor"). Insbesondere bei der Zertifizierung der Azure-Plattform für SAP HANA muss Microsoft die Isolierung von Ressourcen für Fälle nachweisen, in denen mehrere VMs für SAP regelmäßig auf demselben Host ausgeführt werden können. Obwohl durch Logik in Azure versucht wird, Bandbreitenabweichungen klein zu halten, tendieren Plattformen mit umfangreicher gemeinsamer Nutzung zu größeren Abweichungen in der Ressourcen-/Bandbreitenverfügbarkeit, als die Kunden dies von ihren lokalen Bereitstellungen kennen. Die Wahrscheinlichkeit, dass ein SAP-System in Azure stärkere Schwankungen als ein lokales System aufweist, muss berücksichtigt werden.
 
-Der letzte Schritt ist das Auswerten von Verfügbarkeitsanforderungen. Es kann vorkommen, dass die zugrunde liegenden Azure-Infrastruktur aktualisiert werden muss und dass die Hosts, auf denen virtuelle Computer ausgeführt werden, neu gestartet werden müssen. In diesen Fällen werden die auf diesen Hosts ausgeführten virtuellen Computer heruntergefahren und ebenfalls neu gestartet. Solche Wartungsarbeiten werden außerhalb der Hauptgeschäftszeiten für eine bestimmte Region durchgeführt, aber das potenzielle Fenster (einige Stunden) für einen Neustart ist relativ groß. Es gibt verschiedene Technologien innerhalb der Azure-Plattform, die konfiguriert werden können, um einige oder alle der Auswirkungen dieser Aktualisierungen zu verringern. Zukünftige Verbesserungen der Azure-Plattform, der DBMS- und SAP-Anwendungen werden entwickelt, um die Auswirkungen solcher Neustarts zu minimieren.
+Der letzte Schritt ist das Auswerten von Verfügbarkeitsanforderungen. Es kann vorkommen, dass die zugrunde liegenden Azure-Infrastruktur aktualisiert werden muss und dass die Hosts, auf denen virtuelle Computer ausgeführt werden, neu gestartet werden müssen. Microsoft dokumentiert die unterschiedlichen Fälle in [Wartung für VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates). Für die seltenen Fälle, in denen virtuelle Computer zu einem Neustart gezwungen sind, jedoch vor allem für die Fälle, in denen Sie Komponenten des Gastbetriebssystems oder DBMS-Komponenten patchen müssen, ist es wichtig, für Ihre SAP-Produktionssysteme gültige Hochverfügbarkeitskonzepte zu entwickeln. Diese Anforderung unterscheidet sich nicht von den lokalen Anforderungen. Microsoft entwickelt die Azure-Plattform ständig weiter, um Ausfallzeiten aufgrund von Plattformänderungen zu verringern. 
 
 Um erfolgreich ein SAP-System auf Azure bereitzustellen, müssen das lokale SAP-System, das Betriebssystem, Datenbank- und SAP-Anwendungen in der SAP-Azure-Support-Matrix angezeigt werden, in die Ressourcen passen, die die Azure-Infrastruktur bereitstellen kann und die mit den Verfügbarkeits-SLAs, die Microsoft Azure bietet, funktionieren können. Wenn diese Systeme identifiziert werden, müssen Sie sich für eines der folgenden zwei Bereitstellungsszenarios entscheiden.
+
+
 
 
 
@@ -451,7 +446,11 @@ In [diesem Artikel][vpn-gateway-create-site-to-site-rm-powershell] erhalten Sie 
 >
 > Der Grund für diese Einschränkungen ist die Anforderung eines Hochleistungsnetzwerk mit einer niedrigen Latenz innerhalb eines SAP-Systems, insbesondere zwischen den Anwendungsinstanzen und der DBMS-Ebene eines SAP-Systems.
 >
->
+> Eine besondere Planung der Systeme und Regionen muss erfolgen, wenn mehrere hochintegrierte SAP-Systeme verwendet werden. Stellen Sie diese Systeme so nah wie möglich beieinander bereit, um Netzwerklatenzen zu minimieren. Einige Beispiele für hochintegrierte SAP-Systeme:
+> * SAP BW zum Lesen von Daten aus SAP-OLTP-Systemen wie ERP-, CRM oder SRM
+> * SAP SLT zum Replizieren von Daten zwischen mehreren SPA-Systemen oder sogar zwischen SAP- und Nicht-SAP-Systemen
+> * SAP S/4 mit Verbindung mit einem SAP ERP-System usw.
+
 
 ### <a name="supported-os-and-database-releases"></a>Unterstützte Betriebssystem- und Datenbankversionen
 * Die für Azure Virtual Machine-Dienste unterstützte Microsoft-Serversoftware wird im folgenden Artikel aufgeführt: <https://support.microsoft.com/kb/2721672>.
@@ -1960,7 +1959,7 @@ Hier sind zwei Beispiele für eine vollständige SAP NetWeaver HA-Architektur in
 Nur nicht verwaltete Datenträger: Bei den nachfolgend erläuterten Konzepten müssen Sie möglicherweise gewisse Kompromisse eingehen, wenn Sie viele SAP-Systeme bereitstellen und die Anzahl der bereitgestellten virtuellen Computer die maximale Anzahl von Speicherkonten pro Abonnement überschreitet. In diesen Fällen müssen die VHDs virtueller Computer in einem Speicherkonto kombiniert werden. Normalerweise würden Sie zu diesem Zweck VHDs der SAP-Anwendungsebene mit virtuellen Computern verschiedener SAP-Systeme kombinieren.  Wir haben zudem in einem Azure Storage-Konto verschiedene VHDs von unterschiedlichen virtuellen DBMS-Computern der verschiedenen SAP-Systemen kombiniert. Beachten Sie dabei die IOPS-Grenzwerte von Azure-Speicherkonten (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>).
 
 
-##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows]  Hohe Verfügbarkeit unter Windows
+##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] Hohe Verfügbarkeit unter Windows
 
 ![Hochverfügbare Anwendungsarchitektur für SAP NetWeaver mit SQL Server in Azure IaaS][planning-guide-figure-3200]
 
@@ -1982,7 +1981,7 @@ Die folgende Abbildung veranschaulicht die gleiche Landschaft mit Managed Disks
 
 ![Hochverfügbare Anwendungsarchitektur für SAP NetWeaver mit SQL Server in Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux]  Hohe Verfügbarkeit unter Linux
+##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] Hohe Verfügbarkeit unter Linux
 
 Die Architektur für SAP HA unter Linux in Azure ist im Grunde mit der oben für Windows beschriebenen Architektur identisch. Eine Liste unterstützter Hochverfügbarkeitslösungen finden Sie im SAP-Hinweis [1928533].
 

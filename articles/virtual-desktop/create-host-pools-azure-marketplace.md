@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: c4ab209d63a01d9e1089eec351eff64fc116f403
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924970"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236796"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit Azure Marketplace
 
@@ -70,7 +70,7 @@ Gehen Sie auf dem Blatt mit den Informationen zum Windows Virtual Desktop-Mandan
 
 1. Geben Sie den**Namen der Windows Virtual Desktop-Mandantengruppe** für die Mandantengruppe ein, die Ihren Mandanten enthält. Falls Sie keinen bestimmten Mandantengruppennamen verwenden möchten, übernehmen Sie den Standardwert.
 2. Geben Sie den**Namen des Windows Virtual Desktop-Mandanten** für den Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
-3. Geben Sie die Art der Anmeldeinformationen an, die Sie für die Authentifizierung als RDS-Besitzer des Windows Virtual Desktop-Mandanten verwenden möchten. Bei Verwendung der Option **Dienstprinzipal** müssen Sie auch die dem Dienstprinzipal zugeordnete **Azure AD-Mandanten-ID** angeben.
+3. Geben Sie die Art der Anmeldeinformationen an, die Sie für die Authentifizierung als RDS-Besitzer des Windows Virtual Desktop-Mandanten verwenden möchten. Wenn Sie das Tutorial [Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](./create-service-principal-role-powershell.md) abgeschlossen haben, wählen Sie **Dienstprinzipal** aus. Sie müssen nun die **Azure AD-Mandanten-ID** der Azure Active Directory-Instanz eingeben, die den Dienstprinzipal enthält.
 4. Geben Sie die Anmeldeinformationen für das Administratorkonto des Mandanten ein. Es werden nur Dienstprinzipale mit Kennwort unterstützt.
 5. Klicken Sie auf **OK**.
 

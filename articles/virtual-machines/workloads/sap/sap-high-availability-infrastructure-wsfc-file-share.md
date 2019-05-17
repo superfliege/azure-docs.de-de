@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480009"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409614"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen
 
@@ -36,6 +36,7 @@ ms.locfileid: "58480009"
 [arm-sofs-s2d-managed-disks]:https://github.com/robotechredmond/301-storage-spaces-direct-md
 [arm-sofs-s2d-non-managed-disks]:https://github.com/Azure/azure-quickstart-templates/tree/master/301-storage-spaces-direct
 [deploy-cloud-witness]:https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -341,6 +342,16 @@ Die Azure Resource Manager-Vorlage zum Bereitstellen von Dateiservern mit horizo
 _**Abbildung 2**: Bildschirm der Benutzeroberfläche für die Azure Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung ohne verwaltete Datenträger_
 
 Wählen Sie im Feld **Speicherkontotyp** die Option **Storage Premium** aus. Alle anderen Einstellungen sind mit den Einstellungen von verwalteten Datenträgern identisch.
+
+## <a name="adjust-cluster-timeout-settings"></a>Anpassen von Timeouteinstellungen für Cluster
+
+Nachdem Sie die Installation des Windows-Clusters für den Dateiserver mit horizontaler Skalierung abgeschlossen haben, passen Sie die Timeoutschwellenwerte für die Failovererkennung an die Bedingungen in Azure an. Die zu ändernden Parameter sind unter [Tuning Failover Cluster Network Thresholds][tuning-failover-cluster-network-thresholds] (Optimieren der Netzwerkschwellenwerte für Failovercluster) dokumentiert. Vorausgesetzt, dass sich Ihre gruppierten virtuellen Computer im selben Subnetz befinden, ändern Sie die folgenden Parameter auf diese Werte:
+
+- SameSubNetDelay = 2000
+- SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
+
+Diese Einstellungen wurden bei Kunden getestet und stellen einen guten Kompromiss dar. Sie sind robust genug, ermöglichen aber gleichzeitig ein ausreichend schnelles Failover unter echten Fehlerbedingungen oder bei einem VM-Ausfall.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

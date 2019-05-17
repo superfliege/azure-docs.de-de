@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146142"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236929"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
@@ -38,7 +38,7 @@ Bevor Sie Dienstprinzipale und Rollenzuweisungen erstellen können, müssen Sie 
     Install-Module AzureAD
     ```
 
-2. Führen Sie die folgenden Cmdlets aus, indem Sie die Werte in Anführungszeichen durch die für Ihre Sitzung relevanten Werte ersetzen.
+2. Führen Sie die folgenden Cmdlets aus, indem Sie die Werte in Anführungszeichen durch die für Ihre Sitzung relevanten Werte ersetzen. Wenn Sie Ihren Windows Virtual Desktop-Mandanten eben im Tutorial [Erstellen eines Mandanten in Windows Virtual Desktop](./tenant-setup-azure-active-directory.md) erstellt haben, verwenden Sie als Mandantengruppennamen „Standardmandantengruppe“.
 
     ```powershell
     $myTenantGroupName = "<my-tenant-group-name>"
@@ -109,7 +109,7 @@ Hier sind die drei Anmeldeinformationen, die Sie sich notieren sollten, und die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie einen Dienstprinzipal erstellen und ihn für die Anmeldung an Windows Virtual Desktop verwenden. Fahren Sie mit den Anleitungsartikeln zur Verbindungsherstellung mit Windows Virtual Desktop fort, um mehr zur Anmeldung an Windows Virtual Desktop zu erfahren.
+Wenn Sie den Dienstprinzipal erstellt und ihm eine Rolle in Ihrem Windows Virtual Desktop-Mandanten zugewiesen haben, können Sie ihn zum Erstellen eines Hostpools verwenden. Weitere Informationen zu Hostpools finden Sie im Tutorial zum Erstellen eines Hostpools in Windows Virtual Desktop.
 
-- [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-and-10.md)
-- [Herstellen einer Verbindung über einen Webbrowser](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Tutorial: Create a host pool with Azure Marketplace](./create-host-pools-azure-marketplace.md) (Tutorial: Erstellen eines Hostpools mit Azure Marketplace)

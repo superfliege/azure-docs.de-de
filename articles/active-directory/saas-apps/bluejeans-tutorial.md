@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698927"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Tutorial: Azure Active Directory-Integration mit BlueJeans
 
@@ -102,18 +102,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei BlueJean
 
 3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+    ![Bearbeiten der SAML-Basiskonfiguration](media/bluejeans-tutorial/edit-urls-bluejeans.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+4. Geben Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Werte ein:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für BlueJeans](common/sp-identifier.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für BlueJeans](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.BlueJeans.com`
-
-    b. Geben Sie im Textfeld **Bezeichner** eine URL ein: `http://samlsp.bluejeans.com`
-
-    > [!NOTE]
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den BlueJeans-Client](https://support.bluejeans.com/contact), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+   - Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://samlsp.bluejeans.com`
+    
+   - Geben Sie im Textfeld **Anmelde-URL** die URL der Landing Page ein, die Sie von BlueJeans erhalten haben. (Sie erhalten diesen Wert vom [Supportteam für den BlueJeans-Client](https://support.bluejeans.com/contact)): `https://<companyname>.bluejeans.com`.
+    
+   - Klicken Sie auf **Speichern**.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -161,9 +160,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei BlueJean
 
     ![Änderungen speichern](./media/bluejeans-tutorial/ic785874.png "Änderungen speichern")
 
-    a. Geben Sie in das Textfeld **Benutzer-ID** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
+    a. Geben Sie in das Textfeld **Benutzer-ID** `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
-    b. Geben Sie in das Textfeld **E-Mail** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
+    b. Geben Sie in das Textfeld **E-Mail** `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
     c. Klicken Sie auf **ÄNDERUNGEN SPEICHERN**.
 

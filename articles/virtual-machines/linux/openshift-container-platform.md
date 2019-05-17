@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 39eea84cc9301263381533e03e8f783e0a73ea19
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999959"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411559"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Bereitstellen von OpenShift Container Platform in Azure
 
@@ -66,7 +66,7 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -251,7 +251,7 @@ Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher
 
 | Eigenschaft | BESCHREIBUNG | Gültige Optionen | Standardwert |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | URL für Artefakte (JSON, Skripts usw.) |  |  https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `_artifactsLocation`  | URL für Artefakte (JSON, Skripts usw.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | Azure-Region, in der Ressourcen bereitgestellt werden |  |  |
 | `masterVmSize` | Größe der Master-VM. Wählen Sie eine der in der Datei „azuredeploy.json“ aufgelisteten VM-Größen aus. |  | Standard_E2s_v3 |
 | `infraVmSize` | Größe der Infra-VM. Wählen Sie eine der in der Datei „azuredeploy.json“ aufgelisteten VM-Größen aus. |  | Standard_D4s_v3 |

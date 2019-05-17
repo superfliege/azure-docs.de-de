@@ -4,22 +4,22 @@ description: Enthält eine Übersicht über die Speicherung von Konfigurationsda
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011281"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408737"
 ---
-# <a name="key-value-store"></a>Schlüssel-Wert-Speicherung
+# <a name="keys-and-values"></a>Schlüssel und Werte
 
 Azure App Configuration speichert Konfigurationsdaten als Schlüssel-Wert-Paare. Schlüssel-Wert-Paare sind eine einfache und flexible Methode zur Darstellung verschiedener Arten von Anwendungseinstellungen, mit denen Entwickler vertraut sind.
 
@@ -45,29 +45,27 @@ Sie können Schlüssel in App Configuration auf viele verschiedene Arten hierarc
 
 Hier sind einige Beispiele dafür angegeben, wie Sie Ihre Schlüsselnamen in einer Hierarchie strukturieren können:
 
-* Basierend auf Umgebungen
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * Basierend auf Komponentendiensten
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * Basierend auf Bereitstellungsregionen
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>Bezeichnen von Schlüsseln
+
+Schlüsselwerte in App Configuration können optional über das Attribut „label“ (Bezeichnung) verfügen. Bezeichnungen werden genutzt, um zwischen Schlüsselwerten mit demselben Schlüssel zu unterscheiden. Ein Schlüssel *app1* mit den Bezeichnungen *A* und *B* steht in einem App-Konfigurationsspeicher für zwei separate Schlüssel. Standardmäßig ist die Bezeichnung für einen Schlüsselwert leer oder `null`.
+
+Eine Bezeichnung ist praktisch zum Erstellen von Varianten eines Schlüssels. Mit Bezeichnungen werden häufig mehrere Umgebungen für den gleichen Schlüssel angegeben:
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>Versionsverwaltung von Schlüsselwerten
-
-Schlüsselwerte in App Configuration können optional über das Attribut „label“ (Bezeichnung) verfügen. Bezeichnungen werden genutzt, um zwischen Schlüsselwerten mit demselben Schlüssel zu unterscheiden. Ein Schlüssel *app1* mit den Bezeichnungen *v1* und *v2* steht in einem App-Konfigurationsspeicher für zwei separate Schlüsselwerte. Standardmäßig ist die Bezeichnung für einen Schlüsselwert leer oder `null`.
 
 App Configuration versieht Schlüsselwerte nicht automatisch mit Versionsangaben, wenn sie geändert werden. Verwenden Sie Bezeichnungen als Möglichkeit zum Erstellen von mehreren Versionen eines Schlüsselwerts. Beispielsweise können Sie eine Zahl einer Anwendungsversion oder eine Git-Commit-ID in Bezeichnungen eingeben, um Schlüsselwerte zu identifizieren, die einem bestimmten Softwarebuild zugeordnet sind.
 
@@ -106,5 +104,5 @@ In einem App-Konfigurationsspeicher gespeicherte Konfigurationsdaten, was alle S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Point-in-Time-Momentaufnahme](./concept-point-time-snapshot.md)  
+* [Point-in-Time-Momentaufnahme](./concept-point-time-snapshot.md)  
+* [Funktionsverwaltung](./concept-feature-management.md)  
