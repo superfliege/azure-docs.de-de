@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904626"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506871"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -39,6 +39,9 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
 * Alle Domänencontroller, auf denen der DC-Agent-Dienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
 * Auf allen Computern, auf denen der DC-Agent-Dienst installiert werden soll, muss .NET 4.5 installiert sein.
 * Alle Computer, auf denen der Proxydienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 R2 oder höher ausführen.
+   > [!NOTE]
+   > Die Bereitstellung von Proxydiensten ist eine obligatorische Voraussetzung für das Bereitstellen des Kennwortschutzes von Azure AD, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt. 
+   >
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7 installiert sein.
   .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
 * Alle Computer (auch Domänencontroller), auf denen Azure AD-Kennwortschutzkomponenten installiert sind, müssen über eine Installation der Universal C-Runtime verfügen. Sie können die Runtime abrufen, indem Sie sicherstellen, dass Sie über alle Updates von Windows Update verfügen. Sie können sie auch in einem betriebssystemspezifischen Updatepaket abrufen. Weitere Informationen finden Sie unter [Update für die Universal C-Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).

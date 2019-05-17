@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
+ms.date: 04/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 1e02e4fdf0dbe04d8756fc6355c6a9e414b27d2b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: feb82d2abb756d636aeb77042cc817b7b05f6b0c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665594"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233667"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 
-Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre geändert *hat*, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen für die Cloud erstellen.
+Für Softwareentwickler ist das Einbeziehen einer Anwendung in Komponententeile nichts Neues. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre geändert *hat*, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen für die Cloud erstellen.
 
 Veränderte geschäftliche Anforderungen sind:
 
@@ -39,13 +39,13 @@ Weitere Informationen zum Azure-Ansatz in Bezug auf Microservices finden Sie unt
 
 Anwendungen entwickeln sich im Laufe der Zeit weiter. Erfolgreiche Anwendungen entwickeln sich weiter, indem Sie für die Benutzer nützlich sind. Nicht erfolgreiche Anwendungen werden nicht weiterentwickelt und schließlich ausgesondert. Die Frage ist: Wie viel wissen Sie über Ihre heutigen Anforderungen und deren zukünftige Entwicklung? Angenommen, Sie erstellen eine Berichterstellungsanwendung für eine Abteilung. Sie sind sicher, dass die Anwendung nur innerhalb Ihres Unternehmens verwendet wird und die Berichte nur eine kurze Lebensdauer haben. In diesem Fall wählen Sie einen anderen Ansatz als beispielsweise bei der Erstellung eines Diensts zur Bereitstellung von Videoinhalten für Millionen von Kunden.
 
-In einigen Fällen ist der treibende Faktor, dass ein Projekt als Machbarkeitsstudie in dem Wissen erstellt werden kann, dass der Entwurf der Anwendung später geändert werden kann. Es ist nicht sehr sinnvoll, zu viel Engineeringaufwand für etwas zu betreiben, was niemals verwendet wird. Dies ist der übliche Kompromiss, der beim Engineering häufig eingegangen wird. Wenn Unternehmen von der Erstellung für die Cloud sprechen, werden aber auch Wachstum und gute Auslastung erwartet. Das Problem hierbei ist, dass Wachstums- und Skalierungsanforderungen nicht vorhersagbar sind. Am liebsten würden wir schnell Prototypen erstellen können und gleichzeitig die Sicherheit haben, dass wir uns auf einem Weg zu zukünftigem Erfolg befinden. Dies entspricht dem schlanken Startup-Ansatz: Erstellen, Messen, Lernen und Wiederholen.
+In einigen Fällen ist der treibende Faktor, dass etwas als Machbarkeitsstudie erstellt werden soll (in dem Wissen, dass der Entwurf der Anwendung später geändert werden kann). Es ist nicht sehr sinnvoll, zu viel Engineeringaufwand für etwas zu betreiben, was niemals verwendet wird. Wenn Unternehmen von der Erstellung für die Cloud sprechen, werden aber auch Wachstum und gute Auslastung erwartet. Das Problem hierbei ist, dass Wachstums- und Skalierungsanforderungen nicht vorhersagbar sind. Am liebsten würden wir schnell Prototypen erstellen können und gleichzeitig die Sicherheit haben, dass wir uns auf einem Weg zu zukünftigem Erfolg befinden. Dies entspricht dem schlanken Startup-Ansatz: Erstellen, Messen, Lernen und Wiederholen.
 
-Während der Client/Server-Ära haben wir eher Anwendungen mit mehreren Ebenen erstellt, indem auf jeder Ebene spezielle Technologie verwendet wurde. Hierfür hat sich der Begriff *monolithische* Anwendung etabliert. Die Schnittstellen befanden sich meist zwischen den Ebenen, und innerhalb der einzelnen Ebenen wurde ein Entwurf mit engerer Kopplung zwischen den Komponenten genutzt. Die Entwickler haben also Klassen entworfen und eingebunden, die zu Bibliotheken kompiliert und über einige EXE- und DLL-Dateien verknüpft wurden. 
+Während der Client/Server-Ära haben wir eher Anwendungen mit mehreren Ebenen erstellt, indem auf jeder Ebene spezielle Technologie verwendet wurde. Hierfür hat sich der Begriff *monolithische* Anwendung etabliert. Die Schnittstellen befanden sich meist zwischen den Ebenen, und innerhalb der einzelnen Ebenen wurde ein Entwurf mit engerer Kopplung zwischen den Komponenten genutzt. Die Entwickler haben also Klassen entworfen und eingebunden, die zu Bibliotheken kompiliert und über einige EXE- und DLL-Dateien verknüpft wurden.
 
 Dieser monolithische Entwurfsansatz hat auch Vorteile. Er ist häufig einfacher zu entwerfen und verfügt über schnellere Aufrufe zwischen Komponenten, da diese Aufrufe oft per prozessübergreifender Kommunikation (Interprocess Communication, IPC) durchgeführt werden. Außerdem wird jeweils ein einzelnes Produkt getestet, was in Bezug auf den Personalaufwand meist effizienter ist. Der Nachteil ist, dass eine enge Kopplung zwischen mehrstufigen Ebenen entsteht und Sie einzelne Komponenten nicht skalieren können. Wenn Sie Fixes oder Upgrades durchführen müssen, müssen Sie warten, bis andere Personen ihre Tests abgeschlossen haben. Dadurch ist es schwieriger, flexibel vorzugehen.
 
-Microservices stellen die Antwort auf diese Nachteile dar, und sie sind enger an die obigen geschäftlichen Anforderungen angelehnt. Aber auch sie haben sowohl Vor- als auch Nachteile. Der Vorteil von Microservices ist, dass jeder Microservice normalerweise einfachere Geschäftsfunktionen kapselt, die Sie einzeln zentral hoch- und herunterskalieren, testen, bereitstellen und verwalten können. Ein wichtiger Vorteil eines Microservice-Ansatzes ist, dass Teams anders als beim mehrstufigen Ansatz stärker durch Geschäftsszenarien als durch Technologie beeinflusst werden. In der Praxis entwickeln kleinere Teams basierend auf einem Kundenszenario unter Verwendung beliebiger Technologien ihrer Wahl einen Microservice.
+Microservices stellen die Antwort auf diese Nachteile dar, und sie sind enger an die obigen geschäftlichen Anforderungen angelehnt. Aber auch sie haben sowohl Vor- als auch Nachteile. Der Vorteil von Microservices ist, dass jeder Microservice normalerweise einfachere Geschäftsfunktionen kapselt, die Sie einzeln zentral hoch- und herunterskalieren, testen, bereitstellen und verwalten können. Ein wichtiger Vorteil eines Microservice-Ansatzes ist, dass Teams stärker durch Geschäftsszenarien als durch Technologie beeinflusst werden. In der Praxis entwickeln kleinere Teams basierend auf einem Kundenszenario unter Verwendung beliebiger Technologien ihrer Wahl einen Microservice.
 
 Anders ausgedrückt: Das Unternehmen muss Technologie nicht zur Verwaltung von Microserviceanwendungen standardisieren. Einzelne für Dienste zuständige Teams können die Vorgehensweise wählen, die aufgrund des Know-hows im Team sinnvoll oder am besten zur Behebung des Problems geeignet ist. In der Praxis ist eine Gruppe empfohlener Technologien vorzuziehen, z.B. ein bestimmter NoSQL-Speicher oder ein Webanwendungsframework.
 
@@ -71,11 +71,11 @@ Mit der steigenden Zahl von Cloud-Apps haben immer mehr Entwickler festgestellt,
 
 Das Entwerfen eines Microservice-Ansatzes ist kein Patentrezept für alle Projekte. Dieser Ansatz ist jedoch enger an die oben beschriebenen geschäftlichen Ziele angelehnt. Die anfängliche Verwendung eines monolithischen Ansatzes kann akzeptabel sein, wenn Sie wissen, dass Sie später die Gelegenheit haben, den Code zu überarbeiten und in einen Microserviceentwurf zu ändern. Normalerweise beginnen Sie mit einer monolithischen Anwendung und teilen diese dann nach und nach in Phasen auf. Sie beginnen hierbei mit den Funktionsbereichen, die besser skalierbar oder flexibler werden sollen.
 
-Der Microservice-Ansatz bedeutet, dass sich Ihre Anwendung aus vielen kleinen Diensten zusammensetzt. Die Dienste werden in Containern ausgeführt, die auf einem Cluster mit Computern bereitgestellt werden. Kleinere Teams entwickeln Dienste für bestimmte Szenarien. Jeder dieser Dienste wird einzeln getestet, versioniert, bereitgestellt und skaliert, um die gesamte Anwendung weiterzuentwickeln.
+Der Microservice-Ansatz bedeutet, dass sich Ihre Anwendung aus vielen kleinen Diensten zusammensetzt. Diese Dienste werden in Containern ausgeführt, die auf einem Cluster mit Computern bereitgestellt werden. Kleinere Teams entwickeln Dienste für bestimmte Szenarien. Jeder dieser Dienste wird einzeln getestet, versioniert, bereitgestellt und skaliert, um die gesamte Anwendung weiterzuentwickeln.
 
 ## <a name="what-is-a-microservice"></a>Was ist ein Microservice?
 
-Es gibt verschiedene Definitionen von Microservices. Die meisten der folgenden Merkmale von Microservices werden aber immer genannt:
+Es gibt verschiedene Definitionen von Microservices. Die meisten der folgenden Merkmale von Microservices sind jedoch allgemein anerkannt:
 
 * Kapseln eines Kunden- oder Geschäftsszenarios Welches Problem möchten Sie lösen?
 * Durchführung der Entwicklung in einem kleinen Engineering-Team
@@ -121,7 +121,7 @@ Kommunikationsmuster werden in der umfangreichen Literatur beschrieben, die im B
 
 ### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Eindeutiger Name (URL), der zum Auflösen des Speicherorts verwendet wird
 
-Ihr Microservice muss unabhängig vom Ort der Ausführung adressierbar sein. Wenn Sie anfangen, sich Gedanken über Computer und den Ort der Ausführung bestimmter Microservices zu machen, führt dies schnell zu Problemen. 
+Ihr Microservice muss unabhängig vom Ort der Ausführung adressierbar sein. Wenn Sie anfangen, sich Gedanken über Computer und den Ort der Ausführung bestimmter Microservices zu machen, führt dies schnell zu Problemen.
 
 Ebenso wie der DNS eine bestimmte URL auf einem bestimmten Computer auflöst, muss Ihr Microservice über einen eindeutigen Namen verfügen, damit sein aktueller Speicherort ermittelt werden kann. Für Microservices sind adressierbare Namen erforderlich, damit sie unabhängig von der Infrastruktur sind, auf der sie ausgeführt werden. Dies impliziert, dass eine Interaktion zwischen der Bereitstellung und der Ermittlung Ihres Diensts besteht, weil eine Dienstregistrierung vorhanden sein muss. Der Registrierungsdienst muss Sie im Fall eines Computerausfalls darüber informieren, wohin der Dienst verschoben wurde.
 
@@ -138,6 +138,9 @@ Resilienz ist bei Fehlern während eines Anwendungsupgrades schwierig zu erziele
 Es ist eigentlich offensichtlich und wird doch oft übersehen, dass der Microservice seine Integrität und den Diagnosezustand melden muss. Andernfalls sind aus betrieblicher Sicht nur wenige Einblicke in die Integrität möglich. Die Herausforderung besteht darin, Diagnoseereignisse in einer Gruppe von unabhängigen Diensten zu korrelieren und Abweichungen der Computeruhren zum Ermitteln der richtigen Ereignisreihenfolge zu berücksichtigen. Genauso wie Sie mit einem Microservice über vereinbarte Protokolle und Datenformate interagieren, müssen Sie die Protokollierung von Integritäts- und Diagnoseereignissen standardisieren, die letztendlich zur Abfrage und Anzeige in einem Ereignisspeicher gespeichert werden. Bei einem Microservice-Ansatz ist es wichtig, dass sich die unterschiedlichen Teams auf ein gemeinsames Protokollierungsformat einigen. In der gesamten Anwendung muss ein einheitlicher Ansatz zum Anzeigen von Diagnoseereignissen verwendet werden.
 
 Die Integrität unterscheidet sich von der Diagnose. Bei der Integrität geht es darum, dass der Microservice seinen aktuellen Zustand meldet, damit geeignete Maßnahmen ergriffen werden können. Ein gutes Beispiel ist die Verwendung der Upgrade- und Bereitstellungsmechanismen zum Wahren der Verfügbarkeit. Auch wenn ein Dienst aufgrund eines Prozessabsturzes oder eines Computerneustarts zu einem bestimmten Zeitpunkt unter Umständen keine volle Integrität aufweist, kann er trotzdem noch betriebsbereit sein. Sie sollten auf jeden Fall vermeiden, diesen Zustand zu verschlimmern, indem Sie ein Upgrade durchführen. Die beste Vorgehensweise besteht darin, zuerst eine Untersuchung durchzuführen oder dem Microservice Zeit zum Beheben des Fehlers zu lassen. Anhand von Integritätsereignissen eines Microservice können wir fundierte Entscheidungen treffen und selbstreparierende Dienste erstellen.
+
+## <a name="microservices-design-guidance-on-azure"></a>Entwurfsleitfaden für Microservices in Azure
+Besuchen Sie das Azure Architecture Center. Dort finden Sie einen Entwurfsleitfaden zum [Erstellen von Microservices in Azure](https://docs.microsoft.com/azure/architecture/microservices/).
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric als Microservice-Plattform
 
@@ -170,8 +173,8 @@ Es ist wichtig, darauf hinzuweisen, dass Sie **mit jeder dieser Phasen beginnen 
 **Lift & Shift**  
 Sehr viele Unternehmen migrieren per Lift & Shift ihre bestehenden monolithischen Anwendungen in Container. Dafür gibt es zwei Gründe:
 
-- Kostensenkung entweder durch die Konsolidierung und das Entfernen der vorhandenen Hardware oder durch das Ausführen von Anwendungen mit höherer Dichte.
-- Konsistenter Bereitstellungvertrag zwischen der Entwicklung und Vorgängen.
+* Kostensenkung entweder durch die Konsolidierung und das Entfernen der vorhandenen Hardware oder durch das Ausführen von Anwendungen mit höherer Dichte.
+* Konsistenter Bereitstellungvertrag zwischen der Entwicklung und Vorgängen.
 
 Der Wunsch, die Kosten zu reduzieren, ist nachvollziehbar. Bei Microsoft werden deshalb große Mengen an vorhandenen Anwendungen in Container verschoben, um Millionen von Dollar zu sparen. Konsistente Bereitstellung ist schwieriger zu bewerten, jedoch ebenso wichtig. Sie besagt, dass Entwickler weiterhin die Technologie auswählen können, die am besten zu ihren Bedürfnissen passt. Allerdings nehmen die Vorgänge nur eine Art der Bereitstellung und Verwaltung dieser Anwendungen an. So müssen die Vorgänge nicht mit unterschiedlichen, komplexen Technologien arbeiten. Zudem müssen sich Entwickler nicht nur für eine entscheiden. Im Wesentlichen wird jede Anwendung in Container in eigenständigen Bereitstellungsimages verschoben.
 
@@ -181,23 +184,24 @@ Viele Organisationen fahren hier nicht fort. Sie können bereits von Containern 
 Bei der Aktualisierung werden neue Dienste gemeinsam mit vorhandenem Code in Containern hinzugefügt. Wenn Sie neuen Code schreiben möchten, empfiehlt es sich, kleine Schritte auf dem Weg zu Microservices zu machen. Dies kann das Hinzufügen eines neuen REST-API-Endpunkts oder neue Geschäftslogik sein. Auf diese Weise haben Sie die ersten Schritte auf dem Weg zu Microservices gemacht und können sich gleichzeitig das Entwickeln und Bereitstellen dieser vertraut machen.
 
 **Innovation**  
-Ein Microservices-Ansatz ist auf Veränderungen der geschäftlichen Anforderungen vorbereitet. In dieser Phase müssen Sie sich entscheiden, ob Sie die monolithische App in Dienste aufteilen müssen oder ob Sie sich um Innovationen bemühen sollten. Ein Beispiel ist, wenn eine Datenbank, die als Workflowwarteschlange verwendet wird, zu einem Verarbeitungsengpass wird. Mit zunehmender Anzahl an Workflowanfragen muss die Arbeit zur Skalierung verteilt werden. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt.
+Ein Microservices-Ansatz ist auf Veränderungen der geschäftlichen Anforderungen vorbereitet. In dieser Phase müssen Sie sich entscheiden, ob Sie die monolithische App in Dienste aufteilen müssen oder ob Sie sich um Innovationen bemühen sollten. Ein klassisches Beispiel ist, wenn eine Datenbank, die als Workflowwarteschlange verwendet wird, zu einem Verarbeitungsengpass wird. Mit zunehmender Anzahl an Workflowanfragen muss die Arbeit zur Skalierung verteilt werden. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt.
 
 **Umwandlung in Microservices**  
-Wenn Ihre Anwendung komplett aus Microservices besteht oder in Microservices unterteilt wird. Wenn Sie diesen Punkt erreicht haben, haben Sie den Weg zu Microservices abgeschlossen. Sie können hier starten. Wenn Sie dies jedoch ohne eine unterstützende Microservicesplattform machen, ist dies eine erhebliche Investition. 
+Wenn Ihre Anwendung komplett aus Microservices besteht oder in Microservices unterteilt wird. Wenn Sie diesen Punkt erreicht haben, haben Sie den Weg zu Microservices abgeschlossen. Sie können hier starten. Wenn Sie dies jedoch ohne eine unterstützende Microservicesplattform machen, ist dies eine erhebliche Investition.
 
 ### <a name="are-microservices-right-for-my-application"></a>Sind Microservices für meine Anwendung geeignet?
 
 Vielleicht. Als immer mehr Teams bei Microsoft damit begannen, aus geschäftlichen Gründen Anwendungen für die Cloud zu entwickeln, erkannten viele von ihnen die Vorteile eines Microservice-Ansatzes. Für Bing werden beispielsweise schon seit Jahren Microservices entwickelt. Für andere Teams war der Microservice-Ansatz neu. Die Teams haben festgestellt, dass es schwierige Probleme außerhalb ihrer Kernkompetenzbereiche zu lösen galt. Dies sind die Gründe, warum Service Fabric immer häufiger als Technologie für die Erstellung von Diensten gewählt wird.
 
 Das Ziel von Service Fabric ist die Reduzierung der Komplexitäten bei der Erstellung von Microservice-Anwendungen, damit bei Ihnen nicht mehr so viele teure Überarbeitungen anfallen. Beginnen Sie klein, führen Sie bei Bedarf eine Skalierung durch, mustern Sie Dienste aus, fügen Sie neue hinzu, und entwickeln Sie die Lösung während der Nutzung durch die Kunden weiter. Uns ist auch bewusst, dass noch viele andere Probleme gelöst werden müssen, damit Microservices für die Mehrzahl der Entwickler noch besser zugänglich werden. Container und das Actor-Programmiermodell sind Beispiele für kleine Schritte in diese Richtung, und wir sind uns sicher, dass weitere Innovationen diesen Prozess noch stärker vereinfachen werden.
- 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md)
 * [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution)
+* [Azure Architecture Center: Erstellen von Microservices in Azure](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Best Practices für Azure Service Fabric-Anwendungen und -Cluster](service-fabric-best-practices-overview.md)
+* [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

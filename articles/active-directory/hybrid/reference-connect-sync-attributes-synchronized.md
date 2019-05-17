@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729534"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508106"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -48,7 +48,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | pwdLastSet |X |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 |samAccountName|X| |
 | sourceAnchor |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -168,7 +168,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | userSMIMECertificates |X |X | | |
@@ -251,7 +251,8 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers
+. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | wWWHomePage |X |X | | |
 
@@ -299,7 +300,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | wWWHomePage |X |X | | |
 
@@ -315,7 +316,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | proxyAddresses |X |X |X |Mechanische Eigenschaft. Von Azure AD verwendet. Enthält alle sekundären E-Mail-Adressen für den Benutzer. |
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="intune"></a>Intune
@@ -333,7 +334,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -365,7 +366,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="3rd-party-applications"></a>Drittanbieteranwendungen
@@ -381,6 +382,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | cn |X | |X | |
 | displayName |X |X |X | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
 | mail |X | |X | |
 | managedBy | | |X | |
@@ -391,7 +393,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
@@ -420,7 +422,7 @@ Diese Attribute für **Benutzer** ergänzen die anderen Apps, die Sie ausgewähl
 ## <a name="exchange-hybrid-writeback"></a>Exchange-Hybridrückschreiben  
 Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschrieben, wenn Sie **Exchange-Hybrid**aktivieren. Abhängig von Ihrer Exchange-Version werden möglicherweise weniger Attribute synchronisiert.
 
-| Attributname (Connect-Benutzeroberfläche) |Attributname (lokales AD) | Benutzer | Kontakt | Group | Comment |
+| Attributname (lokales AD) | Attributname (Connect-Benutzeroberfläche) | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016 und Windows Server 2016 AD. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Onlinearchiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |

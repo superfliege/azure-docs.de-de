@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/15/2019
-ms.openlocfilehash: c11f52d2bbc55187a16227cf9553cc7ba6013e1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/22/2019
+ms.openlocfilehash: 7f3afec0425033fba174e000195fa26b295aaef1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853128"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507940"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden
 
@@ -52,7 +52,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|
-|Grenzwerte für die Protokollrate (MB/s)|2.5|5|7,5|10|12,5|15|
+|Grenzwerte für die Protokollrate (MB/s)|4,6875|9,375|14,0625|18,75|23,4375|28,125|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) * |210|420|630|840|1050|1260|
 |Max. gleichzeitige Anmeldungen pro Pool * |210|420|630|840|1050|1260|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -80,7 +80,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|3500|4000|4500|5.000|7.000|7.000|
-|Grenzwerte für die Protokollrate (MB/s)|17,5|20|20|20|20|20|
+|Grenzwerte für die Protokollrate (MB/s)|32,8125|37,5|37,5|37,5|37,5|37,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
 |Max. gleichzeitige Anmeldungen (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -107,8 +107,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |tempdb-Größe (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|Grenzwerte für die Protokollrate (MB/s)|2.5|5.6|7,5|10|12,5|15|17,5|
+|Ziel-IOPS (64 KB)|1000|2000|3000|4000|5.000|6000|7.000|
+|Grenzwerte für die Protokollrate (MB/s)|4,6875|9,375|14,0625|18,75|23,4375|28,125|32,8125|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
 |Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
@@ -135,8 +135,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |tempdb-Größe (GB)|384|384|384|384|384|384|384|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Ziel-IOPS (64 KB)|4000|4500|5.000|6000|7.000|7.000|7.000|
-|Grenzwerte für die Protokollrate (MB/s)|20|20|20|20|20|20|20|
+|Ziel-IOPS (64 KB)|7.000|7.000|7.000|7.000|7.000|7.000|7.000|
+|Grenzwerte für die Protokollrate (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1680|1890|2100|2.520|33600|4.200|8.400|
 |Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1680|1890|2100|2.520|33600|4.200|8.400|
 |Max. Anzahl Datenbanken pro Pool|500|500|500|500|500|500|500|
@@ -165,7 +165,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |tempdb-Größe (GB)|32|64|96|128|160|192|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|5.000|10000|15000|20000|25000|30000|
-|Grenzwerte für die Protokollrate (MB/s)|7,5|15|22,5|30|37,5|45|
+|Grenzwerte für die Protokollrate (MB/s)|10|20|30|40|50|60|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|210|420|630|840|1050|1260|
 |Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|210|420|630|840|1050|1260|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -193,7 +193,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |tempdb-Größe (GB)|224|256|288|320|384|384|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|35000|40.000|45000|50000|80.000|120000|
-|Grenzwerte für die Protokollrate (MB/s)|52,5|60|67,5|75|80|80|
+|Grenzwerte für die Protokollrate (MB/s)|70|80|80|80|80|80|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
 |Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -221,7 +221,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|5.000|10000|15000|20000|25000|30000|35000|
-|Grenzwerte für die Protokollrate (MB/s)|7,5|15|22,5|30|37,5|45|52,5|
+|Grenzwerte für die Protokollrate (MB/s)|15|30|45|60|75|90|105|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
 |Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
@@ -249,7 +249,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|40.000|45000|50000|60000|80.000|100.000|200.000|
-|Grenzwerte für die Protokollrate (MB/s)|60|67,5|75|90|120|120|120|
+|Grenzwerte für die Protokollrate (MB/s)|120|120|120|120|120|120|120|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1680|1890|2100|2.520|3360|4.200|8.400|
 |Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1680|1890|2100|2.520|3360|4.200|8.400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|

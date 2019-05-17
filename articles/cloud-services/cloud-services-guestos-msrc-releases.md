@@ -11,17 +11,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: f63b707f72b6966615d09ef0b86ce3d056a39249
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500609"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465551"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="april-2019-guest-os"></a>Gastbetriebssystem April 2019
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 19-04 | [4493509] | Sicherheitsupdates für Windows 10 | 6.6 | 9. April 2019 |
+| Rel 19-04 | [4493470] | Sicherheitsupdates für Windows 10 | 5.30 | 9. April 2019 |
+| Rel 19-04 | [4493467] | Windows-Sicherheit | 4.65 | 9. April 2019 |
+| Rel 19-04 | [4493450] | Windows-Sicherheit | 3.72 | 9. April 2019 |
+| Rel 19-04 | [4493448] | Windows-Sicherheit | 2.85 | 9. April 2019 |
+| Rel 19-04 | [4493478] | Blinken | 3.72, 4.65, 5.30, 6.6 | 9. April 2019 |
+| Rel 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 9. April 2019 |
+| Rel 19-04 | [KB4490628] | Wartungsstapelaktualisierung | 2.85 | 12. März 2019 |
+| Rel 19-04 | [KB4474419] | SHA2-Unterstützung | 2.85 | 12. März 2019 |
+| Rel 19-04 | [KB4489878] | Nicht sicherheitsrelevanter Rollup für März | 2.85 | 12. März 2019 |
+| Rel 19-04 | [KB4489891] | Nicht sicherheitsrelevanter Rollup für März | 3.72 | 12. März 2019 |
+| Rel 19-04 | [KB4489881] | Nicht sicherheitsrelevanter Rollup für März | 4.65 | 12. März 2019 |
+
+[4493509]: https://support.microsoft.com/kb/4493509
+[4493470]: https://support.microsoft.com/kb/4493470
+[4493467]: https://support.microsoft.com/kb/4493467
+[4493450]: https://support.microsoft.com/kb/4493450
+[4493448]: https://support.microsoft.com/kb/4493448
+[4493478]: https://support.microsoft.com/kb/4493478
+[4493435]: https://support.microsoft.com/kb/4493435
+[KB4490628]: https://support.microsoft.com/kb/KB4490628
+[KB4474419]: https://support.microsoft.com/kb/KB4474419
+[KB4489878]: https://support.microsoft.com/kb/KB4489878
+[KB4489891]: https://support.microsoft.com/kb/KB4489891
+[KB4489881]: https://support.microsoft.com/kb/KB4489881
 
 ## <a name="march-2019-guest-os"></a>Gastbetriebssystem für März 2019
 

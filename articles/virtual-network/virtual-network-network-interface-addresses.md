@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: a6635b811dfa9c46facfffee1c57b2871cb4c738
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4582f7be8e48e493a1adcb8ffc6c3a8bfe43a58e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719709"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506373"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -175,7 +175,7 @@ Standardmäßig werden dynamische private IPv4- und (optionale) IPv6-Adressen zu
 Sie können einer IP-Konfiguration (optional) eine öffentliche oder private statische IPv4-Adresse zuweisen. Sie können einer IP-Konfiguration jedoch keine öffentliche oder private statische IPv6-Adresse zuweisen. Weitere Informationen dazu, wie Azure öffentliche statische IPv4-Adressen zuweist, finden Sie unter [Öffentliche IP-Adressen](virtual-network-public-ip-address.md).
 
 - **Nur öffentlich**: Azure weist die Adresse aus einem für jede Azure-Region eindeutigen Bereich zu. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen. Die Adresse ändern sich erst dann, wenn die öffentliche IP-Adressressource, der sie zugewiesen ist, gelöscht wird oder die Zuweisungsmethode in „Dynamisch“ geändert wird. Wenn die öffentliche IP-Adressressource einer IP-Konfiguration zugeordnet ist, muss vor dem Ändern der Zuordnungsmethode die Zuordnung zur IP-Konfiguration aufgehoben werden.
-- **Nur privat**: Sie wählen eine Adresse aus dem Adressbereich des Subnetzes aus und weisen sie zu. Die von Ihnen zugewiesene Adresse kann eine beliebige Adresse innerhalb des Subnetzadressbereichs sein, bei der es sich nicht um eine der ersten vier Adressen im Subnetzadressbereich handelt und die derzeit keiner anderen Ressource im Subnetz zugewiesen ist. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuteilungsmethode in „Statisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Dies gilt auch dann, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
+- **Nur privat**: Sie wählen eine Adresse aus dem Adressbereich des Subnetzes aus und weisen sie zu. Die von Ihnen zugewiesene Adresse kann eine beliebige Adresse innerhalb des Subnetzadressbereichs sein, bei der es sich nicht um eine der ersten vier Adressen im Subnetzadressbereich handelt und die derzeit keiner anderen Ressource im Subnetz zugewiesen ist. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuweisungsmethode in „statisch“ ändern, weist Azure die zuvor zugewiesene dynamische IP-Adresse dynamisch als statische Adresse zu, auch wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
 
 ## <a name="ip-address-versions"></a>IP-Adressversionen
 

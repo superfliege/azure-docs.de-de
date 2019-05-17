@@ -6,16 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067433"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510975"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
-Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for PostgreSQL-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver auf bis zu fünf schreibgeschützte Replikate innerhalb derselben Azure-Region replizieren. Replikate werden mithilfe der nativen Replikationstechnologie der PostgreSQL-Engine asynchron aktualisiert.
+Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for PostgreSQL-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver bis zu fünf Replikate replizieren. Replikate werden mithilfe der nativen Replikationstechnologie der PostgreSQL-Engine asynchron aktualisiert.
+
+> [!IMPORTANT]
+> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 Replikate sind neue Server, die ähnlich wie reguläre Azure Database for PostgreSQL-Server verwaltet werden. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen sowie der Speicher in GB/Monat in Rechnung gestellt.
 
@@ -29,6 +32,8 @@ In einem häufig anzutreffenden Szenario verwenden BI- und Analyseworkloads das 
 Da Replikate schreibgeschützt sind, führen sie nicht direkt zu einer verringerten Auslastung der Schreibkapazität auf dem Master. Dieses Feature ist nicht auf schreibintensive Workloads ausgerichtet.
 
 Das Feature für Lesereplikate verwendet die asynchrone Replikation von PostgreSQL. Das Feature ist nicht für synchrone Replikationsszenarien vorgesehen. Zwischen dem Masterserver und dem Replikat entsteht eine messbare Verzögerung. Letztendlich sind die Daten auf dem Replikat mit den Daten auf dem Masterserver konsistent. Verwenden Sie das Feature für Workloads, für die diese Verzögerung akzeptabel ist.
+
+Lesereplikate können Ihren Notfallwiederherstellungsplan verbessern. Sie müssen zuerst über ein Replikat in einer anderen Azure-Region als dem Master verfügen. Bei einem Regionsnotfall können Sie die Replikation in dieses Replikat beenden und Ihren Workload dorthin umleiten. Das Beenden der Replikation ermöglicht es dem Replikat, sowohl Schreib- als auch Lesezugriffe zu akzeptieren. Weitere Informationen finden Sie im Abschnitt [Beenden der Replikation](#stop-replication). 
 
 ## <a name="create-a-replica"></a>Erstellen eines Replikats
 Für den Masterserver muss der Parameter `azure.replication_support` auf **REPLICA** festgelegt werden. Bei Änderung dieses Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird. (Der Parameter `azure.replication_support` gilt nur für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“.)
@@ -47,7 +52,7 @@ Wenn Sie ein Replikat erstellen, erbt dieses weder die Firewallregeln noch den V
 
 Das Replikat erbt das Administratorkonto vom Masterserver. Alle Benutzerkonten auf dem Masterserver werden auf die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Masterserver verfügbar sind.
 
-Sie können wie bei einem normalen Azure Database for PostgreSQL-Server anhand des Hostnamens und eines gültigen Benutzerkontos eine Verbindung mit dem Replikat herstellen. Bei einem Server namens **myreplica** mit dem Administratorbenutzernamen **myadmin** können Sie über psql eine Verbindung mit dem Replikat herstellen:
+Sie können wie bei einem normalen Azure Database for PostgreSQL-Server anhand des Hostnamens und eines gültigen Benutzerkontos eine Verbindung mit dem Replikat herstellen. Für einen Server namens **my replica** mit dem Administratorbenutzernamen **myadmin** können Sie mit psql eine Verbindung mit dem Replikat herstellen:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -63,7 +68,7 @@ Azure Database for PostgreSQL bietet außerdem die Metrik **Replikatverzögerung
 Die Metrik wird aus der Ansicht `pg_stat_wal_receiver` berechnet:
 
 ```SQL
-EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp())
+EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
 Die Metrik „Replikatverzögerung“ zeigt die Zeit seit der letzten wiedergegebenen Transaktion an. Wenn auf dem Masterserver keine Transaktionen stattfinden, gibt die Metrik diese Verzögerungszeit wieder.
@@ -96,6 +101,8 @@ Sie können die Replikation zwischen einem Masterserver und einem Replikat beend
 > Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 > Stellen Sie vor dem Beenden der Replikation auf einem Lesereplikat sicher, dass das Replikat alle erforderlichen Daten enthält.
 
+Wenn Sie die Replikation beenden, verliert das Replikat alle Links zu seinem vorherigen Master und zu anderen Replikaten. Zwischen Master und Replikat erfolgt kein automatisierter Failover. 
+
 Erfahren Sie, wie Sie die [Replikation auf ein Replikat beenden](howto-read-replicas-portal.md).
 
 
@@ -107,7 +114,7 @@ In diesem Abschnitt werden Aspekte des Features für Lesereplikate zusammengefas
 Vor der Erstellung eines Lesereplikats muss der Parameter `azure.replication_support` auf dem Masterserver auf **REPLICA** festgelegt werden. Bei Änderung dieses Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird. Der Parameter `azure.replication_support` gilt nur für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“.
 
 ### <a name="new-replicas"></a>Neue Replikate
-Ein Lesereplikat wird als neuer Azure Database for PostgreSQL-Server erstellt. Ein vorhandener Server kann nicht in ein Replikat umgewandelt werden. Ein Lesereplikat kann nur in der gleichen Azure-Region wie der Masterserver erstellt werden. Es kann kein Replikat eines anderen Lesereplikats erstellt werden.
+Ein Lesereplikat wird als neuer Azure Database for PostgreSQL-Server erstellt. Ein vorhandener Server kann nicht in ein Replikat umgewandelt werden. Es kann kein Replikat eines anderen Lesereplikats erstellt werden.
 
 ### <a name="replica-configuration"></a>Replikatkonfiguration
 Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.

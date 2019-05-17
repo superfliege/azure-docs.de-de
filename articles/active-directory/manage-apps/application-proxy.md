@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174757"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506652"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Remotezugriff auf lokale Anwendungen über den Azure Active Directory-Anwendungsproxy 
 
@@ -43,6 +43,8 @@ Der Anwendungsproxy funktioniert mit:
 * Rich Client-Apps, die in der Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library (ADAL)) integriert sind
 
 Der Anwendungsproxy unterstützt das einmalige Anmelden. Weitere Informationen zu unterstützten Methoden finden Sie unter [Auswählen einer Methode für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+
+Der Anwendungsproxy wird empfohlen, um externen Remotebenutzern Zugriff auf interne Ressourcen zu gewähren. Der Anwendungsproxy ersetzt die Notwendigkeit eines VPN- oder Reverseproxys. Er ist nicht für interne Benutzer im Unternehmensnetzwerk bestimmt.  Interne Benutzer, die den Anwendungsproxy unnötigerweise verwenden, können unerwartete und unerwünschte Leistungsprobleme verursachen.
 
 ## <a name="how-application-proxy-works"></a>Funktionsweise des Anwendungsproxys
 

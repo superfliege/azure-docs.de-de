@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143179"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511236"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
@@ -26,15 +26,23 @@ Wechseln Sie zunächst zum [Azure-Portal](https://portal.azure.com), und melden 
 
 ![„Übersicht“ für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-## <a name="manage-app-service-settings"></a>Registerkarte „Einstellungen“ für Funktionen-Apps
+Auf der Übersichtsseite können Sie zu allen Punkten navigieren, die Sie zur Verwaltung Ihrer Funktions-App benötigen, insbesondere zu den **[Anwendungseinstellungen](#settings)** und **[Plattformfeatures](#platform-features)**.
 
-![Übersicht für Funktionen-Apps im Azure-Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+## <a name="settings"></a>Anwendungseinstellungen
 
-Auf der Registerkarte **Einstellungen** können Sie die von Ihrer Funktionen-App verwendete Functions-Laufzeitversion aktualisieren. Hier verwalten Sie auch die Hostschlüssel, die zum Beschränken des HTTP-Zugriffs auf alle von der Funktionen-App gehosteten Funktionen verwendet werden.
+Die Registerkarte **Anwendungseinstellungen** verwaltet Einstellungen, die von Ihrer Funktions-App verwendet werden.
 
-Functions unterstützt verbrauchsbasierte sowie App Service-Hostingpläne. Weitere Informationen finden Sie unter [Auswählen des richtigen Serviceplans für Azure Functions](functions-scale.md). Zur besseren Vorhersagbarkeit im verbrauchsbasierten Plan können Sie in Functions die Plattformnutzung einschränken, indem Sie ein tägliches Nutzungskontingent in GB-Sekunden festlegen. Bei Erreichen des täglichen Nutzungskontingents wird die Funktionen-App beendet. Eine Funktionen-App, die aufgrund des Erreichens des Tageskontingents beendet wurde, kann in demselben Kontext wie beim Einrichten des täglichen Kontingents wieder aktiviert werden. Ausführliche Informationen zur Abrechnung finden Sie auf der [Preisseite für Azure Functions](https://azure.microsoft.com/pricing/details/functions/).   
+![Einstellungen der Funktions-App im Azure-Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-## <a name="platform-features-tab"></a>Registerkarte „Plattformfeatures“
+Diese Einstellungen werden verschlüsselt gespeichert, und Sie müssen **Werte anzeigen** auswählen, um die Werte im Portal anzuzeigen.
+
+Wählen Sie zum Hinzufügen einer Einstellung **Neue Anwendungseinstellung** aus, und fügen Sie das neue Schlüssel-Wert-Paar hinzu.
+
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+
+Wenn Sie eine Funktions-App lokal entwickeln, werden diese Werte in der Projektdatei „local.settings.json“ gespeichert.
+
+## <a name="platform-features"></a>Plattformfeatures
 
 ![Registerkarte „Plattformfeatures“ für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
@@ -46,7 +54,6 @@ Funktionen-Apps werden auf der Azure App Service-Plattform ausgeführt und verwa
 Im weiteren Verlauf dieses Themas werden schwerpunktmäßig folgende App Service-Features im Azure-Portal behandelt, die für Functions nützlich sind:
 
 + [App Service-Editor](#editor)
-+ [Anwendungseinstellungen](#settings) 
 + [Console](#console)
 + [Erweiterte Tools (Kudu)](#kudu)
 + [Bereitstellungsoptionen](#deployment)
@@ -63,14 +70,6 @@ Weitere Informationen zum Verwenden von App Service-Einstellungen finden Sie unt
 | ![App Service-Editor für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Der App Service-Editor ist ein leistungsstarker Editor im Portal, mit dem Sie JSON-Konfigurationsdateien und Codedateien gleichermaßen bearbeiten können. Bei Auswahl dieser Option wird eine separate Browserregisterkarte mit einem einfachen Editor gestartet. Sie können damit im Git-Repository arbeiten, Code ausführen und debuggen und Einstellungen von Funktionen-Apps ändern. Im Vergleich zum Standardblatt für Funktionen-Apps bietet dieser Editor eine erweiterte Entwicklungsumgebung für Ihre Funktionen.    |
 
 ![App Service-Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
-
-### <a name="settings"></a>Anwendungseinstellungen
-
-| | |
-|-|-|
-| ![Anwendungseinstellungen für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | Auf dem App Service-Blatt **Anwendungseinstellungen** können Sie Frameworkversionen, das Remotedebuggen, App-Einstellungen und Verbindungszeichenfolgen konfigurieren und verwalten. Wenn Sie Ihre Funktionen-App in andere Dienste von Azure oder Drittanbietern integrieren, können Sie hier die entsprechenden Einstellungen ändern. Scrollen Sie zum Löschen einer Einstellung nach rechts, und wählen Sie rechts am Ende der Zeile das Symbol **X** (in der folgenden Abbildung nicht dargestellt).
-
-![Konfigurieren von Anwendungseinstellungen](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
 ### <a name="console"></a>Konsole
 

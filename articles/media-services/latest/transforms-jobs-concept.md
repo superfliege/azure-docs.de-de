@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: 3c3687ceff10baec028435d1e6c513e72ca5da86
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e64e980d42086603c9eb8ce39a96a9766a78afcb
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149086"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472464"
 ---
 # <a name="transforms-and-jobs"></a>Transformationen und Aufträge
 
@@ -53,19 +53,21 @@ Eine **Transformation** hilft Ihnen, die Konfiguration zu erstellen (Schritt 1) 
 
 ## <a name="transforms"></a>Transformationen
 
+Verwenden Sie **Transformationen**, um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede **Transformation** beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben zur Verarbeitung Ihrer Video- oder Audiodateien. Eine einzelne Transformation kann mehrere Regeln anwenden. Eine Transformation kann z.B. angeben, dass jedes Video in eine MP4-Datei mit einer festgelegten Bitrate codiert und eine Miniaturansicht aus dem ersten Bild im Video generiert werden soll. Sie würden für jede Regel, die Sie in die Transformation einfügen möchten, einen TransformOutput-Eintrag hinzufügen. Sie verwenden Voreinstellungen, um der Transformation mitzuteilen, wie die Eingabemediendateien verarbeitet werden sollen.
+
+In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie können die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der [REST-API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eine andere Referenzdokumentation für das Media Services v3 SDK anzeigen.
+
+Sie können Transformationen mit REST, CLI oder mit einem der veröffentlichten SDKs erstellen. Die Media Services-v3-API wird von Azure Resource Manager gesteuert. Deshalb können Sie auch Resource Manager-Vorlagen verwenden, um Transformationen in Ihrem Media Services-Konto zu erstellen und bereitzustellen. Mithilfe der rollenbasierten Zugriffssteuerung können Sie den Zugriff auf Transformationen sperren.
+
+Wenn Sie Ihre [Transformation](https://docs.microsoft.com/rest/api/media/transforms) aktualisieren müssen, verwenden Sie den **Aktualisierungsvorgang**. Er ist für das Vornehmen von Änderungen an der Beschreibung oder den Prioritäten der zugrundeliegenden TransformOutputs vorgesehen. Es empfiehlt sich, solche Updates auszuführen, wenn alle in Bearbeitung befindlichen Aufträge abgeschlossen wurden. Wenn Sie die Konfiguration umschreiben möchten, müssen Sie eine neue Transformation erstellen.
+
+### <a name="transform-object-diagram"></a>Diagramm des Objekts „Transform“
+
 In der folgenden Abbildung ist das Objekt **Transform** mit den referenzierten Objekten sowie den abgeleiteten Beziehungen dargestellt. Die grauen Pfeile stehen für einen Typ, die vom Auftrag referenziert werden, während die grünen Pfeile Klassenableitungsbeziehungen angeben.<br/>Klicken Sie auf Bild, um es in voller Größe anzeigen.  
 
 <a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a> 
 
-Verwenden Sie **Transformationen**, um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede **Transformation** beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben zur Verarbeitung Ihrer Video- oder Audiodateien. Eine einzelne Transformation kann mehrere Regeln anwenden. Eine Transformation kann z.B. angeben, dass jedes Video in eine MP4-Datei mit einer festgelegten Bitrate codiert und eine Miniaturansicht aus dem ersten Bild im Video generiert werden soll. Sie würden für jede Regel, die Sie in die Transformation einfügen möchten, einen TransformOutput-Eintrag hinzufügen. Sie können Transformationen in Ihrem Media Services-Konto direkt über die Media Services v3-API mithilfe eines der veröffentlichten SDKs verwenden. Die Media Services-v3-API wird von Azure Resource Manager gesteuert. Deshalb können Sie auch Resource Manager-Vorlagen verwenden, um Transformationen in Ihrem Media Services-Konto zu erstellen und bereitzustellen. Mithilfe der rollenbasierten Zugriffssteuerung können Sie den Zugriff auf Transformationen sperren.
-
-Der Aktualisierungsvorgang für die Entität [Transformieren](https://docs.microsoft.com/rest/api/media/transforms) ist für das Vornehmen von Änderungen an der Beschreibung oder den Prioritäten der zugrundeliegenden TransformOutputs vorgesehen. Es empfiehlt sich, solche Updates auszuführen, wenn alle in Bearbeitung befindlichen Aufträge abgeschlossen wurden. Wenn Sie die Konfiguration umschreiben möchten, müssen Sie eine neue Transformation erstellen.
-
 ## <a name="jobs"></a>Aufträge
-
-In der folgenden Abbildung ist das Objekt **Job** mit den referenzierten Objekten sowie den abgeleiteten Beziehungen dargestellt.<br/>Klicken Sie auf Bild, um es in voller Größe anzeigen.  
-
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
 
 Ein **Auftrag** ist die eigentliche Anforderung an Azure Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Eingabevideos über HTTPS-URLs, SAS-URLs oder [Medienobjekte](https://docs.microsoft.com/rest/api/media/assets).  
 
@@ -76,6 +78,12 @@ Verwenden Sie [Medienobjekt als Auftragseingabe](job-input-from-local-file-how-t
 Fortschritt und Status von Aufträgen können abgerufen werden, indem die Ereignisse mit Event Grid überwacht werden. Weitere Informationen finden Sie unter [Überwachen von Ereignissen mit EventGrid](job-state-events-cli-how-to.md).
 
 Der Update-Vorgang für den [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) kann verwendet werden, um die Eigenschaften *description*, und *priority* nach dem Übermitteln des Auftrags zu ändern. Eine Änderung an der *priority*-Eigenschaft wird nur wirksam, wenn sich der Auftrag noch in der Warteschlange befindet. Wenn die Verarbeitung des Auftrags gestartet oder bereits beendet wurde, hat das Ändern der Priorität keine Auswirkungen.
+
+### <a name="job-object-diagram"></a>Diagramm des Objekts „Job“
+
+In der folgenden Abbildung ist das Objekt **Job** mit den referenzierten Objekten sowie den abgeleiteten Beziehungen dargestellt.<br/>Klicken Sie auf Bild, um es in voller Größe anzeigen.  
+
+<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
 
 ## <a name="configure-media-reserved-units"></a>Konfigurieren von reservierten Einheiten für Medien
 
@@ -94,5 +102,8 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
-- [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial-with-api.md)
+- Bevor Sie mit der Entwicklung beginnen, lesen Sie [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md) (Informationen zum Zugreifen auf APIs, Namenskonventionen usw.).
+- Informationen finden Sie in den folgenden Tutorials:
+
+    - [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
+    - [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial-with-api.md)

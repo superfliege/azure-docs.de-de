@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4bf8df2374d373ad36eada8a7de08be76396a76
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190810"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508042"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
@@ -51,6 +51,9 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 * Azure AD Connect kann nicht auf Small Business Server oder Windows Server Essentials vor 2019 (Windows Server Essentials 2019 wird unterstützt) installiert werden. Der Server muss Windows Server Standard oder höher verwenden.
 * Vom Installieren von Azure AD Connect auf einem Domänencontroller wird aufgrund von Sicherheitsmaßnahmen und einschränkenden Einstellungen abgeraten, die die ordnungsgemäße Installation von Azure AD Connect verhindern können.
 * Auf dem Azure AD Connect Server muss eine vollständige GUI installiert sein. Eine Installation unter Server Core wird **nicht unterstützt**.
+>[!IMPORTANT]
+>Die Installation von Azure AD Connect auf Small Business Servern, Server Essentials oder Server Core wird nicht unterstützt.
+
 * Azure AD Connect muss unter Windows Server 2008 R2 oder höher installiert werden. Dieser Server muss in die Domäne eingebunden werden und könnte ein Domänencontroller oder Mitgliedsserver sein.
 * Stellen Sie beim Installieren von Azure AD Connect unter Windows Server 2008 R2 sicher, dass Sie die neuesten Hotfixes über Windows Update anwenden. Die Installation kann mit einem nicht gepatchten Server nicht gestartet werden.
 * Wenn Sie die **Kennwortsynchronisierung**verwenden möchten, muss der Azure AD Connect-Server unter Windows Server 2008 R2 SP1 oder höher ausgeführt werden.

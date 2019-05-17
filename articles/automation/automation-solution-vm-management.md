@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/24/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146041"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501961"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -75,7 +75,7 @@ Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten 
 | Microsoft.Resources/subscriptions/resourceGroups/read | Ressourcengruppe |
 | Microsoft.Resources/deployments/* | Ressourcengruppe |
 
-### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Neues Automation-Konto und neuer Log Analytics-Arbeitsbereich
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Neues Automation-Konto und neuer Log Analytics-Arbeitsbereich
 
 Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein neues Automation-Konto und einen neuen Log Analytics-Arbeitsbereich bereitzustellen, benötigt der Benutzer, der die Lösung bereitstellt, neben den im obigen Abschnitt beschriebenen Berechtigungen zusätzlich die folgenden Berechtigungen:
 
@@ -91,6 +91,30 @@ Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten 
 | Microsoft.Automation/automationAccounts/write | Ressourcengruppe |
 | Microsoft.OperationalInsights/workspaces/write | Ressourcengruppe |
 
+### <a name="region-mappings"></a>Regionszuordnungen
+
+Wenn Sie „VMs außerhalb der Geschäftszeiten starten/beenden“ aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt.
+
+Die folgende Tabelle zeigt die unterstützten Zuordnungen:
+
+|**Log Analytics-Arbeitsbereichsregion**|**Azure Automation-Region**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|Europa, Westen|Europa, Westen|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP- und EastUS-Zuordnungen für Log Analytics-Arbeitsbereiche zu Automation-Konten sind keine exakten Region-zu-Region-Zuordnungen, jedoch handelt es sich um die richtige Zuordnung.
+
+<sup>2</sup> Aufgrund von Kapazitätseinschränkungen ist die Region nicht verfügbar, wenn neue Ressourcen erstellt werden. Dies umfasst auch Automation-Konten und Log Analytics-Arbeitsbereiche. Allerdings sollten bereits in der Region vorhandene verknüpfte Ressourcen weiterhin funktionieren.
+
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
 Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit dem Automation-Konto hinzuzufügen und anschließend die Variablen zum Anpassen der Lösung zu konfigurieren.
@@ -101,6 +125,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
 
    > [!NOTE]
    > Sie können Ressourcen auch von überall im Azure-Portal erstellen, indem Sie auf **Ressource erstellen** klicken. Geben Sie auf der Seite „Marketplace“ ein Schlüsselwort ein, z.B. **Starten** oder **Starten/Beenden**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Alternativ hierzu können Sie ein oder mehrere Schlüsselwörter des vollständigen Namens der Lösung eingeben und dann die EINGABETASTE drücken. Wählen Sie in den Suchergebnissen **VMs außerhalb der Geschäftszeiten starten/beenden** aus.
+
 2. Überprüfen Sie auf der Seite **VMs außerhalb der Geschäftszeiten starten/beenden** die Zusammenfassung der ausgewählten Lösung, und klicken Sie dann auf **Erstellen**.
 
    ![Azure-Portal](media/automation-solution-vm-management/azure-portal-01.png)

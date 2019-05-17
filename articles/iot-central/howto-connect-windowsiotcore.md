@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617851"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510324"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -98,17 +98,17 @@ Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erste
 
 Numerische Einstellungen
 
-| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
+| `Display name` | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Eigenschaften
 
-| Type            | Anzeigename | Feldname | Datentyp |
+| Type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
-| Text            | Standort     | location   | –       |
+| Text            | Location     | location   | –       |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da Sie nun wissen, wie ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung verbunden wird, empfiehlt sich als nächster Schritt das [Einrichten einer benutzerdefinierten Gerätevorlage](howto-set-up-template.md) für Ihr eigenes IoT-Gerät.
+Nachdem Sie jetzt erfahren haben, wie Sie ein Windows IoT Core-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden können, umfasst der nächste empfohlene Schritt Informationen zum [Einrichten einer benutzerdefinierten Gerätevorlage](howto-set-up-template.md) für Ihr eigenes IoT-Gerät.

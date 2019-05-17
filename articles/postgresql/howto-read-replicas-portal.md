@@ -1,21 +1,24 @@
 ---
-title: Verwalten von Lesereplikaten für Azure Database for PostgreSQL über das Azure-Portal
-description: Erfahren Sie, wie Sie Azure Database for PostgreSQL-Lesereplikate über das Azure-Portal verwalten.
+title: Verwalten von Lesereplikaten für Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
+description: Erfahren Sie, wie Sie Lesereplikate für Azure Database for PostgreSQL verwalten – Einzelserver über das Azure-Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787662"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510384"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten über das Azure-Portal
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über das Azure-Portal erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
+
+> [!IMPORTANT]
+> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -58,9 +61,15 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
 
    ![Hinzufügen eines Replikats](./media/howto-read-replicas-portal/add-replica.png)
 
-4. Geben Sie einen Namen für das Lesereplikat ein. Wählen Sie **OK**, um die Erstellung des Replikats zu bestätigen.
+4. Geben Sie einen Namen für das Lesereplikat ein. 
 
-   ![Benennen des Replikats](./media/howto-read-replicas-portal/name-replica.png) 
+    ![Benennen des Replikats](./media/howto-read-replicas-portal/name-replica.png)
+
+5. Wählen Sie einen Standort für das Replikat aus. Sie können ein Replikat in einer beliebigen Azure-Region erstellen. Der Standardstandort ist mit dem des Masterservers identisch.
+
+    ![Standort auswählen](./media/howto-read-replicas-portal/location-replica.png)
+
+6. Wählen Sie **OK**, um die Erstellung des Replikats zu bestätigen.
 
 Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
 

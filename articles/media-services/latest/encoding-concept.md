@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 216eae383c704125cd32d9ed4cb1309299af7336
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153397"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472453"
 ---
 # <a name="encoding-with-media-services"></a>Codierung mit Media Services
 
@@ -86,6 +86,10 @@ Media Services unterstützt die vollständige Anpassung aller Werte in Voreinste
 - [Anpassen von Voreinstellungen mit .NET](customize-encoder-presets-how-to.md)
 - [Anpassen von Voreinstellungen mit der CLI](custom-preset-cli-howto.md)
 - [Anpassen von Voreinstellungen mit REST](custom-preset-rest-howto.md)
+
+## <a name="preset-schema"></a>Voreinstellungsschemas
+
+In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie können die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der [REST-API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eine andere Referenzdokumentation für das Media Services v3 SDK anzeigen.
 
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 

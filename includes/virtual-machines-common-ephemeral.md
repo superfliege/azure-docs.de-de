@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7737f73ee4eb9ae9dc8c4845020b7543a5b3495
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157826"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65468369"
 ---
 Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, aber mehr Wert auf die Zeit legen, die für umfangreiche Bereitstellung oder die Zeit für das Reimaging der einzelnen VM-Instanzen benötigt wird. Sie eignen sich auch für Anwendungen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, um zum Resource Manager-Bereitstellungsmodell zu wechseln. Mit einem kurzlebigen Betriebssystem-Datenträger sind eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und ein schnelleres VM-Reimaging festzustellen. Darüber hinaus ist der kurzlebige Betriebssystem-Datenträger kostenlos, es fallen keine Speicherkosten für den Betriebssystem-Datenträger an. 
  
@@ -27,10 +27,10 @@ Die wichtigsten Features von kurzlebigen Datenträgern sind:
  
 Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datenträgern:
 
-|                             | Permanenter Betriebssystem-Datenträger                          | Kurzlebiger Betriebssystem-Datenträger                              |    |
+|                             | Permanenter Betriebssystem-Datenträger                          | Kurzlebiger Betriebssystemdatenträger                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Maximale Größe für Betriebssystem-Datenträger      | 2 TiB                                                                                        | Cachegröße für die VM-Größe oder 2TiB, je nachdem, was kleiner ist – [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md) und [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| Unterstützte VM-Größen          | Alle                                                                                          | DSv1, DSv2, DSv3, Esv2, Fs, FsV2, GS, M                                               |
+| Unterstützte VM-Größen          | Alle                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Unterstützung für Datenträgertyp           | Verwalteter und nicht verwalteter Betriebssystem-Datenträger                                                                | Nur verwalteter Betriebssystem-Datenträger                                                               |
 | Unterstützung für Regionen              | Alle Regionen                                                                                  | Alle Regionen                              |
 | Datenpersistenz            | Auf Betriebssystem-Datenträger geschriebene Daten von einem Betriebssystem-Datenträger werden in Azure Storage gespeichert.                                  | Auf den Betriebssystem-Datenträger geschriebene Daten werden auf dem lokalen VM-Speicher gespeichert und nicht in Azure Storage gespeichert. |

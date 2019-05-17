@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b99513cad34bba1b050a24795ecb21d0357d19c1
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761386"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416064"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Erstellen einer Xamarin.Forms-App mit Azure
 
@@ -34,9 +34,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio-Tools für Xamarin, in Visual Studio 2017 oder Visual Studio für Mac. Anweisungen finden Sie auf der [Xamarin-Installationsseite][Install Xamarin].
+* Visual Studio-Tools für Xamarin in Visual Studio 2017 oder höher oder Visual Studio für Mac. Anweisungen finden Sie auf der [Xamarin-Installationsseite][Install Xamarin].
 
-* (optional) Zum Erstellen einer iOS-App ist ein Mac mit Xcode 9.0 oder höher erforderlich. Zum Entwickeln von iOS-Apps kann Visual Studio für Mac verwendet werden. Alternativ können Sie Visual Studio 2017 verwenden (sofern der Mac im Netzwerk verfügbar ist).
+* (optional) Zum Erstellen einer iOS-App ist ein Mac mit Xcode 9.0 oder höher erforderlich. Für die Entwicklung von iOS-Apps kann Visual Studio für Mac oder Visual Studio 2017 oder höher kann verwendet werden (sofern der Mac im Netzwerk verfügbar ist).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Erstellen eines neuen Mobile Apps-Back-Ends
 
@@ -64,7 +64,7 @@ Die Visual Studio-Tools für Xamarin sind zum Öffnen der Projektmappe erforderl
 
    Dadurch wird ein Projekt heruntergeladen, das eine mit Ihrer mobilen App verbundene Clientanwendung enthält. Speichern Sie die komprimierte Projektdatei auf dem lokalen Computer und merken Sie sich, wo Sie sie gespeichert haben.
 
-3. Extrahieren Sie das heruntergeladene Projekt, und öffnen Sie es dann in Visual Studio 2017.
+3. Extrahieren Sie das Projekt, das Sie heruntergeladen haben, und öffnen Sie es dann in Visual Studio.
 
    ![Extrahiertes Projekt in Visual Studio][8]
 

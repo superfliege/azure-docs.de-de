@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871637"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415893"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Erste Schritte mit Azure Monitor-Protokollabfragen
 
@@ -184,7 +184,7 @@ SecurityEvent
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated-8h
+| extend localtime = TimeGenerated -8h
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>„summarize“: Aggregieren von Zeilengruppen
@@ -224,7 +224,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Zusammenfassen nach einer Zeitspalte
 Die Gruppierung von Ergebnissen kann auch auf einer Zeitspalte oder einem anderen kontinuierlichen Wert basieren. Durch das bloße Zusammenfassen von `by TimeGenerated` würden Gruppen für jede einzelne Millisekunde für den Zeitbereich erstellt werden, da es sich um eindeutige Werte handelt. 
 
-Zum Erstellen von Gruppen, die auf kontinuierlichen Werten basieren, wird empfohlen, den Bereich mittels **bin** in verwaltbare Einheiten zu unterteilen. Die folgende Abfrage analysiert *Perf*-Datensätze, die den freien Arbeitsspeicher (*MBytes*) auf einem bestimmten Computer ermitteln. Berechnet wird der Durchschnittswert für jeden Zeitraum je 1 Stunde in den letzten 7 Tagen:
+Zum Erstellen von Gruppen, die auf kontinuierlichen Werten basieren, wird empfohlen, den Bereich mittels **bin** in verwaltbare Einheiten zu unterteilen. Die folgende Abfrage analysiert *Perf*-Datensätze, die den freien Arbeitsspeicher (*MBytes*) auf einem bestimmten Computer ermitteln. Sie berechnet den Durchschnittswert für jeden Zeitraum von einer Stunde über die letzten sieben Tage:
 
 ```Kusto
 Perf 

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 614dabe842c7fe99da3ddb486c27003c79382ea1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147925"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231388"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
 
@@ -81,6 +81,7 @@ Durch Klicken auf den Arbeitsbereich wird das Dashboard für Identität und Zugr
 ![Identitätsseite – Dashboard][8]
 
 Künftig werden alle drei obigen Bildschirme eingestellt. Ihre Daten sind weiterhin in der Log Analytics-Sicherheitslösung verfügbar und werden weder geändert noch entfernt.
+Die ursprünglichen Log Analytics-Abfragen, die zum Ausfüllen des Dashboards für Identität und Zugriff verwendet wird, finden Sie im [GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) von Security Center.
 
 ### <a name="classic-identity--access-preview---new-experience"></a>Identität und Zugriff (klassisch) (Vorschau) – Neue Benutzeroberfläche
 Während das Log Analytics-Dashboard lediglich Informationen zu einem bestimmten Dashboard bereitstellte, liefern die systemeigenen Security Center-Funktionen Erkenntnisse zu allen Abonnements und alle zugeordneten Arbeitsbereichen. Die Ansicht ist benutzerfreundlich, und Sie können sich auf die wichtigen Aspekte konzentrieren, entsprechend der Sicherheitsbewertung Ihrer Identitäts- und Sicherheitsempfehlungen.
@@ -103,6 +104,7 @@ Wenn Sie einen Arbeitsbereich auswählen, um das zugehörige Dashboard „Inform
 ![Karte mit Sicherheitswarnungen in Log Analytics][12]
 
 Ihre vorhandenen Daten sind weiterhin in der Log Analytics-Sicherheitslösung verfügbar und werden weder geändert noch entfernt.
+Die ursprünglichen Log Analytics-Abfragen, die zum Ausfüllen des Dashboards „Informationen zu Bedrohungen“ verwendet wird, finden Sie im [GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) von Security Center.
 
 ### <a name="security-events-map---new-experience"></a>Karte mit Sicherheitsereignissen – Neue Benutzeroberfläche
 Wir empfehlen unseren Kunden die in Security Center integrierte Karte mit Sicherheitswarnungen zu verwenden – „Sicherheitshinweise zuordnen (Vorschau)“. Dies bietet eine optimierte Erfahrung und funktioniert über alle Abonnements und zugehörigen Arbeitsbereiche hinweg, sodass Sie eine Makroübersicht über Ihre Umgebung erhalten und sich nicht auf einen einzigen Arbeitsbereich beschränken müssen.
@@ -165,6 +167,8 @@ Das Sicherheitsdashboard in Log Analytics bietet einen arbeitsbereichsspezifisch
 
 ### <a name="security--audit-dashboard---new-experience"></a>Sicherheits- und Überwachungsdashboard – Neue Benutzeroberfläche
 Kunden wird empfohlen, Azure Security Center zu verwenden. Dieses bietet denselben Sicherheitsüberblick über mehrere zugeordnete Abonnements und Arbeitsbereiche sowie eine breitere Palette von Features.
+
+Die ursprünglichen Log Analytics-Abfragen, die zum Ausfüllen des Sicherheits- und Überwachungsdashboards verwendet wird, finden Sie im [GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) von Security Center.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/)

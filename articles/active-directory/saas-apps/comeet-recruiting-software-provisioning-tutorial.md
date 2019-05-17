@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: 0f1b5f424a71aeccd4b1e57129c0f5b22ff158af
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e8414b9737e0ee7f847827a432dd9887931a2532
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157856"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470391"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Comeet Recruiting Software für die automatische Benutzerbereitstellung
 
@@ -84,7 +84,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>So konfigurieren Sie Comeet Recruiting Software für die automatische Benutzerbereitstellung in Azure AD:
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und wählen Sie nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Comeet Recruiting Software** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -94,7 +94,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Bereitstellungsregisterkarte](common/provisioning.png)
+    ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
@@ -104,8 +104,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 6. Navigieren Sie in der [Comeet Recruiting Software-Verwaltungskonsole](https://app.comeet.co/) zu **Comeet > Settings > Authentication > Microsoft Azure** (Comeet > Einstellungen > Authentifizierung > Microsoft Azure), und kopieren Sie den Wert für **Secret Token for your company** (Geheimes Token für Ihr Unternehmen) in Azure AD in das Feld **Geheimes Token**.
 
-    ![Bereitstellung für Comeet Recruiting Software](./media/comeetrecruitingsoftware-provisioning-tutorial/secret-token-1.png)
-    
+    ![Bereitstellung für Comeet Recruiting Software](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
 7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Comeet Recruiting Software herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Comeet Recruiting Software-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
@@ -119,11 +118,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Comeet** synchronisieren aus.
 
-    ![Bereitstellung für Comeet Recruiting Software](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mappings.png)
+    ![Benutzerzuordnungen von Comeet Recruiting Software](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Comeet Recruiting Software synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Comeet Recruiting Software für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Bereitstellung für Comeet Recruiting Software](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mapping-attributes.png)
+    ![Gruppenattribute von Comeet Recruiting Software](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -156,7 +155,3 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

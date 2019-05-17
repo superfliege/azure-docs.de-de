@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: b609a0ace0b428e1af81634c6a25485e3a5e89bb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916655"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508432"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
 Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).
 
 Es gibt drei Arten von Endpunkten, die von Traffic Manager unterstützt werden:
 * **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.
-* **Externe Endpunkte** werden für IPv4/IPv6-Adressen oder für außerhalb von Azure gehostete Dienste verwendet, die entweder lokal oder bei einem anderen Hostinganbieter ausgeführt werden.
+* **Externe Endpunkte** werden für IPv4/IPv6-Adressen, FQDNs oder für außerhalb von Azure gehostete Dienste verwendet, die entweder lokal oder bei einem anderen Hostinganbieter vorliegen können.
 * **Geschachtelte Endpunkte** werden zum Kombinieren von Traffic Manager-Profilen verwendet, um flexiblere Schemas für das Routing von Datenverkehr zu erstellen. So können die Anforderungen von größeren und komplexeren Bereitstellungen erfüllt werden.
 
 Es gibt keine Einschränkung, wie Endpunkte unterschiedlichen Typs in einem Traffic Manager-Profil kombiniert werden können. Jedes Profil kann eine beliebige Mischung von Endpunkttypen enthalten.
@@ -46,7 +46,7 @@ Bei der Verwendung von Azure-Endpunkten erkennt Traffic Manager, wenn eine „kl
 
 ## <a name="external-endpoints"></a>Externe Endpunkte
 
-Externe Endpunkte werden entweder für IPv4/IPv6-Adressen oder für Dienste außerhalb von Azure verwendet. Die Verwendung von IPv4/IPv6-Adressendpunkten ermöglicht es Traffic Manager, den Zustand von Endpunkten zu überprüfen, ohne dass für sie ein DNS-Name erforderlich ist. Dadurch kann Traffic Manager auf Abfragen mit A/AAAA-Einträgen reagieren, wenn dieser Endpunkt in einer Antwort zurückgegeben wird. Dienste außerhalb von Azure können einen Dienst beinhalten, der lokal oder bei einem anderen Anbieter gehostet wird. Externe Endpunkte können einzeln oder in Kombination mit Azure-Endpunkten im gleichen Traffic Manager-Profil verwendet werden, mit Ausnahme von Endpunkten, die als IPv4- oder IPv6-Adressen angegeben sind und nur externe Endpunkte sein können. Die Kombination von Azure-Endpunkten mit externen Endpunkten ermöglicht unterschiedliche Szenarios:
+Externe Endpunkte werden entweder für IPv4/IPv6-Adressen, FQDNs oder für Dienste außerhalb von Azure verwendet. Die Verwendung von IPv4/IPv6-Adressendpunkten ermöglicht es Traffic Manager, den Zustand von Endpunkten zu überprüfen, ohne dass für sie ein DNS-Name erforderlich ist. Dadurch kann Traffic Manager auf Abfragen mit A/AAAA-Einträgen reagieren, wenn dieser Endpunkt in einer Antwort zurückgegeben wird. Dienste außerhalb von Azure können einen Dienst beinhalten, der lokal oder bei einem anderen Anbieter gehostet wird. Externe Endpunkte können einzeln oder in Kombination mit Azure-Endpunkten im gleichen Traffic Manager-Profil verwendet werden, mit Ausnahme von Endpunkten, die als IPv4- oder IPv6-Adressen angegeben sind und nur externe Endpunkte sein können. Die Kombination von Azure-Endpunkten mit externen Endpunkten ermöglicht unterschiedliche Szenarios:
 
 * Bereitstellen einer erhöhten Redundanz für eine vorhandene lokale Anwendung in einem Aktiv/Aktiv- oder Aktiv/Passiv-Failovermodell mit Azure. 
 * Weiterleiten von Datenverkehr an Endpunkte, denen kein DNS-Name zugeordnet ist. Verringern Sie außerdem die allgemeine DNS-Nachschlagelatenzzeit, indem Sie die Notwendigkeit entfernen, eine zweite DNS-Abfrage auszuführen, um eine IP-Adresse eines DNS-Namens zurückzugeben. 

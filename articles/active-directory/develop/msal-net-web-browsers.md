@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über die besonderen Überlegungen zur Verwendung
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6e13ec3d822ba8a8cd2484f42ea81e615bae268
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d4b4c4cd4dbab10a9d4796a8393cc7f479b90cc4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190981"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406771"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Verwenden von Webbrowsern in MSAL.NET
 Webbrowser sind eine Voraussetzung für die interaktive Authentifizierung. Der [Systemwebbrowser](#system-web-browser-on-xamarinios-and-xamarinandroid) unter Xamarin.iOS und [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser) wird standardmäßig von MSAL.NET unterstützt. Je nach Ihren Anforderungen (UX, Einmaliges Anmelden, Sicherheit) [können Sie jedoch auch den eingebetteten Webbrowser](#enable-embedded-webviews) in [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)-Apps und [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)-Apps aktivieren. Sie können den gewünschten Webbrowser auch [dynamisch auswählen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid), und zwar danach, ob Chrome oder ein Browser, der benutzerdefinierte Chrome-Registerkarten in Android unterstützt, vorhanden ist.
@@ -93,7 +93,7 @@ Wenn Sie als Entwickler MSAL.NET verwenden, haben Sie mehrere Optionen, um das i
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Auswählen zwischen eingebettetem Webbrowser oder Systembrowser in Xamarin.iOS
 
-In Ihrer iOS-App in `AppDelegate.cs` können Sie `ParentWindow` für `null` initialisieren. Diese Option steht in iOS nicht zur Verfügung.
+In Ihrer iOS-App können Sie in `AppDelegate.cs` das `ParentWindow` auf `null` initialisieren. Diese Option steht in iOS nicht zur Verfügung.
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS

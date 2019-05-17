@@ -1,6 +1,6 @@
 ---
 title: Willkommen bei Azure China 21Vianet | Microsoft-Dokumentation
-description: Microsoft Azure China 21Vianet ist eine physisch eigenständige Instanz der Clouddienste auf dem chinesischen Festland. Die Dienste basieren auf derselben Azure-, Office 365- und Power BI-Technologie wie der weltweite Microsoft-Clouddienst und haben vergleichbare Servicelevels.
+description: Microsoft Azure China 21Vianet ist eine physisch getrennte Instanz von Clouddiensten in China. Die Dienste basieren auf derselben Azure-, Office 365- und Power BI-Technologie wie der weltweite Microsoft-Clouddienst und haben vergleichbare Servicelevels.
 services: china
 cloud: na
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: v-wimarc
-ms.openlocfilehash: ae3c2d57c3ea43f67f612c6933c0a4e335ed3e3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60f847a4d708e8c5c8e9bac352a19f2386adfa4e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "58408349"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511138"
 ---
 # <a name="welcome-to-azure-china-21vianet"></a>Willkommen bei Azure China 21Vianet
-Von 21Vianet (Azure China 21Vianet) betriebenes Microsoft Azure ist eine physisch eigenständige Instanz von Clouddiensten auf dem chinesischen Festland, die von Shanghai Blue Cloud Technology Co., Ltd. („21Vianet“) – einer hundertprozentigen Tochtergesellschaft von Beijing 21Vianet Broadband Data Center Co., Ltd. – autonom betrieben und realisiert wird. 
+Das von 21Vianet betriebene Microsoft Azure (Azure China 21Vianet) ist eine physisch getrennte Instanz von Clouddiensten in China, die unabhängig von Shanghai Blue Cloud Technology Co. („21Vianet“), einer hundertprozentigen Tochtergesellschaft von Beijing 21Vianet Broadband Data Center Co, betrieben wird. 
 
 Die Dienste basieren auf denselben Microsoft Azure-, Microsoft Office 365- und Microsoft Power BI-Technologien wie der weltweite Microsoft-Clouddienst, und sie haben vergleichbare Servicelevels. Vereinbarungen und Verträge für Microsoft Azure in China werden gegebenenfalls zwischen den Kunden und 21Vianet geschlossen.
 
@@ -37,7 +37,7 @@ Diese Dokumentation umfasst die folgenden Themen:
 - [Partner](/azure/china/china-resources-partners) mit Azure-Lösungsangeboten
 
 ## <a name="operations"></a>Vorgänge
-Gemäß der chinesischen [Telekommunikationsverordnung](http://www.miit.gov.cn/n1146295/n1146557/n1146619/c4860613/content.html) (auf Chinesisch) benötigen Anbieter von Clouddiensten (IaaS und PaaS) wertsteigernde Telekommunikationszulassungen. Nur lokal eingetragene Unternehmen mit weniger als 50 Prozent Auslandsinvestitionen können diese Zulassung beantragen. Um dieser Verordnung zu entsprechen, wird der Azure-Dienst in China basierend auf den von Microsoft lizenzierten Technologien von 21Vianet betrieben. 
+Gemäß der chinesischen [Telekommunikationsverordnung](http://www.china.org.cn/business/laws_regulations/2010-01/20/content_19273945.htm) (auf Chinesisch) benötigen Anbieter von Clouddiensten (IaaS und PaaS) wertsteigernde Telekommunikationszulassungen. Nur lokal eingetragene Unternehmen mit weniger als 50 Prozent Auslandsinvestitionen können diese Zulassung beantragen. Um dieser Verordnung zu entsprechen, wird der Azure-Dienst in China basierend auf den von Microsoft lizenzierten Technologien von 21Vianet betrieben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Services and features in Microsoft Azure China 21Vianet (Dienste und Features von Microsoft Azure China 21Vianet)](https://www.azure.cn/home/features/products-by-region)

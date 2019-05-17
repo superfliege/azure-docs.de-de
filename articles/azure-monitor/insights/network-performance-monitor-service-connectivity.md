@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 85a35207293f5afda40c78d105fc58732f06b626
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145017"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509797"
 ---
 # <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
@@ -64,7 +64,7 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 
     * Wählen Sie **Web** aus, wenn Sie die Konnektivität mit einem Dienst überwachen möchten, der auf HTTP/S-Anforderungen reagiert, etwa outlook.office365.com oder bing.com.<br>
     * Wählen Sie **Netzwerk** aus, wenn Sie die Konnektivität mit einem Dienst überwachen möchten, der auf TCP-Anforderungen, aber nicht auf HTTP/S-Anforderungen reagiert, etwa einem SQL-Server, FTP-Server oder SSH-Port. 
-    * Beispiel:  Wählen Sie zum Erstellen eines Webtests für ein BLOB-Speicherkonto **Web** aus, und geben Sie als Ziel <your storageaccount>.blob.core.windows.net an. Mit [diesem Link](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints) können Sie auf ähnliche Weise Tests für einen anderen Tabellenspeicher, einen Queue Storage oder Azure Files erstellen.
+    * Beispiel:  Um einen Webtest für ein Blobspeicherkonto zu erstellen, wählen Sie **Web** aus und geben Sie das Ziel als „*yourstorageaccount*.blob.core.windows.net“ ein. Mit [diesem Link](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) können Sie auf ähnliche Weise Tests für einen anderen Tabellenspeicher, einen Queue Storage oder Azure Files erstellen.
 4. Wenn Sie keine Netzwerkmessung durchführen möchten, z.B. von Netzwerklatenz, Paketverlusten oder Topologieermittlung, deaktivieren Sie das Kontrollkästchen **Netzwerkmessungen durchführen**. Zur optimalen Nutzung der Funktion sollten Sie das Kontrollkästchen aktiviert lassen. 
 5. Geben Sie unter **Ziel** die URL/den FQDN/die IP-Adresse ein, für die bzw. den Sie die Netzwerkkonnektivität überwachen möchten.
 6. Geben Sie unter **Portnummer** die Portnummer des Zieldiensts ein. 
@@ -128,6 +128,16 @@ Gehen Sie im Fall einer Anomalie wie folgt vor:
 
 * Ermitteln Sie im Fall einer langsamen Anwendung, ob die mangelhafte Anwendungsleistung auf das Netzwerk oder auf ein Problem beim Anwendungsanbieter zurückzuführen ist.
 
+## <a name="gcc-office-urls-for-us-government-customers"></a>GCC Office-URLs für US Government-Kunden
+Für die Region „US Government Virginia“ sind nur DOD-URLs in NPM integriert. Kunden, die GCC-URLs verwenden, müssen benutzerdefinierte Tests erstellen und jede URL einzeln hinzufügen.
+
+| Feld | GCC |
+|:---   |:--- |
+| Office 365-Portal und freigegebene | portal.apps.mil |
+| Office 365-Authentifizierung und -Identität | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
+| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www .office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
+| Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
+| MS-Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Mit [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.

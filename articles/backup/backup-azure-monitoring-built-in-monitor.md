@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112499"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236437"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -49,7 +49,7 @@ Bei Warnungen handelt es sich in erster Linie um Szenarios, in denen Benutzer be
 Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnungen ausgelöst werden können.
 
   - Fehler bei der Sicherung/Wiederherstellung
-  - Sicherung mit Warnungen abgeschlossen
+  - Sicherung mit Warnungen für Azure Backup-Agent (MAB) erfolgreich abgeschlossen
   - Beenden des Schutzes unter Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung der Daten
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Ausnahmen, bei denen keine Warnung ausgelöst wird
@@ -92,7 +92,7 @@ Wenn Sie die Benachrichtigungen konfiguriert haben, erhalten Sie eine Begrüßun
 Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung innerhalb einer Stunde ausgelöst und behoben wurde, ist diese nicht in der stündlichen Übersicht enthalten.
 
 > [!NOTE]
-> 
+>
 > * Wenn ein destruktiver Vorgang wie das **Beenden des Schutzes inklusive Löschung der Daten** durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
 > * Verwenden Sie [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace), um Benachrichtigungen für erfolgreiche Aufträge zu konfigurieren.
 

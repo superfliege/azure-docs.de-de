@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168016"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506975"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 
@@ -201,42 +201,9 @@ C#-Codebeispiel für Ihren Einstieg: [RestApiSample auf GitHub](https://github.c
 1.  Klonen Sie das Repository, oder laden Sie es herunter. Öffnen Sie die RestApiSample-Lösung.
 2.  Suchen Sie die Zeile **client.BaseAddress = …**, und geben Sie Ihre [Basis-URL](#base-url) an.
 
-Im Codebeispiel können die interaktive Anmeldung, Benutzername/Kennwort oder der [Dienstprinzipal](#service-principal) verwendet werden.
+Das Codebeispiel verwendet die [Dienstprinzipal](#service-principal)-Authentifizierung.
 
-#### <a name="interactive-login-or-usernamepassword"></a>Interaktive Anmeldung oder Benutzername/Kennwort
-
-Für diese Form der Authentifizierung muss eine Azure-Anwendung mit den zugewiesenen erforderlichen API-Berechtigungen vorhanden sein. 
-
-1.  Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung**.
-
-    ![Registrierung einer neuen Anwendung](./media/analysis-services-async-refresh/aas-async-app-reg.png)
-
-
-2.  Geben Sie in **Erstellen** einen Namen ein, und wählen Sie den Anwendungstyp **Nativ** aus. Geben Sie unter **Umleitungs-URI** den URI **urn:ietf:wg:oauth:2.0:oob** ein, und klicken Sie dann auf **Erstellen**.
-
-    ![Einstellungen](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
-
-3.  Wählen Sie Ihre App aus, und kopieren und speichern Sie dann die **Anwendungs-ID**.
-
-    ![Kopieren der Anwendungs-ID](./media/analysis-services-async-refresh/aas-async-app-id.png)
-
-4.  Klicken Sie in **Einstellungen** auf **Erforderliche Berechtigungen** > **Hinzufügen**.
-
-    ![Hinzufügen des API-Zugriffs](./media/analysis-services-async-refresh/aas-async-add.png)
-
-5.  Geben Sie unter **Select an API** (API auswählen) den Suchbegriff **Azure Analysis Services** in das Suchfeld ein, und wählen Sie dann das entsprechende Ergebnis aus.
-
-    ![Auswählen der API](./media/analysis-services-async-refresh/aas-async-select-api.png)
-
-6.  Wählen Sie **Read and Write all Models** (Lesen und Schreiben aller Modelle) aus, und klicken Sie dann auf **Auswählen**. Wenn beide ausgewählt sind, klicken Sie auf **Fertig**, um die Berechtigungen hinzuzufügen. Die Verteilung kann einige Minuten dauern.
-
-    ![Auswählen von „Read and Write all Models“ (Lesen und Schreiben aller Modelle)](./media/analysis-services-async-refresh/aas-async-select-read.png)
-
-7.  Suchen Sie im Codebeispiel die **UpdateToken()**-Methode. Sehen Sie sich den Inhalt der Methode an.
-8.  Suchen Sie **string clientID = …**, und geben Sie dann die in Schritt 3 kopierte **Anwendungs-ID** ein.
-9.  Führen Sie das Beispiel aus.
-
-#### <a name="service-principal"></a>Dienstprinzipal
+### <a name="service-principal"></a>Dienstprinzipal
 
 Weitere Informationen zum Einrichten eines Dienstprinzipals und Zuweisen der erforderlichen Berechtigungen in Azure finden Sie unter [Erstellen eines Dienstprinzipals – Azure-Portals](../active-directory/develop/howto-create-service-principal-portal.md) und [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md). Führen Sie nach Abschluss dieser Schritte die folgenden zusätzlichen Schritte aus:
 

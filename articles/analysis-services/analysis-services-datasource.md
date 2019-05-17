@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698724"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506812"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -52,7 +52,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
-| Oracle |Microsoft OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET |
+| Oracle | OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET |
 | Teradata |OLE DB-Anbieter für Teradata, Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET |
 | | | |
 
@@ -87,7 +87,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 |XML-Tabellen<sup>[1](#tab1400b)</sup>    |  
 ||
  
-<a name="tab1400b">1:</a> Nur für tabellarische Modelle 1400 und höhere.   
+<a name="tab1400b">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
 <a name="filesSP">2:</a> Dateien in lokaler SharePoint-Instanz werden nicht unterstützt.
 
 ## <a name="specifying-a-different-provider"></a>Angeben eines anderen Herstellers

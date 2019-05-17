@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74cb1b3ec4e0570aa4316e6f45e99719f36815d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150713"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472049"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core-Ablaufverfolgungsprotokollen in Application Insights
 
@@ -177,8 +177,8 @@ Sie haben beispielsweise folgende Möglichkeiten:
 Verwenden Sie die [Java-Protokolladapter](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Keine Application Insights-Option im Kontextmenü des Projekts
-* Stellen Sie sicher, dass die Application Insights-Tools auf diesem Entwicklungscomputer installiert sind. Suchen Sie in Visual Studio im Menü **Extras** > **Erweiterungen und Updates** nach **Application Insights-Tools**. Wenn die Option nicht auf der Registerkarte **Installiert** angezeigt wird, öffnen Sie die Registerkarte **Online** und installieren sie.
-* Möglicherweise ist dies ein Projekttyp, der von den Application Insights-Tools nicht unterstützt wird. Verwenden Sie die [manuelle Installation](#manual-installation).
+* Stellen Sie sicher, dass die Developer Analytics Tools auf diesem Entwicklungscomputer installiert sind. Suchen Sie in Visual Studio im Menü **Extras** > **Erweiterungen und Updates** nach **Developer Analytics Tools**. Wenn die Option nicht auf der Registerkarte **Installiert** angezeigt wird, öffnen Sie die Registerkarte **Online** und installieren sie.
+* Möglicherweise ist dies ein Projekttyp, der von den Developer Analytics Tools nicht unterstützt wird. Verwenden Sie die [manuelle Installation](#manual-installation).
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Es gibt keine Option für die Protokolladapter im Konfigurationstool.
 * Installieren Sie zunächst das Protokollierungsframework.

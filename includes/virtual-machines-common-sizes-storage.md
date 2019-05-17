@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 6c83298b102d6782647f3baebf6f98e43cb3ad7f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: fb829cc5f1eef9c151a70a6479e419076e1c3b24
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011842"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509845"
 ---
 Datenspeicheroptimierte VM-Größen bieten hohen Datenträgerdurchsatz und E/A und eignen sich ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  Beispiele bilden Cassandra, MongoDB, Cloudera und Redis. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum lokalen Speicherdurchsatz und zur Netzwerkbandbreite für die einzelnen optimierten Größen.
 
@@ -40,8 +40,8 @@ Storage Premium-Zwischenspeicherung: Nicht unterstützt
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000 | 8.000/160 | 16 | 2/3.200  | 
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000 | 16.000/320 | 32 | 4/6.400  | 
 | Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640 | 32 | 8/12.800 | 
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/25.600 |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1,92 TB   | 3.800.000/20.000   | 80.000/1.400 | 32 | 8/32.000 |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/16.600+ |
+| Standard_L80s_v2  | 80 | 640 | 800 | 10x1,92 TB   | 3.800.000/20.000   | 80.000/1.400 | 32 | 8/16.000+ |
 
 <sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können. Dieser Datenträger ist kurzlebig, und beim Beenden oder Aufheben der Zuordnung gehen alle Daten verloren.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148521"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508419"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -67,7 +67,9 @@ Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [
 Ja. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Die Adressräume von Subnetzen können sich nicht überlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?
-Ja. Einige IP-Adressen innerhalb jedes Subnetzes sind in Azure reserviert. Die erste und letzte IP-Adresse der Subnetze sind aus Gründen der Protokollkonformität reserviert. Darüber hinaus sind die Adressen x.x.x.1 bis x.x.x.3 der Subnetze reserviert, die für Azure-Dienste verwendet werden.
+Ja. Azure reserviert fünf IP-Adressen in jedem Subnetz. Dies sind x.x.x.0-x.x.x.3 und die letzte Adresse des Subnetzes.    
+- x.x.x.0 und die letzte Adresse des Subnetzes sind für die Protokollkonformität reserviert.
+- x.x.x.1-x.x.x.3 ist in jedem Subnetz für Azure-Dienste reserviert.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Wie ist die minimale und maximale Größe von VNets und Subnetzen?
 Das kleinste unterstützte Subnetz weist die Netzmaske /29 und das größte die Netzmaske /8 (gemäß CIDR-Subnetzdefinitionen) auf.
@@ -231,7 +233,7 @@ Ja. Weitere Informationen zur Verwendung von folgenden Tools:
 VNET-Peering (das Peering virtueller Netzwerke) ermöglicht Ihnen das Verbinden von virtuellen Netzwerken. Über eine VNET-Peeringverbindung zwischen virtuellen Netzwerken können Sie Datenverkehr zwischen diesen privat über IPv4-Adressen weiterleiten. Virtuelle Computer in den mittels Peering verknüpften VNETs können miteinander kommunizieren, als ob sie sich im gleichen Netzwerks befinden. Diese virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen (dann auch als globales VNET-Peering bezeichnet) befinden. VNET-Peeringverbindungen können auch über mehrere Azure-Abonnements hinweg erstellt werden.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Kann ich eine Peeringverbindung mit einem VNET in einer anderen Region herstellen?
-Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNET-Peering ist in allen öffentlichen Azure- und China-Cloudregionen verfügbar. Globales Peering von öffentlichen Azure-Regionen mit nationalen Cloudregionen ist nicht möglich. Globales Peering ist in der Government Cloud zurzeit nicht verfügbar.
+Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNet-Peering ist in allen öffentlichen Azure-Regionen, China-Cloudregionen und Government-Cloudregionen verfügbar. Das globale Peering von öffentlichen Azure-Regionen in nationale Cloudregionen ist nicht möglich.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Welche Einschränkungen gibt es im Zusammenhang mit globalem VNET-Peering und Load Balancern?
 Wenn sich die zwei virtuellen Netzwerke in unterschiedlichen Regionen befinden (Globales VNet-Peering), können Sie sich nicht mit Ressourcen verbinden, die Basic-Load Balancer verwenden. Sie können sich mit Ressourcen verbinden, die Load Balancer Standard verwenden.
@@ -241,9 +243,8 @@ Die folgenden Ressourcen verwenden Basic-Load Balancer, d. h. Sie können nicht 
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
-- SQL Always-on
 - SQL MI
-- API Managemenet
+- API Management
 - Active Directory Domain Service (ADDS)
 - Logic Apps
 - HD Insight
@@ -282,6 +283,9 @@ Nein. Transitives Peering wird nicht unterstützt. Sie müssen hierzu eine Peeri
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Gibt es Bandbreiteneinschränkungen für Peeringverbindungen?
 Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschränkungen. Die Bandbreite wird nur durch die VM oder die Computeressource beschränkt.
+
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Wie kann ich Probleme beim VNet-Peering beheben?
+Hier ist eine [Anleitung zur Problembehandlung] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues)), die Sie testen können.
 
 ## <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 

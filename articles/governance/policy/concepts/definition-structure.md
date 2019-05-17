@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549353"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506697"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -25,9 +25,9 @@ Das von Azure Policy verwendete Schema finden Sie hier: [https://schema.manageme
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
 - Modus
-- Parameter
+- parameters
 - Anzeigename
-- Beschreibung
+- description
 - Richtlinienregel
   - Logische Auswertung
   - Wirkung
@@ -46,7 +46,7 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
                     "strongType": "location",
                     "displayName": "Allowed locations"
                 },
-                "defaultValue": "westus2"
+                "defaultValue": [ "westus2" ]
             }
         },
         "displayName": "Allowed locations",
@@ -66,7 +66,7 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
 }
 ```
 
-Alle Azure Policy-Beispiele finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
+Alle Azure Policy-Beispiele sind unter [Azure Policy-Beispiele](../samples/index.md) verfügbar.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -99,6 +99,7 @@ Ein Parameter hat die folgenden Eigenschaften, die in der Richtliniendefinition 
   - `description`: Die Erläuterung des Zwecks des Parameters. Kann verwendet werden, um Beispiele zulässiger Werte bereitzustellen.
   - `displayName`: Der Anzeigename des Parameters im Portal.
   - `strongType`: (Optional) Wird verwendet, wenn die Richtliniendefinition über das Portal zugewiesen wird. Bietet eine kontextbezogene Liste. Weitere Informationen finden Sie unter [strongType](#strongtype).
+  - `assignPermissions`: (Optional) Legen Sie diesen Wert auf _true_ fest, damit das Azure-Portal während der Richtlinienzuweisung Rollenzuweisungen erstellt. Diese Eigenschaft ist hilfreich, wenn Sie Berechtigungen außerhalb des Zuweisungsbereichs zuweisen möchten. Es gibt eine Rollenzuordnung pro Rollendefinition in der Richtlinie (oder pro Rollendefinition in allen Richtlinien der Initiative). Der Parameterwert muss eine gültige Ressource oder ein gültiger Bereich sein.
 - `defaultValue`: (Optional) Legt den Wert des Parameters in einer Zuweisung fest, wenn kein Wert angegeben ist. Erforderlich, wenn eine vorhandene zugewiesene Richtliniendefinition aktualisiert wird.
 - `allowedValues`: (Optional) Stellt ein Array von Werten bereit, die der Parameter bei der Zuweisung akzeptiert.
 
@@ -113,7 +114,7 @@ Beispielsweise können Sie eine Richtliniendefinition verwenden, um die Speicher
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2",
+        "defaultValue": [ "westus2" ],
         "allowedValues": [
             "eastus2",
             "westus2",
@@ -148,6 +149,7 @@ Innerhalb der `metadata`-Eigenschaft können Sie mit **strongType** im Azure-Por
 - `omsWorkspace`
 - `Microsoft.EventHub/Namespaces/EventHubs`
 - `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.EventHub/Namespaces/AuthorizationRules`
 - `Microsoft.RecoveryServices/vaults`
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -227,6 +229,10 @@ Eine Bedingung prüft, ob ein **Feld** oder der Accessor **Wert** bestimmte Krit
 - `"notIn": ["value1","value2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
+- `"less": "value"`
+- `"lessOrEquals": "value"`
+- `"greater": "value"`
+- `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
 Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert den Platzhalter `*` angeben.
@@ -375,7 +381,7 @@ Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Nam
 
 ### <a name="effect"></a>Wirkung
 
-Die Richtlinie unterstützt die folgenden Arten von Effekten:
+Azure Policy unterstützt die folgenden Auswirkungstypen:
 
 - **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
 - **Audit** generiert eine Warnung im Überwachungsprotokoll, führt jedoch nicht zu einem Fehler bei der Anforderung.
@@ -410,19 +416,29 @@ Der Effekt **DeployIfNotExists** erfordert die **roleDefinitionId**-Eigenschaft 
 }
 ```
 
-Umfassende Informationen zu den einzelnen Auswirkungen, zur Reihenfolge der Auswertung und zu Eigenschaften sowie Beispiele finden Sie unter [Grundlegendes zu Richtlinienauswirkungen](effects.md).
+Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der Auswertung, den Eigenschaften und Beispielen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](effects.md).
 
 ### <a name="policy-functions"></a>Richtlinienfunktionen
 
-Es können alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resource-group-template-functions.md) innerhalb einer Richtlinienregel verwendet werden, mit Ausnahme der folgenden Funktionen:
+Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resource-group-template-functions.md) stehen innerhalb einer Richtlinienregel zur Verfügung, mit Ausnahme der folgenden Funktionen und benutzerdefinierten Funktionen:
 
 - copyIndex()
 - deployment()
 - list*
+- newGuid()
+- pickZones()
 - providers()
 - reference()
 - resourceId()
 - variables()
+
+Die folgenden Funktionen stehen zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheiden sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage:
+
+- addDays(dateTime, numberOfDaysToAdd)
+  - **dateTime**: [Erforderlich] string – Zeichenfolge im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ'
+  - **numberOfDaysToAdd**: [Erforderlich] integer – Anzahl der hinzuzufügenden Tage
+- utcNow() – Im Gegensatz zu einer Resource Manager-Vorlage kann dies auch außerhalb von „defaultValue“ verwendet werden.
+  - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ' festgelegt ist.
 
 Darüber hinaus ist die `field` Funktion für Richtlinienregeln verfügbar. `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
 
@@ -593,9 +609,9 @@ Im folgenden Beispiel wird veranschaulicht, wie eine Initiative zur Behandlung d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele
+- Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md)
+- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

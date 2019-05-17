@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b12f5c7736307f0b62b6f6c2b526eb0108569c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190183"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227926"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? 
 
@@ -32,7 +32,7 @@ Azure AD ermöglicht das einmalige Anmelden bei Geräten, Apps und Diensten von 
 - Das Vorschreiben von mehrstufiger Authentifizierung für Benutzer beim Zugriff auf einen Dienst, wenn sie sich außerhalb des Unternehmensnetzwerks befinden
 - Das Blockieren des Zugriffs auf einen Dienst für Benutzer, die sich in bestimmten Ländern oder Regionen aufhalten.
 
-Ein Standort ist eine Bezeichnung für einen Netzwerkspeicherort, entweder in Form eines benannten Standorts oder von vertrauenswürdigen IPs aufgrund von mehrstufiger Authentifizierung.
+Ein Standort ist eine Bezeichnung für einen Netzwerkstandort, die entweder einen benannten Standort oder für die mehrstufige Authentifizierung vertrauenswürdige IP-Adressen darstellt.
 
 ## <a name="named-locations"></a>Benannte Orte
 
@@ -54,7 +54,7 @@ Ein benannter Standort besteht aus den folgenden Komponenten:
 
 - **Als vertrauenswürdigen Standort markieren**: Ein Flag, das Sie für einen benannten Standort festlegen können, um ihn als vertrauenswürdigen Standort auszuweisen. Normalerweise handelt es sich bei vertrauenswürdigen Standorten um Netzwerkbereiche, die der Kontrolle Ihrer IT-Abteilung unterliegen. Über den bedingten Zugriff hinaus werden vertrauenswürdige benannte Standorte auch in Sicherheitsberichten von Azure Identity Protection und Azure AD verwendet, um [falsch positive](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1) Meldungen zu reduzieren.
 - **Länder/Regionen:** Mithilfe dieser Option können Sie Länder oder Regionen auswählen, um einen benannten Ort zu definieren.
-- **Unbekannte Bereiche einschließen**: Einige IP-Adressen sind keinem bestimmten Land zugeordnet. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
+- **Unbekannte Bereiche einschließen** – Einige IP-Adressen sind keinem bestimmten Land oder einer bestimmten Region zugeordnet. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
 
 Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Organisationen können bis zu 90 benannte Standorte jeweils mit bis zu 12.000 IP-Adressbereichen konfigurieren.
 
@@ -67,9 +67,9 @@ Wenn eine Richtlinie für die Anwendung auf „Alle Standorte“ konfiguriert is
 
 ## <a name="trusted-ips"></a>Vertrauenswürdige IP-Adressen
 
-Ferner können Sie in den [Einstellungen für den mehrstufigen Authentifizierungsdienst](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx) IP-Adressbereiche konfigurieren, die das lokale Intranet Ihrer Organisation darstellen. Mithilfe dieser Funktion können Sie bis zu 50 IP-Adressbereiche konfigurieren. Die IP-Adressbereiche müssen im CIDR-Format angegeben werden. Weitere Informationen finden Sie unter [vertrauenswürdige IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+Ferner können Sie in den [Einstellungen für den mehrstufigen Authentifizierungsdienst](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx) IP-Adressbereiche konfigurieren, die das lokale Intranet Ihrer Organisation darstellen. Mithilfe dieser Funktion können Sie bis zu 50 IP-Adressbereiche konfigurieren. Die IP-Adressbereiche müssen im CIDR-Format angegeben werden. Weitere Informationen finden Sie unter [Vertrauenswürdige IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-Wenn bei Ihnen vertrauenswürdige IPs konfiguriert sind, sind sie in der Liste der Standorte für die Standortbedingung als **Für MFA vertrauenswürdige IPs** aufgeführt.
+Wenn Sie vertrauenswürdige IP-Adressen konfiguriert haben, werden Sie als **Für MFA vertrauenswürdige IPs** in der Liste der Standorte für die Standortbedingung angezeigt.
 
 ### <a name="skipping-multi-factor-authentication"></a>Überspringen der mehrstufigen Authentifizierung
 

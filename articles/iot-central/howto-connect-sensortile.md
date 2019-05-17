@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 580a8baa19e8ed4fc3f4449ead9d8aedbc4c039a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158042"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472166"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Verbinden eines SensorTile.box-Geräts mit Ihrer Azure IoT Central-Anwendung
 
@@ -23,14 +23,14 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindun
 
 Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen:
 
-* Ein SensorTile.box-Gerät. Weitere Informationen hierzu finden Sie unter [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/SensorTile.box).
-* Die auf Ihrem Android-Gerät installierte ST BLE Sensor-App. Diese können Sie [hier herunterladen] (https://play.google.com/store/apps/details?id=com.st.bluems). Weitere Informationen finden Sie unter: [ST BLE Sensor] (http://www.st.com/stblesensor)
+* Ein SensorTile.box-Gerät. Weitere Informationen finden Sie unter [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
+* Die auf Ihrem Android-Gerät installierte ST BLE Sensor-App. Diese können Sie [hier herunterladen](https://play.google.com/store/apps/details?id=com.st.bluems). Weitere Informationen finden Sie unter: [ST BLE-Sensor](https://www.st.com/stblesensor)
 * Eine Azure IoT Central-Anwendung, die mit der **DevKits**-Anwendungsvorlage erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
-* Fügen Sie die Gerätevorlage **SensorTile.box** zu Ihrer IoT Central-Anwendung hinzu. Navigieren Sie dazu zur Seite **Gerätevorlagen**, klicken Sie auf **+ Neu**, und wählen Sie die Vorlage **SensorTile** aus.
+* Fügen Sie die Gerätevorlage **SensorTile.box** zu Ihrer IoT Central-Anwendung hinzu. Navigieren Sie dazu zur Seite **Gerätevorlagen**, klicken Sie auf **+ Neu**, und wählen Sie die Vorlage **SensorTile.box** aus.
 
 ### <a name="get-your-device-connection-details"></a>Abrufen der Geräteverbindungsdetails
 
-Fügen Sie in Ihrer Azure IoT Central-Anwendung ein reales Gerät aus der **SensorTile.box**-Gerätevorlage hinzu, und notieren Sie sich die Verbindungsdetails des Geräts: **Bereichs-ID, Geräte-ID und Primärschlüssel**:
+Fügen Sie in Ihrer Azure IoT Central-Anwendung ein reales Gerät aus der **SensorTile.box**-Gerätevorlage hinzu, und notieren Sie sich die Verbindungsdetails des Geräts: **Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**:
 
 1. Fügen Sie ein Gerät aus Device Explorer hinzu. Wählen Sie **+ Neu > Real** aus, um ein reales Gerät hinzuzufügen.
 
@@ -47,7 +47,8 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein reales Gerät aus der **Sen
 
 ## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Einrichten der SensorTile.box mit der mobilen Anwendung
 
-In diesem Abschnitt erfahren Sie, wie Sie die Firmware der Anwendung mithilfe von Push auf das Gerät übertragen und die Gerätedaten mithilfe der BLE-Konnektivität (Bluetooth Low Energy) über die mobile App St BLE Sensor an IOT Central senden.
+In diesem Abschnitt erfahren Sie, wie Sie die Anwendungsfirmware auf das Gerät übertragen. Anschließend können Sie die Gerätedaten über die mobile ST BLE Sensor App mit Bluetooth Low Energy (BLE)-Konnektivität an IoT Central senden.
+
 1. Öffnen Sie die App ST BLE Sensor, und wählen Sie die Schaltfläche **Neue App erstellen** aus.
 
     ![Erstellen einer App](media/howto-connect-sensortile/create-app.png)
@@ -63,6 +64,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Firmware der Anwendung mithilfe vo
 ## <a name="connect-the-sensortilebox-to-the-cloud"></a>Verbinden der SensorTile.box mit der Cloud
 
 In diesem Abschnitt erfahren Sie, wie Sie die SensorTile.box mit der mobilen Anwendung und die mobile Anwendung wiederum mit der Cloud verbinden.
+
 1. Wählen Sie im linken Menü die Schaltfläche **Cloud Logging** (Cloud-Protokollierung) aus.
 
     ![Cloud-Protokollierung](media/howto-connect-sensortile/cloud-logging.png)
@@ -99,7 +101,6 @@ Eine mit der SensorTile.box-Gerätevorlage erstellte Anwendung mit den folgenden
 | FFT_X     |    |    |     |               |
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

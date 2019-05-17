@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/19/2019
-ms.openlocfilehash: aa9217251965b35dd90e09c619607c9421a9f6f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/22/2019
+ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572654"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507834"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
@@ -50,7 +50,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|
-|Grenzwerte für die Protokollrate (MB/s)|2.5|5|7,5|10|12,5|15|
+|Grenzwerte für die Protokollrate (MB/s)|3,75|7,5|11,25|15|18,75|22,5|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -73,7 +73,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)
 |Ziel-IOPS (64 KB)|3500|4000|4500|5.000|7.000|7.000|
-|Grenzwerte für die Protokollrate (MB/s)|17,5|20|20|20|20|20|
+|Grenzwerte für die Protokollrate (MB/s)|26,25|30|30|30|30|30|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -95,8 +95,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |tempdb-Größe (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|Grenzwerte für die Protokollrate (MB/s)|2.5|56|7,5|10|12,5|15|17,5|
+|Ziel-IOPS (64 KB)|1000|2000|3000|4000|5.000|6000|7.000|
+|Grenzwerte für die Protokollrate (MB/s)|3,75|7,5|11,25|15|18,75|22,5|26,25|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -118,8 +118,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |tempdb-Größe (GB)|384|384|384|384|384|384|384|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Ziel-IOPS (64 KB)|4000|4500|5.000|6000|7.000|7.000|7.000|
-|Grenzwerte für die Protokollrate (MB/s)|20|20|20|20|20|20|20|
+|Ziel-IOPS (64 KB)|7.000|7.000|7.000|7.000|7.000|7.000|7.000|
+|Grenzwerte für die Protokollrate (MB/s)|30|30|30|30|30|30|30|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -127,7 +127,35 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Dienstebene „Unternehmenskritisch“: Speicher- und Computegrößen
+### <a name="serverless-compute-tier"></a>Serverlose Computeebene
+
+Die [serverlose Computeebene](sql-database-serverless.md) ist in der öffentlichen Vorschauversion und gilt nur für einzelne Datenbanken, die das V-Kern-Kaufmodell verwenden.
+
+#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+
+|Computegröße|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|
+|:--- | --: |--: |--: |
+|Hardwaregeneration|5|5|5|
+|Min-Max V-Kerne|0,5 - 1|0,5 - 2|0,5 - 4|
+|Min-Max-Arbeitsspeicher (GB)|2,02 - 3|2,05 - 6|2,10 - 12|
+|Min. Verzögerung für automatische Pause (Stunden)|6|6|6|
+|Columnstore-Unterstützung|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|
+|Maximale Datengröße (GB)|512|1024|1024|
+|Maximale Protokollgröße (GB)|12|24|48|
+|tempdb-Größe (GB)|32|64|128|
+|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Ziel-IOPS (64 KB)|250|500|1000|
+|Grenzwerte für die Protokollrate (MB/s)|2.5|5.6|10|
+|Max. gleichzeitige Worker (Anforderungen)|75|150|300|
+|Maximal zulässige Sitzungen|30000|30000|30000|
+|Anzahl von Replikaten|1|1|1|
+|Multi-AZ|–|–|–|
+|Horizontale Leseskalierung|–|–|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Dienstebene „Unternehmenskritisch“ für die bereitgestellte Computeebene
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 1)
 
@@ -144,7 +172,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |tempdb-Größe (GB)|32|64|96|128|160|192|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|5.000|10000|15000|20000|25000|30000|
-|Grenzwerte für die Protokollrate (MB/s)|6|12|18|24|30|36|
+|Grenzwerte für die Protokollrate (MB/s)|8|16|24|32|40|48|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Maximale Anzahl gleichzeitiger Anmeldungen|200|400|600|800|1000|1200|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -168,7 +196,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |tempdb-Größe (GB)|224|256|288|320|384|384|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|35000|40.000|45000|50000|80.000|120000|
-|Grenzwerte für die Protokollrate (MB/s)|42|48|54|60|64|64|
+|Grenzwerte für die Protokollrate (MB/s)|56|64|64|64|64|64|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Max. gleichzeitige Anmeldungen (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -191,8 +219,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |tempdb-Größe (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Ziel-IOPS (64 KB)|5.000|10000|15000|20000|25000|30000|35000|
-|Grenzwerte für die Protokollrate (MB/s)|6|12|18|24|30|36|42|
+|Ziel-IOPS (64 KB)|8.000|16000|24.000|32000|40.000|48000|56000|
+|Grenzwerte für die Protokollrate (MB/s)|12|24|36|48|60|72|84|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximale Anzahl gleichzeitiger Anmeldungen|200|400|600|800|1000|1200|1400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
@@ -215,8 +243,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |tempdb-Größe (GB)|384|384|384|384|384|384|384|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Ziel-IOPS (64 KB)|40.000|45000|50000|60000|80.000|100.000|200.000|
-|Grenzwerte für die Protokollrate (MB/s)|48|54|60|72|96|96|96|
+|Ziel-IOPS (64 KB)|64000|72000|80.000|96000|128000|160000|320000|
+|Grenzwerte für die Protokollrate (MB/s)|96|96|96|96|96|96|96|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8.000|
 |Maximale Anzahl gleichzeitiger Anmeldungen|1600|1800|2000|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
@@ -225,30 +253,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
-## <a name="hyperscale-service-tier-preview"></a>Dienstebene „Hyperscale“ (Vorschau)
-
-### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>Computeplattform der 4. Generation: Speicher- und Computegrößen
-
-|Leistungsstufe|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
-|:--- | --: |--: |--: |--: |--: |--: |
-|Hardwaregeneration|4|4|4|4|4|4|
-|V-Kerne|1|2|4|8|16|24|
-|Arbeitsspeicher (GB)|7|14|28|56|112|168|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
-|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
-|tempdb-Größe (GB)|32|64|128|256|384|384|
-|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Ziel-IOPS (64 KB)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
-|E/A-Wartezeit (ungefähr)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
-|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
-|Anzahl von Replikaten|2|2|2|2|2|2|
-|Multi-AZ|–|–|–|–|–|–|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
-|Enthaltener Sicherungsspeicher|7|7|7|7|7|7|
-|||
+## <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
 ### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
 
@@ -270,7 +275,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Anzahl von Replikaten|2|2|2|2|2|2|2|2|
 |Multi-AZ|–|–|–|–|–|–|–|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Enthaltener Sicherungsspeicher (Grenzwert der Vorschau)|7|7|7|7|7|7|7|7|
+|Enthaltener Sicherungsspeicher |7|7|7|7|7|7|7|7|
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

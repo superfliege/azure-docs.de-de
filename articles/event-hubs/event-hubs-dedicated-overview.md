@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a5184b9980dd9f83764950445c10e8bdfea6d71a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4f721dc4fda5bef002c794d79dfd2f054f9eaf38
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203946"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511175"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -54,10 +54,10 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 | --- |:---:|:---:|
 | Bandbreite | 20 TUs (bis zu 40 TUs) | 20 CUs |
 | Namespaces |  1 | 50 pro CU |
-| Event Hubs |  10 | Keine Begrenzung |
+| Event Hubs |  10 | Keine Einschränkung für Event Hubs/Themen |
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
 | Nachrichtengröße | 1 Million Bytes | 1 Million Bytes |
-| Partitionen | 40 pro Namespace | 2000 pro CU, 1024 pro Event Hub |
+| Partitionen | 40 pro Namespace | 2000 pro CU |
 | Verbrauchergruppen | 20 pro Event Hub | Kein Limit pro CU, 1000 pro Event Hub |
 | Brokerverbindungen | 1.000 enthalten | 100.000 enthalten |
 | Nachrichtenaufbewahrung | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
@@ -65,16 +65,7 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
-Die Self-Service-Erfahrung für das Onboarding bei Dedicated befindet sich in der Vorschauphase, in der Sie 1 CU-Cluster in den folgenden Regionen erstellen können:
-  - Kanada, Mitte
-  - Europa, Westen
-  - USA, Mitte
-  - USA, Osten
-  - USA (Ost 2)
-  - USA, Norden-Mitte
-  - USA, Westen
-
-Wir fügen aktiv neue Regionen hinzu, aber in der Zwischenzeit übermitteln Sie bitte, wenn Ihre bevorzugte Region nicht in der Liste enthalten ist, eine Supportanfrage an das [Event Hubs-Team](https://ms.portal.azure.com/#create/Microsoft.Support) unter *Technical (Technisch) > Event Hubs > Quota (Kontingent) > Request for Dedicated SKU (Anforderung einer Dedicated-SKU)*. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
+Wenden Sie sich an das [Event Hubs-Team](mailto:askeventhubs@microsoft.com), um das Onboarding für Event Hubs Dedicated durchzuführen. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -86,19 +77,15 @@ In der folgenden Tabelle sind die Ergebnisse aufgeführt, die bei unseren Vergle
 
 | Form der Nutzlast | Empfänger | Eingangsbandbreite| Eingangsnachrichten | Ausgangsbandbreite | Ausgangsnachrichten | TUs gesamt | TUs pro CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches von 100 x 1 KB | 2 | 400 MB/s | 400.000 Nachrichten/s | 800 MB/s | 800.000 Nachrichten/s | 400 TUs | 100 TUs | 
-| Batches von 10 x 10 KB | 2 | 666 MB/s | 666.000 Nachrichten/s | 1,33 GB/s | 133.000 Nachrichten/s | 666 TUs | 166 TUs |
-| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34.000 Nachrichten/s | 1,05 GB/s | 34.000 Nachrichten/s | 1.000 TUs | 250 TUs |
+| Batches von 100 x 1 KB | 2 | 400 MB/s | 400T Nachrichten/Sek. | 800 MB/s | 800T Nachrichten/Sek. | 400 TUs | 100 TUs | 
+| Batches von 10 x 10 KB | 2 | 666 MB/s | 66,6T Nachrichten/Sek. | 1,33 GB/s | 133T Nachrichten/Sek. | 666 TUs | 166 TUs |
+| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34T Nachrichten/Sek. | 1,05 GB/s | 34T Nachrichten/Sek. | 1.000 TUs | 250 TUs |
 
 Bei den Tests wurden folgende Kriterien verwendet:
 
 - Es wurde ein Event Hubs-Cluster des Dedicated-Tarif mit vier Kapazitätseinheiten (Capacity Units, CUs) verwendet. 
 - Der für die Erfassung verwendete Event Hub umfasste 200 Partitionen. 
 - Die erfassten und von allen Partitionen eingehenden Daten wurden von zwei Empfängeranwendungen empfangen.
-
-#### <a name="how-do-i-create-a-cluster-larger-than-1-cu"></a>Wie erstelle ich einen Cluster, der größer als 1 CU ist?
-
-In der Vorschauversion der Self-Service-Erfahrung können Sie nach dem Erstellen Ihres Clusters anfordern, diesen zentral hochzuskalieren. Nach dem Erstellen eines Clusters mit 1 CU wenden Sie sich an den Event Hubs-Support, indem Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) unter *Technical (Technisch) > Quota (Kontingent) > Request to Scale Up or Scale Down Dedicated Cluster (Anforderung zum zentralen Hoch- oder Herunterskalieren eines Dedicated-Clusters)* ausfüllen. In unserem GA-Release werden Sie Ihren Cluster direkt über das Portal zentral hochskalieren können. 
 
 #### <a name="can-i-scale-down-my-cluster"></a>Kann ich meinen Cluster zentral herunterskalieren?
 
@@ -107,7 +94,6 @@ Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rec
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>Wie wird die Geo-Notfallwiederherstellung mit meinem Cluster funktionieren?
 
 Sie können einen Namespace unter einem Cluster des Dedicated-Tarifs geografisch mit einem anderen Namespace unter einem Cluster des Dedicated-Tarifs koppeln. Wir empfehlen nicht, einen Namespace eines Dedicated-Tarifs mit einem Namespace in unserem Standardangebot zu koppeln, da das Durchsatzlimit inkompatibel ist und somit zu Fehlern führen wird. 
-
 
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Kann ich meine Standard-Namespaces migrieren, damit sie zu einem Cluster des Dedicated-Tarifs gehören?
 Zurzeit unterstützen wird keinen automatisierten Migrationsprozess für die Migration Ihrer Event Hubs-Daten von einem Standard-Namespace zu einem im Dedicated-Tarif. Für eine Migration zu einem Cluster des Dedicated-Tarifs empfehlen wir, alle noch in Ihren Event-Hubs des Standard-Tarifs verbliebenen Nachrichten auszugleichen und die Verbindungsendpunkte durch die Ihres Dedicated-Namespace zu ersetzen.

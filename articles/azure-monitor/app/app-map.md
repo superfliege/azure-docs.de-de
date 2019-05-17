@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678538"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509968"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -68,7 +68,7 @@ Wählen Sie **Leistung untersuchen** aus, um Probleme mit der Leistung zu behand
 
 ### <a name="go-to-details"></a>Zu Details wechseln
 
-Wählen Sie **Zu Details wechseln** aus, um den Bereich für End-to-End-Transaktionen zu erkunden, in dem Informationen zur Aufrufliste angezeigt werden.
+Wählen Sie **Zu Details wechseln** aus, um das End-to-End-Transaktionserlebnis zu untersuchen, das Ansichten bis auf die Aufruflistenebene bereitstellen kann.
 
 ![Screenshot: Schaltfläche „Zu Details wechseln“](media/app-map/go-to-details.png)
 

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b80f11ef97a10728f07cebe1fe80b954e506da52
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147893"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406546"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -25,7 +25,11 @@ In diesem Artikel werden Regeln erläutert, die für Entitäten und APIs gelten,
 
 ## <a name="accessing-the-azure-media-services-api"></a>Zugreifen auf die Azure Media Services-API
 
-Um auf die Azure Media Services-Ressourcen zuzugreifen, können Sie die Dienstprinzipalauthentifizierung von Azure Active Directory (AD) verwenden.
+Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. Für Media Services wird die [Azure Active Directory-basierte](../../active-directory/fundamentals/active-directory-whatis.md) Authentifizierung unterstützt. Zwei häufige Authentifizierungsoptionen sind:
+ 
+* **Dienstprinzipalauthentifizierung** – wird zur Authentifizierung eines Dienstes verwendet (z.B. Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices). Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispielsweise sollte es für Web-Apps immer einen Dienst der mittleren Ebene geben, der sich mit einem Dienstprinzipal mit Media Services verbindet.
+* **Benutzerauthentifizierung** – wird zur Authentifizierung einer Person verwendet, die die App zum Interagieren mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird.
+
 Die Media Services-API erfordert, dass der Benutzer oder die Anwendung, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List** -Operationen verfügbar. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md).
 
 Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen in Betracht ziehen, um über den Azure Resource Manager auf die Media Services-API zuzugreifen. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -52,6 +56,16 @@ In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chr
 2. Das Azure AD-Zugriffstoken wird an die mittlere Ebene gesendet.
 4. Die mittlere Ebene sendet eine Anforderung mit dem Azure AD-Token an die Azure Media-REST-API.
 5. Die mittlere Ebene erhält die Daten von den Media Services zurück.
+
+### <a name="samples"></a>Beispiele
+
+Sehen Sie sich die folgenden Beispiele an, die zeigen, wie Sie sich mit dem Azure AD-Dienstprinzipal verbinden können:
+
+* [Herstellen einer Verbindung mit REST](media-rest-apis-with-postman.md)  
+* [Herstellen einer Verbindung mit Java](configure-connect-java-howto.md)
+* [Herstellen einer Verbindung mit .NET](configure-connect-dotnet-howto.md)
+* [Herstellen einer Verbindung mit Node.js](configure-connect-nodejs-howto.md)
+* [Herstellen einer Verbindung mit Python](configure-connect-python-howto.md)
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 

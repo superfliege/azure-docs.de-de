@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 43ca5bbfd789c1c41826c9a13a0030b80c72d4bc
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149698"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510652"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -54,7 +54,9 @@ Die Lösung meldet basierend auf der für die Synchronisierung konfigurierten Qu
 
 Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als *Optional* klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten. Nur erforderliche Updates sind im Bereitstellungsumfang enthalten.
 
-Bei der geplanten Bereitstellung wird definiert, welche Zielcomputer die jeweiligen Updates erhalten: entweder durch das explizite Angeben von Computern oder das Auswählen einer [Computergruppe](../azure-monitor/platform/computer-groups.md), die auf Protokollsuchen einer bestimmten Gruppe von Computern basiert. Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Dieser Zeitraum wird das Wartungsfenster bezeichnet. Zehn Minuten des Wartungsfensters sind für Neustarts reserviert, wenn ein Neustart erforderlich ist und Sie die entsprechende Neustartoption ausgewählt haben. Wenn das Patchen länger als erwartet dauert und im Wartungsfenster weniger als zehn Minuten verbleiben, wird kein Neustart durchgeführt.
+Die geplante Bereitstellung definiert, welche Zielcomputer die entsprechenden Updates erhalten. Dies erfolgt entweder durch explizite Angabe von Computern oder durch Auswahl einer [Computergruppe](../azure-monitor/platform/computer-groups.md), die auf Protokollsuchvorgängen einer bestimmten Reihe von Computern oder auf einer [Azure-Abfrage](#azure-machines) basiert, die Azure-VMs basierend auf bestimmten Kriterien dynamisch auswählt. Diese Gruppen unterscheiden sich von der [Bereichskonfiguration](../azure-monitor/insights/solution-targeting.md), die nur zur Ermittlung der Computer verwendet wird, die die Verwaltungspakete erhalten, die die Lösung ermöglichen. 
+
+Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Dieser Zeitraum wird das Wartungsfenster bezeichnet. Zehn Minuten des Wartungsfensters sind für Neustarts reserviert, wenn ein Neustart erforderlich ist und Sie die entsprechende Neustartoption ausgewählt haben. Wenn das Patchen länger als erwartet dauert und im Wartungsfenster weniger als zehn Minuten verbleiben, wird kein Neustart durchgeführt.
 
 Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für die Runbooks ist keine Konfiguration erforderlich. Wenn eine Updatebereitstellung erstellt wird, erstellt die Updatebereitstellung einen Zeitplan, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Das Masterrunbook startet ein untergeordnetes Runbook für jeden Agent, um die erforderlichen Updates zu installieren.
 
@@ -76,6 +78,9 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |Ubuntu 14.04 LTS, 16.04 LTS und 18.04 (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
+
+> [!NOTE]
+> VM-Skalierungsgruppen von Azure können über die Updateverwaltung verwaltet werden. Die Updateverwaltung arbeitet mit den Instanzen selbst und nicht mit dem Basisimage. Sie müssen die Updates inkrementell planen, um nicht alle VM-Instanzen auf einmal zu aktualisieren.
 
 ### <a name="unsupported-client-types"></a>Nicht unterstützte Clienttypen
 
@@ -579,7 +584,7 @@ Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellun
 * Abonnement
 * Ressourcengruppen
 * Standorte
-* Tags
+* `Tags`
 
 ![Auswählen von Gruppen](./media/automation-update-management/select-groups.png)
 
@@ -629,7 +634,7 @@ Allerdings wird die Updateverwaltung diesen Computer wahrscheinlich weiterhin al
 
 Das Bereitstellen von Updates nach einer Updateklassifizierung funktioniert unter CentOS nicht standardmäßig. Wählen Sie zum ordnungsgemäßen Bereitstellen von Updates für CentOS alle Klassifizierungen aus, um sicherzustellen, dass die Updates angewendet werden. Für SUSE kann die Auswahl *nur* von „Other Updates“ als Klassifizierung möglicherweise dazu führen, dass einige Sicherheitsupdates installiert werden, wenn zuerst Sicherheitsupdates im Zusammenhang mit zypper (Paket-Manager) oder dessen Abhängigkeiten erforderlich sind. Dieses Verhalten ist eine Einschränkung von zypper. In einigen Fällen müssen Sie die Updatebereitstellung ggf. erneut ausführen. Überprüfen Sie das Updateprotokoll.
 
-## <a name="remove-a-vm-for-update-management"></a>Entfernen eines virtuellen Computers für die Updateverwaltung
+## <a name="remove-a-vm-from-update-management"></a>Entfernen eines virtuellen Computers aus der Updateverwaltung
 
 So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 

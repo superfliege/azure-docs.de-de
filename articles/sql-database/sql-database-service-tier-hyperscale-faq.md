@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/06/2019
+ms.openlocfilehash: 4f0691dcc8a0c4b0ebbfe26a49b75b86fa50f597
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067802"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236019"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -73,11 +73,7 @@ Die Dienstebene „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die 
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Welche Regionen unterstützen derzeit Hyperscale?
 
-Azure SQL-Datenbank mit Hyperscale-Ebene ist zurzeit in den folgenden Regionen verfügbar:
-
-Australien, Osten; Australien, Südosten; Brasilien, Süden; Kanada, Mitte; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Frankreich, Mitte; Japan, Osten; Japan, Westen; USA, Norden-Mitte; Europa, Norden; Südafrika, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2
-
-Weitere Informationen zur Vorgehensweise, wenn Sie Zugriff in einer anderen Region benötigen, finden Sie unter [FAQs zu Azure SQL-Datenbank Hyperscale](sql-database-service-tier-hyperscale-faq.md).
+Die Dienstebene „Hyperscale“ für Azure SQL-Datenbank ist derzeit in den unter [Hyperscale für Azure SQL-Datenbank – Übersicht](sql-database-service-tier-hyperscale.md#regions) aufgeführten Regionen verfügbar.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Können mehrere Hyperscale-Datenbanken pro logischen Server erstellt werden?
 

@@ -1,21 +1,24 @@
 ---
-title: Verwalten von Lesereplikaten für Azure Database for PostgreSQL über die CLI
-description: Erfahren Sie, wie Sie Azure Database for PostgreSQL-Lesereplikate über die CLI verwalten.
+title: Verwalten von Lesereplikaten für Azure Database for PostgreSQL – Einzelserver über die Azure-Befehlszeilenschnittstelle
+description: Erfahren Sie, wie Sie Lesereplikate für Azure Database for PostgreSQL verwalten – Einzelserver über die Azure-Befehlszeilenschnittstelle.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789426"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510235"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über die Azure CLI erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
+
+> [!NOTE]
+> Die Azure-Befehlszeilenschnittstelle unterstützt noch nicht das Erstellen von Replikaten in einer anderen Region als der des Masterservers. Verwenden Sie das [Azure-Portal](howto-read-replicas-portal.md), um ein regionsübergreifendes Replikat zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein [Azure Database for PostgreSQL-Server](quickstart-create-server-up-azure-cli.md), der als Masterserver verwendet wird

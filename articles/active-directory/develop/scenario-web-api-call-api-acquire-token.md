@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ada4323b0e61c6dc9fb87af133c40ec9c35e3834
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080114"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231096"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-API, die Web-APIs aufruft – Abrufen eines Tokens für die App
 
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` gleicht dem unter [Web-API, die Web-APIs aufruft (App-Konfiguration)](scenario-web-api-call-api-app-configuration.md) Beschriebenen. `BuildConfidentialClient()` instanziiert `IConfidentialClientApplication` mit einem Zwischenspeicher, der alle Informationen zu einem Konto enthält. Das Konto wird von der Methode `GetAccountIdentifier` angegeben.
+`BuildConfidentialClient()` gleicht dem unter [Web-API, die Web-APIs aufruft (App-Konfiguration)](scenario-web-api-call-api-app-configuration.md) Beschriebenen. `BuildConfidentialClient()` instanziiert `IConfidentialClientApplication` mit einem Zwischenspeicher, der alle Informationen zu einem Konto enthält. Das Konto wird über die `GetAccountIdentifier`-Methode bereitgestellt.
 
 Die Methode `GetAccountIdentifier` verwendet die Ansprüche, die zur Identität des Benutzer gehören, für den die API das JSON Web Token erhalten hat:
 

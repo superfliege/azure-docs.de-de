@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002182"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508005"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -62,16 +62,25 @@ Die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster beträgt 110. *Stan
 
 | Bereitstellungsmethode | Kubenet-Standardeinstellung | Azure CNI-Standardeinstellung | Bei der Bereitstellung konfigurierbar |
 | -- | :--: | :--: | -- |
-| Azure-Befehlszeilenschnittstelle | 110 | 30 | Ja (bis zu 110) |
-| Resource Manager-Vorlage | 110 | 30 | Ja (bis zu 110) |
+| Azure-Befehlszeilenschnittstelle | 110 | 30 | Ja (bis zu 250) |
+| Resource Manager-Vorlage | 110 | 30 | Ja (bis zu 250) |
 | Portal | 110 | 30 | Nein  |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurieren des Höchstwerts: Neue Cluster
 
-Sie können die maximale Anzahl von Pods pro Knoten *nur zum Zeitpunkt der Bereitstellung* konfigurieren. Wenn Sie die Bereitstellung mit der Azure-Befehlszeilenschnittstelle oder mit einer Resource Manager-Vorlage durchführen, können Sie die maximale Anzahl von Pods pro Knoten auf bis zu 110 festlegen.
+Sie können die maximale Anzahl von Pods pro Knoten *nur zum Zeitpunkt der Bereitstellung* konfigurieren. Wenn Sie mithilfe der Azure CLI oder mit einer Resource Manager-Vorlage bereitstellen, können Sie die maximalen Pods pro Knotenwert innerhalb der folgenden `maxPods`-Richtlinien nach Bedarf festlegen:
 
-* **Azure CLI**: Geben Sie das `--max-pods`-Argument an, wenn Sie einen Cluster mit dem Befehl [az aks create][az-aks-create] bereitstellen. Der Maximalwert ist 110.
-* **Resource Manager-Vorlage**: Geben Sie die `maxPods`-Eigenschaft im Objekt [ManagedClusterAgentPoolProfile] an, wenn Sie einen Cluster mit einer Resource Manager-Vorlage bereitstellen. Der Maximalwert ist 110.
+| Netzwerk | Minimum | Maximum |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+> [!NOTE]
+> Der Mindestwert in der obigen Tabelle wird vom AKS-Dienst strikt erzwungen.
+Sie können für maxPods keinen niedrigeren Wert als den angezeigten Mindestwert festlegen, da dadurch der Start des Clusters verhindert werden kann.
+
+* **Azure CLI**: Geben Sie das `--max-pods`-Argument an, wenn Sie einen Cluster mit dem Befehl [az aks create][az-aks-create] bereitstellen. Der Höchstwert ist 250.
+* **Resource Manager-Vorlage**: Geben Sie die `maxPods`-Eigenschaft im Objekt [ManagedClusterAgentPoolProfile] an, wenn Sie einen Cluster mit einer Resource Manager-Vorlage bereitstellen. Der Höchstwert ist 250.
 * **Azure-Portal**: Sie können die maximale Anzahl von Pods pro Knoten nicht ändern, wenn Sie einen Cluster über das Azure-Portal bereitstellen. Die Cluster in Azure CNI-Netzwerken sind, wenn die Bereitstellung über das Azure-Portal erfolgt, auf 30 Pods pro Knoten beschränkt.
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurieren des Höchstwerts: Vorhandene Cluster
@@ -143,7 +152,7 @@ Die folgenden Fragen und Antworten gelten für die **Azure CLI**-Netzwerkkonfigu
 
 * *Kann ich Netzwerkrichtlinien pro Pod konfigurieren?*
 
-  Die Kubernetes-Netzwerkrichtlinie ist derzeit in AKS als Previewfunktion verfügbar. Informationen zu den ersten Schritten finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service][network-policy].
+  Ja, die Kubernetes-Netzwerkrichtlinie ist in AKS verfügbar. Informationen zu den ersten Schritten finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service][network-policy].
 
 * *Ist die maximale Anzahl von Pods, die auf einem Knoten bereitgestellt werden können, konfigurierbar?*
 

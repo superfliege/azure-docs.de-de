@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: b7b096bd1ecf0a4df37ed4de0cf618216dccc2bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157866"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508554"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Keeper Password Manager & Digital Vault für die automatische Benutzerbereitstellung
 
@@ -84,7 +84,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Keeper Password Manager & Digital Vault in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen**, **Alle Anwendungen** und dann **Keeper Password Manager & Digital Vault** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -104,19 +104,19 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 6. Melden Sie sich bei Ihrer [Keeper Admin-Konsole](https://keepersecurity.com/console/#login) an. Klicken Sie auf **Admin** (Administrator), und wählen Sie einen vorhandenen Knoten aus, oder erstellen Sie einen neuen. Navigieren Sie zur Registerkarte **Provisioning** (Bereitstellung), und wählen Sie **Add Method** (Methode hinzufügen) aus.
 
-    ![Keeper Admin-Konsole](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Keeper Admin-Konsole](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
     Wählen Sie **SCIM (System for Cross-Domain Identity Management)** – System für domänenübergreifendes Identitätsmanagement – aus.
 
-    ![Keeper – SCIM hinzufügen](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Keeper – SCIM hinzufügen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
     Klicken Sie auf **Create Provisioning Token** (Bereitstellungstoken erstellen).
 
-    ![Keeper – Endpunkt erstellen](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Keeper – Endpunkt erstellen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
     Kopieren Sie die Werte für **URL** und **Token**, und fügen Sie sie in Azure AD in **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Save** (Speichern), um die Bereitstellungseinrichtung unter Keeper abzuschließen.
 
-    ![Keeper – Token erstellen](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Keeper – Token erstellen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
 7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Keeper Password Manager & Digital Vault herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Keeper Password Manager & Digital Vault-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
 
@@ -130,19 +130,19 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Keeper Password Manager & Digital Vault synchronisieren**.
 
-    ![Keeper – Benutzerzuordnungen](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Keeper – Benutzerzuordnungen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Keeper Password Manager & Digital Vault synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Keeper Password Manager & Digital Vault für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Keeper – Benutzerattribute](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Keeper – Benutzerattribute](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Keeper Password Manager & Digital Vault synchronisieren**.
 
-    ![Keeper – Gruppenzuordnungen](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Keeper – Gruppenzuordnungen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
 13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Keeper Password Manager & Digital Vault synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppen in Keeper Password Manager & Digital Vault für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Keeper – Gruppenattribute](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Keeper – Gruppenattribute](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -176,7 +176,3 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png
