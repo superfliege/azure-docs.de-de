@@ -6,7 +6,7 @@ metadata:
   title: 'Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz'
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: CarlRabeler
+  author: stevestein
   manager: craigg
   ms.service: sql-database
   ms.subservice: service
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 03/04/2019
-  ms.author: carlrab
+  ms.author: sstein
 abstract:
   description: 'Azure SQL-Datenbank ist eine universelle relationale DBaaS-Lösung (Database-as-a-Service) und basiert auf der neuesten stabilen Version der Microsoft SQL Server-Datenbank-Engine. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungs-Clouddatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.'
   aside:
