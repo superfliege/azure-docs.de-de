@@ -54,7 +54,7 @@ Folgende Eigenschaften werden für den mit SAP ECC verknüpften Dienst unterstü
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapEcc** | Ja |
-| URL | Die URL des SAP ECC OData-Diensts | Ja |
+| url | Die URL des SAP ECC OData-Diensts | Ja |
 | username | Der Benutzername, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein  |
 | password | Das Klartextkennwort, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein  |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
