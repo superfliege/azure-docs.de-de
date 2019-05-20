@@ -187,7 +187,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: Aktualisieren der Anmeldeinformationen für den Clusterdienstprinzipal
           href: update-credentials.md
-        - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
+        - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs (Vorschauversion)
           href: limit-egress-traffic.md
         - name: Aktivieren der Azure Active Directory-Integration
           items:
