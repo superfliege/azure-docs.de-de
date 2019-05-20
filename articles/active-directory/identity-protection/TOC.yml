@@ -46,6 +46,8 @@
           href: security-overview.md
         - name: Überprüfen riskanter Benutzer und Anmeldungen
           href: howto-investigate-risky-users-signins.md
+        - name: Senden von Feedback zu Risikoereignissen
+          href: howto-provide-risk-event-feedback.md
         - name: Konfigurieren von Richtlinien zu Risiken
           href: howto-configure-risk-policies.md
         - name: Verbessern der Erkennungsgenauigkeit
