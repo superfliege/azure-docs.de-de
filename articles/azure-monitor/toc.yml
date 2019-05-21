@@ -305,6 +305,12 @@
                       href: app/snapshot-debugger-troubleshoot.md
                 - name: Diagnose
                   href: ../application-insights/app-insights-azure-diagnostics.md
+            - name: ASP.NET Core
+              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+              href: app/asp-net-core.md
+              items:
+                - name: ILogger
+                  href: app/ilogger.md
             - name: ASP.NET-Apps
               items:
                 - name: Web-Apps
@@ -339,13 +345,6 @@
                   href: app/windows-services.md
                 - name: Windows Desktop
                   href: app/windows-desktop.md
-                - name: ASP.NET Core
-                  href: app/asp-net-core.md
-                  items:
-                    - name: Profiler für Linux-App-Dienste (Vorschauversion)
-                      href: app/profiler-aspnetcore-linux.md
-                - name: ASP.NET Core ohne Visual Studio
-                  href: app/asp-net-core-no-visualstudio.md
                 - name: Konsole
                   href: app/console.md
                 - name: Anwendungsdashboard
@@ -356,8 +355,6 @@
                   href: app/asp-net-exceptions.md
                 - name: Protokollablaufverfolgungen
                   href: app/asp-net-trace-logs.md
-                - name: ILogger
-                  href: app/ilogger.md
                 - name: Leistungsindikatoren
                   href: app/performance-counters.md
                 - name: Abhängigkeiten

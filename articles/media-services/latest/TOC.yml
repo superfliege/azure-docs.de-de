@@ -49,6 +49,7 @@
       items:
         - name: Storage
           href: storage-account-concept.md
+          displayName: Storage side encryption
         - name: Ressourcen-API
           href: assets-concept.md
     - name: Codieren
@@ -169,6 +170,7 @@
       items:
         - name: 'Erstellen eines Kontos: CLI'
           href: create-account-cli-how-to.md
+          displayName: storage
         - name: 'Zurücksetzen der Kontoanmeldeinformationen: CLI'
           href: cli-reset-account-credentials.md
         - name: 'Datenzugriffs-API: CLI'
