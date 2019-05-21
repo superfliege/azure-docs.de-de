@@ -62,7 +62,7 @@ Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie
 
 Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes Stimmmodell erstellen.
 
-1.  Navigieren Sie zu**** „Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Training“.
+1.  Navigieren Sie zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Training“.**
 
 2.  Klicken Sie auf **Modell trainieren**.
 
@@ -104,7 +104,7 @@ Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der R
 
 Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereitstellung testen.
 
-1.  Navigieren Sie zu**** „Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Testen“.
+1.  Navigieren Sie zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Testen“.**
 
 2.  Klicken Sie auf **Test hinzufügen**.
 
@@ -125,7 +125,7 @@ Außerdem können Sie sich die Testergebnisse auf der Detailseite der einzelnen 
 
 Nach dem erfolgreichen Erstellen und Testen des Sprachmodells können Sie es in einem benutzerdefinierten Text-to-Speech-Endpunkt bereitstellen. Diesen verwenden Sie anschließend anstelle des üblichen Endpunkts beim Senden von Text-to-Speech-Anforderungen über die REST-API. Der benutzerdefinierte Endpunkt kann nur durch das Abonnement aufgerufen werden, mit dem Sie den Voicefont bereitgestellt haben.
 
-Navigieren Sie zum Erstellen eines benutzerdefinierten Stimmendpunkts zu**** „Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Bereitstellung“. Wählen Sie **Endpunkt hinzufügen** aus, und geben Sie unter **Name** einen Namen und unter **Beschreibung** eine Beschreibung für Ihren benutzerdefinierten Endpunkt ein. Wählen Sie das benutzerdefinierte Stimmmodell aus, das Sie diesem Endpunkt zuordnen möchten.
+Navigieren Sie zum Erstellen eines benutzerdefinierten Stimmendpunkts zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Bereitstellung“.** Wählen Sie **Endpunkt hinzufügen** aus, und geben Sie unter **Name** einen Namen und unter **Beschreibung** eine Beschreibung für Ihren benutzerdefinierten Endpunkt ein. Wählen Sie das benutzerdefinierte Stimmmodell aus, das Sie diesem Endpunkt zuordnen möchten.
 
 Nach dem Klicken auf die Schaltfläche **Hinzufügen** wird in der Endpunkttabelle ein Eintrag für Ihren neuen Endpunkt angezeigt. Das Instanziieren des neuen Endpunkts kann einige Minuten in Anspruch nehmen. Wenn als Bereitstellungsstatus **Erfolgreich** angezeigt wird, kann der Endpunkt verwendet werden.
 
@@ -137,7 +137,7 @@ Nach dem Klicken auf die Schaltfläche **Hinzufügen** wird in der Endpunkttabel
 
 Nachdem Sie Ihren Endpunkt bereitgestellt haben, wird sein Name als Link angezeigt. Klicken Sie auf den Link, um spezifische Informationen zu Ihrem Endpunkt anzuzeigen (z. B. Endpunktschlüssel, Endpunkt-URL und Beispielcode).
 
-Die Onlineüberprüfung des Endpunkts kann auch über das Custom Voice-Portal erfolgen. Wählen Sie zum Testen Ihres Endpunkts auf der**** Detailseite des Endpunkts die Option **Check endpoint** (Endpunkt überprüfen) aus. Die Seite zum Testen des Endpunkts wird angezeigt. Geben Sie den Text, der gesprochen werden soll, in das Textfeld ein (entweder im Nur-Text- oder im [SSML-Format](speech-synthesis-markup.md)). Wählen Sie **Wiedergabe** aus, damit der Text in Ihrem benutzerdefinierten Voicefont gesprochen wird. Dieses Testfeature wird im Rahmen Ihrer Nutzung der benutzerdefinierten Sprachsynthese abgerechnet.
+Die Onlineüberprüfung des Endpunkts kann auch über das Custom Voice-Portal erfolgen. Wählen Sie zum Testen Ihres Endpunkts auf der **Detailseite des Endpunkts** die Option **Check endpoint** (Endpunkt überprüfen) aus. Die Seite zum Testen des Endpunkts wird angezeigt. Geben Sie den Text, der gesprochen werden soll, in das Textfeld ein (entweder im Nur-Text- oder im [SSML-Format](speech-synthesis-markup.md)). Wählen Sie **Wiedergabe** aus, damit der Text in Ihrem benutzerdefinierten Voicefont gesprochen wird. Dieses Testfeature wird im Rahmen Ihrer Nutzung der benutzerdefinierten Sprachsynthese abgerechnet.
 
 Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Standardendpunkt für Text-to-Speech-Anforderungen. Weitere Informationen finden Sie unter [REST-API](rest-text-to-speech.md).
 
