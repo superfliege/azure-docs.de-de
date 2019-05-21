@@ -819,53 +819,47 @@
       items:
         - name: Alerts
           items:
-            - name: Verwenden von Metrikwarnungen
-              items:
-                - name: 'Erstellen, Anzeigen und Verwalten von Metrikwarnungen in Azure Monitor'
-                  href: platform/alerts-metric.md
-                - name: 'Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen in Azure Monitor'
-                  href: platform/alerts-classic-portal.md
-                - name: Metrikwarnungen mit dynamischen Schwellenwerten
-                  href: platform/alerts-dynamic-thresholds.md
-                - name: Konfigurieren von Metrikwarnungen in Protokollen
-                  href: platform/alerts-metric-logs.md
-                - name: Erstellen einer neueren Metrikwarnung anhand einer Resource Manager-Vorlage
-                  href: platform/alerts-metric-create-templates.md
-                - name: Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
-                  href: platform/alerts-enable-template.md
-                - name: Aufrufen eines Webhooks über eine klassische Metrikwarnung
-                  href: platform/alerts-webhooks.md
-            - name: Verwenden von Protokollwarnungen
-              items:
-                - name: Konfigurieren von Warnungen für Analyseabfragen
-                  href: platform/alerts-log.md
-                - name: Abfragen von Protokollwarnungen
-                  href: platform/alerts-log-query.md
-                - name: Webhookaktionen für Protokollwarnungen
-                  href: platform/alerts-log-webhook.md
-                - name: Problembehandlung für Protokollwarnungen
-                  href: platform/alert-log-troubleshoot.md
-            - name: Verwenden von Aktivitätsprotokollwarnungen
-              items:
-                - name: Konfigurieren von Warnungen für ein Aktivitätsprotokollereignis
-                  href: platform/alerts-activity-log.md
-                - name: Migrieren zu Aktivitätsprotokollwarnungen
-                  href: platform/migrate-management-alerts.md
-                - name: Konfigurieren von Warnungen für Dienstbenachrichtigungen
-                  href: platform/alerts-activity-log-service-notifications.md
-            - name: Verwenden von Anwendungswarnungen
+            - name: Warnungsregeln für Anwendungen
               items:
                 - name: Verfügbarkeit
                   href: app/monitor-web-app-availability.md
                 - name: Metrikwarnungen
                   href: app/alerts.md
-            - name: Verwenden von Aktionsgruppen mit Warnungen
+            - name: Warnungsregeln für Plattformmetriken
               items:
-                - name: Erstellen von Aktionsgruppen
+                - name: Verwalten von Metrikwarnungen
+                  href: platform/alerts-metric.md
+                - name: Verwenden von dynamischen Schwellenwerten
+                  href: platform/alerts-dynamic-thresholds.md
+                - name: Metrikwarnungen in Protokollen
+                  href: platform/alerts-metric-logs.md
+                - name: Verwenden der Resource Manager-Vorlage
+                  href: platform/alerts-metric-create-templates.md
+            - name: Protokollwarnungsregeln
+              items:
+                - name: Konfigurieren von Warnungen für Analyseabfragen
+                  href: platform/alerts-log.md
+                - name: Abfragen
+                  href: platform/alerts-log-query.md
+                - name: Webhookaktionen
+                  href: platform/alerts-log-webhook.md
+                - name: Problembehandlung
+                  href: platform/alert-log-troubleshoot.md
+            - name: Warnungsregeln für Aktivitätsprotokolle
+              items:
+                - name: Warnung bei einem Aktivitätsprotokollereignis
+                  href: platform/alerts-activity-log.md
+                - name: Migrieren von Verwaltungsereignissen zu Aktivitätsprotokollwarnungen
+                  href: platform/migrate-management-alerts.md
+                - name: Warnung bei Dienstintegritätsbenachrichtigungen
+                  href: platform/alerts-activity-log-service-notifications.md
+            - name: Verwenden von Aktionsgruppen
+              items:
+                - name: Erstellen einer Aktionsgruppe
                   href: platform/action-groups.md
-                - name: Informationen zum Webhookschema
+                - name: Webhookschema
                   href: platform/activity-log-alerts-webhook.md
-                - name: Definitionen des allgemeinen Warnungsschemas
+                - name: Definition des allgemeinen Warnungsschemas
                   href: platform/alerts-common-schema-definitions.md
                 - name: Verhalten von SMS-Benachrichtigungen
                   href: platform/alerts-sms-behavior.md
@@ -875,9 +869,9 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: Implementieren einer Logik-App-Aktion
                   href: platform/action-groups-logic-app.md
-            - name: Warnungen von Operations Manager
+            - name: Lösung Warnungsverwaltung
               href: platform/alert-management-solution.md
-            - name: Warnungen verwalten
+            - name: Benutzeroberfläche für Warnungen
               items:
                 - name: Verwalten von Warnungsinstanzen
                   href: platform/alerts-managing-alert-instances.md
@@ -887,19 +881,31 @@
                   href: platform/alerts-managing-alert-states.md
                 - name: Verwalten von Warnungen aus anderen Überwachungsdiensten
                   href: platform/alerts-managing-nagios-zabbix-scom.md
-            - name: Migrieren von klassischen Warnungen
+            - name: Migrieren klassischer Warnungsregeln
               items:
-                - name: Verwenden des Migrationstools
-                  href: platform/alerts-using-migration-tool.md
                 - name: Vorbereiten der Migration
                   href: platform/alerts-prepare-migration.md
                 - name: Grundlegendes zum Migrationstool
                   href: platform/alerts-understand-migration.md
+                - name: Verwenden des Migrationstools
+                  href: platform/alerts-using-migration-tool.md
+                - name: Verwalten klassischer Metrikwarnungen
+                  href: platform/alerts-classic-portal.md
+                - name: Klassische Metrikwarnung mit Resource Manager-Vorlage
+                  href: platform/alerts-enable-template.md
+                - name: 'Klassische Metrikwarnung, die einen Webhook aufruft'
+                  href: platform/alerts-webhooks.md
+        - name: Dienstintegritätsbenachrichtigungen im Aktivitätsprotokoll
+          items:
+            - name: Anzeigen von Benachrichtigungen
+              href: platform/service-notifications.md
+            - name: Konfigurieren von Warnungen für Benachrichtigungsereignisse
+              href: platform/alerts-activity-log-service-notifications.md
         - name: Autoscale
           items:
-            - name: Exemplarische Vorgehensweisen zur automatischen Skalierung
+            - name: Exemplarische Vorgehensweise
               href: platform/autoscale-get-started.md
-            - name: Grundlegendes zu Einstellungen für die automatische Skalierung
+            - name: Einstellungen
               href: platform/autoscale-understanding-settings.md
             - name: Bewährte Methoden
               href: platform/autoscale-best-practices.md
@@ -907,20 +913,14 @@
               href: platform/autoscale-common-metrics.md
             - name: Allgemeine Muster
               href: platform/autoscale-common-scale-patterns.md
-            - name: Automatisches Skalieren mit einer benutzerdefinierten Metrik
+            - name: Skalieren mit benutzerdefinierten Metriken
               href: platform/autoscale-custom-metric.md
-            - name: Automatisches Skalieren von VM-Skalierungsgruppen mithilfe von Resource Manager-Vorlagen
-              href: platform/autoscale-virtual-machine-scale-sets.md
-            - name: Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
+            - name: Skalieren von VM-Skalierungsgruppen
               href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
-            - name: Konfigurieren von Webhooks und E-Mail-Benachrichtigungen bei automatischer Skalierung
+            - name: Skalieren von VM-Skalierungsgruppen mithilfe von Resource Manager-Vorlagen
+              href: platform/autoscale-virtual-machine-scale-sets.md
+            - name: Verwenden von Webhooks und E-Mail-Benachrichtigungen
               href: platform/autoscale-webhook-email.md
-        - name: Dienstbenachrichtigungen
-          items:
-            - name: Anzeigen von Dienstbenachrichtigungen
-              href: platform/service-notifications.md
-            - name: Konfigurieren von Warnungen für Dienstbenachrichtigungen
-              href: platform/alerts-activity-log-service-notifications.md
         - name: IT-Dienstverwaltung
           items:
             - name: IT Service Management Connector

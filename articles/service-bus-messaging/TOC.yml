@@ -174,7 +174,7 @@
       items:
         - name: Verwenden von Azure PowerShell zur Bereitstellung von Entitäten
           href: service-bus-manage-with-ps.md
-        - name: Überwachen von Service Bus mit Azure-Überwachung
+        - name: Überwachen von Service Bus mit Azure Monitor
           href: service-bus-metrics-azure-monitor.md
         - name: Service Bus-Verwaltungsbibliotheken
           href: service-bus-management-libraries.md

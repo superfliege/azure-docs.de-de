@@ -89,6 +89,8 @@
           items:
             - name: Edgecomputing
               href: data-box-edge-manage-compute.md
+            - name: Edgecomputingnetzwerk
+              href: data-box-edge-extend-compute-access-modules.md
             - name: Freigaben
               href: data-box-edge-manage-shares.md
             - name: Benutzer
