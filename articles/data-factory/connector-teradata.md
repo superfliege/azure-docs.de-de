@@ -167,41 +167,41 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Zuordnungen von Terada
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |Zeichenfolge |
-| Clob |Zeichenfolge |
-| Datum |Datetime |
-| DECIMAL |DECIMAL |
+| Char |String |
+| Clob |String |
+| Date |DateTime |
+| Decimal |Decimal |
 | Double |Double |
-| Graphic |Zeichenfolge |
-| Ganze Zahl  |Int32 |
-| Interval Day |Zeitraum |
-| Interval Day To Hour |Zeitraum |
-| Interval Day To Minute |Zeitraum |
-| Interval Day To Second |Zeitraum |
-| Interval Hour |Zeitraum |
-| Interval Hour To Minute |Zeitraum |
-| Interval Hour To Second |Zeitraum |
-| Interval Minute |Zeitraum |
-| Interval Minute To Second |Zeitraum |
-| Interval Month |Zeichenfolge |
-| Interval Second |Zeitraum |
-| Interval Year |Zeichenfolge |
-| Interval Year To Month |Zeichenfolge |
+| Graphic |String |
+| Integer |Int32 |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Month |String |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
 | Number |Double |
-| Period(Date) |Zeichenfolge |
-| Period(Time) |Zeichenfolge |
-| Period(Time With Time Zone) |Zeichenfolge |
-| Period(Timestamp) |Zeichenfolge |
-| Period(Timestamp With Time Zone) |Zeichenfolge |
+| Period(Date) |String |
+| Period(Time) |String |
+| Period(Time With Time Zone) |String |
+| Period(Timestamp) |String |
+| Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
-| Zeit |Zeitraum |
-| Time With Time Zone |Zeichenfolge |
-| Zeitstempel |Datetime |
+| Time |TimeSpan |
+| Time With Time Zone |String |
+| Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
-| VarChar |Zeichenfolge |
-| VarGraphic |Zeichenfolge |
-| xml |Zeichenfolge |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |String |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
