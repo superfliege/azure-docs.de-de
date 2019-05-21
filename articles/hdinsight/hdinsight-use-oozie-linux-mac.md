@@ -302,9 +302,9 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Wert aus Schritt 1|
     |admin| Ihr Anmeldename für den HDInsight-Cluster, falls Sie kein Administrator sind.|
-    |serverName| Servername der Azure SQL-Datenbank|
-    |sqlLogin| Anmeldung des Azure SQL-Datenbankservers|
-    |sqlPassword| Anmeldekennwort des Azure SQL-Datenbankservers|
+    |serverName| Name des Azure SQL-Datenbank-Servers|
+    |sqlLogin| Anmeldung des Azure SQL-Datenbank-Servers|
+    |sqlPassword| Anmeldekennwort des Azure SQL-Datenbank-Servers|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

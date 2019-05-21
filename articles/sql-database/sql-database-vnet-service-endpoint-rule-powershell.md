@@ -42,7 +42,7 @@ Gründe für das Erstellen einer Regel werden hier erläutert: [Virtuelle Dienst
 
 ## <a name="major-cmdlets"></a>Wichtige Cmdlets
 
-In diesem Artikel wird das Cmdlet **New-AzSqlServerVirtualNetworkRule** erläutert, das den Subnetzendpunkt zur Zugriffssteuerungsliste (Access Control List, ACL) Ihres Azure SQL-Datenbankservers hinzufügt und dadurch eine Regel erstellt.
+In diesem Artikel wird das Cmdlet **New-AzSqlServerVirtualNetworkRule** erläutert, das den Subnetzendpunkt zur Zugriffssteuerungsliste (Access Control List, ACL) Ihres Azure SQL-Datenbank-Servers hinzufügt und dadurch eine Regel erstellt.
 
 Die folgende Liste zeigt die Abfolge von anderen *wichtigen* Cmdlets, die Sie ausführen müssen, um den Aufruf von **New-AzSqlServerVirtualNetworkRule** vorzubereiten. In diesem Artikel werden diese Aufrufe in [script 3 "Virtual network rule" (Skript 3: VNET-Regel)](#a-script-30) ausgeführt.
 

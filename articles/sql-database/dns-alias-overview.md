@@ -55,7 +55,7 @@ Bei einer Notfallwiederherstellung wird Ihr SQL-Datenbank-Server möglicherweise
 
 Die folgenden Eigenschaften gelten für sämtliche DNS-Aliase Ihres SQL-Datenbank-Servers:
 
-- *Eindeutiger Name:* Jeder Aliasname, den Sie erstellen, ist auf allen Servern mit Azure SQL-Datenbank eindeutig (ebenso wie Servernamen).
+- *Eindeutiger Name:* Jeder Aliasname, den Sie erstellen, ist auf allen Azure SQL-Datenbank-Servern eindeutig (ebenso wie Servernamen).
 - *Server ist erforderlich:* Ein DNS-Alias kann nur dann erstellt werden, wenn er auf genau einen Server verweist und der Server bereits vorhanden ist. Ein aktualisierter Alias muss immer genau auf einen vorhandenen Server verweisen.
   - Wenn Sie einen SQL-Datenbank-Server löschen, löscht das Azure-System auch alle DNS-Aliase, die auf den Server verweisen.
 - *Nicht an eine beliebige Region gebunden:* DNS-Aliase sind nicht an eine Region gebunden. DNS-Aliase können dahingehend aktualisiert werden, dass sie auf einen Azure SQL-Datenbank-Server in einer beliebigen geografischen Region verweisen.

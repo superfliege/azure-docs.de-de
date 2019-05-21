@@ -1,6 +1,6 @@
 ---
 title: PowerShell für den DNS-Alias für Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Mit PowerShell-Cmdlets wie New-AzSqlServerDNSAlias können Sie neue Clientverbindungen mit einem anderen Azure SQL-Datenbankserver umleiten, ohne Clientkonfigurationen vornehmen zu müssen.
+description: Mit PowerShell-Cmdlets wie „New-AzSqlServerDNSAlias“ können Sie neue Clientverbindungen an einen anderen Azure SQL-Datenbank-Server umleiten, ohne Clientkonfigurationen vornehmen zu müssen.
 keywords: dns sql database
 services: sql-database
 ms.service: sql-database
