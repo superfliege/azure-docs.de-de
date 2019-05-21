@@ -1,6 +1,6 @@
 ---
 title: Automatisches Skalieren von Windows Virtual Desktop-Sitzungshosts (Vorschauversion) – Azure
-description: Es wird beschrieben, wie Sie das Skript für die automatische Skalierung für Windows Virtual Desktop-Sitzungshosts (Vorschauversion) einrichten.
+description: Hier wird beschrieben, wie Sie das Skript für die automatische Skalierung für Windows Virtual Desktop-Sitzungshosts (Vorschauversion) einrichten.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop

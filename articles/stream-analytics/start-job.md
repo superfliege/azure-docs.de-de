@@ -33,7 +33,7 @@ Das erste mögliche Ausgabeereignis hat einen Zeitstempel, der dem aktuellen Zei
 
 Navigieren Sie im Azure-Portal zu Ihrem Auftrag, und wählen Sie auf der Übersichtsseite **Starten** aus. Wählen Sie eine **Startzeit der Auftragsausgabe** und anschließend **Starten** aus.
 
-Wählen Sie eine der Optionen für **Startzeit der Auftragsausgabe** aus. Möglich sind die Optionen *Jetzt*, *Benutzerdefinierte*, und, wenn der Auftrag zuvor ausgeführt wurde, *Zeitpunkt der letzten Beendigung*. Weitere Informationen zu diesen Optionen finden Sie weiter oben.
+Wählen Sie eine der Optionen für **Startzeit der Auftragsausgabe** aus. Möglich sind die Optionen *Jetzt*, *Benutzerdefiniert* und, wenn der Auftrag zuvor ausgeführt wurde, *Zeitpunkt der letzten Beendigung*. Weitere Informationen zu diesen Optionen finden Sie weiter oben.
 
 ## <a name="visual-studio"></a>Visual Studio
 
