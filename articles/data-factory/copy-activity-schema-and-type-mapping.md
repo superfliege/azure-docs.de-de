@@ -229,8 +229,8 @@ Sie können die Zuordnung des nativen Typs zum Zwischendatentyp im „Datentypzu
 Data Factory unterstützt die folgenden Zwischendatentypen: Sie können beim Konfigurieren von Typinformationen in der Konfiguration der [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure) folgende Werte angeben:
 
 * Byte[]
-* Boolescher Wert
-* DateTime
+* Boolean
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double
@@ -239,7 +239,7 @@ Data Factory unterstützt die folgenden Zwischendatentypen: Sie können beim Kon
 * Int32
 * Int64
 * Single
-* Zeichenfolge
+* String
 * Timespan
 
 ### <a name="explicit-data-type-conversion"></a>Explizite Konvertierung von Datentypen
