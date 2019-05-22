@@ -281,17 +281,16 @@ Beim Kopieren von Daten aus bzw. nach Oracle werden die folgenden Zuordnungen vo
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(nur für Oracle 10g und höher unterstützt) |
-| BLOB |Byte[]<br/>(only supported on Oracle 10g and higher) |
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Dezimal, String (wenn Genauigkeit > 28) |
-| INTEGER |Dezimal, String (wenn Genauigkeit > 28) |
+| FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
+| INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Dezimal, String (wenn Genauigkeit > 28) |
+| NUMBER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
