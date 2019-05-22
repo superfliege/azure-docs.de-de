@@ -138,6 +138,18 @@
         - name: Hinzufügen und Registrieren von Dataset
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Erkunden von Daten
+          displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
+          href: how-to-explore-prepare-data.md
+        - name: Versionieren und Verwalten von Datendefinitionen
+          displayName: 'data, etl, dataset, data preparation, dataprep, version'
+          href: how-to-manage-dataset-definitions.md
+        - name: Momentaufnahme Ihrer Daten
+          displayName: 'snapshots, profile, summary statistics, data copy'
+          href: how-to-create-dataset-snapshots.md
+        - name: Abrufen von Daten aus einem Datenspeicher
+          displayName: blob get fileshare access storage
+          href: how-to-access-data.md
         - name: Vorbereiten mit azureml.dataprep
           items:
             - name: Laden von Daten
@@ -149,18 +161,6 @@
             - name: Schreiben von Daten
               displayName: 'data, etl, data prep, dataprep'
               href: how-to-write-data.md
-        - name: Vorbereiten mit Datasets (Vorschauversion)
-          displayName: 'data, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
-          href: how-to-explore-prepare-data.md
-        - name: Versionieren und Verwalten von Datendefinitionen
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: Momentaufnahme Ihrer Daten
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
-        - name: Abrufen von Daten aus einem Datenspeicher
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
     - name: Trainieren von Modellen
       items:
         - name: Einrichten von Trainingsumgebungen

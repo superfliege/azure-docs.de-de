@@ -57,7 +57,7 @@
         - name: Übersicht
           href: encoding-concept.md
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
-        - name: API für Transformationen und Aufträge
+        - name: Transformationen und Aufträge
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
         - name: Standard-Encoder-Formate
@@ -74,7 +74,7 @@
         - name: Übersicht
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyzing, presets, jobs'
-        - name: API für Transformationen und Aufträge
+        - name: Transformationen und Aufträge
           href: transforms-jobs-concept.md
         - name: Auftragsfehlercodes
           href: job-error-codes.md
@@ -85,15 +85,15 @@
           href: dynamic-packaging-overview.md
         - name: Dynamische Manifeste
           href: filters-dynamic-manifest-overview.md
-        - name: Filter-API
+        - name: Filter
           href: filters-concept.md
-        - name: API für Streamingendpunkte
+        - name: Streamingendpunkte
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
-        - name: API für Streaminglocators
+        - name: Streaminglocators
           displayName: URLs
           href: streaming-locators-concept.md
-        - name: Streamingrichtlinien-API
+        - name: Streamingrichtlinien
           href: streaming-policy-concept.md
         - name: Fehlercodes für Streamingendpunkte
           href: streaming-endpoint-error-codes.md
@@ -112,15 +112,15 @@
               href: widevine-license-template-overview.md
             - name: FairPlay-Lizenzanforderungen
               href: fairplay-license-overview.md
-        - name: Streamingrichtlinien-API
+        - name: Streamingrichtlinien
           href: streaming-policy-concept.md
-        - name: API für Inhaltsschlüsselrichtlinien
+        - name: Richtlinien für Inhaltsschlüssel
           href: content-key-policy-concept.md
     - name: Livestreaming
       items:
         - name: Übersicht
           href: live-streaming-overview.md
-        - name: API für Liveereignisse und Liveausgaben
+        - name: Liveereignisse und Liveausgaben
           href: live-events-outputs-concept.md
         - name: Empfohlene Liveencoder
           href: recommended-on-premises-live-encoders.md
