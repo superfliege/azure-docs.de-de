@@ -28,6 +28,8 @@
       href: tutorials/tutorial-share-anchors-across-devices.md
     - name: Freigeben in Unity mit Azure Cosmos DB
       href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - name: Starten einer neuen Unity HoloLens-App
+      href: tutorials/tutorial-new-unity-hololens-app.md
     - name: Starten einer neuen Android-App
       href: tutorials/tutorial-new-android-app.md
 - name: Vorgehensweise

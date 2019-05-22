@@ -116,8 +116,9 @@
             - name: Festlegen der Aufbewahrungsrichtlinie und Ausführen von Bereinigungsskripts
               href: image-factory-set-retention-policy-cleanup.md
         - name: DevTest Labs im Unternehmen
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: DevTest Labs auf Unternehmensebene
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Referenzarchitektur
               href: devtest-lab-reference-architecture.md
             - name: Zentrales Hochskalieren der DevTest Labs-Bereitstellung

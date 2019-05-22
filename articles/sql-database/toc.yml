@@ -99,6 +99,16 @@
       href: sql-database-implement-geo-distributed-database.md
     - name: Einrichten der Azure SQL-Datensynchronisierung
       href: sql-database-get-started-sql-data-sync.md
+    - name: Machine Learning Services
+      items:
+        - name: Erstellen und Bereitstellen eines Vorhersagemodells in R
+          items:
+            - name: 1. Vorbereiten der Daten
+              href: sql-database-tutorial-predictive-model-prepare-data.md
+            - name: 2. Erstellen des Modells
+              href: sql-database-tutorial-predictive-model-build-compare.md
+            - name: 3. Bereitstellen des Modells
+              href: sql-database-tutorial-predictive-model-deploy.md
 - name: Beispiele
   items:
     - name: Codebeispiele

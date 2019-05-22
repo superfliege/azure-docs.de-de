@@ -4,14 +4,14 @@ title: Dokumentation für Azure Cosmos DB
 metadata:
   document_id: e77bd640-1036-8b31-955c-a2cc990c69a1
   title: 'Dokumentation für Azure Cosmos DB – Tutorials, API-Referenz'
-  description: 'Erfahren Sie, wie Sie mit Azure-Cosmos-Datenbank global verteilte Datenbanken mit mehreren Modellen erstellen. In den Tutorials erfahren Sie, wie Sie Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen.'
+  description: 'Hier erfahren Sie, wie Sie Azure Cosmos DB verwenden, den global verteilten Multimodell-Datenbankdienst. In den Tutorials erfahren Sie, wie Sie Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen.'
   author: SnehaGunda
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  ms.date: 05/20/2019
 abstract:
-  description: 'Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen, der Datenbanken mit Dokumenten, Schlüsselwerten, breiten Spalten und Graphen unterstützt. Anhand unserer Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie Azure Cosmos DB verwenden.'
+  description: 'Azure Cosmos DB ist ein vollständig verwalteter Datenbankdienst mit globaler, sofort einsatzbereiter Verteilung und transparenter Multimasterreplikation. Sie können global verteilte, operative Analysen mit geringer Wartezeit, Analyseworkloads und KI für transaktionale Daten innerhalb Ihrer Datenbank ausführen. Anhand unserer Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie Azure Cosmos DB verwenden.'
   aside:
     image:
       alt: null
