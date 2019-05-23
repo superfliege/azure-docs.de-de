@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6d794fb14b7f581c9e9b92dc581de97e0a236630
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66161766"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
 
