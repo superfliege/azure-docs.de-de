@@ -9,14 +9,14 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 01/09/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 18b5f3877538d26e55bf0550a995ca0c50699de5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470629"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914136"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -40,7 +40,7 @@ Die neueste Version von Azure Machine Learning Service umfasst folgende Funktion
 + Ein neues, umfangreicheres Python-<a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.
 + Die neue, erweiterte [Azure CLI-Erweiterung](reference-azure-machine-learning-cli.md) für Machine Learning.
 
-Die [Architektur](concept-azure-machine-learning-architecture.md) wurde im Hinblick auf leichte Bedienbarkeit umgestaltet. Anstelle von mehreren Azure-Ressourcen und -Konten benötigen Sie nur einen [Arbeitsbereich für den Azure Machine Learning-Dienst](concept-azure-machine-learning-architecture.md#workspace). Arbeitsbereiche können schnell im [Azure-Portal]((setup-create-workspace.md#portal) erstellt werden. Durch die Verwendung eines Arbeitsbereichs können mehrere Benutzer Computeziele für Training und Bereitstellung, Modellexperimente, Docker-Images, bereitgestellte Modelle usw. speichern.
+Die [Architektur](concept-azure-machine-learning-architecture.md) wurde im Hinblick auf leichte Bedienbarkeit umgestaltet. Anstelle von mehreren Azure-Ressourcen und -Konten benötigen Sie nur einen [Arbeitsbereich für den Azure Machine Learning-Dienst](concept-workspace.md). Arbeitsbereiche können schnell im [Azure-Portal]((setup-create-workspace.md#portal) erstellt werden. Durch die Verwendung eines Arbeitsbereichs können mehrere Benutzer Computeziele für Training und Bereitstellung, Modellexperimente, Docker-Images, bereitgestellte Modelle usw. speichern.
 
 Zwar gibt es in der aktuellen Version neue, verbesserte CLI- und SDK-Clients, die eigentliche Workbench-Desktopanwendung wurde aber eingestellt. Experimente können im [Arbeitsbereich-Dashboard im Azure-Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal) verwaltet werden. Verwenden Sie das Dashboard, um Ihren Experimentverlauf abzurufen, die an Ihren Arbeitsbereich angefügten Computeziele zu verwalten, Ihre Modelle und Docker-Images zu verwalten und sogar Webdienste bereitzustellen.
 
