@@ -6,12 +6,12 @@ description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungss
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b36302e349327354e31ef4ea5adb9842d04ed4f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c1c33cab46082d1d3b748b45b40a7928801b2e55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149329"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151263"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -649,6 +649,12 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                     <h3>Azure Stack</h3>
                                     <ul>
                                         <li>
+                                            <a href="/azure-stack">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-stack/">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Azure Stack-Bediener</p>
@@ -658,6 +664,11 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                             <a href="/azure/azure-stack/user">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Azure Stack-Benutzer</p>
+                                            </a>
+                                        </li>                                        <li>
+                                            <a href="/azure-stack/asdk/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack Development Kit (ASDK)</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -5959,6 +5970,25 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         <a href="#stack">Azure Stack</a>
                         <ul id="stack" class="cardsA">
                             <li>
+                                <a href="/azure-stack">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Stack</h3>
+                                                    <p>Erweitern Sie Azure-Dienste und -Funktionen lokal, um Hybrid Cloud- und Edge-Anwendungen cloudübergreifend zu erstellen und bereitzustellen</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-stack/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -5970,7 +6000,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Stack-Bediener</h3>
-                                                    <p>Bereitstellen von Azure-Diensten aus Ihrem eigenen Datencenter mit dieser neuen Hybrid Cloud-Plattform</p>
+                                                    <p>Hier erfahren Sie, wie Sie die Infrastruktur für integrierte Azure Stack-Systeme verwalten und Dienste anbieten.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5989,6 +6019,23 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                             <div class="cardText">
                                                 <h3>Azure Stack-Benutzer</h3>
                                                 <p>Verwenden von Diensten und Erstellen von Anwendungen für Azure Stack</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure-stack/asdk/">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure-stack.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Azure Stack Development Kit (ASDK)</h3>
+                                                <p>Eine Nichtproduktionsumgebung zu Auswertungs- und Testzwecken</p>
                                             </div>
                                         </div>
                                     </div>

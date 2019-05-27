@@ -8,11 +8,11 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280171"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66170051"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Legen Sie mit dem Cmdlet Set-ASRVaultContext den Tresorkontext fest. Nach dem Festlegen werden nachfolgende Azure Site Recovery-Vorgänge in der PowerShell-Sitzung im Kontext des ausgewählten Tresors ausgeführt.
 
 > [!TIP]
-> Im Lieferumfang des Azure Site Recovery-PowerShell-Moduls (Az.RecoveryServices) sind einfach zu verwendende Aliase für die meisten Cmdlets enthalten. Die Cmdlets im Model weisen die Form *\<Vorgang>-**AzRecoveryServicesAsr**\<Objekt>* auf und verfügen über gleichwertige Aliase in der Form *\<Vorgang>-**ASR**\<Objekt>*. In diesem Artikel werden für eine bessere Lesbarkeit die Cmdlet-Aliase verwendet.
+> Im Lieferumfang des Azure Site Recovery-PowerShell-Moduls (Az.RecoveryServices) sind einfach zu verwendende Aliase für die meisten Cmdlets enthalten. Die Cmdlets im Model weisen die Form *\<Vorgang>-**AzRecoveryServicesAsr**\<Objekt>* auf und verfügen über gleichwertige Aliase in der Form *\<Vorgang>-**ASR**\<Objekt>* . In diesem Artikel werden für eine bessere Lesbarkeit die Cmdlet-Aliase verwendet.
 
 Im nachstehenden Beispiel wird mit den Tresordetails aus der $vault-Variable der Tresorkontext für die PowerShell-Sitzung angegeben.
 

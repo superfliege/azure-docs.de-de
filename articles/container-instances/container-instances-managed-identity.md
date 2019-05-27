@@ -9,11 +9,11 @@ ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152339"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -170,7 +170,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https://mykeyvault.vault.azure.net/...*):
+Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https://mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https:\//mykeyvault.vault.azure.net/...*):
+Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https:\//mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

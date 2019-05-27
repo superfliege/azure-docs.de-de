@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553568"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148189"
 ---
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro Konto**
 
-| Ressource | Standardlimit |
+| Resource | Standardlimit |
 | --- | --- |
 | Datenträgerkapazität insgesamt pro Konto |35 TB |
 | Kapazität für Momentaufnahmen insgesamt pro Konto |10 TB |
@@ -32,7 +32,7 @@ ms.locfileid: "57553568"
 
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro VM**
 
-| Ressource | Standardlimit |
+| Resource | Standardlimit |
 | --- | --- |
 | Maximale Anzahl IOPS pro VM |80.000 IOPS mit GS5-VM |
 | Maximaler Durchsatz pro VM |2.000MB/s mit GS5-VM |
