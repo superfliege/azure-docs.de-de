@@ -173,7 +173,7 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Zuordnungen von Terada
 | DECIMAL |DECIMAL |
 | Double |Double |
 | Graphic |String |
-| Ganze Zahl  |Int32 |
+| Integer |Int32 |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |
 | Interval Day To Minute |TimeSpan |
