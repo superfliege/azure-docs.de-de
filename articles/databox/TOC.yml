@@ -121,6 +121,12 @@
           items:
             - name: Was ist Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Konzepte
+          items:
+            - name: Überprüfen der Anforderungen
+              href: data-box-heavy-system-requirements.md
+            - name: Grundlegendes zu den Beschränkungen
+              href: data-box-heavy-limits.md
     - name: Ressourcen
       items:
         - name: Data Box-Produkt
