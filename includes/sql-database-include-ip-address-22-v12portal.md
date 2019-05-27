@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
-ms.openlocfilehash: 07bbba28b7e1b048ef3a4e1afa4db255967dc093
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117272"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164273"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -39,7 +39,7 @@ ms.locfileid: "39117272"
 
     * Es kann praktisch sein, wenn der niedrige Wert auf **.0** und der hohe Wert auf **.255** endet.
 
-11. Wählen Sie **Speichern**aus.
+11. Wählen Sie **Speichern** aus.
 
 <!-- Image references. -->
 
