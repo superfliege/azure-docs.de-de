@@ -9,17 +9,17 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 8d73a22473ffff358c7424249c7581f6af740718
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452805"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116128"
 ---
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
 Wenn Sie die Option „Clientautorisierung erforderlich“ bei der Relay-Erstellung deaktiviert haben, können Sie mit jedem Browser Anforderungen an die URL der Hybridverbindungen senden. Für den Zugriff auf geschützte Endpunkte müssen Sie ein Token im `ServiceBusAuthorization`-Header, der hier gezeigt wird, erstellen und übergeben.
 
-Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**.
+Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** .
 
 ### <a name="add-the-relay-nuget-package"></a>Hinzufügen des Relay-NuGet-Pakets
 
