@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470265"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604478"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
@@ -38,7 +38,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 Fahren Sie mit dem Abschnitt [Einrichten Ihrer Entwicklungsumgebung](#start) fort, um mehr zu den Schritten mit Notebooks zu erfahren, oder rufen Sie anhand der nachfolgenden Anweisungen das Notebook ab, und führen Sie es unter Azure Notebooks oder auf Ihrem eigenen Notebook-Server aus. Für die Ausführung des Notebooks ist Folgendes erforderlich:
 
 * Ein Python 3.6-Notebook-Server mit folgenden Komponenten:
-    * Das Datenaufbereitungs-SDK für Python von Azure Machine Learning
+    *  azureml-dataprep-Paket aus dem Azure Machine Learning SDK für Python
 * Das Tutorial-Notebook
 
 * Verwenden eines [cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich](#azure) 
@@ -56,8 +56,8 @@ Die ersten Schritte mit Ihrem eigenen cloudbasierten Notebook-Server sind ganz e
 
 Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen.  Führen Sie nach den Schritten das Notebook **tutorials/regression-part1-data-prep.ipynb** aus.
 
-1. Führen Sie die Installationsschritte unter [[Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-run-local-notebook.md)](setup-create-workspace.md#python) aus, um eine Miniconda-Umgebung zu erstellen.  Den Abschnitt **Erstellen eines Arbeitsbereichs** können Sie überspringen, wenn Sie möchten, Sie benötigen ihn jedoch für [Teil 2](tutorial-auto-train-models.md) dieser Tutorialreihe.
-1. Installieren Sie das Datenaufbereitungs-SDK mithilfe von `pip install azureml-dataprep` in Ihrer Umgebung.
+1. Führen Sie die Installationsschritte unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](setup-create-workspace.md#sdk) aus, um eine Miniconda-Umgebung zu erstellen.  Den Abschnitt **Erstellen eines Arbeitsbereichs** können Sie überspringen, wenn Sie möchten, Sie benötigen ihn jedoch für [Teil 2](tutorial-auto-train-models.md) dieser Tutorialreihe.
+1. Installieren Sie das azureml-dataprep-Paket mithilfe von `pip install azureml-dataprep` in Ihrer Umgebung.
 1. Klonen Sie das [GitHub-Repository](https://aka.ms/aml-notebooks).
 
     ```

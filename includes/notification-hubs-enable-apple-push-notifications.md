@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2fc4f26f187301ea7a7a1e3051038f75da728547
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 39c016e7b4b70368eb1ca2bd517ed7f48d223e24
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125183"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140545"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Erstellen der Zertifikatsignierungsanforderungs-Datei
 
@@ -22,7 +22,7 @@ Der Apple Push Notification Service (APNS) verwendet Zertifikate zur Authentifiz
 Erstellen Sie die Zertifikatsignieranforderungsdatei (CSR-Datei), die von Apple zur Generierung eines signierten Pushzertifikats verwendet wird.
 
 1. Führen Sie auf Ihrem Mac das Tool **Schlüsselbundverwaltung** aus. Es kann im Ordner **Dienstprogramme** oder im Ordner **Andere** auf dem Launchpad geöffnet werden.
-2. Klicken Sie auf **Schlüsselbundverwaltung**, erweitern Sie **Zertifikatsassisten**t, und klicken Sie dann auf **Zertifikat einer Zertifizierungsinstanz anfordern …**.
+2. Klicken Sie auf **Schlüsselbundverwaltung**, erweitern Sie **Zertifikatsassisten**t, und klicken Sie dann auf **Zertifikat einer Zertifizierungsinstanz anfordern …** .
 
     ![Anfordern eines neuen Zertifikats mithilfe der Schlüsselbundverwaltung](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 3. Machen Sie entsprechende Angaben unter **E-Mail des Benutzers** sowie **Allgemeiner Name**, vergewissern Sie sich, dass **Auf der Festplatte sichern** aktiviert ist, und klicken Sie dann auf **Weiter**. Lassen Sie das Feld **E-Mail der Zert.-Instanz** leer, da hier keine Eingabe benötigt wird.
@@ -39,16 +39,16 @@ Als Nächstes registrieren Sie Ihre App bei Apple, aktivieren Pushbenachrichtigu
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrieren der App für Pushbenachrichtigungen
 
-Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Apple registriert und auch für Pushbenachrichtigungen angemeldet werden.  
+Um Pushbenachrichtigungen an eine iOS-App zu senden, registrieren Sie Ihre Anwendung bei Apple, und registrieren Sie sie auch für Pushbenachrichtigungen.  
 
-1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie im Apple Developer Center zum [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456). Melden Sie sich mit Ihrer Apple-ID an, klicken Sie auf **Identifiers**, dann auf **App IDs** und schließlich auf das Symbol **+**, um eine neue App zu registrieren.
+1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie im Apple Developer Center zum [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456). Melden Sie sich mit Ihrer Apple-ID an, klicken Sie auf **Identifiers**, dann auf **App IDs** und schließlich auf das Symbol **+** , um eine neue App zu registrieren.
 
     ![iOS-Bereitstellungsportal: Seite mit App-IDs](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
 2. Aktualisieren Sie die folgenden drei Felder für Ihre neue App, und klicken Sie dann auf **Weiter**:
 
    * **Name**: Geben Sie im Abschnitt **App ID Description** (App-ID-Beschreibung) in das Feld **Name** einen beschreibenden Namen für Ihre App ein.
-   * **Bundle Identifier** (Paket-ID): Geben Sie im Abschnitt **Explicit App ID** (Explizite App-ID) eine **Bundle ID** (Paket-ID) im Format `<Organization Identifier>.<Product Name>` (entsprechend den Angaben im [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)) ein. Die unter *Organization Identifier* und *Product Name* eingegebenen Werte müssen der Organisationskennung und dem Produktnamen entsprechen, die Sie beim Erstellen des XCode-Projekts verwenden. Im folgenden Screenshot werden *NotificationHubs* als Organisationskennung und *GetStarted* als Produktname verwendet. Wenn Sie sicherstellen, dass diese Werte mit den Werten übereinstimmen, die Sie in Ihrem XCode-Projekt verwenden, können Sie das richtige Veröffentlichungsprofil mit XCode verwenden.
+   * **Bundle Identifier** (Paket-ID): Geben Sie im Abschnitt **Explicit App ID** (Explizite App-ID) eine **Bundle ID** (Paket-ID) im Format `<Organization Identifier>.<Product Name>` (entsprechend den Angaben im [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)) ein. Die unter *Organization Identifier* und *Product Name* eingegebenen Werte müssen der Organisationskennung und dem Produktnamen entsprechen, die Sie beim Erstellen des XCode-Projekts verwenden. Im folgenden Screenshot wird der *NotificationHubs*-Wert als Organisationskennung und *GetStarted* als Produktname verwendet. Wenn Sie sicherstellen, dass diese Werte mit den Werten übereinstimmen, die Sie in Ihrem XCode-Projekt verwenden, können Sie das richtige Veröffentlichungsprofil mit XCode verwenden.
    * **Push Notifications** (Pushbenachrichtigungen): Aktivieren Sie die Option **Push Notifications** (Pushbenachrichtigungen) im Bereich **App Services**.
 
      ![Formular zum Registrieren einer neuen App-ID](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
@@ -111,7 +111,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Erstellen eines Bereitstellungsprofils für die App
 
-1. Klicken Sie im [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456) auf **Provisioning Profiles** > **All**, und klicken Sie schließlich auf die Plusschaltfläche (**+**), um ein neues Profil zu erstellen. Der Assistent **Add iOS Provisioning Profile** wird angezeigt:
+1. Klicken Sie im [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456) auf **Provisioning Profiles** > **All**, und klicken Sie schließlich auf die Plusschaltfläche ( **+** ), um ein neues Profil zu erstellen. Der Assistent **Add iOS Provisioning Profile** wird angezeigt:
 
     ![Bereitstellungsprofilliste](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
@@ -136,3 +136,21 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 7. Nachdem das neue Bereitstellungsprofil erstellt wurde, klicken Sie darauf, um es herunterzuladen und auf Ihrem Xcode-Entwicklungscomputer zu installieren. Klicken Sie anschließend auf **Fertig**.
 
     ![Herunterladen des Bereitstellungsprofils](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+
+## <a name="create-a-notification-hub"></a>Erstellen eines Notification Hubs
+In diesem Abschnitt erstellen Sie einen neuen Notification Hub und konfigurieren die Authentifizierung mit APNs unter Verwendung des zuvor erstellten Pushzertifikats vom Typ **.p12**. Wenn Sie einen bereits erstellten Notification Hub verwenden möchten, können Sie zu Schritt 5 springen.
+
+[!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
+
+## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurieren Ihres Notification Hubs mit APNs-Informationen
+
+1. Wählen Sie unter **Notification Services** die Option **Apple (APNS)** aus.
+2. Wählen Sie **Certificate**aus.
+3. Wählen Sie das **Dateisymbol** aus.
+4. Wählen Sie die **.p12**-Datei, die Sie zuvor exportiert haben.
+5. Geben Sie das richtige **Kennwort** an.
+6. Wählen Sie den Modus **Sandbox** aus. Verwenden Sie den Modus **Produktion** nur dann, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
+
+    ![Konfigurieren der APNs-Zertifizierung im Azure-Portal][7]
+
+Sie haben nun Ihren Notification Hub mit APNS konfiguriert und verfügen über die Verbindungszeichenfolge zum Registrieren Ihrer App sowie zum Versenden von Pushbenachrichtigungen.

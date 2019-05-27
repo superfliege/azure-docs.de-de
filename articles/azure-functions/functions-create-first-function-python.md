@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143072"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864511"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Erstellen einer durch HTTP ausgelösten Funktion in Azure
 
@@ -108,7 +108,7 @@ Es wird ein Unterordner mit dem Namen _HttpTrigger_ erstellt, der die folgenden 
 
   Für jede Bindung sind eine Richtung, ein Typ und ein eindeutiger Name erforderlich. Der HTTP-Trigger weist eine Eingabebindung vom Typ [`httpTrigger`](functions-bindings-http-webhook.md#trigger) und eine Ausgabebindung vom Typ [`http`](functions-bindings-http-webhook.md#output) auf.
 
-* **__Init__py**: Skriptdatei, die Ihre per HTTP ausgelöste Funktion darstellt. Überprüfen Sie dieses Skript, und beachten Sie, dass es eine `main()`-Standardfunktion enthält. HTTP-Daten aus dem Trigger werden mithilfe des benannten Bindungsparameters `req` an diese Funktion übergeben. `req` ist in function.json definiert und stellt eine Instanz der [azure.functions.HttpRequest-Klasse](/python/api/azure-functions/azure.functions.httprequest) dar. 
+* **\_\_Init\_\_.py**: Skriptdatei, die Ihre per HTTP ausgelöste Funktion darstellt. Überprüfen Sie dieses Skript, und beachten Sie, dass es eine `main()`-Standardfunktion enthält. HTTP-Daten aus dem Trigger werden mithilfe des benannten Bindungsparameters `req` an diese Funktion übergeben. `req` ist in function.json definiert und stellt eine Instanz der [azure.functions.HttpRequest-Klasse](/python/api/azure-functions/azure.functions.httprequest) dar. 
 
     Das Rückgabeobjekt, das in function.json als `$return` definiert ist, ist eine Instanz der [azure.functions.HttpResponse-Klasse](/python/api/azure-functions/azure.functions.httpresponse). Weitere Informationen finden Sie unter [HTTP-Trigger und -Bindungen in Azure Functions](functions-bindings-http-webhook.md).
 

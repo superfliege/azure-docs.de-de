@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 056e5a0f56e1a8998288e6a78f448f0f91777e1d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523544"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969303"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -46,7 +46,7 @@ Damit Stream Analytics den Datenstrom mit den betrügerischen Anrufen analysiere
 Gehen Sie wie folgt vor, um einen Event Hub zu erstellen und Anrufdaten an diesen Event Hub zu senden:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)** > **Event Hubs**.
+2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **Event Hubs**.
 
    ![Erstellen eines Azure Event Hubs im Portal](media/stream-analytics-manage-job/find-event-hub-resource.png)
 3. Geben Sie im Bereich **Namespace erstellen** die folgenden Werte an:
@@ -56,7 +56,7 @@ Gehen Sie wie folgt vor, um einen Event Hub zu erstellen und Anrufdaten an diese
    |NAME     | myEventHubsNS        |  Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.       |
    |Abonnement     |   \<Ihr Abonnement\>      |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Event Hub erstellen möchten.      |
    |Ressourcengruppe     |   MyASADemoRG      |  Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.       |
-   |Standort     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
+   |Location     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
 
 4. Verwenden Sie für die verbleibenden Einstellungen die Standardoptionen, und wählen Sie **Erstellen**.
 
@@ -99,7 +99,7 @@ Vor dem Starten der TelcoGenerator-App sollten Sie diese so konfigurieren, dass 
 3. Aktualisieren Sie das `<appSettings>`-Element in der CONFIG-Datei mit den folgenden Details:
 
    * Legen Sie den Wert des Schlüssels *EventHubName* auf den Wert von „EntityPath“ in der Verbindungszeichenfolge fest.
-   * Legen Sie den Wert des Schlüssels *Microsoft.ServiceBus.ConnectionString* auf die Verbindungszeichenfolge ohne EntityPath-Wert fest.
+   * Legen Sie den Wert des Schlüssels *Microsoft.ServiceBus.ConnectionString* auf die Verbindungszeichenfolge ohne EntityPath-Wert fest (vergessen Sie nicht, das voranstehende Semikolon zu entfernen).
 
 4. Speichern Sie die Datei .
 5. Öffnen Sie nun ein Befehlsfenster, und wechseln Sie zu dem Ordner, in dem Sie die TelcoGenerator-Anwendung entzippt haben. Geben Sie dann den folgenden Befehl ein:
@@ -118,7 +118,7 @@ Vor dem Starten der TelcoGenerator-App sollten Sie diese so konfigurieren, dass 
    |**Datensatz**  |**Definition**  |
    |---------|---------|
    |CallrecTime    |  Der Zeitstempel für die Startzeit des Anrufs.       |
-   |SwitchNum     |  Die für die Anrufverbindung verwendete Vermittlungsstelle. In diesem Beispiel werden die Vermittlungen durch Zeichenfolgen ausgedrückt, die das Ursprungsland (USA, China, Großbritannien, Deutschland oder Australien) darstellen.       |
+   |SwitchNum     |  Die für die Anrufverbindung verwendete Vermittlungsstelle. In diesem Beispiel werden die Vermittlungen durch Zeichenfolgen ausgedrückt, die das Ursprungsland/die Ursprungsregion (USA, China, Großbritannien, Deutschland oder Australien) darstellen.       |
    |CallingNum     |  Die Telefonnummer des Anrufers.       |
    |CallingIMSI     |  Die IMSI (International Mobile Subscriber Identity). Dies ist eine eindeutige ID des Anrufers.       |
    |CalledNum     |   Die Telefonnummer des Angerufenen.      |
@@ -130,7 +130,7 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), um einen Stream Analytics-Auftrag zu erstellen.
 
-2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)** > **Stream Analytics-Auftrag**.
+2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **Stream Analytics-Auftrag**.
 
 3. Fügen Sie die folgenden Werte in den Bereich **Neuer Stream Analytics-Auftrag** ein:
 
@@ -139,7 +139,7 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
    |Auftragsname     |  ASATutorial       |   Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.      |
    |Abonnement    |  \<Ihr Abonnement\>   |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Auftrag erstellen möchten.       |
    |Ressourcengruppe   |   MyASADemoRG      |   Wählen Sie **Vorhandene verwenden**, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.      |
-   |Standort   |    USA, Westen 2     |      Der Standort, an dem der Auftrag bereitgestellt werden kann. Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie die optimale Leistung erzielen und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.      |
+   |Location   |    USA, Westen 2     |      Der Standort, an dem der Auftrag bereitgestellt werden kann. Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie die optimale Leistung erzielen und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.      |
    |Hosting-Umgebung    | Cloud        |     Für Stream Analytics-Aufträge ist eine Cloud- oder Edge-Bereitstellung möglich. Mit der Option „Cloud“ können die Aufträge in der Azure Cloud und mit der Option „Edge“ auf einem IoT Edge-Gerät bereitgestellt werden.    |
    |Streamingeinheiten     |    1       |      Streamingeinheiten sind die Computingressourcen, die für die Ausführung eines Auftrags erforderlich sind. Standardmäßig ist dieser Wert auf 1 festgelegt. Informationen zum Skalieren von Streamingeinheiten finden Sie im Artikel [Überblick über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md).      |
 
@@ -212,7 +212,7 @@ Bei den betrügerischen Anrufen in diesem Beispiel ruft der gleiche Benutzer inn
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Sie können für die Streamingdaten eine Selbstverknüpfung basierend auf dem Wert `CallRecTime` durchführen, um die Daten auf betrügerische Anrufe zu prüfen. Anschließend können Sie nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, aber nicht der Wert `SwitchNum` (Ursprungsland). Wenn Sie eine Verknüpfung per JOIN-Vorgang für Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, welchen Zeitabstand die übereinstimmenden Zeilen haben können. Da die Streamingdaten endlos sind, werden die Zeitgrenzen für die Beziehung in der **ON**-Klausel der Verknüpfung angegeben. Hierfür wird die Funktion [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) verwendet.
+   Sie können für die Streamingdaten eine Selbstverknüpfung basierend auf dem Wert `CallRecTime` durchführen, um die Daten auf betrügerische Anrufe zu prüfen. Anschließend können Sie nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, aber nicht der Wert `SwitchNum` (Ursprungsland/-region). Wenn Sie eine Verknüpfung per JOIN-Vorgang für Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, welchen Zeitabstand die übereinstimmenden Zeilen haben können. Da die Streamingdaten endlos sind, werden die Zeitgrenzen für die Beziehung in der **ON**-Klausel der Verknüpfung angegeben. Hierfür wird die Funktion [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) verwendet.
 
    Diese Abfrage entspricht bis auf die Funktion **DATEDIFF** einer regulären SQL-Verknüpfung. Die in dieser Abfrage verwendete Funktion **DATEDIFF** gilt speziell für Streaming Analytics und muss in der `ON...BETWEEN`-Klausel verwendet werden.
 
