@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 505eac0996129a17b6b68e8ab4ea2d4fc80fd473
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132798"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140987"
 ---
 1. Besuchen Sie das [Azure-Portal]. Klicken Sie auf **Alle durchsuchen** > **Mobile Apps** und dann auf das Back-End, das Sie gerade erstellt haben. Klicken Sie in den Einstellungen der mobilen App auf **Schnellstart** > **Android**. Klicken Sie unter **Konfigurieren Ihrer Clientanwendung** auf **Herunterladen**. Damit laden Sie ein vollständiges Android-Projekt für eine App herunter, das für eine Verbindung mit dem Back-End vorkonfiguriert ist. 
 2. Öffnen Sie das Projekt in **Android Studio** mithilfe von **Import project (Eclipse ADT, Gradle, etc.)** (Projekt importieren (Eclipse ADT, Gradle usw.)). Achten Sie auf diese wichtige Importauswahl, um JDK-Fehler zu vermeiden.

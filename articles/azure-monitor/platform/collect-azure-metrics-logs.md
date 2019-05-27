@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129720"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Sammeln von Azure-Dienstprotokollen und Metriken für einen Log Analytics-Arbeitsbereich in Azure Monitor
 
@@ -42,20 +42,20 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | Diagnose |             | |
 | Event Hub-Namespace     | Microsoft.EventHub/namespaces           | Diagnose | Diagnose | |
 | IoT Hubs                | Microsoft.Devices/IotHubs               |             | Diagnose | |
-| Key Vault               | Microsoft.KeyVault/vaults               | Diagnose |             | [Key Vault-Analysen](../insights/azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](../insights/azure-key-vault.md) |
 | Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
 | Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) |
-| Recovery-Tresore         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services-Analysen (Vorschauversion)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
+| Recovery-Tresore         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
-| Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | [Service Bus-Analysen (Vorschauversion)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Storage     |             | [Service Fabric-Analysen (Vorschauversion)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
+| Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+| Service Fabric          |                                         | Storage     |             | [Service Fabric-Analysen (Vorschau)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnose | [Azure SQL Analytics (Vorschau)](../insights/azure-sql.md) |
-| Storage                 |                                         |             | Skript      | [Azure Storage Analytics (Vorschauversion)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
+| Storage                 |                                         |             | Skript      | [Azure Storage Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | Durchwahl   | Durchwahl <br> Diagnose  | |
 | VM-Skalierungsgruppen | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnose | |
 | Webserverfarmen        | Microsoft.Web/serverfarms               |             | Diagnose | |
-| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | [Azure-Web-Apps-Analyse (Vorschauversion)](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
+| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | [Azure Web Apps Analytics (Vorschau)](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]
@@ -129,7 +129,7 @@ Bei einigen Ressourcen können Sie die Protokolle an Azure Storage senden und de
 
 Mit dieser Vorgehensweise kann Azure Monitor Diagnosen für folgende Ressourcen und Protokolle aus Azure Storage erfassen:
 
-| Ressource | Protokolle |
+| Resource | Protokolle |
 | --- | --- |
 | Service Fabric |ETWEvent <br> Operative Ereignisse <br> Reliable Actor-Ereignis <br> Reliable Services-Ereignis |
 | Virtual Machines |Linux-Syslog <br> Windows-Ereignis <br> IIS-Protokoll <br> Windows-ETWEvent |

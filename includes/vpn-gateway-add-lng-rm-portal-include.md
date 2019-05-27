@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d9825ea41937dc9436fe8b465b48b378e13407c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444131"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150251"
 ---
 1. Klicken Sie im Portal im Abschnitt **Alle Ressourcen** auf **+Hinzufügen**.
 2. Geben Sie im Suchfeld der Seite **Alles** den Text **Lokales Netzwerkgateway** ein, und klicken Sie, damit eine Liste mit Ressourcen zurückgegeben wird. Klicken Sie auf **Lokales Netzwerkgateway**, um die Seite zu öffnen. Klicken Sie dann auf **Erstellen**, um die Seite **Lokales Netzwerkgateway erstellen** zu öffnen.
