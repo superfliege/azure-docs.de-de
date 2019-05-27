@@ -379,7 +379,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| Zeichenfolge | Beginn der Triggerauslösung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
 |status| Zeichenfolge | Endstatus, der angibt, ob der Trigger erfolgreich ausgelöst wurde („Succeeded“ oder „Failed“) | `Succeeded`|
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 

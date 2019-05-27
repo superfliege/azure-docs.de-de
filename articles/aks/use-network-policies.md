@@ -48,14 +48,14 @@ Azure stellt zwei Verfahren zum Implementieren von Netzwerkrichtlinien bereit. S
 * Die eigene Richtlinienimplementierung von Azure, die als *Azure-Netzwerkrichtlinien* bezeichnet wird.
 * *Calico-Netzwerkrichtlinien*, eine von [Tigera][tigera] gegründete Open-Source-Netzwerk- und -Netzwerkrichtlinienlösung.
 
-Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Richtlinien werden in Mengen von zulässigen und unzulässigen IP-Paaren übersetzt. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
+Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Aus den Richtlinien werden zulässige und unzulässige IP-Adresspaare gebildet. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
 
-Netzwerkrichtlinien funktionieren nur mit der Option (erweitert) von Azure CNI. Implementierung unterscheidet sich für die zwei Optionen:
+Netzwerkrichtlinien funktionieren nur mit dem optionalen (erweiterten) Azure CNI. Die Implementierung unterscheidet sich für die zwei Optionen:
 
 * *Azure Netzwerkrichtlinien*: Das Azure CNI richtet eine Bridge im VM-Host für knoteninterne Netzwerke ein. Die Filterregeln werden angewendet, wenn die Pakete über die Bridge übergeben werden.
 * *Calico-Netzwerkrichtlinien*: Das Azure CNI richtet lokale Kernelrouten für den knoteninternen Datenverkehr ein. Die Richtlinien werden auf die Netzwerkschnittstelle des Pods angewendet.
 
-### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und ihre Funktionen
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und zwischen ihren Funktionen
 
 | Funktion                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
@@ -63,7 +63,7 @@ Netzwerkrichtlinien funktionieren nur mit der Option (erweitert) von Azure CNI. 
 | Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI                   |
 | Compliance mit Kubernetes-Spezifikation | Alle Richtlinientypen werden unterstützt |  Alle Richtlinientypen werden unterstützt |
 | Zusätzliche Funktionen                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl` CLI zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
-| Support                                  | Unterstützt durch das Azure-Support- und Engineering-Team | Calico-Communitysupport. Weitere Informationen über zusätzlichen kostenpflichtigen Support finden Sie unter [Project Calico support options][calico-support] (Supportoptionen für Projekt „Calico“). |
+| Support                                  | Unterstützt durch das Azure-Support- und Engineering-Team | Calico-Communitysupport. Weitere Informationen über zusätzlichen kostenpflichtigen Support finden Sie unter [Project Calico support options][calico-support] (Supportoptionen für Project „Calico“). |
 | Protokollierung                                  | In IPTables hinzugefügte/gelöschte Regeln werden auf jedem Host unter */var/log/azure-npm.log* protokolliert. | Weitere Informationen finden Sie unter [Calico-Komponentenprotokolle][calico-logs]. |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Erstellen eines AKS-Clusters und Aktivieren der Netzwerkrichtlinie
@@ -74,7 +74,7 @@ Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Da
 * Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
 * Lassen Sie Datenverkehr basierend auf dem Namespace zu.
 
-Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
+Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinien unterstützt. Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
 
 Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking].
 
