@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2019
-ms.author: monhaber
-ms.openlocfilehash: e601bbaa0d15078fc2b19b5b7c536e3a1f6d20ad
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.author: v-mohabe
+ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442847"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968591"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Advanced Data Security für SQL Server-Instanzen in IaaS
 Advanced Data Security für SQL Server-Instanzen in IaaS ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen aktuell die Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können.
@@ -49,7 +49,7 @@ Die folgenden Schritte bilden den Einstieg in ADS für IaaS.
 
     ![Advanced Data Security für IaaS](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
 
-1. Klicken Sie auf **Erstellen**. Die Arbeitsbereiche werden angezeigt.
+1. Klicken Sie auf **Create**. Die Arbeitsbereiche werden angezeigt.
 
     ![Advanced Data Security – Erstellen](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
 
