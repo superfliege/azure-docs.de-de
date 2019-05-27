@@ -93,3 +93,5 @@
       href: entity-search-endpoint.md
     - name: Analyse für die Bing-Entitätssuche-API
       href: bing-entity-stats.md
+    - name: Compliance
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

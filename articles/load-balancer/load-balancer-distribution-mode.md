@@ -4,21 +4,22 @@ titlesuffix: Azure Load Balancer
 description: Konfigurieren des Verteilungsmodus für Azure Load Balancer zur Unterstützung von Quell-IP-Affinität
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: WenJason
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: kumud
+origin.date: 09/25/2017
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: afa840bd0b48cc9df1e9711caa035b85e8ec3855
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122422"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurieren des Verteilungsmodus für Azure Load Balancer
 
@@ -61,14 +62,14 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Verwenden Sie für klassische virtuelle Computer Azure PowerShell, um die Verteilungseinstellungen zu ändern. Fügen Sie einem virtuellen Computer einen Azure-Endpunkt hinzu, und konfigurieren Sie den Verteilungsmodus für den Lastenausgleich:
 
 ```powershell
-Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
+Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 -LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
 Legen Sie den Wert des `LoadBalancerDistribution`-Elements für den gewünschten Umfang des Lastenausgleichs fest. Geben Sie „sourceIP“ für den 2-Tupel-Lastenausgleich (Quell-IP und Ziel-IP) an. Geben Sie „sourceIPProtocol“ für den 3-Tupel-Lastenausgleich (Quell-IP, Ziel-IP und Protokolltyp) an. Geben Sie keinen Wert an, um das Standardverhalten, den 5-Tupel-Lastenausgleich, zu verwenden.
 
 Abrufen einer Lastenausgleichs-Verteilungsmoduskonfiguration für einen Endpunkt mithilfe der folgenden Einstellungen:
 
-    PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
+    PS C:\> Get-AzureVM -ServiceName MyService -Name MyVM | Get-AzureEndpoint
 
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -94,8 +95,8 @@ Wenn das Element `LoadBalancerDistribution` nicht vorhanden ist, verwendet Azure
 
 Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss der Verteilungsmodus für den Endpunktsatz mit Lastenausgleich konfiguriert werden:
 
-```azurepowershell
-Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
+```powershell
+Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -LoadBalancerDistribution sourceIP
 ```
 
 ### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Konfigurieren des Verteilungsmodus für Cloud Services-Endpunkte
@@ -132,10 +133,10 @@ Verwenden Sie das klassische Azure-Bereitstellungsmodell, um eine vorhandene Ber
 
 #### <a name="request"></a>Anforderung
 
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+    POST https://management.core.chinacloudapi.cn/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
 
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
+    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
       <InputEndpoint>
         <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
         <LocalPort> local-port-number </LocalPort>
@@ -170,3 +171,5 @@ Legen Sie gemäß der vorherigen Beschreibung für den Wert des `LoadBalancerDis
 * [Interner Azure Load Balancer (Übersicht)](load-balancer-internal-overview.md)
 * [Erste Schritte zum Konfigurieren eines Lastenausgleichs mit Internetzugriff](load-balancer-get-started-internet-arm-ps.md)
 * [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->
