@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
 ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012284"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133071"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://aka.ms/azconfig/portal) an, um einen neuen App-Konfigurationsspeicher zu erstellen. Wählen Sie links oben auf der Seite die Option **+ Ressource erstellen** aus. Geben Sie im Feld **Marketplace durchsuchen** den Suchbegriff **App Configuration** ein, und drücken Sie die EINGABETASTE.
 

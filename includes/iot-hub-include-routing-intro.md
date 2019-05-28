@@ -9,11 +9,11 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 400f12237ae8b8cbaf6d66bda1663ecb680136f3
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630911"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162653"
 ---
 Das [Nachrichtenrouting](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) ermöglicht das Senden von Telemetriedaten von Ihren IoT-Geräten an integrierte, Event Hub-kompatible Endpunkte oder benutzerdefinierte Endpunkte wie Blob Storage-Instanzen, Service Bus-Warteschlangen, Service Bus-Themen und Event Hubs. Zum Konfigurieren des benutzerdefinierten Nachrichtenroutings erstellen Sie [Routingabfragen](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md), um die Route anzupassen, die eine bestimmte Bedingung erfüllt. Nach der Einrichtung werden die eingehenden Daten von IoT Hub automatisch an die Endpunkte weitergeleitet. Wenn eine Nachricht nicht mit einer der definierten Routingabfragen übereinstimmt, wird sie an den Standardendpunkt geleitet.
 

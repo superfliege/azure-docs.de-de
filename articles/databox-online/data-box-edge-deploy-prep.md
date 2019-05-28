@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Vorbereiten des Azure-Portals für die Bereitstellung von Data Box Edge | Microsoft-Dokumentation'
+title: Tutorial zum Vorbereiten des Azure-Portals, Datencenterumgebung für das Bereitstellen von Azure Data Box Edge | Microsoft-Dokumentation
 description: Im ersten Tutorial über Bereitstellen von Azure Data Box Edge geht es um die Vorbereitung des Azure-Portals.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 04/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 19c4fc96653f966ea5642149d944886e4b7f4483
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401677"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924772"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Data Box Edge  
 
@@ -55,6 +55,8 @@ Nachstehend finden Sie die Konfigurationsvoraussetzungen für die Data Box Edge-
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 - Ihr Microsoft Azure-Abonnement ist für eine Data Box Edge-Ressource aktiviert. Abonnements mit nutzungsbasierter Bezahlung werden nicht unterstützt.
+- Sie haben als Besitzer oder Mitwirkender Zugriff auf Ihr Abonnement.
+- Sie haben als Administrator oder Benutzer Zugriff auf die Azure Active Directory Graph-API. Weitere Informationen finden Sie unter [Azure Active Directory Graph-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
 
 ### <a name="for-the-data-box-edge-device"></a>Für das Data Box Edge-Gerät
@@ -87,11 +89,15 @@ Um eine Data Box Edge-Ressource zu erstellen, führen Sie die folgenden Schritte
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen bei einem der folgenden Portale an: 
     
-    - Azure-Portal (URL: [https://portal.azure.com](http://portal.azure.com))
-    - Azure Government-Portal (URL: [https://portal.azure.us](https://portal.azure.us))
+    - Azure-Portal (URL: [https://portal.azure.com](https://portal.azure.com))
+    - Azure Government-Portal (URL: [https://portal.azure.us](https://portal.azure.us)). Ausführlichere Informationen finden Sie unter [Quickstart: Connect to Azure Government using portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal) (Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal).
 
 2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Data Box Edge/Data Box Gateway**. Wählen Sie **Data Box Edge/Data Box Gateway** aus. Klicken Sie auf **Erstellen**.
-3. Wählen Sie das Abonnement aus, das Sie für das Data Box Edge-Gerät verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Edge-Ressource bereitstellen möchten. Für dieses Release sind „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“ verfügbar. Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist. Wählen Sie in der Option **Data Box Edge** den Eintrag **Erstellen** aus.
+3. Wählen Sie das Abonnement aus, das Sie für das Data Box Edge-Gerät verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Edge-Ressource bereitstellen möchten. Für dieses Release sind „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“ verfügbar. 
+
+    Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist. Die Region speichert nur die Metadaten für die Geräteverwaltung. Die tatsächlichen Daten können in jedem Speicherkonto gespeichert werden. 
+    
+    Wählen Sie in der Option **Data Box Edge** den Eintrag **Erstellen** aus.
 
     ![Suchen nach dem Data Box Edge-Dienst](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -113,14 +119,14 @@ Um eine Data Box Edge-Ressource zu erstellen, führen Sie die folgenden Schritte
 
 5. Klicken Sie auf **Weiter: Lieferanschrift**.
 
-    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich habe ein Data Box Edge-Gerät.**.
+    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich habe ein Data Box Edge-Gerät.** .
     - Handelt es sich um das neue Gerät, das Sie bestellen möchten, geben Sie Kontaktname, Unternehmen, Lieferadresse für das Gerät sowie Kontaktinformationen ein.
 
     ![Lieferadresse für neues Gerät](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
 
 6. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-7. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.**.
+7. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
 
     ![Überprüfen der Details und Datenschutzrichtlinien für Ihre Data Box Edge-Ressource](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 

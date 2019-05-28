@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
 ms.openlocfilehash: a02144914e73ca1788976d8b01ccd95d1b9e9a1b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227149"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133049"
 ---
 Wenn Sie beabsichtigen, mit dem nächsten Tutorial fortzufahren, behalten Sie die in diesem Schnellstart erstellten Ressourcen. Sie können diese im nächsten Tutorial wiederverwenden.
 
