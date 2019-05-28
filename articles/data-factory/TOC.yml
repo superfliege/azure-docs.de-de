@@ -142,6 +142,8 @@
           href: concepts-data-flow-column-pattern.md
         - name: Datenflussüberwachung
           href: concepts-data-flow-monitoring.md
+        - name: Datenflussleistung
+          href: concepts-data-flow-performance.md
         - name: Verschieben von Knoten
           href: concepts-data-flow-move-nodes.md
         - name: Registerkarte „Optimieren“
@@ -318,6 +320,8 @@
           href: connector-sap-ecc.md
         - name: SAP HANA
           href: connector-sap-hana.md
+        - name: SAP-Tabelle
+          href: connector-sap-table.md
         - name: ServiceNow
           href: connector-servicenow.md
         - name: SFTP

@@ -40,8 +40,8 @@
               href: connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Konzepte
       items:
-        - name: Globales Microsoft-WAN
-          href: azure-network.md
+        - name: Globales Microsoft-Netzwerk
+          href: microsoft-global-network.md
         - name: Virtuelle Netzwerke
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Netzwerklastenausgleich

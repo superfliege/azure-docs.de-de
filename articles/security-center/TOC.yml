@@ -6,6 +6,8 @@
       href: security-center-intro.md
     - name: Unterstützte Plattformen und Funktionen in Security Center
       href: security-center-os-coverage.md
+    - name: 'Endpoint Protection: Bewertung und Empfehlungen'
+      href: security-center-endpoint-protection.md
 - name: Schnellstarts
   expanded: true
   items:
