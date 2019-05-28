@@ -71,7 +71,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | connectionString |Der nicht für den Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge sowie optional verschlüsselte Anmeldeinformationen. Siehe Beispiele in den folgenden Abschnitten. <br/><br/>Sie können die Verbindungszeichenfolge mit einem Muster wie `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` angeben oder den System-DSN (Data Source Name) verwenden, den Sie mit `"DSN=<name of the DSN>;"` auf dem Gatewaycomputer eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.) |Ja |
 | credential |Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nein  |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit dem ODBC-Datenspeicher. Mögliche Werte: „Anonymous“ und „Basic“. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Nein  |
+| userName |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Nein  |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
 | gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem ODBC-Datenspeicher verwenden soll. |Ja |
 
