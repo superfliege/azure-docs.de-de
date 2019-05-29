@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 02/02/2018
-ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/17/2019
+ms.openlocfilehash: d5bd291758d6bb445b757b93fd91a4c2321b97db
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048386"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898937"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer
 
@@ -22,11 +22,11 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
+* [Ein Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
 * [Eine Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), die Daten generiert und an einen Event Hub sendet. Laden Sie die Beispiel-App auf Ihr System herunter.
 
-* [Visual Studio 2017, Version 15.3.2 oder höher](https://www.visualstudio.com/vs/) zum Ausführen der Beispiel-App
+* [Visual Studio-2019](https://visualstudio.microsoft.com/vs/) zum Ausführen der Beispielapp
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -58,7 +58,7 @@ In diesem Schnellstart generieren Sie Beispieldaten und senden diese an einen Ev
     |---|---|---|
     | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
     | Ressourcengruppe | *test-hub-rg* | Erstellen Sie eine neue Ressourcengruppe. |
-    | Standort | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt. Erstellen Sie den Event Hub-Namespace am gleichen Standort wie den Kusto-Cluster, um eine optimale Leistung zu erzielen (besonders wichtig für Event Hub-Namespaces mit hohem Durchsatz).
+    | Location | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt. Erstellen Sie den Event Hub-Namespace am gleichen Standort wie den Kusto-Cluster, um eine optimale Leistung zu erzielen (besonders wichtig für Event Hub-Namespaces mit hohem Durchsatz).
     | Namespacename | Ein eindeutiger Namespacename | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert. Beispiel: *mytestnamespace*. Der Domänenname *servicebus.windows.net* wird an den von Ihnen angegebenen Namen angefügt. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden. Der Wert muss zwischen 6 und 50 Zeichen umfassen.
     | Event Hub-Name | *test-hub* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. Der Name des Event Hubs muss innerhalb des Namespaces eindeutig sein. |
     | Name der Consumergruppe | *test-group* | Durch Consumergruppen können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 9ae46d623c0525edf93a4f984393060888fcd009
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 719aba498c08617b42d248d3c677499f8eb3e4b2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143013"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900832"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit C#
 
@@ -28,7 +28,7 @@ Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedien
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

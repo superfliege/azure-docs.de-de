@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: b6107211f49978bbacd1a827a9adc37ccef60a5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855409"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793743"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
 Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Was sind Verfügbarkeitszonen in Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)).
@@ -50,7 +50,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 4. Halten Sie sich bei virtuellen Linux-Computern an die Anleitung des Linux-Distributors, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatsperrliste für den virtuellen Computer abzurufen.
 5. Vergewissern Sie sich, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für virtuelle Computer zu steuern, die Sie migrieren möchten.
 
-6. Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat und einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, überprüfen Sie die Anforderungen unter [Konfigurieren der ausgehenden Netzwerkkonnektivität](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+6. Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat und einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, überprüfen Sie die Anforderungen unter [Konfigurieren der ausgehenden Netzwerkkonnektivität](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 
 7. Ermitteln Sie das Quellnetzwerklayout und die Ressourcen, die Sie derzeit für die Überprüfung verwenden (einschließlich Lastenausgleichsmodule, Netzwerksicherheitsgruppen und öffentliche IP-Adresse).
 
