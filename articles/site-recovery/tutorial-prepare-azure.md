@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: d2de871176917dcc24d910b3742bdb2700c4f25d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617412"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691773"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
 
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="before-you-start"></a>Vorbereitung
 
 - Überprüfen Sie die Architektur für die Notfallwiederherstellung von [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md) und [physischen Servern](physical-azure-architecture.md).
-- Lesen Sie allgemeine Fragen zu [VMware](vmware-azure-common-questions.md) und Hyper-V (hyper-v-azure-common-questions.md).
+- Lesen Sie die allgemeinen Fragen zu [VMware](vmware-azure-common-questions.md) und [Hyper-V](hyper-v-azure-common-questions.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen. Melden Sie sich dann beim [Azure-Portal](https://portal.azure.com)an.
 
@@ -55,7 +55,7 @@ Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirk
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
 1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**, und suchen Sie im Marketplace nach **Wiederherstellung**.
-2. Klicken Sie auf **Backup & Site Recovery (OMS)**, und klicken Sie auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
+2. Klicken Sie auf **Backup & Site Recovery (OMS)** , und klicken Sie auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
 1. Geben Sie unter **Recovery Services-Tresor** > **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
 2. Wählen Sie in **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. Für dieses Tutorial verwenden wir **contosoRG**.
 3. Wählen Sie in **Standort** die Region aus, in der der Tresor gespeichert werden soll. verwenden wir **Europa, Westen**.

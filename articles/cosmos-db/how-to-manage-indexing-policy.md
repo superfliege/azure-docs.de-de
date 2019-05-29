@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0b47ffd77ee23f997bb7de2ea41f83c2854cba72
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068670"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550906"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -22,6 +22,9 @@ In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.m
 - mit einem der SDKs
 
 Eine [Aktualisierung der Indizierungsrichtlinie](index-policy.md#modifying-the-indexing-policy) löst eine Indextransformation aus. Der Status dieser Transformation kann auch über die SDKs nachverfolgt werden.
+
+> [!NOTE]
+> Als Bestandteil des SDK- und Portal-Upgrades entwickeln wir die Indexrichtlinie weiter, um sie an ein neues Indexlayout anzupassen, das wir für neue Container eingeführt haben. Mit diesem neuen Layout werden alle primitiven Datentypen als Bereich mit vollständiger Genauigkeit (-1) indiziert. Daher werden die Indexarten und die Genauigkeit dem Benutzer nicht mehr verfügbar gemacht. Zukünftig müssen Benutzer lediglich Pfade zum Abschnitt „includedPaths“ hinzufügen und können „indexKinds“ und „precision“ ignorieren. Diese Änderung wirkt sich nicht auf die Leistung aus, und Sie können die Indizierungsrichtlinie weiterhin mit derselben Syntax aktualisieren. Sie können weiterhin alle Beispiele in der vorhandenen Dokumentation verwenden, um die Indexrichtlinie zu aktualisieren.
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 

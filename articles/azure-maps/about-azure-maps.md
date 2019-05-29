@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fbb855db1ff5a2cf79826294365733614259e4b0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268764"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575752"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -123,7 +123,7 @@ Für Azure Maps wird ein schlüsselbasiertes Authentifizierungsschema verwendet.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Die Azure Maps-API ist derzeit in allen Ländern verfügbar, mit Ausnahme folgender Regionen:
+Die Azure Maps-API ist derzeit in allen Ländern/Regionen verfügbar, mit Ausnahme folgender Regionen:
 
 * Argentinien
 * China
@@ -132,7 +132,7 @@ Die Azure Maps-API ist derzeit in allen Ländern verfügbar, mit Ausnahme folge
 * Pakistan
 * Südkorea
 
-Vergewissern Sie sich, dass sich der Standort der aktuellen IP-Adresse nicht in einem der oben angegebenen nicht unterstützten Länder befindet.
+Vergewissern Sie sich, dass sich der Standort der aktuellen IP-Adresse nicht in einem/r der oben angegebenen nicht unterstützten Länder/Regionen befindet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
