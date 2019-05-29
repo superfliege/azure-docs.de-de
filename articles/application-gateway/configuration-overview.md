@@ -2,17 +2,17 @@
 title: Azure Application Gateway – Konfigurationsübersicht
 description: In diesem Artikel wird das Konfigurieren der Komponenten von Azure Application Gateway beschrieben.
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998905"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946805"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -71,7 +71,7 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
 
-UDRs im Application Gateway-Subnetz werden vom v2 SKU nicht unterstützt. Weitere Informationen finden Sie unter [Bekannte Probleme und Einschränkungen](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+UDRs im Application Gateway-Subnetz werden vom v2 SKU nicht unterstützt. Weitere Informationen finden Sie unter [Azure Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
 > Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz führt dazu, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als „Unbekannt“ angezeigt wird. Außerdem treten dabei bei der Generierung von Application Gateway-Protokollen und Metriken Fehler auf. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
@@ -84,7 +84,7 @@ Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich
 
 Es wird nur 1 öffentliche oder 1 private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
-- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
 
 - Für eine private IP-Adresse können Sie eine private IP-Adresse aus dem Subnetz angeben, in dem das Application Gateway erstellt wird. Wenn Sie keine angeben, wird automatisch eine beliebige IP-Adresse aus dem Subnetz ausgewählt. Weitere Informationen finden Sie unter [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
@@ -118,7 +118,7 @@ Wählen Sie die Front-End-IP-Adresse aus, die Sie diesem Listener zuordnen möch
 
 Wählen Sie den Front-End-Port aus. Wählen Sie einen vorhandenen Port aus, oder erstellen Sie einen neuen. Wählen Sie einen beliebigen Wert aus dem [zulässigen Portbereich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports) aus. Sie können nicht nur die bekannten Ports wie 80 und 443 verwenden, sondern jeden geeigneten zulässigen benutzerdefinierten Port. Ein Port kann für öffentlich zugängliche Listener oder für nur privat zugängliche Listener verwendet werden.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Wählen Sie HTTP oder HTTPS aus:
 
@@ -215,7 +215,7 @@ Weitere Informationen zu Umleitungen finden Sie unter [Übersicht über die Umle
 
 #### <a name="redirection-type"></a>Umleitungstyp
 
-Wählen Sie den erforderlichen Umleitungstyp aus: *Dauerhaft(301)*, *Temporär(307)*, *Gefunden(302)* oder *Verweis(303)*.
+Wählen Sie den erforderlichen Umleitungstyp aus: *Dauerhaft(301)* , *Temporär(307)* , *Gefunden(302)* oder *Verweis(303)* .
 
 #### <a name="redirection-target"></a>Umleitungsziel
 
@@ -259,7 +259,7 @@ Dieses Feature ist nützlich, wenn eine Benutzersitzung auf dem gleichen Server 
 
 Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen erhalten. Vorhandene Anforderungen können in der Zwischenzeit innerhalb eines konfigurierten Zeitlimits abgeschlossen werden. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit durch einen API-Aufruf aus dem Back-End-Pool entfernt werden. Dies gilt auch für Back-End-Instanzen, die von den Integritätstests als *fehlerhaft* gemeldet werden.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Application Gateway unterstützt sowohl HTTP als auch HTTPS für das Routing von Anforderungen an die Back-End-Server. Bei Auswahl von HTTP ist Datenverkehr an die Back-End-Server unverschlüsselt. Wenn unverschlüsselte Kommunikation nicht akzeptabel ist, wählen Sie HTTPS.
 

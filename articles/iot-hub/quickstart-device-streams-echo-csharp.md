@@ -1,5 +1,5 @@
 ---
-title: 'Azure IoT Hub-Gerätestreams: C#-Schnellstartanleitung (Vorschauversion) | Microsoft-Dokumentation'
+title: Kommunizieren mit einer Geräteanwendung in C# über Azure IoT Hub-Gerätestreams (Vorschauversion) | Microsoft-Dokumentation
 description: In dieser Schnellstartanleitung führen Sie zwei C#-Beispielanwendungen aus, die über einen per IoT Hub eingerichteten Gerätestream kommunizieren.
 author: rezasherafat
 manager: briz
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 2853bd5539a40e3b38927f619756fe37a4cec984
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8df57d3d36dcae851c9c0e23ea609e200a429605
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006864"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832905"
 ---
-# <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Schnellstart: Kommunizieren mit Geräteanwendungen in C# über IoT Hub-Gerätestreams (Vorschauversion)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Schnellstart: Kommunizieren mit einer Geräteanwendung in C# über IoT Hub-Gerätestreams (Vorschauversion)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
@@ -31,14 +31,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Vorschau der Gerätestreams wird derzeit nur für IoT Hubs unterstützt, die in folgenden Regionen erstellt werden:
+*  Die Vorschau der Gerätestreams wird derzeit nur für IoT Hubs unterstützt, die in folgenden Regionen erstellt werden:
 
-  - **USA (Mitte)**
-  - **USA, Mitte (EUAP)**
+   *  **USA (Mitte)**
+
+   *  **USA, Mitte (EUAP)**
 
 Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in C# geschrieben. Sie benötigen auf Ihrem Entwicklungscomputer das .NET Core SDK 2.1.0 oder höher.
 
-Sie können das .NET Core SDK für mehrere Plattformen von [.NET](https://www.microsoft.com/net/download/all) herunterladen.
+*  Laden Sie das [.NET Core SDK für mehrere Plattformen](https://www.microsoft.com/net/download/all) von .NET herunter.
 
 Mit dem folgenden Befehl können Sie die aktuelle C#-Version auf Ihrem Entwicklungscomputer überprüfen:
 
@@ -46,17 +47,17 @@ Mit dem folgenden Befehl können Sie die aktuelle C#-Version auf Ihrem Entwicklu
 dotnet --version
 ```
 
-Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+*  Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
 
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
+    ```azurecli-interactive
+    az extension add --name azure-cli-iot-ext
+    ```
 
-Laden Sie das C#-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv. Sie benötigen es sowohl auf der Geräte- als auch der Dienstseite.
+* Laden Sie das C#-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv. Sie benötigen es sowohl auf der Geräte- als auch der Dienstseite.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
@@ -86,7 +87,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
     Dieser Wert wird später in der Schnellstartanleitung benötigt.
 
-3. Darüber hinaus benötigen Sie die _Dienstverbindungszeichenfolge_ aus Ihrem IoT-Hub, damit die dienstseitige Anwendung eine Verbindung mit Ihrem IoT-Hub herstellen und einen Gerätestream einrichten kann. Der folgende Befehl ruft diesen Wert für Ihren IoT-Hub ab:
+3. Darüber hinaus benötigen Sie die *Dienstverbindungszeichenfolge* aus Ihrem IoT-Hub, damit die dienstseitige Anwendung eine Verbindung mit Ihrem IoT-Hub herstellen und einen Gerätestream einrichten kann. Der folgende Befehl ruft diesen Wert für Ihren IoT-Hub ab:
 
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
@@ -99,6 +100,8 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>Kommunizieren zwischen Gerät und Dienst über Gerätestreams
+
+In diesem Abschnitt führen Sie die geräteseitige Anwendung und die dienstseitige Anwendung aus und stellen eine Kommunikation zwischen beiden her.
 
 ### <a name="run-the-service-side-application"></a>Ausführen der dienstseitigen Anwendung
 
@@ -154,15 +157,17 @@ dotnet run <DeviceConnectionString>
 
 Am Ende des letzten Schritts initiiert das dienstseitige Programm einen Stream an Ihr Gerät und sendet anschließend einen Zeichenfolgenpuffer über den Stream an den Dienst. In diesem Beispiel gibt das dienstseitige Programm einfach die gleichen Daten an das Gerät zurück, um eine erfolgreiche bidirektionale Kommunikation zwischen den beiden Anwendungen zu veranschaulichen. Dies ist in der folgenden Abbildung zu sehen.
 
-Konsolenausgabe auf der Geräteseite: ![Alternativer Text](./media/quickstart-device-streams-echo-csharp/device-console-output.png "Konsolenausgabe auf der Geräteseite")
+Konsolenausgabe auf Geräteseite:
 
-Konsolenausgabe auf der Dienstseite: ![Alternativer Text](./media/quickstart-device-streams-echo-csharp/service-console-output.png "Konsolenausgabe auf der Dienstseite")
+![Geräteseitige Konsolenausgabe](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
 
-Der über den Stream gesendete Datenverkehr wird nicht direkt gesendet, sondern über IoT Hub getunnelt. Die dadurch entstehenden Vorteile werden [hier](./iot-hub-device-streams-overview.md#benefits) erläutert.
+Konsolenausgabe auf Dienstseite: ![Konsolenausgabe auf Dienstseite](./media/quickstart-device-streams-echo-csharp/service-console-output.png )
+
+Der über den Stream gesendete Datenverkehr wird nicht direkt gesendet, sondern über IoT Hub getunnelt. Die gebotenen Vorteile werden unter [Vorteile von Gerätestreams](./iot-hub-device-streams-overview.md#benefits) beschrieben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

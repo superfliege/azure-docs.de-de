@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/27/2017
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918245"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596560"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Einführung in Azure Data Science Virtual Machine für Linux und Windows
 
@@ -45,6 +45,10 @@ Unternehmens-Trainer und Lehrer, die Data Science Klassen unterrichten, stellen 
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Bei Bedarf flexible Kapazität für umfangreiche Projekte
 Data Science Hackathons/Wettbewerbe oder umfangreiche Datenmodelle und Auswertungen erfordern skalierte Hardwarekapazität, in der Regel für kurze Zeit. Die Data Science-VM kann dazu beitragen, die Data Science-Umgebung bei Bedarf schnell auf skalierten Servern zu replizieren, auf denen Experimente ausgeführt werden können, die leistungsstarke Computing-Ressourcen erfordern.
+
+### <a name="custom-compute-power-for-azure-notebooks"></a>Benutzerdefinierte Computeleistung für Azure Notebooks
+
+[Azure Notebooks](/azure/notebooks/azure-notebooks-overview.md) ist ein kostenloser gehosteter Dienst zum Entwickeln, Ausführen und Freigeben von Jupyter Notebooks in der Cloud ohne Installation. Die kostenlose Dienstebene ist jedoch auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt. Um sämtliche Einschränkungen aufzuheben, können Sie ein Notebooks-Projekt an eine Data Science-VM oder eine beliebige andere VM mit einem Jupyter-Server anfügen. Wenn Sie sich mit einem Konto über Azure Active Directory (z. B. einem Unternehmenskonto) bei Azure Notebooks anmelden, zeigt Notebooks automatisch virtuelle Data Science-VMs in allen Abonnements an, die mit diesem Konto verknüpft sind. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) im Abschnitt zum Compute-Tarif.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Kurzfristige Experimente und Auswertungen
 Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft ML Server, SQL Server, Visual Studio-Tools, Jupyter, Deep Learning-/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtungsaufwand verwendet werden. Da die Data Science-VM schnell eingerichtet werden kann, kann sie auch in anderen kurzfristigen Szenarios verwendet werden, z.B. Replikation veröffentlichter Experimente, Ausführung von Demos, dem Folgen exemplarischer Vorgehensweisen in Onlinesitzungen und für Konferenz-Tutorials.

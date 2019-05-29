@@ -116,10 +116,10 @@ Wenn der Modus der neuen Indizierungsrichtlinie auf „Konsistent“ festgelegt 
 
 Für die Funktion [Gültigkeitsdauer](time-to-live.md) (Time-to-Live, TTL) muss die Indizierung für den Container aktiviert sein. Dies bedeutet Folgendes:
 
-- Es ist nicht möglich, die Gültigkeitsdauer (TTL) für einen Container zu aktivieren, wenn dessen Indizierungsmodus auf „Keine“ festgelegt ist.
-- Es ist nicht möglich, den Indizierungsmodus für einen Container, in dem die Gültigkeitsdauer (TTL) aktiviert ist, auf „Keine“ festzulegen.
+- Es ist nicht möglich, die TTL für einen Container zu aktivieren, wenn dessen Indizierungsmodus auf „Keine“ festgelegt ist.
+- Es ist nicht möglich, den Indizierungsmodus für einen Container, in dem die TTL aktiviert ist, auf „Keine“ festzulegen.
 
-Für Szenarien, in denen kein Eigenschaftenpfad indiziert werden muss, aber die Gültigkeitsdauer (TTL) erforderlich ist, können Sie eine Indizierungsrichtlinie mit Folgendem verwenden:
+Für Szenarien, in denen kein Eigenschaftenpfad indiziert werden muss, aber die TTL erforderlich ist, können Sie eine Indizierungsrichtlinie mit Folgendem verwenden:
 
 - Der Indizierungsmodus ist auf „Konsistent“ festgelegt.
 - Es wurde kein Pfad eingeschlossenen.

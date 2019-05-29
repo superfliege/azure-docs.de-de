@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145058"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949600"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Tutorial: Verwenden von Azure CDN zum Aktivieren einer benutzerdefinierten Domäne mit SSL für eine statische Website
 
@@ -44,8 +44,9 @@ Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com/) an.
 1. Füllen Sie im Abschnitt **Neuer Endpunkt** die Felder aus, um einen neuen CDN-Endpunkt zu erstellen.
 1. Geben Sie einen Endpunktnamen ein, z. B. *mystaticwebsiteCDN*.
 1. Geben Sie die Domäne Ihrer Website als Hostnamen für den CDN-Endpunkt ein.
-1. Geben Sie für den Hostnamen des Ursprungs den Endpunkt Ihrer statischen Website ein. Um den Endpunkt Ihrer statischen Website zu ermitteln, navigieren Sie zum Abschnitt **Statische Website** Ihres Speicherkontos, und kopieren Sie den Endpunkt. 
+1. Geben Sie für den Hostnamen des Ursprungs den Endpunkt Ihrer statischen Website ein. Um den Endpunkt Ihrer statischen Website zu ermitteln, navigieren Sie zum Abschnitt **Statische Website** Ihres Speicherkontos, und kopieren Sie den Endpunkt (entfernen Sie das vorangestellte „https://“).
 1. Testen Sie Ihren CDN-Endpunkt, indem Sie in Ihrem Browser zu *mywebsitecdn.azureedge.net* navigieren.
+1. Überprüfen Sie außerdem durch Navigieren zu **Neuer Endpunkt** unter „Einstellungen“ > „Ursprung“, ob für den „Ursprungstyp“ *Benutzerdefinierter Ursprung* festgelegt wurde und ob in *Hostname des Ursprungs* der Endpunktname „Statische Website“ angezeigt wird.
 
 ## <a name="enable-custom-domain-and-ssl"></a>Aktivieren der benutzerdefinierten Domäne und von SSL
 

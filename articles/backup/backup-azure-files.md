@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ac9a748742bda6b1e7a321a427090662542f1032
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f20cc1107476f8d65323d277a53086b8bd035a1b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486910"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518903"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
@@ -56,7 +56,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifrei
 
     ![Auswählen einer Azure-Dateifreigabe als Sicherungsziel](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
-3. Klicken Sie auf **Sicherung**, um die Azure-Dateifreigabe für Ihren Recovery Services-Tresor zu konfigurieren. 
+3. Klicken Sie auf **Sicherung**, um die Azure-Dateifreigabe für Ihren Recovery Services-Tresor zu konfigurieren.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/set-backup-goal.png)
 
@@ -123,10 +123,12 @@ Sie können den Status aller Aufträge auf der Seite **Sicherungsaufträgen** ü
 So öffnen Sie die Seite **Sicherungsaufträge**
 
 - Öffnen Sie den zu überwachenden Recovery Services-Tresor, und klicken Sie im Menü des Recovery Services-Tresors auf **Aufträge** und anschließend auf **Sicherungsaufträge**.
+
    ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/open-backup-jobs.png)
 
     Die Liste der Sicherungsaufträge und der Status dieser Aufträge werden angezeigt.
-   ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/backup-jobs-progress-list.png)
+
+    ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/backup-jobs-progress-list.png)
 
 ### <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 

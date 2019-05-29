@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149938"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594152"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Tutorial: Erstellen einer Wissensdatenbank über das QnA Maker-Portal
 
@@ -68,7 +68,7 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Die Inhalte der häufig gestellten Fragen unter dieser URL sind jeweils als Frage-Antwort-Paar formatiert. QnA Maker kann dieses Format interpretieren, um Fragen und die dazugehörigen Antworten zu extrahieren.|
     |Datei |_In diesem Tutorial nicht verwendet_|Dient zum Hochladen von Dateien für Fragen und Antworten. |
-    |„Chit-chat personality“ (Smalltalk-Persönlichkeit)|Freundlich|Dadurch erhalten Sie eine freundliche und lockere Persönlichkeit für allgemeine Fragen und Antworten. Die Fragen und Antworten können später bearbeitet werden. |
+    |„Chit-chat personality“ (Smalltalk-Persönlichkeit)|Freundlich|Dadurch erhalten Sie eine freundliche und lockere [Persönlichkeit](../Concepts/best-practices.md#chit-chat) für allgemeine Fragen und Antworten. Die Fragen und Antworten können später bearbeitet werden. |
 
     ![Schritt 4 des Erstellungsprozesses für die Wissensdatenbank](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440936"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545009"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Schnellstart: Vorbereiten und Visualisieren von Daten in Azure Machine Learning ohne Schreiben von Code
 
@@ -99,13 +99,13 @@ Wählen Sie die Datenspalten aus, mit denen Sie arbeiten möchten.  Konfiguriere
    
 1. Wählen Sie das Modul **Select Columns in Dataset** aus.
 
-1. Wählen Sie im Bereich **Eigenschaften** rechts neben dem Experimentbereich **Launch column selector** (Spaltenauswahl starten) aus.
+1. Wählen Sie im Bereich **Eigenschaften** rechts neben der Canvas **Spalten bearbeiten** aus.
 
     Wählen Sie im Dialogfeld **Select columns** (Spalten auswählen) die Option **ALL COLUMNS** (Alle Spalten) aus, und schließen Sie **alle Features** ein. Das Dialogfeld sollte wie folgt aussehen:
 
      ![Spaltenauswahl](./media/ui-quickstart-run-experiment/select-all.png)
 
-1. Klicken Sie unten rechts auf die Schaltfläche mit dem Häkchen („OK“), um die Spaltenauswahl zu schließen.
+1. Wählen Sie unten rechts **OK** aus, um die Spaltenauswahl zu schließen.
 
 ## <a name="run-the-experiment"></a>Ausführen des Experiments
 
@@ -146,13 +146,13 @@ Entfernen Sie zunächst die Spalte **normalized-losses** vollständig.
 
 1. Wählen Sie das Modul **Select Columns in Dataset** aus.
 
-1. Wählen Sie im Bereich **Eigenschaften** rechts neben dem Experimentbereich **Launch column selector** (Spaltenauswahl starten) aus.
+1. Wählen Sie im Bereich **Eigenschaften** rechts neben der Canvas **Spalten bearbeiten** aus.
 
     * Lassen Sie **With rules** (Mit Regeln) und **ALL COLUMNS** (Alle Spalten) ausgewählt.
 
     * Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Geben Sie **normalized-losses** ein.
 
-    * Klicken Sie unten rechts auf die Schaltfläche mit dem Häkchen („OK“), um die Spaltenauswahl zu schließen.
+    * Wählen Sie unten rechts **OK** aus, um die Spaltenauswahl zu schließen.
 
     ![Ausschließen einer Spalte](./media/ui-quickstart-run-experiment/exclude-column.png)
         

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904506"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949795"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio
 
@@ -78,7 +78,7 @@ Das Dataset **german.data** enthält Zeilen mit 20 Variablen für 1.000 Kreditan
 
 Auf der UCI-Website finden Sie eine Beschreibung der Attribute des Funktionsvektors für diese Daten. Diese Daten umfassen beispielsweise Finanzinformationen, Bonitätsgeschichte, Beschäftigungsstatus und persönliche Daten. Für jeden Antragsteller wurde eine binäre Bewertung vergeben, um zwischen niedrigem und hohem Kreditrisiko zu unterscheiden. 
 
-Sie trainieren ein Vorhersageanalytikmodell anhand dieser Daten. Anschließend sollte Ihr Modell einen Funktionsvektor für neue Personen akzeptieren und vorhersagen können, ob diese ein niedriges oder hohes Kreditrisiko haben.  
+Sie trainieren ein Vorhersageanalytikmodell anhand dieser Daten. Anschließend sollte Ihr Modell einen Funktionsvektor für neue Personen akzeptieren und vorhersagen können, ob diese ein niedriges oder hohes Kreditrisiko darstellen.  
 
 Hier ein interessantes Extra.
 
@@ -174,7 +174,7 @@ Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in 
 
 Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie **Visualisieren**.  
 
-Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
+Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.* ) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
 
 Verwenden Sie das Modul [Edit Metadata][edit-metadata], um Spaltenüberschriften hinzuzufügen.
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143257"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834310"
 ---
 # <a name="personalizer-settings"></a>Einstellungen der Personalisierung
 
@@ -35,7 +35,7 @@ Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
 1. Suchen Sie Ihre Personalisierungsressource. 
 1. Wählen Sie im Abschnitt **Ressourcenverwaltung** die Option **Einstellungen** aus.
 
-    Kopieren Sie auf der Seite **Schlüssel** einen Ressourcenschlüssel, bevor Sie das Azure-Portal verlassen. Sie benötigen ihn für die Verwendung des [SDK für die Personalisierung](https://aka.ms/personalizer-dotnet-sdk-docs).
+    Kopieren Sie auf der Seite **Schlüssel** einen Ressourcenschlüssel, bevor Sie das Azure-Portal verlassen. Sie benötigen ihn für die Verwendung des [SDK für die Personalisierung](https://go.microsoft.com/fwlink/?linkid=2092353).
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurieren der Belohnungseinstellungen für die Feedbackschleife auf der Grundlage von Anwendungsfällen
 
@@ -87,4 +87,7 @@ Importieren Sie im Abschnitt für **Model and Policy** (Modell und Richtlinie) d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwenden des Personalisierungscontainers](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+<!--
+[How to use the Personalizer container](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+-->
+[Erfahren Sie mehr zur regionalen Verfügbarkeit.](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

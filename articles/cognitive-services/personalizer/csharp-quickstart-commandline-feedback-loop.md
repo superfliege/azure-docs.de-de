@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: 85252680fcc4d2592d242762d01040c3859b14a2
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442070"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521372"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Schnellstart: Personalisieren Sie Inhalt mit C# 
 
@@ -36,7 +36,7 @@ Der Einstieg in die Personalisierung umfasst die folgenden Schritte:
 
 * Sie benötigen einen [Personalisierungsdienst](how-to-settings.md), um einen Abonnementschlüssel und die URL des Endpunktdiensts zu erhalten. 
 * [Visual Studio 2015 oder 2017](https://visualstudio.microsoft.com/downloads/)
-* Das SDK-NuGet-Paket „Microsoft.Azure.CognitiveServices.Personalizer“ Unten ist die Installationsanleitung angegeben.
+* Das SDK-NuGet-Paket [Microsoft.Azure.CognitiveServices.Personalizer](https://go.microsoft.com/fwlink/?linkid=2092272). Unten ist die Installationsanleitung angegeben.
 
 ## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 

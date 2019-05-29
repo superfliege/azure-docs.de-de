@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8201b4089759fb55fae12820f7495664c502837e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023632"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540896"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
@@ -25,7 +25,7 @@ Kognitive Suche ist eine KI-Funktion in Azure Search zum Extrahieren von Text au
 
 + Die **Bildverarbeitungsfähigkeiten** umfassen [Optical Character Recognition (OCR)](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Farben oder Bildausrichtung. Sie können Textdarstellungen von Bildinhalt erstellen, indem Sie alle Abfragefunktionen von Azure Search verwenden.
 
-![Diagramm der Cognitive Search-Pipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die Cognitive Search-Pipeline")
+![Diagramm der Pipeline für Kognitive Suche](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die Pipeline für Kognitive Suche")
 
 Die kognitiven Fähigkeiten in Azure Search basieren auf Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) und [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
 
@@ -146,4 +146,4 @@ Weitere Informationen zu bestimmten Fragen oder Problemen finden Sie unter [Prob
 + [Schnellstart: Testen der kognitiven Suche anhand einer exemplarischen Vorgehensweise zu Portalfunktionen](cognitive-search-quickstart-blob.md)
 + [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche](cognitive-search-tutorial-blob.md)
 + [Übersicht über Wissensspeicher](knowledge-store-concept-intro.md)
-+ [Wissensspeicher – exemplarische Vorgehensweise](knowledge-store-howto.md)
++ [Wissensspeicher: exemplarische Vorgehensweise](knowledge-store-howto.md)

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: d3ad4cdfe33948c04c278ed3dfef7aa6fda637ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027496"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777326"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Tutorial: Senden von Transaktionen mit dem Azure Blockchain-Dienst
 
@@ -128,7 +128,7 @@ Diesen öffentlichen Schlüssel finden Sie in der Liste der Transaktionsknoten. 
 ### <a name="transaction-node-endpoint-addresses"></a>Endpunktadressen für den Transaktionsknoten
 
 1. Navigieren Sie im Azure-Portal zu den einzelnen Transaktionsknoten, und klicken Sie auf **Transaktionsknoten > Verbindungszeichenfolgen**.
-1. Kopieren Sie die Endpunkt-URL für jeden Transaktionsknoten aus **HTTPS (Zugriffsschlüssel 1)**, und speichern Sie sie. Sie benötigen die Endpunktadressen für die Smart Contract-Konfigurationsdatei im späteren Verlauf dieses Tutorials.
+1. Kopieren Sie die Endpunkt-URL für jeden Transaktionsknoten aus **HTTPS (Zugriffsschlüssel 1)** , und speichern Sie sie. Sie benötigen die Endpunktadressen für die Smart Contract-Konfigurationsdatei im späteren Verlauf dieses Tutorials.
 
     ![Transaktionsendpunktadresse](./media/send-transaction/endpoint.png)
 

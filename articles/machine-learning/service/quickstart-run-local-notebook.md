@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549134"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864380"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
-Verwenden Sie Ihren eigenen Notebook-Server, um Code auszuführen, der Werte im [Arbeitsbereich von Azure Machine Learning Service](concept-azure-machine-learning-architecture.md) protokolliert. Der Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning.
+Verwenden Sie Ihre eigene Python-Umgebung und Ihren eigenen Jupyter Notebook-Server für die ersten Schritte mit Azure Machine Learning Service.  Eine Schnellstartanleitung ohne SDK-Installation finden Sie unter [Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
-In dieser Schnellstartanleitung verwenden Sie Ihre eigene Python-Umgebung und Ihren eigenen Jupyter Notebook-Server. Eine Schnellstartanleitung ohne SDK-Installation finden Sie unter [Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md). 
+In diesem Schnellstart erfahren Sie, wie Sie den [Arbeitsbereich für Azure Machine Learning Service](concept-azure-machine-learning-architecture.md) zum Nachverfolgen Ihrer Experimente mit maschinellem Lernen verwenden können. Sie führen Python-Code aus, der Werte im Arbeitsbereich protokolliert.
 
 Sehen Sie sich die Videoversion dieser Schnellstartanleitung an:
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 * Python 3.6-Notebook-Server mit installiertem Azure Machine Learning SDK
 * Azure Machine Learning Service-Arbeitsbereich
-* Konfigurationsdatei für den Arbeitsbereich (**.azureml/config.json**)
+* Konfigurationsdatei für den Arbeitsbereich ( **.azureml/config.json**)
 
 Diese erforderlichen Komponenten erhalten Sie unter [Create an Azure Machine Learning service workspace](setup-create-workspace.md#portal) (Erstellen eines Azure Machine Learning Service-Arbeitsbereichs).
 

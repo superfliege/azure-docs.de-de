@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/20/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 3c8a2fe9f4486fe4d33754b58f4e7ebec1b3252d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682949"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947081"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -103,7 +103,7 @@ Die Bereitstellung von Instanzen, die die v2-SKU nutzen, kann bis zu sechs Minu
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Kann ich Exchange Server als Back-End mit Application Gateway verwenden?
 
-Nein. Application Gateway unterstützt keine E-Mail-Protokolle wie SMTP, IMAP oder POP3. 
+ Nein. Application Gateway unterstützt keine E-Mail-Protokolle wie SMTP, IMAP oder POP3. 
 
 ## <a name="performance"></a>Leistung
 
@@ -119,7 +119,7 @@ Verteilen Sie Datenverkehr mithilfe von Traffic Manager auf mehrere Anwendungsga
 
 ### <a name="does-application-gateway-support-autoscaling"></a>Unterstützt Application Gateway automatische Skalierung?
 
-Ja, die Application Gateway v2-SKU unterstützt automatische Skalierung. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
+Ja, die Application Gateway v2-SKU unterstützt automatische Skalierung. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Werden durch das zentrale Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
 
@@ -177,7 +177,7 @@ Microservice-Architektur wird unterstützt. Für das Testen an unterschiedlichen
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>Unterstützen benutzerdefinierte Tests Platzhalter oder reguläre Ausdrücke in Antwortdaten?
 
-Nein. 
+ Nein. 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Wie werden Routingregeln in Application Gateway verarbeitet?
 
@@ -267,7 +267,7 @@ Application Gateway unterstützt bis zu 10 Authentifizierungszertifikate. Der S
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Lässt sich Application Gateway nativ in Azure Key Vault integrieren?
 
- Nein.
+Ja, die Application Gateway v2-SKU unterstützt Key Vault. Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Wie konfiguriere ich HTTPS-Listener für Websites vom Typ „.com“ und „.net“? 
 
@@ -289,7 +289,7 @@ Application Gateway unterstützt CRS [2.2.9](application-gateway-crs-rulegroups-
 
 ### <a name="does-detection-mode-block-traffic"></a>Wird Datenverkehr durch den Erkennungsmodus blockiert?
 
-Nein. Der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel auslöst.
+ Nein. Der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel auslöst.
 
 ### <a name="can-i-customize-waf-rules"></a>Kann ich WAF-Regeln anpassen?
 
