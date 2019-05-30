@@ -1,25 +1,18 @@
 ---
-title: Voraussetzungen für ein Azure-SaaS-Anwendungsangebot | Microsoft-Dokumentation
+title: Voraussetzungen für ein Azure-SaaS-Anwendungsangebot | Azure Marketplace
 description: Die Voraussetzungen für das Veröffentlichen eines SaaS-Anwendungsangebots im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 7322a4c0ba82218d9b2ed77e4c4533cc504c2616
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: b8c70841669882afced086a797b921ce3459ab1b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008895"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942014"
 ---
 # <a name="saas-application-publishing-prerequisites"></a>Voraussetzungen für das Veröffentlichen einer SaaS-Anwendung
 

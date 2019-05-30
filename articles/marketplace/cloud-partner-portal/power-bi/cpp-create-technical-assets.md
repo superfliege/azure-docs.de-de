@@ -1,25 +1,18 @@
 ---
-title: Erstellen technischer Ressourcen für ein Power BI-App-Angebot – Azure Marketplace | Microsoft-Dokumentation
+title: Erstellen technischer Ressourcen für ein Power BI-App-Angebot | Azure Marketplace
 description: Informationen zum Auflisten der zum Veröffentlichen eines Power BI-App-Angebots im Microsoft AppSource-Marketplace erforderlichen technischen Ressourcen.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f3d6466ced6efdb4047f9531329b70477911bf21
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.author: pabutler
+ms.openlocfilehash: 7736dcb892d829fc0e3af4bc87f1e6d80a3fa6cb
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414762"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943075"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Erstellen technischer Ressourcen für ein Power BI-App-Angebot
 

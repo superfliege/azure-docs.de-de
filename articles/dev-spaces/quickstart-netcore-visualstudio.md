@@ -13,12 +13,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, H
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361257"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65765303"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Schnellstart: Entwickeln mit .NET Core unter Kubernetes mit Azure Dev Spaces (Visual Studio 2017)
 
@@ -97,6 +97,8 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 Im obigen Beispiel lautet die öffentliche URL http://webfrontend.1234567890abcdef1234.eus.azds.io/. Navigieren Sie zur öffentlichen URL Ihres Diensts, und interagieren Sie mit dem Dienst, der in Ihrem Entwicklerbereich ausgeführt wird.
 
+Dieser Prozess kann den öffentlichen Zugriff auf Ihren Dienst deaktiviert haben. Um den öffentlichen Zugriff zu aktivieren, können Sie den [eingehenden Wert in der Datei *values.yaml*][ingress-update] aktualisieren.
+
 ## <a name="update-code"></a>Aktualisieren des Codes
 
 Klicken Sie auf die Schaltfläche „Beenden“, wenn Visual Studio 2017 noch mit Ihrem Entwicklerbereich verbunden ist. Ändern Sie Zeile 20 in `Controllers/HomeController.cs` in:
@@ -131,3 +133,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [Arbeiten mit mehreren Containern und Teamentwicklung](multi-service-netcore-visualstudio.md)
+
+[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured

@@ -5,19 +5,21 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 05/20/2019
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 0bbb200bdfeb88b774f561d537edc71e60b3994f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b96c1ada1ebb1bc53f7f55311c69a3cdc04f7574
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680603"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956423"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über die Azure-Befehlszeilenschnittstelle
 
 Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In dieser Schnellstartanleitung stellen Sie einen AKS-Cluster über die Azure-Befehlszeilenschnittstelle bereit. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält. Sie erfahren dann, wie Sie den Zustand des Clusters und der Pods überwachen können, in denen Ihre Anwendung ausgeführt wird.
+
+Wenn Sie Windows Server-Container verwenden möchten (derzeit in der Vorschauversion in AKS), finden Sie weitere Informationen unter [Erstellen eines AKS-Clusters, der Windows Server-Container unterstützt][windows-container-cli].
 
 ![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -27,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens Version 2.0.52 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -93,7 +95,7 @@ Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Kn
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.9.11
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
@@ -249,7 +251,7 @@ Die Container *azure-vote-back* und *azure-vote-front* werden angezeigt. Dies wi
 
 ![Anzeigen der Integrität der ausgeführten Container in AKS](media/kubernetes-walkthrough/monitor-containers.png)
 
-Wenn Sie Protokolle für den Pod `azure-vote-front` anzeigen möchten, klicken Sie auf der rechten Seite der Containerliste auf den Link **Containerprotokolle anzeigen**. Diese Protokolle enthalten die Datenströme *stdout* und *stderr* aus dem Container.
+Wenn Sie Protokolle für den Pod `azure-vote-front` anzeigen möchten, wählen Sie die Option **In Analytics anzeigen**, dann den Link **Containerprotokolle anzeigen** auf der rechten Seite der Containerliste aus. Diese Protokolle enthalten die Datenströme *stdout* und *stderr* aus dem Container.
 
 ![Anzeigen der Containerprotokolle in AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
 
@@ -272,7 +274,7 @@ In dieser Schnellstartanleitung wurden vorab erstellte Containerimages verwendet
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen Kubernetes-Cluster und eine Anwendung mit mehreren Containern dafür bereitgestellt.  [Zugreifen auf das Kubernetes-Webdashboard][kubernetes-dashboard] für den Cluster, den Sie gerade erstellt haben.
+In dieser Schnellstartanleitung haben Sie einen Kubernetes-Cluster und eine Anwendung mit mehreren Containern dafür bereitgestellt. Sie können auch auf das [Kubernetes-Webdashboard][kubernetes-dashboard] für Ihren AKS-Cluster zugreifen.
 
 Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispiel vom Code bis zur Bereitstellung finden Sie im Kubernetes-Clustertutorial.
 
@@ -302,3 +304,4 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
 [kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-container-cli]: windows-container-cli.md

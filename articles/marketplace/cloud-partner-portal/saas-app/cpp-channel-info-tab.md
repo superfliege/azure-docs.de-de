@@ -1,25 +1,18 @@
 ---
-title: Kanalinformationen für Azure-SaaS-Anwendungsangebot | Microsoft-Dokumentation
+title: Kanalinformationen für Azure-SaaS-Anwendungsangebot | Azure Marketplace
 description: Konfigurieren von Kanalinformationen für ein SaaS-Anwendungsangebot im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 72830734855f35dc1180035bb51bbb3c877a9901
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 448ae37f07dee6186b43cac4822d07151b52e050
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196115"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943205"
 ---
 # <a name="saas-application-channel-info-tab"></a>Registerkarte „Kanalinformationen“ für eine SaaS-Anwendung
 

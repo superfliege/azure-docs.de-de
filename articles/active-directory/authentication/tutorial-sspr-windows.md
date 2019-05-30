@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224650"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861532"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
-In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörter über den Windows 10-Anmeldebildschirm. Mit dem neuen Windows 10 April 2018 Update wird Benutzern mit in **Azure AD eingebundenen Geräten** oder in **Azure AD eingebundenen Hybridgeräten** auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR).
+In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörter über den Windows 10-Anmeldebildschirm. Mit dem neuen Windows 10 April 2018 Update wird Benutzern mit in **Azure AD eingebundenen Geräten** oder in **Azure AD eingebundenen Hybridgeräten** auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR). Wenn ein Benutzer gesperrt ist, entsperrt dieser Prozess keine Konten im lokalen Active Directory.
 
 > [!div class="checklist"]
 > * Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune

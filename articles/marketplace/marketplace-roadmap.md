@@ -2,24 +2,18 @@
 title: Roadmap für Azure Marketplace und AppSource | Azure
 description: Eine Roadmap zu den Neu- und Weiterentwicklungen in Marketplace
 services: Azure, Marketplace, Compute
-documentationcenter: ''
 author: qianw211
 manager: MaggiePucciEvans
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 4a1586d965a51a3c655346994274159b99ab0a9a
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 881d62cd7b7b9d4434a807a2aab62b75e9a8e97b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010633"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937777"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Roadmap für Azure Marketplace und AppSource
 
@@ -36,13 +30,13 @@ Sobald eine Funktion zugänglich ist, wird sie aus der Roadmap entfernt. Zu den 
 
 ### <a name="for-march-2019"></a>Seit März 2019
 
-* [Updateblog zum Marketplace und zu Cloud Solution Provider (CSP)](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
-* [Veröffentlichungsangebote im Cloud Solution Provider-Kanal (CSP) von unabhängigen Softwareherstellern (Independent Software Vendor, ISV)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
+* [Blog mit Updates zum Marketplace und zu Cloud Solution Provider (CSP)](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
+* [Veröffentlichen von Angeboten im CSP-Kanal von unabhängigen Softwareherstellern (ISV)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
 * [Angebote zum Weiterverkauf im Marketplace (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
 * [Standardvertrag](https://docs.microsoft.com/azure/marketplace/standard-contract)
 * [SaaS-Fulfillment-API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis)
 * [Geografische Verfügbarkeit und Unterstützung von Währungen im Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
-* [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Verkäufer-Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

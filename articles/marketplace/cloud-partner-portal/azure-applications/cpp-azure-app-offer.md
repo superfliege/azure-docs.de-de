@@ -1,25 +1,18 @@
 ---
-title: Azure-Anwendungsangebot | Microsoft-Dokumentation
+title: Azure-Anwendungsangebot | Azure Marketplace
 description: Übersicht über den Prozess zum Veröffentlichen eines Azure-Anwendungsangebots im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 3691664ee6212f838e7a9b95089893e4b52c689f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076019"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943011"
 ---
 # <a name="azure-application-offer"></a>Azure-Anwendungsangebot
 

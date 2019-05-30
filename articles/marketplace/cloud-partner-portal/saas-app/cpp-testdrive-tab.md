@@ -1,25 +1,18 @@
 ---
-title: Konfiguration einer Testversion für ein Azure-SaaS-Anwendungsangebot | Microsoft-Dokumentation
+title: Konfiguration einer Testversion für ein Azure-SaaS-Anwendungsangebot | Azure Marketplace
 description: Konfigurieren der Testversion für ein SaaS-Anwendungsangebot im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: c76290d6c96108ff04799151c82334264a4c3dd0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649032"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941713"
 ---
 # <a name="saas-application-test-drive-tab"></a>Registerkarte „Testversion“ für SaaS-Anwendungen
 
@@ -31,9 +24,11 @@ Das Erstellen einer Testversion für Ihre Kunden ist eine bewährte Methode, um 
 
 Eine Testversion bietet Kunden einen praktischen, selbstgesteuerten Test der wichtigsten Funktionen und Vorteile Ihres Produkts, die in einem realitätsnahen Implementierungsszenario veranschaulicht werden.
 
+
 ## <a name="how-a-test-drive-works"></a>So funktioniert eine Testversion
 
 Ein potenzieller Kunde hat Ihre Anwendung im Marketplace entdeckt. Der Kunde meldet sich an und stimmt den Nutzungsbedingungen zu. An diesem Punkt empfängt der Kunde Ihre vorkonfigurierte Umgebung, die er für eine feste Anzahl von Stunden testen kann, und Sie empfangen einen aussichtsreichen Lead, den Sie nachverfolgen können. Weitere Informationen finden Sie unter [Was ist die Testversion?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+
 
 ## <a name="publishing-steps"></a>Veröffentlichungsschritte
 
@@ -43,6 +38,7 @@ Im Wesentlichen sind beim Hinzufügen einer Testversion die folgenden Schritte d
 2. Erstellen und/oder Ändern Ihrer Resource Manager-Vorlage
 3. Erstellen Ihrer schrittweisen Bedienungsanleitung für die Testversion
 4. Erneutes Veröffentlichen Ihres Angebots
+
 
 ## <a name="setting-up-a-test-drive"></a>Einrichten einer Testversion
 
@@ -54,6 +50,8 @@ Es sind vier verschiedene Testversionstypen verfügbar, von denen jeder auf dem 
 |       Gehostet             |       Eine gehostete Testversion vereinfacht die Einrichtung dadurch, dass Microsoft das Hosting und die Wartung des Diensts übernimmt, der die Bereitstellung und Aufhebung der Bereitstellung der Testversion durchführt.             |         [Gehostete Testversion](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      Logik-App              |       Eine Logik-App-Testversion ist eine Bereitstellungsvorlage, die für alle komplexen Lösungsarchitekturen vorgesehen ist. Alle Dynamics-Anwendungen oder benutzerdefinierten Produkte sollten mit diesem Testversionstyp genutzt werden.            |      [Testversion für Logik-Apps](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         Eine Power BI-Testversion besteht aus einem eingebetteten Link zu einem kundenspezifischen Dashboard. Für jedes Produkt, mit dem eine interaktive Power BI-Visualisierung demonstriert werden soll, sollte dieser Testversionstyp verwendet werden. Sie müssen lediglich Ihre eingebettete Power BI-URL hochladen.          |        [Power BI-Testversion](#power-bi-test-drive)           |
+|   |   |   |
+
 
 ### <a name="power-bi-test-drive"></a>Power BI-Testversion
 

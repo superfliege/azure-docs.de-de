@@ -1,25 +1,18 @@
 ---
-title: Konfigurieren von Kundenleads | Microsoft-Dokumentation
+title: Konfigurieren von Kundenleads | Azure Marketplace
 description: Konfigurieren von Kundenleads im Cloud-Partnerportal.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118577"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64934998"
 ---
 <a name="get-customer-leads"></a>Generieren von Kundenleads
 ==================

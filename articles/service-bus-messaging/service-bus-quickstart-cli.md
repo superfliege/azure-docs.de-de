@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 076e3b41a50681e453c1a07575ac6cb7071d97d2
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500633"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "65992033"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe der Azure CLI
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten mit Service Bus senden und empfangen, indem Sie die Azure CLI und die Service Bus-Java-Bibliothek verwenden. Falls Sie an technischeren Details interessiert sind, können Sie auch die [Beschreibung](#understand-the-sample-code) der wichtigen Elemente des Beispielcodes lesen.
@@ -366,6 +366,9 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 }
 ```
+
+> [!NOTE]
+> Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

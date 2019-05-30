@@ -1,26 +1,19 @@
 ---
-title: SaaS Fulfillment API V1 – Azure Marketplace | Microsoft-Dokumentation
+title: SaaS Fulfillment API V1 | Azure Marketplace
 description: Erläutert, wie Sie ein SaaS-Angebot im Azure Marketplace mit den zugehörigen Fulfillment-APIs der Version 1 erstellen.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 03/28/2019
-ms.author: pbutlerm
+ms.author: pabutler
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 816bdc61f85fdf171870a5b552661b816ec65e2f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009733"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943140"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS Fulfillment APIs Version 1 (veraltet)
 
@@ -128,7 +121,7 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -193,7 +186,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 
 **PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -257,7 +250,7 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -307,7 +300,7 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -375,7 +368,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|

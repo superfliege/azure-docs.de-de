@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e45b3b19821644142176c5c0cc7646c4643fe17c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190794"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235219"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -32,7 +32,7 @@ ms.locfileid: "65190794"
 - Azure AD-Hybrideinbindung
 - Azure AD-Registrierung
 
-Durch das Bereitstellten Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) sichern.
+Durch das Bereitstellen Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) sichern.
 
 In diesem Tutorial erfahren Sie, wie die Azure AD-Hybrideinbindung für Geräte in verwalteten Domänen konfiguriert wird.
 
@@ -178,12 +178,12 @@ Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Akt
 
 ### <a name="configure-seamless-sso"></a>Konfigurieren des nahtlosen einmaligen Anmeldens
 
-Sie müssen außerdem [nahtloses SSO konfigurieren](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich abzuschließen, die als Authentifizierungsmethode für die Azure AD-Cloud Passthrough-Authentifizierung (PTA) oder Kennworthashsynchronisierung (Password Hash Sync, PHS) verwendet. 
+Sie müssen außerdem [nahtloses SSO konfigurieren](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich abzuschließen, die als Authentifizierungsmethode für die Azure AD-Cloud Passthrough-Authentifizierung (PTA) oder Kennworthashsynchronisierung (Password Hash Sync, PHS) verwendet. Wenn Sie Probleme bei der Konfiguration des nahtlosen einmaligen Anmeldens haben, lesen Sie den Artikel [Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 
 
-Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Klicken Sie [hier](hybrid-azuread-join-control.md#control-windows-down-level-devices), um weitere Informationen zu erhalten. 
+Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Weitere Informationen finden Sie im Artikel [Steuern von Azure AD Hybrid Join für Ihre Geräte](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 
 ## <a name="verify-the-registration"></a>Überprüfen der Registrierung

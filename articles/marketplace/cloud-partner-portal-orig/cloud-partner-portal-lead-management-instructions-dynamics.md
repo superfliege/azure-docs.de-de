@@ -1,25 +1,18 @@
 ---
-title: Dynamics CRM | Microsoft-Dokumentation
+title: Dynamics CRM | Azure Marketplace
 description: Konfigurieren der Leadverwaltung für Dynamics CRM
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a1398d172a5c578ec3c0f16627eadd1da3fd1e45
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.author: pabutler
+ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437610"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935799"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurieren der Leadverwaltung für Dynamics CRM Online
 
@@ -148,5 +141,5 @@ Der letzte Schritt ist das Aktivieren des erstellten Benutzers für das Schreibe
 
 Schließen Sie die Konfiguration von Dynamics CRM für die Leadverwaltung ab, indem Sie die generierten Informationen dem Cloud-Partnerportal hinzufügen. Beispiel: 
 
--   **Azure Active Directory** - **Anwendungs-ID** (Beispiel: *23456052-aaaa-bbbb-8662-1234df56788f*), **Verzeichnis-ID** (Beispiel: *12345678-8af1-4asf-1234-12234d01db47*) und **Anwendungsschlüssel** (Beispiel: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Office 365** - **URL** (Beispiel: *https://contoso.crm4.dynamics.com*), **Benutzername** (Beispiel: *contoso\@contoso.onmicrosoft.com*) und **Kennwort** (Beispiel: *K\@ennw0rt*).
+-   **Azure Active Directory** - **Anwendungs-ID** (Beispiel: *23456052-aaaa-bbbb-8662-1234df56788f*), **Verzeichnis-ID** (Beispiel: *12345678-8af1-4asf-1234-12234d01db47*) und **Anwendungsschlüssel** (Beispiel: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* ).
+-   **Office 365** - **URL** (Beispiel: *https://contoso.crm4.dynamics.com* ), **Benutzername** (Beispiel: *contoso\@contoso.onmicrosoft.com*) und **Kennwort** (Beispiel: *K\@ennw0rt*).

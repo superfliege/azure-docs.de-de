@@ -1,25 +1,18 @@
 ---
-title: 'SaaS – Verkaufen über Azure: APIs | Microsoft-Dokumentation'
+title: SaaS – Verkaufen über Azure-APIs | Azure Marketplace
 description: Erläutert das Erstellen eines SaaS-Angebots über Marketplace-APIs.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: pabutler
+ms.openlocfilehash: a76fb2989320c64ad85b0f41f17798e2d9c743e1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311661"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941944"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS – Verkaufen über Azure: APIs
 
@@ -87,7 +80,7 @@ HTTP-Methode
 
 *Anforderungs-URL*
 
-**https://login.microsoftonline.com/*{tenantId}*/oauth2/token**
+**https://login.microsoftonline.com/ *{tenantId}* /oauth2/token**
 
 *URI-Parameter*
 
@@ -112,7 +105,7 @@ HTTP-Methode
 |  Grant_type         | True         | Gewährungstyp. Standardwert: `client_credentials`.                    |
 |  Client_id          | True         |  Der Azure AD-App zugeordneter Client-/App-Bezeichner.                  |
 |  client_secret      | True         |  Der Azure AD-App zugeordnetes Kennwort.                               |
-|  Ressource           | True         |  Zielressource, für die das Token angefordert wird. Standardwert: `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Resource           | True         |  Zielressource, für die das Token angefordert wird. Standardwert: `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 
@@ -225,7 +218,7 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -290,7 +283,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 
 **PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -354,7 +347,7 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -404,7 +397,7 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -438,8 +431,8 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 | id                 | Zeichenfolge        | ID des Vorgangs.                                                                      |
 | status             | Enum          | Vorgangsstatus, einer der folgenden Werte: `In Progress`, `Succeeded`, oder `Failed`.          |
 | resourceLocation   | Zeichenfolge        | Link zum erstellten oder geänderten Abonnement. Hilft dem Client beim Abrufen des aktualisierten Status nach dem Vorgang. Dieser Wert wird für `Unsubscribe`-Vorgänge nicht festgelegt. |
-| created            | DateTime      | Erstellungszeitpunkt (UTC) des Vorgangs.                                                           |
-| lastModified       | DateTime      | Letzte Aktualisierung des Vorgangs in UTC.                                                      |
+| created            | Datetime      | Erstellungszeitpunkt (UTC) des Vorgangs.                                                           |
+| lastModified       | Datetime      | Letzte Aktualisierung des Vorgangs in UTC.                                                      |
 |  |  |  |
 
 *Antwortcodes*
@@ -472,7 +465,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
@@ -510,8 +503,8 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 | planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
 | saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
 | saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
-| created                | DateTime      | Zeitstempelwert der Abonnementerstellung in UTC. |
-| lastModified           | DateTime      | Zeitstempelwert der Abonnementänderung in UTC. |
+| created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
+| lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
 |  |  |  |
 
 *Antwortcodes*
@@ -582,8 +575,8 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 | planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
 | saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
 | saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
-| created                | DateTime      | Zeitstempelwert der Abonnementerstellung in UTC. |
-| lastModified           | DateTime      | Zeitstempelwert der Abonnementänderung in UTC. |
+| created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
+| lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
 |  |  |  |
 
 *Antwortcodes*

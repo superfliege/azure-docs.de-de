@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004583"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965719"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Was ist Windows Virtual Desktop (Vorschauversion)? 
 
@@ -54,16 +54,13 @@ Darüber hinaus können Sie Benutzer zuweisen und mit Ihren virtuellen Desktops 
 
 Für die Einrichtung von Windows Virtual Desktop und die erfolgreiche Verknüpfung Ihrer Benutzer mit ihren Windows-Desktops und -Anwendungen benötigen Sie ein paar Dinge.
 
-Windows Virtual Desktop unterstützt derzeit nur die beiden folgenden Betriebssysteme:
-- Windows 10 Enterprise (mehrere Sitzungen)
-- Windows Server 2016
-
 Da wir planen, die Unterstützung auf die folgenden Betriebssysteme zu erweitern, vergewissern Sie sich, dass Sie über die [erforderlichen Lizenzen](https://azure.microsoft.com/pricing/details/virtual-desktop/) für die Desktops und Apps verfügen, die Sie für Ihre Benutzer bereitstellen möchten:
 
 |Betriebssystem|Erforderliche Lizenz|
 |---|---|
-
-|Windows 10 Enterprise für mehrere Sitzungen oder Windows 10 Enterprise|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5| |Windows 7 Enterprise |Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5| |Windows Server 2012 R2, 2016, 2019|RDS-Clientzugriffslizenz (Client Access License, CAL) mit Software Assurance|
+|Windows 10 Enterprise (mehrere Sitzungen) oder Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows Server 2012 R2, 2016, 2019|RDS-Clientzugriffslizenz (Client Access License, CAL) mit Software Assurance|
 
 In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop verwenden zu können:
 
@@ -76,9 +73,7 @@ In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop
 Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen folgende Anforderungen erfüllen:
 
 * Sie müssen in eine [Standard-Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) oder in [Hybrid AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan) eingebunden sein. Virtuelle Computer dürfen nicht in Azure AD eingebunden sein.
-* Auf ihnen muss eines der folgenden unterstützten Betriebssystemimages ausgeführt werden:
-  * Windows 10 Enterprise (mehrere Sitzungen)
-  * Windows Server 2016
+* Auf ihnen muss eines der folgenden [unterstützten Betriebssystemimages](#supported-virtual-machine-os-image) ausgeführt werden:
 
 >[!NOTE]
 >Sollten Sie ein Azure-Abonnement benötigen, können Sie sich [für eine einmonatige kostenlose Testversion registrieren](https://azure.microsoft.com/free/). Bei Verwendung der kostenlosen Testversion von Azure müssen Sie Azure AD Domain Services verwenden, um Ihre Windows Server Active Directory-Instanz mit Azure Active Directory zu synchronisieren.
@@ -88,8 +83,23 @@ Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Ben
 Ihr Netzwerk muss folgende Anforderungen erfüllen, um eine optimale Leistung zu erzielen:
 
 * Die Roundtriplatenz zwischen dem Netzwerk des Clients und der Azure-Region, in der die Hostpools bereitgestellt wurden, muss unter 150 ms liegen.
-* Netzwerkdatenverkehr wird ggf. außerhalb der Landesgrenzen übertragen, wenn virtuelle Computer, die Desktops und Apps hosten, eine Verbindung mit dem Verwaltungsdienst herstellen.
+* Netzwerkdatenverkehr wird ggf. außerhalb der Grenzen des Landes bzw. der Region übertragen, wenn virtuelle Computer, die Desktops und Apps hosten, eine Verbindung mit dem Verwaltungsdienst herstellen.
 * Zur Optimierung der Netzwerkleistung empfiehlt es sich, die virtuellen Computer des Sitzungshosts in der Azure-Region zu platzieren, in der sich auch der Verwaltungsdienst befindet.
+
+## <a name="supported-remote-desktop-clients"></a>Unterstützte Remotedesktopclients
+
+Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+
+## <a name="supported-virtual-machine-os-image"></a>Unterstützte Betriebssystemimages virtueller Computer
+
+Windows Virtual Desktop unterstützt die folgenden Betriebssysteme:
+
+* Windows 10 Enterprise (mehrere Sitzungen)
+* Windows Server 2016
 
 ## <a name="provide-feedback"></a>Feedback geben
 

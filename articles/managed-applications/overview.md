@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 48bb241a7871d2a209636f66837fb2afd95fd22c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402353"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001796"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -33,7 +33,7 @@ Obwohl Kunden diese verwalteten Anwendungen in ihren Abonnements bereitstellen, 
 
 Für IT-Teams können Sie mit verwalteten Anwendungen vorab genehmigte Lösungen für Benutzer in der Organisation anbieten. Sie wissen, dass diese Lösungen mit den Standards der Organisation konform sind.
 
-Verwaltete Anwendungen unterstützen derzeit [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) nicht.
+Verwaltete Anwendungen unterstützen [verwaltete Identitäten für Azure-Ressourcen](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>Arten von verwalteten Anwendungen
 
