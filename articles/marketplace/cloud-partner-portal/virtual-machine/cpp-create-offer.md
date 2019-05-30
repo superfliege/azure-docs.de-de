@@ -1,25 +1,18 @@
 ---
-title: Erstellen eines VM-Angebots im Azure Marketplace | Microsoft-Dokumentation
+title: Erstellen eines VM-Angebots im Azure Marketplace
 description: Hier erfahren Sie Schritt für Schritt, wie Sie ein neues VM-Angebot (virtual machine, virtueller Computer) für den Azure Marketplace erstellen.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888807"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938362"
 ---
 # <a name="create-virtual-machine-offer"></a>Erstellen eines VM-Angebots
 

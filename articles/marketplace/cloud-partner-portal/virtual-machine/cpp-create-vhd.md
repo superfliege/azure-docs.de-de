@@ -1,25 +1,18 @@
 ---
-title: Erstellen einer mit Azure kompatiblen VHD für den Azure Marketplace | Microsoft-Dokumentation
+title: Erstellen einer mit Azure kompatiblen VHD für den Azure Marketplace
 description: Dieser Artikel erläutert, wie Sie eine VHD für ein VM-Angebot im Azure Marketplace erstellen.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 6886c8a2ddc3345650d9dbb4d8ffa7eed86cf2bd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793075"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938340"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Erstellen einer Azure-kompatiblen VHD
 

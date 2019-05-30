@@ -1,25 +1,18 @@
 ---
-title: Abrufen eines bestimmten Angebots – API| Microsoft-Dokumentation
+title: API zum Abrufen eines bestimmten Angebots | Azure Marketplace
 description: Die API ruft das angegebene Angebot im Herausgebernamespace ab.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806551"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935441"
 ---
 <a name="retrieve-a-specific-offer"></a>Abrufen eines bestimmten Angebots
 =========================
@@ -191,10 +184,10 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 
 | **Code**  | **Beschreibung**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` –Die Anforderung wurde erfolgreich verarbeitet, und alle Angebote unter dem Verleger wurden an den Client zurückgegeben.               |
-|  400      | `Bad/Malformed request` – Der Fehlerantworttext enthält möglicherweise weitere Informationen.                                                 |
-|  403      | `Forbidden` – Der Client hat keinen Zugriff auf den angegebenen Namespace.                                                        |
-|  404      | `Not found` – Die angegebene Entität ist nicht vorhanden. Für den Client sollten die Parameter „publisherId“, „offerId“ und „version“ geprüft werden (sofern angegeben).      |
+|  200      | `OK`: Die Anforderung wurde erfolgreich verarbeitet, und alle Angebote unter dem Herausgeber wurden an den Client zurückgegeben.               |
+|  400      | `Bad/Malformed request` – der Fehlerantworttext enthält möglicherweise weitere Informationen.                                                 |
+|  403      | `Forbidden` – der Client hat keinen Zugriff auf den angegebenen Namespace.                                                        |
+|  404      | `Not found`: Die angegebene Entität ist nicht vorhanden. Für den Client sollten die Parameter „publisherId“, „offerId“ und „version“ geprüft werden (sofern angegeben).      |
 |  |  |
 
 
@@ -204,7 +197,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | Das Angebot wurde nie veröffentlicht.               |
 |  NotStarted                 | Das Angebot ist neu, aber nicht gestartet.              |
-|  WaitingForPublisherReview  | Für das Angebot wird auf die Herausgebergenehmigung gewartet.      |
+|  WaitingForPublisherReview  | Das Angebot wartet auf die Herausgebergenehmigung.      |
 |  Wird ausgeführt                    | Die Angebotsübermittlung wird verarbeitet.          |
 |  Succeeded                  | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.    |
 |  Canceled                   | Die Angebotsübermittlung wurde abgebrochen.                |

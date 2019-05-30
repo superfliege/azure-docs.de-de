@@ -1,25 +1,18 @@
 ---
-title: Erstellen von technischen Ressourcen für ein VM-Angebot für den Azure Marketplace | Microsoft-Dokumentation
+title: Erstellen von technischen Ressourcen für ein VM-Angebot für den Azure Marketplace
 description: In diesem Artikel wird beschrieben, wie Sie die technischen Ressourcen für ein VM-Angebot im Azure Marketplace erstellen.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.author: pabutler
+ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050100"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938408"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Erstellen von technischen Ressourcen für ein VM-Angebot
 
