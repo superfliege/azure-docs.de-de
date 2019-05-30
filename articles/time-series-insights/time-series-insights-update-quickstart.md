@@ -4,19 +4,19 @@ description: Machen Sie sich mit der Azure Time Series Insights-Demoumgebung (Vo
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: dbdbfc797d37ed38936d6cfd354383d412c6b52d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e35d46607e0a186c8a3a38669c68a6ea52711b51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205823"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242090"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion)
 
@@ -40,14 +40,14 @@ Der Time Series Insights-Explorer (Vorschauversion) zeigt Verlaufsdaten und Ursa
 
 1. Sehen Sie sich die Windturbine **W7** in **Contoso Plant 1** an.  
 
-    * Aktualisieren Sie den Anzeigebereich in **1/1/17 20:00 bis 3/10/17 20:00 (UTC)**.
+    * Aktualisieren Sie den Anzeigebereich in **1/1/17 20:00 bis 3/10/17 20:00 (UTC)** .
     * Wählen Sie den Sensor **Contoso Plant 1** > **W7** > **Generator System** > **GeneratorSpeed** aus. Überprüfen Sie dann die resultierenden Werte.
 
       [![W7 in Contoso Plant 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
 1. Vor Kurzem hat Contoso einen Brand in der Windturbine **W7** erkannt. Die Meinungen über die unmittelbare Brandursache gehen auseinander. Bei näherer Betrachtung sehen wir, dass der Feueralarmsensor während des Brandes aktiviert wurde.
 
-    * Aktualisieren Sie den Anzeigebereich in **3/9/17 20:00 bis 3/10/17 20:00 (UTC)**.
+    * Aktualisieren Sie den Anzeigebereich in **3/9/17 20:00 bis 3/10/17 20:00 (UTC)** .
     * Wählen Sie den Sensor **Safety System** > **FireAlert** aus.
 
       [![Contoso hat einen Brand in der Windturbine W7 erkannt.](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
@@ -61,7 +61,7 @@ Der Time Series Insights-Explorer (Vorschauversion) zeigt Verlaufsdaten und Ursa
 
 1. Die Sensoren für Öldruck und aktive Warnungen stiegen direkt vor dem Brand stark an. Erweitern Sie die angezeigte Zeitreihe, um andere vorhandene Anzeichen im Vorfeld des Brands zu sehen. Beide Sensoren schwankten im Laufe der Zeit konstant und zeigten ein anhaltendes und besorgniserregendes Muster.
 
-    * Aktualisieren Sie den Anzeigebereich in **2/24/17 20:00 bis 3/10/17 20:00 (UTC)**.
+    * Aktualisieren Sie den Anzeigebereich in **2/24/17 20:00 bis 3/10/17 20:00 (UTC)** .
 
       [![Sensoren für Öldruck und aktive Warnungen stiegen auch.](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
@@ -82,7 +82,7 @@ Mithilfe von Azure Time Series Insights und unseren Sensortelemetriedaten haben 
 
 1. Einige Szenarien erfordern eine anspruchsvolle Analyse, um subtile Hinweise in Daten aufzudecken. Wählen Sie Windmühle **W6** am **25.6.** aus.
 
-    * Aktualisieren Sie den Anzeigebereich in **6/1/17 20:00 bis 7/1/17 20:00 (UTC)**.
+    * Aktualisieren Sie den Anzeigebereich in **6/1/17 20:00 bis 7/1/17 20:00 (UTC)** .
     * Wählen Sie dann den Sensor **Contoso Plant 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning** aus.
 
       [![Anzeigebereich aktualisieren und W6 auswählen](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)

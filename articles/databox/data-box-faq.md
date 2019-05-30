@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473266"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150463"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -182,6 +182,9 @@ A. Wenn Ihr Gerät beschädigt zugestellt wurde oder es Anzeichen von Manipulati
 
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>F: Kann ich für den Versand der Data Box meinen eigenen Zustelldienst nutzen?
 A. Beim Data Box-Dienst übernimmt Microsoft den Versand zum und aus dem Azure Rechenzentrum. Wenn Sie Ihren eigenen Zustelldienst nutzen möchten, können Sie den Azure Import/Export-Dienst verwenden. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](../storage/common/storage-import-export-service.md)
+
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>F: Überqueren meine Data Box-Geräte beim Versand Ländergrenzen?
+A. Alle Data Box-Geräte werden aus dem Bestimmungsland versendet, sie überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU), wo Geräte in und aus beliebigen EU-Länder(n) gesendet werden können.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>F: In der E-Ink-Anzeige wird das Rücksendeetikett nicht angezeigt. Wie sollte ich vorgehen?
 A. Führen Sie die folgenden Schritte aus, wenn in der E-Ink-Anzeige das Rücksendeetikett nicht angezeigt wird:

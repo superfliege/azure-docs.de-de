@@ -5,17 +5,17 @@ services: frontdoor
 author: sharad4u
 ms.service: frontdoor
 ms.topic: include
-ms.date: 9/17/2018
+ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: a3a43c56a49c243390eac964d31988b7d30fbb56
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: e1f5a1c8229544d97d9ff64748390f0d5237ab97
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407975"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238134"
 ---
-| Ressource | Standardlimit |
+| Resource | Standard/maximales Limit |
 | --- | --- |
 | Azure Front Door Service-Ressourcen pro Abonnement | 100 |
 | Front-End-Hosts (einschließlich benutzerdefinierter Domänen) pro Ressource | 100 |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a03707246f27bcba9cc46168ec04893b7bbc4c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990793"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357809"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Tutorial: Verwenden von Bedingungen in Azure Resource Manager-Vorlagen
 
@@ -39,7 +39,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 In diesem Tutorial wird nur ein grundlegendes Szenario der Verwendung von Bedingungen behandelt. Weitere Informationen finden Sie unter
 
 * [Vorlagendateistruktur: Bedingung](./resource-group-authoring-templates.md#condition).
-* [Bedingtes Bereitstellen einer Ressource in einer Azure Resource Manager-Vorlage](/azure/architecture/building-blocks/extending-templates/conditional-deploy.md).
+* [Bedingtes Bereitstellen einer Ressource in einer Azure Resource Manager-Vorlage](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Vorlagenfunktion: If](./resource-group-template-functions-logical.md#if) (Wenn).
 * [Vergleichsfunktionen für Azure Resource Manager-Vorlagen](./resource-group-template-functions-comparison.md)
 

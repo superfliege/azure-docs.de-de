@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912747"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "61458945"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection für Azure Database for MySQL
 

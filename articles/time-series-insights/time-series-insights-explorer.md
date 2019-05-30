@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure Time
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f22a0245d002b94d9fc0004214c37944350e262
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: db24c2c7a64c7a5cdca3eb27088dd82d9bb2bf3d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412929"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237717"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
 

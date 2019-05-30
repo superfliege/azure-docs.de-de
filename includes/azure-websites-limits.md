@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: c2db5740d6373c8f6be5dabe0260fe7f99575641
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce64047fd7490106790ea8bb1ad7963d82a87c24
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553772"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238446"
 ---
-| Ressource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
+| Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [Azure App Service-Plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup>|
 | [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |10 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
@@ -29,7 +29,7 @@ ms.locfileid: "57553772"
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
 | Integrierter Lastenausgleich | |X |X |X |X |X<sup>9</sup> |
-| [Immer aktiviert](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
+| [Immer aktiviert](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Geplante Sicherungen](../articles/app-service/manage-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
 | [Automatische Skalierung](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |

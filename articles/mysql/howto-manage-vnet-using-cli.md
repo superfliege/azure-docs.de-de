@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.openlocfilehash: 199a5ead9856c5f9cba404ce89611efe2d78de8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "66160467"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln für Azure Database for MySQL mithilfe der Azure CLI

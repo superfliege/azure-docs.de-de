@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d886aa364ca928d32100c570689f13beb0c682c9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e993378634262de25449975431c0a9e3145ca9fb
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143415"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255242"
 ---
 # <a name="status-monitor-v2-api-enable-instrumentationengine-v021-alpha"></a>API für Statusmonitor v2: Enable-InstrumentationEngine (v0.2.1-alpha)
 
@@ -61,7 +61,7 @@ PS C:\> Enable-InstrumentationEngine
 **Optional.** Verwenden Sie diesen Schalter, um die Lizenz- und Datenschutzbestimmungen in monitorlosen Installationen anzunehmen.
 
 ### <a name="-verbose"></a>-Verbose
-**Allgemeiner Parameter**: Verwenden Sie diesen Parameter, um detaillierte Protokolle auszugeben.
+**Allgemeiner Parameter.** Verwenden Sie diesen Parameter, um detaillierte Protokolle auszugeben.
 
 ## <a name="output"></a>Output
 
@@ -79,7 +79,7 @@ Configuring registry for instrumentation engine...
  - [Untersuchen Sie Metriken](../../azure-monitor/app/metrics-explorer.md) für die Überwachung von Leistung und Auslastung.
 - [Durchsuchen Sie Ereignisse und Protokolle](../../azure-monitor/app/diagnostic-search.md), um Probleme zu diagnostizieren.
 - [Verwenden Sie Analytics](../../azure-monitor/app/analytics.md) für erweiterte Abfragen.
-- [Erstellen Sie Dashboards.](../../azure-monitor/app/app-insights-dashboards.md)
+- [Erstellen Sie Dashboards.](../../azure-monitor/app/overview-dashboard.md)
  
  Hinzufügen weiterer Telemetrieelemente:
  - [Erstellen Sie Webtests](monitor-web-app-availability.md), um sicherzustellen, dass Ihre Website live bleibt.

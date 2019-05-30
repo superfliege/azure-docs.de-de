@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 28785bb99dcdb767a64ae977e8326b80130fb135
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526519"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240194"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mithilfe von PowerShell
 
@@ -76,7 +76,7 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
 1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
 
     ```azurepowershell-interactive
-    Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
+    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
 Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde der Cluster erfolgreich erstellt.
@@ -100,7 +100,7 @@ Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde d
 1. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
 
     ```azurepowershell-interactive
-    Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase
+    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
     ```
 
 Jetzt verfügen Sie über einen Cluster und eine Datenbank.

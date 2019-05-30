@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215859"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60515422"
 ---
 # <a name="bing-text-to-speech-api"></a>Text-to-Speech-API von Bing
 
@@ -70,7 +71,7 @@ Autorisierung | Autorisierungstoken |  Informationen hierzu finden Sie im Abschn
 
 ### <a name="InputParam"></a>Eingabeparameter
 
-Anforderungen für die Text-to-Speech-API von Bing werden in Form von HTTP POST-Aufrufen vorgenommen. Die Header sind im vorherigen Abschnitt angegeben. Der Hauptteil enthält eine SSML-Eingabe (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese), die den umzuwandelnden Text darstellt. Eine Beschreibung des Markups zur Steuerung von Sprachaspekten wie Sprache und Geschlecht des Sprechers finden Sie in der [SSML-W3C-Spezifikation](http://www.w3.org/TR/speech-synthesis/).
+Anforderungen für die Text-to-Speech-API von Bing werden in Form von HTTP POST-Aufrufen vorgenommen. Die Header sind im vorherigen Abschnitt angegeben. Der Hauptteil enthält eine SSML-Eingabe (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese), die den umzuwandelnden Text darstellt. Eine Beschreibung des Markups zur Steuerung von Sprachaspekten wie Sprache und Geschlecht des Sprechers finden Sie in der [SSML-W3C-Spezifikation](https://www.w3.org/TR/speech-synthesis/).
 
 >[!NOTE]
 >Eine SSML-Eingabe darf maximal 1.024 Zeichen (einschließlich aller Tags) umfassen.
@@ -140,43 +141,43 @@ Voice name not supported
 
 ## <a name="ChangeSSML"></a>Ändern der Sprachausgabe per SSML
 
-Die Text-to-Speech-API von Microsoft unterstützt SSML 1.0 gemäß W3C-Definition ([Speech Synthesis Markup Language (SSML) Version 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)). Dieser Abschnitt enthält Beispiele für das Ändern bestimmter Eigenschaften der generierten Sprachausgabe wie Sprechgeschwindigkeit und Aussprache mithilfe von SSML-Tags.
+Die Text-to-Speech-API von Microsoft unterstützt SSML 1.0 gemäß W3C-Definition ([Speech Synthesis Markup Language (SSML) Version 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)). Dieser Abschnitt enthält Beispiele für das Ändern bestimmter Eigenschaften der generierten Sprachausgabe wie Sprechgeschwindigkeit und Aussprache mithilfe von SSML-Tags.
 
 1. Hinzufügen einer Pause
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+   ```
 
 2. Ändern der Sprechgeschwindigkeit
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 3. Aussprache
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+   ```
 
 4. Ändern der Lautstärke
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 5. Ändern der Tonhöhe
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 6. Ändern des Satzrhythmus
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+   ```
 
 > [!NOTE]
 > Beachten Sie, dass die Audiodaten in 8k- oder 16k-WAV-Dateien im folgenden Format vorliegen müssen: **CRC-Code** (CRC-32): 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0xFFFFFFFF; **Audioformatflag**: 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0xFFFFFFFF; **Beispielzahl**: 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0x7FFFFFFF; **Größe des binären Texts**: 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0x7FFFFFFF; **Binärer Text**: n Bytes.
@@ -269,6 +270,7 @@ zh-HK | Male | Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apoll
 zh-TW | Female | Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)
 zh-TW | Female | Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)
 zh-TW | Male | Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)
+
  *ar-EG unterstützt modernes Hocharabisch (Modern Standard Arabic, MSA).
 
 > [!NOTE]

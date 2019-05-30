@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 30b1b08e27eca826a9f882475723913810b3feb4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a040f3895f710f4ebbdcd3f73568775a909aa64c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721850"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258270"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Schnellstart: Erstellen eines virtuellen Netzwerks über PowerShell
 
@@ -140,9 +140,6 @@ Get-AzPublicIpAddress `
 ```cmd
 mstsc /v:<publicIpAddress>
 ```
-
-Eine RDP-Datei (Remotedesktopprotokoll) (*.rdp*) wird auf Ihren Computer heruntergeladen und es wird ein Remotedesktop geöffnet.
-
 1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
 1. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben.
