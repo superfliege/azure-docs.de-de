@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pabutler
-ms.openlocfilehash: 6ca0eb23dad218262eff5d80543628df273022c9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942237"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257535"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Verwalten Ihres Azure Marketplace- und AppSource-Herausgeberprofils
 
@@ -49,7 +49,7 @@ Sie können auch Ihr vorhandenes Dev Center-Konto mit Ihrem Herausgeberprofil im
 > [!NOTE]
 > Die Registrierung des Developer Center-Kontos ist für die Veröffentlichung kostenpflichtiger SKUs im Marketplace obligatorisch.
 
-Wenn Sie nicht über ein Developer Center-Konto verfügen, können Sie wie unter [Registrieren bei Dev Center](../../register-dev-center.md) beschrieben ein Konto erstellen.  Fügen Sie dann die registrierte E-Mail-Adresse als Besitzer im Cloud-Partnerportal für Ihr Angebot hinzu. Ein Besitzer kann im Abschnitt **Benutzer** Ihrem Veröffentlichungsprofil nur die registrierte E-Mail-Adresse hinzufügen. Melden Sie sich dann beim Portal mit derselben E-Mail-Adresse an, und stellen Sie eine Verbindung mit Ihrem Dev Center-Konto her.
+Wenn Sie nicht über ein Developer Center-Konto verfügen, können Sie wie unter [Registrieren bei Dev Center](https://docs.microsoft.com/azure/marketplace/register-dev-center) beschrieben ein Konto erstellen.  Fügen Sie dann die registrierte E-Mail-Adresse als Besitzer im Cloud-Partnerportal für Ihr Angebot hinzu. Ein Besitzer kann im Abschnitt **Benutzer** Ihrem Veröffentlichungsprofil nur die registrierte E-Mail-Adresse hinzufügen. Melden Sie sich dann beim Portal mit derselben E-Mail-Adresse an, und stellen Sie eine Verbindung mit Ihrem Dev Center-Konto her.
 
 ![Details eines Herausgeberprofil – Herausgeberprofilbeschreibung](./media/publisherprofiledescription.png)
 
