@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 05/22/2019
+ms.author: monhaber
+ms.openlocfilehash: 9806f92a3f00df60cd75315eca427836348e7534
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968591"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244293"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Advanced Data Security für SQL Server-Instanzen in IaaS
 Advanced Data Security für SQL Server-Instanzen in IaaS ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen aktuell die Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können.
@@ -95,7 +95,7 @@ Sie können die aktuellen Sicherheitswarnungen anzeigen und verwalten.
 
 Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigung erhalten sollen, wenn ASC-Warnungen generiert werden. Die E-Mail enthält einen direkten Link zur Warnung in Azure Security Center mit allen relevanten Details. 
 
-1. Wechseln Sie zu **Security Center** > **Sicherheitsrichtlinie**, und klicken Sie in der Zeile des jeweiligen Abonnements auf **Einstellungen bearbeiten >**.
+1. Wechseln Sie zu **Security Center** > **Sicherheitsrichtlinie**, und klicken Sie in der Zeile des jeweiligen Abonnements auf **Einstellungen bearbeiten >** .
 
     ![Abonnementeinstellungen](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
@@ -132,7 +132,7 @@ Sie können die Ergebnisse und Berichte zur Sicherheitsrisikobewertung direkt au
 
 1. Um weitere Details anzuzeigen, klicken Sie auf eines der Dashboardelemente. Beispiel: 
 
-   1. Klicken Sie im Abschnitt mit der****  Zusammenfassung zu Überprüfungen mit Fehlern auf eine Sicherheitsüberprüfung, um eine Log Analytics-Tabelle mit den Ergebnissen für diese Überprüfung bei allen Datenbanken anzuzeigen. Die Überprüfungen mit Ergebnissen werden zuerst aufgeführt.
+   1. Klicken Sie im Abschnitt mit der Zusammenfassung zu Überprüfungen mit Fehlern auf eine Sicherheitsüberprüfung, um eine Log Analytics-Tabelle mit den Ergebnissen für diese Überprüfung bei allen Datenbanken anzuzeigen **.** Die Überprüfungen mit Ergebnissen werden zuerst aufgeführt.
 
    1. Klicken Sie dann durch die Liste, um Details zu jedem Sicherheitsrisiko anzuzeigen. Dazu gehören die Beschreibung des Sicherheitsrisikos sowie Auswirkung, Status, verbundenes Risiko und tatsächliche Ergebnisse für diese Datenbank. Sie können auch die eigentliche Abfrage, die für diese Überprüfung ausgeführt wurde, und Informationen zur Beseitigung dieses Sicherheitsrisikos anzeigen.
 
