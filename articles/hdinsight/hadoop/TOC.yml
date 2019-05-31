@@ -130,7 +130,7 @@
           href: apache-hadoop-hive-pig-udf-dotnet-csharp.md
         - name: Verwenden von Python mit Apache Hive und Apache Pig
           href: python-udf-hdinsight.md
-        - name: 'Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung '
+        - name: Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
           maintainContext: true
     - name: Verwenden von Use HDInsight-Tools
@@ -423,7 +423,7 @@
       items:
         - name: Architektur des virtuellen HDInsight-Netzwerks
           href: ../hdinsight-virtual-network-architecture.md
-        - name: Einschränkung für ausgehenden Datenverkehr in HDInsight
+        - name: Verwenden einer Firewall zum Einschränken des ausgehenden Datenverkehrs
           href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight in Azure VNET
           href: ../hdinsight-extend-hadoop-virtual-network.md

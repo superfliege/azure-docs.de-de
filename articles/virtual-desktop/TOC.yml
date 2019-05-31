@@ -48,6 +48,8 @@
       href: delegated-access-virtual-desktop.md
     - name: Lastenausgleichsmethoden für Hostpools
       href: host-pool-load-balancing.md
+    - name: FSLogix-Profilcontainer und Azure-Dateien
+      href: fslogix-containers-azure-files.md
 - name: Problembehandlung
   items:
     - name: 'Übersicht über die Problembehandlung, Feedback und Support'

@@ -8,15 +8,6 @@
     - name: 'Azure Marketplace und AppSource: Übersicht und Vorteile'
       href: ./marketplace-publishers-guide.md
       items:
-        - name: Ihr Weg zum Herausgeber im Marketplace
-          href: ./become-publisher.md
-          items:
-            - name: Erstellen eines Microsoft-Kontos
-              href: ./guidelines.md
-            - name: Registrieren bei Dev Center
-              href: ./register-dev-center.md
-            - name: Zuordnen der Nutzung durch Kunden von Azure-Partnern
-              href: ./azure-partner-customer-usage-attribution.md
         - name: 'Ein Marketplace, zwei Storefronts'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Optionen und Überlegungen zur Veröffentlichung
@@ -30,6 +21,8 @@
               href: ./private-offers.md
             - name: Standardvertrag
               href: ./standard-contract.md
+            - name: Zuordnen der Nutzung durch Kunden von Azure-Partnern
+              href: ./azure-partner-customer-usage-attribution.md
         - name: Leitfaden zur Veröffentlichung nach Angebotstyp
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -481,6 +474,15 @@
       items:
         - name: Erstellen eines SaaS-Angebots
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS-Fulfillment-APIs
+          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: Registrieren einer SaaS-Anwendung
+              href: ./partner-center-portal/pc-saas-registration.md
+            - name: SaaS-Fulfillment-APIs v2
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: SaaS-Fulfillment-APIs v1 (veraltet)
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
     - name: Veröffentlichungsstatus
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualisieren vorhandener Angebote

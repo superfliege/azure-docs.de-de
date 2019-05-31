@@ -66,6 +66,8 @@
               href: tutorial-routing-config-message-routing-PowerShell.md
         - name: 'Teil 2: Anzeigen der Ergebnisse der Nachrichtenweiterleitung'
           href: tutorial-routing-view-message-routing-results.md
+    - name: Nachrichtenergänzungen
+      href: tutorial-message-enrichments.md
     - name: Verwenden von Metriken und Diagnoseprotokollen
       href: tutorial-use-metrics-and-diags.md
     - name: Ausführen eines manuellen Failovers
@@ -78,6 +80,8 @@
       href: tutorial-connectivity.md
 - name: Konzepte
   items:
+    - name: 'Nachrichtenergänzungen: Übersicht'
+      href: iot-hub-message-enrichments-overview.md
     - name: Geräteverwaltung – Übersicht
       href: iot-hub-device-management-overview.md
     - name: Vergleichen von IoT Hub und Event Hubs

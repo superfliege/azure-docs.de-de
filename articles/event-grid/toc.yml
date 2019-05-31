@@ -101,6 +101,8 @@
       href: event-sources.md
     - name: Ereignishandler
       href: event-handlers.md
+    - name: Notfallwiederherstellung mit Georeplikation
+      href: geo-disaster-recovery.md
 - name: Anleitungen
   items:
     - name: Posten eines Beitrags in einem benutzerdefinierten Thema

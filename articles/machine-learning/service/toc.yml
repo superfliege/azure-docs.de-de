@@ -78,6 +78,9 @@
         - name: Änderungsprognose
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Azure Open Datasets
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: Konzepte
   items:
     - name: Arbeitsbereich
@@ -130,6 +133,9 @@
         - name: Aktivieren der Protokollierung
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: Festlegen von Eingabe- und Ausgabeverzeichnissen
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: Verwenden der VS Code-Erweiterung
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
@@ -170,7 +176,7 @@
           href: how-to-train-ml-models.md
         - name: Verwenden von PyTorch
           href: how-to-train-pytorch.md
-        - name: Verwenden von TensorFlow und Keras
+        - name: Verwenden von TensorFlow
           href: how-to-train-tensorflow.md
         - name: Optimieren von Hyperparametern
           displayName: parameter

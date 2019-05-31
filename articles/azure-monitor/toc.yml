@@ -837,6 +837,8 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: Implementieren einer Logik-App-Aktion
                   href: platform/action-groups-logic-app.md
+                - name: Integrieren des allgemeinen Warnungsschemas mit Logic Apps
+                  href: platform/alerts-common-schema-integrations.md
             - name: Lösung Warnungsverwaltung
               href: platform/alert-management-solution.md
             - name: Benutzeroberfläche für Warnungen
