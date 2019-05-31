@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524045"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573774"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -92,7 +92,7 @@ In diesem Abschnitt geht es um Anwendungsfälle für Predictive Maintenance aus 
 |**Finanzen** |                         |
 |_Ausfälle von Geldautomaten_ sind ein häufiges Problem in der Bankbranche. Hierbei besteht das Problem darin, die Wahrscheinlichkeit zu ermitteln, mit der der Abhebevorgang von Geld am Automaten aufgrund eines Papierstaus oder eines Teilefehlers in der Ausgabeeinheit unterbrochen wird. Basierend auf der Vorhersage von Fehlern bei diesen Transaktionen können Geldautomaten proaktiv gewartet werden, um das Auftreten von Fehlern zu verhindern.| Anstatt zuzulassen, dass es während einer Transaktion zu einem Fehler im Automaten kommt, wird dieser so programmiert, dass die Transaktion aufgrund der Vorhersage verweigert wird.|
 |**Energieversorgung** |                          |
-|_Ausfall von Windturbinen_: Windturbinen sind in Ländern, die auf eine umweltfreundliche Energieerzeugung achten, eine wichtige Energiequelle und mit hohem Investitionsaufwand verbunden. Eine Schlüsselkomponente von Windturbinen ist der Generatormotor. Wenn er ausfällt, kann die Turbine keine Energie mehr liefern. Außerdem ist die Reparatur sehr teuer.|Durch das Vorhersagen von KPIs, z.B. die mittlere Zeitspanne bis zum Ausfall (Mean Time To Failure, MTTF), können Unternehmen der Windenergiebranche Ausfälle von Turbinen verhindern und die Ausfallzeiten gering halten. Mit den Ausfallwahrscheinlichkeiten erhalten Techniker Informationen zur Überwachung von Turbinen, die voraussichtlich in Kürze ausfallen, sodass die zeitbasierte Wartung geplant werden kann. Vorhersagemodelle liefern Erkenntnisse zu verschiedenen Faktoren, die zum Ausfall beitragen. Mit diesen Informationen können Techniker die Grundursachen von Problemen besser verstehen.|
+|_Ausfall von Windturbinen_: Windturbinen sind in Ländern/Regionen, die auf eine umweltfreundliche Energieerzeugung achten, eine wichtige Energiequelle und mit hohem Investitionsaufwand verbunden. Eine Schlüsselkomponente von Windturbinen ist der Generatormotor. Wenn er ausfällt, kann die Turbine keine Energie mehr liefern. Außerdem ist die Reparatur sehr teuer.|Durch das Vorhersagen von KPIs, z.B. die mittlere Zeitspanne bis zum Ausfall (Mean Time To Failure, MTTF), können Unternehmen der Windenergiebranche Ausfälle von Turbinen verhindern und die Ausfallzeiten gering halten. Mit den Ausfallwahrscheinlichkeiten erhalten Techniker Informationen zur Überwachung von Turbinen, die voraussichtlich in Kürze ausfallen, sodass die zeitbasierte Wartung geplant werden kann. Vorhersagemodelle liefern Erkenntnisse zu verschiedenen Faktoren, die zum Ausfall beitragen. Mit diesen Informationen können Techniker die Grundursachen von Problemen besser verstehen.|
 |_Ausfälle von Leistungsschutzschaltern_: Zur Versorgung von Wohnhäusern und Unternehmen mit Elektrizität müssen Stromleitungen jederzeit betriebsbereit sein, damit der Strom ankommt. Mithilfe von Leitungsschutzschaltern können Schäden an Stromleitungen bei Überlast oder schwierigen Wetterbedingungen eingeschränkt oder vermieden werden. Das Geschäftsproblem ist hierbei die Vorhersage von Ausfällen der Leistungsschutzschalter.| PdM-Lösungen tragen zur Reduzierung von Reparaturkosten bei und verlängern die Lebensdauer von Ausrüstungsteilen, z.B. Leistungsschutzschaltern. Sie verbessern die Qualität des Stromnetzwerks, indem unerwartete Fehler und Ausfälle reduziert werden.|
 |**Transport und Logistik** |    |
 |_Ausfälle von Aufzugtüren_: Große Anbieter von Aufzügen stellen einen umfassenden Service für Millionen von weltweit betriebenen Aufzügen bereit. Die Hauptanliegen der Kunden sind die Sicherheit, die Zuverlässigkeit und der unterbrechungsfreie Betrieb der Aufzüge. Diese Unternehmen verfolgen diese und verschiedene andere Attribute über Sensoren, um Instandsetzungsmaßnahmen und die vorbeugende Wartung zu unterstützen. Bei einem Aufzug ist das häufigste Kundenproblem die Fehlfunktion der Aufzugtüren. Das Geschäftsproblem besteht in diesem Fall darin, eine Knowledge Base-Vorhersageanwendung bereitzustellen, mit der die potenziellen Ursachen von Türausfällen vorhergesagt werden können.| Aufzüge stellen meist Investitionen mit einer Lebensdauer von 20 bis 30 Jahren dar. Jeder Verkaufsvorgang ist in der Regel also stark umkämpft, und die Erwartungen an den Service und Support sind hoch. Durch Predictive Maintenance können diese Unternehmen in Bezug auf die Produkt- und Serviceangebote einen Wettbewerbsvorteil gegenüber der Konkurrenz erzielen.|
@@ -227,7 +227,7 @@ Technische Spezifikationen der Ausrüstung, z.B. Herstellungsdatum, Modellnummer
 
 Die bisher beschriebenen Schritte zur Datenaufbereitung sollten ergeben, dass die Daten wie unten dargestellt organisiert werden. Trainings-, Test- und Validierungsdaten sollten über dieses logische Schema verfügen (in diesem Beispiel wird die Zeiteinheit „Tage“ verwendet).
 
-| Asset-ID | Zeit | \<Featurespalten> | Bezeichnung |
+| Asset-ID | Time | \<Featurespalten> | Bezeichnung |
 | ---- | ---- | --- | --- |
 | A123 |Tag 1 | . . . | . |
 | A123 |Tag 2 | . . . | . |
@@ -291,7 +291,7 @@ Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, d
 
 ![Abbildung 5: Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) Abbildung 5. Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts
 
-Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, dass die Ressource innerhalb der nächsten X Zeiteinheiten aufgrund der Grundursache bzw. des Problems _P<sub>i</sub>_ ausfällt?“ Hierbei steht _i_ für die Anzahl von möglichen Grundursachen. Bezeichnen Sie zur Beantwortung dieser Frage X Datensätze vor dem Ausfall einer Ressource als „Ausfall wahrscheinlich aufgrund von Grundursache _P<sub>i</sub>_“ (label = _P<sub>i</sub>_). Bezeichnen Sie alle anderen Datensätze als „normal“ (label = 0). Auch bei dieser Methode sind die Bezeichnungen kategoriebezogen (siehe Abbildung 6).
+Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, dass die Ressource innerhalb der nächsten X Zeiteinheiten aufgrund der Grundursache bzw. des Problems _P<sub>i</sub>_ ausfällt?“ Hierbei steht _i_ für die Anzahl von möglichen Grundursachen. Bezeichnen Sie zur Beantwortung dieser Frage X Datensätze vor dem Ausfall einer Ressource als „Ausfall wahrscheinlich aufgrund von Grundursache _P<sub>i</sub>_ “ (label = _P<sub>i</sub>_ ). Bezeichnen Sie alle anderen Datensätze als „normal“ (label = 0). Auch bei dieser Methode sind die Bezeichnungen kategoriebezogen (siehe Abbildung 6).
 
 ![Abbildung 6: Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage der Grundursache](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) Abbildung 6. Bezeichnung für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts
 
