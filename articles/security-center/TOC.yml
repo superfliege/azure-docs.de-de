@@ -45,6 +45,8 @@
       href: security-center-onboarding.md
     - name: Serverschutz mit Windows Defender ATP
       href: security-center-wdatp.md
+    - name: Advanced Data Security für IaaS
+      href: security-center-iaas-advanced-data.md
     - name: Schützen von App Service
       href: security-center-app-services.md
     - name: Arbeiten mit Sicherheitsrichtlinien
@@ -62,8 +64,6 @@
       items:
         - name: Datensammlung
           href: security-center-enable-data-collection.md
-        - name: Advanced Data Security für IaaS
-          href: security-center-iaas-advanced-data.md
         - name: Integrierte Sicherheitsrichtlinien
           href: security-center-policy-definitions.md
         - name: E-Mail-Benachrichtigungen
