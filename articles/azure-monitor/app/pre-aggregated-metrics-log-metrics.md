@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b544bfcb59bf4c2b44e6b666fcd33e9fb493692
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330652"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572518"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
@@ -63,7 +63,7 @@ Die Sammlung von benutzerdefinierten Metrikdimensionen ist standardmäßig deakt
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Erstellen von Diagrammen und Erkunden von protokollbasierten und standardmäßig vorab aggregierten Metriken
 
-Verwenden Sie den Metrik-Explorer von Azure Monitor, um Diagramme aus vorab aggregierten und protokollbasierten Metriken darzustellen, und um Dashboards mit Diagrammen zu erstellen. Nachdem Sie die gewünschte Application Insights-Ressource ausgewählt haben, können Sie mit der Namespaceauswahl zwischen Standard- (Vorschau) und protokollbasierten Metriken wechseln oder einen benutzerdefinierten Metriknamespace auswählen:
+Verwenden Sie den [Metrik-Explorer von Azure Monitor](../platform/metrics-getting-started.md), um Diagramme aus vorab aggregierten und protokollbasierten Metriken darzustellen, und um Dashboards mit Diagrammen zu erstellen. Nachdem Sie die gewünschte Application Insights-Ressource ausgewählt haben, können Sie mit der Namespaceauswahl zwischen Standard- (Vorschau) und protokollbasierten Metriken wechseln oder einen benutzerdefinierten Metriknamespace auswählen:
 
 ![Metriknamespace](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 

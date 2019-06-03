@@ -3,19 +3,19 @@ title: Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlin
 description: Hier erhalten Sie Informationen zum Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856358"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703376"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -23,7 +23,11 @@ Dieser Artikel enthält Informationen zum Verwalten der Token-, Sitzungs- und SS
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Tokengültigkeitsdauern und Anspruchskonfiguration
 
-Zum Ändern der Einstellungen für Ihre Tokengültigkeitsdauern fügen Sie in der Datei der vertrauenden Seite für die gewünschte Richtlinie ein [ClaimsProviders](claimsproviders.md)-Element hinzu.  Das **ClaimsProviders**-Element ist dem [TrustFrameworkPolicy](trustframeworkpolicy.md)-Element untergeordnet. Sie müssen dort die Informationen einfügen, die sich auf die Gültigkeitsdauer Ihrer Token auswirken. Die XML sieht wie im folgenden Beispiel aus:
+Zum Ändern der Einstellungen für Ihre Tokengültigkeitsdauern fügen Sie in der Datei der vertrauenden Seite für die gewünschte Richtlinie ein [ClaimsProviders](claimsproviders.md)-Element hinzu.  Das **ClaimsProviders**-Element ist dem [TrustFrameworkPolicy](trustframeworkpolicy.md)-Element untergeordnet. 
+
+Fügen Sie das ClaimsProviders-Element zwischen dem BasePolicy-Element und dem RelyingParty-Element der Datei der vertrauenden Seite ein.
+
+Sie müssen dort die Informationen einfügen, die sich auf die Gültigkeitsdauer Ihrer Token auswirken. Die XML sieht wie im folgenden Beispiel aus:
 
 ```XML
 <ClaimsProviders>

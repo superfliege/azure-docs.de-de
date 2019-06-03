@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 64d4c48697d38cfa5942e09cb672af37c27eede2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369048"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688675"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
 Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation im Azure-Portal verwenden können. In der folgenden Tabelle sind die verfügbaren Berichte aufgeführt:
 
-| Bericht | Standort | BESCHREIBUNG |
+| Bericht | Location | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | Verlauf – gesperrte Benutzer | Azure AD > MFA-Server > Benutzer blockieren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
 | Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
@@ -122,7 +122,9 @@ Diese Daten sind über das [Azure-Portal](https://portal.azure.com) und die [Ber
 - Sitzungssteuerelemente
 - Ergebnis
 
-## <a name="powershell-reporting"></a>PowerShell-Berichterstellung
+## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-Berichte über für MFA registrierte Benutzer
+
+Stellen Sie zunächst sicher, dass das [MSOnline-V1-PowerShell-Modul](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) installiert ist.
 
 Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben.
 

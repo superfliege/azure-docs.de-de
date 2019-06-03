@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270146"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569603"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen
 
@@ -166,7 +166,7 @@ Es gibt vier verschiedene Typen von Parametern, die zurzeit unterstützt werden:
 
 ### <a name="using-a-text-parameter"></a>Verwenden eines Textparameters
 
-Der Wert, den ein Benutzer in das Textfeld eingibt, wird direkt in der Abfrage ersetzt, ohne Escape- oder Anführungszeichen. Wenn der benötigte Wert eine Zeichenfolge ist, sollte die Abfrage den Parameter in Anführungszeichen setzen (z. B. **'{parameter}'**).
+Der Wert, den ein Benutzer in das Textfeld eingibt, wird direkt in der Abfrage ersetzt, ohne Escape- oder Anführungszeichen. Wenn der benötigte Wert eine Zeichenfolge ist, sollte die Abfrage den Parameter in Anführungszeichen setzen (z. B. **'{parameter}'** ).
 
 Dadurch kann der Wert in einem Textfeld überall verwendet werden. Er kann ein Tabellenname, Spaltenname, Funktionsname, Operator usw. sein.
 
@@ -206,7 +206,7 @@ Generiert folgendes Ergebnis:
 
 ![Application Insights – Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](./media/usage-workbooks/011-data-table.png)
 
-Ein praxisnäheres Beispiel besteht in der Verwendung eines Dropdowns für die Auswahl aus einer Gruppe von Ländern anhand des Namens:
+Ein praxisnäheres Beispiel besteht in der Verwendung eines Dropdowns für die Auswahl aus einer Gruppe von Ländern/Regionen anhand des Namens:
 
 ```
 customEvents

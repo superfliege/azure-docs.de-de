@@ -3,23 +3,23 @@ title: Was ist Azure Active Directory B2C? | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie in Ihrer Anwendung mithilfe von Azure Active Directory B2C Identitätsumgebungen für die Registrierung, Anmeldung und Profilverwaltung erstellen und verwalten.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 33c6f9e06439ebeb17608aa374532ac4f7a020cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455499"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701358"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C ist ein Identitätsverwaltungsdienst. Dieser Dienst ermöglicht die Anpassung und Steuerung der sicheren Benutzerinteraktion mit Ihren Webanwendungen, Desktopanwendungen, mobilen Anwendungen oder Single-Page-Webanwendungen. Mit Azure AD B2C können Benutzer Registrierungs- und Anmeldevorgänge ausführen, Kennwörter zurücksetzen und Profile bearbeiten. Azure AD B2C implementiert eine Form von OpenID Connect- und OAuth 2.0-Protokollen. Der zentrale Aspekt bei der Implementierung dieser Protokolle sind die Sicherheitstoken und deren Ansprüche, die einen sicheren Zugriff auf Ressourcen ermöglichen.
+Azure Active Directory (Azure AD) B2C ist ein Dienst für die Business-to-Consumer-Identitätsverwaltung. Dieser Dienst ermöglicht die Anpassung und Steuerung der sicheren Benutzerinteraktion mit Ihren Webanwendungen, Desktopanwendungen, mobilen Anwendungen oder Single-Page-Webanwendungen. Mit Azure AD B2C können Benutzer Registrierungs- und Anmeldevorgänge ausführen, Kennwörter zurücksetzen und Profile bearbeiten. Azure AD B2C implementiert eine Form von OpenID Connect- und OAuth 2.0-Protokollen. Der zentrale Aspekt bei der Implementierung dieser Protokolle sind die Sicherheitstoken und deren Ansprüche, die einen sicheren Zugriff auf Ressourcen ermöglichen.
 
 Eine *User Journey* ist eine Anforderung, die eine Richtlinie angibt, um zu steuern, wie der Benutzer und Ihre Anwendung mit Azure AD B2C interagieren. User Journeys können in Azure AD B2C auf zwei Arten definiert werden: 
 

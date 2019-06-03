@@ -1,29 +1,25 @@
 ---
-title: Veröffentlichen eines Azure-SaaS-Anwendungsangebots | Microsoft-Dokumentation
+title: Veröffentlichen eines Azure SaaS-Anwendungsangebots | Azure Marketplace
 description: Veröffentlichungsprozess und -schritte für ein SaaS-Anwendungsangebot im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 25c9ab0008e7f056789536d8cc737b69e83d6db5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5f4c38ed6ee19beacc67e29d094a20f5576668d6
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196093"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833488"
 ---
 # <a name="publish-a-saas-application-offer"></a>Veröffentlichen eines SaaS-Anwendungsangebots
 
 Nachdem Sie die Informationen auf der Seite **Neues Angebot** angegeben haben, um ein neues Angebot zu erstellen, können Sie das Angebot veröffentlichen. Klicken Sie auf **Veröffentlichen**, um den Veröffentlichungsprozess zu starten.
+
+> [!IMPORTANT] 
+> Die SaaS-Angebotsfunktionalität wird zum [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory) migriert.  Alle neuen Herausgeber müssen das Partner Center für die Erstellung neuer SaaS-Angebote und die Verwaltung bestehender Angebote verwenden.  Aktuelle Herausgeber mit SaaS-Angeboten werden schrittweise vom Cloud-Partnerportal zum Partner Center migriert.  Das Cloud-Partnerportal zeigt Statusmeldungen an, um anzugeben, wann bestimmte bestehende Angebote migriert wurden.
 
 In der folgenden Darstellung sind die grundsätzlichen Schritte zum Veröffentlichen eines neuen SaaS-Anwendungsangebots aufgeführt.
 

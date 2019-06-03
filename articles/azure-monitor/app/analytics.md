@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268599"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574261"
 ---
 # <a name="analytics-in-application-insights"></a>Analytics in Application Insights
 Analytics ist das leistungsfähige Such- und Abfragetool von [Application Insights](app-insights-overview.md). Analytics ist ein Webtool, sodass keine Installation erforderlich ist.
@@ -38,7 +38,7 @@ Die Application Insights-Analyse basiert wie Azure Monitor-Protokolle auf [Azure
 
 ## <a name="query-data-in-analytics"></a>Abfragen von Daten in Analytics
 Eine typische Abfrage beginnt mit einem Tabellennamen, gefolgt von einer Reihe von *Operatoren*, die durch `|` getrennt sind.
-Wir möchten z.B. herausfinden, wie viele Anforderungen unsere App während der letzten 3 Stunden aus verschiedenen Ländern empfangen hat:
+Wir möchten z.B. herausfinden, wie viele Anforderungen unsere App während der letzten 3 Stunden aus verschiedenen Ländern/Regionen empfangen hat:
 ```AIQL
 requests
 | where timestamp > ago(3h)

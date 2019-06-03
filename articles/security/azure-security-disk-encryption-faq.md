@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926283"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761917"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption für virtuelle IaaS-Computer – FAQ
 
@@ -59,12 +59,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | CentOS | 7.4 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.3 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.2n | Betriebssystem- und andere Datenträger |
-| CentOS | 6,8 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.1 | Datenträger |
-| CentOS | 7.0 | Datenträger |
-| CentOS | 6.7 | Datenträger |
-| CentOS | 6.6 | Datenträger |
-| CentOS | 6,5 | Datenträger |
+| CentOS | 6,8 | Datenträger |
 | openSUSE | 42.3 | Datenträger |
 | SLES | 12-SP4 | Datenträger |
 | SLES | 12-SP3 | Datenträger |
@@ -158,7 +153,7 @@ Unter Windows verwendet ADE das BitLocker-AES256-Verschlüsselungsverfahren (AES
 Nein, Daten werden nicht von Datenträgern für Daten gelöscht, die bereits mit Azure Disk Encryption verschlüsselt wurden. Ebenso wie EncryptFormatAll das Betriebssystemlaufwerk nicht erneut verschlüsselte, werden auch bereits verschlüsselte Laufwerke für Daten nicht erneut verschlüsselt. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
 
 ## <a name="is-xfs-filesystem-supported"></a>Wird das XFS-Dateisystem unterstützt?
-XFS-Volumes werden für die Datenträgerverschlüsselung nur mit „EncryptFormalAll“ unterstützt. Das Volume wird hierbei neu formatiert, und alle zuvor vorhandenen Daten werden gelöscht. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
+XFS-Volumes werden für die Datenträgerverschlüsselung nur mit „EncryptFormatAll“ unterstützt. Das Volume wird hierbei neu formatiert, und alle zuvor vorhandenen Daten werden gelöscht. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Kann ich einen verschlüsselten virtuellen Computer sichern und wiederherstellen? 
 

@@ -67,8 +67,8 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesTeradata**. |Ja |
 | server |Name des Teradata-Servers. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Teradata-Datenbank verwenden soll. |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -275,7 +275,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
     }
 }
 ```
-## <a name="type-mapping-for-teradata"></a>Typzuordnung für Teradata 
+## <a name="type-mapping-for-teradata"></a>Typzuordnung für Teradata
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
@@ -297,7 +297,7 @@ Beim Verschieben von Daten in Teradata werden die folgenden Zuordnungen zwischen
 | ByteInt |Int16 |
 | Decimal |Decimal |
 | Double |Double |
-| Integer |Int32 |
+| Ganze Zahl |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
 | Date |DateTime |
@@ -323,7 +323,7 @@ Beim Verschieben von Daten in Teradata werden die folgenden Zuordnungen zwischen
 | Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
 | Period(Timestamp With Time Zone) |String |
-| Xml |String |
+| xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

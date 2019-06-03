@@ -1,29 +1,25 @@
 ---
-title: Aktualisieren eines vorhandenen Azure-SaaS-Anwendungsangebots | Microsoft-Dokumentation
+title: Aktualisieren eines vorhandenen Azure-SaaS-Anwendungsangebots | Azure Marketplace
 description: Aktualisieren eines vorhandenen SaaS-Anwendungsangebots im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9d490a0ec09e351e4cee00e7c30c9161bdfac3e6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2195c9a5e1f0d3683ea8cf6564d97cbabd072f81
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196172"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834197"
 ---
 # <a name="update-an-existing-saas-application-offer"></a>Aktualisieren eines vorhandenen SaaS-Anwendungsangebots
 
 Es gibt verschiedene Arten von Aktualisierungen, die Sie möglicherweise an Ihrem Angebot vornehmen möchten, nachdem es veröffentlicht und freigeschaltet wurde. Jede Änderung, die Sie an der neuen Version Ihres Angebots vorgenommen haben, sollte gespeichert und veröffentlicht werden, damit sie im Marketplace wirksam wird. In diesem Artikel werden die verschiedenen Aspekte erläutert, die es für ein Aktualisieren Ihres SaaS-Angebots im [Cloud-Partnerportal](https://cloudpartner.azure.com/) gibt.
+
+> [!IMPORTANT] 
+> Die SaaS-Angebotsfunktionalität wird zum [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory) migriert.  Alle neuen Herausgeber müssen das Partner Center für die Erstellung neuer SaaS-Angebote und die Verwaltung bestehender Angebote verwenden.  Aktuelle Herausgeber mit SaaS-Angeboten werden schrittweise vom Cloud-Partnerportal zum Partner Center migriert.  Das Cloud-Partnerportal zeigt Statusmeldungen an, um anzugeben, wann bestimmte bestehende Angebote migriert wurden.
 
 Sie könnten Ihr Angebot beispielsweise aus den folgenden Gründen aktualisieren:
 
