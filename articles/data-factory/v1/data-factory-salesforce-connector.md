@@ -286,25 +286,25 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 
 | Salesforce-Typ | .NET-basierter Typ |
 | --- | --- |
-| Auto Number |Zeichenfolge |
-| Kontrollkästchen |Boolescher Wert |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency |Decimal |
-| Datum |DateTime |
-| Datum/Uhrzeit |DateTime |
-| E-Mail |Zeichenfolge |
-| id |Zeichenfolge |
-| Lookup Relationship |Zeichenfolge |
-| Multi-Select Picklist |Zeichenfolge |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
-| Prozent |Decimal |
-| Phone |Zeichenfolge |
-| Picklist |Zeichenfolge |
-| Text |Zeichenfolge |
-| Text Area |Zeichenfolge |
-| Text Area (Long) |Zeichenfolge |
-| Text Area (Rich) |Zeichenfolge |
-| Text (Encrypted) |Zeichenfolge |
-| URL |Zeichenfolge |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 > [!NOTE]
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
