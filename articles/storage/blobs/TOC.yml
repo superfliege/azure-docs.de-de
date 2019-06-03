@@ -275,6 +275,8 @@
           href: storage-blob-event-overview.md
         - name: Features für Seitenblobs
           href: storage-blob-pageblob-overview.md
+        - name: Statische Websites
+          href: storage-blob-static-website.md
     - name: Anleitung
       items:
         - name: Erstellen und Verwalten von Speicherkonten
@@ -353,7 +355,7 @@
         - name: Festlegen und Abrufen von Eigenschaften und Metadaten
           href: storage-properties-metadata.md
         - name: Hosten einer statischen Website
-          href: storage-blob-static-website.md
+          href: storage-blob-static-website-how-to.md
         - name: Zuordnen von Azure CDN zu einer benutzerdefinierten Domäne für den Zugriff über HTTPS
           href: storage-https-custom-domain-cdn.md
         - name: Konfigurieren einer benutzerdefinierten Domäne

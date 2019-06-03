@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317322"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550051"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Empfohlene Livestreaming-Encoder
 
@@ -59,6 +59,9 @@ Media Services empfiehlt den Einsatz eines der nachfolgenden Liveencoder, der Sm
 - Envivio-4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live und Hero 4K (UHD/HEVC)
+
+> [!TIP]
+>  Wenn Sie Liveveranstaltungen in mehreren Sprachen streamen (z.B. eine englische Audiospur und eine spanische Audiospur), können Sie dies mit dem Media Excel Live Encoder erreichen, der so konfiguriert ist, dass er den Livefeed an ein Pass-Through-Liveereignis sendet.
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurieren von lokalen Liveencodereinstellungen
 

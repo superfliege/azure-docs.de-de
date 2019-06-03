@@ -296,7 +296,7 @@ Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen 
 | MongoDB-Typ | Typ ".NET Framework" |
 | --- | --- |
 | Binary |Byte[] |
-| Boolean |Boolean |
+| Boolescher Wert |Boolescher Wert |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |

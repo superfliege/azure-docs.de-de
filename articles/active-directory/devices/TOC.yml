@@ -22,6 +22,8 @@
   items:
     - name: Einmaliges Anmelden bei lokalen Ressourcen
       href: azuread-join-sso.md
+    - name: Primäre Aktualisierungstoken
+      href: concept-primary-refresh-token.md
     - name: Mit Azure verwaltete Arbeitsstationen
       href: concept-azure-managed-workstation.md
 - name: Anleitungen
@@ -35,7 +37,7 @@
       href: azureadjoin-plan.md
     - name: Planen der Implementierung Ihrer Azure AD-Hybrideinbindung
       href: hybrid-azuread-join-plan.md
-    - name: Steuern der Azure AD-Hybrideinbindung für Ihre Geräte
+    - name: Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
       href: hybrid-azuread-join-control.md
     - name: Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten
       href: assign-local-admin.md

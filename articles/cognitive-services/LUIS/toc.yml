@@ -400,6 +400,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Ressourcen
   items:
+    - name: Neuigkeiten
+      href: whats-new.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Sprach- und Regionsunterstützung

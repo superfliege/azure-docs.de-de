@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154481"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799109"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
@@ -55,7 +55,7 @@ Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse a
 ## <a name="constraints"></a>Einschränkungen
 
 - Sie können die IP-Adressen für das Präfix nicht angeben. Azure ordnet die IP-Adressen für das Präfix basierend auf der von Ihnen angegebenen Größe zu.
-- Die Standardgröße eines Präfixes ist /28 oder 16 öffentliche IP-Adressen.
+- Sie können ein Präfix von bis zu 16 IP-Adressen oder ein /28 erstellen. Weitere Informationen finden Sie unter [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Nachdem Sie das Präfix erstellt haben, können Sie den Bereich nicht mehr ändern.
 - Der Bereich gilt nur für IPv4-Adressen. Er umfasst keine IPv6-Adressen.
 - Nur statische öffentliche IP-Adressen, die mit der Standard-SKU erstellt wurden, können aus dem Bereich des Präfix zugewiesen werden. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).

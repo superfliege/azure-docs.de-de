@@ -277,7 +277,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="restore-azure-file-shares-and-files"></a>Wiederherstellen von Azure-Dateifreigaben und -Dateien
 
-Sie können eine gesamte Dateifreigabe oder nur bestimmte Daten auf dieser wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen. 
+Sie können eine gesamte Dateifreigabe oder aber bestimmte Dateien aus dieser Freigabe wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen. 
 
 ### <a name="fetch-recovery-points"></a>Abrufen von Wiederherstellungspunkten
 

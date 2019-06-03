@@ -210,6 +210,8 @@
         - name: Rollenbasierte Zugriffssteuerung
           displayName: rbac
           href: role-based-access-control.md
+        - name: Sicherheitsattribute
+          href: cosmos-db-security-attributes.md
     - name: Unternehmensfähigkeit
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung

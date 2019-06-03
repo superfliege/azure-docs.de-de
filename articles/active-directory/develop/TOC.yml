@@ -229,8 +229,6 @@
                   href: msal-js-initializing-client-applications.md
             - name: Behandeln von Fehlern und Ausnahmen
               href: msal-handling-exceptions.md
-            - name: Testen von MSAL-Anwendungen
-              href: msal-testing.md
             - name: Protokollierung
               href: msal-logging.md
             - name: Einmaliges Anmelden (JS)
@@ -366,6 +364,12 @@
                   href: msal-net-user-gets-consent-for-multiple-resources.md
                 - name: Angeben eines eigenen HttpClient-Elements
                   href: msal-net-provide-httpclient.md
+            - name: MSAL.js
+              items:
+                - name: Vermeiden des erneuten Ladens von Seiten
+                  href: msal-js-avoid-page-reloads.md
+                - name: Übergeben von benutzerdefinierten Zuständen in Authentifizierungsanforderungen
+                  href: msal-js-pass-custom-state-authentication-request.md
         - name: Arbeiten mit Visual Studio
           items:
             - name: Verwenden des verbundenen Active Directory-Diensts

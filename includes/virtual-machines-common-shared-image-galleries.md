@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192365"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145874"
 ---
 Der Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -120,8 +120,8 @@ Da es sich bei dem Katalog mit freigegebenen Images, dem freigegebenen Image und
 | Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Geteiltes Image | Version eines freigegebenen Images |
 |----------------------|----------------------|--------------|----------------------|
 | Gemeinsamer Image-Katalog | Ja                  | Ja          | Ja                  |
-| Geteiltes Image         | Nein                    | Ja          | Ja                  |
-| Version eines freigegebenen Images | Nein                    | Nein            | Ja                  |
+| Geteiltes Image         | Nein                   | Ja          | Ja                  |
+| Version eines freigegebenen Images | Nein                   | Nein           | Ja                  |
 
 Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Weitere Informationen zu RBAC finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -266,4 +266,4 @@ Um die allgemeine Replikatanzahl in der CLI anzugeben, verwenden Sie das Argumen
 
 **F.** Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images, eine Imagedefinition, eine Imageversion und aus der Imageversion eine VM/VMSS zu erstellen?
 
- A. Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imageversion wird die Verwendung der API-Version 2018-04-01 oder höher empfohlen. Um mit Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen zu arbeiten, empfehlen wir Ihnen die Verwendung der API-Version 2018-06-01. 
+ A. Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imageversion wird die Verwendung der API-Version 2018-04-01 oder höher empfohlen. Um mit Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen zu arbeiten, empfehlen wir Ihnen die Verwendung der API-Version 2018-06-01. Zonenredundanter Speicher (ZRS) erfordert Version 2019-03-01 oder höher.

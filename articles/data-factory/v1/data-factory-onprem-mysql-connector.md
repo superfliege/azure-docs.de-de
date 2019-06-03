@@ -71,7 +71,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesMySql**. |JA |
 | server |Name des MySQL-Servers. |JA |
 | database |Name der MySQL-Datenbank. |JA |
-| schema |Name des Schemas in der Datenbank. |Nein  |
+| schema |Name des Schemas in der Datenbank. |Nein |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der MySQL-Datenbank. Mögliche Werte: `Basic`. |JA |
 | userName |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der MySQL-Datenbank an. |JA |
 | password |Geben Sie das Kennwort für das angegebene Benutzerkonto an. |JA |

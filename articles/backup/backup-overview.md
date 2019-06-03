@@ -1,20 +1,19 @@
 ---
 title: Was ist Azure Backup?
-description: Hier finden Sie eine Übersicht über den Azure Backup-Dienst und erfahren, wie Sie ihn im Rahmen Ihrer Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR) bereitstellen.
-services: backup
+description: Hier finden Sie eine Übersicht über den Azure Backup-Dienst und erfahren, wie er zu Ihrer Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR) beiträgt.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361808"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714285"
 ---
 # <a name="what-is-azure-backup"></a>Was ist Azure Backup?
 
@@ -31,11 +30,7 @@ Azure Backup bietet im Wesentlichen folgende Vorteile:
 - **Unbegrenzte Datenübertragungen:** Die Menge an übertragenen eingehenden und ausgehenden Daten wird von Azure Backup nicht beschränkt, und es fallen keine Kosten für die übertragenen Daten an.
     - Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
     - Wenn Sie mit dem Azure Import/Export-Dienst eine erste Sicherung im Offlinemodus ausführen, um große Datenmengen zu importieren, fallen Kosten für eingehende Daten an.  [Weitere Informationen](backup-azure-backup-import-export.md)
-- **Datenschutz:**
-    - Übertragene Daten werden auf dem lokalen Computer mit AES256 verschlüsselt. Die übertragenen Daten werden zwischen Speicher und Sicherung durch HTTPS geschützt. Die zwischen der Sicherung und dem Computer des Benutzers übertragenen Daten werden durch das iSCSI-Protokoll gesichert. Der iSCSI-Kanal wird durch sicheres Tunneling geschützt.
-    - Beim Sichern von lokalen Daten in Azure werden ruhende Daten in Azure unter Verwendung der Passphrase verschlüsselt, die Sie beim Einrichten der Sicherung angegeben haben. Die Passphrase oder der Schlüssel wird nie übertragen oder in Azure gespeichert. Wenn Daten wiederhergestellt werden sollen, sind nur Sie im Besitz der Passphrase für die Verschlüsselung bzw. des Schlüssels.
-    - Für virtuelle Azure-Computer werden die Daten mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) im Ruhezustand verschlüsselt. Bei der Sicherung werden Daten vor dem Speichern automatisch verschlüsselt. Azure Storage entschlüsselt Daten vor dem Abrufen.
-    - Die Sicherung unterstützt auch virtuelle Azure-Computer, die mithilfe von Azure Disk Encryption (ADE) verschlüsselt wurden. [Weitere Informationen](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)
+- **Datenschutz:** Azure Backup bietet Lösungen zur Sicherung von Daten während der Übertragung und im Ruhezustand.
 - **Anwendungskonsistente Sicherungen:** Eine anwendungskonsistente Sicherung bedeutet, dass ein Wiederherstellungspunkt alle erforderlichen Daten zum Wiederherstellen der Sicherungskopie enthält. Azure Backup umfasst anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Fixes benötigt werden. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
 - **Kurz- und Langzeitaufbewahrung von Daten:** Sie können Recovery Services-Tresore für die kurzfristige und langfristige Datenaufbewahrung verwenden. Die Zeit, für die Sie Daten im Recovery Services-Tresor aufbewahren können, wird von Azure nicht begrenzt. Daten können also beliebig lange aufbewahrt werden. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Weitere Informationen zu den Auswirkungen, die dieses Limit auf Ihre Sicherungsanforderungen hat, finden Sie [hier](backup-introduction-to-azure-backup.md#backup-and-retention).
 - **Automatische Speicherverwaltung**: Für Hybridumgebungen ist häufig heterogener Speicher erforderlich – teilweise lokal und teilweise in der Cloud. Bei Azure Backup fallen keine Kosten für die Verwendung von lokalen Speichergeräten an. Azure Backup sorgt im Rahmen eines Modells mit nutzungsbasierter Bezahlung für die automatische Zuteilung und Verwaltung von Sicherungsspeicher. Dadurch zahlen Sie nur für den Speicher, den Sie tatsächlich verwenden. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/backup) zu den Preisen.
@@ -114,6 +109,12 @@ Informieren Sie sich ausführlicher über die [Funktionsweise der Sicherung](bac
 **Ich möchte lokal ausgeführte Apps sichern.** | Für App-fähige Sicherungen müssen Computer durch DPM oder MABS geschützt werden.
 **Ich benötige präzise und flexible Sicherungs- und Wiederherstellungseinstellungen für virtuelle Azure-Computer.** | Schützen Sie virtuelle Azure-Computer mit MABS/DPM (ausgeführt in Azure), um mehr Flexibilität bei der Sicherungsplanung sowie uneingeschränkte Flexibilität für den Schutz und die Wiederherstellung von Dateien, Ordnern, Volumes, Apps und Systemstatus zu erhalten.
 
+## <a name="how-does-azure-backup-work-with-encryption"></a>Wie funktioniert Azure Backup mit Verschlüsselung?
+
+**Verschlüsselung** | **Lokale Sicherung** | **Sichern virtueller Azure-Computer** | **Sichern von SQL auf virtuellen Azure-Computern**
+--- | --- | --- | ---
+Verschlüsselung ruhender Daten<br/> (Verschlüsselung von Daten dort, wo sie beibehalten werden/gespeichert sind) | Kundenspezifische Passphrase wird zum Verschlüsseln von Daten verwendet. | Azure [ Speicherdienstverschlüsselung (Storage Service Encryption, SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) wird zum Verschlüsseln von Daten verwendet, die im Tresor gespeichert sind.<br/><br/> Bei der Sicherung werden Daten vor dem Speichern automatisch verschlüsselt. Azure Storage entschlüsselt Daten vor dem Abrufen. Die Verwendung von vom Kunden verwalteten Schlüsseln für SSE wird derzeit nicht unterstützt.<br/><br/> Sie können virtuelle Computer sichern, bei denen [Azure Disk Encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)zum Verschlüsseln von Betriebssystemdatenträgern und sonstigen Datenträgern verwendet wird. Azure Backup unterstützt virtuelle Computer, die nur mit BEK verschlüsselt wurden, sowie solche, die sowohl mit BEK als auch [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/) verschlüsselt wurden. Informieren Sie sich über die [Einschränkungen](backup-azure-vms-encryption.md#encryption-support). | Azure Backup unterstützt die Sicherung von SQL Server-Datenbanken oder Servern mit aktivierter [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017). Backup unterstützt TDE mit Schlüsseln, die von Azure verwaltet werden, oder mit vom Kunden verwalteten Schlüssen (Bring Your Own Key, BYOK).<br/><br/> Backup führt im Rahmen des Sicherungsvorgangs keine SQL-Verschlüsselung durch.
+Verschlüsselung während der Übertragung<br/> (Verschlüsselung von Daten, die von einem Speicherort in einen anderen bewegt werden) | Daten werden mit AES256 verschlüsselt und über HTTPS an den Tresor in Azure gesendet. | In Azure werden Daten zwischen Azure Storage und dem Tresor durch HTTPS geschützt. Diese Daten bleiben im Azure-Backbone-Netzwerk.<br/><br/> Bei der Dateiwiederherstellung sichert iSCSI die zwischen dem Tresor und dem virtuellen Azure-Computer übertragenen Daten. Sicheres Tunneling schützt den iSCSI-Kanal. | In Azure werden Daten zwischen Azure Storage und dem Tresor durch HTTPS geschützt.<br/><br/> Die Dateiwiederherstellung ist für SQL nicht relevant.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

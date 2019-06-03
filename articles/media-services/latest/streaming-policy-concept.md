@@ -9,28 +9,40 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 510899e44e4ea4a90e21473ee6af546744c2be2a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746743"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120237"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
-In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Sie können entweder eine der vordefinierten Streamingrichtlinien verwenden oder eine benutzerdefinierte Richtlinie erstellen. Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
+In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien, die Sie direkt für Tests oder in der Produktion verwenden können. 
 
+Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar:<br/>„Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
+
+Wenn Sie besondere Anforderungen haben (wenn Sie z.B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie erstellen. 
+
+ 
 > [!IMPORTANT]
 > * Eigenschaften von **Streamingrichtlinien** vom Datetime-Typ liegen immer im UTC-Format vor.
-> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. 
+> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+
+## <a name="decision-tree"></a>Entscheidungsstruktur
+
+Die folgenden Entscheidungsstruktur hilft Ihnen bei der Auswahl einer vordefinierten Streamingrichtlinie für Ihr Szenario.
+
+Klicken Sie auf Bild, um es in voller Größe anzeigen.  <br/>
+<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/small.png"></a> 
 
 ## <a name="examples"></a>Beispiele
 
 ### <a name="not-encrypted"></a>Nicht verschlüsselt
 
-Wenn Sie Ihre Datei im Klartext (nicht verschlüsselt) streamen möchten, legen Sie die vordefinierte Richtlinie für unverschlüsseltes Streaming fest: auf ‚Predefined_ClearStreamingOnly‘ (in .NET können Sie ‚PredefinedStreamingPolicy.ClearStreamingOnly‘ verwenden).
+Wenn Sie Ihre Datei im Klartext (nicht verschlüsselt) streamen möchten, legen Sie die vordefinierte Richtlinie für unverschlüsseltes Streaming fest: auf „Predefined_ClearStreamingOnly“ (in .NET können Sie die Enumeration „PredefinedStreamingPolicy.ClearStreamingOnly“ verwenden).
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(

@@ -5,23 +5,23 @@ services: openshift
 keywords: Red Hat OpenShift, Einrichtung, einrichten
 author: TylerMSFT
 ms.author: twhitney
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 3c265d6695af7ba1bc5833db59966a626cb29cb9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416072"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962123"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung
 
 Für die Erstellung und Ausführung von Microsoft Azure Red Hat OpenShift-Anwendungen müssen Sie folgende Vorbereitungen treffen:
 
 * Erwerben Sie reservierte Azure-VM-Instanzen.
-* Installieren Sie Version 2.0.64 (oder höher) der Azure CLI (oder verwenden Sie die Azure Cloud Shell).
+* Installieren Sie Version 2.0.65 (oder höher) der Azure CLI (oder verwenden Sie Azure Cloud Shell).
 * Registrieren Sie sich für das `openshiftmanagedcluster`-Feature und die zugehörigen Ressourcenanbieter.
 * Erstellen Sie einen Azure Active Directory-Mandanten (Azure AD).
 * Erstellen Sie ein Azure AD-Anwendungsobjekt.
@@ -29,23 +29,25 @@ Für die Erstellung und Ausführung von Microsoft Azure Red Hat OpenShift-Anwend
 
 Die folgenden Anweisungen führen Sie durch all diese Voraussetzungen.
 
-## <a name="purchase-azure-virtual-machine-reserved-instances"></a>Erwerben von reservierten Azure-VM-Instanzen
+## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Erwerben Sie reservierte Azure Red Hat OpenShift-Anwenungsknoteninstanzen
 
-Bevor Sie Azure Red Hat OpenShift verwenden können, müssen Sie reservierte Azure-VM-Instanzen erwerben.
+Bevor Sie Azure Red Hat OpenShift verwenden können, müssen Sie mindestens 4 reservierte Azure Red Hat OpenShift-Anwendungsknoten gekauft haben. Danach können Sie Cluster bereitstellen.
 
-Wenn Sie Azure-Kunde sind, informieren Sie sich, wie Sie [reservierte Azure-VM-Instanzen erwerben](https://aka.ms/openshift/buy). Eine Reservierung senkt Ihre Ausgaben, da Sie im Voraus für vollständig verwaltete Azure-Datendienste zahlen. Unter [*Was sind Azure-Reservierungen*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) erhalten Sie weitere Informationen zu Reservierungen und erfahren, wie Sie damit Geld sparen können.
+Wenn Sie Azure-Kunde sind, [erwerben Sie reservierte Azure Red Hat OpenShift-Instanzen](https://aka.ms/openshift/buy) über das Azure-Portal. Nach dem Kauf wird Ihr Abonnement innerhalb von 24 Stunden aktiviert.
 
 Wenn Sie kein Azure-Kunde sind, [wenden Sie sich an das Vertriebsteam](https://aka.ms/openshift/contact-sales), und füllen Sie das Formular am Ende der Seite aus, um den Prozess zu starten.
 
+Weitere Informationen finden Sie auf der [Azure Red Hat OpenShift-Preisseite](https://aka.ms/openshift/pricing).
+
 ## <a name="install-the-azure-cli"></a>Installieren der Azure CLI
 
-Azure Red Hat OpenShift erfordert Version 2.0.64 oder höher der Azure CLI. Wenn Sie die Azure CLI bereits installiert haben, können Sie überprüfen, um welche Version es sich handelt, indem Sie folgenden Befehl ausführen:
+Azure Red Hat OpenShift erfordert Version 2.0.65 oder höher der Azure CLI. Wenn Sie die Azure CLI bereits installiert haben, können Sie überprüfen, um welche Version es sich handelt, indem Sie folgenden Befehl ausführen:
 
 ```bash
 az --version
 ```
 
-Die erste Zeile der Ausgabe zeigt die Version der Befehlszeilenschnittstelle, z.B. `azure-cli (2.0.64)`.
+Die erste Zeile der Ausgabe zeigt die Version der Befehlszeilenschnittstelle, z.B. `azure-cli (2.0.65)`.
 
 Wenn Sie eine Neuinstallation oder ein Upgrade benötigen, sehen Sie sich die Anweisungen zum [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) an.
 
@@ -55,7 +57,8 @@ Alternativ können Sie auch die [Azure Cloud Shell](https://docs.microsoft.com/a
 
 Das `Microsoft.ContainerService openshiftmanagedcluster`-Feature sowie die Anbieter `Microsoft.Solutions` und `Microsoft.Network` müssen manuell in Ihrem Abonnement registriert werden, bevor Sie Ihren ersten Azure Red Hat OpenShift-Cluster bereitstellen können.
 
-Um diese Anbieter und Features manuell zu registrieren, führen Sie die folgenden Anweisungen an einer Bash-Shell aus, wenn Sie die CLI installiert haben. Alternativ dazu können Sie auch eine Azure Cloud Shell-Sitzung (Bash) im Azure-Portal verwenden:
+Um diese Anbieter und Features manuell zu registrieren, führen Sie die folgenden Anweisungen in einer Bash-Shell aus, wenn Sie die CLI installiert haben. Alternativ dazu können Sie auch eine Azure Cloud Shell-Sitzung (Bash) im Azure-Portal verwenden:
+
 1. Wenn Sie über mehrere Azure-Abonnements verfügen, geben Sie die gewünschte Abonnement-ID an:
 
     ```bash
@@ -98,11 +101,11 @@ Der Azure Red Hat OpenShift-Dienst erfordert einen zugeordneten Azure AD-Mandant
 
 Wenn Sie nicht über ein Azure AD-Verzeichnis verfügen, das Sie als Mandanten für Ihren Azure Red Hat OpenShift-Cluster verwenden können, oder einen Mandanten zu Testzwecken erstellen möchten, befolgen Sie die Anweisungen unter [Erstellen eines Azure AD-Mandanten für Ihren Azure Red Hat OpenShift-Cluster](howto-create-tenant.md), bevor Sie mit diesem Leitfaden fortfahren.
 
-## <a name="create-an-azure-ad-application-object-and-user"></a>Erstellen eines Azure AD-Anwendungsobjekts und -Benutzers
+## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Erstellen eines Azure AD-Benutzers, einer Sicherheitsgruppe und eines Anwendungsobjekts
 
-Azure Red Hat OpenShift erfordert Berechtigungen zum Ausführen von Aufgaben in Ihrem Cluster, z.B. zum Konfigurieren von Speicher. Diese Berechtigungen werden durch einen [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) dargestellt und erstellt, wenn Sie eine Azure AD-Anwendung registrieren, die die Workload repräsentiert, die Sie in Azure Red Hat OpenShift hosten möchten. Sie sollten auch einen neuen Active Directory-Benutzer erstellen, um Apps zu testen, die in Ihrem Azure Red Hat OpenShift-Cluster ausgeführt werden sollen.
+Azure Red Hat OpenShift erfordert Berechtigungen zum Ausführen von Aufgaben in Ihrem Cluster, z.B. zum Konfigurieren von Speicher. Diese Berechtigungen werden durch einen [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) dargestellt. Sie sollten auch einen neuen Active Directory-Benutzer erstellen, um Apps zu testen, die in Ihrem Azure Red Hat OpenShift-Cluster ausgeführt werden sollen.
 
-Befolgen Sie die Anweisungen unter [Erstellen eines Azure AD-App-Objekts und -Benutzers](howto-aad-app-configuration.md), um zu erfahren, wie Sie einen Dienstprinzipal erstellen, einen geheimen Clientschlüssel und eine Rückruf-URL für die Authentifizierung generieren sowie einen neuen Active Directory-Benutzer zum Testen erstellen.
+Befolgen Sie die Anweisungen unter [Erstellen eines Azure AD-App-Objekts und -Benutzers](howto-aad-app-configuration.md), um einen Dienstprinzipal zu erstellen, ein Clientgeheimnis und eine Rückruf-URL für die Authentifizierung für Ihre App zu generieren und eine neue Azure AD-Sicherheitsgruppe und einen neuen Benutzer für den Zugriff auf den Cluster zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

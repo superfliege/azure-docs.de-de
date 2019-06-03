@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9b9b6d08fd14a850838590ce003e889e8e652c7c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148064"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170387"
 ---
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
@@ -51,7 +51,7 @@ Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In dies
 1. Geben Sie für **Herausgeber** *myPublisher* ein. 
 1. Geben Sie für **Angebot** *myOffer* ein.
 1. Geben Sie für **SKU** *mySKU* ein.
-1. Stellen Sie sicher, dass **Ja** für **Aktivieren** ausgewählt ist, und wählen Sie dann **Überprüfen + Erstellen**.
+1. Wenn Sie fertig sind, wählen Sie **Überprüfen und erstellen** aus.
 1. Nachdem die Imagedefinition erfolgreich überprüft wurde, wählen Sie **Erstellen**.
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 

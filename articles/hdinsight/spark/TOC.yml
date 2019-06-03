@@ -72,7 +72,7 @@
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Remotedebuggen von Apache Spark-Aufträgen mit IntelliJ per VPN
           href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
-        - name: 'Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung '
+        - name: Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
     - name: Verwenden von Use HDInsight-Tools
       items:
@@ -371,6 +371,10 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Netzwerkzugriff
       items:
+        - name: Architektur des virtuellen HDInsight-Netzwerks
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Verwenden einer Firewall zum Einschränken des ausgehenden Datenverkehrs
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight in Azure VNET
           href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: Verbinden von HDInsight mit dem lokalen Netzwerk

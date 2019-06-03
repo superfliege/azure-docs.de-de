@@ -101,7 +101,7 @@
       href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning Services
       items:
-        - name: Erstellen und Bereitstellen eines Vorhersagemodells in R
+        - name: Erstellen eines Vorhersagemodells in R
           items:
             - name: 1. Vorbereiten der Daten
               href: sql-database-tutorial-predictive-model-prepare-data.md
@@ -109,6 +109,14 @@
               href: sql-database-tutorial-predictive-model-build-compare.md
             - name: 3. Bereitstellen des Modells
               href: sql-database-tutorial-predictive-model-deploy.md
+        - name: Erstellen eines Clusteringmodells in R
+          items:
+            - name: 1. Vorbereiten der Daten
+              href: sql-database-tutorial-clustering-model-prepare-data.md
+            - name: 2. Erstellen des Modells
+              href: sql-database-tutorial-clustering-model-build.md
+            - name: 3. Bereitstellen des Modells
+              href: sql-database-tutorial-clustering-model-deploy.md
 - name: Beispiele
   items:
     - name: Codebeispiele
