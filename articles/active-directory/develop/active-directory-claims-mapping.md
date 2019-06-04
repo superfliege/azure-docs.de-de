@@ -71,7 +71,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | appctxsender |
 | appid |
 | appidacr |
-| Assertion |
+| assertion |
 | at_hash |
 | aud |
 | auth_data |
@@ -158,7 +158,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | request_nonce |
 | resource |
 | role |
-| Rollen |
+| roles |
 | scope |
 | scp |
 | sid |
