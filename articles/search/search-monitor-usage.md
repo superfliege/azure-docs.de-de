@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bf78cd9b70aa4a82ef96fdd529d3ee5b1641038c
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035355"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797375"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
@@ -77,13 +77,15 @@ In diesem Abschnitt erfahren Sie, wie Sie protokollierte Ereignisse und Metrikda
 
 1. [Erstellen Sie ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), wenn Sie noch keines besitzen. Sie können es in der gleichen Ressourcengruppe wie Azure Search ablegen, um später die Bereinigung zu vereinfachen, wenn Sie alle in dieser Übung verwendeten Ressourcen löschen.
 
+   Ihr Speicherkonto muss sich in der gleichen Region wie Azure Search befinden.
+
 2. Öffnen Sie die Seite „Übersicht“ für Ihren Suchdienst. Scrollen Sie im linken Navigationsbereich nach unten zu **Überwachung**, und klicken Sie auf **Überwachung aktivieren**.
 
    ![Überwachung aktivieren](./media/search-monitor-usage/enable-monitoring.png "Überwachung aktivieren")
 
 3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Azure Monitor-Protokollen exportieren.
 
-   Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten erstellt.
+   Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten nach Bedarf erstellt.
 
    ![Konfigurieren des Blob Storage-Archivs](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurieren des Blob Storage-Archivs")
 
@@ -112,7 +114,7 @@ Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprech
 | NAME | Type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs |
 | operationVersion |Zeichenfolge |"2019-05-06" |Die verwendete API-Version |
 | category |Zeichenfolge |„OperationLogs“ |Konstante |
@@ -136,7 +138,7 @@ Metriken werden für Abfrageanforderungen erfasst.
 
 | NAME | Type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
 | in |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
 | average |int |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
