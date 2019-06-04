@@ -1,19 +1,18 @@
 ---
 title: Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 description: Erfahren Sie, wie Sie Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern verwenden können.
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43f335bdd8b918fa717d9084d3c9c30d97920c10
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6452e73b2429ab89a466b1c3b59cc892eca31205
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004957"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707317"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -69,7 +68,7 @@ Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten*
         ![Identitätsstellungen für das Verwenden von Data Lake Storage Gen2 mit Azure HDInsight](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
         
 > [!Note]
-> Sie können ein oder mehrere Data Lake Storage Gen2-Konten als Sekundärspeicher auf demselben Cluster hinzufügen. Wiederholen Sie lediglich die oben stehenden Schritte für jedes Data Lake Storage Gen2-Konto, das Sie mit derselben verwalteten Identität hinzufügen möchten.
+> Um ein sekundäres Data Lake Storage Gen2-Konto hinzuzufügen, weisen Sie einfach auf der Speicherkontoebene die zuvor erstellte verwaltete Identität dem neuen Data Lake Storage Gen2-Speicherkonto zu, das Sie hinzufügen möchten. Beachten Sie, dass das Hinzufügen eines sekundären Data Lake Storage Gen2-Kontos über die Registerkarte „Zusätzliche Speicherkonten“ auf HDInsight nicht unterstützt wird. 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Erstellen eines Clusters mit Data Lake Storage Gen2 über die Azure CLI
 

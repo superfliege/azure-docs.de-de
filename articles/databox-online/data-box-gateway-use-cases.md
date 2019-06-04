@@ -1,18 +1,19 @@
 ---
 title: Microsoft Azure Data Box Gateway – Anwendungsfälle | Microsoft-Dokumentation
-description: In diesem Artikel werden Anwendungsfälle für Azure Data Box Gateway beschrieben, einer Speicherlösung mit einem virtuellen Gerät, die zum Übertragen von Daten in Azure dient.
+description: In diesem Artikel werden Anwendungsfälle für Azure Data Box Gateway beschrieben, einer Speicherlösung mit einem virtuellen Gerät, die zum Übertragen von Daten zu Azure dient.
 services: databox
 author: alkohli
 ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.date: 03/2/2019
+ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403798"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924388"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Anwendungsfälle für Azure Data Box Gateway
 

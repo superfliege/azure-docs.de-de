@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 73a3d426e9040525b0c631db273e59c49a6a9eb0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1bfd1b5b4b7febd98499e338fcb62e339867aef4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705882"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244719"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs: Referenzarchitektur für Unternehmen
 Dieser Artikel enthält eine Referenzarchitektur als Unterstützung für die Bereitstellung einer Azure DevTest Labs-basierten Lösung in einem Unternehmen. Dies umfasst Folgendes:
@@ -34,7 +34,7 @@ Dies sind die Schlüsselelemente der Referenzarchitektur:
 
 - **Azure Active Directory (Azure AD)** : DevTest Labs verwendet den [Azure AD-Dienst für die Identitätsverwaltung](../active-directory/fundamentals/active-directory-whatis.md). Berücksichtigen Sie diese beiden Hauptaspekte, wenn Sie Benutzern Zugriff auf eine Umgebung gewähren, die auf DevTest Labs basiert:
     - **Ressourcenverwaltung:** Ermöglicht den Zugriff auf das Azure-Portal, um Ressourcen zu verwalten. Dies umfasst unter anderem das Erstellen virtueller Computer und das Erstellen von Umgebungen sowie das Starten, Beenden, Neustarten, Löschen und Anwenden von Artefakten. Die Ressourcenverwaltung erfolgt in Azure über die rollenbasierte Zugriffssteuerung (RBAC). Sie weisen Rollen den Benutzern zu und legen Ressourcen- und Zugriffsberechtigungen fest.
-    - **Virtuelle Computer (Netzwerkebene):** In der Standardkonfiguration verwenden virtuelle Computer ein lokales Administratorkonto. Ist eine Domäne verfügbar ([Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md), eine lokale Domäne oder eine cloudbasierte Domäne), können Computer in diese Domäne eingebunden werden. Benutzer können dann ihre domänenbasierte Identität verwenden, um eine Verbindung mit den virtuellen Computern herzustellen.
+    - **Virtuelle Computer (Netzwerkebene):** In der Standardkonfiguration verwenden virtuelle Computer ein lokales Administratorkonto. Ist eine Domäne verfügbar ([Azure AD Domain Services](../active-directory-domain-services/overview.md), eine lokale Domäne oder eine cloudbasierte Domäne), können Computer in diese Domäne eingebunden werden. Benutzer können dann ihre domänenbasierte Identität verwenden, um eine Verbindung mit den virtuellen Computern herzustellen.
 - **Lokale Konnektivität**: In unserem Architekturdiagramm wird [ExpressRoute](../expressroute/expressroute-introduction.md) verwendet. Sie können aber auch eine [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)-Verbindung verwenden. Obwohl ExpressRoute für DevTest Labs nicht erforderlich ist, wird es häufig in Unternehmen verwendet. ExpressRoute ist nur erforderlich, wenn Sie Zugriff auf Unternehmensressourcen benötigen. Häufige Szenarien:
     - Sie verfügen über lokale Daten, die nicht in die Cloud verschoben werden können.
     - Sie bevorzugen das Einbinden der virtuellen Computer des Labs in die lokale Domäne.

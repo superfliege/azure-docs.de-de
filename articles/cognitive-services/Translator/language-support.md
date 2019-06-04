@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577590"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690147"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -28,7 +28,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 **V2 der Textübersetzungs-API**
 
 > [!NOTE]
-> V2 gilt ab dem 30. April 2018 als veraltet und wird ab dem 30. April 2019 nicht mehr unterstützt.
+> V2 wurde am 30. April 2018 eingestellt. Migrieren Sie Ihre Anwendungen zu V3, um die Vorteile der neuen Funktionen zu nutzen, die ausschließlich in V3 verfügbar sind.
 
 * Nur statistisches System: Für diese Sprache ist kein neuronales System verfügbar.
 * Neuronales System verfügbar: Es ist ein neuronales System verfügbar. Verwenden Sie den Parameter `category=generalnn`, um auf das neuronale System zuzugreifen.
@@ -230,14 +230,17 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Indonesisch|   `id`    |
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
+|Suaheli| `sw`    |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
+|Madagassisch|  `mg`    |
 | Norwegisch      | `nb`          |
 | Polnisch      | `pl`          |
 | Portugiesisch      | `pt`          |
 | Rumänisch      | `ro`          |
 | Russisch      | `ru`          |
+|Samoanisch|    `sm`    |
 | Serbisch (Lateinisch)      | `sr-Latn`          |
 | Slowakisch     | `sk`          |
 | Slowenisch      | `sl`          |

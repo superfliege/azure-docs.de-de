@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500616"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866507"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -50,6 +50,18 @@ Sie können weiterhin unabhängig vom Laufwerk, in dem Sie sich befinden, die ve
 Alle an den Azure-Ressourcen vorgenommenen Änderungen, die entweder direkt im Azure-Portal oder über Azure PowerShell-Cmdlets durchgeführt wurden, werden auf dem Azure-Laufwerk reflektiert.  Sie können `dir -Force` ausführen, um Ihre Ressourcen zu aktualisieren.
 
 ![](media/features-powershell/azure-drive.png)
+
+### <a name="manage-exchange-online"></a>Verwalten von Exchange Online
+
+PowerShell in Cloud Shell enthält einen privaten Build des Exchange Online-Moduls.  Führen Sie `Connect-EXOPSSession` aus, um Ihre Exchange-Cmdlets abzurufen.
+
+![](media/features-powershell/exchangeonline.png)
+
+ Führen Sie `Get-Command -Module tmp_*` aus.
+> [!NOTE]
+> Der Modelname sollte mit `tmp_` beginnen, wenn Sie Module mit demselben Präfix installiert haben, werden auch deren Cmdlets ausgegeben. 
+
+![](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Enge Integration in Open Source-Tools
 

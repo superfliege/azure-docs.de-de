@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005999"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869610"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN-POP-Standorte nach Abkürzung
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "60005999"
 
 In diesem Artikel werden die POP-Standorte nach POP-Abkürzung sortiert für **Azure CDN aus Verizon** aufgelistet.
 
-Abkürzung | Standort | Region
+Abkürzung | Location | Region
 | --- | --- | --- |
 AGA | Atlanta, Georgia, USA | Nordamerika: USA, Ostküste
 AGB | Atlanta, Georgia, USA | Nordamerika: USA, Ostküste
