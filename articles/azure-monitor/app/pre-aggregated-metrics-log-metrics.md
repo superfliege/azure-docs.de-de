@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572518"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256126"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
@@ -34,7 +34,7 @@ Gleichzeitig kann das Sammeln eines vollständigen Satzes von Ereignissen für A
 
 ## <a name="pre-aggregated-metrics"></a>Vorab aggregierte Metriken
 
-Zusätzlich zu den protokollbasierten Metriken lieferte das Application Insights-Team im Herbst 2018 eine öffentliche Vorschau von Metriken aus, die in einem speziellen, für Zeitreihen optimierten Repository gespeichert sind. Die neuen Metriken werden nicht mehr als einzelne Ereignisse mit vielen Eigenschaften, sondern als vorab aggregierte Zeitreihen und nur mit Schlüsseldimensionen gespeichert. Dadurch sind die neuen Metriken hinsichtlich der Abfragezeit überlegen: Der Datenabruf erfolgt viel schneller und erfordert weniger Rechenleistung. Dies ermöglicht neue Szenarien wie [Warnungen zu Metrikdimensionen nahezu in Echtzeit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts), reaktionsschnellere [Dashboards](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards) und mehr.
+Zusätzlich zu den protokollbasierten Metriken lieferte das Application Insights-Team im Herbst 2018 eine öffentliche Vorschau von Metriken aus, die in einem speziellen, für Zeitreihen optimierten Repository gespeichert sind. Die neuen Metriken werden nicht mehr als einzelne Ereignisse mit vielen Eigenschaften, sondern als vorab aggregierte Zeitreihen und nur mit Schlüsseldimensionen gespeichert. Dadurch sind die neuen Metriken hinsichtlich der Abfragezeit überlegen: Der Datenabruf erfolgt viel schneller und erfordert weniger Rechenleistung. Dies ermöglicht neue Szenarien wie [Warnungen zu Metrikdimensionen nahezu in Echtzeit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts), reaktionsschnellere [Dashboards](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard) und mehr.
 
 > [!IMPORTANT]
 > Protokollbasierte und vorab aggregierte Metriken können in Azure Application Insights parallel verwendet werden. Zur Unterscheidung werden in Application Insights UX die vorab aggregierten Metriken nun „Standardmetriken (Vorschau)“ genannt, während die traditionellen Metriken aus den Ereignissen in „protokollbasierte Metriken“ umbenannt wurden.
