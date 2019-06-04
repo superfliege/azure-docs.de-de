@@ -5,6 +5,8 @@
   items:
     - name: Worum handelt es sich bei Language Understanding?
       href: what-is-luis.md
+    - name: Neuigkeiten
+      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: Hinzufügen einer App für eine vordefinierte Domäne
@@ -197,8 +199,9 @@
         - name: Mit Bing-Rechtschreibprüfung v7
           href: luis-tutorial-bing-spellcheck.md
         - name: Mit Spracherkennungsdienst
-          href: luis-tutorial-speech-to-intent.md
-        - name: Verwenden von Bot Framework-Version 3
+          maintainContext: true
+          href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
+        - name: Mit einem Bot
           items:
             - name: Web-App-Bot
               items:
@@ -400,8 +403,6 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Ressourcen
   items:
-    - name: Neuigkeiten
-      href: whats-new.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Sprach- und Regionsunterstützung

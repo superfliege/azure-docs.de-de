@@ -20,14 +20,6 @@
       href: concepts-dependency-visualization.md
 - name: Anleitungen
   items:
-    - name: Bewährte Methoden für die Migration
-      items:
-        - name: Bewährte Methoden für Sicherheit und Verwaltung nach der Migration
-          href: migrate-best-practices-security-management.md
-        - name: Bewährte Methoden für Netzwerke nach der Migration
-          href: migrate-best-practices-networking.md
-        - name: Bewährte Methoden für Kostenermittlung und Größenanpassung nach der Migration
-          href: migrate-best-practices-costs.md
     - name: 'Migrationsbeispiele: Contoso-Serie'
       href: contoso-migration-overview.md
     - name: Erkunden und Bewerten einer großen Umgebung

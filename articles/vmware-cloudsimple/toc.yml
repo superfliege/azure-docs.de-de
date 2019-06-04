@@ -15,7 +15,7 @@
         - name: Konfigurieren einer Private Cloud-Umgebung
           href: quickstart-create-private-cloud.md
         - name: Erstellen eines virtuellen VMware-Computers in einer Private Cloud
-          href: 'https://docs.azure.cloudsimple.com/quickstart-create-private-cloud-vmware-virtual-machine/'
+          href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Nutzen von virtuellen VMware-Computern in Azure
           href: quickstart-create-vmware-virtual-machine.md
     - name: Konzepte

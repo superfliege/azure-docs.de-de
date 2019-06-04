@@ -297,7 +297,7 @@ Beim Verschieben von Daten in Teradata werden die folgenden Zuordnungen zwischen
 | ByteInt |Int16 |
 | Decimal |Decimal |
 | Double |Double |
-| Ganze Zahl |Int32 |
+| Integer |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
 | Date |DateTime |

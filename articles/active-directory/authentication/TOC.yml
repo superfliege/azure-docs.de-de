@@ -43,8 +43,6 @@
       items:
         - name: Funktionsweise von MFA
           href: concept-mfa-howitworks.md
-        - name: Welche Version ist die richtige?
-          href: concept-mfa-whichversion.md
         - name: Lizenzieren Ihrer Benutzer
           href: concept-mfa-licensing.md
         - name: Verwalten eines Authentifizierungsanbieters
