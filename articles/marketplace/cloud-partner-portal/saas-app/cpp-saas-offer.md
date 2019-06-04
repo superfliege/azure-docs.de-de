@@ -1,29 +1,26 @@
 ---
-title: Azure-SaaS-Anwendungsangebot | Microsoft-Dokumentation
+title: Azure SaaS-Anwendungsangebot | Azure Marketplace
 description: Übersicht über den Prozess zum Veröffentlichen eines Azure-SaaS-Anwendungsangebots im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213550"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835054"
 ---
 # <a name="azure-saas-application-offer"></a>Azure-SaaS-Anwendungsangebot
 
 In diesem Abschnitt wird beschrieben, wie Sie ein SaaS-Anwendungsangebot (Software-as-a-Service) auf dem <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> veröffentlichen.
+
+> [!IMPORTANT] 
+> Die SaaS-Angebotsfunktionalität wird zum [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory) migriert.  Alle neuen Herausgeber müssen das Partner Center für die Erstellung neuer SaaS-Angebote und die Verwaltung bestehender Angebote verwenden.  Aktuelle Herausgeber mit SaaS-Angeboten werden schrittweise vom Cloud-Partnerportal zum Partner Center migriert.  Das Cloud-Partnerportal zeigt Statusmeldungen an, um anzugeben, wann bestimmte bestehende Angebote migriert wurden.
+
 
 Verwenden Sie SaaS-Anwendungen, wenn Ihre Lösung in Ihrem eigenen Azure-Abonnement bereitgestellt wird und Kunden sich über eine Schnittstelle anmelden, die Sie entwerfen und verwalten, um die Anwendung zu testen. <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory</a> (AAD) wird verwendet, um Ihre vorhandene Testumgebung zu nutzen.
 

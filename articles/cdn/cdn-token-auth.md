@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918891"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869407"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
@@ -33,7 +33,7 @@ Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, 
 
 Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vertrauenswürdigen Website generiert werden. Dazu müssen die Anforderungen einen Tokenwert mit codierten Informationen zur anfordernden Person enthalten. Inhalte werden der anfordernden Person nur bereitgestellt, wenn die codierten Informationen die erforderlichen Voraussetzungen erfüllen. Andernfalls werden die Anforderungen abgelehnt. Sie können die Anforderungen einrichten, indem Sie einen oder mehrere der folgenden Parameter verwenden:
 
-- Land: Lassen Sie Anforderungen zu, die aus den Ländern stammen, die durch den [Ländercode](/previous-versions/azure/mt761717(v=azure.100)) angegeben sind, oder verweigern Sie solche Anforderungen.
+- Land: Lassen Sie Anforderungen zu, die aus den Ländern/Regionen stammen, die durch den [Ländercode](/previous-versions/azure/mt761717(v=azure.100)) angegeben sind, oder verweigern Sie solche Anforderungen.
 - URL: Lassen Sie nur Anforderungen zu, die der angegebenen Ressource oder dem Pfad entsprechen.
 - Host: Lassen Sie Anforderungen zu, die die im Anforderungsheader angegebenen Hosts verwenden, oder verweigern Sie solche Anforderungen.
 - Verweiser: Lassen Sie Anforderungen vom angegebenen Verweiser zu, oder verweigern Sie solche Anforderungen.
@@ -72,7 +72,7 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 
       ```rand -hex <key length>```
 
-      Beispiel: 
+      Beispiel:
 
       ```OpenSSL> rand -hex 32``` 
 
@@ -86,7 +86,7 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 
       ![CDN-Tokenauthentifizierung – Einrichten des Schlüssels](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. Verwenden Sie das Verschlüsselungstool, um Verschlüsselungsparameter einzurichten und ein Token zu generieren. Mit dem Verschlüsselungstool können Sie Anforderungen basierend auf Ablaufzeit, Land, Verweiser, Protokoll und Client-IP (in beliebigen Kombinationen) zulassen oder ablehnen. Anzahl und Art der Parameter, die zur Bildung eines Tokens kombiniert werden können, sind zwar nicht beschränkt, die Gesamtlänge des Tokens darf jedoch maximal 512 Zeichen betragen. 
+   4. Verwenden Sie das Verschlüsselungstool, um Verschlüsselungsparameter einzurichten und ein Token zu generieren. Mit dem Verschlüsselungstool können Sie Anforderungen basierend auf Ablaufzeit, Land/Region, Verweiser, Protokoll und Client-IP (in beliebigen Kombinationen) zulassen oder ablehnen. Anzahl und Art der Parameter, die zur Bildung eines Tokens kombiniert werden können, sind zwar nicht beschränkt, die Gesamtlänge des Tokens darf jedoch maximal 512 Zeichen betragen. 
 
       ![CDN-Verschlüsselungstool](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -120,11 +120,11 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie für jedes Land einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](/previous-versions/azure/mt761717(v=azure.100)). Trennen Sie alle Länder jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
+      >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder/Regionen stammen. Anforderungen aus allen anderen Ländern/Regionen werden abgelehnt. Verwenden Sie für jedes Land einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](/previous-versions/azure/mt761717(v=azure.100)). Trennen Sie alle Länder jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden zugelassen. Die Implementierung ist identisch mit dem <b>ec_country_allow</b>-Parameter. Ist ein Ländercode sowohl im <b>ec_country_allow</b>- als auch im <b>ec_country_deny</b>-Parameter vorhanden, dann hat der Parameter <b>ec_country_allow</b> Vorrang.</td>
+      >    <td>Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern/Regionen stammen. Anforderungen aus allen anderen Ländern/Regionen werden zugelassen. Die Implementierung ist identisch mit dem <b>ec_country_allow</b>-Parameter. Ist ein Ländercode sowohl im <b>ec_country_allow</b>- als auch im <b>ec_country_deny</b>-Parameter vorhanden, dann hat der Parameter <b>ec_country_allow</b> Vorrang.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>

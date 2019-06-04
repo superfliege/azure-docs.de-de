@@ -1,29 +1,26 @@
 ---
-title: Erstellen eines Azure-SaaS-Anwendungsangebots | Microsoft-Dokumentation
+title: Erstellen eines Azure SaaS-Anwendungsangebots | Azure Marketplace
 description: Erstellen eines SaaS-Anwendungsangebots im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 646e9bf844477b3d8e1c4c42fb5956e015805433
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880278"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833498"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Erstellen eines neuen SaaS-Anwendungsangebots
 
 In diesem Artikel wird beschrieben, wie Sie einen Azure Marketplace-Eintrag für ein SaaS-Anwendungsangebot erstellen und veröffentlichen.
+
+> [!IMPORTANT] 
+> Die SaaS-Angebotsfunktionalität wird zum [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory) migriert.  Alle neuen Herausgeber müssen das Partner Center für die Erstellung neuer SaaS-Angebote und die Verwaltung bestehender Angebote verwenden.  Aktuelle Herausgeber mit SaaS-Angeboten werden schrittweise vom Cloud-Partnerportal zum Partner Center migriert.  Das Cloud-Partnerportal zeigt Statusmeldungen an, um anzugeben, wann bestimmte bestehende Angebote migriert wurden.
+
 
 ## <a name="offer-process"></a>Angebotsprozess
 

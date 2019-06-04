@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498416"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728029"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -238,7 +238,7 @@ Es wird empfohlen, die folgenden Schritte zum Sichern der Collectorappliance aus
 
 ## <a name="os-license-in-the-collector-vm"></a>Betriebssystemlizenz auf der Collector-VM
 
-Der Collector ist mit einer Windows Server 2012 R2-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum für Ihre Collector-VM abläuft, wird empfohlen, eine neue OVA-Datei herunterzuladen und eine neue Appliance zu erstellen.
+Der Collector ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum für Ihre Collector-VM abläuft, wird empfohlen, eine neue OVA-Datei herunterzuladen und eine neue Appliance zu erstellen.
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>Aktualisieren des Betriebssystems der Collector-VM
 
