@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997967"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710416"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -271,7 +271,7 @@ sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung v
 
 Element | Wert
 ------- | -----
-Ressourcen-ID | Die Azure Resource Manager-Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, zu der der virtuelle Computer gehört. Diese Einstellung muss ebenfalls angegeben werden, wenn in der Konfiguration eine JsonBlob-Senke verwendet wird.
+resourceId | Die Azure Resource Manager-Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, zu der der virtuelle Computer gehört. Diese Einstellung muss ebenfalls angegeben werden, wenn in der Konfiguration eine JsonBlob-Senke verwendet wird.
 scheduledTransferPeriod | Die Häufigkeit, mit der aggregierte Metriken berechnet und an den Azure-Metrikendienst übertragen werden, als ein Zeitintervall im Format ISO 8601. Das kleinste Übertragungsintervall ist 60 Sekunden, d.h. PT1M. Sie müssen mindestens einen scheduledTransferPeriod-Wert angeben.
 
 Die Werte für die Metriken, die im Abschnitt performanceCounters angegeben wurden, werden alle 15 Sekunden oder in der explizit für den Leistungsindikator festgelegten Häufigkeit erfasst. Wenn mehrere scheduledTransferPeriod-Werte (wie im Beispiel) angegeben wurden, wird jede Aggregation unabhängig von den anderen berechnet.
@@ -500,7 +500,9 @@ ReadsPerSecond | Lesevorgänge pro Sekunde
 WritesPerSecond | Schreibvorgänge pro Sekunde
 TransfersPerSecond | Lese- oder Schreibvorgänge pro Sekunde
 
-Aggregierte Werte für alle Dateisysteme erhalten Sie, indem Sie `"condition": "IsAggregate=True"` festlegen. Werte für ein bestimmtes eingebundenes Dateisystem, wie z.B. „/mnt“, erhalten Sie, indem Sie `"condition": 'Name="/mnt"'` angeben.
+Aggregierte Werte für alle Dateisysteme erhalten Sie, indem Sie `"condition": "IsAggregate=True"` festlegen. Werte für ein bestimmtes eingebundenes Dateisystem, wie z.B. „/mnt“, erhalten Sie, indem Sie `"condition": 'Name="/mnt"'` angeben. 
+
+**HINWEIS**: Wenn Sie nicht JSON, sondern das Azure-Portal verwenden, ist „Name='/mnt'“ die richtige Form des Bedingungsfelds.
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>Integrierte Metriken der Datenträgerklasse
 

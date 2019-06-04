@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437461"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875733"
 ---
 # <a name="paper-entity"></a>Artikelentität
 
@@ -26,7 +26,7 @@ NAME    |BESCHREIBUNG                                        |Type       | Vorg�
 ------- | ------------------------------------------------- | --------- | ----------------------------
 id      |Entitäts-ID                                          |Int64      |Equals
 Ti      |Titel des Artikels                                        |Zeichenfolge     |Equals,<br/>StartsWith
-L       |Sprachcode des Artikels, getrennt durch „\@@@“            |Zeichenfolge     |Equals
+L       |Sprachcode des Artikels, getrennt durch „\@\@\@“          |Zeichenfolge     |Equals
 J       |Jahr des Artikels                                         |Int32      |Equals,<br/>IsBetween
 D       |Datum des Artikels                                         |Datum       |Equals,<br/>IsBetween
 CC      |Anzahl der Zitate                                     |Int32      |none  
