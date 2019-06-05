@@ -28,12 +28,13 @@ Verwenden Sie die folgenden Informationen und Beispiele, um ein besseres Verstä
 
 ## <a name="usage-location"></a>Verwendungsstandort
 
-Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft **Usage location** (Verwendungsstandort) für den Benutzer angeben. Im [Azure-Portal](https://portal.azure.com) können Sie dies unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** angeben.
+Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft **Usage location** (Nutzungsspeicherort) für den Benutzer angeben. Im [Azure-Portal](https://portal.azure.com) können Sie dies unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** angeben.
 
 Bei der Gruppenlizenzzuweisung erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Wenn sich Ihre Benutzer an mehreren Standorten befinden, sollten Sie darauf achten, diese in Ihren Benutzerobjekten richtig anzugeben, bevor Sie Gruppen mit Lizenzen Benutzer hinzufügen.
 
 > [!NOTE]
-> Bei der Zuweisung von Gruppenlizenzen wird ein vorhandener Verwendungsstandortwert für einen Benutzer nie geändert. Es wird empfohlen, die Angabe des Verwendungsstandorts als Teil des Benutzererstellungsablaufs in Azure AD (z.B. über die AAD Connect-Konfiguration) festzulegen. Hierdurch wird sichergestellt, dass das Ergebnis der Lizenzzuweisung immer korrekt ist und die Benutzer keine Dienste für Standorte empfangen, die nicht zugelassen sind.
+> Bei der Zuweisung von Gruppenlizenzen wird ein vorhandener 
+standortwert für einen Benutzer nie geändert. Es wird empfohlen, die Angabe des Verwendungsstandorts als Teil des Benutzererstellungsablaufs in Azure AD (z.B. über die AAD Connect-Konfiguration) festzulegen. Hierdurch wird sichergestellt, dass das Ergebnis der Lizenzzuweisung immer korrekt ist und die Benutzer keine Dienste für Standorte empfangen, die nicht zugelassen sind.
 
 ## <a name="use-group-based-licensing-with-dynamic-groups"></a>Verwenden der gruppenbasierten Lizenzierung mithilfe von dynamischen Gruppen
 
