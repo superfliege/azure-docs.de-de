@@ -43,7 +43,7 @@
       items:
         - name: Filtern von Daten mit Azure Functions
           href: tutorial-deploy-function.md
-        - name: Ermitteln von Mittelwerten mit ASA
+        - name: Ermitteln von Durchschnittswerten mit Azure Stream Analytics
           href: tutorial-deploy-stream-analytics.md
         - name: Bewerten von Daten mit Azure Machine Learning Service
           href: tutorial-deploy-machine-learning.md

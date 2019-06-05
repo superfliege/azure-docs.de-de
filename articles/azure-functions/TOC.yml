@@ -15,6 +15,16 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: Erstellen von Funktionen – Visual Studio Code
       href: functions-create-first-function-vs-code.md
+    - name: 'Erstellen von Funktionen: Node.js mit Visual Studio Code'
+      items:
+        - name: Erste Schritte
+          href: tutorial-javascript-vscode-get-started.md
+        - name: Erstellen der Anwendung
+          href: tutorial-javascript-vscode-create-app.md
+        - name: Lokales Ausführen und Testen der App
+          href: tutorial-javascript-vscode-run-app.md
+        - name: Bereitstellen der Website
+          href: tutorial-javascript-vscode-deploy-app.md
     - name: Erstellen von Funktionen – Java/Maven
       href: functions-create-first-java-maven.md
     - name: Erstellen von Funktionen – Python
@@ -58,7 +68,7 @@
     - name: Ändern der Imagegröße mit Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Erstellen einer serverlosen Web-App
-      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
+      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: Erstellen eines benutzerdefinierten Linux-Images
       href: functions-create-function-linux-custom-image.md
     - name: Functions auf einem IoT Edge-Gerät

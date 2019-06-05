@@ -600,6 +600,8 @@
       items:
         - name: Leistungstipps
           items:
+            - name: Abrufen von Abfrageausführungsmetriken
+              href: profile-sql-api-query.md
             - name: Optimieren der Abfrageleistung
               href: sql-api-query-metrics.md
             - name: Tipps zur Leistungssteigerung für das .NET SDK

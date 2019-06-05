@@ -74,7 +74,11 @@
         - name: Konfigurieren der SAML-Tokenverschlüsselung (Vorschauversion)
           href: howto-saml-token-encryption.md
     - name: Einmaliges Anmelden
-      href: what-is-single-sign-on.md
+      items:
+        - name: Worum handelt es sich beim einmaligen Anmelden?
+          href: what-is-single-sign-on.md
+        - name: Planen einer Bereitstellung mit einmaligem Anmelden
+          href: plan-sso-deployment.md
     - name: Endbenutzerportale
       href: end-user-experiences.md
 - name: Anleitungen
@@ -93,7 +97,9 @@
           href: application-proxy-configure-for-claims-aware-applications.md
         - name: 'Registrieren des Connectors: Installation im Hintergrund'
           href: application-proxy-register-connector-powershell.md
-        - name: Konfigurieren nativer Client-Apps
+        - name: Gewähren des Zugriffs auf lokale APIs für mobile Apps und Desktop-Apps
+          href: application-proxy-secure-api-access.md
+        - name: Konfigurieren von mobilen Client-Apps und Desktopclient-Apps
           href: application-proxy-configure-native-client-application.md
         - name: Konfigurieren einer benutzerdefinierten Startseite
           href: application-proxy-configure-custom-home-page.md

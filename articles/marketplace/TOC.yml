@@ -470,8 +470,12 @@
           href: ./partner-center-portal/manage-account.md
         - name: Suchen oder Erstellen eines Geschäftskontos
           href: ./partner-center-portal/company-work-accounts.md
+        - name: Kontomigration von CPP zu Partner Center
+          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Erstellen eines neuen Angebots
       items:
+        - name: Prüfliste für die Angebotserstellung
+          href: ./partner-center-portal/offer-creation-checklist.md
         - name: Erstellen eines SaaS-Angebots
           href: ./partner-center-portal/create-new-saas-offer.md
         - name: SaaS-Fulfillment-APIs

@@ -52,18 +52,20 @@
       href: fslogix-containers-azure-files.md
 - name: Problembehandlung
   items:
-    - name: 'Übersicht über die Problembehandlung, Feedback und Support'
+    - name: 'Problembehandlung: Übersicht, Feedback und Support'
       href: troubleshoot-set-up-overview.md
     - name: Identifizieren von Problemen mit der Diagnosefunktion
       href: diagnostics-role-service.md
-    - name: Erstellung von Mandanten- und Hostpools
+    - name: Mandanten- und Hostpoolerstellung
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md
     - name: Remotedesktop-Clientverbindungen
       href: troubleshoot-client-connection.md
-    - name: Windows Virtual Desktop – PowerShell
+    - name: 'Windows Virtual Desktop: PowerShell'
       href: troubleshoot-powershell.md
+    - name: Diagnostizieren von Problemen mit der Grafikleistung
+      href: remotefx-graphics-performance-counters.md
 - name: Verweis
   items:
     - name: PowerShell
